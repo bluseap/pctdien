@@ -26,8 +26,19 @@
 
     function registerEvents() {
 
+        $("#ddlDanhSachTheoDieuKien").on('change', function () {            
+            var danhsachtheodieukien = $("#ddlDanhSachTheoDieuKien").val();
+            if (danhsachtheodieukien !== "%") {
+                loadTableVBDDangXuLyQuaHan7Ngay();
+            }
+            else {
+                //loadTableVBDDangXuLy();   
+            }
+        });
+
         $('body').on('click', '.btnVBDTim', function (e) {
-            e.preventDefault();
+            e.preventDefault();            
+
             if (bientimClick === 0) {
                 $('#btnTimDangXuLy').show();
                 bientimClick = 1;
@@ -46,6 +57,7 @@
 
         $('#btnTimDangXuLy').on('click', function () {
             loadTableVBDDangXuLy();
+            $("#ddlDanhSachTheoDieuKien")[0].selectedIndex = 0;
         });
 
         $("#ddl-show-pageDangXuLy").on('change', function () {
@@ -108,6 +120,9 @@
     }
 
     function loadDangXuLyData() {
+        var render = "<option value='%' >-- Lựa chọn --</option>";
+        render += "<option value='VBDDXLQuaHan7Ngay'>Văn bản đến đang xử lý quá hạn 7 ngày</option>";
+        $('#ddlDanhSachTheoDieuKien').html(render);
 
     }
 
@@ -212,5 +227,101 @@
         });
     }
 
+    function loadTableVBDDangXuLyQuaHan7Ngay(isPageChanged) {
+        var template = $('#table-DangXuLy').html();
+        var render = "";
+
+        var makhuvuc = $('#ddlKhuVuc').val();
+        var namvanban = $('#txtNamVanBan').val();
+        var sovanban = $('#txtSoVanBan').val();
+        var kyhieuvanban = $('#txtKyHieuVanBan').val();
+        var trichyeu = $('#txtTrichYeu').val();
+        var coquanbanhanh = $('#ddlCoQuanBanHanh').val();
+
+        $.ajax({
+            type: 'GET',
+            url: '/admin/vbdthem/GetListVBDenDangXuLy',
+            data: {
+                corporationId: makhuvuc,
+                keyword: "%",
+
+                NamVanBan: namvanban,
+                SoVanBan: sovanban,
+                KyHieuVanBan: kyhieuvanban,
+                TrichYeu: trichyeu,
+                CoQuanBanHanh: coquanbanhanh,
+
+                page: tedu.configs.pageIndex,
+                pageSize: tedu.configs.pageSize
+            },
+
+            dataType: 'json',
+            success: function (response) {
+                if (response.Result.Results.length === 0) {
+                    render = "<tr><th><a>Không có dữ liệu</a></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>";
+                }
+                else {
+                    $.each(response.Result.Results, function (i, item) {
+                        render += Mustache.render(template, {
+                            Id: item.Id,
+                            TenSoVanBanDen: item.NamSoVanBan + '-' + item.TenSoVanBan,
+                            //HinhNhanVien: item.Image === null ? '<img src="/admin-side/images/user.png?h=90"' : '<img src="' + item.HinhNhanVien + '?h=90" />',
+                            TrichYeuCuaVanBan: item.TrichYeuCuaVanBan,
+                            SoKyHieuDen: item.SoVanBanDenStt + ' ' + item.SoKyHieuCuaVanBan,
+                            TenCoQuanBanHanh: item.TenCoQuanBanHanh,
+                            NgayBanHanhCuaVanBan: tedu.getFormattedDate(item.NgayBanHanhCuaVanBan),
+                            NgayDenCuaVanBan: tedu.getFormattedDate(item.NgayDenCuaVanBan),
+                            TTXuLy: tedu.getVanBanDenTTXuLy(item.TTXuLy),
+                            VanBanDenId: item.VanBanDenId,
+                            ButPheLanhDao: item.ButPheLanhDao === "Invalid Date" ? "" : item.ButPheLanhDao,
+                            GhiChu: item.GhiChu
+                            // Price: tedu.formatNumber(item.Price, 0),                          
+                        });
+                    });
+                }
+
+                $('#lblDangXuLyTotalRecords').text(response.Result.RowCount);
+
+                if (render !== '') {
+                    $('#tblContentDangXuLy').html(render);
+                }
+
+                if (response.Result.RowCount !== 0) {
+                    wrapPagingVBDDangXuLyQuaHan7Ngay(response.Result.RowCount, function () {
+                        loadTableVBDDangXuLyQuaHan7Ngay();
+                    },
+                        isPageChanged);
+                }
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không thể lấy dữ liệu về.', 'error');
+            }
+        });
+    }
+    function wrapPagingVBDDangXuLyQuaHan7Ngay(recordCount, callBack, changePageSize) {
+        var totalsize = Math.ceil(recordCount / tedu.configs.pageSize);
+        //Unbind pagination if it existed or click change pagesize
+        if ($('#paginationULDangXuLy a').length === 0 || changePageSize === true) {
+            $('#paginationULDangXuLy').empty();
+            $('#paginationULDangXuLy').removeData("twbs-pagination");
+            $('#paginationULDangXuLy').unbind("page");
+        }
+        //Bind Pagination Event
+        $('#paginationULDangXuLy').twbsPagination({
+            totalPages: totalsize,
+            visiblePages: 7,
+            first: 'Đầu',
+            prev: 'Trước',
+            next: 'Tiếp',
+            last: 'Cuối',
+            onPageClick: function (event, p) {
+                if (tedu.configs.pageIndex !== p) {
+                    tedu.configs.pageIndex = p;
+                    setTimeout(callBack(), 200);
+                }
+            }
+        });
+    }
 
 }
