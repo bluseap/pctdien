@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="pgwslider.css">    
+    
+</head>
+<body>
+    <main id="main">
+        <div class="container">
+            <ul class="pgwSlider">
+                <li><img src="paris.jpg" alt="Paris, France" data-description="Eiffel Tower and Champ de Mars"></li>
+                <li><img src="montreal.jpg" alt="Montréal, QC, Canada" data-large-src="montreal.jpg"></li>
+                <li>
+                    <img src="shanghai.jpg">
+                    <span>Shanghai, China</span>
+                </li>
+                <li>
+                    <a href="http://www.nyc.gov" target="_blank">
+                        <img src="new-york.jpg">
+                    <span>New York, NY, USA</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </main>
+    <script src="jquery.js"></script>
+    <script src="pgwslider.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.pgwSlider').pgwSlider({
+                listPosition: 'left'
+            });           
+           
+        });
+    </script>
+</body>
+</html>

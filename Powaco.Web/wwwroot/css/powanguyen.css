@@ -167,6 +167,24 @@ body {
         font-weight: bold;
     }
 
+.p-khachhangcanbiet {
+    text-align: center !important;
+    font-size: 14px;    
+}
+    .p-khachhangcanbiet > div > h3 {
+        color: #2e92f7;
+        font-weight: bold;
+    }
+
+.p-tintucsukien {
+    text-align: center !important;
+    font-size: 14px;    
+}
+    .p-tintucsukien > div > h3 {
+        color: #2e92f7;
+        font-weight: bold;
+    }
+
 .div-color-den {
     color: #333 !important;
 }
@@ -459,6 +477,10 @@ body {
     background-color: #74b9ff;
     border-color: #74b9ff;
 }
+.header-bg-top {
+    background-color: #74b9ff;
+    border-color: #74b9ff;
+}
 
 .top-img-logo {
     margin-top: -11px;
@@ -466,6 +488,10 @@ body {
 
 .header-ul-li-a-size {
     font-size: 21px;
+}
+
+.header-ul-li-a-size2 {
+    font-size: 17px;
 }
 
 .bg-container {
@@ -710,3 +736,5 @@ body {
 #Top_TieuDe {
     font-size: 19px;
 }
+
+

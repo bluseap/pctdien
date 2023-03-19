@@ -24,7 +24,7 @@ namespace NiTiErp.WebApi.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [MiddlewareFilter(typeof(LocalizationPipeline))]
-    [Authorize]
+    //[Authorize]
     public class AppUserController : ControllerBase
     {
         private readonly IConfiguration _configuration;
@@ -113,7 +113,8 @@ namespace NiTiErp.WebApi.Controllers
 
         [HttpGet]
         [Route("GetPermissionByUserId")]
-        public async Task<List<string>> GetPermissionByUserId(string userId)
+        [Authorize]
+        public async Task<List<Permissions>> GetPermissionByUserId(string userId)
         {
             using (var conn = new SqlConnection(_connectionString))
             {
@@ -123,9 +124,28 @@ namespace NiTiErp.WebApi.Controllers
                 var paramaters = new DynamicParameters();
                 paramaters.Add("@userId", userId);
 
-                var result = await conn.QueryAsync<string>("Get_Permission_ByUserId", paramaters, null, null, System.Data.CommandType.StoredProcedure);
+                var result = await conn.QueryAsync<Permissions>("Get_Permission_ByUserId", paramaters, null, null, System.Data.CommandType.StoredProcedure);
                 return result.ToList();
             }
         }
+
+        [HttpGet]
+        [Route("GetMDSDByAll")]        
+        public async Task<List<string>> GetMDSDByAll()
+        {
+            using (var conn = new SqlConnection(_connectionString))
+            {
+                if (conn.State == System.Data.ConnectionState.Closed)
+                    conn.Open();
+
+                var paramaters = new DynamicParameters();                
+
+                var result = await conn.QueryAsync<string>("Get_MDSD_ByAll", paramaters, null, null, System.Data.CommandType.StoredProcedure);
+                return result.ToList();
+            }
+        }
+
+
+
     }
 }

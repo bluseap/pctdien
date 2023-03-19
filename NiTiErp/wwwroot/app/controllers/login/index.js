@@ -38,6 +38,7 @@
                 var user = $('#txtUserName').val();
                 var password = $('#txtPassword').val();
                 login(user, password);
+                //loginAPI(user, password);
             }
         });
     }
@@ -68,6 +69,31 @@
                 else {
                     tedu.notify('Login failed', 'error');
                 }
+            }
+        });
+    }
+
+    var loginAPI = function (user, pass) {
+        $.ajax({
+            type: 'POST',
+            url: '/admin/login/LoginAPI',
+            data: {
+                UserName: user,
+                Password: pass
+            },
+            dataType: 'json',     
+            success: function (res) {
+                tedu.notify('Login oksa dckwnbfj11111', 'success');
+                if (res.Success) {
+                    tedu.notify('Login oksa dckwnbfj', 'success');
+                }
+                else {
+                    tedu.notify('Login failed', 'error');
+                }
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không thể lấy dữ liệu về.', 'error');
             }
         });
     }

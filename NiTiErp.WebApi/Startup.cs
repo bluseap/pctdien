@@ -35,11 +35,15 @@ using Microsoft.AspNetCore.Diagnostics;
 using System.IO;
 using Newtonsoft.Json;
 using Microsoft.AspNetCore.Mvc;
+using NiTiErp.WebApi.Extensions;
+using System.Net.Http;
 
 namespace NiTiErp.WebApi
 {
     public class Startup
     {
+        private readonly string PowaAPISpecificOrigins = "PowaAPISpecificOrigins";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -57,6 +61,18 @@ namespace NiTiErp.WebApi
             services.AddIdentity<AppUserViewModel, AppRoleViewModel>()
                 .AddDefaultTokenProviders();
 
+            services.AddCors(opt =>
+            {
+                opt.AddPolicy(PowaAPISpecificOrigins,
+                builder =>
+                {
+                    builder.WithOrigins(Configuration["AllowOrigins"])                    
+                        .AllowAnyHeader()
+                        .AllowAnyMethod();
+                });
+            });
+
+
             services.Configure<IdentityOptions>(opt =>
             {
                 // Default Password settings.
@@ -72,6 +88,18 @@ namespace NiTiErp.WebApi
                 {
                     opt.SerializerSettings.ContractResolver = new DefaultContractResolver();
                 });
+            services.AddHttpClient("BackendApi").ConfigurePrimaryHttpMessageHandler(() =>
+            {
+                var handler = new HttpClientHandler();
+                var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+
+                //if (environment == Environments.Development)
+                //{
+                //    handler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
+                //}
+                handler.ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; };
+                return handler;
+            });
 
             var supportedCultures = new[]
                {
@@ -110,6 +138,12 @@ namespace NiTiErp.WebApi
                     ValidAudience = Configuration["Tokens:Issuer"],
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Tokens:Key"]))
                 };
+            });
+
+            services.AddAuthorization(o => 
+            {
+                o.AddPolicy("AdminOnly", policy => policy.RequireClaim("Admin"));
+
             });
 
             //Add mvc
@@ -189,14 +223,31 @@ namespace NiTiErp.WebApi
                     }
                 });
             });
+
+            app.Use(async (context, next) =>
+            {
+                //context.Response.Headers.Add("Content-Security-Policy", "default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self'; frame-src 'self'");
+                context.Response.Headers.Add("Content-Security-Policy", "img-src 'self'; frame-src 'self'");
+                await next();
+            });
+
             if (env.IsDevelopment())
             {
-                //app.UseDeveloperExceptionPage();
+                app.UseDeveloperExceptionPage();
             }
             else
             {
-                app.UseHsts();
+                //app.UseHsts();
+                app.UseHsts(hsts => hsts.MaxAge(365).IncludeSubdomains().Preload());
+
+                app.UseXContentTypeOptions();
+                app.UseReferrerPolicy(opts => opts.NoReferrer());
+                app.UseXXssProtection(options => options.EnabledWithBlockMode());
+                app.UseXfo(options => options.Deny());
             }
+
+            app.UseErrorWrapping();
+
             // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), 
             // specifying the Swagger JSON endpoint.
             app.UseSwagger(c =>
@@ -215,10 +266,30 @@ namespace NiTiErp.WebApi
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "POWACO-HRM REST API V1");
             });
-            app.UseHttpsRedirection();
+           
+            app.UseStaticFiles();
+
+            //app.UseIdentityServer();           
+
             app.UseAuthentication();
 
-            app.UseMvc();
+            //app.UseAuthorization();
+
+            app.UseHttpsRedirection();
+
+            //app.UseRouting();
+
+            //app.UseAuthorization();
+
+            app.UseCors(PowaAPISpecificOrigins);
+
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                   name: "swagger",
+                   template: "swagger/{action=Index}/{id?}");        
+                
+            });
         }
         
     }

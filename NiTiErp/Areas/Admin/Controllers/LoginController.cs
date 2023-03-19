@@ -12,26 +12,44 @@ using NiTiErp.Utilities.Dtos;
 using System.Net;
 using NiTiErp.Application.Dapper.Interfaces;
 using NiTiErp.Application.Dapper.ViewModels;
+using System.Data.SqlClient;
+using Microsoft.Extensions.Configuration;
+using Dapper;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using System.IdentityModel.Tokens.Jwt;
+using Newtonsoft.Json;
+using System.Security.Claims;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Net.Http.Formatting;
+using Newtonsoft.Json.Linq;
 
 namespace NiTiErp.Areas.Admin.Controllers
 {
     [Area("Admin")]
     public class LoginController : Controller
-    {
+    {        
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
         private readonly ILogger _logger;
+       
+        private readonly IConfiguration _configuration;
 
         private readonly IAppUserLoginService _appuserloginService;
 
-        public LoginController(UserManager<AppUser> userManager,SignInManager<AppUser> signInManager
-            ,ILogger<LoginController> logger, IAppUserLoginService appuserloginService)
-        {
+        public LoginController(//IHttpClientFactory httpClientFactory, 
+            UserManager<AppUser> userManager,SignInManager<AppUser> signInManager
+            , ILogger<LoginController> logger, IAppUserLoginService appuserloginService
+            , IConfiguration configuration)
+        {          
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
 
             _appuserloginService = appuserloginService;
+
+            _configuration = configuration;           
         }
         public IActionResult Index()
         {          
@@ -69,6 +87,38 @@ namespace NiTiErp.Areas.Admin.Controllers
 
             // If we got this far, something failed, redisplay form
             return new ObjectResult(new GenericResult(false, model));
+        }
+
+        [HttpPost]
+        [AllowAnonymous]        
+        //[ValidateModel]
+        public async Task<List<string>> LoginAPI(string UserName, string Password)
+        {
+            string baseAddress = _configuration.GetValue<string>("ApiUrl");            
+
+            HttpClient httpClient = new HttpClient();
+            // Obtain a JWT token.
+            StringContent httpContent = new StringContent(@"{ ""UserName"": ""lenguyen"", ""Password"": ""190785"" }", Encoding.UTF8, "application/json");
+            var response = await httpClient.PostAsync("http://113.161.213.123:86/api/appuser/login", httpContent);
+
+            // Save the token for further requests.
+            var tokenapi = await response.Content.ReadAsStringAsync();
+            var response2 = JsonConvert.DeserializeObject<JObject>(tokenapi)["token"].ToString();
+
+            //httpClient.BaseAddress = new Uri(baseAddress);
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", response2);
+
+            //StringContent httpContent3 = new StringContent(@"{ ""userId"": ""lenguyen"" }", Encoding.UTF8, "application/json");
+            var response3 = await httpClient.GetAsync("http://113.161.213.123:86/api/appuser/getpermissionbyuserid?userId=A25F3BA7-2B00-4F47-3558-08D5761BE9CC");
+
+            var response4 = await response3.Content.ReadAsStringAsync();
+            //List<Permissions> listDepartment = new List<Permissions>();
+            //listDepartment = JsonConvert.DeserializeObject<List<Permissions>>(response4);
+
+            List<string> objectapi = new List<string>();
+            objectapi = JsonConvert.DeserializeObject<List<string>>(response4);
+
+            return objectapi;            
         }
 
         public void CountUserLogin(string userNameId)
@@ -142,6 +192,7 @@ namespace NiTiErp.Areas.Admin.Controllers
 
         //    return new OkObjectResult(model);
         //}
+        
 
     }
 }
