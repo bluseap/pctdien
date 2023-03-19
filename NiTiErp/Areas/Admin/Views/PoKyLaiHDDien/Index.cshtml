@@ -1,0 +1,152 @@
+﻿@{ ViewData["Title"] = "Index"; }
+@section Styles{
+    <link href="~/lib/jQuery-EasyUI/themes/bootstrap/easyui.css" rel="stylesheet" />
+    <link href="~/lib/jQuery-EasyUI/themes/icon.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap-datepicker/dist/css/bootstrap-datepicker.css" rel="stylesheet" />
+}
+@section Scripts{
+
+    <script src="~/lib/jQuery-EasyUI/jquery.easyui.min.js" asp-append-version="true"></script>
+    <script src="~/lib/bootstrap-datepicker/dist/js/bootstrap-datepicker.js" asp-append-version="true"></script>
+    <script src="~/lib/bootstrap-datepicker/dist/locales/bootstrap-datepicker.vi.min.js" charset="UTF-8" asp-append-version="true"></script>
+
+    <script src="~/app/controllers/pokylaihddien/timkhachhang.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/pokylaihddien/addeditpokylaihddien.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/pokylaihddien/index.js" asp-append-version="true"></script>
+    <script>
+        var pokylaihd = new pokylaihddienController();
+        pokylaihd.initialize();</script>
+}
+
+<div class="">
+    <div class="page-title">
+        <div class="title_left">
+            <small>
+                <a class="btn btn-link ">
+                    Khách hàng điện
+                </a>
+                >>
+                <a class="btn btn-link ">
+                    Ký lại hợp đồng điện
+                </a>
+            </small>
+        </div>
+        <div class="title_right">
+            <div class="col-md-3 col-sm-3 col-xs-12 form-group pull-right top_search">
+                <button class="btn btn-round btn-warning" id="btn-create" type="button">Nhập Hợp đồng điện</button>
+            </div>
+        </div>
+    </div>
+    <div class="page-title">
+        <div class="title_left">
+            <h3>  <small></small></h3>
+        </div>
+        <div class="title_right">
+            <div class="col-md-6 col-sm-6 col-xs-12 form-group pull-right top_search">
+                <div class="input-group">
+                    <label>Loại hợp đồng</label>
+                    <select id="ddlLoaiHopDong" class="form-control"></select>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-12 form-group pull-right top_search">
+                <div class="input-group">
+                    <label>Khu vực</label>
+                    <select id="ddlKhuVuc" class="form-control"></select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page-title">
+        <div class="title_left">
+            <h3>  <small></small></h3>
+        </div>
+        <div class="title_right">
+            <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right">
+                <div class="input-group">
+                    <label>Tìm Idkh, tên kh</label>
+                    <input type="text" id="txtTimNoiDung" class="form-control" placeholder="Tìm Idkh, tên kh">
+                    <span class="input-group-btn padding-top-5px">
+                        <button class="btn btn-warning" id="btnTimNoiDung" type="button">Tìm !</button>
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-7 col-sm-7 col-xs-12 form-group pull-right top_search">
+                <div class="input-group">
+                    <label>D.sách hợp đồng theo</label>
+                    <select id="ddlDanhSachHopDongTheo" class="form-control"></select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="x_panel">
+            <div class="table-responsive" id="table-responsiveTHAYHOPDONG">
+                <table id="tblTHAYHOPDONG" class="table table-striped jambo_table bulk_action" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Idkh</th>
+                            <th>Kỳ thay Hđ</th>
+                            <th>Tên K.hàng mới</th>
+                            <th>Khu vực</th>
+                            <th>Ngày hiệu lực</th>
+                            <th>Ngày hết hạn</th>
+                            <th></th>
+                            <th>Trạng thái</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tblContentTHAYHOPDONG"></tbody>
+                </table>
+                <div class="row">
+                    <div class="col-sm-5">
+                        <div class="dataTables_info" id="datatable-checkbox_infoTHAYHOPDONG" role="status" aria-live="polite">
+                            <select id="ddl-show-pageTHAYHOPDONG">
+                                <option value="10" selected="selected">10</option>
+                                <option value="20">20</option>
+                                <option value="30">30</option>
+                                <option value="50">50</option>
+                            </select>
+                            <span class="item-per-page">
+                                dòng/trang.
+                            </span>
+                            Tổng cộng: <strong id="lbTHAYHOPDONGTotalRecords"></strong>
+                        </div>
+                    </div>
+                    <div class="col-sm-7">
+                        <div class="dataTables_paginate" id="datatable-checkbox_paginateTHAYHOPDONG">
+                            <ul id="paginationULTHAYHOPDONG"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script id="table-THAYHOPDONG" type="x-tmpl-mustache">
+        <tr>
+            <th scope="row">
+                <a class="btn-link btn-addeditKhachHangId" data-id="{{ThayHopDongPoIdMaKvPo}}" data-toggle="tooltip" data-placement="top" title="Mã khách hàng">
+                    <i >{{MaKhachHangPo}}</i>
+                </a>
+            </th>
+            <td>{{KyThayHopDong}}</td>
+            <td>{{TENKHMOI}}</td>
+            <td>{{TENKV}}</td>
+            <td>{{NGAYHL}}</td>
+            <td>{{NgayHetHan}}</td>
+            <th scope="row">
+                <a class="btn-link btn-InThayHopDong" data-id="{{ThayHopDongPoIdMaKvPo}}" data-toggle="tooltip" data-placement="top" title="In Hợp đồng">
+                    <i >In H.đồng </i>
+                </a>
+            </th>
+            <td>
+                <a class="btn-link btn-TTDonDangKyNuoc" data-id="{{ThayHopDongPoIdMaKvPo}}" data-toggle="tooltip" data-placement="top" title="Trạng thái ĐĐK Nước">
+                   {{{TTThayHopDongDien}}}
+                </a>
+            </td>
+        </tr>
+    </script>
+</div>
+
+<partial name="_AddEditModel.cshtml" />
+<partial name="_TimKhachHang.cshtml" />
+
+

@@ -1,0 +1,223 @@
+﻿
+<div class="" role="main">
+    <div class="">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="main-top">
+                    <form id="frmMainDangKyNuoc" class="form-horizontal form-label-left">
+                        <div class="col-md-12 col-sm-12 col-xs-12 div-center">
+                            <strong>Lắp đặt mới đồng hồ nước</strong>
+                        </div>
+                        @*<div class="form-group">
+                            <div class="col-md-4 col-sm-4 col-xs-12 div-center">
+
+                            </div>
+                            <div class="col-md-4 col-sm-4 col-xs-12 div-select">
+                                <select id="ddlDienNuoc" name="ddlDienNuoc" class="form-control div-select-text"></select>
+                            </div>
+                            <div class="col-md-4 col-sm-4 col-xs-12 div-center">
+
+                            </div>
+                        </div>*@
+                    </form>
+                    <div class="x_content div-content">
+                        <!-- Smart Wizard -->
+                        <div id="wizard" class="form_wizard wizard_horizontal">
+                            <ul class="wizard_steps" id="step-ul">
+                                <li>
+                                    <a href="#step-1" id="step-1a">
+                                        <span class="step_no step-12"><i class="fa fa-file-text-o"></i></span>
+                                        <span class="step_descr">
+                                            <strong>Nhập liệu</strong>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#step-2">
+                                        <span class="step_no step-12"><i class="fa fa-paste"></i></span>
+                                        <span class="step_descr">
+                                            <strong>Đính kèm hồ sơ</strong>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#step-3">
+                                        <span class="step_no step-12"><i class="fa fa-check"></i></span>
+                                        <span class="step_descr">
+                                            <strong>Xác nhận đăng ký</strong>
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="step-winzar-container" id="step-1">
+                                <form id="frmDangKyNuoc" class="form-horizontal form-label-left">
+                                    <div class="item form-group">
+                                        <div class="col-md-4 col-sm-12 col-xs-12 div-color-red">
+                                            <label for="txtHoTenNguoiYeuCau">
+                                                Họ tên người yêu cầu
+                                                <a>(*)</a>
+                                            </label>
+                                            <input type="text" name="txtHoTenNguoiYeuCau"
+                                                   class="form-control"
+                                                   id="txtHoTenNguoiYeuCau">
+                                        </div>
+                                        <div class="col-md-4 col-sm-12 col-xs-12 div-color-red">
+                                            <label for="lbDienThoaiDiDong">
+                                                Điện thoại di động
+                                                <a>(*)</a>
+                                            </label>
+                                            <input type="text" name="txtDienThoaiDiDong" class="form-control has-feedback-right" id="txtDienThoaiDiDong" placeholder="">
+                                        </div>
+                                        <div class="col-md-4 col-sm-12 col-xs-12 div-color-red">
+                                            <label for="lbEmail">
+                                                Email
+                                            </label>
+                                            <input type="text" name="txtEmail" class="form-control has-feedback-right" id="txtEmail" placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-4 col-sm-12 col-xs-12 div-color-red">
+                                            <label for="lbSoChungMinhThu">
+                                                Số thẻ căn cước / Số CMND
+                                                <a>(*)</a>
+                                            </label>
+                                            <input type="text" name="txtSoChungMinhThu" class="form-control has-feedback-right" id="txtSoChungMinhThu" placeholder="">
+                                        </div>
+                                        <div class="col-md-4 col-sm-12 col-xs-12 div-color-red">
+                                            <label for="lbNgayCap">
+                                                Ngày cấp
+                                                <a>(*)</a>
+                                            </label>
+                                            <input type="text" name="txtNgayCap" class="form-control has-feedback-right" id="txtNgayCap" placeholder="">
+                                        </div>
+                                        <div class="col-md-4 col-sm-12 col-xs-12 div-color-red">
+                                            <label for="lbNoiCap">
+                                                Nơi cấp
+                                                <a>(*)</a>
+                                            </label>
+                                            <input type="text" name="txtNoiCap" class="form-control has-feedback-right" id="txtNoiCap" placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-4 col-sm-12 col-xs-12 div-color-red">
+                                            <label for="lbTinh">
+                                                Tỉnh
+                                                <a>(*)</a>
+                                            </label>
+                                            <select id="ddlTinh" name="ddlTinh" class="form-control"></select>
+                                        </div>
+                                        <div class="col-md-4 col-sm-12 col-xs-12 div-color-red">
+                                            <label for="lbThanhPhoHuyen">
+                                                Thành phố / Huyện
+                                                <a>(*)</a>
+                                            </label>
+                                            <select id="ddlThanhPhoHuyen" name="ddlThanhPhoHuyen" class="form-control"></select>
+                                        </div>
+                                        <div class="col-md-4 col-sm-12 col-xs-12 div-color-red">
+                                            <label for="lbPhuongXa">
+                                                Phường / Xã
+                                                <a>(*)</a>
+                                            </label>
+                                            <select id="ddlPhuongXa" name="ddlPhuongXa" class="form-control"></select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-4 col-sm-6 col-xs-12 div-color-red">
+                                            <label for="lbSoNha">
+                                                Số nhà
+                                            </label>
+                                            <input type="text" name="txtSoNha" class="form-control has-feedback-right" id="txtSoNha" placeholder="">
+                                        </div>
+                                        <div class="col-md-8 col-sm-6 col-xs-12 div-color-red">
+                                            <label for="lbDuongPhoApTo">
+                                                Tên đường phố / Ấp / Tổ
+                                                <a>(*)</a>
+                                            </label>
+                                            <input type="text" name="txtDuongPhoApTo" class="form-control has-feedback-right" id="txtDuongPhoApTo" placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-4 col-sm-12 col-xs-12 div-color-red">
+                                            <label for="lbMucDichSuDung">
+                                                Mục đích sử dụng
+                                                <a>(*)</a>
+                                            </label>
+                                            <select id="ddlMucDichSuDung" name="ddlMucDichSuDung" class="form-control"></select>
+                                        </div>
+                                    </div>
+                                </form>
+
+                            </div>
+                            <div class="step-winzar-container" id="step-2">
+                                <form id="form2" method="post" enctype="multipart/form-data" data-parsley-validate class="form-horizontal form-label-left">
+                                    <div class="form-group">
+                                        <div class="col-md-12 col-sm-12 col-xs-12 div-color-red">
+                                            <label for="lbMucDichSuDung">
+                                                Chọn các hình của bộ hồ sơ:
+                                            </label>
+                                            <a>Chứng minh thư (2 mặt) / Hộ khẩu thường trú / Giấy chứng nhận tạm trú / Hợp đồng thuê nhà / Hợp đồng mua bán nhà / Chuyển nhượng quyền sử dụng đất / Quyết định phân đất, phân nhà                         </a>
+                                            <div class="col-md-12" id="dropzone">
+                                                @*<div action="/home/Upload" class="dropzone" id="uploader">*@
+                                                <div class="dropzone" id="uploader">
+                                                    Kéo các hình hồ sơ vào hoặc click chuột vào.<br>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+
+                            </div>
+                            <div class="step-winzar-container" id="step-3">
+                                <form id="frmMaXacNhan" class="form-horizontal form-label-left">
+                                    <div class="form-group" id="hinhCaptchaDangKy">
+                                        <div class="col-md-4 col-sm-4 col-xs-12 ">                                           
+                                        </div>
+                                        <div class="col-md-4 col-sm-4 col-xs-12 div-center">
+                                            <img class="img-captcha60px" id="img-captcha" src="/get-captcha-image" />
+                                            <div class="div-color-red"><a class="btn btnChonCaptchaKhac">Chọn hình khác</a></div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-4 col-xs-12 ">                                            
+                                        </div>
+                                    </div>
+                                    <div class="form-group" id="chuCaptchaDangKy">
+                                        <div class="col-md-4 col-sm-4 col-xs-12 ">
+                                        </div>
+                                        <div class="col-md-4 col-sm-4 col-xs-12 div-center div-color-red">
+                                            <label for="lbCaptcha">
+                                                Nhập chữ theo hình kiểm tra
+                                                <a>(*)</a>
+                                            </label>
+                                            <input type="text" name="captchaCode" id="txt_captcha" />
+                                            <div class="span6 offset2 error-container" id="message-result"></div>
+                                        </div>
+                                        <div class="col-md-4 col-sm-4 col-xs-12 div-color-red">
+                                        </div>
+                                    </div>  
+                                    <div class="form-group">
+                                        <div class="col-md-1 col-sm-1 col-xs-12"></div>
+                                        <div class="col-md-10 col-sm-10 col-xs-12 alert alert-success thongbao-thanhcong" id="thongbaoDangKy">
+                                            <h4>
+                                                <i class="fa fa-check"></i> Đăng ký thành công!
+                                            </h4>
+                                            <p>&nbsp;&nbsp;&nbsp;&nbsp;Cám ơn quý khách đã sử dụng dịch vụ. Hệ thống đã ghi nhận yêu cầu của quý khách thành công.</p>
+                                            <p>&nbsp;&nbsp;&nbsp;&nbsp;Trong vòng 24h (Trừ thứ 7, Chủ nhật và các ngày nghỉ lễ) nhân viên Công ty sẽ liên hệ quý khách!</p>
+                                            <p>&nbsp;&nbsp;&nbsp;&nbsp;Xin trân trọng cám ơn.</p>
+                                        </div>
+                                        <div class="col-md-1 col-sm-1 col-xs-12"></div>
+                                    </div>
+                                </form>
+                                
+
+                            </div>
+
+
+                        </div>
+                        <!-- End SmartWizard Content -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+ 

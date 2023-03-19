@@ -1,0 +1,91 @@
+﻿@{ Layout = null; }
+@using Microsoft.AspNetCore.Http;
+
+@using DevExpress.AspNetCore
+@using DevExpress.XtraReports.UI;
+@using DevExpress.XtraReports.Parameters;
+
+@using NiTiErp.Reports
+@using NiTiErp.Helpers
+
+@using NiTiErp.Application.Dapper.ViewModels
+
+@namespace NiTiErp.Pages
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="/admin-side/images/powaco.ico" />
+
+    <link rel="stylesheet" href="~/css/thirdparty.bundle.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <script src="~/js/thirdparty.bundle.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+</head>
+<body>
+    <link rel="stylesheet" href="~/css/viewer.part.bundle.css" />
+    <link rel="stylesheet" href="~/css/designer.part.bundle.css" />
+
+    <script src="~/js/viewer.part.bundle.js"></script>
+    <script src="~/js/designer.part.bundle.js"></script>
+
+    @{ List<VanBanDenViewModel> sovanbanden = SessionHelper.GetObjectFromJson<List<VanBanDenViewModel>>(Context.Session, "sovbd");
+
+        var report = new repSoVBD();
+        report.DataSource = sovanbanden;
+
+        report.Parameters["prKhuVuc"].Value = @Context.Session.GetString("TenKhuVuc");
+        report.Parameters["prKhuVuc"].Visible = false;
+
+        report.Parameters["prTuNgay"].Value = @Context.Session.GetString("TuNgay");
+        report.Parameters["prTuNgay"].Visible = false;
+    }
+
+    <div class="container-fluid body-content">
+        @Html.DevExpress().WebDocumentViewer("DocumentViewer").Height("1000px").Bind(report)
+    </div>
+
+    <!--<div class="container-fluid">
+        <main role="main" class="pb-3">-->
+    @*@Html.DevExpress().WebDocumentViewer("DocumentViewer").Height("1000px").Bind(report)*@
+
+    <!--<h2> Thiết kế lại theo mẫu</h2>
+
+    @(Html.DevExpress().ReportDesigner("reportDesigner").Height("1000px")
+
+            .Bind("repSoVBD"))-->
+    @*<h3>Session Page</h3>
+        Age: @Context.Session.GetInt32("age")
+        <br />
+        Username: @Context.Session.GetString("username")*@
+
+    @*@Html.DevExpress().WebDocumentViewer("DocumentViewer").Height("1000px").Bind(new repSoVBD())*@
+    @*@(Html.DevExpress().ReportDesigner("reportDesigner")
+        .Height("1000px")
+            .Bind(new Moimoi()))*@
+
+    <!--<h3>Product List</h3>-->
+    @*@{ List<VanBanDenViewModel> products = SessionHelper.GetObjectFromJson<List<VanBanDenViewModel>>(Context.Session, "sovbd"); }
+            @foreach (var p in products)
+            {
+        <div>
+            Id: @p.Id
+            <br />
+            Name: @p.TrichYeuCuaVanBan
+            <br />
+            Price: @p.TenKhuVuc
+            <br />
+            ==================
+            <br />
+        </div>      }*@
+    <!--</main>
+    </div>-->
+
+</body>
+</html>

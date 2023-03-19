@@ -1,0 +1,310 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <UserSecretsId>aspnet-NiTiErp-52DBEE89-3FA6-4179-B14F-A5A15333C9FD</UserSecretsId>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="Reports\DangKyDien\repDsDkDien.repx" />
+    <None Remove="Reports\DangKyDien\repTongHopDkDvTT.repx" />
+    <None Remove="Reports\DangKyNuoc\repDichVuNuoc.repx" />
+    <None Remove="Reports\DangKyNuoc\repDsDkNuoc.repx" />
+    <None Remove="Reports\DichVuDien\repDichVuDien.repx" />
+    <None Remove="Reports\DichVuDien\repDsDvDien.repx" />
+    <None Remove="Reports\DichVuNuoc\repDsDvNuoc.repx" />
+    <None Remove="Reports\HopDongNuoc\repPoHopDongNuoc.repx" />
+    <None Remove="Reports\repCacDichVuDien.repx" />
+    <None Remove="Reports\repGiayDeNghi.repx" />
+    <None Remove="Reports\repGiayDeNghiNuoc.repx" />
+    <None Remove="Reports\repSoVBD.repx" />
+    <None Remove="Reports\repThayHDTS.repx" />
+    <None Remove="Reports\ThayHopDongDien\repThayHDTS.repx" />
+    <None Remove="Reports\ThayHopDongNuoc\repThayHDTS.repx" />
+    <None Remove="Reports\ThietKe\repInThietKeNuoc.repx" />
+    <None Remove="Reports\ThietKe\testIn.repx" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Reports\DangKyDien\repDsDkDien.repx" />
+    <EmbeddedResource Include="Reports\DangKyDien\repTongHopDkDvTT.repx" />
+    <EmbeddedResource Include="Reports\DangKyNuoc\repDsDkNuoc.repx" />
+    <EmbeddedResource Include="Reports\DichVuDien\repDsDvDien.repx" />
+    <EmbeddedResource Include="Reports\DichVuNuoc\repDichVuNuoc.repx" />
+    <EmbeddedResource Include="Reports\DichVuDien\repDichVuDien.repx" />
+    <EmbeddedResource Include="Reports\DichVuNuoc\repDsDvNuoc.repx" />
+    <EmbeddedResource Include="Reports\HopDongNuoc\repPoHopDongNuoc.repx" />
+    <EmbeddedResource Include="Reports\repCacDichVuDien.repx" />
+    <EmbeddedResource Include="Reports\repGiayDeNghiNuoc.repx" />
+    <EmbeddedResource Include="Reports\repGiayDeNghi.repx" />
+    <EmbeddedResource Include="Reports\repSoVBD.repx" />
+    <EmbeddedResource Include="Reports\repThayHDTS.repx" />
+    <EmbeddedResource Include="Reports\ThayHopDongDien\repThayHDTS.repx" />
+    <EmbeddedResource Include="Reports\ThayHopDongNuoc\repThayHDTS.repx" />
+    <EmbeddedResource Include="Reports\ThietKe\repInThietKeNuoc.repx" />
+    <EmbeddedResource Include="Reports\ThietKe\testIn.repx" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="AspNetCore.Reporting" Version="2.1.0" />
+    <PackageReference Include="AutoMapper" Version="6.1.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="3.1.0" />
+    <PackageReference Include="DevExpress.AspNetCore.Reporting" Version="20.1.3" />
+    <PackageReference Include="DevExtreme.AspNet.Core" Version="20.1.3" />
+    <PackageReference Include="DevExtreme.AspNet.Data" Version="2.8.6" />
+    <PackageReference Include="EPPlus.Core" Version="1.5.4" />
+    <PackageReference Include="Microsoft.AspNetCore" Version="2.1.7" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.1.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.1.14" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.1.14" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.1.14">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="2.1.23" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="2.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="2.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="2.1.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="2.1.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.10" />
+    <PackageReference Include="PaulMiami.AspNetCore.Mvc.Recaptcha" Version="1.2.1" />
+    <PackageReference Include="RestSharp" Version="106.10.1" />
+    <PackageReference Include="Serilog.Extensions.Logging.File" Version="1.1.0" />
+    <PackageReference Include="SixLabors.ImageSharp" Version="1.0.0-beta0005" />
+    <PackageReference Include="SkiaSharp" Version="2.80.0" />
+    <PackageReference Include="System.CodeDom" Version="5.0.0" />
+    <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
+    <PackageReference Include="System.Drawing.Common" Version="5.0.3" />
+    <PackageReference Include="WebMarkupMin.AspNetCore2" Version="2.4.2" />
+    <PackageReference Include="WebMarkupMin.NUglify" Version="2.4.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NiTiErp.Application.Dapper\NiTiErp.Application.Dapper.csproj" />
+    <ProjectReference Include="..\NiTiErp.Application\NiTiErp.Application.csproj" />
+    <ProjectReference Include="..\NiTiErp.Data.EF\NiTiErp.Data.EF.csproj" />
+    <ProjectReference Include="..\NiTiErp.Data\NiTiErp.Data.csproj" />
+    <ProjectReference Include="..\NiTiErp.Infrastructure\NiTiErp.Infrastructure.csproj" />
+    <ProjectReference Include="..\NiTiErp.Utilities\NiTiErp.Utilities.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="wwwroot\lib\Chart.js\dist\" />
+    <Folder Include="wwwroot\lib\jquery-signalr\" />
+    <Folder Include="wwwroot\uploaded\hoso\" />
+    <Folder Include="wwwroot\uploaded\chatuser\" />
+    <Folder Include="wwwroot\uploaded\emailsent\" />
+    <Folder Include="wwwroot\uploaded\vanbandi\" />
+    <Folder Include="wwwroot\uploaded\vanbanden\" />
+    <Folder Include="wwwroot\UpLoadFile\anphu\hinhthietke\" />
+    <Folder Include="wwwroot\UpLoadFile\chaudoc\hinhthietke\" />
+    <Folder Include="wwwroot\UpLoadFile\chauphu\hinhthietke\" />
+    <Folder Include="wwwroot\UpLoadFile\chomoi\hinhthietke\" />
+    <Folder Include="wwwroot\UpLoadFile\phutan\hinhthietke\" />
+    <Folder Include="wwwroot\UpLoadFile\powaco\hinhthietke\" />
+    <Folder Include="wwwroot\UpLoadFile\tanchau\hinhthietke\" />
+    <Folder Include="wwwroot\UpLoadFile\tinhbien\hinhthietke\" />
+    <Folder Include="wwwroot\UpLoadFile\triton\hinhthietke\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Areas\Admin\Views\PCTDienNhap\Index.cshtml" />
+    <None Include="Areas\Admin\Views\PCTDienNhap\_AddEditModel.cshtml" />
+    <None Include="Areas\Admin\Views\PCTDienNhap\_ChoPhepLamViec.cshtml" />
+    <None Include="Areas\Admin\Views\PCTDienNhap\_DiaDiemCongTac.cshtml" />
+    <None Include="Areas\Admin\Views\PCTDienNhap\_KetThucCongTac.cshtml" />
+    <None Include="Areas\Admin\Views\PCTDienNhap\_themdieukienatd.cshtml" />
+    <None Include="Areas\Admin\Views\PCTDienNhap\_themnoidungcongtac.cshtml" />
+    <None Include="Areas\Admin\Views\PCTDienNhap\_themtrangbiatbhld.cshtml" />
+    <None Include="wwwroot\app\controllers\pctdiennhap\addeditpctdien.js" />
+    <None Include="wwwroot\app\controllers\pctdiennhap\chopheplamviec.js" />
+    <None Include="wwwroot\app\controllers\pctdiennhap\diadiemcongtac.js" />
+    <None Include="wwwroot\app\controllers\pctdiennhap\index.js" />
+    <None Include="wwwroot\app\controllers\pctdiennhap\ketthuccongtac.js" />
+    <None Include="wwwroot\app\controllers\pctdiennhap\loaddatatable.js" />
+    <None Include="wwwroot\app\controllers\pctdiennhap\themdieukienatd.js" />
+    <None Include="wwwroot\app\controllers\pctdiennhap\themnoidungcongtac.js" />
+    <None Include="wwwroot\app\controllers\pctdiennhap\themtrangbiatbhld.js" />
+    <None Include="wwwroot\UpLoadFile\chaudoc\InHopDong_CD.rar" />
+    <None Include="wwwroot\UpLoadFile\importexcel\CAPBAC.xlsx" />
+    <None Include="wwwroot\UpLoadFile\powaco\filemaupo\175191632501pocd.xlsx" />
+    <None Include="wwwroot\UpLoadFile\powaco\filemaupo\175191635801pocd.xlsx" />
+    <None Include="wwwroot\UpLoadFile\powaco\filemaupo\1751916395102pocd.xlsx" />
+    <None Include="wwwroot\UpLoadFile\powaco\filemaupo\175191640003pocd.xlsx" />
+    <None Include="wwwroot\UpLoadFile\powaco\filemaupo\2124161345sotru2.xlsx" />
+    <None Include="wwwroot\UpLoadFile\powaco\filemaupo\2124162240sotru2.xlsx" />
+    <None Include="wwwroot\UpLoadFile\powaco\filemaupo\212416232sotru2.xlsx" />
+    <None Include="wwwroot\UpLoadFile\powaco\filemaupo\2124162613sotru2.xlsx" />
+    <None Include="wwwroot\UpLoadFile\powaco\filemaupo\2124162856sotru2.xlsx" />
+    <None Include="wwwroot\UpLoadFile\powaco\filemaupo\212416433sotru2.xlsx" />
+    <None Include="wwwroot\UpLoadFile\powaco\filemaupo\212416530sotru2.xlsx" />
+    <None Include="wwwroot\UpLoadFile\powaco\filemaupo\212416826sotru2.xlsx" />
+    <None Include="wwwroot\UpLoadFile\powaco\filemaupo\212492052sotru1.xlsx" />
+    <None Include="wwwroot\UpLoadFile\powaco\filemaupo\212492344sotru2.xlsx" />
+    <None Include="wwwroot\UpLoadFile\powaco\filemaupo\212492547sotru2.xlsx" />
+    <None Include="wwwroot\UpLoadFile\powaco\filemau\17512163136" />
+    <None Include="wwwroot\UpLoadFile\powaco\filemau\17512163232" />
+    <None Include="wwwroot\UpLoadFile\powaco\filemau\17512163431" />
+    <None Include="wwwroot\UpLoadFile\powaco\filemau\1751516253DPM0517.xlsx" />
+    <None Include="wwwroot\UpLoadFile\powaco\filemau\1751584621DPM0517.xlsx" />
+    <None Include="wwwroot\UpLoadFile\powaco\filemau\1751584626DPM0517.xlsx" />
+    <None Include="wwwroot\UpLoadFile\powaco\filemau\1751585012DPM0517.xlsx" />
+    <None Include="wwwroot\UpLoadFile\powaco\filemau\175158501DPM0517.xlsx" />
+    <None Include="wwwroot\UpLoadFile\powaco\filemau\1751593754DPM0517.xlsx" />
+    <None Include="wwwroot\UpLoadFile\powaco\filemau\17517141944cdtam.xlsx" />
+    <None Include="wwwroot\UpLoadFile\powaco\filemau\17517142042cdtam.xlsx" />
+    <None Include="wwwroot\UpLoadFile\powaco\filemau\17517142110cdtam.xlsx" />
+    <None Include="wwwroot\UpLoadFile\powaco\filemau\17517142129cdtam.xlsx" />
+    <None Include="wwwroot\UpLoadFile\powaco\filemau\175171440451cdtam.xlsx" />
+    <None Include="wwwroot\UpLoadFile\powaco\filemau\175171440522cdtam.xlsx" />
+    <None Include="wwwroot\UpLoadFile\powaco\filemau\175171441442cdtam.xlsx" />
+    <None Include="wwwroot\UpLoadFile\powaco\filemau\175171442121cdtam.xlsx" />
+    <None Include="wwwroot\UpLoadFile\powaco\filemau\175171442421cdtam.xlsx" />
+    <None Include="wwwroot\UpLoadFile\powaco\filemau\17517144271cdtam.xlsx" />
+    <None Include="wwwroot\UpLoadFile\powaco\filemau\175171443212cdtam.xlsx" />
+    <None Include="wwwroot\UpLoadFile\powaco\filemau\175171451351cdtam.xlsx" />
+    <None Include="wwwroot\UpLoadFile\powaco\filemau\175171451422cdtam.xlsx" />
+    <None Include="wwwroot\UpLoadFile\powaco\filemau\175171457321cdtam.xlsx" />
+    <None Include="wwwroot\UpLoadFile\powaco\filemau\175171457362cdtam.xlsx" />
+    <None Include="wwwroot\UpLoadFile\powaco\filemau\175171629431cdtam.xlsx" />
+    <None Include="wwwroot\UpLoadFile\powaco\filemau\17517163002cdtam.xlsx" />
+    <None Include="wwwroot\UpLoadFile\powaco\filemau\175171643202cdtam.xlsx" />
+    <None Include="wwwroot\UpLoadFile\powaco\filemau\17517164331cdtam.xlsx" />
+    <None Include="wwwroot\UpLoadFile\powaco\filemau\175171644501cdtam.xlsx" />
+    <None Include="wwwroot\UpLoadFile\powaco\filemau\175171644562cdtam.xlsx" />
+    <None Include="wwwroot\UpLoadFile\powaco\filemau\175171647123cdtam.xlsx" />
+    <None Include="wwwroot\UpLoadFile\powaco\filemau\17517164741cdtam.xlsx" />
+    <None Include="wwwroot\UpLoadFile\powaco\filemau\17517164772cdtam.xlsx" />
+    <None Include="wwwroot\UpLoadFile\powaco\filemau\1751791830NewDataSet %2812%29.xlsx" />
+    <None Include="wwwroot\UpLoadFile\powaco\filemau\178281325717828125738moi.xlsx" />
+    <None Include="wwwroot\UpLoadFile\powaco\filemau\178281334017828125738moi.xlsx" />
+    <None Include="wwwroot\UpLoadFile\powaco\filemau\178281382717828125738moi.xlsx" />
+    <None Include="wwwroot\UpLoadFile\powaco\filemau\18117102445THAY ĐỔI CHI TIẾT NƯỚC ĐỢT 2.xlsx" />
+    <None Include="wwwroot\UpLoadFile\powaco\filemau\1821384212DS LB0B %281%29.xlsx" />
+    <None Include="wwwroot\UpLoadFile\powaco\filemau\1821384832DS LB0B %281%29.xlsx" />
+    <None Include="wwwroot\UpLoadFile\powaco\filemau\1821385220DS LB0B %281%29.xlsx" />
+    <None Include="wwwroot\UpLoadFile\powaco\filemau\1821385936DS LB0B %281%29.xlsx" />
+    <None Include="wwwroot\UpLoadFile\powaco\filemau\MauDuongPho.xlsx" />
+    <None Include="wwwroot\UpLoadFile\powaco\HUONGDAN.doc" />
+    <None Include="wwwroot\UpLoadFile\powaco\maucongtac.xls" />
+    <None Include="wwwroot\UpLoadFile\powaco\quitrinh_M.doc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Data.v20.1">
+      <HintPath>bin\Debug\netcoreapp2.1\DevExpress.Data.v20.1.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Update="Areas\Admin\Views\Shared\_shareTimVanBanDi.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\Admin\Views\Shared\_shareTimVanBan.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Reports\DangKyDien\repDsDkDien.cs">
+      <DependentUpon>repDsDkDien.repx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\DangKyDien\repDsDkDien.Designer.cs">
+      <DependentUpon>repDsDkDien.repx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\DangKyDien\repTongHopDkDvTT.cs">
+      <DependentUpon>repTongHopDkDvTT.repx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\DangKyDien\repTongHopDkDvTT.Designer.cs">
+      <DependentUpon>repTongHopDkDvTT.repx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\DangKyNuoc\repDsDkNuoc.cs">
+      <DependentUpon>repDsDkNuoc.repx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\DangKyNuoc\repDsDkNuoc.Designer.cs">
+      <DependentUpon>repDsDkNuoc.repx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\DichVuDien\repDsDvDien.cs">
+      <DependentUpon>repDsDvDien.repx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\DichVuDien\repDsDvDien.Designer.cs">
+      <DependentUpon>repDsDvDien.repx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\DichVuNuoc\repDichVuNuoc.cs">
+      <DependentUpon>repDichVuNuoc.repx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\DichVuNuoc\repDichVuNuoc.Designer.cs">
+      <DependentUpon>repDichVuNuoc.repx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\DichVuDien\repDichVuDien.cs">
+      <DependentUpon>repDichVuDien.repx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\DichVuDien\repDichVuDien.Designer.cs">
+      <DependentUpon>repDichVuDien.repx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\DichVuNuoc\repDsDvNuoc.cs">
+      <DependentUpon>repDsDvNuoc.repx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\DichVuNuoc\repDsDvNuoc.Designer.cs">
+      <DependentUpon>repDsDvNuoc.repx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\HopDongNuoc\repPoHopDongNuoc.cs">
+      <DependentUpon>repPoHopDongNuoc.repx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\HopDongNuoc\repPoHopDongNuoc.Designer.cs">
+      <DependentUpon>repPoHopDongNuoc.repx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\repCacDichVuDien.cs">
+      <DependentUpon>repCacDichVuDien.repx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\repCacDichVuDien.Designer.cs">
+      <DependentUpon>repCacDichVuDien.repx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\repGiayDeNghi.cs">
+      <DependentUpon>repGiayDeNghi.repx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\repGiayDeNghi.Designer.cs">
+      <DependentUpon>repGiayDeNghi.repx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\repGiayDeNghiNuoc.cs">
+      <DependentUpon>repGiayDeNghiNuoc.repx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\repGiayDeNghiNuoc.Designer.cs">
+      <DependentUpon>repGiayDeNghiNuoc.repx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\repSoVBD.cs">
+      <DependentUpon>repSoVBD.repx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\repSoVBD.Designer.cs">
+      <DependentUpon>repSoVBD.repx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\repThayHDTS.cs">
+      <DependentUpon>repThayHDTS.repx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\repThayHDTS.Designer.cs">
+      <DependentUpon>repThayHDTS.repx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\ThayHopDongDien\repThayHDTS.cs">
+      <DependentUpon>repThayHDTS.repx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\ThayHopDongDien\repThayHDTS.Designer.cs">
+      <DependentUpon>repThayHDTS.repx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\ThayHopDongNuoc\repThayHDTS.cs">
+      <DependentUpon>repThayHDTS.repx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\ThayHopDongNuoc\repThayHDTS.Designer.cs">
+      <DependentUpon>repThayHDTS.repx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\ThietKe\repInThietKeNuoc.cs">
+      <DependentUpon>repInThietKeNuoc.repx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\ThietKe\repInThietKeNuoc.Designer.cs">
+      <DependentUpon>repInThietKeNuoc.repx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\ThietKe\testIn.cs">
+      <DependentUpon>testIn.repx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\ThietKe\testIn.Designer.cs">
+      <DependentUpon>testIn.repx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+</Project>

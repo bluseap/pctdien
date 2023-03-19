@@ -1,0 +1,272 @@
+﻿
+<div id="modal-add-edit-EditOrderDetails" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style="overflow-y: auto; max-height:85%;  margin-top: 50px; margin-bottom:50px; ">        
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Thêm / Sửa Đơn hàng </h4>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="hidOrderDetailsId" value="" />
+                <input type="hidden" id="hidDeleteOrderDetailsId" value="" />
+                <input type="hidden" id="hidMaNhomLive" value="" />
+
+                <input type="hidden" id="hidInsertUpdateOrderDetailsId" value="" />
+                <input type="hidden" id="hidCodeGomDonOrderDetailsId" value="" />
+
+                <input type="hidden" id="hidOrderId" value="" />
+                <input type="hidden" id="hidInsertUpdateOrderId" value="" />
+
+
+                <form class="form-horizontal form-label-left" id="frmMainEditOrderDetails">
+                    <div class="form-group">
+                        <div class="col-md-4 col-sm-12 col-xs-12"></div>
+                        <div class="col-md-4 col-sm-12 col-xs-12">
+                            <button type="button" id="btnNhapKhachHangMoi" class="btn btn-round btn-success">Nhập / Sửa khách hàng</button>
+                        </div>
+                        <div class="col-md-4 col-sm-12 col-xs-12"></div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-4 col-sm-12 col-xs-12">
+                            <label for="lbTenKhachHang">
+                                Tên khách hàng <a style="color:red">(*)</a>
+                            </label>
+                            <input type="text" id="txtTenKhachHang" name="txtTenKhachHang" class="form-control has-feedback-right" placeholder="Tên khách hàng">
+                        </div>
+                        <div class="col-md-4 col-sm-12 col-xs-12">
+                            <label for="lbDiaChiKhachHang">
+                                Địa chỉ <a style="color:red">(*)</a>
+                            </label>
+                            <input type="text" id="txtDiaChiKhachHang" name="txtDiaChiKhachHang" class="form-control has-feedback-right" placeholder="Địa chỉ khách hàng">
+                        </div>
+                        <div class="col-md-4 col-sm-12 col-xs-12">
+                            <label for="lbSoDienThoai">
+                                Số điện thoại <a style="color:red">(*)</a>
+                            </label>
+                            <input type="text" id="txtSoDienThoai" name="txtSoDienThoai" class="form-control has-feedback-right" placeholder="Số điện thoại">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-12 col-xs-12">
+                            <label for="lbSanPham">
+                                Tên Sản phẩm <a style="color:red">(*)</a>
+                            </label>
+                            <input type="text" id="txtTenSanPham" name="txtTenSanPham" class="form-control has-feedback-right" placeholder="Tên sản phẩm">
+                            @*<select id="ddlSanPham" class="form-control"></select>*@
+                        </div>
+                        <div class="col-md-3 col-sm-12 col-xs-12">
+                            <label for="lbTienTong">
+                                Tổng tiền <a style="color:red">(*)</a>
+                            </label>
+                            <input type="text" id="txtTienTong" name="txtTienTong" class="form-control has-feedback-right"
+                                   data-a-sign="" data-a-dec="," data-a-sep="." data-v-min="-999999999"   data-v-max="999999999">
+                        </div>
+                        <div class="col-md-3 col-sm-12 col-xs-12">
+                            <label for="lbTienCoc">
+                                Tiền cọc <a style="color:red">(*)</a>
+                            </label>
+                            <input type="text" id="txtTienCoc" name="txtTienCoc" data-a-sign="" data-a-dec="," data-a-sep="."  data-v-min="-999999999"   data-v-max="999999999"
+                                   class="form-control has-feedback-right">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-12 col-xs-12">
+                            <label for="lbThongTinShip">
+                                Thông tin Ship <a style="color:red">(*)</a>
+                            </label>
+                            <select id="ddlThongTinShip" class="form-control"></select>
+                        </div>
+                        <div class="col-md-3 col-sm-12 col-xs-12">
+                            <label for="lbTienConLai">
+                                Tiền còn lại <a style="color:red">(*)</a>
+                            </label>
+                            <input type="text" id="txtTienConLai" name="txtTienConLai" data-a-sign="" data-a-dec="," data-a-sep="." class="form-control has-feedback-right">
+                        </div>
+                        <div class="col-md-3 col-sm-12 col-xs-12">
+                            <label for="lbThemTTOrderDetails">
+                                .
+                            </label>
+                            <span class="input-group-btn ">
+                                <button type="button" id="btnThemTTOrderDetails" class="btn btn-warning">Thêm đơn </button>
+                            </span>
+                        </div>
+                    </div>
+                    <div id="divThemTTOrderDetails" class="form-group">
+                        <table id="tblThemTTOrderDetails" class="table table-striped jambo_table bulk_action" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th width="=10%">#</th>
+                                    <th>STT</th>
+                                    <th>Tên sản phẩm</th>
+                                    <th>Tiền hàng</th>
+                                    <th>Tiền cọc</th>
+                                    <th>.</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tblContentThemTTOrderDetails"></tbody>
+                        </table>
+                        <script id="table-ThemTTOrderDetails" type="x-tmpl-mustache">
+                        <tr>
+                            <th scope="row">
+                            </th>
+                            <td>{{SortNumber}}</td>
+                            <td>{{ProductName}}</td>
+                            <td>{{TienTong}}</td>
+                            <td>{{TienCoc}}</td>
+                            <th scope="row">
+                                <a class="btn-link btn-deleteThemTTOrderDetails" data-id="{{OrderId}}" data-toggle="tooltip"
+                                            data-placement="top" title="Xóa sản phẩm">
+                                            <i class="fa fa-trash-o"  style="color:red"></i>
+                                 </a>
+                            </th>
+                        </tr>
+                        </script>
+                    </div>
+                    <div class="form-group form-group-bottom-0px">
+                        <div class="col-md-3 col-sm-12 col-xs-12">
+                            <div class="input-group form-group-bottom-0px">
+                                <label for="lbThongTinLive" style="color: #1f2ff1;">
+                                    Thông tin Livestream
+                                </label>
+                                <span class="input-group-btn">
+                                    <input id="ckThongTinLive" type="checkbox" class="checkbox" />
+
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12 col-xs-12">
+                            <label for="lbGhiChuTTLiveM">
+                                <a style="color:red">(Nhập hết thông tin Livestream mới được In Đơn)</a>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-3 col-sm-12 col-xs-12">
+                            <label for="lbMaLive">
+                                Mã Live <a style="color:red">(*)</a>
+                            </label>
+                            <input type="text" id="txtMaLive" name="txtMaLive" class="form-control has-feedback-right" placeholder="Mã Live">
+                        </div>
+                        <div class="col-md-3 col-sm-12 col-xs-12">
+                            <label for="lbSoMaLive">
+                                Số Mã Live <a style="color:red">(*)</a>
+                            </label>
+                            <input type="text" id="txtSoMaLive" name="txtSoMaLive" class="form-control has-feedback-right" placeholder="Số Mã Live">
+                        </div>
+                        <div class="col-md-3 col-sm-12 col-xs-12">
+                            <label for="lbNgayLive">
+                                Ngày Live <a style="color:red">(*)</a>
+                            </label>
+                            <input type="text" id="txtNgayLive" name="txtNgayLive" class="form-control has-feedback-right" placeholder="Ngày Live">
+                        </div>
+                        <div class="col-md-3 col-sm-12 col-xs-12">
+                            <label for="lbBuoiLive">
+                                Buổi Live
+                            </label>
+                            <select id="ddlBuoiLive" class="form-control"></select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-12 col-xs-12">
+                            <label for="lbGhiChuLive">
+                                Ghi chú Live
+                            </label>
+                            <input type="text" id="txtGhiChuLive" name="txtGhiChuLive" class="form-control has-feedback-right" placeholder="Ghi chú Live ">
+                        </div>
+                    </div>
+                    <div class="form-group form-group-bottom-0px">
+                        <div class="col-md-3 col-sm-12 col-xs-12">
+                            <div class="input-group form-group-bottom-0px">
+                                <label for="lbThongTinDonDi" style="color: #1f2ff1;">
+                                    Thông tin Đơn hàng đi
+                                </label>
+                                <span class="input-group-btn">
+                                    <input id="ckThongTinDonDi" type="checkbox" class="checkbox" />
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-3 col-sm-12 col-xs-12">
+                            <label for="lbMaVanDonDi">
+                                Mã vận đơn đi <a style="color:red">(*)</a>
+                            </label>
+                            <input type="text" id="txtMaVanDonDi" name="txtMaVanDonDi" class="form-control has-feedback-right" placeholder="Mã vận đơn đi">
+                        </div>
+                        <div class="col-md-3 col-sm-12 col-xs-12">
+                            <label for="lbNgayDonDi">
+                                Ngày đơn đi <a style="color:red">(*)</a>
+                            </label>
+                            <input type="text" id="txtNgayDonDi" name="txtNgayDonDi" class="form-control has-feedback-right" placeholder="Ngày đơn đi">
+                        </div>
+                        <div class="col-md-6 col-sm-12 col-xs-12">
+                            <label for="lbGhiChuDonDi">
+                                Ghi chú Đơn hàng đi
+                            </label>
+                            <input type="text" id="txtGhiChuDonDi" name="txtGhiChuDonDi" class="form-control has-feedback-right" placeholder="Ghi chú Đơn hàng đi">
+                        </div>
+                    </div>
+                    <div class="form-group form-group-bottom-0px">
+                        <div class="col-md-3 col-sm-12 col-xs-12">
+                            <div class="input-group form-group-bottom-0px">
+                                <label for="lbThongTinDonDen" style="color: #1f2ff1;">
+                                    Thông tin Đơn hàng đến
+                                </label>
+                                <span class="input-group-btn">
+                                    <input id="ckThongTinDonDen" type="checkbox" class="checkbox" />
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-12 col-xs-12">    </div>
+                        <div class="col-md-3 col-sm-12 col-xs-12">
+                            <div class="input-group form-group-bottom-0px">
+                                <label for="lbThongTinDonDenHuy" style="color: #1f2ff1;">
+                                    Thông tin Đơn hàng đến Hủy
+                                </label>
+                                <span class="input-group-btn">
+                                    <input id="ckThongTinDonDenHuy" type="checkbox" class="checkbox" />
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-12 col-xs-12"> </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-3 col-sm-12 col-xs-12">
+                            <label for="lbNgayDonDen">
+                                Ngày đơn đến <a style="color:red">(*)</a>
+                            </label>
+                            <input type="text" id="txtNgayDonDen" name="txtNgayDonDen" class="form-control has-feedback-right" placeholder="Ngày đơn đến">
+                        </div>
+                        <div class="col-md-3 col-sm-12 col-xs-12">
+                            <label for="lbGhiChuDonDen">
+                                Ghi chú Đơn hàng đến
+                            </label>
+                            <input type="text" id="txtGhiChuDonDen" name="txtGhiChuDonDen" class="form-control has-feedback-right" placeholder="Ghi chú Đơn hàng đến">
+                        </div>
+                        <div class="col-md-3 col-sm-12 col-xs-12">
+                            <label for="lbNgayDonDenHuy">
+                                Ngày đơn đến Hủy <a style="color:red">(*)</a>
+                            </label>
+                            <input type="text" id="txtNgayDonDenHuy" name="txtNgayDonDenHuy" class="form-control has-feedback-right" placeholder="Ngày đơn đến Hủy">
+                        </div>
+                        <div class="col-md-3 col-sm-12 col-xs-12">
+                            <label for="lbGhiChuDonDen">
+                                Ghi chú Đơn hàng đến Hủy
+                            </label>
+                            <input type="text" id="txtGhiChuDonDenHuy" name="txtGhiChuDonDenHuy" class="form-control has-feedback-right" placeholder="Ghi chú Đơn hàng đến Hủy">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="button" id="btnCancelEditOrderDetails" data-dismiss="modal" class="btn btn-default">Đóng</button>
+                            <button type="button" id="btnSaveEditOrderDetails" class="btn btn-warning">Lưu đơn hàng khách hàng </button>
+                        </div>
+                    </div>
+                </form>
+                <div class="ln_solid"></div>
+            </div>
+        </div>
+    </div>
+</div>

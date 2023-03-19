@@ -1,0 +1,133 @@
+﻿<div id="modal-add-edit-DDDienKSTK" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style="overflow-y: auto; max-height:85%;  margin-top: 50px; margin-bottom:50px; ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Kiểm tra - Sửa thiết kế di dời đồng hồ điện </h4>
+            </div>
+            <div class="modal-body">
+                <div id="horizontal-form">
+                    <form class="form-horizontal form-label-left input_mask" role="form" id="frmMainDDDienKSTK">
+                        <input type="hidden" id="hidGDNThietKeDienId" value="" />
+
+                        <input type="hidden" id="hidGiayDeNghiDMCungCapDienId" value="" />
+                        <input type="hidden" id="hidInsertGiayDeNghiDMCungCapDienId" value="" />
+                        <input type="hidden" id="hidInsertGDNThietKeDienId" value="" />
+
+                        <input type="hidden" id="hidTrangThaiThietKe" value="" />
+
+
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <label for="lbHoTenKhachHang">
+                                    Tên khách hàng
+                                </label>
+                                <input type="text" name="txtHoTenKhachHang" class="form-control has-feedback-right" id="txtHoTenKhachHang" placeholder="Họ tên Khách hàng">
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="lbDiaChiKhachHang">Địa chỉ </label>
+                                <input type="text" name="txtDiaChiKhachHang" class="form-control has-feedback-right" id="txtDiaChiKhachHang" placeholder="Địa chỉ khách hàng">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <label for="lbNgayTiepNhan">Ngày lập Biên bản kiểm tra <a style="color:red">(*)</a></label>
+                                <input type="text" name="txtNgayLapBBKiemTra" class="form-control has-feedback-right" id="txtNgayLapBBKiemTra" placeholder="Ngày tiếp nhận">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <label for="lbTenNhanVien1">Tên nhân viên 1 <a style="color:red">(*)</a></label>
+                                <input type="text" name="txtTenNhanVien1" class="form-control has-feedback-right" id="txtTenNhanVien1" placeholder="Tên nhân viên">
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="lbChucVu1">Chức vụ <a style="color:red">(*)</a></label>
+                                <input type="text" name="txtChucVu1" class="form-control has-feedback-right" id="txtChucVu1" placeholder="Chức vụ">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <label for="lbTenNhanVien2">Tên nhân viên 2 <a style="color:red">(*)</a></label>
+                                <input type="text" name="txtTenNhanVien2" class="form-control has-feedback-right" id="txtTenNhanVien2" placeholder="Tên nhân viên">
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="lbChucVu2">Chức vụ <a style="color:red">(*)</a></label>
+                                <input type="text" name="txtChucVu2" class="form-control has-feedback-right" id="txtChucVu2" placeholder="Chức vụ">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <label for="lbDaiDienKhachHang">Đại diện khách hàng <a style="color:red">(*)</a></label>
+                                <input type="text" name="txtDaiDienKhachHang" class="form-control has-feedback-right" id="txtDaiDienKhachHang" placeholder="Đại diện khách hàng">
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="lbDanhSoKhachHang">Danh số khách hàng </label>
+                                <input type="text" name="txtDanhSoKhachHang" class="form-control has-feedback-right" id="txtDanhSoKhachHang" placeholder="Danh số khách hàng">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <label for="lbChiSoDongHo">Chỉ số đồng hồ <a style="color:red">(*)</a></label>
+                                <input type="text" name="txtChiSoDongHo" class="form-control has-feedback-right" id="txtChiSoDongHo" placeholder="Chỉ số đồng hồ">
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="lbMucDichSuDung">Mục đích sử dụng điện </label>
+                                <input type="text" name="txtMucDichSuDung" class="form-control has-feedback-right" id="txtMucDichSuDung" placeholder="Mục đích sử dụng nước">
+                            </div>
+                        </div>
+                        @*<div class="form-group">
+                            <div class="col-sm-12">
+                                <label for="lbTinhTrangDongHoNuoc">Tình trạng đồng hồ nước <a style="color:red">(*)</a></label>
+                                <textarea id="txtTinhTrangDongHoNuoc" required="required" class="form-control" name="txtTinhTrangDongHoNuoc"
+                                          data-parsley-trigger="keyup" data-parsley-maxlength="1000">
+                                </textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <label for="lbTinhTrangOngNhanhTruocDongHoNuoc">Tình trạng ống nhánh trước đồng hồ nước <a style="color:red">(*)</a></label>
+                                <textarea id="txtTinhTrangOngNhanhTruocDongHoNuoc" required="required" class="form-control"
+                                          name="txtTinhTrangOngNhanhTruocDongHoNuoc"
+                                          data-parsley-trigger="keyup" data-parsley-maxlength="1000">
+                                </textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <label for="lbCacVanDeKetLuan">Các vấn đề khác - Kết luận <a style="color:red">(*)</a></label>
+                                <textarea id="txtCacVanDeKetLuan" required="required" class="form-control" name="txtCacVanDeKetLuan"
+                                          data-parsley-trigger="keyup" data-parsley-maxlength="1000">
+                                </textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <label for="lbGioYeuCauKHDenXN">Giờ đến Xí nghiệp <a style="color:red">(*)</a></label>
+                                <input type="text" name="txtGioYeuCauKHDenXN" class="form-control has-feedback-right" id="txtGioYeuCauKHDenXN" placeholder="Tên nhân viên nhập ">
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="lbNgayGioYeuCauKHDenXN">Ngày đến Xí nghiệp <a style="color:red">(*)</a></label>
+                                <input type="text" name="txtNgayGioYeuCauKHDenXN" class="form-control has-feedback-right" id="txtNgayGioYeuCauKHDenXN" placeholder="Ngày giờ đến Xí nghiệp">
+                            </div>
+                        </div>*@
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <label for="lbNhanVienNhapBBKiemTra">Tên nhân viên lập  </label>
+                                <input type="text" name="txtNhanVienLapBBKiemTra" class="form-control has-feedback-right" id="txtNhanVienLapBBKiemTra" placeholder="Tên nhân viên nhập ">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="button" id="btnSaveKetThucDDDienKSTK" class="btn btn-warning">Kết thúc kiểm tra </button>
+                                <button type="button" id="btnCancelDDDienKSTK" data-dismiss="modal" class="btn btn-default">Đóng</button>
+                                <button type="button" id="btnSaveDDDienKSTK" class="btn btn-success">Chuyển thiết kế di dời </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="ln_solid"></div>
+            </div>
+        </div>
+    </div>
+</div>

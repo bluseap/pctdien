@@ -1,0 +1,164 @@
+﻿<div id="modal-add-edit-GiayDeNghi" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style="overflow-y: auto; max-height:85%;  margin-top: 50px; margin-bottom:50px; ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Nhập giấy đề nghị cung cấp dịch vụ </h4>
+            </div>
+            <div class="modal-body">
+                <div id="horizontal-form">
+                    <form class="form-horizontal form-label-left input_mask" role="form" id="frmMainGiayDeNghi">
+                        <input type="hidden" id="hidGiayDeNghiId" value="" />
+                        <input type="hidden" id="hidInsertGiayDeNghiId" value="" />
+
+                        <input type="hidden" id="hidGiayDeNghiDMCungCapNuocId" value="" />
+                        <input type="hidden" id="hidGiayDeNghiDMCungCapNuocCodeXuLy" value="" />
+                        <input type="hidden" id="hidTrangThaiGDNDMNuoc" value="" />
+
+                        <input type="hidden" id="hidKhachHangNuocId" value="" />
+                        <input type="hidden" id="hidKhuVucId" value="" />
+                        <input type="hidden" id="hidTenKhachHangNuoc" value="" />
+
+                        <input type="hidden" id="hidDanhSoKhachHang" value="" />
+                        <input type="hidden" id="hidMucDichSuDungKH" value="" />
+
+                        <input type="hidden" id="hidDongHoId" value="" />
+                        <input type="hidden" id="hidDongHoMaLoai" value="" />
+                        <input type="hidden" id="hidDongHoSoNo" value="" />
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="button" id="btnLoadKhachHangNuoc" class="btn btn-success">Tìm khách hàng nước </button>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <label for="lbHoTenKhachHang">
+                                    Họ tên
+                                    @*<a style="color:red">(*)</a>*@
+                                </label>
+                                <input type="text" name="txtHoTenKhachHang" class="form-control has-feedback-right" id="txtHoTenKhachHang" placeholder="Họ tên Khách hàng">
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="lbDiaChiKhachHang">Địa chỉ </label>
+                                <input type="text" name="txtDiaChiKhachHang" class="form-control has-feedback-right" id="txtDiaChiKhachHang" placeholder="Địa chỉ khách hàng">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <label for="lbSoDienThoai">Số điện thoại </label>
+                                <input type="text" name="txtSoDienThoai" class="form-control has-feedback-right" id="txtSoDienThoai" placeholder="Số điện thoại">
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="lbEmailKhachHang">Email </label>
+                                <input type="text" name="txtEmailKhachHang" class="form-control has-feedback-right" id="txtEmailKhachHang" placeholder="Email khách hàng">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <label for="lbDiaChiMuaNuoc">Địa chỉ mua nước </label>
+                                <input type="text" name="txtDiaChiMuaNuoc" class="form-control has-feedback-right" id="txtDiaChiMuaNuoc" placeholder="Địa chỉ mua nước">
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="lbDanhSoKhachHang">Danh số khách hàng </label>
+                                <input type="text" name="txtDanhSoKhachHang" class="form-control has-feedback-right" id="txtDanhSoKhachHang" placeholder="Danh số khách hàng">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <label for="lbDMCungCapDichVu">
+                                    Dịch vụ cung cấp
+                                    <a style="color:red">(*) </a>
+                                </label>
+                                <select id="ddlDMCungCapDichVu" class="form-control" name="ddlDMCungCapDichVu"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <div class="table-wrapper-scroll-y">
+                                    <table id="tbl-DMCungCapDichVu" class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Tên dịch vụ</th>
+                                                <th width="=10%">#</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tbl-contentDMCungCapDichVu"></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <label for="lbThongTinHienTai">Thông tin hiện tại </label>
+                                <input type="text" name="txtThongTinHienTai" class="form-control has-feedback-right" id="txtThongTinHienTai" placeholder="Thông tin hiện tại">
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="lbThongTinCanThayDoi">Thông tin cần thay đổi </label>
+                                <input type="text" name="txtThongTinCanThayDoi" class="form-control has-feedback-right" id="txtThongTinCanThayDoi" placeholder="Thông tin cần thay đổi">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <label for="lbHoSoKhachHangDaCungCap">Hồ sơ khách hàng đã cung cấp </label>
+                                <input type="text" name="txtHoSoKhachHangDaCungCap" class="form-control has-feedback-right" id="txtHoSoKhachHangDaCungCap" placeholder="Hồ sơ khách hàng đã cung cấp">
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="lbHoSoKhachHangCanBoSung">Hồ sơ khách hàng cần bổ sung </label>
+                                <input type="text" name="txtHoSoKhachHangCanBoSung" class="form-control has-feedback-right" id="txtHoSoKhachHangCanBoSung" placeholder="Hồ sơ khách hàng cần bổ sung">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <label for="lbNgayTiepNhan">Ngày tiếp nhận <a style="color:red">(*)</a></label>
+                                <input type="text" name="txtNgayTiepNhan" class="form-control has-feedback-right" id="txtNgayTiepNhan" placeholder="Ngày tiếp nhận">
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="lbTenNhanVienTiepNhan">Tên nhân viên tiếp nhận </label>
+                                <input type="text" name="txtTenNhanVienTiepNhan" class="form-control has-feedback-right" id="txtTenNhanVienTiepNhan" placeholder="Tên nhân viên tiếp nhận">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <label for="lbNgayDeNghiCungCapDichVu">Ngày đề nghị cung cấp dịch vụ <a style="color:red">(*)</a></label>
+                                <input type="text" name="txtNgayDeNghiCungCapDichVu" class="form-control has-feedback-right" id="txtNgayDeNghiCungCapDichVu" placeholder="Ngày đề nghị cung cấp dịch vụ">
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="lbTenDaiDienCungCapDichVu">Tên đại diện cung cấp dịch vụ </label>
+                                <input type="text" name="txtTenDaiDienCungCapDichVu" class="form-control has-feedback-right" id="txtTenDaiDienCungCapDichVu" placeholder="Tên đại diện cung cấp dịch vụ ">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="button" id="btnCancelGiayDeNghi" data-dismiss="modal" class="btn btn-default">Đóng</button>
+                                <button type="button" id="btnSaveGiayDeNghi" class="btn btn-success">Lưu </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="ln_solid"></div>
+
+            </div>
+        </div>
+    </div>
+    <script id="table-DMCungCapDichVu" type="x-tmpl-mustache">
+        <tr>
+            <td style='color: #324af5'>{{TenDMCungCapDichVu}}</td>
+            <th scope="row">
+                <a class="btn btn-QuaTrinhXuLyNuoc" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Quá trình xử lý">
+                    <i ></i>
+                    Quá trình xử lý
+                 </a>
+                <a class="btn btnDeleteDMCungCapDichVuTen" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Xóa dịch vụ">
+                    <i class="fa fa-trash-o" style="color:red"></i>
+                    Xóa
+                </a>
+            </th>
+        </tr>
+    </script>
+</div>

@@ -1,0 +1,138 @@
+﻿
+<div id="modal-add-edit-EditPCTDienKetThucCongTac" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style="overflow-y: auto; max-height:85%;  margin-top: 50px; margin-bottom:50px; ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Thêm / Sửa kết thúc công tác </h4>
+            </div>
+            <div class="modal-body">
+
+                <div id="formMainEditPCTDienKetThucCongTac">
+                    <form class="form-horizontal form-label-left" id="frmMainEditPCTDienKetThucCongTac">
+                        <div class="item form-group">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <label for="lbTraLamViecTenOngBa">
+                                    Toàn bộ công tác đã kết thúc, dụng cụ đã thu dọn, người đã tập kết tại vị trí an toàn; Tiếp đất và các biện pháp an toàn do đơn vị công tác làm (nếu có) đã rút hết đảm bảo an toàn. Người chỉ huy trực tiếp đơn vị công tác (đã trả hết thiết bị và Giấy phối hợp cho phép của các đơn vị liên quan - nếu có) trả lại nơi làm việc cho ông (bà) <a style="color:#f00"> (*) </a>
+                                </label>
+                                <input type="text" id="txtTraLamViecTenOngBa" name="txtTraLamViecTenOngBa" class="form-control">
+                            </div>                            
+                        </div>
+                        
+                        <div class="item form-group">
+                            <div class="col-md-4 col-sm-12 col-xs-12">
+                                <label for="lbTraLamViecOngBaTenChucVu">
+                                    Tên chức danh <a style="color:#f00"> (*) </a>
+                                </label>
+                                <input type="text" id="txtTraLamViecOngBaTenChucVu" name="txtTraLamViecOngBaTenChucVu" class="form-control" placeholder="Tên chức danh">
+                            </div>
+                            <div class="col-md-4 col-sm-12 col-xs-12">
+                                <label for="lbTenDaiDienQuanLyVanHanh">
+                                    Đại diện đơn vị quản lý vận hành <a style="color:#f00"> (*) </a>
+                                </label>
+                                <input type="text" id="txtTenDaiDienQuanLyVanHanh" name="txtTenDaiDienQuanLyVanHanh" class="form-control" placeholder="Đại diện đơn vị quản lý vận hành">
+                            </div>
+                            <div class="col-md-4 col-sm-12 col-xs-12">
+                                <label for="lbNgayTraLamViec">
+                                    Thời gian trả làm việc <a style="color:#f00"> (*) </a>
+                                </label>
+                                <div class="input-group">
+                                    <div class="col-md-3 col-sm-12 col-xs-12">
+                                        <input type="text" id="txtKTCTGioNgayTraLamViec" name="txtKTCTGioNgayTraLamViec" class="form-control" placeholder="Giờ trả làm việc">
+                                    </div>
+                                    <div class="col-md-3 col-sm-12 col-xs-12">
+                                        <input type="text" id="txtKTCTPhutNgayTraLamViec" name="txtKTCTPhutNgayTraLamViec" class="form-control" placeholder="Phút trả làm việc">
+                                    </div>
+                                    <div class="col-md-6 col-sm-12 col-xs-12">
+                                        <input type="text" id="txtKTCTNgayTraLamViec" name="txtKTCTNgayTraLamViec" class="form-control" placeholder="Ngày trả làm việc">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <div class="col-md-4 col-sm-12 col-xs-12">
+                                <label for="lbLyDoTonChuaThucHien">
+                                    Công việc còn tồn động chưa thực hiện
+                                </label>
+                                <input type="text" id="txtLyDoTonChuaThucHien" name="txtLyDoTonChuaThucHien" class="form-control" placeholder="Công việc còn tồn động chưa thực hiện">
+                            </div>
+                            <div class="col-md-4 col-sm-12 col-xs-12">
+                                <label for="lbLyDoChuaThucHien">
+                                    Lý do chưa thực hiện <a style="color:#f00"> (*) </a>
+                                </label>
+                                <input type="text" id="txtLyDoChuaThucHien" name="txtLyDoChuaThucHien" class="form-control" placeholder="Lý do chưa thực hiện">
+                            </div>
+                            <div class="col-md-4 col-sm-12 col-xs-12">
+                                <label for="lbKTCTTenNguoiChiHuyTrucTiep">
+                                    Người chỉ huy trực tiếp <a style="color:#f00"> (*) </a>
+                                </label>
+                                <input type="text" id="txtKTCTTenNguoiChiHuyTrucTiep" name="txtKTCTTenNguoiChiHuyTrucTiep" class="form-control" placeholder="Người chỉ huy trực tiếp">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <div class="col-md-4 col-sm-12 col-xs-12">
+                                <label for="lbNgayKhoaPCT">
+                                    Thời gian khóa phiếu công tác <a style="color:#f00"> (*) </a>
+                                </label>
+                                <div class="input-group">
+                                    <div class="col-md-3 col-sm-12 col-xs-12">
+                                        <input type="text" id="txtKTCTGioNgayKhoaPCT" name="txtKTCTGioNgayKhoaPCT" class="form-control" placeholder="Giờ khóa PCT">
+                                    </div>
+                                    <div class="col-md-3 col-sm-12 col-xs-12">
+                                        <input type="text" id="txtKTCTPhutNgayKhoaPCT" name="txtKTCTPhutNgayKhoaPCT" class="form-control" placeholder="Phút khóa PCT">
+                                    </div>
+                                    <div class="col-md-6 col-sm-12 col-xs-12">
+                                        <input type="text" id="txtKTCTNgayNgayKhoaPCT" name="txtKTCTNgayNgayKhoaPCT" class="form-control" placeholder="Ngày khóa PCT">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-12 col-xs-12">
+                                <label for="lbKTCTTenNguoiChoPhep">
+                                    Người cho phép <a style="color:#f00"> (*) </a>
+                                </label>
+                                <input type="text" id="txtKTCTTenNguoiChoPhep" name="txtKTCTTenNguoiChoPhep" class="form-control" placeholder="Người cho phép">
+                            </div>
+                            <div class="col-md-4 col-sm-12 col-xs-12">
+                                <label for="lbNgayKiemTraHoanThanhPCT">
+                                    Ngày kiểm tra hoàn thành phiếu c.tác <a style="color:#f00"> (*) </a>
+                                </label>
+                                <input type="text" id="txtKTCTNgayKiemTraHoanThanhPCT" class="form-control" placeholder="Ngày kiểm tra hoàn thành phiếu công tác">
+                            </div>
+                        </div>                        
+                        <div class="item form-group">
+                            <div class="col-md-4 col-sm-12 col-xs-12">
+                                <label for="lbKTCTTenNguoiCapPCT">
+                                    Người cấp phiếu <a style="color:#f00"> (*) </a>
+                                </label>
+                                <input type="text" id="txtKTCTTenNguoiCapPCT" name="txtKTCTTenNguoiCapPCT" class="form-control" placeholder="Người cấp phiếu">
+                            </div>
+                            <div class="col-md-4 col-sm-12 col-xs-12">
+                                <label for="lbTenNguoiKiemTraATLDTaiHienTruong">
+                                    Người k.tra ATLĐ tại hiện trường làm việc
+                                </label>
+                                <input type="text" id="txtKTCTTenNguoiKiemTraATLDTaiHienTruong" name="txtKTCTTenNguoiKiemTraATLDTaiHienTruong" class="form-control" placeholder="Người k.tra ATLĐ tại hiện trường làm việc">
+                            </div>
+                            <div class="col-md-4 col-sm-12 col-xs-12">
+                                <label for="lbChucVuNguoiKiemTraATLDTaiHienTruong">
+                                    Chức vụ
+                                </label>
+                                <input type="text" id="txtKTCTChucVuNguoiKiemTraATLDTaiHienTruong" name="txtKTCTChucVuNguoiKiemTraATLDTaiHienTruong" class="form-control" placeholder="Chức vụ">
+                            </div>                            
+                        </div>
+                        <div class="item form-group">
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button type="button" id="btnCancelEditKTCTKetThucCT" data-dismiss="modal" class="btn btn-default">Đóng</button>
+                                    <button type="button" id="btnSaveEditKTCTKetThucCT" class="btn btn-warning">Lưu kết thúc CT </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+               
+
+            </div>
+        </div>
+    </div>
+</div>

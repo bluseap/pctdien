@@ -1,0 +1,86 @@
+﻿@{ Layout = null; }
+@using Microsoft.AspNetCore.Http;
+
+@using DevExpress.AspNetCore;
+@using DevExpress.XtraReports.UI;
+@using DevExpress.XtraReports.Parameters;
+
+@using NiTiAPI.WebErp.Reports.DonHang;
+@using NiTiAPI.Dapper.ViewModels;
+
+@using NiTiAPI.WebErp.Helpers
+
+@namespace NiTiAPI.WebErp.Pages
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="/admin-side/images/powaco.ico" />
+
+    <link rel="stylesheet" href="~/css/thirdparty.bundle.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <script src="~/js/thirdparty.bundle.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+</head>
+<body>
+    <link rel="stylesheet" href="~/css/viewer.part.bundle.css" />
+    <link rel="stylesheet" href="~/css/designer.part.bundle.css" />
+
+    <script src="~/js/viewer.part.bundle.js"></script>
+    <script src="~/js/designer.part.bundle.js"></script>
+
+    @{ List<OrderDetailsViewModel> DSDonHangTheoKH = SessionHelper.GetObjectFromJson<List<OrderDetailsViewModel>>(Context.Session, "DSDonHangTheoKH");
+
+                    var banle = new repDonHangBanLe();
+
+                    banle.DataSource = DSDonHangTheoKH;
+
+                    banle.Parameters["TenCongTy"].Value = @Context.Session.GetString("TenCongTy");
+                    banle.Parameters["TenCongTy"].Visible = false;
+                    banle.Parameters["DiaChiCongTy"].Value = @Context.Session.GetString("DiaChiCongTy");
+                    banle.Parameters["DiaChiCongTy"].Visible = false;
+                    banle.Parameters["DienThoaiCongTy"].Value = @Context.Session.GetString("DienThoaiCongTy");
+                    banle.Parameters["DienThoaiCongTy"].Visible = false;
+                    banle.Parameters["EmailCongTy"].Value = @Context.Session.GetString("EmailCongTy");
+                    banle.Parameters["EmailCongTy"].Visible = false;
+                    banle.Parameters["TenTaiKhoan"].Value = @Context.Session.GetString("TenTaiKhoan");
+                    banle.Parameters["TenTaiKhoan"].Visible = false;
+                    banle.Parameters["SoTaiKhoan"].Value = @Context.Session.GetString("SoTaiKhoan");
+                    banle.Parameters["SoTaiKhoan"].Visible = false;
+
+                    banle.Parameters["TenKhachHang"].Value = @Context.Session.GetString("TenKhachHang");
+                    banle.Parameters["TenKhachHang"].Visible = false;
+                    banle.Parameters["DienThoaiKhachHang"].Value = @Context.Session.GetString("DienThoaiKhachHang");
+                    banle.Parameters["DienThoaiKhachHang"].Visible = false;
+                    banle.Parameters["DiaChiKhachHang"].Value = @Context.Session.GetString("DiaChiKhachHang");
+                    banle.Parameters["DiaChiKhachHang"].Visible = false;
+
+                    banle.Parameters["NgayDatLive"].Value = @Context.Session.GetString("NgayDatLive");
+                    banle.Parameters["NgayDatLive"].Visible = false;
+
+                    banle.Parameters["TienTong"].Value = @Context.Session.GetString("TienTong");
+                    banle.Parameters["TienTong"].Visible = false;
+                    banle.Parameters["TienCoc"].Value = @Context.Session.GetString("TienCoc");
+                    banle.Parameters["TienCoc"].Visible = false;
+                    banle.Parameters["ConLai"].Value = @Context.Session.GetString("ConLai");
+                    banle.Parameters["ConLai"].Visible = false;
+
+                    banle.Parameters["TenMaTienShipKhachHangTra"].Value = @Context.Session.GetString("TenMaTienShipKhachHangTra");
+                    banle.Parameters["TenMaTienShipKhachHangTra"].Visible = false; }
+    <div class="container-fluid body-content">
+        @Html.DevExpress().WebDocumentViewer("DocumentViewer").Height("1000px").Bind(banle)
+    </div>
+
+    @*<div class="container-fluid body-content">
+            @(Html.DevExpress().ReportDesigner("reportDesigner").Height("1000px").Bind(thd))
+        </div>*@
+
+
+</body>
+</html>

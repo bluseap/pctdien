@@ -1,0 +1,21 @@
+﻿
+.padding-top-5px {
+    padding-top: 24px;
+}
+
+.div-a-button {
+    color: #1f1d1d;
+    font-weight: bold;
+}
+
+.div-text-center {
+    text-align: center
+}
+
+.div-h2-fontbold > h2 {
+    font-weight:bold;
+}
+
+.span-fontSize-large {
+    font-size: x-large !important;
+}

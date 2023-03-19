@@ -1,0 +1,120 @@
+﻿<div id="modal-add-edit-HsBoHoSo" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style="overflow-y: auto; max-height:85%;  margin-top: 50px; margin-bottom:50px; ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Thêm mới / Sửa bộ hồ sơ </h4>
+            </div>
+            <div class="modal-body">
+                <div id="horizontal-form">
+                    <form class="form-horizontal form-label-left input_mask" role="form" id="frmMainHsBoHoSo">
+                        <input type="hidden" id="hidHsBoHoSoId" value="" />
+                        <input type="hidden" id="hidInsertHsBoHoSoId" value="" />
+
+                        <input type="hidden" id="hidHsBoHoSoFileId" value="" />
+                        <input type="hidden" id="hidInsertHsBoHoSoFileId" value="" />
+                        <input type="hidden" id="hidCodeHsBoHoSoFileId" value="" />
+
+                        <input type="hidden" id="hidHsChuyenBoHoSoMuonTraId" value="" />
+                        <input type="hidden" id="hidInsertHsChuyenBoHoSoMuonTraId" value="" />
+                        <input type="hidden" id="hidCodeHsChuyenBoHoSoMuonTraId" value="" />
+
+                        <input type="hidden" id="hidMaKhachHangId" value="" />
+                        <input type="hidden" id="hidChiTietTrongBoHoSoId" value="" />
+                        <input type="hidden" id="hidInsertChiTietTrongBoHoSoId" value="" />
+                        <input type="hidden" id="hidCodeMaChiTietTrongBoHoSoId" value="" />
+
+                        <input type="hidden" id="hidKhachHangDienNuoc" value="" />
+
+                        <div class="form-group">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <label for="lbAddEditKeTuBao">
+                                    Kệ - Tủ - Bao
+                                    <a style="color:red">(*)</a>
+                                </label>
+                                <select id="ddlAddEditKeTuBao" class="form-control"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <label for="lbddlAddEditPhongNhaphoSo">
+                                    Hồ sơ của phòng, ban
+                                    <a style="color:red">(*)</a>
+                                </label>
+                                <select id="ddlAddEditPhongNhaphoSo" class="form-control"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <label for="lbNhomBoHoSo">
+                                    Nhóm bộ hồ sơ
+                                    <a style="color:red">(*)</a>
+                                </label>
+                                <select id="ddlNhomBoHoSo" class="form-control"></select>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <label for="lbThoiHanBaoQuanHoSo">
+                                    Thời hạn bảo quản hồ sơ
+                                    <a style="color:red">(*)</a>
+                                </label>
+                                <select id="ddlThoiHanBaoQuanHoSo" class="form-control"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <label for="lbMaBoHoSo">
+                                    Mã bộ hồ sơ
+                                    <a style="color:red">(*)</a>
+                                </label>
+                                <input type="text" name="txtMaBoHoSo" class="form-control has-feedback-right" id="txtMaBoHoSo" placeholder="Mã bộ hồ sơ">
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <label for="lbTieuDeBoHoSo">Tiêu đề bộ hồ sơ <a style="color:red">(*)</a></label>
+                                <input type="text" name="txtTieuDeBoHoSo" class="form-control has-feedback-right" id="txtTieuDeBoHoSo" placeholder="Tiều đề bộ hồ sơ">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <label for="lbSottKeTuBao">
+                                    Số thứ tự hồ sơ trên kệ
+                                </label>
+                                <input type="number" name="txtSottKeTuBao" class="form-control has-feedback-right" id="txtSottKeTuBao" placeholder="Số thứ tự Kệ - tủ - bao">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <label for="lbNgayNhapHoSo">
+                                    Ngày nhập hồ sơ
+                                </label>
+                                <input type="text" name="txtNgayNhapHoSo" class="form-control has-feedback-right" id="txtNgayNhapHoSo" placeholder="Ngày nhập hồ sơ">
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <label for="lbTenNhanVienNhapHoSo">
+                                    Tên nhân viên nhập hồ sơ
+                                </label>
+                                <input type="text" name="txtTenNhanVienNhapHoSo" class="form-control has-feedback-right" id="txtTenNhanVienNhapHoSo" placeholder="Tên nhân viên nhập hồ sơ">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <label for="lbChuGiaiBoHoSo">Chú giải bộ hồ sơ</label>
+                                <textarea id="txtChuGiaiBoHoSo" class="form-control" name="txtChuGiaiBoHoSo"
+                                          data-parsley-trigger="keyup" data-parsley-maxlength="4000">
+                                </textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="button" id="btnCancelHsBoHoSo" data-dismiss="modal" class="btn btn-default">Đóng</button>
+                                <button type="button" id="btnSaveHsBoHoSo" class="btn btn-success">Lưu bộ hồ sơ </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="ln_solid"></div>
+            </div>
+        </div>
+    </div>
+</div>
+

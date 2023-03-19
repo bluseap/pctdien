@@ -1,0 +1,117 @@
+﻿@{ Layout = null; }
+@*@Html.ActionLink("Shown Details", "Details", "Vendors", new { area = "Admin" })*@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta property="og:url" content="http://tructuyen.diennuocag.com.vn/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Đăng ký trực tuyến điện nước" />
+    <meta property="og:description" content="Đăng ký trực tuyến điện nước. Các dịch vụ hợp đồng về điện nước." />
+    <meta property="og:image" content="http://tructuyen.diennuocag.com.vn/images/ct600.png" />
+
+    <link rel="shortcut icon" href="/images/powaco.ico" />
+
+    <title>Đăng ký trực tuyến </title>
+
+    <!-- Bootstrap -->
+    <link href="~/css/bootstrap.css" rel="stylesheet" />
+
+    <!-- Font Awesome -->
+    <link href="~/css/font-awesome.css" rel="stylesheet" />
+    <!-- NProgress -->
+    <link href="~/css/nprogress.css" rel="stylesheet" />
+
+    <link href="~/css/daterangepicker.css" rel="stylesheet" asp-append-version="true" />
+    <link href="~/css/notify-metro.css" rel="stylesheet" />
+
+    @*<link href="~/css/pnotify.css" rel="stylesheet" />
+        <link href="~/css/pnotify.buttons.css" rel="stylesheet" />
+        <link href="~/css/pnotify.nonblock.css" rel="stylesheet" />*@
+
+    <link href="~/css/dropzone.css" rel="stylesheet" asp-append-version="true" />
+
+    @*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">*@
+
+    <link href="~/css/custom.css" rel="stylesheet" asp-append-version="true" />
+
+    <link href="~/css/powanguyen.css" rel="stylesheet" asp-append-version="true" />
+
+    @RenderSection("Styles", required: false)
+</head>
+
+<body class="nav-md">
+    <div class="container body">
+        <div class="main_container">
+            <Partial name="_Header.cshtml" />
+
+            <div class="bg-element " role="main">
+
+                <div class="">
+                    @RenderBody()
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <Partial name="_Footer.cshtml" />
+
+    @*<footer>
+            <div class="text-center footer-color">
+                <p> ©2021  Công Ty Cổ Phần Điện Nước An Giang - POWACO (v1.0)</p>
+            </div>
+        </footer>*@
+
+    <script src="~/js/jquery.js"></script>
+
+
+    <script src="~/js/bootstrap.js"></script>
+
+    <!-- FastClick -->
+    <script src="/js/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="~/js/nprogress.js"></script>
+
+    <script src="~/js/mustache.js"></script>
+
+    <script src="~/js/jquery.validate.js"></script>
+    <script src="~/js/additional-methods.js"></script>
+    <script src="~/js/jquery.validate.unobtrusive.js"></script>
+
+    <script src="~/js/moment.js"></script>
+    <script src="~/js/vi.js"></script>
+    <script src="~/js/daterangepicker.js"></script>
+    <script src="~/js/notify.js"></script>
+    <script src="~/js/notify-metro.js"></script>
+    <script src="~/js/bootbox.js"></script>
+
+    @*<script src="~/js/pnotify.js"></script>
+        <script src="~/js/pnotify.buttons.js" ></script>
+        <script src="~/js/pnotify.nonblock.js" ></script>*@
+
+    <script src="~/js/dropzone.js"></script>
+
+
+
+    <script src="~/js/custom.js"></script>
+
+    <script src="~/js/jquery.printThis.js" asp-append-version="true"></script>
+
+    <script src="~/js/powanguyen.js" ></script>
+
+    <script src="~/client-app/shared/powa.js" asp-append-version="true"></script>
+
+    <script>
+
+
+    </script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

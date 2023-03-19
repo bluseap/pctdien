@@ -1,0 +1,116 @@
+﻿<div id="modal-add-edit-ChuyenDi" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style="overflow-y: auto; max-height:85%;  margin-top: 50px; margin-bottom:50px; ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Chuyển kệ - tủ - bao </h4>
+            </div>
+            <div class="modal-body">
+                <div id="horizontal-form">
+                    <form class="form-horizontal form-label-left input_mask" role="form" id="frmMainChuyenDi">
+
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <label for="lbChuyenDiMaKeTuBao">
+                                    Mã kệ - tủ - bao
+                                </label>
+                                <input type="text" name="txtChuyenDiMaKeTuBao" class="form-control has-feedback-right" id="txtChuyenDiMaKeTuBao" placeholder="Mã kệ - tủ - bao">
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="lbChuyenDiTenKeTuBao">
+                                    Tên kệ - tủ - bao
+                                </label>
+                                <input type="text" name="txtChuyenDiTenKeTuBao" class="form-control has-feedback-right" id="txtChuyenDiTenKeTuBao" placeholder="Tên kệ - tủ - bao">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <label for="lbChuyenDiKhuVuc">
+                                    Khu vực cũ
+                                    <a style="color:red">(*)</a>
+                                </label>
+                                <select id="ddlChuyenDiKhuVuc" class="form-control"></select>
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="lbChuyenDiPhongTo">Tên phòng, ban cũ <a style="color:red"> (*)</a></label>
+                                <select id="ddlChuyenDiPhongTo" class="form-control"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <label for="lbChuyenDiKhuVucMoi">
+                                    Khu vực mới
+                                    <a style="color:red">(*)</a>
+                                </label>
+                                <select id="ddlChuyenDiKhuVucMoi" class="form-control"></select>
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="lbChuyenDiPhongToMoi">Tên phòng, ban mới <a style="color:red"> (*)</a></label>
+                                <select id="ddlChuyenDiPhongToMoi" class="form-control"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <label for="lbNgayChuyenDi">
+                                    Ngày chuyển
+                                    <a style="color:red">(*)</a>
+                                </label>
+                                <input type="text" name="txtNgayChuyenDi" class="form-control has-feedback-right" id="txtNgayChuyenDi" placeholder="Ngày chuyển">
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="lbChuyenDiGhiChu">
+                                    Ghi chú
+                                </label>
+                                <input type="text" name="txtChuyenDiGhiChu" class="form-control has-feedback-right" id="txtChuyenDiGhiChu" placeholder="Ghi chú">
+                            </div>
+                        </div>
+                        <table class="table table-striped jambo_table bulk_action" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th width="=20%">#</th>
+                                    <th>Khu vực cũ</th>
+                                    <th>Phòng, ban cũ</th>
+                                    <th>Khu vực mới</th>
+                                    <th>Phòng, ban mới</th>
+                                    <th>Ngày chuyển</th>
+                                    <td>Ghi chú</td>
+                                    @*<td></td>*@
+                                </tr>
+                            </thead>
+                            <tbody id="table-contentChuyenHsDi"></tbody>
+                        </table>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="button" id="btnCancelChuyenDi" data-dismiss="modal" class="btn btn-default">Đóng</button>
+                                <button type="button" id="btnSaveChuyenDi" class="btn btn-success">Lưu chuyển kệ - tủ - bao </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="ln_solid"></div>
+            </div>
+        </div>
+    </div>
+    <script type="x-tmpl-mustache" id="template-table-ChuyenHsDi">
+        <tr>
+            <th scope="row">
+                <a class="btn-link btn-editChuyenHoSoDi" data-id="{{Id}}" data-toggle="tooltip"
+                    data-placement="top" title="Sửa "><i class="fa fa-pencil"></i> </a>
+            </th>
+            <td>{{TenKhuVucCu}}</td>
+            <td>{{TenPhongBanCu}}</td>
+            <td>{{TenKhuVucMoi}}</td>
+            <td>{{TenPhongBanMoi}}</td>
+            <td>{{NgayChuyen}}</td>
+            <td>{{LyDoChuyen}}</td>
+            @*<th scope="row">
+                <a class="btn-link btn-deleteChuyenHsDi" data-id="{{Id}}" data-toggle="tooltip"
+                            data-placement="top" title="Xóa chuyển hồ sơ đi">
+                            <i class="fa fa-trash-o"  style="color:red"></i>
+                 </a>
+            </th>*@
+        </tr>
+    </script>
+</div>
+

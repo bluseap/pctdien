@@ -1,0 +1,182 @@
+﻿@{ ViewData["Title"] = "Index"; }
+
+@section Styles{
+    <link href="~/lib/jQuery-EasyUI/themes/bootstrap/easyui.css" rel="stylesheet" />
+    <link href="~/lib/jQuery-EasyUI/themes/icon.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap-datepicker/dist/css/bootstrap-datepicker.css" rel="stylesheet" />
+}
+@section Scripts{
+
+    <script src="~/lib/jQuery-EasyUI/jquery.easyui.min.js" asp-append-version="true"></script>
+    <script src="~/lib/bootstrap-datepicker/dist/js/bootstrap-datepicker.js" asp-append-version="true"></script>
+    <script src="~/lib/bootstrap-datepicker/dist/locales/bootstrap-datepicker.vi.min.js" charset="UTF-8" asp-append-version="true"></script>
+
+    <script src="~/admin-side/js/jquery.autocomplete.js" asp-append-version="true"></script>
+
+    <script src="~/app/controllers/podknuocnt/nhapnghiemthu.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/podknuocnt/index.js" asp-append-version="true"></script>
+    <script>
+    var podknuocnt = new podknuocntController();
+        podknuocnt.initialize();</script>
+}
+
+<input type="hidden" id="hidDonDangKyMaddk" value="" />
+<input type="hidden" id="hidInsertDonDangKyMaddk" value="" />
+
+<input type="hidden" id="hidMaNhanVien1Id" value="" />
+<input type="hidden" id="hidMaNhanVien2Id" value="" />
+<input type="hidden" id="hidMaNhanVien3Id" value="" />
+
+<input type="hidden" id="hidTenNhanVien1Id" value="" />
+<input type="hidden" id="hidTenNhanVien2Id" value="" />
+<input type="hidden" id="hidTenNhanVien3Id" value="" />
+
+<div class="">
+    <div class="page-title">
+        <div class="title_left">
+            <small>
+                <a class="btn btn-link ">
+                    Nghiệm thu nước
+                </a>
+                >>
+                <a class="btn btn-link ">
+                    Nhập Nghiệm thu nước
+                </a>
+            </small>
+        </div>
+        <div class="title_right">
+            <div class="col-md-3 col-sm-3 col-xs-12 form-group pull-right top_search">
+                <button class="btn btn-round btn-success" id="btn-create" type="button">Nhập Nghiệm thu</button>
+            </div>
+        </div>
+    </div>
+    <div class="page-title">
+        <div class="title_left">
+            <h3>  <small></small></h3>
+        </div>
+        <div class="title_right">
+            <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right">
+                <div class="input-group">
+                    <input type="text" id="txtTimNoiDung" class="form-control" placeholder="Mã đơn, tên...">
+                    <span class="input-group-btn">
+                        <button class="btn btn-tim" id="btnTimNoiDung" type="button">Tìm !</button>
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-12 form-group pull-right top_search">
+                <div class="input-group">
+                    <select id="ddlPhongTo" class="form-control"></select>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-12 form-group pull-right top_search">
+                <div class="input-group">
+                    <select id="ddlKhuVuc" class="form-control"></select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="x_panel">
+            <form id="formBaoCaoNghiemThu" data-parsley-validate class="form-horizontal form-label-left">
+                <div class="form-group">
+                    <div class="col-md-6 col-sm-6 col-xs-12 ">
+                        <div class="input-group">
+                            <label>Điều kiện xuất Ds</label>
+                            <select id="ddlBaoCaoDanhSachNhanChuyen" name="ddlBaoCaoDanhSachNhanChuyen" class="form-control"></select>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-12 ">
+                        <div class="col-md-3 col-sm-12 col-xs-12 ">
+                            <div class="input-group">
+                                <label>Từ ngày</label>
+                                <input type="text" id="txtBaoCaoTuNgay" class="form-control" placeholder="Từ ngày">
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-12 col-xs-12 ">
+                            <div class="input-group">
+                                <label>Đến ngày</label>
+                                <input type="text" id="txtBaoCaoDenNgay" class="form-control" placeholder="Đến ngày">
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-12 col-xs-12 ">
+                            <div class="input-group">
+                                <label></label>
+                                <span class="input-group-btn padding-top-5px">
+                                    <button class="btn btn-warning" id="btnBaoCaoDSTheoDK" type="button">Xuất danh sách </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="table-responsive" id="table-responsiveDONDANGKY">
+                <table id="tblDONDANGKY" class="table table-striped jambo_table bulk_action" cellspacing="0">
+                    <thead>
+                        <tr>
+                            @*<th width="=10%">#</th>*@
+                            <th>Maddk</th>
+                            <th>Tên khách hàng</th>
+                            <th>Khu vực</th>
+                            <th>Nơi lắp</th>
+                            <th>Số CCCD / CMND</th>
+                            <th>Số điện thoại</th>
+                            @*<th></th>*@
+                            <th>Trạng thái</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tblContentDONDANGKY"></tbody>
+                </table>
+                <div class="row">
+                    <div class="col-sm-5">
+                        <div class="dataTables_info" id="datatable-checkbox_infoDONDANGKY" role="status" aria-live="polite">
+                            <select id="ddl-show-pageDONDANGKY">
+                                <option value="10" selected="selected">10</option>
+                                <option value="20">20</option>
+                                <option value="30">30</option>
+                                <option value="50">50</option>
+                            </select>
+                            <span class="item-per-page">
+                                dòng/trang.
+                            </span>
+                            Tổng cộng: <strong id="lbDONDANGKYTotalRecords"></strong>
+                        </div>
+                    </div>
+                    <div class="col-sm-7">
+                        <div class="dataTables_paginate" id="datatable-checkbox_paginateDONDANGKY">
+                            <ul id="paginationULDONDANGKY"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script id="table-DONDANGKY" type="x-tmpl-mustache">
+        <tr>
+            <th scope="row">
+                <a class="btn-link btn-EditNhapNghiemThu" data-id="{{MADDK}}" data-toggle="tooltip" data-placement="top" title="Mã đơn">
+                    <i >{{MADDK}}</i>
+                </a>
+            </th>
+            <td>{{TENKH}}</td>
+            <td>{{TENKV}}</td>
+            <td>{{DIACHILD}}</td>
+            <td>{{CMND}}</td>
+            <td>{{DIENTHOAI}}</td>
+            @*<th scope="row">
+                <a class="btn-link btn-TraNTVeTK" data-id="{{MADDK}}" data-toggle="tooltip" data-placement="top" title="Trả hồ sơ về thiết kế">
+                    <i >Trả về TK</i>
+                </a>
+            </th>*@
+            <td>
+                <a class="btn-link btn-NhapNghiemThuTTDonDangKyNuoc" data-id="{{MADDK}}" data-toggle="tooltip" data-placement="top" title="Trạng thái ĐĐK Nước">
+                   {{{TTDonDangKyNuoc}}}
+                </a>
+            </td>
+        </tr>
+    </script>
+</div>
+
+<partial name="_NhapNghiemThu.cshtml" />
+
+
+

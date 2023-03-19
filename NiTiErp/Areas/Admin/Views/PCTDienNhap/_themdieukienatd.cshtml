@@ -1,0 +1,114 @@
+﻿
+<div id="modal-add-edit-ThemMoiDieuKienATD" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style="overflow-y: auto; max-height:85%;  margin-top: 50px; margin-bottom:50px; ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Thêm / Sửa điều kiện an toàn điện </h4>
+            </div>
+            <div class="modal-body">
+
+                <div id="formMainEditPCTDienThemMoiDieuKienATD">
+                    <form class="form-horizontal form-label-left" id="frmMainEditPCTDienThemMoiDieuKienATD">
+                        <div class="item form-group">
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <label for="lbThemNDCTCodeThemDieuKienATD">
+                                    Mã thêm điều kiện an toàn điện <a style="color:#f00"> (*) </a>
+                                </label>
+                                <select id="ddlThemNDCTCodeThemDieuKienATD" name="ddlThemNDCTCodeThemDieuKienATD" class="form-control"></select>
+                            </div>
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <label for="lbThemDieuKienATDNgayNhap">
+                                    Ngày nhập <a style="color:#f00"> (*) </a>
+                                </label>
+                                <input type="text" id="txtThemDieuKienATDNgayNhap" name="txtThemDieuKienATDNgayNhap" class="form-control" placeholder="Ngày nhập">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <label for="lbThemNDCTTenThemDieuKienATD">
+                                    Tên điều kiện an toàn điện <a style="color:#f00"> (*) </a>
+                                </label>
+                                <textarea id="txtThemNDCTTenThemDieuKienATD" required="required" class="form-control" name="txtThemNDCTTenThemDieuKienATD"
+                                          data-parsley-trigger="keyup" data-parsley-maxlength="1000">
+                                </textarea>
+                            </div>
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <label for="lbThemNDCTSttThemDieuKienATD">
+                                    Số thứ tự <a style="color:#f00"> (*) </a>
+                                </label>
+                                <input type="number" id="txtThemNDCTSttThemDieuKienATD" name="txtThemNDCTSttThemDieuKienATD" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="button" id="btnCancelThemDieuKienATDHuy" data-dismiss="modal" class="btn btn-default">Đóng</button>
+                                <button type="button" id="btnSaveEditThemDieuKienATDLuu" class="btn btn-warning">Lưu thêm Điều kiện ATĐ </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="row">
+                    <div class="x_panel">
+                        <div class="table-responsive" id="table-responsiveThemDieuKienATD">
+                            <table id="tblPCTDienThemDieuKienATD" class="table table-striped jambo_table bulk_action" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Tên điều kiện ATĐ</th>
+                                        <th>Ngày nhập</th>
+                                        <th>Stt</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tblContentPCTDienThemDieuKienATD"></tbody>
+                            </table>
+                            <div class="row">
+                                <div class="col-sm-5">
+                                    <div class="dataTables_info" id="datatable-checkbox_infoPCTDienThemDieuKienATD" role="status" aria-live="polite">
+                                        <select id="ddl-show-pagePCTDienThemDieuKienATD">
+                                            <option value="10" selected="selected">10</option>
+                                            <option value="20">20</option>
+                                            <option value="30">30</option>
+                                            <option value="50">50</option>
+                                        </select>
+                                        <span class="item-per-page">
+                                            dòng/trang.
+                                        </span>
+                                        Tổng cộng: <strong id="lbPCTDienThemDieuKienATDTotalRecords"></strong>
+                                    </div>
+                                </div>
+                                <div class="col-sm-7">
+                                    <div class="dataTables_paginate" id="datatable-checkbox_paginatePCTDienThemDieuKienATD">
+                                        <ul id="paginationULPCTDienThemDieuKienATD"></ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <script id="table-PCTDienThemDieuKienATD" type="x-tmpl-mustache">
+                    <tr>
+                        <th scope="row">
+                            <a class="btn-link btn-addeditPCTDienDieuKienATD" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Id">
+                                <i class="fa fa-pencil"></i>
+                            </a>
+                        </th>
+
+                        <td>{{TenNoiDung}}</td>
+                        <td>{{NgayNhap}}</td>
+                        <td>{{Stt}}</td>
+
+                        <th scope="row">
+                            <a class="btn-link btn-deletePCTDienThemDieuKienATD" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Xóa">
+                                <i class="fa fa-trash-o" style="color:red"></i>
+                            </a>
+                        </th>
+
+                    </tr>
+                </script>
+            </div>
+        </div>
+    </div>
+</div>

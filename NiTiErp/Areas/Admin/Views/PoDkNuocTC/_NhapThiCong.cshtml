@@ -1,0 +1,119 @@
+﻿
+<div id="modal-add-edit-NhapThiCong" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style="overflow-y: auto; max-height:85%;  margin-top: 50px; margin-bottom:50px; ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Nhập thi công </h4>
+            </div>
+            <div class="modal-body">
+
+                <form class="form-horizontal form-label-left" id="frmMainNhapThiCong">
+                    <div class="item form-group">
+                        <div class="col-md-4 col-sm-12 col-xs-12">
+                            <label for="lbNhapTCMaDonDangKyKH">
+                                Mã đơn đăng ký
+                            </label>
+                            <input type="text" id="txtNhapTCMaDonDangKyKH" name="txtNhapTCMaDonDangKyKH" class="form-control has-feedback-right" placeholder="Mã đơn đăng ký">
+                        </div>
+                        <div class="col-md-4 col-sm-12 col-xs-12">
+                            <label for="lbNhapTCTenKhachHangKH">
+                                Tên khách hàng
+                            </label>
+                            <input type="text" id="txtNhapTCTenKhachHangKH" name="txtNhapTCTenKhachHangKH" class="form-control has-feedback-right" placeholder="Tên khách hàng">
+                        </div>
+                        <div class="col-md-4 col-sm-12 col-xs-12">
+                            <label for="lbNhapTCDiaChiLD">
+                                Địa chỉ lắp đặt
+                            </label>
+                            <input type="text" id="txtNhapTCDiaChiLD" name="txtNhapTCDiaChiLD" class="form-control has-feedback-right" placeholder="Địa chỉ lắp đặt">
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <div class="col-md-4 col-sm-12 col-xs-12">
+                            <label for="lbNhapTCTenNhanVienPhucTrach1">
+                                Nhân viên phụ trách 1 <a style="color:red">(*)</a>
+                            </label>
+                            <input type="text" id="txtNhapTCTenNhanVienPhucTrach1" name="txtNhapTCTenNhanVienPhucTrach1" class="form-control has-feedback-right" placeholder="Nhân viên phụ trách 1">
+                        </div>
+                        <div class="col-md-4 col-sm-12 col-xs-12">
+                            <label for="lbNhapTCTenNhanVienPhucTrach2">
+                                Nhân viên phụ trách 2 <a style="color:red">(*)</a>
+                            </label>
+                            <input type="text" id="txtNhapTCTenNhanVienPhucTrach2" name="txtNhapTCTenNhanVienPhucTrach2" class="form-control has-feedback-right" placeholder="Nhân viên phụ trách 2">
+                        </div>   
+                        <div class="col-md-4 col-sm-12 col-xs-12">
+                            <label for="lbNhapTCNgayGiao">
+                                Ngày giao
+                                <a style="color:red">(*)</a>
+                            </label>
+                            <input type="text" id="txtNhapTCNgayGiao" name="txtNhapTCNgayGiao" class="form-control has-feedback-right" placeholder="Ngày giao">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="button" id="btnCancelNhapThiCong" data-dismiss="modal" class="btn btn-default">Đóng</button>
+                            <button type="button" id="btnSaveNhapThiCong" class="btn btn-warning">Lưu nhập thi công </button>
+                        </div>
+                    </div>
+                </form>
+                <form class="form-horizontal form-label-left" id="frmMainNhapThiCongTim">
+                    <div class="item form-group">
+                        <div class="col-md-3 col-sm-12 col-xs-12">
+                            <label for="lbNhapTCKhuVuc">
+                                Khu vực
+                            </label>
+                            <select id="ddlNhapTCKhuVuc" name="ddlNhapTCKhuVuc" class="form-control"></select>
+                        </div>
+                        <div class="col-md-3 col-sm-12 col-xs-12">
+                            <label for="lbNhapTCPhongTo">
+                                Phòng, tổ
+                            </label>
+                            <select id="ddlNhapTCPhongTo" class="form-control"></select>
+                        </div>
+                        <div class="col-md-3 col-sm-12 col-xs-12">
+                            <label for="lbNhapTCTenKhachHang">
+                                Mã đơn, tên
+                            </label>
+                            <input type="text" id="txtNhapTCTenKhachHang" name="txtNhapTCTenKhachHang" class="form-control has-feedback-right" placeholder="Tên khách hàng">
+                        </div>
+                        <div class="col-md-3 col-sm-12 col-xs-12">
+                            <label for="lbbtnNhapTCTim">
+                                .
+                            </label>
+                            <span class="input-group-btn ">
+                                <button type="button" id="btnNhapTCTimKhachHang" class="btn btn-success">Tìm khách hàng </button>
+                            </span>
+                        </div>
+                    </div>
+                    <table class="table table-striped jambo_table bulk_action" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Maddk</th>
+                                <th>Tên khách hàng</th>
+                                <th>Khu vực</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-contentNhapTCKhachHang"></tbody>
+                    </table>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <script type="x-tmpl-mustache" id="template-table-NhapTCKhachHang">
+        <tr>
+            <th scope="row">
+                <a class="btn-link btn-EditNhapThiCongChuanBi" data-id="{{MADDK}}-{{TENKH}}-{{DIACHILD}}" data-toggle="tooltip" data-placement="top" title="Mã đơn">
+                    <i >{{MADDK}}</i>
+                </a>
+            </th>
+            <td>{{TENKH}}</td>
+            <td>{{TENKV}}</td>
+        </tr>
+    </script>
+</div>
+
+

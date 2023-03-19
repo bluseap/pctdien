@@ -1,0 +1,58 @@
+﻿
+<div id="modal-add-edit-BBTTDieuChinhSanLuong" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style="overflow-y: auto; max-height:85%;  margin-top: 50px; margin-bottom:50px; ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Biên bản thỏa thuận điều chỉnh sản lượng kiểm định </h4>
+            </div>
+            <div class="modal-body">
+                <div id="horizontal-form">
+                    <form class="form-horizontal form-label-left input_mask" role="form" id="frmMainBBTTDieuChinhSanLuong">
+                        <input type="hidden" id="hidGDNXuLyKiemDinhDienId" value="" />
+
+                        <input type="hidden" id="hidGiayDeNghiDMCungCapDienId" value="" />
+                        <input type="hidden" id="hidInsertGDNXuLyKiemDinhDienId" value="" />
+
+                        <input type="hidden" id="hidTrangThaiDeNghi" value="" />
+                        <input type="hidden" id="hidTrangThaiKiemTraKiemDinh" value="" />
+                        <input type="hidden" id="hidTrangThaiXuLyKiemDinh" value="" />
+
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <label for="lbNgayBBTTDieuChinhSanLuong">
+                                    Ngày lập biên bản thỏa thuận
+                                    <a style="color:red">(*)</a>
+                                </label>
+                                <input type="text" name="txtNgayBBTTDieuChinhSanLuong" class="form-control has-feedback-right" id="txtNgayBBTTDieuChinhSanLuong" placeholder="Ngày lập biên bản thỏa thuận">
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="lbTenDaiDienKH">Tên đại diện Khách hàng <a style="color:red">(*)</a></label>
+                                <input type="text" name="txtTenDaiDienKH" class="form-control has-feedback-right" id="txtTenDaiDienKH" placeholder="Tên đại diện Khách hàng">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <label for="lbNoiDungLapBBThoaThuan">Nội dung biên bản thỏa thuận</label>
+                                <textarea id="txtNoiDungLapBBThoaThuan" required="required" class="form-control" name="txtNoiDungLapBBThoaThuan"
+                                          data-parsley-trigger="keyup" data-parsley-maxlength="2000">
+                                </textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="button" id="btnCancelBBTTDieuChinhSanLuong" data-dismiss="modal" class="btn btn-default">Đóng</button>
+                                <button type="button" id="btnSaveBBTTDieuChinhSanLuong" class="btn btn-warning">Lưu BB TT </button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+                <div class="ln_solid"></div>
+            </div>
+        </div>
+    </div>
+</div>
+

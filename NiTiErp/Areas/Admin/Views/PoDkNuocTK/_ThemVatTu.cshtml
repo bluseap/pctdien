@@ -1,0 +1,70 @@
+﻿
+<div id="modal-add-edit-ThemVatTu" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style="overflow-y: auto; max-height:85%;  margin-top: 50px; margin-bottom:50px; ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Thêm mới vật tư </h4>
+            </div>
+            <div class="modal-body">
+                <div id="horizontal-form">
+                    <form class="form-horizontal form-label-left input_mask" role="form" id="frmMainThemVatTu">
+
+                        <div class="form-group">
+                            <div class="col-sm-5 col-sm-12 col-xs-12">
+                                <label for="lbddlKhoVatTuKeToan">
+                                    Kho vật tư kế toán
+                                </label>
+                                <select id="ddlKhoVatTuKeToan" class="form-control"></select>
+                            </div>
+                            <div class="col-sm-5 col-sm-12 col-xs-12">
+                                <label for="lbTimTenMaMaKeToanVatTu">
+                                    Tìm theo tên, mã kế toán vật tư
+                                </label>
+                                <input type="text" id="txtTenMaMaKeToanVatTu" name="txtTenMaMaKeToanVatTu" class="form-control has-feedback-right" placeholder="Tìm theo tên, mã kế toán vật tư">
+                            </div>
+                            <div class="col-md-2 col-sm-12 col-xs-12">
+                                <label for="lbbtnTimTenMaMaKeToanVatTu">
+                                    .
+                                </label>
+                                <span class="input-group-btn ">
+                                    <button type="button" id="btnTimTenMaMaKeToanVatTu" class="btn btn-success">Tìm vật tư </button>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="table-responsive" id="table-responsiveThemVatTu">
+                            <table class="table table-striped jambo_table bulk_action" cellspacing="0">
+                                <thead>
+                                    <tr>             
+                                        <th>Mã V.tư</th>
+                                        <th>Mã k.toán</th>
+                                        <th>Kho XN</th>
+                                        <th>Tên vật tư</th>                                       
+                                    </tr>
+                                </thead>
+                                <tbody id="tblContentThemVatTu"></tbody>
+                            </table>
+                        </div>                        
+                    </form>
+                </div>
+                
+            </div>
+        </div>
+    </div>    
+
+    <script type="x-tmpl-mustache" id="template-table-ThemMoiVatTu">
+        <tr>
+            <th scope="row">
+                <a class="btn-link btn-EditThemMoiVatTu" data-id="{{MAVT}}" data-toggle="tooltip" data-placement="top" title="Mã vật tư">
+                    <i >Thêm mới vật tư</i>
+                </a>
+            </th>
+            <td>{{KeToanMaSoVatTu}}</td>
+            <td>{{TenKhoVatTu}}</td>
+            <td>{{TENVT}}</td>
+
+        </tr>
+    </script>
+
+</div>

@@ -1,0 +1,94 @@
+﻿
+
+
+updtae procedure [dbo].[Get_OrderDetails_ByListDieuKien]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+rrr
+create procedure [dbo].[Get_OrderDetails_ByTTLiveOrderId] 
+
+create procedure [dbo].[Get_OrderDetails_ByListMaNhomLive] 
+
+
+
+update procedure [dbo].[Create_OrderDetails]
+
+update procedure [dbo].[Create_OrderDetails_ByTrucTiep] 
+
+
+ 
+
+
+update procedure [dbo].[Get_OrderDetails_ByGroupOrderAllPaging]
+
+update procedure [dbo].[Get_OrderDetails_ByTTOrderId]
+
+update procedure [dbo].[Get_OrderDetails_ByTTLiveOrderId]
+
+update procedure [dbo].[Get_OrderDetails_ByListMaNhomLive]
+
+
+
+update procedure [dbo].[Update_OrderDetails]
+
+
+r create procedure [dbo].[Delete_OrderDetails01]
+
+
+
+r create procedure [dbo].[Get_OrderDetails_ByDieuKien2]
+
+r create procedure [dbo].[Get_OrderDetails_ByListDieuKien]
+
+Cho xoa don hang
+r Xuat excel
+
+
+r create procedure [dbo].[Create_OrderDetails_ByTrucTiep] 
+
+r create procedure [dbo].[Get_OrderDetails_ByGroupOrderAllPaging]
+
+r create procedure [dbo].[Get_OrderDetails_ByTTOrderId] 
+
+
+r update procedure [dbo].[Get_OrderDetails_AllPaging] 
+
+r update procedure [dbo].[Update_OrderDetails]
+
+r update procedure [dbo].[Get_OrderDetails_ByDieuKien]
+
+
+r create procedure [dbo].[Delete_OrderDetails]
+
+
+r update procedure [dbo].[Create_OrderDetails]
+
+r update procedure [dbo].[Update_OrderDetails] 
+
+
+r update procedure [dbo].[Get_OrderDetails_ByOrderDetailsId] 
+r update procedure [dbo].[Get_OrderDetails_ByDieuKien]
+
+
+
+r create procedure [dbo].[Get_OrderDetails_ByGomDon] 
+
+r create procedure [dbo].[Update_OrderDetails_ByIdGomDon]
+
+r create procedure [dbo].[Delete_OrderDetails_ByIdGomDon]
+
+
+r update procedure All Get_OrderDetails...

@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XtraReportsLayoutSerializer SerializerVersion="20.1.3.0" Ref="0" ControlType="DevExpress.XtraReports.UI.XtraReport, DevExpress.XtraReports.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Name="repDichVuDien" Margins="24, 23, 16, 17" PageWidth="850" PageHeight="1100" Version="20.1">
+  <Parameters>
+    <Item1 Ref="2" Description="Ten xi nghiep" Name="prTenXiNghiep" />
+    <Item2 Ref="3" Description="Ho ten" Name="prHoten" />
+    <Item3 Ref="4" Description="So Cmnd" Name="prSoCMND" />
+    <Item4 Ref="5" Description="Ngay cap" Name="prNgayCap" />
+    <Item5 Ref="6" Description="Noi cap" Name="prNoiCap" />
+    <Item6 Ref="7" Description="Dia chi" Name="prDiaChi" />
+    <Item7 Ref="8" Description="Dien thoai" Name="prDienThoai" />
+    <Item8 Ref="9" Description="Thay doi vi tri" Name="prdvThayDoiViTri" />
+    <Item9 Ref="10" Description="Thay doi MDSD" Name="prdvThayDoiMDSD" />
+    <Item10 Ref="11" Description="Thay doi DMSD" Name="prdvThayDoiDMSD" />
+    <Item11 Ref="12" Description="Thay doi hop dong" Name="prdvThayDoiHopDong" />
+    <Item12 Ref="13" Description="Kiem tra dong ho" Name="prdvKiemTraDongHo" />
+  </Parameters>
+  <Bands>
+    <Item1 Ref="14" ControlType="TopMarginBand" Name="topMarginBand1" HeightF="16" />
+    <Item2 Ref="15" ControlType="DetailBand" Name="detailBand1" HeightF="9.375" />
+    <Item3 Ref="16" ControlType="BottomMarginBand" Name="bottomMarginBand1" HeightF="17" />
+    <Item4 Ref="17" ControlType="ReportHeaderBand" Name="ReportHeader" HeightF="1014.4422">
+      <Controls>
+        <Item1 Ref="18" ControlType="XRLabel" Name="label50" Multiline="true" Text="label50" TextAlignment="TopCenter" SizeF="33.43042,23" LocationFloat="452.309143,331.702972" Font="Times New Roman, 13pt" Padding="2,2,0,0,96">
+          <ExpressionBindings>
+            <Item1 Ref="19" EventName="BeforePrint" PropertyName="Text" Expression="?prdvKiemTraDongHo" />
+          </ExpressionBindings>
+          <StylePriority Ref="20" UseFont="false" UseTextAlignment="false" />
+        </Item1>
+        <Item2 Ref="21" ControlType="XRLabel" Name="label49" Multiline="true" Text="label49" TextAlignment="TopCenter" SizeF="33.43045,23" LocationFloat="452.309143,287.92572" Font="Times New Roman, 13pt" Padding="2,2,0,0,96">
+          <ExpressionBindings>
+            <Item1 Ref="22" EventName="BeforePrint" PropertyName="Text" Expression="?prdvThayDoiHopDong" />
+          </ExpressionBindings>
+          <StylePriority Ref="23" UseFont="false" UseTextAlignment="false" />
+        </Item2>
+        <Item3 Ref="24" ControlType="XRLabel" Name="label48" Multiline="true" Text="label48" TextAlignment="TopCenter" SizeF="33.4304581,23" LocationFloat="20.237812,375.8808" Font="Times New Roman, 13pt" Padding="2,2,0,0,96">
+          <ExpressionBindings>
+            <Item1 Ref="25" EventName="BeforePrint" PropertyName="Text" Expression="?prdvThayDoiDMSD" />
+          </ExpressionBindings>
+          <StylePriority Ref="26" UseFont="false" UseTextAlignment="false" />
+        </Item3>
+        <Item4 Ref="27" ControlType="XRLabel" Name="label47" Multiline="true" Text="label47" TextAlignment="TopCenter" SizeF="33.4304581,23" LocationFloat="20.237812,331.626" Font="Times New Roman, 13pt" Padding="2,2,0,0,96">
+          <ExpressionBindings>
+            <Item1 Ref="28" EventName="BeforePrint" PropertyName="Text" Expression="?prdvThayDoiMDSD" />
+          </ExpressionBindings>
+          <StylePriority Ref="29" UseFont="false" UseTextAlignment="false" />
+        </Item4>
+        <Item5 Ref="30" ControlType="XRLabel" Name="label44" Multiline="true" Text="label44" TextAlignment="TopCenter" SizeF="33.4304733,22.99997" LocationFloat="20.237812,287.77182" Font="Times New Roman, 13pt" Padding="2,2,0,0,96">
+          <ExpressionBindings>
+            <Item1 Ref="31" EventName="BeforePrint" PropertyName="Text" Expression="?prdvThayDoiViTri" />
+          </ExpressionBindings>
+          <StylePriority Ref="32" UseFont="false" UseTextAlignment="false" />
+        </Item5>
+        <Item6 Ref="33" ControlType="XRLabel" Name="label43" Multiline="true" Text="label43" TextAlignment="TopCenter" SizeF="233.452759,22.9999847" LocationFloat="184.323181,231.275009" Font="Times New Roman, 13pt" Padding="2,2,0,0,96">
+          <ExpressionBindings>
+            <Item1 Ref="34" EventName="BeforePrint" PropertyName="Text" Expression="?prTenXiNghiep" />
+          </ExpressionBindings>
+          <StylePriority Ref="35" UseFont="false" UseTextAlignment="false" />
+        </Item6>
+        <Item7 Ref="36" ControlType="XRLabel" Name="label42" Multiline="true" Text="label42" SizeF="530.7837,23" LocationFloat="233.2164,185.121277" Font="Times New Roman, 13pt" Padding="2,2,0,0,96">
+          <ExpressionBindings>
+            <Item1 Ref="37" EventName="BeforePrint" PropertyName="Text" Expression="?prDiaChi" />
+          </ExpressionBindings>
+          <StylePriority Ref="38" UseFont="false" />
+        </Item7>
+        <Item8 Ref="39" ControlType="XRLabel" Name="label41" Multiline="true" Text="label41" SizeF="512.9032,23" LocationFloat="251.096725,161.9674" Font="Times New Roman, 13pt" Padding="2,2,0,0,96">
+          <ExpressionBindings>
+            <Item1 Ref="40" EventName="BeforePrint" PropertyName="Text" Expression="?prDienThoai" />
+          </ExpressionBindings>
+          <StylePriority Ref="41" UseFont="false" />
+        </Item8>
+        <Item9 Ref="42" ControlType="XRLabel" Name="label40" Multiline="true" Text="label40" SizeF="549.762146,23" LocationFloat="214.2378,138.967422" Font="Times New Roman, 13pt, style=Bold" Padding="2,2,0,0,96">
+          <ExpressionBindings>
+            <Item1 Ref="43" EventName="BeforePrint" PropertyName="Text" Expression="?prHoten" />
+          </ExpressionBindings>
+          <StylePriority Ref="44" UseFont="false" />
+        </Item9>
+        <Item10 Ref="45" ControlType="XRLine" Name="line1" SizeF="123.263885,2" LocationFloat="345.737122,56.1538467" />
+        <Item11 Ref="46" ControlType="XRLabel" Name="label38" Multiline="true" Text="Bên đề nghị cung cấp dịch vụ" TextAlignment="TopCenter" SizeF="351.9087,24.1186523" LocationFloat="441.091248,855.3277" Font="Times New Roman, 13pt, style=Bold" Padding="2,2,0,0,100">
+          <StylePriority Ref="47" UseFont="false" UseTextAlignment="false" />
+        </Item11>
+        <Item12 Ref="48" ControlType="XRLabel" Name="label39" Multiline="true" Text="(Ký, ghi rõ họ tên)" TextAlignment="TopCenter" SizeF="351.9084,24.1186523" LocationFloat="441.091248,879.44635" Font="Times New Roman, 13pt" Padding="2,2,0,0,100">
+          <StylePriority Ref="49" UseFont="false" UseTextAlignment="false" />
+        </Item12>
+        <Item13 Ref="50" ControlType="XRLabel" Name="label37" Multiline="true" Text="……………, ngày…. tháng ….. năm 20…" TextAlignment="TopCenter" SizeF="351.9087,23.0769653" LocationFloat="441.091248,832.250732" Font="Times New Roman, 13pt" Padding="2,2,0,0,100">
+          <StylePriority Ref="51" UseFont="false" UseTextAlignment="false" />
+        </Item13>
+        <Item14 Ref="52" ControlType="XRLabel" Name="label36" Multiline="true" Text="(Ký, ghi rõ họ tên)" TextAlignment="TopCenter" SizeF="312.978577,24.1186523" LocationFloat="20.2375011,879.44635" Font="Times New Roman, 13pt" Padding="2,2,0,0,100">
+          <StylePriority Ref="53" UseFont="false" UseTextAlignment="false" />
+        </Item14>
+        <Item15 Ref="54" ControlType="XRLabel" Name="label45" Multiline="true" Text="Ngày tiếp nhận: …… / …… / 20……" TextAlignment="TopCenter" SizeF="312.978577,23.0769653" LocationFloat="20.237812,832.250732" Font="Times New Roman, 13pt, style=Bold" Padding="2,2,0,0,100">
+          <StylePriority Ref="55" UseFont="false" UseTextAlignment="false" />
+        </Item15>
+        <Item16 Ref="56" ControlType="XRLabel" Name="label46" Multiline="true" Text="Nhân viên tiếp nhận" TextAlignment="TopCenter" SizeF="312.978577,24.1186523" LocationFloat="20.237812,855.3277" Font="Times New Roman, 13pt, style=Bold" Padding="2,2,0,0,100">
+          <StylePriority Ref="57" UseFont="false" UseTextAlignment="false" />
+        </Item16>
+        <Item17 Ref="58" ControlType="XRLabel" Name="label34" Multiline="true" Text="......................................................................................................................................................................" TextAlignment="TopLeft" SizeF="772.762451,23.0769348" LocationFloat="20.2375011,755.301331" Font="Times New Roman, 13pt" Padding="2,2,0,0,100">
+          <StylePriority Ref="59" UseFont="false" UseTextAlignment="false" />
+        </Item17>
+        <Item18 Ref="60" ControlType="XRLabel" Name="label35" Multiline="true" Text="......................................................................................................................................................................" TextAlignment="TopLeft" SizeF="772.762451,23.0769348" LocationFloat="20.2375488,798.570557" Font="Times New Roman, 13pt" Padding="2,2,0,0,100">
+          <StylePriority Ref="61" UseFont="false" UseTextAlignment="false" />
+        </Item18>
+        <Item19 Ref="62" ControlType="XRLabel" Name="label33" Multiline="true" Text="8. Hồ sơ khách hàng cần bổ sung:" TextAlignment="TopLeft" SizeF="279.069366,23.0769348" LocationFloat="20.237812,718.9973" Font="Times New Roman, 13pt" Padding="2,2,0,0,100">
+          <StylePriority Ref="63" UseFont="false" UseTextAlignment="false" />
+        </Item19>
+        <Item20 Ref="64" ControlType="XRLabel" Name="label32" Multiline="true" Text="......................................................................................................................................................................" TextAlignment="TopLeft" SizeF="772.762451,23.0769348" LocationFloat="20.237812,679.289856" Font="Times New Roman, 13pt" Padding="2,2,0,0,100">
+          <StylePriority Ref="65" UseFont="false" UseTextAlignment="false" />
+        </Item20>
+        <Item21 Ref="66" ControlType="XRLabel" Name="label31" Multiline="true" Text="......................................................................................................................................................................" TextAlignment="TopLeft" SizeF="772.762451,23.0769348" LocationFloat="20.2377625,636.0206" Font="Times New Roman, 13pt" Padding="2,2,0,0,100">
+          <StylePriority Ref="67" UseFont="false" UseTextAlignment="false" />
+        </Item21>
+        <Item22 Ref="68" ControlType="XRLabel" Name="label30" Multiline="true" Text="7. Hồ sơ khách hàng đã cung cấp:" TextAlignment="TopLeft" SizeF="279.069366,23.0769348" LocationFloat="20.2377625,597.6191" Font="Times New Roman, 13pt" Padding="2,2,0,0,100">
+          <StylePriority Ref="69" UseFont="false" UseTextAlignment="false" />
+        </Item22>
+        <Item23 Ref="70" ControlType="XRLabel" Name="label29" Multiline="true" Text="......................................................................................................................................................................" TextAlignment="TopLeft" SizeF="772.762451,23.0769348" LocationFloat="20.2375469,561.11676" Font="Times New Roman, 13pt" Padding="2,2,0,0,100">
+          <StylePriority Ref="71" UseFont="false" UseTextAlignment="false" />
+        </Item23>
+        <Item24 Ref="72" ControlType="XRLabel" Name="label28" Multiline="true" Text="Thông tin cần thay đổi:  ..............................................................................................................................." TextAlignment="TopLeft" SizeF="772.762451,23.0769348" LocationFloat="20.237751,519.6865" Font="Times New Roman, 13pt" Padding="2,2,0,0,100">
+          <StylePriority Ref="73" UseFont="false" UseTextAlignment="false" />
+        </Item24>
+        <Item25 Ref="74" ControlType="XRLabel" Name="label27" Multiline="true" Text="......................................................................................................................................................................" TextAlignment="TopLeft" SizeF="772.762451,23.0769348" LocationFloat="20.237545,482.664459" Font="Times New Roman, 13pt" Padding="2,2,0,0,100">
+          <StylePriority Ref="75" UseFont="false" UseTextAlignment="false" />
+        </Item25>
+        <Item26 Ref="76" ControlType="XRLabel" Name="label26" Multiline="true" Text="Thông tin hiện tại: ......................................................................................................................................." TextAlignment="TopLeft" SizeF="772.762451,23.0769348" LocationFloat="20.2377357,444.830566" Font="Times New Roman, 13pt" Padding="2,2,0,0,100">
+          <StylePriority Ref="77" UseFont="false" UseTextAlignment="false" />
+        </Item26>
+        <Item27 Ref="78" ControlType="XRLabel" Name="label25" Multiline="true" Text="6. Thông tin cần thay đổi:" TextAlignment="TopLeft" SizeF="279.069366,23.0769348" LocationFloat="20.23775,421.753662" Font="Times New Roman, 13pt" Padding="2,2,0,0,100">
+          <StylePriority Ref="79" UseFont="false" UseTextAlignment="false" />
+        </Item27>
+        <Item28 Ref="80" ControlType="XRLabel" Name="label23" Multiline="true" Text=" (3) Thay đổi định mức sử dụng điện / nước" TextAlignment="TopLeft" SizeF="374.968658,23.0769348" LocationFloat="54.96005,375.880829" Font="Times New Roman, 13pt" Padding="2,2,0,0,100">
+          <StylePriority Ref="81" UseFont="false" UseTextAlignment="false" />
+        </Item28>
+        <Item29 Ref="82" ControlType="XRLabel" Name="label24" Multiline="true" SizeF="33.430542,23" LocationFloat="20.2377319,375.880829" Padding="2,2,0,0,100" Borders="All">
+          <StylePriority Ref="83" UseBorders="false" />
+        </Item29>
+        <Item30 Ref="84" ControlType="XRLabel" Name="label21" Multiline="true" Text=" (5) Kiểm tra đồng hồ điện / nước" TextAlignment="TopLeft" SizeF="307.2603,23.0769348" LocationFloat="485.7398,331.626068" Font="Times New Roman, 13pt" Padding="2,2,0,0,100">
+          <StylePriority Ref="85" UseFont="false" UseTextAlignment="false" />
+        </Item30>
+        <Item31 Ref="86" ControlType="XRLabel" Name="label22" Multiline="true" SizeF="33.430542,23" LocationFloat="452.3091,331.626068" Padding="2,2,0,0,100" Borders="All">
+          <StylePriority Ref="87" UseBorders="false" />
+        </Item31>
+        <Item32 Ref="88" ControlType="XRLabel" Name="label19" Multiline="true" SizeF="33.430542,23" LocationFloat="20.2377357,331.626068" Padding="2,2,0,0,100" Borders="All">
+          <StylePriority Ref="89" UseBorders="false" />
+        </Item32>
+        <Item33 Ref="90" ControlType="XRLabel" Name="label20" Multiline="true" Text=" (2) Thay đổi mục đích sử dụng điện / nước" TextAlignment="TopLeft" SizeF="374.968658,23.0769348" LocationFloat="54.9600449,331.626068" Font="Times New Roman, 13pt" Padding="2,2,0,0,100">
+          <StylePriority Ref="91" UseFont="false" UseTextAlignment="false" />
+        </Item33>
+        <Item34 Ref="92" ControlType="XRLabel" Name="label17" Multiline="true" SizeF="33.430542,23" LocationFloat="452.309174,287.771851" Padding="2,2,0,0,100" Borders="All">
+          <StylePriority Ref="93" UseBorders="false" />
+        </Item34>
+        <Item35 Ref="94" ControlType="XRLabel" Name="label18" Multiline="true" Text=" (4) Thay đổi chủ thể hợp đồng (sang tên)" TextAlignment="TopLeft" SizeF="307.2603,23.0769348" LocationFloat="485.7397,287.771851" Font="Times New Roman, 13pt" Padding="2,2,0,0,100">
+          <StylePriority Ref="95" UseFont="false" UseTextAlignment="false" />
+        </Item35>
+        <Item36 Ref="96" ControlType="XRLabel" Name="label16" Multiline="true" Text=" (1) Thay đổi vị trí thiết bị đo đếm (di dời đồng hồ)" TextAlignment="TopLeft" SizeF="374.968658,23.0769348" LocationFloat="54.96005,287.8488" Font="Times New Roman, 13pt" Padding="2,2,0,0,100">
+          <StylePriority Ref="97" UseFont="false" UseTextAlignment="false" />
+        </Item36>
+        <Item37 Ref="98" ControlType="XRLabel" Name="label15" Multiline="true" SizeF="33.430542,23" LocationFloat="20.23775,287.8488" Padding="2,2,0,0,100" Borders="All">
+          <StylePriority Ref="99" UseBorders="false" />
+        </Item37>
+        <Item38 Ref="100" ControlType="XRLabel" Name="label14" Multiline="true" Text="(Quý Khách hàng vui lòng đánh dấu (X) vào ô trống dịch vụ cần cung cấp)" TextAlignment="TopCenter" SizeF="743.7623,23.07695" LocationFloat="20.23775,254.27504" Font="Times New Roman, 13pt, style=Italic" Padding="2,2,0,0,100">
+          <StylePriority Ref="101" UseFont="false" UseTextAlignment="false" />
+        </Item38>
+        <Item39 Ref="102" ControlType="XRLabel" Name="label13" Multiline="true" Text="cung cấp dịch vụ gồm:" TextAlignment="TopLeft" SizeF="346.22406,23.0769348" LocationFloat="417.775879,231.198135" Font="Times New Roman, 13pt" Padding="2,2,0,0,100">
+          <StylePriority Ref="103" UseFont="false" UseTextAlignment="false" />
+        </Item39>
+        <Item40 Ref="104" ControlType="XRLabel" Name="label12" Multiline="true" Text="5. Đề nghị Xí nghiệp" TextAlignment="TopLeft" SizeF="164.085434,23.0769348" LocationFloat="20.237751,231.198135" Font="Times New Roman, 13pt" Padding="2,2,0,0,100">
+          <StylePriority Ref="105" UseFont="false" UseTextAlignment="false" />
+        </Item40>
+        <Item41 Ref="106" ControlType="XRLabel" Name="label11" Multiline="true" Text="4. Danh số khách hàng: ........................................................................................................................." TextAlignment="TopLeft" SizeF="743.7622,23.07692" LocationFloat="20.2377357,208.121216" Font="Times New Roman, 13pt" Padding="2,2,0,0,100">
+          <StylePriority Ref="107" UseFont="false" UseTextAlignment="false" />
+        </Item41>
+        <Item42 Ref="108" ControlType="XRLabel" Name="label10" Multiline="true" Text="3. Địa chỉ mua điện / nước:" TextAlignment="TopLeft" SizeF="210.82695,23.07695" LocationFloat="20.237751,185.044327" Font="Times New Roman, 13pt" Padding="2,2,0,0,100">
+          <StylePriority Ref="109" UseFont="false" UseTextAlignment="false" />
+        </Item42>
+        <Item43 Ref="110" ControlType="XRLabel" Name="label9" Multiline="true" Text="2. Số điện thoại / địa chỉ emai:" TextAlignment="TopLeft" SizeF="230.858978,23.0769348" LocationFloat="20.237751,161.9674" Font="Times New Roman, 13pt" Padding="2,2,0,0,100">
+          <StylePriority Ref="111" UseFont="false" UseTextAlignment="false" />
+        </Item43>
+        <Item44 Ref="112" ControlType="XRLabel" Name="label8" Multiline="true" Text="1. Họ và tên khách hàng :" TextAlignment="TopLeft" SizeF="194.000046,23.0769348" LocationFloat="20.237751,138.890472" Font="Times New Roman, 13pt" Padding="2,2,0,0,100">
+          <StylePriority Ref="113" UseFont="false" UseTextAlignment="false" />
+        </Item44>
+        <Item45 Ref="114" ControlType="XRLabel" Name="label6" Multiline="true" SizeF="33.430542,23" LocationFloat="488.9448,96.42522" Padding="2,2,0,0,100" Borders="All">
+          <StylePriority Ref="115" UseBorders="false" />
+        </Item45>
+        <Item46 Ref="116" ControlType="XRLabel" Name="label57" Multiline="true" Text="X" TextAlignment="TopCenter" SizeF="33.430542,23" LocationFloat="289.529877,96.42522" Font="Times New Roman, 13pt" Padding="2,2,0,0,100" Borders="All">
+          <StylePriority Ref="117" UseFont="false" UseBorders="false" UseTextAlignment="false" />
+        </Item46>
+        <Item47 Ref="118" ControlType="XRLabel" Name="label5" Multiline="true" Text="hoặc" TextAlignment="TopCenter" SizeF="48.3836975,23.0769348" LocationFloat="375.684326,96.42522" Font="Times New Roman, 13pt, style=Bold" Padding="2,2,0,0,100">
+          <StylePriority Ref="119" UseFont="false" UseTextAlignment="false" />
+        </Item47>
+        <Item48 Ref="120" ControlType="XRLabel" Name="label4" Multiline="true" Text="NƯỚC" TextAlignment="TopCenter" SizeF="64.8768,23.0769348" LocationFloat="424.067963,96.42522" Font="Times New Roman, 13pt, style=Bold" Padding="2,2,0,0,100">
+          <StylePriority Ref="121" UseFont="false" UseTextAlignment="false" />
+        </Item48>
+        <Item49 Ref="122" ControlType="XRLabel" Name="label3" Multiline="true" Text="ĐIỆN" TextAlignment="TopCenter" SizeF="52.723938,23.0769348" LocationFloat="322.960419,96.42522" Font="Times New Roman, 13pt, style=Bold" Padding="2,2,0,0,100">
+          <StylePriority Ref="123" UseFont="false" UseTextAlignment="false" />
+        </Item49>
+        <Item50 Ref="124" ControlType="XRLabel" Name="label1" Multiline="true" Text="GIẤY ĐỀ NGHỊ CUNG CẤP DỊCH VỤ" TextAlignment="TopCenter" SizeF="772.7623,23.0769348" LocationFloat="20.2377357,73.34828" Font="Times New Roman, 14pt, style=Bold" Padding="2,2,0,0,100">
+          <StylePriority Ref="125" UseFont="false" UseTextAlignment="false" />
+        </Item50>
+        <Item51 Ref="126" ControlType="XRLabel" Name="label7" Multiline="true" Text="CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM" TextAlignment="TopCenter" SizeF="772.7623,23.0769253" LocationFloat="20.23775,9.99999" Font="Times New Roman, 14pt, style=Bold" Padding="2,2,0,0,100">
+          <StylePriority Ref="127" UseFont="false" UseTextAlignment="false" />
+        </Item51>
+        <Item52 Ref="128" ControlType="XRLabel" Name="label2" Multiline="true" Text="Độc lập - Tự do - Hạnh phúc" TextAlignment="TopCenter" SizeF="772.762268,23.076931" LocationFloat="20.2377357,33.07692" Font="Times New Roman, 14pt" Padding="2,2,0,0,100">
+          <StylePriority Ref="129" UseFont="false" UseTextAlignment="false" />
+        </Item52>
+      </Controls>
+    </Item4>
+  </Bands>
+</XtraReportsLayoutSerializer>

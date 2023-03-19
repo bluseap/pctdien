@@ -1,0 +1,241 @@
+﻿@{ ViewData["Title"] = "Index"; }
+@inject IViewLocalizer Localizer
+@section Styles{
+
+}
+@section Scripts{
+
+    <script src="~/vendor/bootstrap-datepicker/dist/js/bootstrap-datepicker.js" asp-append-version="true"></script>
+    <script src="~/vendor/bootstrap-datepicker/dist/locales/bootstrap-datepicker.vi.min.js" charset="UTF-8" asp-append-version="true"></script>
+
+    <script src="~/admin-app/controllers/order/gomdon.js" asp-append-version="true"></script>
+    <script src="~/admin-app/controllers/order/addeditkhachhang.js" asp-append-version="true"></script>
+    <script src="~/admin-app/controllers/order/addeditOrderDetails.js" asp-append-version="true"></script>
+    @*<script src="~/admin-app/controllers/order/listorder.js" asp-append-version="true"></script>
+        <script src="~/admin-app/controllers/order/addedit.js" asp-append-version="true"></script>*@
+    <script src="~/admin-app/controllers/order/index.js" asp-append-version="true"></script>
+    <script>
+        var order = new orderController();
+        order.initialize();
+
+        jQuery(function ($) {
+            $('#txtTienTong, #txtTienCoc, #txtTienConLai').autoNumeric('init');
+
+        });
+    </script>
+}
+
+<div class="page-title">
+    <div class="title_left">
+        <h3>@Localizer["Order"]<small></small></h3>
+    </div>
+    <div class="title_right">
+        <div class="col-md-4 col-sm-12 col-xs-12 form-group pull-right">
+            <button id="btnCreate" class="btn btn-round btn-success">Nhập đơn hàng</button>
+        </div>
+    </div>
+</div>
+<div class="page-title">
+    <div class="title_left">
+        <h3>  <small></small></h3>
+    </div>
+    <div class="title_right">
+        <div class="col-md-6 col-sm-6 col-xs-12 form-group pull-right">
+            <div class="input-group">
+                <input type="text" id="txtKeyword" class="form-control" placeholder="Tên kh, Số điện thoại, Mã vận đơn">
+                <span class="input-group-btn">
+                    <button class="btn btn-primary" id="btnSearch" type="button">@Localizer["Search"]</button>
+                </span>
+            </div>
+        </div>
+        <div class="col-md-5 col-sm-12 col-xs-12 form-group pull-right top_search">
+            <div class="input-group">
+                <select id="ddlCorporation" class="form-control"></select>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="x_content">
+        <div class="col-md-3 col-sm-12 col-xs-12 form-group pull-left">
+            <select id="ddlDieuKienDonDang" class="form-control"></select>
+        </div>
+        <div class="col-md-2 col-sm-12 col-xs-12 form-group">
+            <input type="text" id="txtTuNgay" class="form-control">
+        </div>
+        <div class="col-md-2 col-sm-12 col-xs-12 form-group">
+            <input type="text" id="txtDenNgay" class="form-control">
+        </div>
+        <div class="col-md-2 col-sm-12 col-xs-12 form-group pull-right">
+            <button class="btn btn-warning" id="btnDSOrderDetails" type="button" style="width:137px">DS Đơn hàng</button>
+        </div>
+        @*<div class="col-md-2 col-sm-12 col-xs-12 form-group pull-right">
+            <button class="btn btn-warning" id="btnExcelDSOrderDetails" type="button" style="width:137px">Xuất Excel</button>
+        </div>*@
+    </div>
+ </div>
+@*<div class="row">
+        <div class="x_content">
+            <div class="col-md-6 col-sm-12 col-xs-12 form-group pull-left">
+                <h3>  <small>@Localizer["ListOrder"]</small></h3>
+            </div>
+            <div class="col-md-2 col-sm-12 col-xs-12 form-group">
+                <input type="text" id="txtFromDate" class="form-control">
+            </div>
+            <div class="col-md-2 col-sm-12 col-xs-12 form-group">
+                <input type="text" id="txtToDate" class="form-control">
+            </div>
+            <div class="col-md-2 col-sm-12 col-xs-12 form-group pull-right">
+                <button class="btn btn-warning" id="btnExportExcel" type="button" style="width:137px">@Localizer["ExportExcel"]</button>
+            </div>
+        </div>
+    </div>*@
+
+<div class="clearfix"></div>
+
+<div class="row">    
+    <div class="col-md-12 col-sm-12 col-xs-12">        
+        <div class="x_panel">
+            <div class="x_content">
+                <div class="row">
+                    <div class="x_content">
+                        <div class="form-group">
+                            @*<div class="col-md-3 col-sm-12 col-xs-12">
+                        <button type="button" id="btnGomDon" class="btn btn-warning">Gom đơn đ.kiện khác ngày và buổi live </button>
+                    </div>*@
+                            <div class="col-md-3 col-sm-12 col-xs-12">
+                                <label for="lbTongTienHang">
+                                    Tổng tiền hàng:
+                                </label>
+                                <strong id="lblTongTienHang" style="font-size: 25px;"></strong>
+                                @*<input type="text" id="txtTongTienHang" name="txtTongTienHang" data-a-sign=""
+                        data-a-dec="," data-a-sep="." class="form-control has-feedback-right">*@
+                            </div>
+                            <div class="col-md-3 col-sm-12 col-xs-12">
+                                <label for="lbTongTienCoc">
+                                    Tổng tiền cọc:
+                                </label>
+                                <strong id="lblTongTienCoc" style="font-size: 25px;"></strong>
+                                @*<input type="text" id="txtTongTienCoc" name="txtTienTong" data-a-sign=""
+                        data-a-dec="," data-a-sep="." class="form-control has-feedback-right">*@
+                            </div>
+                            <div class="col-md-3 col-sm-12 col-xs-12">
+                                <label for="lbTienCoc">
+                                    Tổng Tiền còn lại:
+                                </label>
+                                <strong id="lblTongTienConLai" style="font-size: 25px;"></strong>
+                                @*<input type="text" id="txtTongTienConLai" name="txtTongTienConLai" data-a-sign=""
+                        data-a-dec="," data-a-sep="." class="form-control has-feedback-right">*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-responsive" id="table-responsiveSoTatCa">
+                    @*table table-striped table-bordered dataTable no-footer     table table-striped jambo_table bulk_action *@
+                    <table class="table table-striped jambo_table bulk_action " cellspacing="0">
+                        <thead>
+                            <tr>
+                                @*<th>@Localizer["CustomerName"]</th>
+                    <th>@Localizer["Corporation"]</th>
+                    <th>@Localizer["CustomerAddress"]</th>
+                    <th>@Localizer["CustomerEmail"]</th>
+                    <th>@Localizer["CustomerPhone"]</th>
+                    <th>@Localizer["CreateDate"]</th>
+                    <th>@Localizer["Status"]</th>*@
+                                <th width="=5%">#</th>
+                                <th>Tên khách hàng</th>
+                                <th>Địa chỉ</th>
+                                <th>Số điện thoại</th>
+                                <th>Tên hàng</th>
+                                @*<th>Ngày Gom đơn</th>*@
+                                <th>Số lượng</th>
+                                <th>Tiền hàng</th>
+                                <th>Tiền cọc</th>
+                                <th>Ngày live</th>
+                                <th>Ngày đơn đi</th>
+                                <th>Mã vận đơn</th>
+                                <th>Ghi chú đơn đi</th>
+                                @*<th>.</th>*@
+                                <th>.</th>
+                                <th>Ngày đến</th>
+                                <th>Ghi chú đến</th>
+                                <th>Ngày hủy</th>
+                                <th>Ghi chú hủy</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbl-contentOrder"></tbody>
+                    </table>
+                    <!--Pagination-->
+                    <div class="row">
+                        <div class="col-sm-5">
+                            <div class="dataTables_info" id="datatable-checkbox_info" role="status" aria-live="polite">
+                                <select id="ddl-show-pageOrders">
+                                    <option value="10" selected="selected">10</option>
+                                    <option value="20">20</option>
+                                    <option value="30">30</option>
+                                    <option value="50">50</option>
+                                </select>
+                                <span class="item-per-page">
+                                    @Localizer["RowPage"]
+                                </span>
+                                @Localizer["Toltal"] <strong id="lblTotalRecords"></strong>
+                            </div>
+                        </div><div class="col-sm-7">
+                            <div class="dataTables_paginate paging_simple_numbers" id="datatable-checkbox_paginate">
+                                <ul id="paginationULOrder"></ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    
+            </div>
+            </div>
+    </div>
+
+</div>
+
+<script id="table-templateOrder" type="x-tmpl-mustache">
+    <tr>
+        <th scope="row">
+            <a class="btn-lg btn-link btn-addeditOrderDetails" data-id="{{OrderId}}-{{MaNhomLive}}" data-toggle="tooltip" data-placement="top" title="Sửa tên khách hàng">
+                <i class="fa fa-pencil"></i>
+            </a>
+        </th>
+        <td>{{CustomerName}}</td>
+        <td>{{CustomerAddress}}</td>
+        <td>{{CustomerPhone}}</td>
+        <td>{{ProductName}}</td>
+        @*<td>{{NgayGomDon}}</td>*@
+        <td>{{SoLuongSanPham}}</td>
+        <td>{{TienTong}}</td>
+        <td>{{TienCoc}}</td>
+        <td>{{NgayDatLive}}</td>
+        <td>{{NgayDonDi}}</td>
+        <td>{{MaDonDi}}</td>
+        <td>{{GhiChuDonDi}}</td>
+        @*<td>
+            <a class="btn-link btn-deleteOrderDetails" data-id="{{OrderId}}" data-toggle="tooltip"
+                                            data-placement="top" title="Xóa đơn hàng">
+                                            <i class="fa fa-trash-o"  style="color:red"></i>
+            </a>
+        </td>*@
+        <td>
+            <a class="btn-link btn-InOrderDetails" data-id="{{OrderId}}-{{MaNhomLive}}" data-toggle="tooltip" data-placement="top" title="In đơn hàng theo ngày Live và buổi Live">
+                In đơn
+            </a>
+        </td>
+
+        <td>{{NgayDonDen}}</td>
+        <td>{{GhiChuDonDen}}</td>
+        <td>{{NgayDonDenHuy}}</td>
+        <td>{{GhiChuDonDenHuy}}</td>
+
+    </tr>
+</script>
+
+
+    <Partial name="_AddEditOrderDetails.cshtml" />
+    <Partial name="_AddEditOrder.cshtml" />
+    <Partial name="_GomDon.cshtml" />
+    @*<Partial name="_AddEditModal.cshtml" />
+        <Partial name="_ListOrderDetails.cshtml" />*@

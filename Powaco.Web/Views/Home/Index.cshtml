@@ -1,0 +1,148 @@
+﻿
+@section Styles{
+    @*<link href="~/lib/jQuery-EasyUI/themes/bootstrap/easyui.css" rel="stylesheet" />
+        <link href="~/lib/jQuery-EasyUI/themes/icon.css" rel="stylesheet" />
+        <link href="~/lib/bootstrap-datepicker/dist/css/bootstrap-datepicker.css" rel="stylesheet" />*@
+
+}
+@section Scripts{
+
+    @* <script src="~/admin-side/js/jquery.autocomplete.js" asp-append-version="true"></script>*@
+
+
+    @*<script src="~/js/jquery.easyui.min.js" asp-append-version="true"></script>
+        <script src="~/js/bootstrap-datepicker.js" asp-append-version="true"></script>
+        <script src="~/js/bootstrap-datepicker.vi.min.js" charset="UTF-8" asp-append-version="true"></script>
+
+        <script src="~/js/jquery.smartWizard.js" asp-append-version="true"></script>*@
+
+
+    <script src="~/client-app/controllers/home/index.js" asp-append-version="true"></script>
+    <script>
+        var home = new homeController();
+        home.initialize();
+    </script>
+}
+
+<div class="" role="main">
+    <div class="">
+        <div class=”container”>
+            <div class="row">
+                <div class="col-xl-12 col-md-12 col-sm-12 col-xs-12 col-12 h-congty mb-1 pb-1">
+                    <br />
+                    <h2>
+                        CÔNG TY CỔ PHẦN
+                    </h2>
+                    <h2>ĐIỆN NƯỚC AN GIANG</h2>
+                </div>
+            </div>
+            <div class=”row”>
+                <div id="gioithieuchung" class="col-xl-5 col-md-5 col-sm-5 col-xs-12 col-12 p-gioithieu">
+                    <div class="col-sm-12 col-xs-12 col-12">
+                        <h3>Giới thiệu chung</h3>
+                    </div>
+                    <div calss="col-sm-12 col-xs-12 col-12 div-color-den" >
+                    Công ty cổ phần Điện Nước An Giang là Doanh Nghiệp hoạt động sản xuất kinh doanh với nhiều lĩnh vực. Trong đó sản phẩm chính
+                    là cung cấp điện - nước sạch cho người dân các khu vực thành thị lẫn nông thôn
+                    trên địa bàn tỉnh An Giang. Đây là doanh nghiệp duy nhất trên cả nước,
+                    kinh doanh và phục vụ các nhu cầu cần thiết trong đời sống sinh hoạt
+                    của người dân trên lĩnh vực điện sinh hoạt - nước sạch.
+                    </div>
+                </div>
+                <div class="col-xl-2 col-md-2 col-sm-2 col-xs-12 col-12 logo-congty">
+                    <img class="logopowaco-size" src="./images/powaco148.png">
+                </div>
+                <div id="tenvatrusochinh" class="col-xl-5 col-md-5 col-sm-5 col-xs-12 col-12 p-tentruso">
+                    <div class="col-sm-12 col-xs-12 col-12">
+                        <h3>Tên và trụ sở Công ty</h3>
+                    </div>
+                    <div class="col-sm-12 col-xs-12 col-12 div-color-den">
+                        Tên: <b>Công ty Cổ phần Điện nước An Giang</b>
+                    </div>
+                    <div class="col-sm-12 col-xs-12 col-12 div-color-den">
+                        Tên tiếng Anh: <b>AN GIANG POWER AND WATER SUPPLY JOINT STOCK COMPANY</b>
+                    </div>
+                    <div class="col-sm-12 col-xs-12 col-12 div-color-den">
+                        Tên viết tắt tiếng Anh: <b>POWACO</b>
+                    </div>
+                    <div class="col-sm-12 col-xs-12 col-12 div-color-den div-size-diachi">
+                        Địa chỉ: 821 Trần Hưng Đạo, phường Bình Khánh, TP. Long Xuyên, Tỉnh An Giang
+                    </div>
+                    <div class="col-sm-12 col-xs-12 col-12 div-color-den">
+                        Hotline: 1900 9090
+                    </div>
+                    <div class="col-sm-12 col-xs-12 col-12 div-color-den">
+                        Website: http://diennuocag.com.vn
+                    </div>
+                </div>
+            </div>
+                
+        </div>
+    </div>
+    <div class=”container”>
+            <div class="row">
+                <div class="col-xl-12 col-md-12 col-sm-12 col-xs-12 col-12 h-congty mb-5 pb-5">
+                    <br />
+                    <h2>
+                        CÁC DỊCH VỤ
+                    </h2>
+                </div>
+            </div>
+
+            <div class="row">
+                <div id='divDienSinhHoat' class="col-xl-3 col-md-3 col-sm-3 col-xs-12 col-12  uk-animation-scale-down ">
+                    <div class="clickDkDien text-center">
+                        <div class="d-flex">
+                            <div id="hexagon-diennl" class="">
+                                <i style="font-size: 56px; color: #ff6c01;" class="fa fa-lightbulb-o"></i>
+                            </div>
+                        </div>
+                        <div class="media-body p-2 mt-3">
+                            <h3 class="heading" >Điện sinh hoạt</h3>
+                            <p class="fontSize13" >Công ty lắp đặt điện kế theo phương thức không thu tiền đối với hộ sử dụng điện cho mục đích sinh hoạt có khoảng cách từ trụ điện đến nhà khách hàng từ 30 mét trở xuống</p>
+                        </div>
+                    </div>
+                </div>
+                <div id='divDienSinhHoat' class="col-xl-3 col-md-3 col-sm-3 col-xs-12 col-12 ">
+                    <div class="clickDkNuoc text-center" >
+                        <div class="d-flex">
+                            <div id="hexagon" class="">
+                                <i style="font-size: 56px; color: #1ec6fb;" class="fa fa-tint"></i>
+                            </div>
+                        </div>
+                        <div class="media-body p-2 mt-3">
+                            <h3 class="heading">Nước sạch</h3>
+                            <p class="fontSize13">Sản phẩm nước sạch của Công ty luôn đảm bảo đầy đủ theo các tiêu chuẩn quy định</p>
+                        </div>
+                    </div>
+                </div>
+                <div id='divDienSinhHoat' class="col-xl-3 col-md-3 col-sm-3 col-xs-12 col-12 ">
+                    <div class=" text-center">
+                        <div class="d-flex">
+                            <div id="hexagon-batdongsan" class="">
+                                <i style="font-size: 56px; color: #78d2a5;" class="fa fa-th"></i>
+                            </div>
+                        </div>
+                        <div class="media-body p-2 mt-3">
+                            <h3 class="heading">Điện năng lượng</h3>
+                            <p class="fontSize13"> Sở Kế Hoạch Đầu tư tỉnh An Giang cấp giấy xác nhận đăng ký kinh doanh lĩnh vực lắp đặt, sửa chữa, bán buôn thiết bị sử dụng năng lượng mặt trời, pin mặt trời.</p>
+                        </div>
+                    </div>
+                </div>
+                <div id='divDienSinhHoat' class="col-xl-3 col-md-3 col-sm-3 col-xs-12 col-12 ">
+                    <div class=" text-center">
+                        <div class="d-flex">
+                            <div id="hexagon-nuocsach" class="">
+                                <i style="font-size: 56px; color: #ff78b8;" class="fa fa-home"></i>
+                            </div>
+                        </div>
+                        <div class="media-body p-2 mt-3">
+                            <h3 class="heading"> Dịch vụ sửa chữa</h3>
+                            <p class="fontSize13">Công ty Cổ phần Điện Nước An Giang triển khai thực hiện  Dịch vụ sửa chữa, bảo trì hệ thống điện nước sinh hoạt, điện công nghiệp, điện năng lượng mặt trời cho khách hàng.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+   
+</div>

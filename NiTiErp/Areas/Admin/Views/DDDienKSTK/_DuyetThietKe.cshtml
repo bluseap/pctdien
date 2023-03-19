@@ -1,0 +1,50 @@
+﻿<div id="modal-add-edit-DuyetThietKe" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style="overflow-y: auto; max-height:85%;  margin-top: 50px; margin-bottom:50px; ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Duyệt thiết kế di dời đồng hồ điện </h4>
+            </div>
+            <div class="modal-body">
+                <div id="horizontal-form">
+                    <form class="form-horizontal form-label-left input_mask" role="form" id="frmMainDuyetThietKe">
+
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <label for="lbNgayDuyetThietKe">
+                                    Ngày duyệt thiết kế
+                                    <a style="color:red">(*)</a>
+                                </label>
+                                <input type="text" name="txtNgayDuyetThietKe" class="form-control has-feedback-right" id="txtNgayDuyetThietKe" placeholder="Ngày duyệt thiết kế">
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="lbNhanVienDuyetTK">Nhân viên duyệt thiết kế </label>
+                                <input type="text" name="txtNhanVienDuyetTK" class="form-control has-feedback-right" id="txtNhanVienDuyetTK" placeholder="Nhân viên thiết kế">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <label for="lbGhiChuTK">Ghi chú thiết kế</label>
+                                <a style="color:red">(*)</a>
+                                <textarea id="txtGhiChuThietKe" required="required" class="form-control" name="txtGhiChuThietKe"
+                                          data-parsley-trigger="keyup" data-parsley-maxlength="1000">
+                                </textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                @*<button type="button" id="btnTuChoiThietKe" data-dismiss="modal" class="btn btn-warning">Từ chối TK</button>*@
+                                <button type="button" id="btnCancelDDDienKSTK" data-dismiss="modal" class="btn btn-default">Đóng</button>
+                                <button type="button" id="btnSaveDuyetThietKe" class="btn btn-success">Duyệt thiết kế di dời </button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+                <div class="ln_solid"></div>
+            </div>
+        </div>
+    </div>
+</div>

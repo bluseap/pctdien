@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XtraReportsLayoutSerializer SerializerVersion="20.1.3.0" Ref="0" ControlType="DevExpress.XtraReports.UI.XtraReport, DevExpress.XtraReports.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Name="repDSTheoNgayDonDi" Margins="17, 19, 16, 22" PageWidth="850" PageHeight="1100" Version="20.1">
+  <Bands>
+    <Item1 Ref="1" ControlType="TopMarginBand" Name="topMarginBand1" HeightF="16" />
+    <Item2 Ref="2" ControlType="DetailBand" Name="detailBand1" HeightF="71.875" />
+    <Item3 Ref="3" ControlType="BottomMarginBand" Name="bottomMarginBand1" HeightF="22" />
+    <Item4 Ref="4" ControlType="ReportHeaderBand" Name="ReportHeader" HeightF="16.666666" />
+    <Item5 Ref="5" ControlType="PageHeaderBand" Name="PageHeader" HeightF="63.8333473">
+      <Controls>
+        <Item1 Ref="6" ControlType="XRTable" Name="table2" TextAlignment="MiddleCenter" SizeF="814,25" LocationFloat="0,37.9166756" Font="Times New Roman, 12pt, style=Bold" Padding="2,2,0,0,96" Borders="None">
+          <Rows>
+            <Item1 Ref="7" ControlType="XRTableRow" Name="tableRow2" Weight="1" Borders="All">
+              <Cells>
+                <Item1 Ref="8" ControlType="XRTableCell" Name="tableCell4" Weight="0.47606230396338067" Multiline="true" Text="Stt" Font="Times New Roman, 9pt, style=Bold" Borders="All">
+                  <StylePriority Ref="9" UseFont="false" UseBorders="false" />
+                </Item1>
+                <Item2 Ref="10" ControlType="XRTableCell" Name="tableCell5" Weight="2.0948717780926587" Multiline="true" Text="Tên khách hàng" Font="Times New Roman, 9pt, style=Bold">
+                  <StylePriority Ref="11" UseFont="false" />
+                </Item2>
+                <Item3 Ref="12" ControlType="XRTableCell" Name="tableCell6" Weight="1.3151358095225034" Multiline="true" Text="Số đt" Font="Times New Roman, 9pt, style=Bold">
+                  <StylePriority Ref="13" UseFont="false" />
+                </Item3>
+                <Item4 Ref="14" ControlType="XRTableCell" Name="tableCell7" Weight="1.0248306522630941" Multiline="true" Text="Cọc" Font="Times New Roman, 9pt, style=Bold">
+                  <StylePriority Ref="15" UseFont="false" />
+                </Item4>
+                <Item5 Ref="16" ControlType="XRTableCell" Name="tableCell8" Weight="1.0295882601133795" Multiline="true" Text="Code" Font="Times New Roman, 9pt, style=Bold">
+                  <StylePriority Ref="17" UseFont="false" />
+                </Item5>
+                <Item6 Ref="18" ControlType="XRTableCell" Name="tableCell9" Weight="1.0134198924851456" Multiline="true" Text="FreeShip" Font="Times New Roman, 9pt, style=Bold">
+                  <StylePriority Ref="19" UseFont="false" />
+                </Item6>
+                <Item7 Ref="20" ControlType="XRTableCell" Name="tableCell1" Weight="1.8252026816275295" Multiline="true" Text="Địa chỉ&#xD;&#xA;" Font="Times New Roman, 9pt, style=Bold">
+                  <StylePriority Ref="21" UseFont="false" />
+                </Item7>
+                <Item8 Ref="22" ControlType="XRTableCell" Name="tableCell17" Weight="0.87030497276533891" Multiline="true" Text="Mã vận đơn&#xD;&#xA;" Font="Times New Roman, 9pt, style=Bold">
+                  <StylePriority Ref="23" UseFont="false" />
+                </Item8>
+              </Cells>
+              <StylePriority Ref="24" UseBorders="false" />
+            </Item1>
+          </Rows>
+          <StylePriority Ref="25" UseFont="false" UseBorders="false" UseTextAlignment="false" />
+        </Item1>
+      </Controls>
+    </Item5>
+    <Item6 Ref="26" ControlType="ReportFooterBand" Name="ReportFooter" HeightF="15.625" />
+    <Item7 Ref="27" ControlType="PageFooterBand" Name="PageFooter" HeightF="14.583333" />
+  </Bands>
+</XtraReportsLayoutSerializer>

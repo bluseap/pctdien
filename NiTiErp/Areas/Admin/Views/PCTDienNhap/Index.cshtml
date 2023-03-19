@@ -1,0 +1,210 @@
+﻿@{ ViewData["Title"] = "Index"; }
+@section Styles{
+    <link href="~/lib/jQuery-EasyUI/themes/bootstrap/easyui.css" rel="stylesheet" />
+    <link href="~/lib/jQuery-EasyUI/themes/icon.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap-datepicker/dist/css/bootstrap-datepicker.css" rel="stylesheet" />
+}
+@section Scripts{
+
+    <script src="~/lib/jQuery-EasyUI/jquery.easyui.min.js" asp-append-version="true"></script>
+    <script src="~/lib/bootstrap-datepicker/dist/js/bootstrap-datepicker.js" asp-append-version="true"></script>
+    <script src="~/lib/bootstrap-datepicker/dist/locales/bootstrap-datepicker.vi.min.js" charset="UTF-8" asp-append-version="true"></script>
+
+    <script src="~/admin-side/js/jquery.autocomplete.js" asp-append-version="true"></script>
+
+    <!-- jQuery Tags Input -->
+    <script src="~/lib/gentelella/vendors/jquery.tagsinput/src/jquery.tagsinput.js"></script>
+
+    <script src="~/app/controllers/PCTDienNhap/loaddatatable.js" asp-append-version="true"></script>
+
+    <script src="~/app/controllers/PCTDienNhap/themtrangbiatbhld.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/PCTDienNhap/themdieukienatd.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/PCTDienNhap/themnoidungcongtac.js" asp-append-version="true"></script>
+
+    <script src="~/app/controllers/PCTDienNhap/ketthuccongtac.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/PCTDienNhap/diadiemcongtac.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/PCTDienNhap/chopheplamviec.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/PCTDienNhap/addeditpctdien.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/PCTDienNhap/index.js" asp-append-version="true"></script>
+    <script>
+        var pctdiennhap = new pctdiennhapController();
+        pctdiennhap.initialize();</script>
+}
+
+<div class="">
+    <div class="page-title">
+        <div class="title_left">
+            <small>
+                <a class="btn btn-link ">
+                    Phiếu Công Tác Điện
+                </a>
+                >>
+                <a class="btn btn-link ">
+                    Nhập PCT - Tìm PCT Điện
+                </a>
+            </small>
+        </div>
+        <div class="title_right">
+            <div class="col-md-3 col-sm-3 col-xs-12 form-group pull-right top_search">
+                <button class="btn btn-round btn-warning" id="btn-create" type="button">Phiếu công tác mới</button>
+            </div>
+        </div>
+    </div>
+    <div class="page-title">
+        <div class="title_left">
+            <h3>  <small></small></h3>
+        </div>
+        <div class="title_right">
+            <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right">
+                <div class="input-group">
+                    <input type="text" id="txtTimNoiDung" class="form-control" placeholder="Địa điểm ...">
+                    <span class="input-group-btn">
+                        <button class="btn btn-tim" id="btnTimNoiDung" type="button">Tìm !</button>
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-12 form-group pull-right top_search">
+                <div class="input-group">
+                    <select id="ddlPhongTo" class="form-control"></select>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-12 form-group pull-right top_search">
+                <div class="input-group">
+                    <select id="ddlKhuVuc" class="form-control"></select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="divBaoCaoPhieuCongTacDien" class="row">
+        <div class="x_panel">
+            <div class="x_title div-h2-fontbold">
+                <h2>Các báo cáo Phiếu công tác điện<small></small></h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <form id="formPCTDBaoCao" data-parsley-validate class="form-horizontal form-label-left">
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-6 col-xs-12 ">
+                            <div class="input-group">
+                                <label>Danh sách điều kiện</label>
+                                <select id="ddlPCTDBaoCaoDieuKien" name="ddlPCTDBaoCaoDieuKien" class="form-control"></select>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12 ">
+                            <div class="col-md-3 col-sm-12 col-xs-12 ">
+                                <div class="input-group">
+                                    <label>Từ ngày</label>
+                                    <input type="text" id="txtPCTDBaoCaoTuNgay" class="form-control" placeholder="Từ ngày">
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-12 col-xs-12 ">
+                                <div class="input-group">
+                                    <label>Đến ngày</label>
+                                    <input type="text" id="txtPCTDBaoCaoDenNgay" class="form-control" placeholder="Đến ngày">
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-12 col-xs-12 ">
+                                <div class="input-group">
+                                    <label>Chọn theo ngày</label>
+                                    <input id="ckPCTDBaoCaoChonTheoNgay" type="checkbox" class="checkbox" style="width:20px;" />
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-12 col-xs-12 ">
+                                <div class="input-group">
+                                    <label></label>
+                                    <span class="input-group-btn padding-top-5px">
+                                        <button class="btn btn-warning" id="btnPCTDBaoCaoDieuKien" type="button">Danh sách </button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="x_panel">
+            <div class="table-responsive" id="table-responsivePCTDien">
+                <table id="tblPCTDien" class="table table-striped jambo_table bulk_action" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Địa điểm - Nội dung</th>
+                            <th>Từ ngày - Đến ngày (KH)</th>
+                            <th>Trạng thái</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="tblContentPCTDien"></tbody>
+                </table>
+                <div class="row">
+                    <div class="col-sm-5">
+                        <div class="dataTables_info" id="datatable-checkbox_infoPCTDien" role="status" aria-live="polite">
+                            <select id="ddl-show-pagePCTDien">
+                                <option value="10" selected="selected">10</option>
+                                <option value="20">20</option>
+                                <option value="30">30</option>
+                                <option value="50">50</option>
+                            </select>
+                            <span class="item-per-page">
+                                dòng/trang.
+                            </span>
+                            Tổng cộng: <strong id="lbPCTDienTotalRecords"></strong>
+                        </div>
+                    </div>
+                    <div class="col-sm-7">
+                        <div class="dataTables_paginate" id="datatable-checkbox_paginatePCTDien">
+                            <ul id="paginationULPCTDien"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script id="table-PCTDien" type="x-tmpl-mustache">
+        <tr>
+            <th scope="row">
+                <a class="btn-link btn-addeditPCTDien" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Id">
+                    <i class="fa fa-pencil"></i>
+                </a>
+            </th>
+
+            <td>{{DiaDiemCongTac}} - {{CacNoiDungCongTac}}</td>
+
+            <td>{{TuNgayDenNgay}}</td>
+
+            <td>{{{TrangThaiPCT}}}</td>
+
+            <th scope="row">
+                <a class="btn-link btn-ChoPhepLamViec" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Cho phép làm việc">
+                    <i>Ch.phép LV </i>
+                </a>
+            </th>
+            <th scope="row">
+                <a class="btn-link btn-DiaDiemCongTac" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="DS Địa điểm làm việc">
+                    <i>DS Địa điểm LV </i>
+                </a>
+            </th>
+            <th scope="row">
+                <a class="btn-link btn-KetThucCongTac" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Kết thúc công tác">
+                    <i>Kết thúc </i>
+                </a>
+            </th>
+
+        </tr>
+    </script>
+</div>
+
+<partial name="_AddEditModel.cshtml" />
+<partial name="_ChoPhepLamViec.cshtml" />
+<partial name="_DiaDiemCongTac.cshtml" />
+<partial name="_KetThucCongTac.cshtml" />
+
+<partial name="_themnoidungcongtac.cshtml" />
+<partial name="_themdieukienatd.cshtml" />
+<partial name="_themtrangbiatbhld.cshtml" />
+
+

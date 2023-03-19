@@ -1,0 +1,114 @@
+﻿@{ Layout = null; }
+@using Microsoft.AspNetCore.Http;
+
+@using DevExpress.AspNetCore
+@using DevExpress.XtraReports.UI;
+@using DevExpress.XtraReports.Parameters;
+
+@using NiTiErp.Reports.HopDongNuoc;
+@using NiTiErp.Helpers
+
+@namespace NiTiErp.Pages
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="/admin-side/images/powaco.ico" />
+
+    <link rel="stylesheet" href="~/css/thirdparty.bundle.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <script src="~/js/thirdparty.bundle.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+</head>
+<body>
+    <link rel="stylesheet" href="~/css/viewer.part.bundle.css" />
+    <link rel="stylesheet" href="~/css/designer.part.bundle.css" />
+
+    <script src="~/js/viewer.part.bundle.js"></script>
+    <script src="~/js/designer.part.bundle.js"></script>
+
+    @{ string makv = @Context.Session.GetString("MaKV");
+
+                    var thd = new repPoHopDongNuoc();
+
+                    if (makv == "O" || makv == "U")
+                    {
+                        thd = new repPoHopDongNuoc();
+
+                        thd.Parameters["prSoHDMoi"].Value = @Context.Session.GetString("SoHDMoi");
+                        thd.Parameters["prSoHDMoi"].Visible = false;
+                        thd.Parameters["prTenKH"].Value = @Context.Session.GetString("TenKH");
+                        thd.Parameters["prTenKH"].Visible = false;
+                        thd.Parameters["prDiaChiLD"].Value = @Context.Session.GetString("DiaChiLD");
+                        thd.Parameters["prDiaChiLD"].Visible = false;
+                        thd.Parameters["prDanhSo"].Value = @Context.Session.GetString("DanhSo");
+                        thd.Parameters["prDanhSo"].Visible = false;
+                        thd.Parameters["prNgayHieuLuc"].Value = @Context.Session.GetString("NgayHieuLuc");
+                        thd.Parameters["prNgayHieuLuc"].Visible = false;
+
+                        thd.Parameters["prNgayKyHD"].Value = @Context.Session.GetString("NgayKyHD");
+                        thd.Parameters["prNgayKyHD"].Visible = false;
+                        thd.Parameters["prThangKyHD"].Value = @Context.Session.GetString("ThangKyHD");
+                        thd.Parameters["prThangKyHD"].Visible = false;
+                        thd.Parameters["prNamKyHD"].Value = @Context.Session.GetString("NamKyHD");
+                        thd.Parameters["prNamKyHD"].Visible = false;
+                        thd.Parameters["prTaiXN"].Value = @Context.Session.GetString("TaiXN");
+                        thd.Parameters["prTaiXN"].Visible = false;
+
+                        thd.Parameters["prNguoiDaiDien"].Value = @Context.Session.GetString("NguoiDaiDien");
+                        thd.Parameters["prNguoiDaiDien"].Visible = false;
+                        thd.Parameters["prNguoiUyQuyen"].Value = @Context.Session.GetString("NguoiUyQuyen");
+                        thd.Parameters["prNguoiUyQuyen"].Visible = false;
+                        thd.Parameters["prTenChucVu"].Value = @Context.Session.GetString("TenChucVu");
+                        thd.Parameters["prTenChucVu"].Visible = false;
+                        thd.Parameters["prCMND"].Value = @Context.Session.GetString("CMND");
+                        thd.Parameters["prCMND"].Visible = false;
+                        thd.Parameters["prNgayCap"].Value = @Context.Session.GetString("NgayCap");
+                        thd.Parameters["prNgayCap"].Visible = false;
+                        thd.Parameters["prThangCap"].Value = @Context.Session.GetString("ThangCap");
+                        thd.Parameters["prThangCap"].Visible = false;
+                        thd.Parameters["prNamCap"].Value = @Context.Session.GetString("NamCap");
+                        thd.Parameters["prNamCap"].Visible = false;
+                        thd.Parameters["prTaiDau"].Value = @Context.Session.GetString("TaiDau");
+                        thd.Parameters["prTaiDau"].Visible = false;
+
+                        thd.Parameters["prSoGiayUyQuyen"].Value = @Context.Session.GetString("SoGiayUyQuyen");
+                        thd.Parameters["prSoGiayUyQuyen"].Visible = false;
+                        thd.Parameters["prNgayUyQuyen"].Value = @Context.Session.GetString("NgayUyQuyen");
+                        thd.Parameters["prNgayUyQuyen"].Visible = false;
+                        thd.Parameters["prDiaChiKH"].Value = @Context.Session.GetString("DiaChiKH");
+                        thd.Parameters["prDiaChiKH"].Visible = false;
+
+                        thd.Parameters["prMaSoThueMoi"].Value = @Context.Session.GetString("MaSoThueMoi");
+                        thd.Parameters["prMaSoThueMoi"].Visible = false;
+                        thd.Parameters["prDienThoai"].Value = @Context.Session.GetString("DienThoai");
+                        thd.Parameters["prDienThoai"].Visible = false;
+
+                        thd.Parameters["prNgayHLHD"].Value = @Context.Session.GetString("NgayHLHD");
+                        thd.Parameters["prNgayHLHD"].Visible = false;
+                        thd.Parameters["prThangHLHD"].Value = @Context.Session.GetString("ThangHLHD");
+                        thd.Parameters["prThangHLHD"].Visible = false;
+                        thd.Parameters["prNamKyHLHD"].Value = @Context.Session.GetString("NamKyHLHD");
+                        thd.Parameters["prNamKyHLHD"].Visible = false;
+
+                        thd.Parameters["prMaKhachHang"].Value = @Context.Session.GetString("MaKhachHang");
+                        thd.Parameters["prMaKhachHang"].Visible = false;
+
+                    } }
+
+
+    <div class="container-fluid body-content">
+        @Html.DevExpress().WebDocumentViewer("DocumentViewer").Height("1000px").Bind(thd)
+    </div>
+
+
+
+
+</body>
+</html>

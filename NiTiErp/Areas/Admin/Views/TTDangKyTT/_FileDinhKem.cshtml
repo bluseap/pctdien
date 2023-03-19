@@ -1,0 +1,54 @@
+﻿<div id="modal-add-edit-FileHoSo" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style="overflow-y: auto; max-height:85%;  margin-top: 50px; margin-bottom:50px; ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Xem / In bộ hồ sơ Khách hàng </h4>
+            </div>
+            <div class="modal-body">
+
+                <div id="horizontal-form">
+                    <form class="form-horizontal form-label-left input_mask" role="form" id="frmMainFileHoSo">
+                        <div class="form-group">
+                            <div class="col-12 pull-left">
+                                <button class="btn btn-warning" id="btnInGiayDeNghi" type="button">In giấy đề nghị</button>
+                            </div>
+                        </div>
+                        <table class="table table-striped jambo_table bulk_action" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    @*<th width="=20%">#</th>*@
+                                    <th>Tên file</th>
+                                    <th>.</th>
+                                </tr>
+                            </thead>
+                            <tbody id="table-contentFileBoHoSo"></tbody>
+                        </table>
+                    </form>
+                </div>
+                <div class="ln_solid"></div>
+            </div>
+        </div>
+
+    </div>
+    <div><a id='downloadFileImage' download='HoSoFile'  /></div>
+    <script type="x-tmpl-mustache" id="template-table-FileBoHoSo">
+        <tr>
+            @*<th scope="row">
+                <a class="btn-link btn-editFileBoHoSo" data-id="{{Id}}" data-toggle="tooltip"
+                    data-placement="top" title="Sửa "><i class="fa fa-pencil"></i> </a>
+            </th>*@
+            <td>
+                <a class="btn-link btnTTDMDangKy" data-id="{{Id}}" data-toggle="tooltip">
+                     {{TenFile}}
+                </a>
+            </td>
+            <td> <a class="btn-link btnTTDMDangKy" data-id="{{Id}}" data-toggle="tooltip">
+                     {{{DuongDan}}}
+                </a>
+            </td>
+        </tr>
+    </script>
+</div>
+

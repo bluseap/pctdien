@@ -1,0 +1,119 @@
+﻿<div id="modal-add-edit-EditPCTDienChoPhepLamViec" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style="overflow-y: auto; max-height:85%;  margin-top: 50px; margin-bottom:50px; ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Thêm / Sửa cho phép làm việc và tiếp nhận nơi làm việc </h4>
+            </div>
+            <div class="modal-body">
+               
+                <div id="formMainEditPCTDienChoPhepLamViec">
+                    <form class="form-horizontal form-label-left" id="frmMainEditPCTDienChoPhepLamViec">
+                        <div class="item form-group">
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <label for="lbThietBiDuongDayDaCatDien">
+                                    Những thiết bị, đường dây, đoạn đường dây đã cắt điện <a style="color:#f00"> (*) </a>
+                                </label>
+                                <input type="text" id="txtThietBiDuongDayDaCatDien" name="txtThietBiDuongDayDaCatDien" class="form-control">
+                            </div>
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <label for="lbDaTiepDat">
+                                    Đã tiếp đất tại <a style="color:#f00"> (*) </a>
+                                </label>
+                                <input type="text" id="txtDaTiepDat" name="txtDaTiepDat" class="form-control">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <label for="lbDaLamRaoChanTreoBienBaoTai">
+                                    Đã làm rào chắn và treo biển báo tại <a style="color:#f00"> (*) </a>
+                                </label>
+                                <input type="text" id="txtDaLamRaoChanTreoBienBaoTai" name="txtDaLamRaoChanTreoBienBaoTai" class="form-control">
+                            </div>
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <label for="lbPhamViDuocPhepLamViec">
+                                    Phạm vi được phép làm việc <a style="color:#f00"> (*) </a>
+                                </label>
+                                <input type="text" id="txtPhamViDuocPhepLamViec" name="txtPhamViDuocPhepLamViec" class="form-control">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <label for="lbCanhBaoChiDanNguyHiem">
+                                    Cảnh báo, chỉ dẫn các yếu tố nguy hiểm thiết yếu để đảm bảo an toàn cho đơn vị công tác <a style="color:#f00"> (*) </a>
+                                </label>
+                                <input type="text" id="txtCanhBaoChiDanNguyHiem" name="txtCanhBaoChiDanNguyHiem" class="form-control">
+                            </div>
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <label for="lbNguoiChiHuyTTKiemTraDamBaoAT">
+                                    Người chỉ huy trực tiếp đã kiểm tra và làm biện pháp an toàn tại hiện trường <a style="color:#f00"> (*) </a>
+                                </label>
+                                <input type="text" id="txtNguoiChiHuyTTKiemTraDamBaoAT" name="txtNguoiChiHuyTTKiemTraDamBaoAT" class="form-control">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <label for="lbLamTiepDatTai">
+                                    Làm tiếp đất tại <a style="color:#f00"> (*) </a>
+                                </label>
+                                <input type="text" id="txtLamTiepDatTai" name="txtLamTiepDatTai" class="form-control">
+                            </div>
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <label for="lbCPLVTongHangMucDaKiemTraBHLD">
+                                    Đã kiểm tra có đầy đủ trang bị an toàn BHLĐ khi làm việc gồm có (ghi bằng chữ). Các hạng mục đều đảm bảo yêu cầu để tiến hành công tác
+                                    <a style="color:#f00"> (*) </a>
+                                </label>
+                                <input type="text" id="txtCPLVTongHangMucDaKiemTraBHLD" name="txtCPLVTongHangMucDaKiemTraBHLD" class="form-control">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <label for="lbCPLVGiayPhoiHopChoPhep">
+                                    Và nhận đầy đủ "Giấy phối hợp cho phép" của đơn vị QLVH có liên quan (nếu có)
+                                </label>
+                                <div class="input-group">
+                                    <input type="text" id="txtCPLVGiayPhoiHopChoPhep" name="txtCPLVGiayPhoiHopChoPhep" class="form-control">
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-warning" id="btnCPLVGiayPhoiHopChoPhep">Lưu GPHCP</button>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <label for="lbCPLVCacGiayPhoiHopChoPhep">
+                                    Các "Giấy phối hợp cho phép" của đơn vị QLVH có liên quan (nếu có)
+                                </label>
+                                <input type="text" id="txtCPLVCacGiayPhoiHopChoPhep" name="txtCPLVCacGiayPhoiHopChoPhep" placeholder="Các giấy phối hợp cho phép " value="">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <div class="input-group">
+                                    <label>Cho phép đơn vị công tác bắt đầu làm việc <a style="color:#f00"> (*) </a> </label>
+                                    <div class="input-group">
+                                        <div class="col-md-3 col-sm-12 col-xs-12">
+                                            <input type="text" id="txtCPLVGioDVCTBatDauCongViec" class="form-control" placeholder="Giờ bắt đầu">
+                                        </div>
+                                        <div class="col-md-3 col-sm-12 col-xs-12">
+                                            <input type="text" id="txtCPLVPhutDVCTBatDauCongViec" class="form-control" placeholder="Phút bắt đầu">
+                                        </div>
+                                        <div class="col-md-6 col-sm-12 col-xs-12">
+                                            <input type="text" id="txtCPLVNgayDVCTBatDauCongViec" class="form-control" placeholder="Ngày bắt đầu">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="button" id="btnCancelEditChoPhepLamViec" data-dismiss="modal" class="btn btn-default">Đóng</button>
+                                <button type="button" id="btnSaveEditChoPhepLamViec" class="btn btn-warning">Lưu cho phép LV </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>         
+                <div class="ln_solid"></div>
+            </div>
+        </div>
+    </div>
+</div>

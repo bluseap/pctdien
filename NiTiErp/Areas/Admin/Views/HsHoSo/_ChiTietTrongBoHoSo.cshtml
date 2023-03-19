@@ -1,0 +1,156 @@
+﻿<div id="modal-add-edit-ChiTietTrongBoHoSo" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style="        overflow-y: auto;
+        max-height: 85%;
+        margin-top: 50px;
+        margin-bottom: 50px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Chi tiết trong bộ hồ sơ</h4>
+            </div>
+            <div class="modal-body">
+                <div id="horizontal-form">
+                    <form class="form-horizontal form-label-left input_mask" role="form" id="frmMainChiTietBoHoSo">
+
+                        <table id="tblChiTietBoHoSo" class="table table-striped jambo_table bulk_action" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th width="=5%">#</th>
+                                    <th>Stt</th>
+                                    <th>Mã KH</th>
+                                    <th>Tên KH</th>
+                                    <th>Danh số</th>
+                                    <th>Số thứ tự Hồ sơ</th>
+                                    <th>.</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tblContentChiTietBoHoSo"></tbody>
+                        </table>
+                        
+                    </form>
+                    <script type="x-tmpl-mustache" id="template-table-ChiTietBoHoSo">
+                        <tr>
+                            <th scope="row">
+                            </th>
+                            <td>
+                                {{SoThuTu}}
+                            </td>
+                            <td>
+                                {{MaKH}}
+                            </td>
+                            <td>{{TenKH}}</td>
+                            <td>{{DanhSo}}</td>
+                            <td>{{STTHoSo}}</td>
+                            <th scope="row">
+                                <a class="btn-link btn-deleteChiTietBoHoSo" data-id="{{Id}}" data-toggle="tooltip"
+                                            data-placement="top" title="Xóa Chi tiết bộ hồ sơ">
+                                            <i class="fa fa-trash-o"  style="color:red"></i>
+                                 </a>
+                            </th>
+                            @*<td>{{{TrangThaiBoHoSo}}}</td>*@
+                        </tr>
+                    </script>
+
+                </div>
+                <br/>
+                <div id="horizontal-form">
+                    <form class="form-horizontal form-label-left input_mask" role="form" id="frmMainChiTietBoHSKhachHang">
+
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button type="button" id="btnHoSoKhachHangNuoc" class="btn btn-success">Hồ sơ khách hàng nước</button>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button type="button" id="btnHoSoKhachHangDien" class="btn btn-warning">Hồ sơ khách hàng điện</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <label for="lbChiTietHoSoTuKhoa">
+                                    Mã khách hàng, Danh số, Tên khách hàng
+                                </label>
+                                <input type="text" name="txtChiTietHoSoTuKhoa" class="form-control has-feedback-right" id="txtChiTietHoSoTuKhoa" placeholder="Mã khách hàng, Danh số, Tên khách hàng  ">
+                            </div>
+                            <div class="col-sm-2">
+                                <label for="lbChiTietHoSoTuKhoa">
+                                    Số thứ tự Bộ h.sơ
+                                </label>
+                                <input type="number" name="txtSoThuTuBoHoSo" class="form-control has-feedback-right" id="txtSoThuTuBoHoSo" placeholder="Số thứ tự Bộ h.sơ ">
+                            </div>
+                            <div class="col-sm-4">
+                                <label for="lbChiTietHoSoTuKhoa">
+                                    .
+                                </label>
+                                <span class="input-group-btn ">
+                                    <button type="button" id="btnChiTietBoHSKhachHangAddSTT" class="btn btn-success">Lưu Số thứ tự </button>
+                                </span>
+                            </div>
+                        </div>
+
+                        <table class="table table-striped jambo_table bulk_action" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th width="=5%">#</th>
+                                    <th>Mã khách hàng</th>
+                                    <th>Tên khách hàng</th>
+                                    <th>Danh số</th>
+                                    <th>Số thứ tự hồ sơ</th>
+                                    <th>.</th>
+                                </tr>
+                            </thead>
+                            <tbody id="table-contentFileChiTietBoHSKhachHang"></tbody>
+                        </table>
+                        <div class="row">
+                            <div class="col-sm-5">
+                                <div class="dataTables_info" id="datatable-checkbox_infoChiTietBoHSKhachHang" role="status" aria-live="polite">
+                                    <select id="ddl-show-pageChiTietBoHSKhachHang">
+                                        <option value="10" selected="selected">10</option>
+                                        <option value="20">20</option>
+                                        <option value="30">30</option>
+                                        <option value="50">50</option>
+                                    </select>
+                                    <span class="item-per-page">
+                                        dòng/trang.
+                                    </span>
+                                    Tổng cộng: <strong id="lbChiTietBoHSKhachHangTotalRecords"></strong>
+                                </div>
+                            </div>
+                            <div class="col-sm-7">
+                                <div class="dataTables_paginate" id="datatable-checkbox_paginateChiTietBoHSKhachHang">
+                                    <ul id="paginationULChiTietBoHSKhachHang"></ul>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script type="x-tmpl-mustache" id="template-table-ChiTietBoHSKhachHang">
+        <tr>
+            <th scope="row">
+                <a class="btn-lg btn-link btn-editSoTTChiTietBoHoSo" data-id="{{MaKhachHang}}" data-toggle="tooltip" data-placement="top"
+                    title="Sửa Số thứ tự bộ hồ sơ"><i class="fa fa-pencil"></i> </a>
+            </th>
+            <td>
+                {{MaKhachHang}}
+            </td>
+            <td>{{TenKhachHang}}</td>
+            <td>{{DanhSo}}</td>
+            <td>{{SoTTBoHoSo}}</td>
+            <th scope="row">
+                <a class="btn-lg btn-link btn-editKhachHangVaoBoHoSo" data-id="{{MaKhachHang}}" data-toggle="tooltip"
+                            data-placement="top" title="Vào bộ hồ sơ">
+                            <i class=" ">Vào bộ hồ sơ</i>
+                 </a>
+            </th>
+            @*<td>{{{TrangThaiBoHoSo}}}</td>*@
+        </tr>
+    </script>
+</div>

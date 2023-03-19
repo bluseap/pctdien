@@ -1,0 +1,56 @@
+﻿<div id="modal-add-edit-DDNuocTC" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style="overflow-y: auto; max-height:85%;  margin-top: 50px; margin-bottom:50px; ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Thi công di dời đồng hồ nước </h4>
+            </div>
+            <div class="modal-body">
+                <div id="horizontal-form">
+                    <form class="form-horizontal form-label-left input_mask" role="form" id="frmMainDDNuocTC">
+                        <input type="hidden" id="hidGDNThiCongNuocId" value="" />
+
+                        <input type="hidden" id="hidGiayDeNghiDMCungCapNuocId" value="" />
+                        @*<input type="hidden" id="hidInsertGiayDeNghiDMCungCapNuocId" value="" />*@
+                        <input type="hidden" id="hidInsertGDNThiCongNuocId" value="" />
+
+                        <input type="hidden" id="hidTrangThaiThiCong" value="" />
+
+
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <label for="lbNgayDuyetThiCong">
+                                    Ngày duyệt thi công
+                                    <a style="color:red">(*)</a>
+                                </label>
+                                <input type="text" name="txtNgayDuyetThiCong" class="form-control has-feedback-right" id="txtNgayDuyetThiCong" placeholder="Ngày duyệt thi công">
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="lbNhanVienDuyetTC">Nhân viên duyệt thi công </label>
+                                <input type="text" name="txtNhanVienDuyetTC" class="form-control has-feedback-right" id="txtNhanVienDuyetTC" placeholder="Nhân viên thi công">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <label for="lbGhiChuTC">Ghi chú thi công</label>
+                                <textarea id="txtGhiChuThiCong" required="required" class="form-control" name="GhiChuThiCong"
+                                          data-parsley-trigger="keyup" data-parsley-maxlength="1000">
+                                </textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                @*<button type="button" id="btnTuChoiThietKe" data-dismiss="modal" class="btn btn-warning">Từ chối TK</button>*@
+                                <button type="button" id="btnCancelDDNuocTC" data-dismiss="modal" class="btn btn-default">Đóng</button>
+                                <button type="button" id="btnSaveDuyetThiCong" class="btn btn-success">Duyệt thi công di dời </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="ln_solid"></div>
+            </div>
+        </div>
+    </div>
+</div>

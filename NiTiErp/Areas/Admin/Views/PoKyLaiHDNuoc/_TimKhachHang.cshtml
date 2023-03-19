@@ -1,0 +1,57 @@
+﻿
+<div id="modal-add-edit-TimKhachHang" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style="overflow-y: auto; max-height:85%;  margin-top: 50px; margin-bottom:50px; ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Tìm khách hàng </h4>
+            </div>
+            <div class="modal-body">                
+
+                <form class="form-horizontal form-label-left" id="frmMainTimKhachHang">
+                    <div class="form-group">
+                        <div class="col-md-3 col-sm-12 col-xs-12">                            
+                            <select id="ddlTKHKhuVuc" class="form-control"></select>
+                        </div>
+                        <div class="col-md-6 col-sm-12 col-xs-12">                            
+                            <input type="text" id="txtTKHDieuKienTim" name="txtTKHDieuKienTim" class="form-control has-feedback-right" placeholder="Tìm theo Idkh, danh số, tên">
+                        </div>
+                        <div class="col-md-3 col-sm-12 col-xs-12">                            
+                            <button class="btn btn-success" id="btnTKHTimKhachHang" type="button">Tìm K.Hàng</button>                            
+                        </div>
+                    </div>
+                </form>
+                <div class="row">
+                    <div class="x_panel">
+                        <div class="table-responsive" id="table-responsiveTimKhachHangNuoc">
+                            <table id="tblTimKhachHangNuoc" class="table table-striped jambo_table bulk_action" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>Idkh</th>
+                                        <th>Tên khách hàng</th>
+                                        <th>Danh số</th>
+                                        <th>Khu vực</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tblContentTimKhachHangNuoc"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <script id="table-TimKhachHangNuoc" type="x-tmpl-mustache">
+                    <tr>
+                        <th scope="row">
+                            <a class="btn-link btn-timkhachhangKhachHangId" data-id="{{MaKhachHang}}" data-toggle="tooltip" data-placement="top" title="Mã khách hàng">
+                                <i >{{MaKhachHang}}</i>
+                            </a>
+                        </th>
+                        <td>{{TENKH}}</td>
+                        <td>{{DanhSo}}</td>
+                        <td>{{TENKV}}</td>
+                    </tr>
+                </script>
+            </div>
+        </div>
+    </div>
+</div>

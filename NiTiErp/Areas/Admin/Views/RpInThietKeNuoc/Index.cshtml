@@ -1,0 +1,83 @@
+﻿@{ Layout = null; }
+@using Microsoft.AspNetCore.Http;
+
+@using DevExpress.AspNetCore
+@using DevExpress.XtraReports.UI;
+@using DevExpress.XtraReports.Parameters;
+
+@using NiTiErp.Reports.ThietKe
+@using NiTiErp.Helpers
+
+@using NiTiErp.Application.Dapper.ViewModels
+@using NiTiErp.Application.Dapper.ViewModels.DangKyNuoc
+
+@namespace NiTiErp.Pages
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="/admin-side/images/powaco.ico" />
+
+    <link rel="stylesheet" href="~/css/thirdparty.bundle.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <script src="~/js/thirdparty.bundle.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+</head>
+<body>
+    <link rel="stylesheet" href="~/css/viewer.part.bundle.css" />
+    <link rel="stylesheet" href="~/css/designer.part.bundle.css" />
+
+    <script src="~/js/viewer.part.bundle.js"></script>
+    <script src="~/js/designer.part.bundle.js"></script>
+
+    @{ List<ChiTietThietKeViewModel> chitiettk = SessionHelper.GetObjectFromJson<List<ChiTietThietKeViewModel>>(Context.Session, "listThietKe");
+
+        var thietkenuoc3 = new repInThietKeNuoc();
+        thietkenuoc3.DataSource = chitiettk;
+
+        thietkenuoc3.Parameters["prMaDonDangKy"].Value = @Context.Session.GetString("MaDonDangKy");
+        thietkenuoc3.Parameters["prMaDonDangKy"].Visible = false;
+        thietkenuoc3.Parameters["prTenXiNghiep"].Value = @Context.Session.GetString("TenXiNghiepNuoc");
+        thietkenuoc3.Parameters["prTenXiNghiep"].Visible = false;
+        thietkenuoc3.Parameters["prHoTen"].Value = @Context.Session.GetString("HotenNuoc");
+        thietkenuoc3.Parameters["prHoTen"].Visible = false;
+        thietkenuoc3.Parameters["prDanhSo"].Value = @Context.Session.GetString("DanhSo");
+        thietkenuoc3.Parameters["prDanhSo"].Visible = false;
+        thietkenuoc3.Parameters["prDiaChi"].Value = @Context.Session.GetString("DiaChi");
+        thietkenuoc3.Parameters["prDiaChi"].Visible = false;
+        thietkenuoc3.Parameters["prDiaChiLapDat"].Value = @Context.Session.GetString("DiaChiLapDat");
+        thietkenuoc3.Parameters["prDiaChiLapDat"].Visible = false;
+        thietkenuoc3.Parameters["prLyDoThietKe"].Value = @Context.Session.GetString("LyDoThietKe");
+        thietkenuoc3.Parameters["prLyDoThietKe"].Visible = false;
+        thietkenuoc3.Parameters["prKetLuan"].Value = @Context.Session.GetString("KetLuan");
+        thietkenuoc3.Parameters["prKetLuan"].Visible = false;
+        thietkenuoc3.Parameters["prTenKHPhai"].Value = @Context.Session.GetString("TenKHPhai");
+        thietkenuoc3.Parameters["prTenKHPhai"].Visible = false;
+        thietkenuoc3.Parameters["prDanhSoPhai"].Value = @Context.Session.GetString("DanhSoPhai");
+        thietkenuoc3.Parameters["prDanhSoPhai"].Visible = false;
+        thietkenuoc3.Parameters["prTenKHTrai"].Value = @Context.Session.GetString("TenKHTrai");
+        thietkenuoc3.Parameters["prTenKHTrai"].Visible = false;
+        thietkenuoc3.Parameters["prDanhSoTrai"].Value = @Context.Session.GetString("DanhSoTrai");
+        thietkenuoc3.Parameters["prDanhSoTrai"].Visible = false;
+
+        thietkenuoc3.Parameters["prHinhThietKe1"].Value = @Context.Session.GetString("HinhThietKe1");
+        thietkenuoc3.Parameters["prHinhThietKe1"].Visible = false;
+
+    }
+
+
+    <div class="container-fluid body-content">
+        @Html.DevExpress().WebDocumentViewer("DocumentViewer").Height("1000px").Bind(thietkenuoc3)
+    </div>
+
+
+
+
+</body>
+</html>

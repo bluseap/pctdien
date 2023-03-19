@@ -1,0 +1,264 @@
+﻿@{ Layout = null; }
+@using Microsoft.AspNetCore.Http;
+
+<html>
+<head>
+    <title>In Phieu Dien</title>
+    <meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8" />
+    <style type="text/css">
+        .csA9B094A0 {
+            color: #000000;
+            background-color: #000000;
+            border-left-style: none;
+            border-top-style: none;
+            border-right-style: none;
+            border-bottom-style: none;
+            font-family: 'Times New Roman';
+            font-size: 13px;
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        .cs42967DF5 {
+            color: #000000;
+            background-color: transparent;
+            border-left-style: none;
+            border-top-style: none;
+            border-right-style: none;
+            border-bottom-style: none;
+            font-family: 'Times New Roman';
+            font-size: 13px;
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        .cs642CE7F4 {
+            color: #000000;
+            background-color: transparent;
+            border-left-style: none;
+            border-top-style: none;
+            border-right-style: none;
+            border-bottom-style: none;
+            font-family: 'Times New Roman';
+            font-size: 16px;
+            font-weight: normal;
+            font-style: normal;
+            padding-left: 2px;
+            padding-right: 2px;
+        }
+
+        .csCE925D0B {
+            color: #000000;
+            background-color: transparent;
+            border-left-style: none;
+            border-top-style: none;
+            border-right-style: none;
+            border-bottom-style: none;
+            font-family: 'Times New Roman';
+            font-size: 17px;
+            font-weight: bold;
+            font-style: normal;
+            padding-left: 2px;
+        }
+
+        .cs1459B140 {
+            color: #000000;
+            background-color: transparent;
+            border-left-style: none;
+            border-top-style: none;
+            border-right-style: none;
+            border-bottom-style: none;
+            font-family: 'Times New Roman';
+            font-size: 17px;
+            font-weight: bold;
+            font-style: normal;
+            padding-left: 2px;
+            padding-right: 2px;
+        }
+
+        .cs7D68A62B {
+            color: #000000;
+            background-color: transparent;
+            border-left-style: none;
+            border-top-style: none;
+            border-right-style: none;
+            border-bottom-style: none;
+            font-family: 'Times New Roman';
+            font-size: 17px;
+            font-weight: normal;
+            font-style: normal;
+            padding-left: 2px;
+        }
+
+        .cs51468E7D {
+            color: #000000;
+            background-color: transparent;
+            border-left-style: none;
+            border-top-style: none;
+            border-right-style: none;
+            border-bottom-style: none;
+            font-family: 'Times New Roman';
+            font-size: 17px;
+            font-weight: normal;
+            font-style: normal;
+            padding-left: 2px;
+            padding-right: 2px;
+        }
+
+        .csB5AD7D5D {
+            color: #000000;
+            background-color: transparent;
+            border-left-style: none;
+            border-top-style: none;
+            border-right-style: none;
+            border-bottom-style: none;
+            font-family: 'Times New Roman';
+            font-size: 19px;
+            font-weight: bold;
+            font-style: normal;
+            padding-left: 2px;
+        }
+
+        .csF7D3565D {
+            height: 0px;
+            width: 0px;
+            overflow: hidden;
+            font-size: 0px;
+            line-height: 0px;
+        }
+    </style>
+
+    <link href="/css/powanguyen.css" rel="stylesheet" asp-append-version="true" />
+
+    <script src="/js/jquery.js"></script>
+    <script src="/js/jspdf.min.js"></script>
+
+    <script src="/js/fastclick.js"></script>
+    <script src="~/js/mustache.js"></script>
+
+    <script src="~/client-app/shared/powa.js" asp-append-version="true"></script>
+
+</head>
+<body>
+    <input type="hidden" id="hidTTCacDichVuNuocId" value=@Context.Session.GetString("dichvunuocId") />
+    <div class="div-padding-30">
+        <input type="button" id="create_pdf" value="Tải file PDF" class="input-color">
+    </div>
+
+    <form class="frmInPhieuTiepNhanDien">
+        <div leftMargin=10 topMargin=10 rightMargin=10 bottomMargin=10 style="background-color:#FFFFFF">
+            <table cellpadding="0" cellspacing="0" border="0" style="border-width:0px;empty-cells:show;width:706px;height:720px;position:relative;">
+                <tr>
+                    <td style="position:absolute;">
+                        <div class="cs1459B140" style="width:369px;height:21px;line-height:20px;margin-top:31px;margin-left:333px;position:absolute;text-align:center;vertical-align:top;">
+                            <nobr>Độc&nbsp;lập&nbsp;-&nbsp;Tự&nbsp;do&nbsp;-&nbsp;Hạnh&nbsp;ph&#250;c</nobr>
+                        </div>
+                        <div class="cs1459B140" style="width:369px;height:21px;line-height:20px;margin-top:10px;margin-left:333px;position:absolute;text-align:center;vertical-align:top;">
+                            <nobr>CỘNG&nbsp;H&#210;A&nbsp;X&#195;&nbsp;HỘI&nbsp;CHỦ&nbsp;NGHĨA&nbsp;VIỆT&nbsp;NAM</nobr>
+                        </div>
+                        <div class="cs51468E7D" style="width:246px;height:21px;line-height:20px;margin-top:10px;margin-left:26px;position:absolute;text-align:center;vertical-align:top;">
+                            <nobr>C&#212;NG&nbsp;TY&nbsp;CỔ&nbsp;PHẦN</nobr>
+                        </div>
+                        <div class="cs51468E7D" style="width:246px;height:21px;line-height:20px;margin-top:31px;margin-left:26px;position:absolute;text-align:center;vertical-align:top;">
+                            <nobr>ĐIỆN&nbsp;NƯỚC&nbsp;AN&nbsp;GIANG</nobr>
+                        </div>
+                        <div class="cs642CE7F4" style="width:246px;height:20px;line-height:18px;margin-top:70px;margin-left:26px;position:absolute;text-align:center;vertical-align:top;">
+                            <nobr>Số:&nbsp;............/ĐNAG-GTN</nobr>
+                        </div>
+                        <div class="cs642CE7F4" style="width:343px;height:20px;line-height:18px;margin-top:70px;margin-left:359px;position:absolute;text-align:center;vertical-align:top;">
+                            <nobr><label id="lbNgayNhanHoSoLapMoi"></label></nobr>
+                        </div>
+                        <div class="cs1459B140" style="width:676px;height:23px;line-height:20px;margin-top:108px;margin-left:26px;position:absolute;text-align:center;vertical-align:top;">
+                            <nobr>GIẤY&nbsp;TIẾP&nbsp;NHẬN&nbsp;HỒ&nbsp;SƠ&nbsp;V&#192;&nbsp;HẸN&nbsp;TRẢ&nbsp;KẾT&nbsp;QUẢ</nobr>
+                        </div>
+                        <div class="cs1459B140" style="width:676px;height:22px;line-height:20px;margin-top:144px;margin-left:26px;position:absolute;text-align:center;vertical-align:top;">
+                            <nobr>M&#227;&nbsp;hồ&nbsp;sơ:&nbsp;<label id="lbMaHoSo"></label></nobr>
+                        </div>
+                        <div class="csA9B094A0" style="width:119px;height:1px;margin-top:52px;margin-left:91px;position:absolute;">
+                        </div>
+                        <div class="cs42967DF5" style="width:119px;height:1px;margin-top:53px;margin-left:91px;position:absolute;">
+                        </div>
+                        <div class="csA9B094A0" style="width:118px;height:1px;margin-top:52px;margin-left:468px;position:absolute;">
+                        </div>
+                        <div class="cs42967DF5" style="width:118px;height:1px;margin-top:53px;margin-left:468px;position:absolute;">
+                        </div>
+                        <div class="csCE925D0B" style="width:292px;height:22px;line-height:20px;margin-top:196px;margin-left:91px;position:absolute;text-align:left;vertical-align:top;">
+                            <nobr>C&#244;ng&nbsp;ty&nbsp;cổ&nbsp;phần&nbsp;Điện&nbsp;Nước&nbsp;An&nbsp;Giang</nobr>
+                        </div>
+                        <div class="cs7D68A62B" style="width:160px;height:23px;line-height:20px;margin-top:230px;margin-left:91px;position:absolute;text-align:left;vertical-align:top;">
+                            <nobr>Tiếp&nbsp;nhận&nbsp;hồ&nbsp;sơ&nbsp;của:</nobr>
+                        </div>
+                        <div class="cs7D68A62B" style="width:62px;height:22px;line-height:20px;margin-top:266px;margin-left:91px;position:absolute;text-align:left;vertical-align:top;">
+                            <nobr>Địa&nbsp;chỉ:</nobr>
+                        </div>
+                        <div class="cs7D68A62B" style="width:102px;height:23px;line-height:20px;margin-top:300px;margin-left:91px;position:absolute;text-align:left;vertical-align:top;">
+                            <nobr>Số&nbsp;điện&nbsp;thoại:</nobr>
+                        </div>
+                        <div class="cs7D68A62B" style="width:221px;height:23px;line-height:20px;margin-top:300px;margin-left:483px;position:absolute;text-align:left;vertical-align:top;">
+                            <nobr>Email:&nbsp;.....................................</nobr>
+                        </div>
+                        <div class="cs7D68A62B" style="width:206px;height:22px;line-height:20px;margin-top:336px;margin-left:91px;position:absolute;text-align:left;vertical-align:top;">
+                            <nobr>Nội&nbsp;dung&nbsp;y&#234;u&nbsp;cầu&nbsp;giải&nbsp;quyết:</nobr>
+                        </div>
+                        <div class="cs7D68A62B" style="width:206px;height:22px;line-height:20px;margin-top:373px;margin-left:91px;position:absolute;text-align:left;vertical-align:top;">
+                            <nobr>Th&#224;nh&nbsp;phần&nbsp;hồ&nbsp;sơ&nbsp;nộp&nbsp;gồm:</nobr>
+                        </div>
+                        <div class="cs7D68A62B" style="width:117px;height:22px;line-height:20px;margin-top:551px;margin-left:91px;position:absolute;text-align:left;vertical-align:top;">
+                            <nobr>Số&nbsp;lượng&nbsp;hồ&nbsp;sơ:</nobr>
+                        </div>
+                        <div class="cs7D68A62B" style="width:311px;height:22px;line-height:20px;margin-top:586px;margin-left:91px;position:absolute;text-align:left;vertical-align:top;">
+                            <nobr>Thời&nbsp;gian&nbsp;giải&nbsp;quyết&nbsp;hồ&nbsp;sơ&nbsp;theo&nbsp;quy&nbsp;định&nbsp;l&#224;:</nobr>
+                        </div>
+                        <div class="cs7D68A62B" style="width:160px;height:22px;line-height:20px;margin-top:623px;margin-left:91px;position:absolute;text-align:left;vertical-align:top;">
+                            <nobr>Thời&nbsp;gian&nbsp;nhận&nbsp;hồ&nbsp;sơ:</nobr>
+                        </div>
+                        <div class="cs7D68A62B" style="width:271px;height:22px;line-height:20px;margin-top:660px;margin-left:91px;position:absolute;text-align:left;vertical-align:top;">
+                            <nobr>Thời&nbsp;gian&nbsp;trả&nbsp;kết&nbsp;quả&nbsp;giải&nbsp;quyết&nbsp;hồ&nbsp;sơ:</nobr>
+                        </div>
+                        <div class="cs7D68A62B" style="width:99px;height:22px;line-height:20px;margin-top:698px;margin-left:91px;position:absolute;text-align:left;vertical-align:top;">
+                            <nobr>Đơn&nbsp;vị&nbsp;xử&nbsp;l&#253;:</nobr>
+                        </div>
+                        <div class="csB5AD7D5D" style="width:450px;height:23px;line-height:22px;margin-top:230px;margin-left:254px;position:absolute;text-align:left;vertical-align:top;">
+                            <nobr><label id="lbtennguoiyeucau" /></nobr>
+                        </div>
+                        <div class="cs7D68A62B" style="width:549px;height:22px;line-height:20px;margin-top:266px;margin-left:155px;position:absolute;text-align:left;vertical-align:top;">
+                            <nobr><label id="lbdiachi" /></nobr>
+                        </div>
+                        <div class="cs7D68A62B" style="width:286px;height:23px;line-height:20px;margin-top:300px;margin-left:195px;position:absolute;text-align:left;vertical-align:top;">
+                            <nobr><label id="lbsodienthoai" /></nobr>
+                        </div>
+                        <div class="cs7D68A62B" style="width:405px;height:22px;line-height:20px;margin-top:336px;margin-left:299px;position:absolute;text-align:left;vertical-align:top;">
+                            <nobr><label id="lbyeucaugiaiquyet" /></nobr>
+                        </div>
+                        <div class="cs7D68A62B" style="width:494px;height:22px;line-height:20px;margin-top:551px;margin-left:210px;position:absolute;text-align:left;vertical-align:top;">
+                            <nobr><label id="lbSoLuongHoSo" /></nobr>
+                        </div>
+                        <div class="cs7D68A62B" style="width:300px;height:22px;line-height:20px;margin-top:586px;margin-left:404px;position:absolute;text-align:left;vertical-align:top;">
+                            <nobr><label id="lbsongaygiaiquyethoso" /></nobr>
+                        </div>
+                        <div class="cs7D68A62B" style="width:450px;height:22px;line-height:20px;margin-top:623px;margin-left:254px;position:absolute;text-align:left;vertical-align:top;">
+                            <nobr><label id="lbthoigiannhanhoso" /></nobr>
+                        </div>
+                        <div class="cs7D68A62B" style="width:340px;height:22px;line-height:20px;margin-top:660px;margin-left:364px;position:absolute;text-align:left;vertical-align:top;">
+                            <nobr><label id="lbthoigiantraketquahoso" /></nobr>
+                        </div>
+                        <div class="cs7D68A62B" style="width:512px;height:22px;line-height:20px;margin-top:698px;margin-left:192px;position:absolute;text-align:left;vertical-align:top;">
+                            <nobr><label id="lbxinghiep" /></nobr>
+                        </div>
+                        <div class="cs7D68A62B" style="width:578px;height:66px;line-height:20px;margin-top:407px;margin-left:126px;position:absolute;text-align:left;vertical-align:top;">
+                            <label id="lbHoSoKemTheo" />
+                        </div>
+                        <div class="cs7D68A62B" style="width:578px;height:46px;line-height:20px;margin-top:490px;margin-left:126px;position:absolute;text-align:left;vertical-align:top;">
+                            <label id="lbGiayToXacDinhChuThe" />
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+
+</body>
+</html>
+
+<script src="/client-app/controllers/inphieudichvunuoc/index.js" asp-append-version="true"></script>
+<script src="/js/html2canvas.js" asp-append-version="true"></script>

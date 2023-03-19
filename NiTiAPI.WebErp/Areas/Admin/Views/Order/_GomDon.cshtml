@@ -1,0 +1,142 @@
+﻿
+<div id="modal-add-edit-GomDon" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style="overflow-y: auto; max-height:85%;  margin-top: 50px; margin-bottom:50px; ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Gom đơn </h4>
+            </div>
+            <div class="modal-body">
+
+                <div id="formGomDonOrderDetails">
+                    @*<form class="form-horizontal form-label-left" id="frmMainGomDon">
+                <div class="form-group">
+                    <div class="col-md-6 col-sm-12 col-xs-12">
+                        <label for="lbGomDonTimDon">
+                            Tìm Tên khách hàng, Số điện thoại, Mã vận đơn
+                        </label>
+                        <input type="text" id="txtGomDonTimDon" name="txtGomDonTimDon" class="form-control has-feedback-right" placeholder="Tìm Tên khách hàng, Số điện thoại, Mã vận đơn ">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="button" id="btnCancelEditOrderDetails" data-dismiss="modal" class="btn btn-default">Đóng</button>
+                        <button type="button" id="btnSaveEditOrderDetails" class="btn btn-warning">Lưu đơn hàng khách hàng </button>
+                    </div>
+                </div>
+            </form>*@
+                    <table id="tblGomDon" class="table table-striped jambo_table bulk_action" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th width="=10%">#</th>
+                                <th>Tên khách hàng</th>
+                                <th>Số điện thoại</th>
+                                <th>Tên hàng</th>
+                                <th>Tiền hàng</th>
+                                <th>Tiền cọc</th>
+                                <th>Ngày Live</th>
+                                <th>.</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tblContentGomDon"></tbody>
+                    </table>
+                    <script id="table-GomDon" type="x-tmpl-mustache">
+                        <tr>
+                            <th scope="row">
+                            </th>
+                            <td>{{CustomerName}}</td>
+                            <td>{{CustomerPhone}}</td>
+                            <td>{{ProductName}}</td>
+                            <td>{{TienTong}}</td>
+                            <td>{{TienCoc}}</td>
+                            <td>{{NgayDatLive}}</td>
+                            <th scope="row">
+                                <a class="btn-link btn-deleteGomDon" data-id="{{OrderId}}" data-toggle="tooltip"
+                                            data-placement="top" title="Xóa Gom đơn hàng">
+                                            <i class="fa fa-trash-o"  style="color:red"></i>
+                                 </a>
+                            </th>
+                        </tr>
+                    </script>
+                </div>
+                <div class="ln_solid"></div>
+                <div class="table-responsive" id="table-responsiveGomDonOrderDetails">
+                    <form class="form-horizontal form-label-left" id="frmMainGomDonOrderDetails">
+                        <div class="form-group">
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <label for="lbGomDonTimDon">
+                                    Tìm Tên khách hàng, Số điện thoại, Mã vận đơn
+                                </label>
+                                <input type="text" id="txtGomDonTimDon" name="txtGomDonTimDon" class="form-control has-feedback-right" placeholder="Tìm Tên khách hàng, Số điện thoại, Mã vận đơn ">
+                            </div>
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <label for="lbGomDonTimDon2">
+                                    .
+                                </label>
+                                <span class="input-group-btn ">
+                                    <button type="button" id="btnGomDonOrderDetailsTim" class="btn btn-warning">Tìm đơn hàng </button>
+                                </span>
+                            </div>
+                        </div>
+                    </form>
+                    <table id="tblGomDonOrderDetails" class="table table-striped jambo_table bulk_action" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th width="=10%">#</th>
+                                <th>Tên khách hàng</th>
+                                <th>Số điện thoại</th>
+                                <th>Tên hàng</th>
+                                <th>Tiền hàng</th>
+                                <th>Tiền cọc</th>
+                                <th>Ngày Live</th>
+                                <th>.</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tblContentGomDonOrderDetails"></tbody>
+                    </table>
+                    <div class="row" id="row-GomDon-infoGomDonOrderDetails">
+                        <div class="col-sm-5">
+                            <div class="dataTables_info" id="datatable-infoGomDonOrderDetails" role="status" aria-live="polite">
+                                <select id="ddl-show-pageGomDonOrderDetails">
+                                    <option value="10" selected="selected">10</option>
+                                    <option value="20">20</option>
+                                    <option value="30">30</option>
+                                    <option value="50">50</option>
+                                </select>
+                                <span class="item-per-page">
+                                    dòng/trang.
+                                </span>
+                                Tổng cộng: <strong id="lblGomDonOrderDetailsTotalRecords"></strong>
+                            </div>
+                        </div><div class="col-sm-7">
+                            <div class="dataTables_paginate" id="datatable-checkbox_paginateGomDonOrderDetails">
+                                <ul id="paginationULGomDonOrderDetails"></ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <script id="table-GomDonOrderDetails" type="x-tmpl-mustache">
+                    <tr>
+                        <th scope="row">
+                            <a class="btn btn-lg btn-editGomDonOrderDetails" data-id="{{OrderId}}" data-toggle="tooltip" data-placement="top" title="Gom đơn hàng"><i class="fa fa-arrow-up"></i> </a>
+                        </th>
+                        <td>{{CustomerName}}</td>
+                        <td>{{CustomerPhone}}</td>
+                        <td>{{ProductName}}</td>
+                        <td>{{TienTong}}</td>
+                        <td>{{TienCoc}}</td>
+                        <td>{{NgayDatLive}}</td>
+                        <th scope="row">
+                            <a class="btn btn-lg btn-XemLaiGomDonOrderDetails" data-id="{{OrderId}}" data-toggle="tooltip" data-placement="top" title="Gom đơn hàng">
+                            Xem lại Gom đơn</a>
+                        </th>
+                    </tr>
+                </script>
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,114 @@
+﻿
+
+r update procedure [dbo].[Create_TTDangKyDien]
+r update procedure [dbo].[Create_TTDangKyNuoc]
+r update procedure [dbo].[Create_TTCacDichVuDien]
+r update procedure [dbo].[Create_TTCacDichVuNuoc]
+
+r update procedure [dbo].[Get_TTDangKyNuoc_ByIdNoTest]
+r update procedure [dbo].[Get_TTDangKyDien_ByIdNoTest]
+r update procedure [dbo].[Get_TTCacDichVuDien_ByIdNoTest]
+r update procedure [dbo].[Get_TTCacDichVuNuoc_ByIdNoTest]
+
+r update procedure [dbo].[Get_TTDangKyDien_ById] 
+r update procedure [dbo].[Get_TTDangKyNuoc_ById]
+r update procedure [dbo].[Get_TTCacDichVuDien_ById]
+r update procedure [dbo].[Get_TTCacDichVuNuoc_ById]
+
+
+r	create procedure [dbo].[Get_TTDangKyFile_ByAll]
+r	create procedure [dbo].[Update_TTDangKyFile_ByImageFile64]
+
+r	update procedure [dbo].[Create_TTDangKyDien]
+r	update procedure [dbo].[Create_TTDangKyNuoc]
+r	update procedure [dbo].[Create_TTDangKyFile]
+r	update procedure [dbo].[Create_TTCacDichVuDien]
+r	update procedure [dbo].[Create_TTCacDichVuNuoc]
+
+
+
+RR
+create procedure [dbo].[Get_TTCacDichVuDien_ById]
+create procedure [dbo].[Get_TTCacDichVuNuoc_ById]
+
+create procedure [dbo].[Get_TTCacDichVuDien_AllPaging]
+create procedure [dbo].[Get_TTCacDichVuNuoc_AllPaging]
+
+create procedure [dbo].[Get_TTDMDangKy_ById]
+create procedure [dbo].[Get_TTDMDangKy_ByTenCot]
+
+create procedure [dbo].[Get_TTDangKyFile_ById]
+create procedure [dbo].[Get_TTDangKyFile_ByDangKyId]
+
+create procedure [dbo].[Get_TTDangKyDien_ById]
+create procedure [dbo].[Get_TTDangKyDien_AllPaging]
+
+create procedure [dbo].[Get_TTDangKyNuoc_ById]
+create procedure [dbo].[Get_TTDangKyNuoc_AllPaging]
+
+create procedure [dbo].[Create_TTDangKyDien]
+create procedure [dbo].[Create_TTDangKyNuoc]
+create procedure [dbo].[Create_TTDangKyFile]
+create procedure [dbo].[Create_TTCacDichVuDien]
+create procedure [dbo].[Create_TTCacDichVuNuoc]
+
+create procedure [dbo].[Delete_TTDangKyDien]
+create procedure [dbo].[Delete_TTDangKyNuoc]
+create procedure [dbo].[Delete_TTDangKyFile_ByCodeIdFileName]
+create procedure [dbo].[Delete_TTCacDichVuDien]
+create procedure [dbo].[Delete_TTCacDichVuNuoc]
+
+create procedure [dbo].[Update_TTDangKyFile_ByCodeId]
+
+
+
+
+
+create procedure [dbo].[Get_QuanHuyen_ByTinh]
+
+create procedure [dbo].[Get_PhuongXa_ByHuyen]
+
+
+RR
+create table TTCacDichVuDien
+create table TTCacDichVuDienHis
+create table TTCacDichVuNuoc
+create table TTCacDichVuNuocHis
+
+create table TTDangKyNuoc
+create table TTDangKyNuocHis
+
+create table TTDangKyDien
+create table TTDangKyDienHis
+
+create table TTDangKyFile
+create table TTDangKyFileHis
+
+create table TTDMDangKy
+
+create table TTTestDangKy
+
+
+RR
+inport data table TTDMDangKy from database
+
+RR
+Insert table QuanHuyen : MAKV varchar(50), MAKVPO varchar(50)
+
+update QuanHuyen set MAKV='X'  , MAKVPO = '' where Id=883
+update QuanHuyen set MAKV='S'  , MAKVPO = 'J' where Id=884
+update QuanHuyen set MAKV='Q'  , MAKVPO = 'G' where Id=886
+update QuanHuyen set MAKV='T'  , MAKVPO = 'H' where Id=887
+update QuanHuyen set MAKV='P'  , MAKVPO = 'F' where Id=888
+update QuanHuyen set MAKV='N'  , MAKVPO = 'D' where Id=889
+update QuanHuyen set MAKV='M'  , MAKVPO = 'C' where Id=890
+update QuanHuyen set MAKV='L'  , MAKVPO = 'B' where Id=891
+update QuanHuyen set MAKV='O'  , MAKVPO = 'E' where Id=892
+update QuanHuyen set MAKV='K'  , MAKVPO = 'A' where Id=893
+update QuanHuyen set MAKV='U'  , MAKVPO = 'I' where Id=894
+
+
+
+
+
+

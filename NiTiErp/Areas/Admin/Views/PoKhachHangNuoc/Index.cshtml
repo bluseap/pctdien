@@ -1,0 +1,181 @@
+﻿@{ ViewData["Title"] = "Index"; }
+@section Styles{
+    <link href="~/lib/jQuery-EasyUI/themes/bootstrap/easyui.css" rel="stylesheet" />
+    <link href="~/lib/jQuery-EasyUI/themes/icon.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap-datepicker/dist/css/bootstrap-datepicker.css" rel="stylesheet" />
+}
+@section Scripts{
+
+    <script src="~/lib/jQuery-EasyUI/jquery.easyui.min.js" asp-append-version="true"></script>
+    <script src="~/lib/bootstrap-datepicker/dist/js/bootstrap-datepicker.js" asp-append-version="true"></script>
+    <script src="~/lib/bootstrap-datepicker/dist/locales/bootstrap-datepicker.vi.min.js" charset="UTF-8" asp-append-version="true"></script>
+
+    
+    <script src="~/app/controllers/pokhachhangnuoc/addeditpokhachhangnuoc.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/pokhachhangnuoc/index.js" asp-append-version="true"></script>
+    <script>
+        var pokhachhangnuoc = new pokhachhangnuocController();
+        pokhachhangnuoc.initialize();</script>
+}
+
+<div class="">
+    <div class="page-title">
+        <div class="title_left">
+            <small>
+                <a class="btn btn-link ">
+                    Khách hàng nước
+                </a>
+                >>
+                <a class="btn btn-link ">
+                    Nhập - Tìm khách hàng
+                </a>
+            </small>
+        </div>
+        <div class="title_right">
+            <div class="col-md-3 col-sm-3 col-xs-12 form-group pull-right top_search">
+                <button class="btn btn-round btn-success" id="btn-create" type="button">Khai thác mới</button>
+            </div>
+        </div>
+    </div>
+    <div class="page-title">
+        <div class="title_left">
+            <h3>  <small></small></h3>
+        </div>
+        <div class="title_right">
+            <div class="col-md-8 col-sm-8 col-xs-12 form-group pull-right">
+                <div class="input-group">
+                    <label>Tìm Idkh, d.số, tên kh, số No, đ.thoại</label>
+                    <input type="text" id="txtTimNoiDung" class="form-control" placeholder="Tìm Idkh, danh số, tên kh, Số No, đ.thoại">
+                    <span class="input-group-btn padding-top-5px">
+                        <button class="btn btn-success" id="btnTimNoiDung" type="button">Tìm !</button>
+                    </span>
+                </div>
+            </div>            
+            <div class="col-md-3 col-sm-3 col-xs-12 form-group pull-right top_search">
+                <div class="input-group">
+                    <label>Khu vực</label>
+                    <select id="ddlKhuVuc" class="form-control"></select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="divBaoKhachHangNuoc" class="row">
+        <div class="x_panel">
+            <div class="x_title div-h2-fontbold">
+                <h2>Các báo Khách hàng nước<small></small></h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <form id="formTTBaoCao" data-parsley-validate class="form-horizontal form-label-left">
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-6 col-xs-12 ">
+                            <div class="input-group">
+                                <label>Danh sách theo</label>
+                                <select id="ddlKHNuocBaoCaoTheo" name="ddlKHNuocBaoCaoTheo" class="form-control"></select>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12 ">
+                            <div class="col-md-3 col-sm-12 col-xs-12 ">
+                                <div class="input-group">
+                                    <label>Từ ngày</label>
+                                    <input type="text" id="txtKHNuocTuNgay" class="form-control" placeholder="Từ ngày">
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-12 col-xs-12 ">
+                                <div class="input-group">
+                                    <label>Đến ngày</label>
+                                    <input type="text" id="txtKHNuocDenNgay" class="form-control" placeholder="Đến ngày">
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-12 col-xs-12 ">
+                                <div class="input-group">
+                                    <label>Chọn theo ngày</label>
+                                    <input id="ckKHNuocChonTheoNgay" type="checkbox" class="checkbox" style="width:20px;" />
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-12 col-xs-12 ">
+                                <div class="input-group">
+                                    <label></label>
+                                    <span class="input-group-btn padding-top-5px">
+                                        <button class="btn btn-success" id="btnKHNuocBaoCaoTheo" type="button">Danh sách </button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="x_panel">
+            <div class="table-responsive" id="table-responsiveKhachHangNuoc">
+                <table id="tblKhachHangNuoc" class="table table-striped jambo_table bulk_action" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Idkh</th>
+                            <th>Tên K.hàng mới</th>
+                            <th>Khu vực</th>
+                            <th>Danh số</th>
+                            <th>Kỳ Kh.thác</th>
+                            <th>Số đ.thoại</th>
+                            <th>MĐSD</th>
+                            <th>Số No</th>
+                            <th>Số h.sơ</th>
+                            <th>Trạng thái</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tblContentKhachHangNuoc"></tbody>
+                </table>
+                <div class="row">
+                    <div class="col-sm-5">
+                        <div class="dataTables_info" id="datatable-checkbox_infoKhachHangNuoc" role="status" aria-live="polite">
+                            <select id="ddl-show-pageKhachHangNuoc">
+                                <option value="10" selected="selected">10</option>
+                                <option value="20">20</option>
+                                <option value="30">30</option>
+                                <option value="50">50</option>
+                            </select>
+                            <span class="item-per-page">
+                                dòng/trang.
+                            </span>
+                            Tổng cộng: <strong id="lbKhachHangNuocTotalRecords"></strong>
+                        </div>
+                    </div>
+                    <div class="col-sm-7">
+                        <div class="dataTables_paginate" id="datatable-checkbox_paginateKhachHangNuoc">
+                            <ul id="paginationULKhachHangNuoc"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script id="table-KhachHangNuoc" type="x-tmpl-mustache">
+        <tr>
+            <th scope="row">
+                <a class="btn-link btn-addeditKhachHangId" data-id="{{MaKhachHang}}" data-toggle="tooltip" data-placement="top" title="Mã khách hàng">
+                    <i >{{MaKhachHang}}</i>
+                </a>
+            </th>
+            <td>{{TENKH}}</td>
+            <td>{{TENKV}}</td>
+            <td>{{DanhSo}}</td>
+            <td>{{ThangNamKhaiThac}}</td>
+            <td>{{SoDienThoaiKH}}</td>
+            <td>{{MAMDSD}}</td>
+            <td>{{DongHoSoNo}}</td>
+            <td>{{STTTS}}</td>
+            <th scope="row">
+                <a class="btn-link btn-XemTieuThu" data-id="{{MaKhachHang}}" data-toggle="tooltip" data-placement="top" title="Xem t.thụ">
+                    <i >Xem t.thụ </i>
+                </a>
+            </th>
+
+        </tr>
+    </script>
+</div>
+
+<partial name="_AddEditModel.cshtml" />
+
+

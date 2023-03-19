@@ -1,0 +1,49 @@
+﻿
+<div id="modal-add-edit-KetThucHoSo" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style="overflow-y: auto; max-height:85%;  margin-top: 50px; margin-bottom:50px; ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Kết thúc hồ sơ Kiểm định đồng hồ điện </h4>
+            </div>
+            <div class="modal-body">
+                <div id="horizontal-form">
+                    <form class="form-horizontal form-label-left input_mask" role="form" id="frmMainKetThucHoSo">
+
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <label for="lbNgayKetThucHoSo">
+                                    Ngày kết thúc hồ sơ
+                                    <a style="color:red">(*)</a>
+                                </label>
+                                <input type="text" name="txtNgayKetThucHoSo" class="form-control has-feedback-right" id="txtNgayKetThucHoSo" placeholder="Ngày kết thúc hồ sơ">
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="lbNhanVienKetThucHoSo">Nhân viên kết thúc hồ sơ </label>
+                                <input type="text" name="txtNhanVienKetThucHoSo" class="form-control has-feedback-right" id="txtNhanVienKetThucHoSo" placeholder="Nhân viên kết thúc hồ sơ">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <label for="lbGhiChuKetThucHoSo">Ghi chú kết thúc hồ sơ</label>
+                                <textarea id="txtGhiChuKetThucHoSo" required="required" class="form-control" name="txtGhiChuKetThucHoSo"
+                                          data-parsley-trigger="keyup" data-parsley-maxlength="1000">
+                                </textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="button" id="btnCancelKetThucHoSo" data-dismiss="modal" class="btn btn-default">Đóng</button>
+                                <button type="button" id="btnSaveKetThucHoSo" class="btn btn-warning">Duyệt Kết thúc hồ sơ </button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+                <div class="ln_solid"></div>
+            </div>
+        </div>
+    </div>
+</div>

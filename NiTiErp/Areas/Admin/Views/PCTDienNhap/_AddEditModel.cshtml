@@ -1,0 +1,308 @@
+﻿<div id="modal-add-edit-EditPCTDienNhap" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style="overflow-y: auto; max-height:85%;  margin-top: 50px; margin-bottom:50px; ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Thêm / Sửa phiếu công tác điện </h4>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="hidPCTDienId" value="" />
+                <input type="hidden" id="hidInsertPCTDien" value="" />
+
+                <input type="hidden" id="hidPCTDanhMucId" value="" />
+                <input type="hidden" id="hidInsertThemNoiDungCongTac" value="" />
+                <input type="hidden" id="hidInsertThemDieuKienATD" value="" />
+                <input type="hidden" id="hidInsertThemTrangBiATBHLDLamViec" value="" />
+
+                <input type="hidden" id="hidPCTDienCode" value="" />
+
+                <input type="hidden" id="hidPCTDienNguoiLanhDaoCongViecId" value="" />
+                <input type="hidden" id="hidPCTDienNguoiChiHuyTrucTiepId" value="" />
+                <input type="hidden" id="hidPCTDienNguoiGiamSatATDId" value="" />
+                <input type="hidden" id="hidPCTDienNguoiChoPhepId" value="" />
+                <input type="hidden" id="hidPCTDienTenNguoiCapPCTId" value="" />
+
+                <input type="hidden" id="hidPCTDienTenNguoiCapPhieuTaiHienTruongId" value="" />
+
+                <input type="hidden" id="hidPCTDiaDiemCongTacId" value="" />
+                <input type="hidden" id="hidDDLVNguoiChiHuyTrucTiepId" value="" />
+                <input type="hidden" id="hidDDLVNguoiChoPhepId" value="" />
+                <input type="hidden" id="hidInsertDiaDiemCongTac" value="" />
+
+                <div id="formMainEditPCTDienNhap1">
+                    <form class="form-horizontal form-label-left" id="frmMainEditPCTDienNhap1">
+                        <div class="item form-group">
+                            <div class="col-md-4 col-sm-12 col-xs-12">
+                                <label for="lbPCTDienNhap1KhuVuc">
+                                    Khu vực <a style="color:red">(*)</a>
+                                </label>
+                                <select id="ddlPCTDienNhap1KhuVuc" name="ddlPCTDienNhap1KhuVuc" class="form-control"></select>
+                            </div>
+                            <div class="col-md-4 col-sm-12 col-xs-12">
+                                <label for="lbPCTDienNhap1PhongBan">
+                                    Phòng, tổ <a style="color:red">(*)</a>
+                                </label>
+                                <select id="ddlPCTDienNhap1PhongBan" name="ddlPCTDienNhap1PhongBan" class="form-control"></select>
+                            </div>
+                            <div class="col-md-4 col-sm-12 col-xs-12">
+                                <label for="lbSoPhieuCongTac">
+                                    Số phiếu công tác
+                                </label>
+                                <input type="text" id="txtSoPhieuCongTac" name="txtSoPhieuCongTac" class="form-control" placeholder="Số phiếu công tác">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <div class="col-md-4 col-sm-12 col-xs-12">
+                                <label for="lbNguoiLanhDaoCongViec">
+                                    Người lãnh đạo công việc
+                                </label>
+                                <input type="text" id="txtNguoiLanhDaoCongViec" name="txtNguoiLanhDaoCongViec" class="form-control">
+                            </div>
+                            <div class="col-md-2 col-sm-12 col-xs-12">
+                                <label for="lbNguoiLanhDaoCongViecBacATD">
+                                    Bậc ATĐ
+                                </label>
+                                <select id="ddlNguoiLanhDaoCongViecBacATD" name="ddlNguoiLanhDaoCongViecBacATD" class="form-control"></select>
+                            </div>
+                            <div class="col-md-4 col-sm-12 col-xs-12">
+                                <label for="lbNguoiChiHuyTrucTiep">
+                                    Người chỉ huy trực tiếp <a style="color:red">(*)</a>
+                                </label>
+                                <input type="text" id="txtNguoiChiHuyTrucTiep" name="txtNguoiChiHuyTrucTiep" class="form-control " placeholder="Người chỉ huy trực tiếp">
+                            </div>
+                            <div class="col-md-2 col-sm-12 col-xs-12">
+                                <label for="lbNguoiChiHuyTrucTiepBacATD">
+                                    Bậc ATĐ <a style="color:red">(*)</a>
+                                </label>
+                                <select id="ddlNguoiChiHuyTrucTiepBacATD" name="ddlNguoiChiHuyTrucTiepBacATD" class="form-control"></select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div id="formPCTDienDSNhanVienDonViCT">
+                    <form class="form-horizontal" role="form" id="frmMainPCTDienDSNhanVienDonViCT">
+                        <div class="item form-group">
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <label for="lbThemDsNhanVienDonViCongTac">
+                                    Thêm nhân viên công tác <a style="color:red">(*)</a>
+                                </label>
+                                <input type="text" id="txtPCTThemDsNhanVienDonViCongTac" name="txtPCTThemDsNhanVienDonViCongTac" class="form-control " placeholder="Thêm nhân viên công tác">
+                            </div>
+                        </div>
+                    </form>
+                    <table class="table table-striped jambo_table bulk_action" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>STT</th>
+                                <th>Họ tên</th>
+                                <th>Bậc ATĐ</th>
+                                <th>Khu vực</th>
+                                <th>Phòng, tổ</th>
+                                <td></td>
+                            </tr>
+                        </thead>
+                        <tbody id="table-contentPCTThemNhanVienCT"></tbody>
+                    </table>
+                    <script type="x-tmpl-mustache" id="template-table-PCTThemNhanVienCT">
+                            <tr>
+                                <th scope="row">
+                                    {{STT}}
+                                </th>
+                                <td>{{TenNhanVienCongTac}}</td>
+                                <td>{{BacATDNhanVien}}</td>
+                                <td>{{TenKhuVuc}}</td>
+                                <td>{{TenPhong}}</td>
+                                <th scope="row">
+                                    <a class="btn-link btn-deletePCTThemNhanVien" data-id="{{Id}}" data-toggle="tooltip"
+                                                data-placement="top" title="Hủy nhân viên">
+                                                <i class="fa fa-trash-o"  style="color:red"></i>
+                                     </a>
+                                </th>
+                            </tr>
+                    </script>
+                </div>
+                <div id="formMainEditPCTDienNhap2">
+                    <form class="form-horizontal form-label-left" id="frmMainEditPCTDienNhap2">
+                        <div class="item form-group">
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <label for="lbPCTDienChonThuocCongTyDonVi">
+                                    Chọn danh mục Thuộc (công ty, đơn vị...)
+                                </label>
+                                <select id="ddlPCTDienChonThuocCongTyDonVi" name="ddlPCTDienChonThuocCongTyDonVi" class="form-control"></select>
+                            </div>
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <label for="lbPCTDienThuocCongTyDonVi">
+                                    Các Công ty, đơn vị thuộc .... <a style="color:#f00"> (*) </a>
+                                </label>
+                                <input type="text" id="txtPCTDienThuocCongTyDonVi" name="txtPCTDienThuocCongTyDonVi" placeholder="Các Công ty, đơn vị thuộc .... " value="">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <label for="lbPCTDiaDiemCongTac">
+                                    Địa điểm công tác <a style="color:#f00"> (*) </a>
+                                </label>
+                                <input type="text" id="txtPCTDiaDiemCongTac" name="txtPCTDiaDiemCongTac" class="form-control" placeholder="Địa điểm công tác " value="">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <label for="lbPCTDienChonNoiDungCongTac">
+                                    Chọn nội dung công tác
+                                </label>
+                                <div class="input-group">
+                                    <select id="ddlPCTDienChonNoiDungCongTac" name="ddlPCTDienChonNoiDungCongTac" class="form-control"></select>
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-info" id="btnThemNoiDungCongTac">Thêm mới ND</button>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <label for="lbPCTDienNoiDungCongTac">
+                                    Các nội dung công tác <a style="color:#f00"> (*) </a>
+                                </label>
+                                <input type="text" id="txtPCTDienNoiDungCongTac" name="txtPCTDienNoiDungCongTac" placeholder="Nội dung công tác " value="">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <div class="input-group">
+                                    <label>Thời gian bắt đầu công việc (theo kế hoạch) <a style="color:#f00"> (*) </a> </label>
+                                    <div class="input-group">
+                                        <div class="col-md-3 col-sm-12 col-xs-12">
+                                            <input type="text" id="txtPCTDienGioBatDauCongViec" name="txtPCTDienGioBatDauCongViec" class="form-control" placeholder="Giờ bắt đầu">
+                                        </div>
+                                        <div class="col-md-3 col-sm-12 col-xs-12">
+                                            <input type="text" id="txtPCTDienPhutBatDauCongViec" name="txtPCTDienPhutBatDauCongViec" class="form-control" placeholder="Phút bắt đầu">
+                                        </div>
+                                        <div class="col-md-6 col-sm-12 col-xs-12">
+                                            <input type="text" id="txtPCTDienNgayBatDauCongViec" name="txtPCTDienNgayBatDauCongViec" class="form-control" placeholder="Ngày bắt đầu">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <div class="input-group">
+                                    <label>Thời gian kết thúc công việc (theo kế hoạch) <a style="color:#f00"> (*) </a> </label>
+                                    <div class="input-group">
+                                        <div class="col-md-3 col-sm-12 col-xs-12">
+                                            <input type="text" id="txtPCTDienGioKetThucCongViec" name="txtPCTDienGioKetThucCongViec" class="form-control" placeholder="Giờ kết thúc">
+                                        </div>
+                                        <div class="col-md-3 col-sm-12 col-xs-12">
+                                            <input type="text" id="txtPCTDienPhutKetThucCongViec" name="txtPCTDienPhutKetThucCongViec" class="form-control" placeholder="Phút kết thúc">
+                                        </div>
+                                        <div class="col-md-6 col-sm-12 col-xs-12">
+                                            <input type="text" id="txtPCTDienNgayKetThucCongViec" name="txtPCTDienNgayKetThucCongViec" class="form-control" placeholder="Ngày kết thúc">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <label for="lbPCTDienChonDieuKienATD">
+                                    Chọn điều kiện về ATĐ để tiến hành công việc
+                                </label>
+                                <div class="input-group">
+                                    <select id="ddlPCTDienChonDieuKienATD" name="ddlPCTDienChonDieuKienATD" class="form-control"></select>
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-info" id="btnThemDieuKienATD">Thêm ĐK ATĐ</button>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <label for="lbPCTDienDieuKienATD">
+                                    Các điều kiện về ATĐ để tiến hành công việc <a style="color:#f00"> (*) </a>
+                                </label>
+                                <input type="text" id="txtPCTDienDieuKienATD" name="txtPCTDienDieuKienATD" placeholder="Các điều kiện về ATĐ để tiến hành công việc " value="">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <label for="lbPCTDienChonTrangBiATBHLDLamViec">
+                                    Chọn trang bị an toàn BHLĐ khi làm việc
+                                </label>
+                                <div class="input-group">
+                                    <select id="ddlPCTDienChonTrangBiATBHLDLamViec" name="ddlPCTDienChonTrangBiATBHLDLamViec" class="form-control"></select>
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-info" id="btnThemTrangBiATBHLDLamViec">Thêm T.bị ATBHLĐ</button>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <label for="lbPCTDienDieuKienATD">
+                                    Các trang bị an toàn BHLĐ khi làm việc <a style="color:#f00"> (*) </a>
+                                </label>
+                                <input type="text" id="txtPCTDienTrangBiATBHLDLamViec" name="txtPCTDienTrangBiATBHLDLamViec" placeholder="Các trang bị an toàn BHLĐ khi làm việc " value="">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <label for="lbPCTDienTongHangMucDaTrangCap">
+                                    Tổng cộng hạng mục đã được trang cấp (ghi bằng chữ) <a style="color:#f00"> (*) </a>
+                                </label>
+                                <input type="text" id="txtPCTDienTongHangMucDaTrangCap" name="txtPCTDienTongHangMucDaTrangCap" class="form-control" placeholder="Tổng cộng hạng mục đã được trang cấp (ghi bằng chữ)">
+                            </div>
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <label for="lbPCTDienCacDonViQLVHCoLienQuan">
+                                    Các đơn vị QLVH khác có liên quan đến công việc (đơn vị cấp giấy phối hợp cho phép) <a style="color:#f00"> (*) </a>
+                                </label>
+                                <input type="text" id="txtPCTDienCacDonViQLVHCoLienQuan" name="txtPCTDienCacDonViQLVHCoLienQuan" class="form-control" placeholder="Các đơn vị QLVH khác có liên quan đến công việc (đơn vị cấp giấy phối hợp cho phép)">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <div class="col-md-4 col-sm-12 col-xs-12">
+                                <label for="lbPCTDienNguoiGiamSatATD">
+                                    Người giám sát an toàn điện (nếu có)
+                                </label>
+                                <input type="text" id="txtPCTDienNguoiGiamSatATD" name="txtPCTDienNguoiGiamSatATD" class="form-control" placeholder="Người giám sát an toàn điện">
+                            </div>
+                            <div class="col-md-2 col-sm-12 col-xs-12">
+                                <label for="lbPCTDienNguoiGiamSatATDBacATD">
+                                    Bậc ATĐ
+                                </label>
+                                <select id="ddlPCTDienNguoiGiamSatATDBacATD" name="ddlPCTDienNguoiGiamSatATDBacATD" class="form-control"></select>
+                            </div>
+                            <div class="col-md-4 col-sm-12 col-xs-12">
+                                <label for="lbPCTDienNguoiChoPhep">
+                                    Người cho phép <a style="color:red">(*)</a>
+                                </label>
+                                <input type="text" id="txtPCTDienNguoiChoPhep" name="txtPCTDienNguoiChoPhep" class="form-control" placeholder="Người cho phép">
+                            </div>
+                            <div class="col-md-2 col-sm-12 col-xs-12">
+                                <label for="lbPCTDienNguoiChoPhepATD">
+                                    Bậc ATĐ <a style="color:red">(*)</a>
+                                </label>
+                                <select id="ddlPCTDienNguoiChoPhepATDATD" name="ddlPCTDienNguoiChoPhepATDATD" class="form-control"></select>
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <label for="lbPCTDienNgayCapPCT">
+                                    Ngày cấp phiếu công tác <a style="color:red">(*)</a>
+                                </label>
+                                <input type="text" id="txtPCTDienNgayCapPCT" name="txtPCTDienNgayCapPCT" class="form-control" placeholder="Ngày cấp phiếu công tác">
+                            </div>
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <label for="lbPCTDienTenNguoiCapPCT">
+                                    Người cấp phiếu công tác <a style="color:red">(*)</a>
+                                </label>
+                                <input type="text" id="txtPCTDienTenNguoiCapPCT" name="txtPCTDienTenNguoiCapPCT" class="form-control  " placeholder="Người cấp phiếu công tác">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="button" id="btnCancelEditPCTDien" data-dismiss="modal" class="btn btn-default">Đóng</button>
+                                <button type="button" id="btnSaveEditPCTDien" class="btn btn-warning">Lưu PCT Điện </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+
+                <div class="ln_solid"></div>
+            </div>
+            </div>
+    </div>
+</div>

@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XtraReportsLayoutSerializer SerializerVersion="20.1.3.0" Ref="1" ControlType="DevExpress.XtraReports.UI.XtraReport, DevExpress.XtraReports.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Name="repDSTheoNgayLive" Landscape="true" Margins="28, 33, 13, 26" PageWidth="1100" PageHeight="850" Version="20.1" DataSource="#Ref-0">
+  <Parameters>
+    <Item1 Ref="3" Description="NgayBuoiLive" Name="NgayBuoiLive" />
+  </Parameters>
+  <Bands>
+    <Item1 Ref="4" ControlType="TopMarginBand" Name="topMarginBand1" HeightF="12.8333282" />
+    <Item2 Ref="5" ControlType="DetailBand" Name="detailBand1" HeightF="26.9999943">
+      <Controls>
+        <Item1 Ref="6" ControlType="XRTable" Name="table1" SizeF="1029,25" LocationFloat="0,0" Padding="2,2,0,0,96">
+          <Rows>
+            <Item1 Ref="7" ControlType="XRTableRow" Name="tableRow1" Weight="1">
+              <Cells>
+                <Item1 Ref="8" ControlType="XRTableCell" Name="tableCell3" Weight="0.47653190612792973" Multiline="true" Text="tableCell3" TextAlignment="TopCenter">
+                  <ExpressionBindings>
+                    <Item1 Ref="9" EventName="BeforePrint" PropertyName="Text" Expression="[SortNumber]" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="10" UseTextAlignment="false" />
+                </Item1>
+                <Item2 Ref="11" ControlType="XRTableCell" Name="tableCell10" Weight="2.3586820594830757" Multiline="true" Text="tableCell10">
+                  <ExpressionBindings>
+                    <Item1 Ref="12" EventName="BeforePrint" PropertyName="Text" Expression="[TenKhachHang]" />
+                  </ExpressionBindings>
+                </Item2>
+                <Item3 Ref="13" ControlType="XRTableCell" Name="tableCell11" Weight="1.3260397462826297" Multiline="true" Text="tableCell11">
+                  <ExpressionBindings>
+                    <Item1 Ref="14" EventName="BeforePrint" PropertyName="Text" Expression="[SoDienThoai]" />
+                  </ExpressionBindings>
+                </Item3>
+                <Item4 Ref="15" ControlType="XRTableCell" Name="tableCell12" Weight="1.5123225324074403" TextFormatString="{0:#,#}" Multiline="true" Text="tableCell12" TextAlignment="TopRight">
+                  <ExpressionBindings>
+                    <Item1 Ref="16" EventName="BeforePrint" PropertyName="Text" Expression="[TienTong]" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="17" UseTextAlignment="false" />
+                </Item4>
+                <Item5 Ref="18" ControlType="XRTableCell" Name="tableCell13" Weight="1.7081331267028641" Multiline="true" Text="tableCell13" TextAlignment="TopCenter">
+                  <ExpressionBindings>
+                    <Item1 Ref="19" EventName="BeforePrint" PropertyName="Text" Expression="[ProductName]" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="20" UseTextAlignment="false" />
+                </Item5>
+                <Item6 Ref="21" ControlType="XRTableCell" Name="tableCell14" Weight="0.24571018921396678" Multiline="true" Text="1" TextAlignment="TopCenter">
+                  <StylePriority Ref="22" UseTextAlignment="false" />
+                </Item6>
+                <Item7 Ref="23" ControlType="XRTableCell" Name="tableCell15" Weight="1.1616568747710305" TextFormatString="{0:#,#}" Multiline="true" Text="tableCell15" TextAlignment="TopRight">
+                  <ExpressionBindings>
+                    <Item1 Ref="24" EventName="BeforePrint" PropertyName="Text" Expression="[TienCoc]" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="25" UseTextAlignment="false" />
+                </Item7>
+                <Item8 Ref="26" ControlType="XRTableCell" Name="tableCell16" Weight="1.0364147772262893" TextFormatString="{0:dd/MM/yyyy}" Multiline="true" Text="tableCell16" TextAlignment="TopCenter">
+                  <ExpressionBindings>
+                    <Item1 Ref="27" EventName="BeforePrint" PropertyName="Text" Expression="[NgayDatLive]" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="28" UseTextAlignment="false" />
+                </Item8>
+                <Item9 Ref="29" ControlType="XRTableCell" Name="tableCell18" Weight="0.69559642368849672" Multiline="true" Text="tableCell18" TextAlignment="TopCenter">
+                  <ExpressionBindings>
+                    <Item1 Ref="30" EventName="BeforePrint" PropertyName="Text" Expression="[TenBuoiLive]" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="31" UseTextAlignment="false" />
+                </Item9>
+              </Cells>
+            </Item1>
+          </Rows>
+        </Item1>
+      </Controls>
+    </Item2>
+    <Item3 Ref="32" ControlType="BottomMarginBand" Name="bottomMarginBand1" HeightF="26" />
+    <Item4 Ref="33" ControlType="PageHeaderBand" Name="PageHeader" HeightF="65.50001">
+      <Controls>
+        <Item1 Ref="34" ControlType="XRLabel" Name="label1" Multiline="true" Text="label1" SizeF="456.666656,23" LocationFloat="32.0000267,10" Font="Times New Roman, 9.75pt, style=Bold" Padding="2,2,0,0,96">
+          <ExpressionBindings>
+            <Item1 Ref="35" EventName="BeforePrint" PropertyName="Text" Expression="?NgayBuoiLive" />
+          </ExpressionBindings>
+          <StylePriority Ref="36" UseFont="false" />
+        </Item1>
+        <Item2 Ref="37" ControlType="XRTable" Name="table2" TextAlignment="MiddleCenter" SizeF="1029,25" LocationFloat="0,40" Font="Times New Roman, 12pt, style=Bold" Padding="2,2,0,0,96" Borders="None">
+          <Rows>
+            <Item1 Ref="38" ControlType="XRTableRow" Name="tableRow2" Weight="1">
+              <Cells>
+                <Item1 Ref="39" ControlType="XRTableCell" Name="tableCell4" Weight="0.5625" Multiline="true" Text="Số TT" Font="Times New Roman, 11pt, style=Bold" Borders="None">
+                  <StylePriority Ref="40" UseFont="false" UseBorders="false" />
+                </Item1>
+                <Item2 Ref="41" ControlType="XRTableCell" Name="tableCell5" Weight="2.724632632396371" Multiline="true" Text="Tên khách hàng" />
+                <Item3 Ref="42" ControlType="XRTableCell" Name="tableCell6" Weight="1.5374042159347483" Multiline="true" Text="Số đt" />
+                <Item4 Ref="43" ControlType="XRTableCell" Name="tableCell7" Weight="1.75337760306763" Multiline="true" />
+                <Item5 Ref="44" ControlType="XRTableCell" Name="tableCell8" Weight="1.9804020798609578" Multiline="true" />
+                <Item6 Ref="45" ControlType="XRTableCell" Name="tableCell9" Weight="0.28487411744174285" Multiline="true" />
+                <Item7 Ref="46" ControlType="XRTableCell" Name="tableCell1" Weight="1.3468192136995218" Multiline="true" />
+                <Item8 Ref="47" ControlType="XRTableCell" Name="tableCell2" Weight="1.2016144545472367" Multiline="true" />
+                <Item9 Ref="48" ControlType="XRTableCell" Name="tableCell17" Weight="0.8064707917155256" Multiline="true" />
+              </Cells>
+            </Item1>
+          </Rows>
+          <StylePriority Ref="49" UseFont="false" UseBorders="false" UseTextAlignment="false" />
+        </Item2>
+      </Controls>
+    </Item4>
+    <Item5 Ref="50" ControlType="ReportHeaderBand" Name="ReportHeader" HeightF="12.1666718" />
+    <Item6 Ref="51" ControlType="ReportFooterBand" Name="ReportFooter" HeightF="18.833313" />
+    <Item7 Ref="52" ControlType="PageFooterBand" Name="PageFooter" HeightF="17.999979" />
+  </Bands>
+  <ComponentStorage>
+    <Item1 Ref="0" ObjectType="DevExpress.DataAccess.ObjectBinding.ObjectDataSource,DevExpress.DataAccess.v20.1" Name="objectDataSource1" Base64="PE9iamVjdERhdGFTb3VyY2UgTmFtZT0ib2JqZWN0RGF0YVNvdXJjZTEiPjxEYXRhU291cmNlIFR5cGU9Ik5pVGlBUEkuRGFwcGVyLlZpZXdNb2RlbHMuT3JkZXJEZXRhaWxzVmlld01vZGVsLCBOaVRpQVBJLkRhcHBlciwgVmVyc2lvbj0xLjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPW51bGwiIC8+PC9PYmplY3REYXRhU291cmNlPg==" />
+  </ComponentStorage>
+</XtraReportsLayoutSerializer>

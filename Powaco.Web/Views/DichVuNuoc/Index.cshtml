@@ -1,0 +1,43 @@
+﻿
+@section Styles{
+    @*<link href="~/lib/jQuery-EasyUI/themes/bootstrap/easyui.css" rel="stylesheet" />
+        <link href="~/lib/jQuery-EasyUI/themes/icon.css" rel="stylesheet" />*@
+    <link href="~/css/bootstrap-datepicker.css" rel="stylesheet" asp-append-version="true" />
+}
+@section Scripts{
+
+    @* <script src="~/admin-side/js/jquery.autocomplete.js" asp-append-version="true"></script>*@
+
+
+    <script src="~/js/jquery.easyui.min.js" asp-append-version="true"></script>
+    <script src="~/js/bootstrap-datepicker.js" asp-append-version="true"></script>
+    <script src="~/js/bootstrap-datepicker.vi.min.js" charset="UTF-8" asp-append-version="true"></script>
+
+    <script src="~/js/jquery.smartWizard.dichvunuoc.js" asp-append-version="true"></script>
+
+    <script src="~/client-app/controllers/dichvunuoc/index.js" asp-append-version="true"></script>
+    <script>
+    var dichvunuoc = new dichvunuocController();
+        dichvunuoc.initialize();</script>
+}
+
+<input type="hidden" id="hidNewGuidTTDangKyFile" value="" />
+<input type="hidden" id="hidTTCacDichVuNuocId" value="" />
+
+<div class="container bg-container">
+    <div class="container-fluid main_container bg-overflow">
+        <div class="row ">
+            <div class="top-tab absolute">
+                <div class="col-md-2 col-sm-1 col-xs-1 "></div>
+                <div class="col-md-8 col-sm-12 col-xs-12 bg-tab ">
+                    <partial name="_DichVuNuoc.cshtml" />
+
+                </div>
+                <div class="col-md-2 col-sm-1 col-xs-1 "></div>
+            </div>
+            <div class='col-md-12 absolute logopowaco'>
+                <img class="logopowaco-size" src="/images/powaco148.png">
+            </div>
+        </div>
+    </div>
+</div>

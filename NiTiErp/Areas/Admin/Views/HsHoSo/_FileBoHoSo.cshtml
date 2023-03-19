@@ -1,0 +1,85 @@
+﻿<div id="modal-add-edit-FileBoHoSo" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style="overflow-y: auto; max-height:85%;  margin-top: 50px; margin-bottom:50px; ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Upload file hồ sơ </h4>
+            </div>
+            <div class="modal-body">
+                <div id="horizontal-form">
+                    <form class="form-horizontal form-label-left input_mask" role="form" id="frmMainFileBoHoSo">
+
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <label for="lbFileBoHoSoTieuDeBoHoSo">
+                                    Tiêu đề hồ sơ
+                                </label>
+                                <input type="text" name="txtFileBoHoSoTieuDeBoHoSo" class="form-control has-feedback-right" id="txtFileBoHoSoTieuDeBoHoSo" placeholder="Tiêu đề bộ hồ sơ">
+                            </div>                            
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <label for="lbAddEditTenFileBoHoSo">
+                                    Tên file hồ sơ                                  
+                                </label>
+                                <input type="text" name="txtAddEditTenFileBoHoSo" class="form-control has-feedback-right" id="txtAddEditTenFileBoHoSo" placeholder="Tên file hồ sơ">
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="lbAddEditPathTenFileBoHoSo">
+                                    Upload file
+                                </label>
+                                @*<input type="hidden" id="hidFileHoSoId" value="" />*@
+                                <div id="imagelistFileBoHoSo" class="col-md-12">
+                                </div>
+                                <div class="input-group">
+                                    <input type="file" id="fileFileBoHoSo" />
+                                </div>
+                                <progress id="fileProgress" style="display: none"></progress>
+                            </div>
+                        </div>
+                        <table class="table table-striped jambo_table bulk_action" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    @*<th width="=20%">#</th>*@
+                                    <th>Tên file</th>
+                                    <th>.</th>
+                                </tr>
+                            </thead>
+                            <tbody id="table-contentFileBoHoSo"></tbody>
+                        </table>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="button" id="btnCancelFileBoHoSo" data-dismiss="modal" class="btn btn-default">Đóng</button>
+                                <button type="button" id="btnSaveFileBoHoSo" class="btn btn-success">Lưu file hồ sơ </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="ln_solid"></div>
+            </div>
+        </div>
+    </div>
+    <script type="x-tmpl-mustache" id="template-table-FileBoHoSo">
+        <tr>
+            @*<th scope="row">
+                <a class="btn-link btn-editFileBoHoSo" data-id="{{Id}}" data-toggle="tooltip"
+                    data-placement="top" title="Sửa "><i class="fa fa-pencil"></i> </a>
+            </th>*@
+            <td>
+                <a class="btn-link btnPatchBoHoSoFile" data-id="{{Id}}" data-toggle="tooltip">
+                     {{TenFile}}
+                </a>
+            </td>
+
+            <th scope="row">
+                <a class="btn-link btn-deleteFileBoHoSo" data-id="{{Id}}" data-toggle="tooltip"
+                            data-placement="top" title="Xóa file hồ sơ đi">
+                            <i class="fa fa-trash-o"  style="color:red"></i>
+                 </a>
+            </th>
+        </tr>
+    </script>
+</div>
+

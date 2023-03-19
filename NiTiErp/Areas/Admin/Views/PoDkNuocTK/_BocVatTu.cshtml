@@ -1,0 +1,183 @@
+﻿
+<div id="modal-add-edit-BocVatTu" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style="overflow-y: auto; max-height:85%;  margin-top: 50px; margin-bottom:50px; ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Bốc vật tư </h4>
+            </div>
+            <div class="modal-body">
+                <div id="horizontal-form">
+                    <form class="form-horizontal form-label-left input_mask" role="form" id="frmMainBocVatTu">
+
+                        <div class="form-group">
+                            <div class="col-sm-6 col-sm-12 col-xs-12">
+                                <label for="lbChonMauBocVatTu">
+                                    Chọn mẫu bốc vật tư
+                                </label>
+                                <select id="ddlChonMauBocVatTu" class="form-control"></select>
+                            </div>
+                        </div>
+                        <div class="table-responsive" id="table-responsiveNhapTKKhachHang">
+                            <table class="table table-striped jambo_table bulk_action" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>Stt</th>
+                                        <th>Mã V.tư k.toán</th>
+                                        <th>Kho XN</th>
+                                        <th>Tên vật tư</th>
+                                        <th>C.ty đ.tư</th>
+                                        <th>ĐVT</th>
+                                        <th>Khối lượng</th>
+                                        <th>.</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tblContentNhapTKKhachHang"></tbody>
+                            </table>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-6 col-sm-12 col-xs-12">
+                                <span class="input-group-btn ">
+                                    <button type="button" id="btnThemMoiVatTu" class="btn btn-warning">Thêm mới vật tư </button>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="table-responsive" id="table-responsiveChiPhiThietKeDaoLap">
+                            <table class="table table-striped jambo_table bulk_action" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>Stt</th>
+                                        <th>Nội dung</th>
+                                        <th>Đơn giá</th>
+                                        <th>Đơn vị tính</th>
+                                        <th>Số lượng</th>                                        
+                                        <th>Loại chi phí</th>
+                                        <th>.</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tblContentChiPhiThietKeDaoLap"></tbody>
+                            </table>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-6 col-sm-12 col-xs-12">
+                                <span class="input-group-btn ">
+                                    <button type="button" id="btnThemMoiChiPhi" class="btn btn-success">Thêm mới Chi phí </button>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <label for="lbSoDoThietKe" style="color: #1f2ff1;">
+                                    Sơ đồ thiết kế
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-6 col-sm-12 col-xs-12">
+                                <label for="lbTenKhachHangBenPhai">
+                                    Tên Khách hàng bên phải
+                                </label>
+                                <input type="text" id="txtTenKhachHangBenPhai" name="txtTenKhachHangBenPhai" class="form-control has-feedback-right" placeholder="Tên Khách hàng bên phải">
+                            </div>
+                            <div class="col-sm-6 col-sm-12 col-xs-12">
+                                <label for="lbDanhSoKhachHangBenPhai">
+                                    Danh số Khách hàng bên phải
+                                </label>
+                                <input type="text" id="txtDanhSoKhachHangBenPhai" name="txtDanhSoKhachHangBenPhai" class="form-control has-feedback-right" placeholder="Danh số Khách hàng bên phải">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-6 col-sm-12 col-xs-12">
+                                <label for="lbTenKhachHangBenTrai">
+                                    Tên Khách hàng bên trái
+                                </label>
+                                <input type="text" id="txtTenKhachHangBenTrai" name="txtTenKhachHangBenTrai" class="form-control has-feedback-right" placeholder="Tên Khách hàng bên trái">
+                            </div>
+                            <div class="col-sm-6 col-sm-12 col-xs-12">
+                                <label for="lbDanhSoKhachHangBenPhai">
+                                    Danh số Khách hàng bên trái
+                                </label>
+                                <input type="text" id="txtDanhSoKhachHangBenTrai" name="txtDanhSoKhachHangBenTrai" class="form-control has-feedback-right" placeholder="Danh số Khách hàng bên trái">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-6 col-sm-12 col-xs-12">
+                                <label for="lbChonMauHinhThietKe">
+                                    Chọn mẫu hình thiết kế
+                                </label>
+                                <select id="ddlChonMauHinhThietKe" class="form-control"></select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                @*<button type="button" id="btnInThietKe" class="btn btn-primary">In t.kế </button>*@
+                                <button type="button" id="btnCancelBocVatTu" data-dismiss="modal" class="btn btn-default">Đóng</button>
+                                <button type="button" id="btnBocVatTu" class="btn btn-success">Lưu bốc vật tư </button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+                <div class="ln_solid"></div>
+            </div>
+        </div>
+    </div>
+
+    <script type="x-tmpl-mustache" id="template-table-ChiPhiThietKeDaoLap">
+        <tr>
+            <th scope="row">
+                <a class="btn-link " data-id="{{MADON}}" data-toggle="tooltip" data-placement="top" title="Số thứ tự">
+                    <i >{{SoThuTu}}</i>
+                </a>
+            </th>
+            <td><input type="text" class="form-control " value="{{NOIDUNG}}" data-id="{{MADON}}"
+                placeholder="Nội dung" onchange="javascript:getChangeNoiDung(this, '{{MADON}}');"/></td>
+
+            <td><input type="text" class="form-control " value="{{DONGIACP}}" data-id="{{MADON}}"
+                placeholder="Đơn giá" onchange="javascript:getChangeDonGiaCP(this, '{{MADON}}');"/></td>
+
+            <td>{{{DonViTinh}}}</td>           
+
+            <td><input type="text" class="form-control " value="{{SOLUONG}}" data-id="{{MADON}}"
+                placeholder="Đơn giá" onchange="javascript:getChangeSoLuong(this, '{{MADON}}');"/></td>
+
+            <td>{{{LoaiChiPhi}}}</td>
+
+            <th scope="row">
+                <a class="btn btn-deleteChiPhiDLVC" data-id="{{MADON}}" data-toggle="tooltip" data-placement="top" title="Xóa Chi phí">
+                    <i class="fa fa-trash-o" style="color:red"></i>
+                    Xóa
+                </a>
+            </th>
+        </tr>
+    </script>
+
+    <script type="x-tmpl-mustache" id="template-table-BocVatTuKhachHang">
+        <tr>
+            <th scope="row">
+                <a class="btn-link btn-EditNhapThietKeChuanBi" data-id="{{MADDK}}-{{MAVT}}" data-toggle="tooltip" data-placement="top" title="Mã đơn">
+                    <i >{{SoThuTu}}</i>
+                </a>
+            </th>
+            <td>{{MaVatTuKeToan}}</td>
+            <td>{{KhoXiNghiep}}</td>
+            <td>{{TenVatTu}}</td>
+            <td>{{CongTyCap}}</td>
+            <td>{{DonViTinh}}</td>
+            <td><input type="text" class="form-control btn-ChangeKhoiLuong txtKhoiLuong" value="{{KhoiLuong}}" data-id="{{MADDK}}-{{MAVT}}-{{KhoiLuong}}"
+                placeholder="Khối lượng" onchange="javascript:getChangeKhoiLuong(this, '{{MADDK}}-{{MAVT}}');"/></td>
+
+            <th scope="row">
+                <a class="btn btn-deleteVatTu" data-id="{{MADDK}}-{{MAVT}}" data-toggle="tooltip" data-placement="top" title="Xóa Vật tư">
+                    <i class="fa fa-trash-o" style="color:red"></i>
+                    Xóa
+                </a>
+            </th>
+        </tr>
+    </script>
+
+</div>

@@ -1,0 +1,124 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <UserSecretsId>e8b80299-45f0-4faa-9164-fbc61c24de40</UserSecretsId>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\fonts\.DS_Store" />
+    <_ContentIncludedByDefault Remove="wwwroot\fonts\flaticon\.DS_Store" />
+    <_ContentIncludedByDefault Remove="wwwroot\fonts\flaticon\backup.txt" />
+    <_ContentIncludedByDefault Remove="wwwroot\fonts\flaticon\font\flaticon.css" />
+    <_ContentIncludedByDefault Remove="wwwroot\fonts\flaticon\font\Flaticon.eot" />
+    <_ContentIncludedByDefault Remove="wwwroot\fonts\flaticon\font\flaticon.html" />
+    <_ContentIncludedByDefault Remove="wwwroot\fonts\flaticon\font\Flaticon.svg" />
+    <_ContentIncludedByDefault Remove="wwwroot\fonts\flaticon\font\Flaticon.ttf" />
+    <_ContentIncludedByDefault Remove="wwwroot\fonts\flaticon\font\Flaticon.woff" />
+    <_ContentIncludedByDefault Remove="wwwroot\fonts\flaticon\font\_flaticon.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\fonts\flaticon\license\license.pdf" />
+    <_ContentIncludedByDefault Remove="wwwroot\fonts\icomoon\icomoon.eot" />
+    <_ContentIncludedByDefault Remove="wwwroot\fonts\icomoon\icomoon.svg" />
+    <_ContentIncludedByDefault Remove="wwwroot\fonts\icomoon\icomoon.ttf" />
+    <_ContentIncludedByDefault Remove="wwwroot\fonts\icomoon\icomoon.woff" />
+    <_ContentIncludedByDefault Remove="wwwroot\fonts\ionicons\css\ionicons.min.css" />
+    <_ContentIncludedByDefault Remove="wwwroot\fonts\ionicons\css\_ionicons.scss" />
+    <_ContentIncludedByDefault Remove="wwwroot\fonts\ionicons\fonts\.DS_Store" />
+    <_ContentIncludedByDefault Remove="wwwroot\fonts\ionicons\fonts\ionicons.eot" />
+    <_ContentIncludedByDefault Remove="wwwroot\fonts\ionicons\fonts\ionicons.svg" />
+    <_ContentIncludedByDefault Remove="wwwroot\fonts\ionicons\fonts\ionicons.ttf" />
+    <_ContentIncludedByDefault Remove="wwwroot\fonts\ionicons\fonts\ionicons.woff" />
+    <_ContentIncludedByDefault Remove="wwwroot\fonts\ionicons\fonts\ionicons.woff2" />
+    <_ContentIncludedByDefault Remove="wwwroot\fonts\open-iconic\open-iconic.eot" />
+    <_ContentIncludedByDefault Remove="wwwroot\fonts\open-iconic\open-iconic.otf" />
+    <_ContentIncludedByDefault Remove="wwwroot\fonts\open-iconic\open-iconic.svg" />
+    <_ContentIncludedByDefault Remove="wwwroot\fonts\open-iconic\open-iconic.ttf" />
+    <_ContentIncludedByDefault Remove="wwwroot\fonts\open-iconic\open-iconic.woff" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\" />
+    <Folder Include="Logs\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore" Version="2.1.7" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.1.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.1.14" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.1.14" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.1.14">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="2.1.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="2.1.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.10" />
+    <PackageReference Include="Serilog.Extensions.Logging.File" Version="2.0.0" />
+    <PackageReference Include="System.Drawing.Common" Version="5.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\NiTiErp.Application.Dapper\NiTiErp.Application.Dapper.csproj" />
+    <ProjectReference Include="..\NiTiErp.Data.EF\NiTiErp.Data.EF.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Views\_ViewImports.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="wwwroot\fonts\fontawesome-webfont.eot">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\fonts\fontawesome-webfont.svg">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\fonts\fontawesome-webfont.ttf">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\fonts\fontawesome-webfont.woff">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\fonts\fontawesome-webfont.woff2">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\fonts\FontAwesome.otf">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\fonts\LineIcons.eot">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\fonts\LineIcons.svg">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\fonts\LineIcons.ttf">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\fonts\LineIcons.woff">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>

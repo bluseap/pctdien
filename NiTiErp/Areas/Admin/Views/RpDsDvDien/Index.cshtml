@@ -1,0 +1,60 @@
+﻿
+@{ Layout = null; }
+@using Microsoft.AspNetCore.Http;
+
+@using DevExpress.AspNetCore
+@using DevExpress.XtraReports.UI;
+@using DevExpress.XtraReports.Parameters;
+
+@using NiTiErp.Reports.DichVuDien;
+@using NiTiErp.Helpers
+
+@using NiTiErp.Application.Dapper.ViewModels
+
+@namespace NiTiErp.Pages
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="/admin-side/images/powaco.ico" />
+
+    <link rel="stylesheet" href="~/css/thirdparty.bundle.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <script src="~/js/thirdparty.bundle.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+</head>
+<body>
+    <link rel="stylesheet" href="~/css/viewer.part.bundle.css" />
+    <link rel="stylesheet" href="~/css/designer.part.bundle.css" />
+
+    <script src="~/js/viewer.part.bundle.js"></script>
+    <script src="~/js/designer.part.bundle.js"></script>
+
+    @{
+        List<TTCacDichVuDienViewModel> dichvudien = SessionHelper.GetObjectFromJson<List<TTCacDichVuDienViewModel>>(Context.Session, "ttdichvudien");
+
+        var dien = new repDsDvDien();
+        dien.DataSource = dichvudien;
+
+        dien.Parameters["prTenXiNghiep"].Value = @Context.Session.GetString("TenXiNghiepDvDien");
+        dien.Parameters["prTenXiNghiep"].Visible = false;
+        dien.Parameters["prTuNgayDenNgay"].Value = @Context.Session.GetString("TuNgayDenNgayDvDien");
+        dien.Parameters["prTuNgayDenNgay"].Visible = false;
+        dien.Parameters["prNgayIn"].Value = @Context.Session.GetString("NgayInDanhSachDvDien");
+        dien.Parameters["prNgayIn"].Visible = false;
+    }
+    <div class="container-fluid body-content">
+        @Html.DevExpress().WebDocumentViewer("DocumentViewer").Height("1000px").Bind(dien)
+    </div>
+
+
+
+
+</body>
+</html>

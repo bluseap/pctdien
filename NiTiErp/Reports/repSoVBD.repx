@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XtraReportsLayoutSerializer SerializerVersion="20.1.3.0" Ref="1" ControlType="DevExpress.XtraReports.UI.XtraReport, DevExpress.XtraReports.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Name="repSoVBD" DisplayName="repSoVBD" Margins="10, 16, 23, 31" PageWidth="850" PageHeight="1100" Version="20.1" DataSource="#Ref-0" Font="Arial, 9.75pt">
+  <Extensions>
+    <Item1 Ref="2" Key="DataSerializationExtension" Value="DevExpress.XtraReports.Web.ReportDesigner.DefaultDataSerializer" />
+  </Extensions>
+  <Parameters>
+    <Item1 Ref="4" Description="Parameter1" AllowNull="true" Name="prKhuVuc" />
+    <Item2 Ref="5" Description="Tu ngay" AllowNull="true" Name="prTuNgay" />
+  </Parameters>
+  <Bands>
+    <Item1 Ref="6" ControlType="TopMarginBand" Name="TopMargin" HeightF="22.916666" />
+    <Item2 Ref="7" ControlType="DetailBand" Name="Detail" HeightF="25">
+      <Controls>
+        <Item1 Ref="8" ControlType="XRTable" Name="table1" SizeF="811,25" LocationFloat="9.999998,0" Padding="2,2,0,0,96" Borders="Left, Right, Bottom">
+          <Rows>
+            <Item1 Ref="9" ControlType="XRTableRow" Name="tableRow1" Weight="1" Borders="All">
+              <Cells>
+                <Item1 Ref="10" ControlType="XRTableCell" Name="tableCell12" Weight="1.2730511344276598" TextFormatString="{0:dd/MM/yyyy}" Multiline="true" Text="tableCell12" Borders="Left, Right, Bottom">
+                  <ExpressionBindings>
+                    <Item1 Ref="11" EventName="BeforePrint" PropertyName="Text" Expression="[NgayDenCuaVanBan]" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="12" UseBorders="false" />
+                </Item1>
+                <Item2 Ref="13" ControlType="XRTableCell" Name="tableCell13" Weight="1.1009014804427852" Multiline="true" Text="tableCell13" Borders="Left, Right, Bottom">
+                  <ExpressionBindings>
+                    <Item1 Ref="14" EventName="BeforePrint" PropertyName="Text" Expression="[SoVanBanDenStt]" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="15" UseBorders="false" />
+                </Item2>
+                <Item3 Ref="16" ControlType="XRTableCell" Name="tableCell1" Weight="1.8864729383794843" Multiline="true" Text="tableCell1" Borders="Left, Right, Bottom">
+                  <ExpressionBindings>
+                    <Item1 Ref="17" EventName="BeforePrint" PropertyName="Text" Expression="[NguoiKyCuaVanBan]" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="18" UseBorders="false" />
+                </Item3>
+                <Item4 Ref="19" ControlType="XRTableCell" Name="tableCell2" Weight="1.65719070074133" Multiline="true" Text="tableCell2" Borders="Left, Right, Bottom">
+                  <ExpressionBindings>
+                    <Item1 Ref="20" EventName="BeforePrint" PropertyName="Text" Expression="[SoKyHieuCuaVanBan]" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="21" UseBorders="false" />
+                </Item4>
+                <Item5 Ref="22" ControlType="XRTableCell" Name="tableCell3" Weight="1.4248335886079913" TextFormatString="{0:dd/MM/yyyy}" Multiline="true" Text="tableCell3" Borders="Left, Right, Bottom">
+                  <ExpressionBindings>
+                    <Item1 Ref="23" EventName="BeforePrint" PropertyName="Text" Expression="[NgayBanHanhCuaVanBan]" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="24" UseBorders="false" />
+                </Item5>
+                <Item6 Ref="25" ControlType="XRTableCell" Name="tableCell14" Weight="2.7125150812644532" Multiline="true" Text="tableCell14" Borders="Left, Right, Bottom">
+                  <ExpressionBindings>
+                    <Item1 Ref="26" EventName="BeforePrint" PropertyName="Text" Expression="[TenLoaiVanBan] + ',' + [TrichYeuCuaVanBan]" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="27" UseBorders="false" />
+                </Item6>
+                <Item7 Ref="28" ControlType="XRTableCell" Name="tableCell15" Weight="1.8187944395227451" Multiline="true" Text="tableCell15" Borders="Left, Right, Bottom">
+                  <ExpressionBindings>
+                    <Item1 Ref="29" EventName="BeforePrint" PropertyName="Text" Expression="[TenCoQuanBanHanh]" />
+                  </ExpressionBindings>
+                  <StylePriority Ref="30" UseBorders="false" />
+                </Item7>
+                <Item8 Ref="31" ControlType="XRTableCell" Name="tableCell16" Weight="0.78211717839815" Multiline="true" Borders="Left, Right, Bottom">
+                  <StylePriority Ref="32" UseBorders="false" />
+                </Item8>
+              </Cells>
+              <StylePriority Ref="33" UseBorders="false" />
+            </Item1>
+          </Rows>
+          <StylePriority Ref="34" UseBorders="false" />
+        </Item1>
+      </Controls>
+    </Item2>
+    <Item3 Ref="35" ControlType="BottomMarginBand" Name="BottomMargin" HeightF="30.5001583" />
+    <Item4 Ref="36" ControlType="ReportHeaderBand" Name="ReportHeader" HeightF="138.499954" KeepTogether="true">
+      <Controls>
+        <Item1 Ref="37" ControlType="XRLabel" Name="label6" Multiline="true" Text="label6" TextAlignment="TopCenter" SizeF="772.1701,23" LocationFloat="26.96426,96.9230652" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="38" EventName="BeforePrint" PropertyName="Text" Expression="?prTuNgay" />
+          </ExpressionBindings>
+          <StylePriority Ref="39" UseTextAlignment="false" />
+        </Item1>
+        <Item2 Ref="40" ControlType="XRLabel" Name="label5" Multiline="true" Text="label5" TextAlignment="TopCenter" SizeF="287.8205,23" LocationFloat="26.96426,32.2051353" Font="Arial, 9.75pt, style=Bold" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="41" EventName="BeforePrint" PropertyName="Text" Expression="?prKhuVuc" />
+          </ExpressionBindings>
+          <StylePriority Ref="42" UseFont="false" UseTextAlignment="false" />
+        </Item2>
+        <Item3 Ref="43" ControlType="XRLabel" Name="label4" Multiline="true" Text="SỔ ĐĂNG KÝ VĂN BẢN ĐẾN" TextAlignment="TopCenter" SizeF="772.1702,22.4358826" LocationFloat="26.96426,74.487175" Font="Arial, 13pt, style=Bold" Padding="2,2,0,0,100">
+          <StylePriority Ref="44" UseFont="false" UseTextAlignment="false" />
+        </Item3>
+        <Item4 Ref="45" ControlType="XRLine" Name="line1" SizeF="121.15387,2" LocationFloat="601.262756,53.20511" />
+        <Item5 Ref="46" ControlType="XRLabel" Name="label3" Multiline="true" Text="Độc lập - Tự do - Hạnh phúc" TextAlignment="TopCenter" SizeF="277.564148,20.5128174" LocationFloat="521.5704,30.51281" Font="Arial, 9.75pt" Padding="2,2,0,0,100">
+          <StylePriority Ref="47" UseFont="false" UseTextAlignment="false" />
+        </Item5>
+        <Item6 Ref="48" ControlType="XRLabel" Name="label1" Multiline="true" Text="CÔNG TY CỔ PHẦN ĐIỆN NƯỚC AN GIANG" SizeF="287.8205,20.5128174" LocationFloat="26.96426,10.0000067" Font="Arial, 9.75pt" Padding="2,2,0,0,100">
+          <StylePriority Ref="49" UseFont="false" />
+        </Item6>
+        <Item7 Ref="50" ControlType="XRLabel" Name="label2" Multiline="true" Text="CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM" SizeF="277.564148,20.5128174" LocationFloat="521.5704,10.0000067" Font="Arial, 9.75pt, style=Bold" Padding="2,2,0,0,100">
+          <StylePriority Ref="51" UseFont="false" />
+        </Item7>
+      </Controls>
+    </Item4>
+    <Item5 Ref="52" ControlType="PageHeaderBand" Name="PageHeader" HeightF="44.7916641">
+      <Controls>
+        <Item1 Ref="53" ControlType="XRTable" Name="table2" TextAlignment="TopCenter" SizeF="811,44.7916641" LocationFloat="9.999998,0" Font="Arial, 9.75pt, style=Bold" Padding="2,2,0,0,96" Borders="All">
+          <Rows>
+            <Item1 Ref="54" ControlType="XRTableRow" Name="tableRow2" Weight="1.7916665649414063">
+              <Cells>
+                <Item1 Ref="55" ControlType="XRTableCell" Name="tableCell4" Weight="0.82212425928011867" Multiline="true" Text="Ngày đến" />
+                <Item2 Ref="56" ControlType="XRTableCell" Name="tableCell5" Weight="0.71095177883639493" Multiline="true" Text="Số đến" />
+                <Item3 Ref="57" ControlType="XRTableCell" Name="tableCell6" Weight="1.2182662400769275" Multiline="true" Text="Tác giả" Borders="All">
+                  <StylePriority Ref="58" UseBorders="false" />
+                </Item3>
+                <Item4 Ref="59" ControlType="XRTableCell" Name="tableCell7" Weight="1.0701976255389418" Multiline="true" Text="Số, ký&#xD;&#xA;hiệu văn bản" />
+                <Item5 Ref="60" ControlType="XRTableCell" Name="tableCell8" Weight="0.92014396000381249" Multiline="true" Text="Ngày tháng năm văn bản" />
+                <Item6 Ref="61" ControlType="XRTableCell" Name="tableCell9" Weight="1.7517164363799955" Multiline="true" Text="Tên loại và trích yếu nội dung văn bản" />
+                <Item7 Ref="62" ControlType="XRTableCell" Name="tableCell10" Weight="1.1745600427188072" Multiline="true" Text="Đơn vị hoặc người nhận" />
+                <Item8 Ref="63" ControlType="XRTableCell" Name="tableCell11" Weight="0.50508394387478472" Multiline="true" Text="Ghi chú" />
+              </Cells>
+            </Item1>
+          </Rows>
+          <StylePriority Ref="64" UseFont="false" UseBorders="false" UseTextAlignment="false" />
+        </Item1>
+      </Controls>
+    </Item5>
+    <Item6 Ref="65" ControlType="ReportFooterBand" Name="ReportFooter" HeightF="119.875084">
+      <Controls>
+        <Item1 Ref="66" ControlType="XRLabel" Name="label7" Multiline="true" Text="Người lập" TextAlignment="TopCenter" SizeF="299.429565,23.0000038" LocationFloat="521.5704,33.0000229" Font="Arial, 9.75pt, style=Bold" Padding="2,2,0,0,100">
+          <StylePriority Ref="67" UseFont="false" UseTextAlignment="false" />
+        </Item1>
+        <Item2 Ref="68" ControlType="XRPageInfo" Name="pageInfo1" PageInfo="DateTime" TextFormatString="An Giang, ngày ....... tháng ...... năm {0:yyyy}" TextAlignment="TopCenter" SizeF="299.429565,23" LocationFloat="521.5704,10.0000067" Font="Arial, 9.75pt, style=Bold" Padding="2,2,0,0,100">
+          <StylePriority Ref="69" UseFont="false" UseTextAlignment="false" />
+        </Item2>
+      </Controls>
+    </Item6>
+  </Bands>
+  <StyleSheet>
+    <Item1 Ref="70" Name="Title" BorderStyle="Inset" Font="Arial, 14.25pt" ForeColor="255,75,75,75" BackColor="Transparent" BorderColor="Black" Sides="None" StringFormat="Near;Near;0;None;Character;Default" BorderWidthSerializable="1" />
+    <Item2 Ref="71" Name="DetailCaption1" BorderStyle="Inset" Padding="6,6,0,0,100" Font="Arial, 8.25pt, style=Bold" ForeColor="White" BackColor="255,75,75,75" BorderColor="White" Sides="Left" StringFormat="Near;Center;0;None;Character;Default" TextAlignment="MiddleLeft" BorderWidthSerializable="2" />
+    <Item3 Ref="72" Name="DetailData1" BorderStyle="Inset" Padding="6,6,0,0,100" Font="Arial, 8.25pt" ForeColor="Black" BorderColor="Transparent" Sides="Left" StringFormat="Near;Center;0;None;Character;Default" TextAlignment="MiddleLeft" BorderWidthSerializable="2" />
+    <Item4 Ref="73" Name="DetailData3_Odd" BorderStyle="Inset" Padding="6,6,0,0,100" Font="Arial, 8.25pt" ForeColor="Black" BackColor="255,231,231,231" BorderColor="Transparent" Sides="None" StringFormat="Near;Center;0;None;Character;Default" TextAlignment="MiddleLeft" BorderWidthSerializable="1" />
+    <Item5 Ref="74" Name="PageInfo" BorderStyle="Inset" Padding="2,2,0,0,100" Font="Arial, 8.25pt, style=Bold" ForeColor="255,75,75,75" StringFormat="Near;Near;0;None;Character;Default" />
+  </StyleSheet>
+  <ObjectStorage>
+    <Item1 Ref="0" ObjectType="DevExpress.DataAccess.ObjectBinding.ObjectDataSource,DevExpress.DataAccess.v20.1" Name="objectDataSource1" Base64="PE9iamVjdERhdGFTb3VyY2UgTmFtZT0ib2JqZWN0RGF0YVNvdXJjZTEiPjxEYXRhU291cmNlIFR5cGU9Ik5pVGlFcnAuQXBwbGljYXRpb24uRGFwcGVyLlZpZXdNb2RlbHMuVmFuQmFuRGVuVmlld01vZGVsLCBOaVRpRXJwLkFwcGxpY2F0aW9uLkRhcHBlciwgVmVyc2lvbj0xLjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPW51bGwiIC8+PC9PYmplY3REYXRhU291cmNlPg==" />
+  </ObjectStorage>
+</XtraReportsLayoutSerializer>

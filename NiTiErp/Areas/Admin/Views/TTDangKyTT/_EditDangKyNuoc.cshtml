@@ -1,0 +1,134 @@
+﻿<div id="modal-add-edit-EditDangKyNuoc" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style="overflow-y: auto; max-height:85%;  margin-top: 50px; margin-bottom:50px; ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Sửa đăng ký nước </h4>
+            </div>
+            <div class="modal-body">
+
+                <form class="form-horizontal form-label-left" id="frmMainEditDangKyNuoc">
+                    <div class="item form-group">
+                        <div class="col-md-4 col-sm-12 col-xs-12">
+                            <label for="txtHoTenNguoiYeuCauNuoc">
+                                Họ tên người yêu cầu
+                                <a style="color:red">(*)</a>
+                            </label>
+                            <input type="text" name="txtHoTenNguoiYeuCauNuoc"
+                                   class="form-control"
+                                   id="txtHoTenNguoiYeuCauNuoc">
+                        </div>
+                        <div class="col-md-4 col-sm-12 col-xs-12">
+                            <label for="lbDienThoaiDiDongNuoc">
+                                Điện thoại liên hệ
+                                <a style="color:red">(*)</a>
+                            </label>
+                            <input type="text" name="txtDienThoaiDiDongNuoc" class="form-control has-feedback-right" id="txtDienThoaiDiDongNuoc" placeholder="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-4 col-sm-12 col-xs-12 ">
+                            <label for="lbSoChungMinhThuNuoc">
+                                Số thẻ căn cước / Số CMND
+                                <a style="color:red">(*)</a>
+                            </label>
+                            <input type="text" name="txtSoChungMinhThuNuoc" class="form-control has-feedback-right" id="txtSoChungMinhThuNuoc" placeholder="">
+                        </div>
+                        <div class="col-md-4 col-sm-12 col-xs-12 ">
+                            <label for="lbNgayCapNuoc">
+                                Ngày cấp
+                                <a style="color:red">(*)</a>
+                            </label>
+                            <input type="text" name="txtNgayCapNuoc" class="form-control has-feedback-right" id="txtNgayCapNuoc" placeholder="Ngày / tháng / năm">
+                        </div>
+                        <div class="col-md-4 col-sm-12 col-xs-12 ">
+                            <label for="lbNoiCapDien">
+                                Nơi cấp
+                                <a style="color:red">(*)</a>
+                            </label>
+                            <input type="text" name="txtNoiCapNuoc" class="form-control has-feedback-right" id="txtNoiCapNuoc" placeholder="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12 col-sm-12 col-xs-12 ">
+                            <label for="lbThonTinDiaChiNuoc">
+                                Thông tin về địa chỉ nơi lắp đặt đồng hồ nước
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-4 col-sm-12 col-xs-12 ">
+                            <label for="lbTinhNuoc">
+                                Tỉnh
+                                <a style="color:red">(*)</a>
+                            </label>
+                            <select id="ddlTinhNuoc" name="ddlTinhNuoc" class="form-control"></select>
+                        </div>
+                        <div class="col-md-4 col-sm-12 col-xs-12 ">
+                            <label for="lbThanhPhoHuyenNuoc">
+                                Thành phố / Huyện
+                                <a style="color:red">(*)</a>
+                            </label>
+                            <select id="ddlThanhPhoHuyenNuoc" name="ddlThanhPhoHuyenNuoc" class="form-control"></select>
+                        </div>
+                        <div class="col-md-4 col-sm-12 col-xs-12 ">
+                            <label for="lbPhuongXaNuoc">
+                                Phường / Xã
+                                <a style="color:red">(*)</a>
+                            </label>
+                            <select id="ddlPhuongXaNuoc" name="ddlPhuongXaNuoc" class="form-control"></select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-4 col-sm-6 col-xs-12 ">
+                            <label for="lbSoNhaNuoc">
+                                Số nhà
+                            </label>
+                            <input type="text" name="txtSoNhaNuoc" class="form-control has-feedback-right" id="txtSoNhaNuoc" placeholder="">
+                        </div>
+                        <div class="col-md-8 col-sm-6 col-xs-12 ">
+                            <label for="lbDuongPhoApToNuoc">
+                                Tên đường phố / Ấp / Tổ
+                                <a style="color:red">(*)</a>
+                            </label>
+                            <input type="text" name="txtDuongPhoApToNuoc" class="form-control has-feedback-right" id="txtDuongPhoApToNuoc" placeholder="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-4 col-sm-12 col-xs-12 ">
+                            <label for="lbMucDichSuDungNuoc">
+                                Mục đích sử dụng
+                                <a style="color:red">(*)</a>
+                            </label>
+                            <select id="ddlMucDichSuDungNuoc" name="ddlMucDichSuDungNuoc" class="form-control"></select>
+                        </div>
+                        <div class="col-md-4 col-sm-12 col-xs-12 ">
+                            <label for="lbLoaiHinhDichVuNuoc">
+                                Loại hình dịch vụ
+                                <a style="color:red">(*)</a>
+                            </label>
+                            <select id="ddlLoaiHinhDichVuNuoc" name="ddlLoaiHinhDichVuNuoc" class="form-control"></select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-12 col-xs-12 ">
+                            <label for="lbGhiChuNuoc">
+                                Ghi chú <a style="color:red">(*)</a>
+                            </label>
+                            <input type="text" name="txtGhiChuNuoc" class="form-control has-feedback-right" id="txtGhiChuNuoc" placeholder="">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="button" id="btnCancelEditDangKyNuoc" data-dismiss="modal" class="btn btn-default">Đóng</button>
+                            <button type="button" id="btnSaveEditDangKyNuoc" class="btn btn-warning">Lưu đăng ký </button>
+                        </div>
+                    </div>
+                </form>
+                <div class="ln_solid"></div>
+            </div>
+        </div>
+    </div>
+</div>

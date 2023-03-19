@@ -1,0 +1,163 @@
+﻿<div id="modal-add-edit-TrinhDoDaoTao" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style="overflow-y: auto; max-height:85%;  margin-top: 50px; margin-bottom:50px; ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Đào tạo - Trình độ học viên</h4>
+            </div>
+            <div class="modal-body">
+                <div id="horizontal-form">
+                    <form class="form-horizontal form-label-left input_mask" role="form" id="frmMainTrinhDoDaoTao">
+                        <input type="hidden" id="hidTrinhDoId" value="" />
+                        <input type="hidden" id="hidtrinhdoEditId" value="" />
+
+                        <input type="hidden" id="hidLyLichIdInsert" value="" />                      
+
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <label for="lbLoaiBang">
+                                    Loại bằng
+                                    <a style="color:red">(*)</a>
+                                </label>
+                                <select id="ddlLoaiBang" name="ddlLoaiBang" class="form-control"></select>
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="lbChuyenNganh">Chuyên ngành <a style="color:red">(*)</a></label>
+                                <input type="text" name="txtChuyenNganh" class="form-control has-feedback-right" id="txtChuyenNganh" placeholder="Chuyên ngành">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <label for="lbLoaiHinh">
+                                    Loại hình đào tạo
+                                    <a style="color:red">(*)</a>
+                                </label>
+                                <select id="ddlLoaiHinh" name="ddlLoaiHinh" class="form-control"></select>
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="lbXepLoai">Xếp loại <a style="color:red">(*)</a></label>
+                                <select id="ddlXepLoai" name="ddlXepLoai" class="form-control"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <label for="lbNamCapBang">
+                                    Năm cấp bằng
+                                    <a style="color:red">(*)</a>
+                                </label>
+                                <input type="text" name="txtNamCapBang" class="form-control has-feedback-right" id="txtNamCapBang" placeholder="Ngày hoặc năm cấp bằng">
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="lbTenTruongCapBang">Tên trường <a style="color:red">(*)</a></label>
+                                <input type="text" name="txtTenTruongCapBang" class="form-control has-feedback-right" id="txtTenTruongCapBang" placeholder="Tên trường cấp bằng">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <label for="lbGhiChuTrinhDo">
+                                    Ghi chú
+                                </label>
+                                <input type="text" name="txtGhiChuTrinhDo" class="form-control has-feedback-right" id="txtGhiChuTrinhDo" placeholder="Ghi chú trình độ">
+                            </div>
+                            <div class="col-sm-6">
+                                <input type="hidden" id="hidHinhBangCapId" value="" />
+                                <div id="imageListHinhBangCap">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <label for="lbChonAnh1">
+                                    Hình bằng (Mặt 1)
+                                </label>
+                                <input type="hidden" id="hidBang1Id" value="" />
+                                <div id="imagelistBang1" class="col-md-12">
+                                </div>
+                                <div class="input-group">
+                                    <input type="file" id="fileHinhBangCap1" />
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="lbChonAnh2">Hình bằng (Mặt 2)</label>
+                                <input type="hidden" id="hidBang2Id" value="" />
+                                <div id="imagelistBang2" class="col-md-12">
+                                </div>
+                                <div class="input-group">
+                                    <input type="file" id="fileHinhBangCap2" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="button" id="btnSaveTrinhDoDaoTao" class="btn btn-success">Lưu trình độ</button>
+                                <button type="button" id="btnCancelTrinhDoDaoTao" data-dismiss="modal" class="btn btn-default">Đóng</button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="clearfix"></div>
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="x_panel">
+                                <div class="x_content">
+                                    <table id="tbl-trinhdo" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>Loại bằng</th>
+                                                <th>Tên bằng cấp</th>
+                                                <th>Loại đào tạo</th>
+                                                <th>Hình bằng mặt 1</th>
+                                                <th>Hình bằng mặt 2</th>
+                                                <th width="=20%">#</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tbl-contentTrinhDo"></tbody>
+                                    </table>
+                                    <div class="row">
+                                        <div class="col-sm-5">
+                                            <div class="dataTables_info" id="datatable-checkbox_infoTrinhDo" role="status" aria-live="polite">
+                                                <select id="ddl-show-pageTrinhDo">
+                                                    <option value="10" selected="selected">10</option>
+                                                    <option value="20">20</option>
+                                                    <option value="30">30</option>
+                                                    <option value="50">50</option>
+                                                </select>
+                                                <span class="item-per-page">
+                                                    dòng/trang.
+                                                </span>
+                                                Tổng cộng: <strong id="lbl-totalTrinhDo-records"></strong>
+                                            </div>
+                                        </div><div class="col-sm-7">
+                                            <div class="dataTables_paginate" id="datatable-checkbox_paginateTrinhDo">
+                                                <ul id="paginationULTrinhDo"></ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>                
+            </div>
+        </div>
+    </div>
+    <script id="table-TrinhDo" type="x-tmpl-mustache">
+        <tr>
+            <td>{{TenLoaiBang}}</td>
+            <td>{{ChuyenNganh}}</td>
+            <td>{{TenLoaiHinhDaoTao}}</td>
+            <td>{{{HinhBangMatPath1}}}</td>
+            <td>{{{HinhBangMatPath2}}}</td>
+            <th scope="row">
+                <a class="btn btn-editTrinhDo" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Sửa trình độ">
+                    <i class="fa fa-edit" style="color:blue"></i>
+                    Sửa
+                </a>
+                <a class="btn btn-deleteTrinhDo" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Xóa trình độ">
+                    <i class="fa fa-trash-o" style="color:red"></i>
+                    Xóa
+                </a>
+            </th>
+        </tr>
+    </script>
+</div>

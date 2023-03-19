@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XtraReportsLayoutSerializer SerializerVersion="20.1.3.0" Ref="0" ControlType="NiTiErp.Reports.ThayHopDongNuoc.repThayHDTS, NiTiErp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" Name="repThayHDTS" DisplayName="repThayHDTS" Margins="100, 100, 23, 32" PageWidth="850" PageHeight="1100" Version="20.1">
+  <Extensions>
+    <Item1 Ref="1" Key="DataSerializationExtension" Value="DevExpress.XtraReports.Web.ReportDesigner.DefaultDataSerializer" />
+  </Extensions>
+  <Parameters>
+    <Item1 Ref="3" Description="Ten kh" Name="prTenKH" />
+    <Item2 Ref="4" Description="So Hd moi" Name="prSoHDMoi" />
+    <Item3 Ref="5" Description="Dia chi LD" Name="prDiaChiLD" />
+    <Item4 Ref="6" Description="Danh so" Name="prDanhSo" />
+    <Item5 Ref="7" Description="Ngay hieu luc" Name="prNgayHieuLuc" />
+    <Item6 Ref="8" Description="Ngay ky hd" Name="prNgayKyHD" />
+    <Item7 Ref="9" Description="Thang ky hd" Name="prThangKyHD" />
+    <Item8 Ref="10" Description="Nam ky hd" Name="prNamKyHD" />
+    <Item9 Ref="11" Description="Tai XN" Name="prTaiXN" />
+    <Item10 Ref="12" Description="Nguoi dai dien" Name="prNguoiDaiDien" />
+    <Item11 Ref="13" Description="Nguoi uy quyen" Name="prNguoiUyQuyen" />
+    <Item12 Ref="14" Description="Ten chuc vu" Name="prTenChucVu" />
+    <Item13 Ref="15" Description="CMND" Name="prCMND" />
+    <Item14 Ref="16" Description="Ngay cap" Name="prNgayCap" />
+    <Item15 Ref="17" Description="Thang cap" Name="prThangCap" />
+    <Item16 Ref="18" Description="Nam cao" Name="prNamCap" />
+    <Item17 Ref="19" Description="Tai dau" Name="prTaiDau" />
+    <Item18 Ref="20" Description="So giay uy quyen" Name="prSoGiayUyQuyen" />
+    <Item19 Ref="21" Description="Ngay uy quyen" Name="prNgayUyQuyen" />
+    <Item20 Ref="22" Description="Dia chi kh" Name="prDiaChiKH" />
+    <Item21 Ref="23" Description="Ma so thue" Name="prMaSoThueMoi" />
+    <Item22 Ref="24" Description="Dien thoai" Name="prDienThoai" />
+    <Item23 Ref="25" Description="Ngay hieu luc" Name="prNgayHLHD" />
+    <Item24 Ref="26" Description="Thang hieu luc" Name="prThangHLHD" />
+    <Item25 Ref="27" Description="Nam hieu luc" Name="prNamKyHLHD" />
+  </Parameters>
+  <Bands>
+    <Item1 Ref="28" ControlType="TopMarginBand" Name="topMarginBand1" HeightF="23" />
+    <Item2 Ref="29" ControlType="ReportHeaderBand" Name="ReportHeader" HeightF="2081.25024">
+      <Controls>
+        <Item1 Ref="30" ControlType="XRLabel" Name="label22" Multiline="true" Text="label22" SizeF="217.559372,23" LocationFloat="105.654625,1913.21" Font="Times New Roman, 13pt" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="31" EventName="BeforePrint" PropertyName="Text" Expression="?prDienThoai" />
+          </ExpressionBindings>
+          <StylePriority Ref="32" UseFont="false" />
+        </Item1>
+        <Item2 Ref="33" ControlType="XRLabel" Name="label21" Multiline="true" Text="label21" SizeF="217.559372,23" LocationFloat="105.654625,1890.21" Font="Times New Roman, 13pt" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="34" EventName="BeforePrint" PropertyName="Text" Expression="?prMaSoThueMoi" />
+          </ExpressionBindings>
+          <StylePriority Ref="35" UseFont="false" />
+        </Item2>
+        <Item3 Ref="36" ControlType="XRLabel" Name="label20" Multiline="true" Text="label20" SizeF="520.0594,23" LocationFloat="105.654625,1839.17" Font="Times New Roman, 13pt" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="37" EventName="BeforePrint" PropertyName="Text" Expression="?prDiaChiLD" />
+          </ExpressionBindings>
+          <StylePriority Ref="38" UseFont="false" />
+        </Item3>
+        <Item4 Ref="39" ControlType="XRLabel" Name="label19" Multiline="true" Text="label19" SizeF="450.267761,56.333374" LocationFloat="175.44635,1747.32" Font="Times New Roman, 13pt" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="40" EventName="BeforePrint" PropertyName="Text" Expression="?prDiaChiKH" />
+          </ExpressionBindings>
+          <StylePriority Ref="41" UseFont="false" />
+        </Item4>
+        <Item5 Ref="42" ControlType="XRLabel" Name="label18" Multiline="true" Text="label18" SizeF="159.375,23.0001221" LocationFloat="331.547455,1724.32" Font="Times New Roman, 13pt" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="43" EventName="BeforePrint" PropertyName="Text" Expression="?prNgayUyQuyen" />
+          </ExpressionBindings>
+          <StylePriority Ref="44" UseFont="false" />
+        </Item5>
+        <Item6 Ref="45" ControlType="XRLabel" Name="label17" Multiline="true" Text="label17" SizeF="77.08331,23" LocationFloat="175.44635,1724.32" Font="Times New Roman, 13pt" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="46" EventName="BeforePrint" PropertyName="Text" Expression="?prSoGiayUyQuyen" />
+          </ExpressionBindings>
+          <StylePriority Ref="47" UseFont="false" />
+        </Item6>
+        <Item7 Ref="48" ControlType="XRLabel" Name="label16" Multiline="true" Text="label16" SizeF="197.61911,23" LocationFloat="428.095,1701.32" Font="Times New Roman, 13pt" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="49" EventName="BeforePrint" PropertyName="Text" Expression="?prTaiDau" />
+          </ExpressionBindings>
+          <StylePriority Ref="50" UseFont="false" />
+        </Item7>
+        <Item8 Ref="51" ControlType="XRLabel" Name="label15" Multiline="true" Text="label15" SizeF="77.67853,23" LocationFloat="311.9047,1701.32" Font="Times New Roman, 13pt" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="52" EventName="BeforePrint" PropertyName="Text" Expression="?prNamCap" />
+          </ExpressionBindings>
+          <StylePriority Ref="53" UseFont="false" />
+        </Item8>
+        <Item9 Ref="54" ControlType="XRLabel" Name="label14" Multiline="true" Text="label14" SizeF="67.2619,23" LocationFloat="208.184464,1701.32" Font="Times New Roman, 13pt" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="55" EventName="BeforePrint" PropertyName="Text" Expression="?prThangCap" />
+          </ExpressionBindings>
+          <StylePriority Ref="56" UseFont="false" />
+        </Item9>
+        <Item10 Ref="57" ControlType="XRLabel" Name="label13" Multiline="true" Text="label13" SizeF="62.7976379,23.0001221" LocationFloat="105.654625,1701.32" Font="Times New Roman, 13pt" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="58" EventName="BeforePrint" PropertyName="Text" Expression="?prNgayCap" />
+          </ExpressionBindings>
+          <StylePriority Ref="59" UseFont="false" />
+        </Item10>
+        <Item11 Ref="60" ControlType="XRLabel" Name="label12" Multiline="true" Text="label12" SizeF="205.654861,23" LocationFloat="105.654625,1678.32" Font="Times New Roman, 13pt" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="61" EventName="BeforePrint" PropertyName="Text" Expression="?prCMND" />
+          </ExpressionBindings>
+          <StylePriority Ref="62" UseFont="false" />
+        </Item11>
+        <Item12 Ref="63" ControlType="XRLabel" Name="label11" Multiline="true" Text="label11" SizeF="178.392883,22.9998779" LocationFloat="378.869,1655.32" Font="Times New Roman, 13pt" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="64" EventName="BeforePrint" PropertyName="Text" Expression="?prTenChucVu" />
+          </ExpressionBindings>
+          <StylePriority Ref="65" UseFont="false" />
+        </Item12>
+        <Item13 Ref="66" ControlType="XRLabel" Name="label10" Multiline="true" Text="label10" SizeF="205.65477,22.9998779" LocationFloat="105.654625,1655.32" Font="Times New Roman, 14pt" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="67" EventName="BeforePrint" PropertyName="Text" Expression="?prNguoiUyQuyen" />
+          </ExpressionBindings>
+          <StylePriority Ref="68" UseFont="false" />
+        </Item13>
+        <Item14 Ref="69" ControlType="XRLabel" Name="label9" Multiline="true" Text="label9" SizeF="376.30957,23" LocationFloat="152.678452,1632.32" Font="Times New Roman, 13pt" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="70" EventName="BeforePrint" PropertyName="Text" Expression="?prTenKH" />
+          </ExpressionBindings>
+          <StylePriority Ref="71" UseFont="false" />
+        </Item14>
+        <Item15 Ref="72" ControlType="XRLabel" Name="label8" Multiline="true" Text="label8" SizeF="76.19052,23" LocationFloat="393.749878,1356.95227" Font="Times New Roman, 14pt" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="73" EventName="BeforePrint" PropertyName="Text" Expression="?prNamKyHD" />
+          </ExpressionBindings>
+          <StylePriority Ref="74" UseFont="false" />
+        </Item15>
+        <Item16 Ref="75" ControlType="XRLabel" Name="label7" Multiline="true" Text="label7" SizeF="70.23811,23" LocationFloat="267.26178,1356.95227" Font="Times New Roman, 14pt" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="76" EventName="BeforePrint" PropertyName="Text" Expression="?prThangKyHD" />
+          </ExpressionBindings>
+          <StylePriority Ref="77" UseFont="false" />
+        </Item16>
+        <Item17 Ref="78" ControlType="XRLabel" Name="label6" Multiline="true" Text="label6" SizeF="62.7976379,23" LocationFloat="152.678452,1356.95227" Font="Times New Roman, 13pt" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="79" EventName="BeforePrint" PropertyName="Text" Expression="?prNgayKyHD" />
+          </ExpressionBindings>
+          <StylePriority Ref="80" UseFont="false" />
+        </Item17>
+        <Item18 Ref="81" ControlType="XRLabel" Name="label5" Multiline="true" Text="label5" SizeF="253.868988,22.99997" LocationFloat="235.4167,568.2619" Font="Times New Roman, 15pt" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="82" EventName="BeforePrint" PropertyName="Text" Expression="?prNgayHieuLuc" />
+          </ExpressionBindings>
+          <StylePriority Ref="83" UseFont="false" />
+        </Item18>
+        <Item19 Ref="84" ControlType="XRLabel" Name="label4" Multiline="true" Text="label4" SizeF="300.892883,23.000061" LocationFloat="188.392822,531.0595" Font="Times New Roman, 15pt" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="85" EventName="BeforePrint" PropertyName="Text" Expression="?prDanhSo" />
+          </ExpressionBindings>
+          <StylePriority Ref="86" UseFont="false" />
+        </Item19>
+        <Item20 Ref="87" ControlType="XRLabel" Name="label3" Multiline="true" Text="label3" SizeF="444.761932,23" LocationFloat="166.96431,493.857147" Font="Times New Roman, 15pt" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="88" EventName="BeforePrint" PropertyName="Text" Expression="?prDiaChiLD" />
+          </ExpressionBindings>
+          <StylePriority Ref="89" UseFont="false" />
+        </Item20>
+        <Item21 Ref="90" ControlType="XRLabel" Name="label2" Multiline="true" Text="label2" SizeF="168.4524,23" LocationFloat="235.4167,240.880981" Font="Times New Roman, 15pt" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="91" EventName="BeforePrint" PropertyName="Text" Expression="?prSoHDMoi" />
+          </ExpressionBindings>
+          <StylePriority Ref="92" UseFont="false" />
+        </Item21>
+        <Item22 Ref="93" ControlType="XRLabel" Name="label1" Multiline="true" Text="label1" SizeF="423.333435,23" LocationFloat="188.392822,456.803528" Font="Times New Roman, 15pt" Padding="2,2,0,0,100">
+          <ExpressionBindings>
+            <Item1 Ref="94" EventName="BeforePrint" PropertyName="Text" Expression="?prTenKH" />
+          </ExpressionBindings>
+          <StylePriority Ref="95" UseFont="false" />
+        </Item22>
+      </Controls>
+    </Item2>
+    <Item3 Ref="96" ControlType="PageHeaderBand" Name="PageHeader" HeightF="15.4014616" />
+    <Item4 Ref="97" ControlType="DetailBand" Name="detailBand1" HeightF="18.75" />
+    <Item5 Ref="98" ControlType="BottomMarginBand" Name="bottomMarginBand1" HeightF="32" />
+  </Bands>
+</XtraReportsLayoutSerializer>

@@ -1,0 +1,67 @@
+﻿<div id="modal-add-edit-QuaTrinhXuLyNuoc" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style="overflow-y: auto; max-height:85%;  margin-top: 50px; margin-bottom:50px; ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Quá trình xử lý đồng hồ nước </h4>
+            </div>
+            <div class="modal-body">
+                <div id="horizontal-form">
+
+                    <form class="form-horizontal form-label-left input_mask" role="form" id="frmMainQuaTrinhXuLyNuoc">
+                        @*<div class="form-group">
+                            <div class="col-sm-6">
+                                <label for="lbKiemTraDMCungCapDichVu">
+                                    Chọn dịch vụ cung cấp
+                                    <a style="color:red">(*) </a>
+                                </label>
+                                <select id="ddlKiemTraDMCungCapDichVu" class="form-control" name="ddlKiemTraDMCungCapDichVu"></select>
+                            </div>
+                        </div>*@
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <div class="table-wrapper-scroll-y">
+                                    <table id="tbl-QuaTrinhXuLyNuoc" class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Mô tả dịch vụ</th>
+                                                <th width="=10%">#</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tbl-contentQuaTrinhXuLyNuoc"></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        @*<div class="form-group">
+                            <div class="col-sm-6">
+                                <label for="lbKiemTraNgayChuyenXuLy">Ngày chuyển xử lý <a style="color:red">(*)</a></label>
+                                <input type="text" name="txtKiemTraNgayChuyenXuLy" class="form-control has-feedback-right" id="txtKiemTraNgayChuyenXuLy" placeholder="Ngày chuyển xử lý">
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="lbToNhaMayChuyenXuLy">Chuyển đến Tổ, Nhà máy <a style="color:red">(*)</a></label>
+                                <select id="ddlToNhaMayChuyenXuLy" class="form-control"></select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="button" id="btnKiemTraXuLyCancel" data-dismiss="modal" class="btn btn-default">Đóng</button>
+                                <button type="button" id="btnSaveKiemTraChuyenXuLy" class="btn btn-primary">Chuyển xử lý </button>
+                            </div>
+                        </div>*@
+                    </form>
+                </div>
+                <div class="ln_solid"></div>
+
+            </div>
+        </div>
+    </div>
+    <script id="table-QuaTrinhXuLyNuoc" type="x-tmpl-mustache">
+        <tr>
+            <td>{{MoTa}}</td>
+            <td>{{CreateDate}}</td>
+        </tr>
+    </script>
+</div>

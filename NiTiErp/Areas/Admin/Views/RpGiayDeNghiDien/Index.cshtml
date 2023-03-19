@@ -1,0 +1,81 @@
+﻿@{ Layout = null; }
+@using Microsoft.AspNetCore.Http;
+
+@using DevExpress.AspNetCore
+@using DevExpress.XtraReports.UI;
+@using DevExpress.XtraReports.Parameters;
+
+@using NiTiErp.Reports
+@using NiTiErp.Helpers
+
+@using NiTiErp.Application.Dapper.ViewModels
+
+@namespace NiTiErp.Pages
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="/admin-side/images/powaco.ico" />
+
+    <link rel="stylesheet" href="~/css/thirdparty.bundle.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <script src="~/js/thirdparty.bundle.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+</head>
+<body>
+    <link rel="stylesheet" href="~/css/viewer.part.bundle.css" />
+    <link rel="stylesheet" href="~/css/designer.part.bundle.css" />
+
+    <script src="~/js/viewer.part.bundle.js"></script>
+    <script src="~/js/designer.part.bundle.js"></script>
+
+    @{ 
+        List<TTDangKyFileViewModel> dangkyfile = SessionHelper.GetObjectFromJson<List<TTDangKyFileViewModel>>(Context.Session, "ttdmdangkyfile");
+
+        var dien = new repGiayDeNghi();
+        dien.DataSource = dangkyfile;
+
+
+        dien.Parameters["prTenXiNghiep"].Value = @Context.Session.GetString("TenXiNghiep");
+        dien.Parameters["prTenXiNghiep"].Visible = false;
+        dien.Parameters["prHoten"].Value = @Context.Session.GetString("Hoten");
+        dien.Parameters["prHoten"].Visible = false;
+        dien.Parameters["prSoCMND"].Value = @Context.Session.GetString("SoCMND");
+        dien.Parameters["prSoCMND"].Visible = false;
+        dien.Parameters["prNgayCap"].Value = @Context.Session.GetString("NgayCap");
+        dien.Parameters["prNgayCap"].Visible = false;
+        dien.Parameters["prNoiCap"].Value = @Context.Session.GetString("NoiCap");
+        dien.Parameters["prNoiCap"].Visible = false;
+        dien.Parameters["prDiaChi"].Value = @Context.Session.GetString("DiaChi");
+        dien.Parameters["prDiaChi"].Visible = false;
+        dien.Parameters["prDienThoai"].Value = @Context.Session.GetString("DienThoai");
+        dien.Parameters["prDienThoai"].Visible = false;
+
+        dien.Parameters["prdvGiaDinh"].Value = @Context.Session.GetString("dvGiaDinh");
+        dien.Parameters["prdvGiaDinh"].Visible = false;
+        dien.Parameters["prdvCoQuan"].Value = @Context.Session.GetString("dvCoQuan");
+        dien.Parameters["prdvCoQuan"].Visible = false;
+        dien.Parameters["prdvTruongHoc"].Value = @Context.Session.GetString("dvTruongHoc");
+        dien.Parameters["prdvTruongHoc"].Visible = false;
+        dien.Parameters["prdvSanXuat"].Value = @Context.Session.GetString("dvSanXuat");
+        dien.Parameters["prdvSanXuat"].Visible = false;
+        dien.Parameters["prdvKinhDoanh"].Value = @Context.Session.GetString("dvKinhDoanh");
+        dien.Parameters["prdvKinhDoanh"].Visible = false;
+
+    }
+
+    <div class="container-fluid body-content">
+        @Html.DevExpress().WebDocumentViewer("DocumentViewer").Height("1000px").Bind(dien)
+    </div>
+
+   
+   
+
+</body>
+</html>

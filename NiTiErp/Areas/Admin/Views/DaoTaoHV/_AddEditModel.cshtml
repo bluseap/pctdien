@@ -1,0 +1,115 @@
+﻿<div id="modal-add-edit-EditHoSoHocVien" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style="overflow-y: auto; max-height:85%;  margin-top: 50px; margin-bottom:50px; ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Sửa hồ sơ học viên </h4>
+            </div>
+            <div class="modal-body">
+                <div id="horizontal-form">
+                    <form class="form-horizontal form-label-left input_mask" role="form" id="frmMainEditHoSoHocVien">
+                        <input type="hidden" id="hidHoSoNhanVienId" value="" />
+                        <input type="hidden" id="hidInsertHoSoNhanVienId" value="" />
+
+                        <div class="form-group">
+                            <label for="lbnonono" class="control-label col-md-2 col-sm-2 col-xs-12 "></label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                            </div>
+                            <label for="lbHinhThe" class="control-label col-md-2 col-sm-2 col-xs-12 ">Hình thẻ</label>
+                            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                                <input type="hidden" id="hidHinhTheId" value="" />
+                                <div id="imagelistHinhThe" class="col-md-12">
+                                </div>
+                                <input type="file" id="fileInputHinhNhanVien" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <label for="lbTenNhanVien">
+                                    Tên nhân viên
+                                    <a style="color:red">(*)</a>
+                                </label>
+                                <input type="text" name="txtTenNhanVien" class="form-control has-feedback-right" id="txtTenNhanVien" placeholder="Tên nhân viên">
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="lbNgaySinh">Ngày sinh <a style="color:red">(*)</a></label>
+                                <input type="text" name="txtNgaySinh" class="form-control has-feedback-right" id="txtNgaySinh" placeholder="Ngày sinh">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <label for="lbSoBHXH">Số BHXH </label>
+                                <input type="text" name="txtSoBHXH" class="form-control has-feedback-right" id="txtSoBHXH" placeholder="Số BHXH">
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="lbNgayThamGiaBHXH">Ngày tham gia BHXH</label>
+                                <input type="text" name="txtNgayThamGiaBHXH" class="form-control has-feedback-right" id="txtNgayThamGiaBHXH" placeholder="Ngày tham gia BHXH">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <label for="lbSoCCCD">Số CCCD / CMND <a style="color:red">(*)</a></label>
+                                <input type="text" name="txtSoCCCD" class="form-control has-feedback-right" id="txtSoCCCD" placeholder="Số CCCD / CMND">
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="lbNgayCap">Ngày cấp CCCD / CMND <a style="color:red">(*)</a></label>
+                                <input type="text" name="txtNgayCap" class="form-control has-feedback-right" id="txtNgayCap" placeholder="Ngày cấp CCCD / CMND">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <label for="lbSoDienThoai">Số điện thoại</label>
+                                <input type="text" name="txtSoDienThoai" class="form-control has-feedback-right" id="txtSoDienThoai" placeholder="Số điện thoại">
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="lbEmail">Email</label>
+                                <input type="email" name="txtEmail" class="form-control has-feedback-right" id="txtEmail" placeholder="Email">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <label for="lbNoiSinh">Nơi sinh</label>
+                                <input type="text" name="txtNoiSinh" class="form-control has-feedback-right" id="txtNoiSinh" placeholder="Nơi sinh">
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="lbNoiThuongTru">Nơi thường trú <a style="color:red">(*)</a></label>
+                                <input type="text" name="txtNoiThuongTru" class="form-control has-feedback-right" id="txtNoiThuongTru" placeholder="Nơi thường trú">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <label for="lbNgayCongTac">Ngày vào đơn vị <a style="color:red">(*)</a></label>
+                                <input type="text" name="txtNgayCongTac" class="form-control has-feedback-right" id="txtNgayCongTac" placeholder="Ngày công tác">
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="lbKhuVucCT">Khu vực Công tác </label>
+                                <select id="ddlKhuVucCT" class="form-control"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <label for="lbChucVuCT">Chức vụ <a style="color:red">(*)</a></label>
+                                <select id="ddlChucVuCT" class="form-control"></select>
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="lbPhongBanCT">Phòng, ban <a style="color:red">(*)</a></label>
+                                <select id="ddlPhongBanCT" class="form-control"></select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="button" id="btnCancelHoSoHocVien" data-dismiss="modal" class="btn btn-default">Đóng</button>
+                                <button type="button" id="btnSaveHoSoHocVien" class="btn btn-success">Lưu học viên</button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+                <div class="ln_solid"></div>
+            </div>
+        </div>
+    </div>
+</div>

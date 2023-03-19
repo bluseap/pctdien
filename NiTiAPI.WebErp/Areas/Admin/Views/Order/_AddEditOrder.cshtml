@@ -1,0 +1,103 @@
+﻿
+<div id="modal-add-edit-EditOrder" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style="overflow-y: auto; max-height:85%;  margin-top: 50px; margin-bottom:50px; ">        
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Thêm / Sửa tên Khách hàng </h4>
+            </div>
+            <div class="modal-body">
+
+                <form class="form-horizontal form-label-left" id="frmMainEditOrder">
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-12 col-xs-12">
+                            <label for="lbOrderTenKhachHang">
+                                Tên khách hàng <a style="color:red">(*)</a>
+                            </label>
+                            <input type="text" id="txtOrderTenKhachHang" name="txtOrderTenKhachHang" class="form-control has-feedback-right" placeholder="Tên khách hàng">
+                        </div>
+                        <div class="col-md-6 col-sm-12 col-xs-12">
+                            <label for="lbOrderSoDienThoai">
+                                Số điện thoại <a style="color:red">(*)</a>
+                            </label>
+                            <input type="text" id="txtOrderSoDienThoai" name="txtOrderSoDienThoai" class="form-control has-feedback-right" placeholder="Số điện thoại">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <label for="lbOrderDiaChiKhachHang">
+                                Địa chỉ <a style="color:red">(*)</a>
+                            </label>
+                            <input type="text" id="txtOrderDiaChiKhachHang" name="txtOrderDiaChiKhachHang" class="form-control has-feedback-right" placeholder="Địa chỉ khách hàng">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="button" id="btnCancelEditOrder" data-dismiss="modal" class="btn btn-default">Đóng</button>
+                            <button type="button" id="btnTimEditOrder" class="btn btn-success">Tìm kh.hàng </button>
+                            <button type="button" id="btnSaveEditOrder" class="btn btn-warning">Lưu khách hàng </button>
+                        </div>
+                    </div>
+                </form>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="x_panel">
+                            <div class="x_content">
+                                <table class="table table-striped jambo_table bulk_action" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th width="=10%">#</th>
+                                            <th>Tên Khách hàng</th>
+                                            <th>Số điện thoại</th>
+                                            <th>Địa chỉ</th>
+                                            <th>.</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tbl-contentTenKhachHang"></tbody>
+                                </table>
+                                <!--Pagination-->
+                                <div class="row">
+                                    <div class="col-sm-5">
+                                        <div class="dataTables_info" id="datatable-checkbox_info" role="status" aria-live="polite">
+                                            <select id="ddl-show-TenKhachHang">
+                                                <option value="10" selected="selected">10</option>
+                                                <option value="20">20</option>
+                                                <option value="30">30</option>
+                                                <option value="50">50</option>
+                                            </select>
+                                            <span class="item-per-page">
+                                                dòng/trang.
+                                            </span>
+                                            Tổng cộng: <strong id="lbTenKhachHangTotalRecords"></strong>
+                                        </div>
+                                    </div><div class="col-sm-7">
+                                        <div class="dataTables_paginate paging_simple_numbers" id="datatable-checkbox_paginate">
+                                            <ul id="paginationULTenKhachHang"></ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <script id="table-templateTenKhachHang" type="x-tmpl-mustache">
+                    <tr>
+                        <th scope="row">
+                            <a class="btn-lg btn-link btn-addeditTenKhachHang" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Sửa tên khách hàng"><i class="fa fa-pencil"></i> </a>
+                        </th>
+                        <td>{{CustomerName}}</td>
+                        <td>{{CustomerAddress}}</td>
+                        <td>{{CustomerPhone}}</td>
+                        <td>
+                            <a class="btn-link btn-ChonKhachHang" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Trạng thái ĐĐK Nước">
+                               Chọn khách hàng
+                            </a>
+                        </td>
+                    </tr>
+                </script>
+            </div>
+        </div>
+    </div>
+</div>

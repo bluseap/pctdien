@@ -1,0 +1,103 @@
+﻿<div id="modal-add-edit-HsKeTuBao" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style="overflow-y: auto; max-height:85%;  margin-top: 50px; margin-bottom:50px; ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Thêm mới / Sửa kệ - tủ - bao </h4>
+            </div>
+            <div class="modal-body">
+                <div id="horizontal-form">
+                    <form class="form-horizontal form-label-left input_mask" role="form" id="frmMainHsKeTuBao">
+                        <input type="hidden" id="hidHsKeTuBaoId" value="" />
+                        <input type="hidden" id="hidInsertHsKeTuBaoId" value="" />
+
+                        <input type="hidden" id="hidHsChuyenKeTuId" value="" />
+                        <input type="hidden" id="hidInsertChuyenDiHsKeTuBaoId" value="" />
+
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <label for="lbAddEditKhuVuc">
+                                    Khu vực
+                                    <a style="color:red">(*)</a>
+                                </label>
+                                <select id="ddlAddEditKhuVuc" class="form-control"></select>
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="lbAddEditPhongTo">Tên phòng, ban <a style="color:red">(*)</a></label>
+                                <select id="ddlAddEditPhongTo" class="form-control"></select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <label for="lbMaKeTuBao">
+                                    Mã kệ - tủ - bao
+                                    <a style="color:red">(*)</a>
+                                </label>
+                                <input type="text" name="txtMaKeTuBao" class="form-control has-feedback-right" id="txtMaKeTuBao" placeholder="Mã kệ - tủ - bao">
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="lbTenKeTuBao">Tên kệ - tủ - bao <a style="color:red">(*)</a></label>
+                                <input type="text" name="txtTenKeTuBao" class="form-control has-feedback-right" id="txtTenKeTuBao" placeholder="Tên kệ - tủ - bao">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <label for="lbChieuDaiKe">
+                                    Chiều dài kệ - tủ
+                                    <a style="color:red">(*)</a>
+                                </label>
+                                <input type="text" name="txtChieuDaiKe" class="form-control has-feedback-right" id="txtChieuDaiKe" placeholder="Chiều dài kệ - tủ">
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="lbChieuCaoKe">
+                                    Chiều cao kệ - tủ
+                                    <a style="color:red">(*)</a>
+                                </label>
+                                <input type="text" name="txtChieuCaoKe" class="form-control has-feedback-right" id="txtChieuCaoKe" placeholder="Chiều cao kệ - tủ">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <label for="lbSoLuongTrenKe">
+                                    Số lượng hồ sơ trên kệ
+                                    <a style="color:red">(*)</a>
+                                </label>
+                                <input type="number" name="txtSoLuongTrenKe" class="form-control has-feedback-right" id="txtSoLuongTrenKe" placeholder="Số lượng hồ sơ trên kệ">
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="lbSoLuongThucTe">Số lượng đang có <a style="color:red">(*)</a></label>
+                                <input type="text" name="txtSoLuongThucTe" class="form-control has-feedback-right" id="txtSoLuongThucTe" placeholder="Số lượng đang có">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <label for="lbSottKeTuBao">
+                                    Số thứ tự Kệ - tủ - bao
+                                </label>
+                                <input type="number" name="txtSottKeTuBao" class="form-control has-feedback-right" id="txtSottKeTuBao" placeholder="Số thứ tự Kệ - tủ - bao">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <label for="lbGhiChuThongTinCanThiet">Ghi chú thông tin cần thiết</label>
+                                <textarea id="txtGhiChuThongTinCanThiet" required="required" class="form-control" name="txtGhiChuThongTinCanThiet"
+                                          data-parsley-trigger="keyup" data-parsley-maxlength="1000">
+                                </textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="button" id="btnCancelHsKeTuBao" data-dismiss="modal" class="btn btn-default">Đóng</button>
+                                <button type="button" id="btnSaveHsKeTuBao" class="btn btn-success">Lưu kệ - tủ - bao </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="ln_solid"></div>
+            </div>
+        </div>
+    </div>
+</div>
+

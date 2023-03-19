@@ -1,0 +1,1864 @@
+﻿
+
+
+r create procedure [dbo].[Get_BBNghiemThu_ByDSChuyenKeToan]
+r create procedure [dbo].[Get_BBNghiemThu_ByDSNhanHoSo]
+r create procedure [dbo].[Get_BBNghiemThu_ByMaDon]
+
+r create procedure [dbo].[Create_BBNghiemThu] 
+r create procedure [dbo].[Update_BBNghiemThu] 
+
+
+r update procedure [dbo].[Get_ThiCong_ByMaDon]
+
+r update procedure [dbo].[Update_ThiCong_BySuaSoNoDH] 
+r update procedure [dbo].[Update_ThiCong_BySoNoDH] 
+r update procedure [dbo].[Create_ThiCong] 
+
+r update procedure [dbo].[Create_HopDong] 
+
+r update procedure [dbo].[Create_DaoLapTK]  
+
+r update procedure [dbo].[Create_ChiTietThietKe_ByMaddkMaVatTu]
+r update procedure [dbo].[Create_ChiTietThietKe_ByMaddkMauTK] 
+
+r update procedure [dbo].[Update_ThietKe_ByDuyetTK] 
+r update procedure [dbo].[Update_ThietKe_ByTuChoiTK] 
+r update procedure [dbo].[Update_ThietKe_ByMauHinhThietKe] 
+r update procedure [dbo].[Update_ThietKe] 
+r update procedure [dbo].[Create_ThietKe] 
+
+r update procedure [dbo].[Create_DonDangKy]
+
+r update procedure [dbo].[Get_DonDangKy_ByChuanBiNghiemThu]
+r update procedure [dbo].[Get_DonDangKy_ByNghiemThu]
+r update procedure [dbo].[Get_DonDangKy_ByChuanBiThiCong]
+r update procedure [dbo].[Get_DonDangKy_ByThiCong]
+r update procedure [dbo].[Get_DonDangKy_ByChuanBiHopDong]
+r update procedure [dbo].[Get_DonDangKy_ByHopDong]
+r update procedure [dbo].[Get_DonDangKy_ByThietKeDsDieuKienTim]
+r update procedure [dbo].[Get_DonDangKy_ByThietKe]
+r update procedure [dbo].[Get_DonDangKy_AllPagingDsDieuKienTim]
+r update procedure [dbo].[Get_DonDangKy_ByChuanBiThietKe]
+r update procedure [dbo].[Get_DonDangKy_AllPaging]
+r update procedure [dbo].[Get_DonDangKy_ByChuanBiNghiemThu]
+
+
+
+
+await sqlConnection.QueryAsync<ThiCongViewModel>(
+                         "Update_ThiCong_BySoNoDH", dynamicParameters, commandTimeout: 1200
+                         , commandType: CommandType.StoredProcedure);
+
+						 , (case when d.TTDK = 'DK_A' and d.TTTK = 'TK_A' and d.TTCT = 'CT_A' and d.TTHD = 'HD_A' and d.TTTC = 'TC_A' and d.TTNT = 'NT_A' then d.TTNT
+				  when d.TTDK = 'DK_A' and d.TTTK is null then 'DK_NO'
+
+				  when d.TTDK = 'DK_A' and d.TTTK is not null and d.TTCT is null and d.TTHD is null then d.TTTK
+				  when d.TTDK = 'DK_A' and d.TTTK = 'TK_A' and d.TTCT is null and d.TTHD is null then d.TTTK 
+
+				  when d.TTDK = 'DK_A' and d.TTTK = 'TK_A' and d.TTCT is not null and d.TTHD is null then d.TTCT 
+				  when d.TTDK = 'DK_A' and d.TTTK = 'TK_A' and d.TTCT = 'CT_A' and d.TTHD is null then d.TTCT
+
+				  when d.TTDK = 'DK_A' and d.TTTK = 'TK_A' and d.TTCT = 'CT_A' and d.TTHD is not null and d.TTTC is null then d.TTHD
+				  when d.TTDK = 'DK_A' and d.TTTK = 'TK_A' and d.TTCT is null and d.TTHD = 'HD_A' and d.TTTC = 'TC_N' and d.TTNT is null then d.TTHD
+				  when d.TTDK = 'DK_A' and d.TTTK = 'TK_A' and d.TTCT = 'CT_A' and d.TTHD = 'HD_A' and d.TTTC = 'TC_N' and d.TTNT is null then d.TTHD
+				  when d.TTDK = 'DK_A' and d.TTTK = 'TK_A' and d.TTCT = 'CT_N' and d.TTHD = 'HD_A' and d.TTTC = 'TC_N' then d.TTHD
+
+				  when d.TTDK = 'DK_A' and d.TTTK = 'TK_A' and d.TTCT = 'CT_A' and d.TTHD = 'HD_A' and d.TTTC is not null and d.TTNT is null then d.TTTC
+				  when d.TTDK = 'DK_A' and d.TTTK = 'TK_A' and d.TTCT is null and d.TTHD = 'HD_A' and d.TTTC = 'TC_A' and d.TTNT is null then d.TTTC
+				  when d.TTDK = 'DK_A' and d.TTTK = 'TK_A' and d.TTCT = 'CT_A' and d.TTHD = 'HD_A' and d.TTTC = 'TC_A' and d.TTNT is null then d.TTTC
+
+				  when d.TTDK = 'DK_A' and d.TTTK = 'TK_A' and d.TTCT = 'CT_A' and d.TTHD = 'HD_A' and d.TTTC = 'TC_A' and d.TTNT is not null then d.TTNT
+				   when d.TTDK = 'DK_A' and d.TTTK = 'TK_A' and d.TTCT is null and d.TTHD = 'HD_A' and d.TTTC = 'TC_A' and d.TTNT is not null then d.TTNT
+		  end ) as TTDonDangKyNuoc
+
+, (case when d.TTDK = 'DK_A' and d.TTTK = 'TK_A' and d.TTCT = 'CT_A' and d.TTHD = 'HD_A' and d.TTTC = 'TC_A' and d.TTNT = 'NT_A' then d.TTNT
+				  when d.TTDK = 'DK_A' and d.TTTK is null then 'DK_NO'
+
+				  when d.TTDK = 'DK_A' and d.TTTK is not null and d.TTCT is null and d.TTHD is null then d.TTTK
+				  when d.TTDK = 'DK_A' and d.TTTK = 'TK_A' and d.TTCT is null and d.TTHD is null then d.TTTK 
+
+				  when d.TTDK = 'DK_A' and d.TTTK = 'TK_A' and d.TTCT is not null and d.TTHD is null then d.TTCT 
+				  when d.TTDK = 'DK_A' and d.TTTK = 'TK_A' and d.TTCT = 'CT_A' and d.TTHD is null then d.TTCT
+
+				  when d.TTDK = 'DK_A' and d.TTTK = 'TK_A' and d.TTCT = 'CT_A' and d.TTHD is not null and d.TTTC is null then d.TTHD
+				  when d.TTDK = 'DK_A' and d.TTTK = 'TK_A' and d.TTCT is null and d.TTHD = 'HD_A' and d.TTTC = 'TC_N' and d.TTNT is null then d.TTHD
+				  when d.TTDK = 'DK_A' and d.TTTK = 'TK_A' and d.TTCT = 'CT_A' and d.TTHD = 'HD_A' and d.TTTC = 'TC_N' and d.TTNT is null then d.TTHD
+
+				  when d.TTDK = 'DK_A' and d.TTTK = 'TK_A' and d.TTCT = 'CT_A' and d.TTHD = 'HD_A' and d.TTTC is not null and d.TTNT is null then d.TTTC
+				  when d.TTDK = 'DK_A' and d.TTTK = 'TK_A' and d.TTCT is null and d.TTHD = 'HD_A' and d.TTTC = 'TC_A' and d.TTNT is null then d.TTTC
+				  when d.TTDK = 'DK_A' and d.TTTK = 'TK_A' and d.TTCT = 'CT_A' and d.TTHD = 'HD_A' and d.TTTC = 'TC_A' and d.TTNT is null then d.TTTC
+
+				  when d.TTDK = 'DK_A' and d.TTTK = 'TK_A' and d.TTCT = 'CT_A' and d.TTHD = 'HD_A' and d.TTTC = 'TC_A' and d.TTNT is not null then d.TTNT
+				   when d.TTDK = 'DK_A' and d.TTTK = 'TK_A' and d.TTCT is null and d.TTHD = 'HD_A' and d.TTTC = 'TC_A' and d.TTNT is not null then d.TTNT
+		  end ) as TTDonDangKyNuoc
+
+r create procedure [dbo].[Get_KhachHangPo_AllPaging]
+
+r create procedure [dbo].[Get_DongHo_ByMaDongHo]
+r create procedure [dbo].[Get_DongHo_ByChuaSuDung]
+
+r create procedure [dbo].[Get_KhoDanhMuc_ByLoaiVatTu]
+
+r create procedure [dbo].[Get_VatTu_ByKhoTimVatTu] 
+
+r create procedure [dbo].[Get_NhanVien_ByMaNV]
+r create procedure [dbo].[Get_NhanVien_ByMaKV]	
+
+
+r create procedure [dbo].[Create_DaoLapTK]
+r create procedure [dbo].[Update_DaoLapTK_MaDonNoiDung] 
+r create procedure [dbo].[Update_DaoLapTK_MaDonDonGia] 
+r create procedure [dbo].[Update_DaoLapTK_MaDonSoLuong] 
+r create procedure [dbo].[Update_DaoLapTK_MaDonDonViTinh] 
+r create procedure [dbo].[Update_DaoLapTK_MaDonLoaiCP]
+r create procedure [dbo].[Delete_DaoLapTK] 
+
+r create procedure [dbo].[Get_DaoLapTK_ByMaddk]
+
+r create procedure [dbo].[Create_ChiTietThietKe_ByMaddkMauTK]
+r create procedure [dbo].[Create_ChiTietThietKe_ByMaddkMaVatTu]
+r create procedure [dbo].[Update_ChiTietThietKe_ByMaddkMaVatTu] 
+r create procedure [dbo].[Delete_ChiTietThietKe] 
+
+r create procedure [dbo].[Get_ChiTietThietKe_ByMaddk]
+
+r create procedure [dbo].[Get_MauBocVatTu_ByLoaiMBVT]
+r create procedure [dbo].[Get_MauThietKe_ByNuocOrder9]
+
+r create procedure [dbo].[Create_DonDangKy] 
+r create procedure [dbo].[Update_DonDangKy_ByXuLyDon] 
+r create procedure [dbo].[Update_DonDangKy_ByTuChoiDon] 
+r create procedure [dbo].[Update_DonDangKy_ByPhucHoiTuChoiDon]
+r create procedure [dbo].[Update_DonDangKy]
+
+r create procedure [dbo].[Get_DonDangKy_ByMaDon]
+r create procedure [dbo].[Get_DonDangKy_ByThietKe]
+r create procedure [dbo].[Get_DonDangKy_ByChuanBiThietKe]
+r create procedure [dbo].[Get_DonDangKy_ByThietKeDsDieuKienTim]
+r create procedure [dbo].[Get_DonDangKy_ByHopDong]
+r create procedure [dbo].[Get_DonDangKy_ByChuanBiHopDong]
+r create procedure [dbo].[Get_DonDangKy_ByThiCong]
+r create procedure [dbo].[Get_DonDangKy_ByChuanBiThiCong]
+r create procedure [dbo].[Get_DonDangKy_ByThiCongDsDieuKienTim]
+r create procedure [dbo].[Get_DonDangKy_AllPagingDsDieuKienTim]
+r create procedure [dbo].[Get_DonDangKy_ByLichSuDDK]
+r create procedure [dbo].[Get_DonDangKy_ByNghiemThu]
+r create procedure [dbo].[Get_DonDangKy_ByChuanBiNghiemThu]
+
+r create procedure [dbo].[Create_DonDangKyPo]
+r create procedure [dbo].[Update_DonDangKyPo_ByXuLyDon]
+r create procedure [dbo].[Update_DonDangKyPo_ByTuChoiDon]
+r create procedure [dbo].[Update_DonDangKyPo_ByPhucHoiTuChoiDon] 
+r create procedure [dbo].[Update_DonDangKyPo]
+
+r create procedure [dbo].[Get_DonDangKyPo_ByMaDon] 
+r create procedure [dbo].[Get_DonDangKyPo_ByLichSuDDKPo]
+
+r create procedure [dbo].[Create_ThietKe] 
+r create procedure [dbo].[Update_ThietKe]
+r create procedure [dbo].[Update_ThietKe_ByDuyetTK]
+r create procedure [dbo].[Update_ThietKe_ByTuChoiTK] 
+r create procedure [dbo].[Update_ThietKe_ByMauHinhThietKe] 
+
+r create procedure [dbo].[Get_ThietKe_ByMaDon]
+
+r create procedure [dbo].[Update_HopDong] 
+
+r create procedure [dbo].[Get_HopDong_ByMaDon]
+
+r create procedure [dbo].[Create_ThiCong] 
+r create procedure [dbo].[Update_ThiCong] 
+r craete procedure [dbo].[Update_ThiCong_BySoNoDH]
+r create procedure [dbo].[Update_ThiCong_BySuaSoNoDH]
+r create procedure [dbo].[Update_ThiCong_ByTraVeTK] 
+
+r create procedure [dbo].[Get_ThiCong_ByMaDon]
+
+r create procedure [dbo].[Get_PhongDanhMuc_ByCor]
+
+r create procedure [dbo].[Get_PhuongXa_ByCor]
+
+r create procedure [dbo].[Get_DuongPho_ByCor]
+
+
+
+
+
+r update procedure [dbo].[Get_DonDangKy_AllPaging]
+r update procedure [dbo].[Get_DonDangKyPo_AllPaging]
+
+r update procedure [dbo].[Get_PhongDanhMuc_ByAll]
+
+r update procedure [dbo].[Get_KhachHang_AllPaging]
+
+r update procedure [dbo].[Get_KhachHang_ByMaKhachHang]
+
+r update procedure [dbo].[Get_KhachHangPo_ByMaKhachHang]
+
+r update procedure [dbo].[Get_HoSoNhanVien_ByUserName]
+
+
+r copy all file trong mautk to server
+
+r update add column SoThang int in table PoDMDieuKien; 
+	update column MaTenCot int to MaTenCot varchar(50)
+r copy data in table PoDMDieuKien to server
+
+
+r	update procedure [dbo].[HoSoNhanVienGetList]
+
+rrrrrrrrrrrrrrrrrr
+insert into [TTDMDangKy] ([Id]      ,[Ten]      ,[MaTenCot]      ,[TenCot]
+		, [Status]      ,[Active]      ,[Stt] )
+	select 65, N'Giấy CMND', 99, 'HoSoKemTheoPowacoMoi'
+		, 1, 1, 1
+	insert into [TTDMDangKy] ([Id]      ,[Ten]      ,[MaTenCot]      ,[TenCot]
+		, [Status]      ,[Active]      ,[Stt] )
+	select 66, N'Thẻ CCCD', 99, 'HoSoKemTheoPowacoMoi'
+		, 1, 1, 2
+	insert into [TTDMDangKy] ([Id]      ,[Ten]      ,[MaTenCot]      ,[TenCot]
+		, [Status]      ,[Active]      ,[Stt] )
+	select 67, N'Hộ chiếu', 99, 'HoSoKemTheoPowacoMoi'
+		, 1, 1, 3
+	insert into [TTDMDangKy] ([Id]      ,[Ten]      ,[MaTenCot]      ,[TenCot]
+		, [Status]      ,[Active]      ,[Stt] )
+	select 68, N'Hộ khẩu thường trú ', 99, 'HoSoKemTheoPowacoMoi'
+		, 1, 1, 4
+	insert into [TTDMDangKy] ([Id]      ,[Ten]      ,[MaTenCot]      ,[TenCot]
+		, [Status]      ,[Active]      ,[Stt] )
+	select 69, N'Giấy chứng nhận tạm trú (dài hạn)', 99, 'HoSoKemTheoPowacoMoi'
+		, 1, 1, 5
+	insert into [TTDMDangKy] ([Id]      ,[Ten]      ,[MaTenCot]      ,[TenCot]
+		, [Status]      ,[Active]      ,[Stt] )
+	select 70, N'Giấy chứng nhận quyền sử dụng đất', 99, 'HoSoKemTheoPowacoMoi'
+		, 1, 1, 6
+	insert into [TTDMDangKy] ([Id]      ,[Ten]      ,[MaTenCot]      ,[TenCot]
+		, [Status]      ,[Active]      ,[Stt] )
+	select 71, N'Hợp đồng chuyển nhượng nhà', 99, 'HoSoKemTheoPowacoMoi'
+		, 1, 1, 7
+	insert into [TTDMDangKy] ([Id]      ,[Ten]      ,[MaTenCot]      ,[TenCot]
+		, [Status]      ,[Active]      ,[Stt] )
+	select 72, N'Hợp đồng thuê nhà có thời hạn 6 tháng trở lên', 99, 'HoSoKemTheoPowacoMoi'
+		, 1, 1, 8
+	insert into [TTDMDangKy] ([Id]      ,[Ten]      ,[MaTenCot]      ,[TenCot]
+		, [Status]      ,[Active]      ,[Stt] )
+	select 73, N'Giấy xác nhận UBND xã, phường thị trấn vào đơn có nhà ở ổn định', 99, 'HoSoKemTheoPowacoMoi'
+		, 1, 1, 9
+	insert into [TTDMDangKy] ([Id]      ,[Ten]      ,[MaTenCot]      ,[TenCot]
+		, [Status]      ,[Active]      ,[Stt] )
+	select 74, N'Giấy chứng nhận đăng ký doanh nghiệp', 99, 'HoSoKemTheoPowacoMoi'
+		, 1, 1, 10
+	insert into [TTDMDangKy] ([Id]      ,[Ten]      ,[MaTenCot]      ,[TenCot]
+		, [Status]      ,[Active]      ,[Stt] )
+	select 75, N'Giấy chứng nhận đăng ký kinh doanh', 99, 'HoSoKemTheoPowacoMoi'
+		, 1, 1, 11
+	insert into [TTDMDangKy] ([Id]      ,[Ten]      ,[MaTenCot]      ,[TenCot]
+		, [Status]      ,[Active]      ,[Stt] )
+	select 76, N'Giấy chứng nhận đăng ký hoạt động chi nhánh, văn phòng đại diện', 99, 'HoSoKemTheoPowacoMoi'
+		, 1, 1, 12
+	insert into [TTDMDangKy] ([Id]      ,[Ten]      ,[MaTenCot]      ,[TenCot]
+		, [Status]      ,[Active]      ,[Stt] )
+	select 77, N'Giấy phép đầu tư', 99, 'HoSoKemTheoPowacoMoi'
+		, 1, 1, 13
+	insert into [TTDMDangKy] ([Id]      ,[Ten]      ,[MaTenCot]      ,[TenCot]
+		, [Status]      ,[Active]      ,[Stt] )
+	select 78, N'Giấy chứng nhận đăng ký đầu tư', 99, 'HoSoKemTheoPowacoMoi'
+		, 1, 1, 14
+	insert into [TTDMDangKy] ([Id]      ,[Ten]      ,[MaTenCot]      ,[TenCot]
+		, [Status]      ,[Active]      ,[Stt] )
+	select 79, N'Quyết định thành lập đơn vị', 99, 'HoSoKemTheoPowacoMoi'
+		, 1, 1, 15
+
+
+
+CREATE TABLE [dbo].[DONDANGKYHis](
+	[MADDK] [varchar](11) NULL,
+	[MADDKTONG] [varchar](11) NULL,
+	[TENKH] [nvarchar](255) NULL,
+	[DIACHILD] [nvarchar](255) NULL,
+	[SONHA] [nvarchar](150) NULL,
+	[DIENTHOAI] [varchar](20) NULL,
+	[SoDienThoai2] [varchar](20) NULL,
+	[CMND] [varchar](20) NULL,
+	[MADP] [varchar](10) NULL,
+	[MADB] [varchar](50) NULL,
+	[DUONGPHU] [varchar](3) NULL,
+	[MAKV] [varchar](10) NULL,
+	[TEN_DC_KHAC] [nvarchar](100) NULL,
+	[MAMDSD] [varchar](10) NULL,
+	[NGAYDK] [smalldatetime] NULL,
+	[NGAYHKS] [smalldatetime] NULL,
+	[TTDK] [varchar](10) NULL,
+	[TTTK] [varchar](10) NULL,
+	[TTCT] [varchar](10) NULL,
+	[TTHD] [varchar](10) NULL,
+	[TTTC] [varchar](10) NULL,
+	[TTHC] [varchar](10) NULL,
+	[LOAIDK] [varchar](5) NULL,
+	[TENDK] [nvarchar](50) NULL,
+	[DACBIET] [int] NULL,
+	[NGAYCD] [datetime] NULL,
+	[NGAYKS] [datetime] NULL,
+	[DTNGOAI] [bit] NULL,
+	[PASSDUYETTK] [bit] NULL,
+	[BATAICHO] [int] NULL,
+	[CTCTMOI] [bit] NULL,
+	[MAPB] [varchar](10) NULL,
+	[MANV] [varchar](10) NULL,
+	[SOHODN] [int] NULL,
+	[SONK] [int] NULL,
+	[DMNK] [int] NULL,
+	[DAIDIEN] [bit] NOT NULL,
+	[NOIDUNG] [nvarchar](1000) NULL,
+	[MST] [varchar](20) NULL,
+	[SDInfo_INHOADON] [bit] NULL,
+	[TENKH_INHOADON] [nvarchar](200) NULL,
+	[DIACHI_INHOADON] [nvarchar](200) NULL,
+	[ISTUYENONGCHUNG] [bit] NULL,
+	[NGAYSINH] [varchar](10) NULL,
+	[CAPNGAY] [date] NULL,
+	[TAI] [nvarchar](30) NULL,
+	[MAHTTT] [varchar](2) NULL,
+	[NOILAPDHHN] [nvarchar](1000) NULL,
+	[TTNT] [varchar](10) NULL,
+	[DONVICAPHN] [nvarchar](100) NULL,
+	[MAHN] [nvarchar](50) NULL,
+	[NGAYCAPHN] [date] NULL,
+	[NGAYKETTHUCHN] [date] NULL,
+	[NGAYKYHN] [date] NULL,
+	[KYHOTROHN] [date] NULL,
+	[ISHONGHEO] [bit] NULL,
+	[DIACHINGHEO] [nvarchar](300) NULL,
+	[TENCHUCVU] [nvarchar](100) NULL,
+	[NGAYN] [datetime] NULL,
+	[MADPKHGAN] [varchar](10) NULL,
+	[MADBKHGAN] [varchar](11) NULL,
+	[SONHA2] [nvarchar](500) NULL,
+	[NGAYNHAPHSTRA] [datetime] NULL,
+	[NGAYDUYETHS] [datetime] NULL,
+	[ISTRAHS] [bit] NULL,
+	[NGAYDUYETHSTRA] [datetime] NULL,
+	[TIENCOCLX] [decimal](18, 4) NULL,
+	[TIENVATTULX] [decimal](18, 4) NULL,
+	[SONHANHAPDON2] [nvarchar](20) NULL,
+	[MAPHUONG] [varchar](10) NULL,
+	[TENDUONG] [nvarchar](100) NULL,
+	[MAXA] [varchar](10) NULL,
+	[TENXA] [nvarchar](100) NULL,
+	[MAAPTO] [varchar](10) NULL,
+	[TENAPTO] [nvarchar](100) NULL,
+	[IsKHMuaVatTu] [bit] NULL,
+	[IsXoaDLM] [bit] NULL,
+	[GhiChuXoaDLM] [nvarchar](1000) NULL,
+	[NgayXoaDLM] [datetime] NULL,
+	[SoNhaTenDuongLD] [nvarchar](200) NULL,
+	[PhuongXaIdLD] [int] NULL,
+	[TenPhuongXaLD] [nvarchar](500) NULL,
+	[MaApLD] [varchar](10) NULL,
+	[TenApLD] [nvarchar](100) NULL,
+	[ThanhPhoTinhIdLD] [int] NULL,
+	[QuanHuyenIdLD] [int] NULL,
+	[ThanhPhoTinhIdKH] [int] NULL,
+	[QuanHuyenIdKH] [int] NULL,
+	[TTDangKyNuocId] [int] NULL,
+	[PhuongXaIdKH] [int] NULL,
+	[TenDuongApToKH] [nvarchar](500) NULL,
+	[SoNhaKH] [nvarchar](200) NULL,
+	[NgayHis] [datetime] NULL,
+	[DeleteBy] [varchar](50) NULL
+) ON [PRIMARY]
+GO
+
+
+CREATE TABLE [dbo].[DONDANGKYPOHis](
+	[MADDKPO] [varchar](11) NULL,
+	[MADDKTONG] [varchar](11) NULL,
+	[TENKH] [nvarchar](255) NULL,
+	[DIACHILD] [nvarchar](255) NULL,
+	[SONHA] [nvarchar](150) NULL,
+	[DIENTHOAI] [varchar](20) NULL,
+	[CMND] [varchar](20) NULL,
+	[MAPB] [varchar](10) NULL,
+	[MANV] [varchar](10) NULL,
+	[MADPPO] [varchar](10) NULL,
+	[MADBPO] [varchar](50) NULL,
+	[DUONGPHUPO] [varchar](3) NULL,
+	[MAPHUONG] [varchar](10) NULL,
+	[MAKVPO] [varchar](10) NULL,
+	[TEN_DC_KHAC] [nvarchar](100) NULL,
+	[MAMDSDPO] [varchar](10) NULL,
+	[NGAYDK] [smalldatetime] NULL,
+	[NGAYHKS] [smalldatetime] NULL,
+	[TTDK] [varchar](10) NULL,
+	[TTTK] [varchar](10) NULL,
+	[TTCT] [varchar](10) NULL,
+	[TTHD] [varchar](10) NULL,
+	[TTTC] [varchar](10) NULL,
+	[TTHC] [varchar](10) NULL,
+	[TTNT] [varchar](10) NULL,
+	[LOAIDK] [varchar](5) NULL,
+	[TENDK] [nvarchar](50) NULL,
+	[DACBIET] [int] NULL,
+	[NGAYCD] [datetime] NULL,
+	[NGAYKS] [datetime] NULL,
+	[DTNGOAI] [bit] NULL,
+	[PASSDUYETTK] [bit] NULL,
+	[BATAICHO] [int] NULL,
+	[CTCTMOI] [bit] NULL,
+	[SOHODN] [int] NULL,
+	[SONK] [int] NULL,
+	[DMNK] [int] NULL,
+	[DAIDIEN] [bit] NULL,
+	[NOIDUNG] [nvarchar](1000) NULL,
+	[MST] [varchar](20) NULL,
+	[SDInfo_INHOADON] [bit] NULL,
+	[TENKH_INHOADON] [nvarchar](200) NULL,
+	[DIACHI_INHOADON] [nvarchar](200) NULL,
+	[ISTUYENONGCHUNG] [bit] NULL,
+	[NGAYSINH] [varchar](10) NULL,
+	[CAPNGAY] [date] NULL,
+	[TAI] [nvarchar](30) NULL,
+	[MAHTTT] [varchar](2) NULL,
+	[NOILAPDHHN] [nvarchar](1000) NULL,
+	[SOTRUPO] [nvarchar](50) NULL,
+	[NGAYN] [datetime] NULL,
+	[SONHA2] [nvarchar](20) NULL,
+	[TENDUONG] [nvarchar](100) NULL,
+	[MAXA] [varchar](10) NULL,
+	[TENXA] [nvarchar](100) NULL,
+	[MAAPTO] [varchar](10) NULL,
+	[TENAPTO] [nvarchar](100) NULL,
+	[IsKHMuaVatTu] [bit] NULL,
+	[IsXoaDLM] [bit] NULL,
+	[GhiChuXoaDLM] [nvarchar](1000) NULL,
+	[NgayXoaDLM] [datetime] NULL,
+	[SoNhaKH] [nvarchar](50) NULL,
+	[TenDuongKH] [nvarchar](500) NULL,
+	[ThanhPhoTinhIdKH] [int] NULL,
+	[QuanHuyenIdKH] [int] NULL,
+	[PhuongXaIdKH] [int] NULL,
+	[ApToIdKH] [varchar](10) NULL,
+	[SoNhaLD] [nvarchar](50) NULL,
+	[TenDuongLD] [nvarchar](500) NULL,
+	[ThanhPhoTinhIdLD] [int] NULL,
+	[QuanHuyenIdLD] [int] NULL,
+	[PhuongXaIdLD] [int] NULL,
+	[ApToIdLD] [varchar](10) NULL,
+	[TTDangKyDienId] [int] NULL,
+	[TENCHUCVU] [nvarchar](100) NULL,
+	[NgayHis] [datetime] NULL,
+	[DeleteBy] [varchar](50) NULL
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[THIETKEHis](
+	[MADDK] [varchar](11) NULL,
+	[TENTK] [nvarchar](200) NULL,
+	[FILETK] [nvarchar](100) NULL,
+	[FILETK_HC] [nvarchar](100) NULL,
+	[CHUTHICH] [nvarchar](200) NULL,
+	[NGAYLTK] [smalldatetime] NULL,
+	[MANVLTK] [varchar](10) NULL,
+	[NGAYGUI_CT] [smalldatetime] NULL,
+	[NGAYNHAN_CT] [smalldatetime] NULL,
+	[NGAYDTK] [smalldatetime] NULL,
+	[MANVDTK] [varchar](10) NULL,
+	[SOBCT] [int] NULL,
+	[THECHAP] [int] NULL,
+	[THAMGIAONGCAI] [bit] NULL,
+	[MANVTK] [varchar](10) NULL,
+	[TENNVTK] [nvarchar](100) NULL,
+	[SODB] [varchar](15) NULL,
+	[MAMAUTK] [varchar](6) NULL,
+	[TENKHPHAI] [nvarchar](100) NULL,
+	[TENKHTRAI] [nvarchar](100) NULL,
+	[DANHSOPHAI] [varchar](9) NULL,
+	[DANHSOTRAI] [varchar](9) NULL,
+	[NGAYN] [datetime] NULL,
+	[HINHTK1] [nvarchar](100) NULL,
+	[HINHTK2] [nvarchar](100) NULL,
+	[TONGTIENTK] [decimal](18, 4) NULL,
+	[DIACHITK] [nvarchar](100) NULL,
+	[DUONGHEMTK] [nvarchar](100) NULL,
+	[PHUONGTK] [varchar](10) NULL,
+	[SDTTK] [nvarchar](50) NULL,
+	[VITRIDHTK] [nvarchar](100) NULL,
+	[DANHSOTK] [varchar](20) NULL,
+	[NGAYTRAHSKD] [datetime] NULL,
+	[LYDOTRAHSKD] [nvarchar](100) NULL,
+	[NGAYDUYETN] [datetime] NULL,
+	[NGAYTRAKH] [datetime] NULL,
+	[ISTRAKEHOACH] [bit] NULL,
+	[NGAYTRATC] [datetime] NULL,
+	[ISTRATHICONG] [bit] NULL,
+	[ISKHTT100] [bit] NULL,
+	[MADPLX] [varchar](10) NULL,
+	[NGAYDUYETKD] [datetime] NULL,
+	[NGAYDUYETKDN] [datetime] NULL,
+	[NGAYTRATK] [datetime] NULL,
+	[MANVTRAKD] [varchar](10) NULL,
+	[MANVDUYETKD] [varchar](10) NULL,
+	[NOIDUNGTRAKD] [nvarchar](500) NULL,
+	[NGAYUP] [datetime] NULL,
+	[MAHTTT] [varchar](2) NULL,
+	[NgayHis] [datetime] NULL,
+	[DeleteBy] [varchar](50) NULL
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[CTTHIETKEHis](
+	[MADDK] [varchar](11) NULL,
+	[MAVT] [varchar](20) NULL,
+	[NOIDUNG] [nvarchar](3000) NULL,
+	[SOLUONG] [decimal](18, 2) NULL,
+	[GIAVT] [decimal](18, 0) NULL,
+	[TIENVT] [decimal](18, 0) NULL,
+	[GIANC] [decimal](18, 0) NULL,
+	[TIENNC] [decimal](18, 0) NULL,
+	[ISCTYDTU] [bit] NULL,
+	[NgayHis] [datetime] NULL,
+	[DeleteBy] [nvarchar](50) NULL
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[DAOLAPTKHis](
+	[MADON] [int] NULL,
+	[MADDK] [varchar](11) NULL,
+	[LOAICV] [nvarchar](100) NULL,
+	[LOAICT] [varchar](2) NULL,
+	[NOIDUNG] [nvarchar](3000) NULL,
+	[DONGIACP] [numeric](19, 0) NULL,
+	[DVT] [varchar](50) NULL,
+	[HESOCP] [numeric](18, 1) NULL,
+	[SOLUONG] [decimal](18, 2) NULL,
+	[THANHTIENCP] [numeric](19, 0) NULL,
+	[LOAICP] [varchar](50) NULL,
+	[LOAI] [varchar](50) NULL,
+	[NGAYLAP] [smalldatetime] NULL,
+	[MAKV] [varchar](10) NULL,
+	[CHIEUCAO] [decimal](9, 4) NULL,
+	[CHIEURONG] [decimal](9, 4) NULL,
+	[KYHIEUVT] [nvarchar](100) NULL,
+	[NgayHis] [datetime] NULL,
+	[DeleteBy] [nvarchar](50) NULL
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[HOPDONGHis](
+	[MADDK] [varchar](11) NULL,
+	[MADP] [varchar](10) NULL,
+	[DUONGPHU] [varchar](3) NULL,
+	[MADB] [varchar](10) NULL,
+	[LOTRINH] [int] NULL,
+	[NGAYTAO] [datetime] NULL,
+	[NGAYKT] [datetime] NULL,
+	[NGAYHL] [datetime] NULL,
+	[MAPHUONG] [varchar](10) NULL,
+	[MAKV] [varchar](10) NULL,
+	[CODH] [varchar](20) NULL,
+	[LOAIONG] [varchar](20) NULL,
+	[MAHTTT] [varchar](2) NULL,
+	[MAMDSD] [varchar](10) NULL,
+	[DINHMUCSD] [int] NULL,
+	[SOHO] [int] NULL,
+	[SONHANKHAU] [int] NULL,
+	[LOAIHD] [varchar](2) NULL,
+	[TRANGTHAI] [int] NULL,
+	[SOHD] [varchar](20) NULL,
+	[CMND] [varchar](20) NULL,
+	[MST] [varchar](20) NULL,
+	[SDInfo_INHOADON] [bit] NULL,
+	[TENKH_INHOADON] [nvarchar](200) NULL,
+	[DIACHI_INHOADON] [nvarchar](200) NULL,
+	[DACAPDB] [bit] NULL,
+	[SONHA] [nvarchar](300) NULL,
+	[NGAYN] [datetime] NULL,
+	[GhiChu] [nvarchar](1000) NULL,
+	[Manv] [varchar](11) NULL,
+	[NgayHetHan] [datetime] NULL,
+	[HopDongLoaiId] [int] NULL,
+	[HopDongLoaiTen] [nvarchar](50) NULL,
+	[SoNamHopDong] [int] NULL,
+	[SoThuTu] [int] NULL,
+	[NgayHis] [datetime] NULL,
+	[DeleteBy] [varchar](50) NULL
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[THICONGHis](
+	[MADDK] [varchar](11) NULL,
+	[NGAYGTC] [smalldatetime] NULL,
+	[NGAYBD] [smalldatetime] NULL,
+	[NGAYHT] [smalldatetime] NULL,
+	[MOTATC] [nvarchar](200) NULL,
+	[NGAYTV] [smalldatetime] NULL,
+	[MADH] [varchar](20) NULL,
+	[MAVT] [varchar](20) NULL,
+	[MAPB] [varchar](10) NULL,
+	[MANV] [varchar](10) NULL,
+	[DUONGKINH] [int] NULL,
+	[TTQT] [bit] NULL,
+	[DALAP] [int] NULL,
+	[GHICHU] [nvarchar](200) NULL,
+	[CSDAU] [int] NULL,
+	[MTHUCTE] [decimal](18, 2) NULL,
+	[ONGNHANH] [varchar](50) NULL,
+	[SOSERIAL] [varchar](50) NULL,
+	[MANV2] [varchar](10) NULL,
+	[CHIKDM1] [nvarchar](50) NULL,
+	[CHIKDM2] [nvarchar](50) NULL,
+	[HDKEMTHEO] [nvarchar](50) NULL,
+	[LYDOTRAHSTK] [nvarchar](100) NULL,
+	[NGAYTRAHSTC] [datetime] NULL,
+	[NGAYN] [datetime] NULL,
+	[NgayHis] [datetime] NULL,
+	[TenNVPhuTrach1] [nvarchar](100) NULL,
+	[TenNVPhuTrach2] [nvarchar](100) NULL,
+	[DeleteBy] [varchar](50) NULL
+) ON [PRIMARY]
+GO
+
+
+CREATE TABLE [dbo].[DONGHOHis](
+	[MADH] [varchar](20) NULL,
+	[MALDH] [varchar](10) NULL,
+	[NAMSX] [char](4) NULL,
+	[NGAYNK] [datetime] NULL,
+	[NGAYXK] [datetime] NULL,
+	[TRANGTHAI] [varchar](2) NULL,
+	[DASD] [bit] NULL,
+	[NAMTT] [char](4) NULL,
+	[SONO] [varchar](50) NULL,
+	[SOKD] [varchar](20) NULL,
+	[TEMKD] [varchar](20) NULL,
+	[HANKD] [date] NULL,
+	[NGAYKD] [date] NULL,
+	[TENCTKD] [nvarchar](200) NULL,
+	[SXTAI] [nvarchar](100) NULL,
+	[NGAYNHAP] [datetime] NULL,
+	[MANVNHAP] [varchar](10) NULL,
+	[MAKV] [varchar](10) NULL,
+	[CONGSUAT] [varchar](10) NULL,
+	[NgaySua] [datetime] NULL,
+	[ManvSua] [varchar](50) NULL,
+	[NgayHis] [datetime] NULL,
+	[DeleteBy] [varchar](50) NULL
+) ON [PRIMARY]
+GO
+
+
+rr
+create procedure [dbo].[Create_HsChiTietBoHoSo] 
+rr
+create procedure [dbo].[Delete_HsBoHoSoFile]
+
+
+rr
+create procedure [dbo].[Get_HsChiTietBoHoSo_ByHsBoHoSoId]
+
+create procedure [dbo].[Get_KhachHang_AllPagingSttHs]
+
+create procedure [dbo].[Get_KhachHang_AllPaging]
+
+rr
+create procedure [dbo].[Get_KhachHangPo_AllPagingSttHs]
+
+create procedure [dbo].[Get_KhachHangPo_ByDieuKien]
+
+create procedure [dbo].[Get_KhachHangPo_ByMaKhachHang]
+
+rr
+create procedure [dbo].[Get_MDSDPO_ByAll]
+rr
+create procedure [dbo].[Get_DMThuHo_ByAll]
+rr
+create procedure [dbo].[Get_DotInHD_ByCorporationId]
+create procedure [dbo].[Get_DotInHD_ByCorporationIdPO]
+create procedure [dbo].[Get_DotInHD_ByMakv]
+create procedure [dbo].[Get_DotInHD_ByMakvPo]
+rr
+create procedure [dbo].[Get_LockStatusPo_ByMaDPPoKyThay]
+rr
+create procedure [dbo].[Create_ThayHopDongPo]
+rr
+create procedure [dbo].[Update_ThayHopDongPo] 
+rr
+create procedure [dbo].[Update_KhachHang_BySTTBoHoSo]
+
+rr
+create procedure [dbo].[Update_KhachHangPo_BySTTBoHoSo] 
+
+rr
+create procedure [dbo].[Get_QuanHuyen_ByAll]
+
+rrrrr
+insert into Function Database
+	insert into Functions ([Id]      ,[IconCss]      ,[Name]      ,[ParentId]	,[SortOrder]      ,[Status]      ,[URL])
+	select 'KHNhapTimKHNuoc', 'fa fa-group', N'Khách hàng nước', NULL, 450, 1 , '/'
+
+	insert into Functions ([Id]      ,[IconCss]      ,[Name]      ,[ParentId]	,[SortOrder]      ,[Status]      ,[URL])
+	select 'KHNhapTraCuuKHNuoc', 'fa fa-group', N'Nhập K.hàng-Lọc KH nước', 'KHNhapTimKHNuoc', 3, 1 , '/admin/pokhachhangnuoc/index'
+
+	insert into Functions ([Id]      ,[IconCss]      ,[Name]      ,[ParentId]	,[SortOrder]      ,[Status]      ,[URL])
+	select 'KHKyLaiHDNuoc', 'fa fa-group', N'Ký lại hợp đồng nước', 'KHNhapTimKHNuoc', 9, 1 , '/admin/pokylaihdnuoc/index'
+
+	insert into Functions ([Id]      ,[IconCss]      ,[Name]      ,[ParentId]	,[SortOrder]      ,[Status]      ,[URL])
+	select 'KHBaoCaoKHNuoc', 'fa fa-group', N'Báo cáo K.hàng nước', 'KHNhapTimKHNuoc', 25, 1 , '/admin/pobaocaokhnuoc/index'
+
+
+RRRRRRRRRR
+	insert into Functions ([Id]      ,[IconCss]      ,[Name]      ,[ParentId]	,[SortOrder]      ,[Status]      ,[URL])
+	select 'DANGKYDIEN', 'fa fa-edit', N'Đăng ký điện', NULL, 350, 1 , '/'
+
+	insert into Functions ([Id]      ,[IconCss]      ,[Name]      ,[ParentId]	,[SortOrder]      ,[Status]      ,[URL])
+	select 'DANGKYDIENNHAPTT', 'fa fa-edit', N'Đăng ký điện-Tra cứu', 'DANGKYDIEN'	, 1, 1 , '/admin/podangkydien/index'
+
+	insert into Functions ([Id]      ,[IconCss]      ,[Name]      ,[ParentId]	,[SortOrder]      ,[Status]      ,[URL])
+	select 'DANGKYDIENTK', 'fa fa-edit', N'Thiết kế điện', 'DANGKYDIEN'	, 5, 1 , '/admin/podkdientk/index'
+
+	insert into Functions ([Id]      ,[IconCss]      ,[Name]      ,[ParentId]	,[SortOrder]      ,[Status]      ,[URL])
+	select 'DANGKYDIENHD', 'fa fa-edit', N'Hợp đồng điện', 'DANGKYDIEN'	, 8, 1 , '/admin/podkdienhd/index'
+
+	insert into Functions ([Id]      ,[IconCss]      ,[Name]      ,[ParentId]	,[SortOrder]      ,[Status]      ,[URL])
+	select 'DANGKYDIENTC', 'fa fa-edit', N'Thi công điện', 'DANGKYDIEN'	, 11, 1 , '/admin/podkdientc/index'
+
+	insert into Functions ([Id]      ,[IconCss]      ,[Name]      ,[ParentId]	,[SortOrder]      ,[Status]      ,[URL])
+	select 'DANGKYDIENNT', 'fa fa-edit', N'Nghiệm thu điện', 'DANGKYDIEN'	, 14, 1 , '/admin/podkdiennt/index'
+	
+	insert into Functions ([Id]      ,[IconCss]      ,[Name]      ,[ParentId]	,[SortOrder]      ,[Status]      ,[URL])
+	select 'DANGKYDIENBC', 'fa fa-edit', N'Báo cáo Đăng ký điện', 'DANGKYDIEN'	, 25, 1 , '/admin/pobcdkdien/index'
+
+	insert into Functions ([Id]      ,[IconCss]      ,[Name]      ,[ParentId]	,[SortOrder]      ,[Status]      ,[URL])
+	select 'DANGKYDIENTIM', 'fa fa-edit', N'Tra cứu Đăng ký điện', 'DANGKYDIEN'	, 30, 1 , '/admin/potimdkdien/index'
+
+	insert into Functions ([Id]      ,[IconCss]      ,[Name]      ,[ParentId]	,[SortOrder]      ,[Status]      ,[URL])
+	select 'DANGKYNUOC', 'fa fa-edit', N'Đăng ký nước', NULL	, 400, 1 , '/'
+
+	insert into Functions ([Id]      ,[IconCss]      ,[Name]      ,[ParentId]	,[SortOrder]      ,[Status]      ,[URL])
+	select 'DANGKYNUOCNHAPTT', 'fa fa-edit', N'Đăng ký nước-Tra cứu', 'DANGKYNUOC'	, 1, 1 , '/admin/podangkynuoc/index'
+
+	insert into Functions ([Id]      ,[IconCss]      ,[Name]      ,[ParentId]	,[SortOrder]      ,[Status]      ,[URL])
+	select 'DANGKYNUOCTK', 'fa fa-edit', N'Thiết kế nước', 'DANGKYNUOC'	, 5, 1 , '/admin/podknuoctk/index'
+
+	insert into Functions ([Id]      ,[IconCss]      ,[Name]      ,[ParentId]	,[SortOrder]      ,[Status]      ,[URL])
+	select 'DANGKYNUOCHD', 'fa fa-edit', N'Hợp đồng nước', 'DANGKYNUOC'	, 8, 1 , '/admin/podknuochd/index'
+
+	insert into Functions ([Id]      ,[IconCss]      ,[Name]      ,[ParentId]	,[SortOrder]      ,[Status]      ,[URL])
+	select 'DANGKYNUOCTC', 'fa fa-edit', N'Thi công nước', 'DANGKYNUOC'	, 11, 1 , '/admin/podknuoctc/index'
+
+	insert into Functions ([Id]      ,[IconCss]      ,[Name]      ,[ParentId]	,[SortOrder]      ,[Status]      ,[URL])
+	select 'DANGKYNUOCNT', 'fa fa-edit', N'Nghiệm thu nước', 'DANGKYNUOC'	, 14, 1 , '/admin/podknuocnt/index'	
+	
+	insert into Functions ([Id]      ,[IconCss]      ,[Name]      ,[ParentId]	,[SortOrder]      ,[Status]      ,[URL])
+	select 'DANGKYNUOCBC', 'fa fa-edit', N'Báo cáo Đăng ký nước', 'DANGKYNUOC'	, 25, 1 , '/admin/pobcdknuoc/index'
+
+	insert into Functions ([Id]      ,[IconCss]      ,[Name]      ,[ParentId]	,[SortOrder]      ,[Status]      ,[URL])
+	select 'DANGKYNUOCTIM', 'fa fa-edit', N'Tra cứu Đăng ký nước', 'DANGKYNUOC'	, 30, 1 , '/admin/potimdknuoc/index'
+
+
+rrrrrrrrrrrrr
+	insert into Functions ([Id]      ,[IconCss]      ,[Name]      ,[ParentId]	,[SortOrder]      ,[Status]      ,[URL])
+	select 'KHNhapTimKHDien', 'fa fa-group', N'Khách hàng điện', NULL, 500, 1 , '/'
+
+	insert into Functions ([Id]      ,[IconCss]      ,[Name]      ,[ParentId]	,[SortOrder]      ,[Status]      ,[URL])
+	select 'KHNhapTraCuuKHDien', 'fa fa-group', N'Nhập K.hàng-Lọc KH điện', 'KHNhapTimKHDien', 3, 1 , '/admin/pokhachhangdien/index'
+
+	insert into Functions ([Id]      ,[IconCss]      ,[Name]      ,[ParentId]	,[SortOrder]      ,[Status]      ,[URL])
+	select 'KHKyLaiHDDien', 'fa fa-group', N'Ký lại hợp đồng điện', 'KHNhapTimKHDien', 9, 1 , '/admin/pokylaihddien/index'
+
+	insert into Functions ([Id]      ,[IconCss]      ,[Name]      ,[ParentId]	,[SortOrder]      ,[Status]      ,[URL])
+	select 'KHBaoCaoKHDien', 'fa fa-group', N'Báo cáo K.hàng điện', 'KHNhapTimKHDien', 25, 1 , '/admin/pobaocaokhdien/index'
+
+
+	insert into Functions ([Id]      ,[IconCss]      ,[Name]      ,[ParentId]	,[SortOrder]      ,[Status]      ,[URL])
+	select 'KHNhapTimKHNuoc', 'fa fa-group', N'Khách hàng nước', NULL, 450, 1 , '/'
+
+	insert into Functions ([Id]      ,[IconCss]      ,[Name]      ,[ParentId]	,[SortOrder]      ,[Status]      ,[URL])
+	select 'KHNhapTraCuuKHNuoc', 'fa fa-group', N'Nhập K.hàng-Lọc KH nước', 'KHNhapTimKHNuoc', 3, 1 , '/admin/pokhachhangnuoc/index'
+
+	insert into Functions ([Id]      ,[IconCss]      ,[Name]      ,[ParentId]	,[SortOrder]      ,[Status]      ,[URL])
+	select 'KHKyLaiHDNuoc', 'fa fa-group', N'Ký lại hợp đồng nước', 'KHNhapTimKHNuoc', 9, 1 , '/admin/pokylaihdnuoc/index'
+
+	insert into Functions ([Id]      ,[IconCss]      ,[Name]      ,[ParentId]	,[SortOrder]      ,[Status]      ,[URL])
+	select 'KHBaoCaoKHNuoc', 'fa fa-group', N'Báo cáo K.hàng nước', 'KHNhapTimKHNuoc', 25, 1 , '/admin/pobaocaokhnuoc/index'
+
+
+	RRRRRRr
+create table HsChiTietBoHoSo
+create table HsChiTietBoHoSoHis
+
+create table KHACHHANGPOHis
+
+create table THAYHOPDONGPOHis
+create table KHTENPOHis
+
+rrrr
+/****** Object:  Table [dbo].[MDSDPO]    Script Date: 15/12/2021 4:20:34 CH ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[MDSDPO](
+	[MAMDSDPO] [varchar](10) NOT NULL,
+	[TENMDSD] [nvarchar](50) NULL,
+	[MOTAMDSD] [nvarchar](100) NULL,
+	[GIAMUC1] [decimal](18, 2) NULL,
+	[GIAMUC2] [decimal](18, 2) NULL,
+	[GIAMUC3] [decimal](18, 2) NULL,
+	[GIAMUC4] [decimal](18, 2) NULL,
+	[GIAMUC5] [decimal](18, 2) NULL,
+	[GIAMUC6] [decimal](18, 2) NULL,
+	[GIAMUC7] [decimal](18, 2) NULL,
+	[THUEMUC1] [decimal](18, 2) NULL,
+	[THUEMUC2] [decimal](18, 2) NULL,
+	[THUEMUC3] [decimal](18, 2) NULL,
+	[THUEMUC4] [decimal](18, 2) NULL,
+	[THUEMUC5] [decimal](18, 2) NULL,
+	[THUEMUC6] [decimal](18, 2) NULL,
+	[THUEMUC7] [decimal](18, 2) NULL,
+	[PHINT] [decimal](18, 2) NULL,
+	[THUTU] [int] NULL,
+	[NGAYDOI] [date] NULL,
+	[GIACUMUC1] [decimal](18, 2) NULL,
+	[GIACUMUC2] [decimal](18, 2) NULL,
+	[GIACUMUC3] [decimal](18, 2) NULL,
+	[GIACUMUC4] [decimal](18, 2) NULL,
+	[GIACUMUC5] [decimal](18, 2) NULL,
+	[GIACUMUC6] [decimal](18, 2) NULL,
+	[GIACUMUC7] [decimal](18, 2) NULL,
+	[THUECUMUC1] [decimal](18, 2) NULL,
+	[THUECUMUC2] [decimal](18, 2) NULL,
+	[THUECUMUC3] [decimal](18, 2) NULL,
+	[THUECUMUC4] [decimal](18, 2) NULL,
+	[THUECUMUC5] [decimal](18, 2) NULL,
+	[THUECUMUC6] [decimal](18, 2) NULL,
+	[THUECUMUC7] [decimal](18, 2) NULL,
+	[PHINTCU] [decimal](18, 2) NULL,
+	[NGAYDOICU] [date] NULL,
+ CONSTRAINT [PK_MDSDPO] PRIMARY KEY CLUSTERED 
+(
+	[MAMDSDPO] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+INSERT [dbo].[MDSDPO] ([MAMDSDPO], [TENMDSD], [MOTAMDSD], [GIAMUC1], [GIAMUC2], [GIAMUC3], [GIAMUC4], [GIAMUC5], [GIAMUC6], [GIAMUC7], [THUEMUC1], [THUEMUC2], [THUEMUC3], [THUEMUC4], [THUEMUC5], [THUEMUC6], [THUEMUC7], [PHINT], [THUTU], [NGAYDOI], [GIACUMUC1], [GIACUMUC2], [GIACUMUC3], [GIACUMUC4], [GIACUMUC5], [GIACUMUC6], [GIACUMUC7], [THUECUMUC1], [THUECUMUC2], [THUECUMUC3], [THUECUMUC4], [THUECUMUC5], [THUECUMUC6], [THUECUMUC7], [PHINTCU], [NGAYDOICU]) VALUES (N'A', N'AS SINH HOAT XA (A)', N'Sinh hoạt hộ dân', CAST(1484.00 AS Decimal(18, 2)), CAST(1533.00 AS Decimal(18, 2)), CAST(1786.00 AS Decimal(18, 2)), CAST(2242.00 AS Decimal(18, 2)), CAST(2503.00 AS Decimal(18, 2)), CAST(2587.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(148.40 AS Decimal(18, 2)), CAST(153.30 AS Decimal(18, 2)), CAST(178.60 AS Decimal(18, 2)), CAST(224.20 AS Decimal(18, 2)), CAST(250.30 AS Decimal(18, 2)), CAST(258.70 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[MDSDPO] ([MAMDSDPO], [TENMDSD], [MOTAMDSD], [GIAMUC1], [GIAMUC2], [GIAMUC3], [GIAMUC4], [GIAMUC5], [GIAMUC6], [GIAMUC7], [THUEMUC1], [THUEMUC2], [THUEMUC3], [THUEMUC4], [THUEMUC5], [THUEMUC6], [THUEMUC7], [PHINT], [THUTU], [NGAYDOI], [GIACUMUC1], [GIACUMUC2], [GIACUMUC3], [GIACUMUC4], [GIACUMUC5], [GIACUMUC6], [GIACUMUC7], [THUECUMUC1], [THUECUMUC2], [THUECUMUC3], [THUECUMUC4], [THUECUMUC5], [THUECUMUC6], [THUECUMUC7], [PHINTCU], [NGAYDOICU]) VALUES (N'B', N'AS SINH HOAT XA (B)', N'Sinh hoạt hộ dân', CAST(1484.00 AS Decimal(18, 2)), CAST(1533.00 AS Decimal(18, 2)), CAST(1786.00 AS Decimal(18, 2)), CAST(2242.00 AS Decimal(18, 2)), CAST(2503.00 AS Decimal(18, 2)), CAST(2587.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(148.40 AS Decimal(18, 2)), CAST(153.30 AS Decimal(18, 2)), CAST(178.60 AS Decimal(18, 2)), CAST(224.20 AS Decimal(18, 2)), CAST(250.30 AS Decimal(18, 2)), CAST(258.70 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[MDSDPO] ([MAMDSDPO], [TENMDSD], [MOTAMDSD], [GIAMUC1], [GIAMUC2], [GIAMUC3], [GIAMUC4], [GIAMUC5], [GIAMUC6], [GIAMUC7], [THUEMUC1], [THUEMUC2], [THUEMUC3], [THUEMUC4], [THUEMUC5], [THUEMUC6], [THUEMUC7], [PHINT], [THUTU], [NGAYDOI], [GIACUMUC1], [GIACUMUC2], [GIACUMUC3], [GIACUMUC4], [GIACUMUC5], [GIACUMUC6], [GIACUMUC7], [THUECUMUC1], [THUECUMUC2], [THUECUMUC3], [THUECUMUC4], [THUECUMUC5], [THUECUMUC6], [THUECUMUC7], [PHINTCU], [NGAYDOICU]) VALUES (N'C', N'CONG NGHIEP-TTCN XA (C)', N'CONG NGHIEP-TTCN XA', CAST(1518.00 AS Decimal(18, 2)), CAST(1518.00 AS Decimal(18, 2)), CAST(1518.00 AS Decimal(18, 2)), CAST(1518.00 AS Decimal(18, 2)), CAST(1518.00 AS Decimal(18, 2)), CAST(1518.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(151.80 AS Decimal(18, 2)), CAST(151.80 AS Decimal(18, 2)), CAST(151.80 AS Decimal(18, 2)), CAST(151.80 AS Decimal(18, 2)), CAST(151.80 AS Decimal(18, 2)), CAST(151.80 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[MDSDPO] ([MAMDSDPO], [TENMDSD], [MOTAMDSD], [GIAMUC1], [GIAMUC2], [GIAMUC3], [GIAMUC4], [GIAMUC5], [GIAMUC6], [GIAMUC7], [THUEMUC1], [THUEMUC2], [THUEMUC3], [THUEMUC4], [THUEMUC5], [THUEMUC6], [THUEMUC7], [PHINT], [THUTU], [NGAYDOI], [GIACUMUC1], [GIACUMUC2], [GIACUMUC3], [GIACUMUC4], [GIACUMUC5], [GIACUMUC6], [GIACUMUC7], [THUECUMUC1], [THUECUMUC2], [THUECUMUC3], [THUECUMUC4], [THUECUMUC5], [THUECUMUC6], [THUECUMUC7], [PHINTCU], [NGAYDOICU]) VALUES (N'D', N'KINH DOANH DICH VU (D)', NULL, CAST(2320.00 AS Decimal(18, 2)), CAST(2320.00 AS Decimal(18, 2)), CAST(2320.00 AS Decimal(18, 2)), CAST(2320.00 AS Decimal(18, 2)), CAST(2320.00 AS Decimal(18, 2)), CAST(2320.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(232.00 AS Decimal(18, 2)), CAST(232.00 AS Decimal(18, 2)), CAST(232.00 AS Decimal(18, 2)), CAST(232.00 AS Decimal(18, 2)), CAST(232.00 AS Decimal(18, 2)), CAST(232.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[MDSDPO] ([MAMDSDPO], [TENMDSD], [MOTAMDSD], [GIAMUC1], [GIAMUC2], [GIAMUC3], [GIAMUC4], [GIAMUC5], [GIAMUC6], [GIAMUC7], [THUEMUC1], [THUEMUC2], [THUEMUC3], [THUEMUC4], [THUEMUC5], [THUEMUC6], [THUEMUC7], [PHINT], [THUTU], [NGAYDOI], [GIACUMUC1], [GIACUMUC2], [GIACUMUC3], [GIACUMUC4], [GIACUMUC5], [GIACUMUC6], [GIACUMUC7], [THUECUMUC1], [THUECUMUC2], [THUECUMUC3], [THUECUMUC4], [THUECUMUC5], [THUECUMUC6], [THUECUMUC7], [PHINTCU], [NGAYDOICU]) VALUES (N'E', N'SAN XUAT - TT CONG NGHIEP (E)', N'SAN XUAT - TT CONG NGHIEP (E)', CAST(1518.00 AS Decimal(18, 2)), CAST(1518.00 AS Decimal(18, 2)), CAST(1518.00 AS Decimal(18, 2)), CAST(1518.00 AS Decimal(18, 2)), CAST(1518.00 AS Decimal(18, 2)), CAST(1518.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(151.80 AS Decimal(18, 2)), CAST(151.80 AS Decimal(18, 2)), CAST(151.80 AS Decimal(18, 2)), CAST(151.80 AS Decimal(18, 2)), CAST(151.80 AS Decimal(18, 2)), CAST(151.80 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[MDSDPO] ([MAMDSDPO], [TENMDSD], [MOTAMDSD], [GIAMUC1], [GIAMUC2], [GIAMUC3], [GIAMUC4], [GIAMUC5], [GIAMUC6], [GIAMUC7], [THUEMUC1], [THUEMUC2], [THUEMUC3], [THUEMUC4], [THUEMUC5], [THUEMUC6], [THUEMUC7], [PHINT], [THUTU], [NGAYDOI], [GIACUMUC1], [GIACUMUC2], [GIACUMUC3], [GIACUMUC4], [GIACUMUC5], [GIACUMUC6], [GIACUMUC7], [THUECUMUC1], [THUECUMUC2], [THUECUMUC3], [THUECUMUC4], [THUECUMUC5], [THUECUMUC6], [THUECUMUC7], [PHINTCU], [NGAYDOICU]) VALUES (N'F', N'KINH DOANH DICH VU - THI TRAN (F)', N'KINH DOANH DICH VU - THI TRAN (F)', CAST(2320.00 AS Decimal(18, 2)), CAST(2320.00 AS Decimal(18, 2)), CAST(2320.00 AS Decimal(18, 2)), CAST(2320.00 AS Decimal(18, 2)), CAST(2320.00 AS Decimal(18, 2)), CAST(2320.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(232.00 AS Decimal(18, 2)), CAST(232.00 AS Decimal(18, 2)), CAST(232.00 AS Decimal(18, 2)), CAST(232.00 AS Decimal(18, 2)), CAST(232.00 AS Decimal(18, 2)), CAST(232.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[MDSDPO] ([MAMDSDPO], [TENMDSD], [MOTAMDSD], [GIAMUC1], [GIAMUC2], [GIAMUC3], [GIAMUC4], [GIAMUC5], [GIAMUC6], [GIAMUC7], [THUEMUC1], [THUEMUC2], [THUEMUC3], [THUEMUC4], [THUEMUC5], [THUEMUC6], [THUEMUC7], [PHINT], [THUTU], [NGAYDOI], [GIACUMUC1], [GIACUMUC2], [GIACUMUC3], [GIACUMUC4], [GIACUMUC5], [GIACUMUC6], [GIACUMUC7], [THUECUMUC1], [THUECUMUC2], [THUECUMUC3], [THUECUMUC4], [THUECUMUC5], [THUECUMUC6], [THUECUMUC7], [PHINTCU], [NGAYDOICU]) VALUES (N'G', N'AS SH THANH THI (G)', N'Sinh hoạt hộ dân', CAST(1484.00 AS Decimal(18, 2)), CAST(1533.00 AS Decimal(18, 2)), CAST(1786.00 AS Decimal(18, 2)), CAST(2242.00 AS Decimal(18, 2)), CAST(2503.00 AS Decimal(18, 2)), CAST(2587.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(148.40 AS Decimal(18, 2)), CAST(153.30 AS Decimal(18, 2)), CAST(178.60 AS Decimal(18, 2)), CAST(224.20 AS Decimal(18, 2)), CAST(250.30 AS Decimal(18, 2)), CAST(258.70 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[MDSDPO] ([MAMDSDPO], [TENMDSD], [MOTAMDSD], [GIAMUC1], [GIAMUC2], [GIAMUC3], [GIAMUC4], [GIAMUC5], [GIAMUC6], [GIAMUC7], [THUEMUC1], [THUEMUC2], [THUEMUC3], [THUEMUC4], [THUEMUC5], [THUEMUC6], [THUEMUC7], [PHINT], [THUTU], [NGAYDOI], [GIACUMUC1], [GIACUMUC2], [GIACUMUC3], [GIACUMUC4], [GIACUMUC5], [GIACUMUC6], [GIACUMUC7], [THUECUMUC1], [THUECUMUC2], [THUECUMUC3], [THUECUMUC4], [THUECUMUC5], [THUECUMUC6], [THUECUMUC7], [PHINTCU], [NGAYDOICU]) VALUES (N'H', N'CQ HANH CHINH (H)', NULL, CAST(1671.00 AS Decimal(18, 2)), CAST(1671.00 AS Decimal(18, 2)), CAST(1671.00 AS Decimal(18, 2)), CAST(1671.00 AS Decimal(18, 2)), CAST(1671.00 AS Decimal(18, 2)), CAST(1671.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(167.10 AS Decimal(18, 2)), CAST(167.10 AS Decimal(18, 2)), CAST(167.10 AS Decimal(18, 2)), CAST(167.10 AS Decimal(18, 2)), CAST(167.10 AS Decimal(18, 2)), CAST(167.10 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[MDSDPO] ([MAMDSDPO], [TENMDSD], [MOTAMDSD], [GIAMUC1], [GIAMUC2], [GIAMUC3], [GIAMUC4], [GIAMUC5], [GIAMUC6], [GIAMUC7], [THUEMUC1], [THUEMUC2], [THUEMUC3], [THUEMUC4], [THUEMUC5], [THUEMUC6], [THUEMUC7], [PHINT], [THUTU], [NGAYDOI], [GIACUMUC1], [GIACUMUC2], [GIACUMUC3], [GIACUMUC4], [GIACUMUC5], [GIACUMUC6], [GIACUMUC7], [THUECUMUC1], [THUECUMUC2], [THUECUMUC3], [THUECUMUC4], [THUECUMUC5], [THUECUMUC6], [THUECUMUC7], [PHINTCU], [NGAYDOICU]) VALUES (N'I', N'BENH VIEN-TRUONG HOC (I)', N'1557', CAST(1557.00 AS Decimal(18, 2)), CAST(1557.00 AS Decimal(18, 2)), CAST(1557.00 AS Decimal(18, 2)), CAST(1557.00 AS Decimal(18, 2)), CAST(1557.00 AS Decimal(18, 2)), CAST(1557.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(155.70 AS Decimal(18, 2)), CAST(155.70 AS Decimal(18, 2)), CAST(155.70 AS Decimal(18, 2)), CAST(155.70 AS Decimal(18, 2)), CAST(155.70 AS Decimal(18, 2)), CAST(155.70 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[MDSDPO] ([MAMDSDPO], [TENMDSD], [MOTAMDSD], [GIAMUC1], [GIAMUC2], [GIAMUC3], [GIAMUC4], [GIAMUC5], [GIAMUC6], [GIAMUC7], [THUEMUC1], [THUEMUC2], [THUEMUC3], [THUEMUC4], [THUEMUC5], [THUEMUC6], [THUEMUC7], [PHINT], [THUTU], [NGAYDOI], [GIACUMUC1], [GIACUMUC2], [GIACUMUC3], [GIACUMUC4], [GIACUMUC5], [GIACUMUC6], [GIACUMUC7], [THUECUMUC1], [THUECUMUC2], [THUECUMUC3], [THUECUMUC4], [THUECUMUC5], [THUECUMUC6], [THUECUMUC7], [PHINTCU], [NGAYDOICU]) VALUES (N'J', N'BQL CHO XA (J)', N'1557', CAST(1557.00 AS Decimal(18, 2)), CAST(1557.00 AS Decimal(18, 2)), CAST(1557.00 AS Decimal(18, 2)), CAST(1557.00 AS Decimal(18, 2)), CAST(1557.00 AS Decimal(18, 2)), CAST(1557.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(155.70 AS Decimal(18, 2)), CAST(155.70 AS Decimal(18, 2)), CAST(155.70 AS Decimal(18, 2)), CAST(155.70 AS Decimal(18, 2)), CAST(155.70 AS Decimal(18, 2)), CAST(155.70 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[MDSDPO] ([MAMDSDPO], [TENMDSD], [MOTAMDSD], [GIAMUC1], [GIAMUC2], [GIAMUC3], [GIAMUC4], [GIAMUC5], [GIAMUC6], [GIAMUC7], [THUEMUC1], [THUEMUC2], [THUEMUC3], [THUEMUC4], [THUEMUC5], [THUEMUC6], [THUEMUC7], [PHINT], [THUTU], [NGAYDOI], [GIACUMUC1], [GIACUMUC2], [GIACUMUC3], [GIACUMUC4], [GIACUMUC5], [GIACUMUC6], [GIACUMUC7], [THUECUMUC1], [THUECUMUC2], [THUECUMUC3], [THUECUMUC4], [THUECUMUC5], [THUECUMUC6], [THUECUMUC7], [PHINTCU], [NGAYDOICU]) VALUES (N'K', N'BQL CHO THI TRAN (K)', NULL, CAST(1671.00 AS Decimal(18, 2)), CAST(1671.00 AS Decimal(18, 2)), CAST(1671.00 AS Decimal(18, 2)), CAST(1671.00 AS Decimal(18, 2)), CAST(1671.00 AS Decimal(18, 2)), CAST(1671.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(167.10 AS Decimal(18, 2)), CAST(167.10 AS Decimal(18, 2)), CAST(167.10 AS Decimal(18, 2)), CAST(167.10 AS Decimal(18, 2)), CAST(167.10 AS Decimal(18, 2)), CAST(167.10 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[MDSDPO] ([MAMDSDPO], [TENMDSD], [MOTAMDSD], [GIAMUC1], [GIAMUC2], [GIAMUC3], [GIAMUC4], [GIAMUC5], [GIAMUC6], [GIAMUC7], [THUEMUC1], [THUEMUC2], [THUEMUC3], [THUEMUC4], [THUEMUC5], [THUEMUC6], [THUEMUC7], [PHINT], [THUTU], [NGAYDOI], [GIACUMUC1], [GIACUMUC2], [GIACUMUC3], [GIACUMUC4], [GIACUMUC5], [GIACUMUC6], [GIACUMUC7], [THUECUMUC1], [THUECUMUC2], [THUECUMUC3], [THUECUMUC4], [THUECUMUC5], [THUECUMUC6], [THUECUMUC7], [PHINTCU], [NGAYDOICU]) VALUES (N'L', N'ANH SANG CONG LO (L)', NULL, CAST(1671.00 AS Decimal(18, 2)), CAST(1671.00 AS Decimal(18, 2)), CAST(1671.00 AS Decimal(18, 2)), CAST(1671.00 AS Decimal(18, 2)), CAST(1671.00 AS Decimal(18, 2)), CAST(1671.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(167.10 AS Decimal(18, 2)), CAST(167.10 AS Decimal(18, 2)), CAST(167.10 AS Decimal(18, 2)), CAST(167.10 AS Decimal(18, 2)), CAST(167.10 AS Decimal(18, 2)), CAST(167.10 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[MDSDPO] ([MAMDSDPO], [TENMDSD], [MOTAMDSD], [GIAMUC1], [GIAMUC2], [GIAMUC3], [GIAMUC4], [GIAMUC5], [GIAMUC6], [GIAMUC7], [THUEMUC1], [THUEMUC2], [THUEMUC3], [THUEMUC4], [THUEMUC5], [THUEMUC6], [THUEMUC7], [PHINT], [THUTU], [NGAYDOI], [GIACUMUC1], [GIACUMUC2], [GIACUMUC3], [GIACUMUC4], [GIACUMUC5], [GIACUMUC6], [GIACUMUC7], [THUECUMUC1], [THUECUMUC2], [THUECUMUC3], [THUECUMUC4], [THUECUMUC5], [THUECUMUC6], [THUECUMUC7], [PHINTCU], [NGAYDOICU]) VALUES (N'M', N'NHA TRO 3 GIA DH DIEN TU (M)', N'NHA TRO 3 GIA DH DIEN TU (M)', CAST(1786.00 AS Decimal(18, 2)), CAST(1786.00 AS Decimal(18, 2)), CAST(1786.00 AS Decimal(18, 2)), CAST(1786.00 AS Decimal(18, 2)), CAST(1786.00 AS Decimal(18, 2)), CAST(1786.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(178.60 AS Decimal(18, 2)), CAST(178.60 AS Decimal(18, 2)), CAST(178.60 AS Decimal(18, 2)), CAST(178.60 AS Decimal(18, 2)), CAST(178.60 AS Decimal(18, 2)), CAST(178.60 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[MDSDPO] ([MAMDSDPO], [TENMDSD], [MOTAMDSD], [GIAMUC1], [GIAMUC2], [GIAMUC3], [GIAMUC4], [GIAMUC5], [GIAMUC6], [GIAMUC7], [THUEMUC1], [THUEMUC2], [THUEMUC3], [THUEMUC4], [THUEMUC5], [THUEMUC6], [THUEMUC7], [PHINT], [THUTU], [NGAYDOI], [GIACUMUC1], [GIACUMUC2], [GIACUMUC3], [GIACUMUC4], [GIACUMUC5], [GIACUMUC6], [GIACUMUC7], [THUECUMUC1], [THUECUMUC2], [THUECUMUC3], [THUECUMUC4], [THUECUMUC5], [THUECUMUC6], [THUECUMUC7], [PHINTCU], [NGAYDOICU]) VALUES (N'T', N'BOM NUOC NONG NGHIEP (T)', NULL, CAST(1518.00 AS Decimal(18, 2)), CAST(1518.00 AS Decimal(18, 2)), CAST(1518.00 AS Decimal(18, 2)), CAST(1518.00 AS Decimal(18, 2)), CAST(1518.00 AS Decimal(18, 2)), CAST(1518.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(151.80 AS Decimal(18, 2)), CAST(151.80 AS Decimal(18, 2)), CAST(151.80 AS Decimal(18, 2)), CAST(151.80 AS Decimal(18, 2)), CAST(151.80 AS Decimal(18, 2)), CAST(151.80 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[MDSDPO] ([MAMDSDPO], [TENMDSD], [MOTAMDSD], [GIAMUC1], [GIAMUC2], [GIAMUC3], [GIAMUC4], [GIAMUC5], [GIAMUC6], [GIAMUC7], [THUEMUC1], [THUEMUC2], [THUEMUC3], [THUEMUC4], [THUEMUC5], [THUEMUC6], [THUEMUC7], [PHINT], [THUTU], [NGAYDOI], [GIACUMUC1], [GIACUMUC2], [GIACUMUC3], [GIACUMUC4], [GIACUMUC5], [GIACUMUC6], [GIACUMUC7], [THUECUMUC1], [THUECUMUC2], [THUECUMUC3], [THUECUMUC4], [THUECUMUC5], [THUECUMUC6], [THUECUMUC7], [PHINTCU], [NGAYDOICU]) VALUES (N'U', N'BUU DIEN (U)', NULL, CAST(1671.00 AS Decimal(18, 2)), CAST(1671.00 AS Decimal(18, 2)), CAST(1671.00 AS Decimal(18, 2)), CAST(1671.00 AS Decimal(18, 2)), CAST(1671.00 AS Decimal(18, 2)), CAST(1671.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(167.10 AS Decimal(18, 2)), CAST(167.10 AS Decimal(18, 2)), CAST(167.10 AS Decimal(18, 2)), CAST(167.10 AS Decimal(18, 2)), CAST(167.10 AS Decimal(18, 2)), CAST(167.10 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[MDSDPO] ([MAMDSDPO], [TENMDSD], [MOTAMDSD], [GIAMUC1], [GIAMUC2], [GIAMUC3], [GIAMUC4], [GIAMUC5], [GIAMUC6], [GIAMUC7], [THUEMUC1], [THUEMUC2], [THUEMUC3], [THUEMUC4], [THUEMUC5], [THUEMUC6], [THUEMUC7], [PHINT], [THUTU], [NGAYDOI], [GIACUMUC1], [GIACUMUC2], [GIACUMUC3], [GIACUMUC4], [GIACUMUC5], [GIACUMUC6], [GIACUMUC7], [THUECUMUC1], [THUECUMUC2], [THUECUMUC3], [THUECUMUC4], [THUECUMUC5], [THUECUMUC6], [THUECUMUC7], [PHINTCU], [NGAYDOICU]) VALUES (N'V', N'NHA TRO THANG 1 GIA (V)', N'NHA TRO THANG 1 GIA (V)', CAST(1786.00 AS Decimal(18, 2)), CAST(1786.00 AS Decimal(18, 2)), CAST(1786.00 AS Decimal(18, 2)), CAST(1786.00 AS Decimal(18, 2)), CAST(1786.00 AS Decimal(18, 2)), CAST(1786.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(178.60 AS Decimal(18, 2)), CAST(178.60 AS Decimal(18, 2)), CAST(178.60 AS Decimal(18, 2)), CAST(178.60 AS Decimal(18, 2)), CAST(178.60 AS Decimal(18, 2)), CAST(178.60 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+INSERT [dbo].[MDSDPO] ([MAMDSDPO], [TENMDSD], [MOTAMDSD], [GIAMUC1], [GIAMUC2], [GIAMUC3], [GIAMUC4], [GIAMUC5], [GIAMUC6], [GIAMUC7], [THUEMUC1], [THUEMUC2], [THUEMUC3], [THUEMUC4], [THUEMUC5], [THUEMUC6], [THUEMUC7], [PHINT], [THUTU], [NGAYDOI], [GIACUMUC1], [GIACUMUC2], [GIACUMUC3], [GIACUMUC4], [GIACUMUC5], [GIACUMUC6], [GIACUMUC7], [THUECUMUC1], [THUECUMUC2], [THUECUMUC3], [THUECUMUC4], [THUECUMUC5], [THUECUMUC6], [THUECUMUC7], [PHINTCU], [NGAYDOICU]) VALUES (N'Z', N'THU NHAP THAP TT  ** (Z)', N'Sinh hoạt hộ dân', CAST(1484.00 AS Decimal(18, 2)), CAST(1533.00 AS Decimal(18, 2)), CAST(1786.00 AS Decimal(18, 2)), CAST(2242.00 AS Decimal(18, 2)), CAST(2503.00 AS Decimal(18, 2)), CAST(2587.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(148.40 AS Decimal(18, 2)), CAST(153.30 AS Decimal(18, 2)), CAST(178.60 AS Decimal(18, 2)), CAST(224.20 AS Decimal(18, 2)), CAST(250.30 AS Decimal(18, 2)), CAST(258.70 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL)
+GO
+
+/****** Object:  Table [dbo].[DMDOTINHD]    Script Date: 24/12/2021 3:49:28 CH ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[DMDOTINHD](
+	[MADOTIN] [varchar](10) NOT NULL,
+	[TENDOTIN] [nvarchar](100) NULL,
+	[MANVN] [varchar](10) NULL,
+	[NGAYN] [datetime] NULL,
+	[STT] [int] NULL,
+	[IntMucDichKhac] [int] NULL,
+ CONSTRAINT [PK_DMDOTINHD] PRIMARY KEY CLUSTERED 
+(
+	[MADOTIN] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[DOTINHD]    Script Date: 24/12/2021 3:49:28 CH ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[DOTINHD](
+	[IDMADOTIN] [varchar](10) NOT NULL,
+	[MADOTIN] [varchar](10) NULL,
+	[MAKV] [varchar](10) NULL,
+	[MAKVPO] [varchar](10) NULL,
+	[MANVN] [varchar](10) NULL,
+	[NGAYN] [datetime] NULL,
+	[STT] [int] NULL,
+	[NGAYBT] [date] NULL,
+	[NGAYKT] [date] NULL,
+	[GHICHU] [nvarchar](300) NULL,
+ CONSTRAINT [PK_DOTINHD] PRIMARY KEY CLUSTERED 
+(
+	[IDMADOTIN] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+INSERT [dbo].[DMDOTINHD] ([MADOTIN], [TENDOTIN], [MANVN], [NGAYN], [STT], [IntMucDichKhac]) VALUES (N'DDDOT1', N'Đợt 1', N'admin', CAST(N'2011-11-11T00:00:00.000' AS DateTime), 1, NULL)
+INSERT [dbo].[DMDOTINHD] ([MADOTIN], [TENDOTIN], [MANVN], [NGAYN], [STT], [IntMucDichKhac]) VALUES (N'DDDOT2', N'Đợt 2', N'admin', CAST(N'2011-11-11T00:00:00.000' AS DateTime), 2, NULL)
+INSERT [dbo].[DMDOTINHD] ([MADOTIN], [TENDOTIN], [MANVN], [NGAYN], [STT], [IntMucDichKhac]) VALUES (N'DDDOT3', N'Đợt 3', N'admin', CAST(N'2011-11-11T00:00:00.000' AS DateTime), 3, NULL)
+INSERT [dbo].[DMDOTINHD] ([MADOTIN], [TENDOTIN], [MANVN], [NGAYN], [STT], [IntMucDichKhac]) VALUES (N'DDNTD1', N'Đợt 1 (Nhờ thu)', N'admin', CAST(N'2011-11-11T00:00:00.000' AS DateTime), 4, NULL)
+INSERT [dbo].[DMDOTINHD] ([MADOTIN], [TENDOTIN], [MANVN], [NGAYN], [STT], [IntMucDichKhac]) VALUES (N'DDP7D1', N'Phiên 7 đợt 1', N'admin', CAST(N'2011-11-11T00:00:00.000' AS DateTime), 1, 1)
+INSERT [dbo].[DMDOTINHD] ([MADOTIN], [TENDOTIN], [MANVN], [NGAYN], [STT], [IntMucDichKhac]) VALUES (N'DDTHD1', N'Đợt 1 (Thu hộ)', N'admin', CAST(N'2011-11-11T00:00:00.000' AS DateTime), 4, NULL)
+INSERT [dbo].[DMDOTINHD] ([MADOTIN], [TENDOTIN], [MANVN], [NGAYN], [STT], [IntMucDichKhac]) VALUES (N'NN1TMD', N'Đợt 1 (Mục đích khác)', N'admin', CAST(N'2020-10-26T00:00:00.000' AS DateTime), 1, 1)
+INSERT [dbo].[DMDOTINHD] ([MADOTIN], [TENDOTIN], [MANVN], [NGAYN], [STT], [IntMucDichKhac]) VALUES (N'NNDLX1', N'A, 1, 2 (Đợt 1)', N'admin', CAST(N'2011-11-11T00:00:00.000' AS DateTime), 1, NULL)
+INSERT [dbo].[DMDOTINHD] ([MADOTIN], [TENDOTIN], [MANVN], [NGAYN], [STT], [IntMucDichKhac]) VALUES (N'NNDLX2', N'3, 4  (Đợt 2)', N'admin', CAST(N'2011-11-11T00:00:00.000' AS DateTime), 1, NULL)
+INSERT [dbo].[DMDOTINHD] ([MADOTIN], [TENDOTIN], [MANVN], [NGAYN], [STT], [IntMucDichKhac]) VALUES (N'NNDLX3', N'5, 6  (Đợt 3)', N'admin', CAST(N'2011-11-11T00:00:00.000' AS DateTime), 1, NULL)
+INSERT [dbo].[DMDOTINHD] ([MADOTIN], [TENDOTIN], [MANVN], [NGAYN], [STT], [IntMucDichKhac]) VALUES (N'NNDLX4', N'A1, A2 (Đợt 1)', N'admin', CAST(N'2011-11-11T00:00:00.000' AS DateTime), 1, NULL)
+INSERT [dbo].[DMDOTINHD] ([MADOTIN], [TENDOTIN], [MANVN], [NGAYN], [STT], [IntMucDichKhac]) VALUES (N'NNDLX5', N'1, 2  (Đợt 2)', N'admin', CAST(N'2011-11-11T00:00:00.000' AS DateTime), 1, NULL)
+INSERT [dbo].[DMDOTINHD] ([MADOTIN], [TENDOTIN], [MANVN], [NGAYN], [STT], [IntMucDichKhac]) VALUES (N'NNDLX6', N'3, 4  (Đợt 3)', N'admin', CAST(N'2011-11-11T00:00:00.000' AS DateTime), 1, NULL)
+INSERT [dbo].[DMDOTINHD] ([MADOTIN], [TENDOTIN], [MANVN], [NGAYN], [STT], [IntMucDichKhac]) VALUES (N'NNDLX7', N'5, 6  (Đợt 4)', N'admin', CAST(N'2011-11-11T00:00:00.000' AS DateTime), 1, NULL)
+INSERT [dbo].[DMDOTINHD] ([MADOTIN], [TENDOTIN], [MANVN], [NGAYN], [STT], [IntMucDichKhac]) VALUES (N'NNDOT1', N'Đợt 1', N'admin', CAST(N'2011-11-11T00:00:00.000' AS DateTime), 1, NULL)
+INSERT [dbo].[DMDOTINHD] ([MADOTIN], [TENDOTIN], [MANVN], [NGAYN], [STT], [IntMucDichKhac]) VALUES (N'NNDOT2', N'Đợt 2', N'admin', CAST(N'2011-11-11T00:00:00.000' AS DateTime), 3, NULL)
+INSERT [dbo].[DMDOTINHD] ([MADOTIN], [TENDOTIN], [MANVN], [NGAYN], [STT], [IntMucDichKhac]) VALUES (N'NNDOT3', N'Đợt 3', N'admin', CAST(N'2011-11-11T00:00:00.000' AS DateTime), 4, NULL)
+GO
+INSERT [dbo].[DOTINHD] ([IDMADOTIN], [MADOTIN], [MAKV], [MAKVPO], [MANVN], [NGAYN], [STT], [NGAYBT], [NGAYKT], [GHICHU]) VALUES (N'DDIN0301', N'DDDOT2', N'B', N'B', N'admin', CAST(N'2011-11-11T00:00:00.000' AS DateTime), 2, CAST(N'2016-01-01' AS Date), CAST(N'2016-01-06' AS Date), NULL)
+INSERT [dbo].[DOTINHD] ([IDMADOTIN], [MADOTIN], [MAKV], [MAKVPO], [MANVN], [NGAYN], [STT], [NGAYBT], [NGAYKT], [GHICHU]) VALUES (N'DDIN0302', N'DDDOT3', N'B', N'B', N'admin', CAST(N'2011-11-11T00:00:00.000' AS DateTime), 3, CAST(N'2016-01-01' AS Date), CAST(N'2016-01-06' AS Date), NULL)
+INSERT [dbo].[DOTINHD] ([IDMADOTIN], [MADOTIN], [MAKV], [MAKVPO], [MANVN], [NGAYN], [STT], [NGAYBT], [NGAYKT], [GHICHU]) VALUES (N'DDIN0303', N'DDP7D1', N'B', N'B', N'admin', CAST(N'2011-11-11T00:00:00.000' AS DateTime), 4, CAST(N'2016-01-01' AS Date), CAST(N'2016-01-06' AS Date), NULL)
+INSERT [dbo].[DOTINHD] ([IDMADOTIN], [MADOTIN], [MAKV], [MAKVPO], [MANVN], [NGAYN], [STT], [NGAYBT], [NGAYKT], [GHICHU]) VALUES (N'DDIN0401', N'DDDOT2', N'C', N'C', N'admin', CAST(N'2011-11-11T00:00:00.000' AS DateTime), 2, CAST(N'2016-01-01' AS Date), CAST(N'2016-01-06' AS Date), NULL)
+INSERT [dbo].[DOTINHD] ([IDMADOTIN], [MADOTIN], [MAKV], [MAKVPO], [MANVN], [NGAYN], [STT], [NGAYBT], [NGAYKT], [GHICHU]) VALUES (N'DDIN0402', N'DDDOT3', N'C', N'C', N'admin', CAST(N'2011-11-11T00:00:00.000' AS DateTime), 3, CAST(N'2016-01-01' AS Date), CAST(N'2016-01-06' AS Date), NULL)
+INSERT [dbo].[DOTINHD] ([IDMADOTIN], [MADOTIN], [MAKV], [MAKVPO], [MANVN], [NGAYN], [STT], [NGAYBT], [NGAYKT], [GHICHU]) VALUES (N'DDIN0403', N'DDNTD1', N'C', N'C', N'admin', CAST(N'2011-11-11T00:00:00.000' AS DateTime), 4, CAST(N'2016-01-01' AS Date), CAST(N'2016-01-06' AS Date), NULL)
+INSERT [dbo].[DOTINHD] ([IDMADOTIN], [MADOTIN], [MAKV], [MAKVPO], [MANVN], [NGAYN], [STT], [NGAYBT], [NGAYKT], [GHICHU]) VALUES (N'DDIN0404', N'DDP7D1', N'C', N'C', N'admin', CAST(N'2011-11-11T00:00:00.000' AS DateTime), 4, CAST(N'2016-01-01' AS Date), CAST(N'2016-01-06' AS Date), NULL)
+INSERT [dbo].[DOTINHD] ([IDMADOTIN], [MADOTIN], [MAKV], [MAKVPO], [MANVN], [NGAYN], [STT], [NGAYBT], [NGAYKT], [GHICHU]) VALUES (N'DDIN0501', N'DDDOT2', N'G', N'G', N'admin', CAST(N'2011-11-11T00:00:00.000' AS DateTime), 2, CAST(N'2016-01-01' AS Date), CAST(N'2016-01-06' AS Date), NULL)
+INSERT [dbo].[DOTINHD] ([IDMADOTIN], [MADOTIN], [MAKV], [MAKVPO], [MANVN], [NGAYN], [STT], [NGAYBT], [NGAYKT], [GHICHU]) VALUES (N'DDIN0502', N'DDDOT3', N'G', N'G', N'admin', CAST(N'2011-11-11T00:00:00.000' AS DateTime), 3, CAST(N'2016-01-01' AS Date), CAST(N'2016-01-06' AS Date), NULL)
+INSERT [dbo].[DOTINHD] ([IDMADOTIN], [MADOTIN], [MAKV], [MAKVPO], [MANVN], [NGAYN], [STT], [NGAYBT], [NGAYKT], [GHICHU]) VALUES (N'DDIN0503', N'DDP7D1', N'G', N'G', N'admin', CAST(N'2011-11-11T00:00:00.000' AS DateTime), 4, CAST(N'2016-01-01' AS Date), CAST(N'2016-01-06' AS Date), NULL)
+INSERT [dbo].[DOTINHD] ([IDMADOTIN], [MADOTIN], [MAKV], [MAKVPO], [MANVN], [NGAYN], [STT], [NGAYBT], [NGAYKT], [GHICHU]) VALUES (N'NNIN0302', N'NNDOT2', N'L', N'L', N'admin', CAST(N'2011-11-11T00:00:00.000' AS DateTime), 2, CAST(N'2016-01-01' AS Date), CAST(N'2016-01-06' AS Date), NULL)
+INSERT [dbo].[DOTINHD] ([IDMADOTIN], [MADOTIN], [MAKV], [MAKVPO], [MANVN], [NGAYN], [STT], [NGAYBT], [NGAYKT], [GHICHU]) VALUES (N'NNIN0303', N'NNDOT3', N'L', N'L', N'admin', CAST(N'2011-11-11T00:00:00.000' AS DateTime), 3, CAST(N'2016-01-01' AS Date), CAST(N'2016-01-06' AS Date), NULL)
+INSERT [dbo].[DOTINHD] ([IDMADOTIN], [MADOTIN], [MAKV], [MAKVPO], [MANVN], [NGAYN], [STT], [NGAYBT], [NGAYKT], [GHICHU]) VALUES (N'NNIN0402', N'NNDOT2', N'M', N'M', N'admin', CAST(N'2011-11-11T00:00:00.000' AS DateTime), 2, CAST(N'2016-01-01' AS Date), CAST(N'2016-01-06' AS Date), NULL)
+INSERT [dbo].[DOTINHD] ([IDMADOTIN], [MADOTIN], [MAKV], [MAKVPO], [MANVN], [NGAYN], [STT], [NGAYBT], [NGAYKT], [GHICHU]) VALUES (N'NNIN0403', N'NNDOT3', N'M', N'M', N'admin', CAST(N'2011-11-11T00:00:00.000' AS DateTime), 3, CAST(N'2016-01-01' AS Date), CAST(N'2016-01-06' AS Date), NULL)
+INSERT [dbo].[DOTINHD] ([IDMADOTIN], [MADOTIN], [MAKV], [MAKVPO], [MANVN], [NGAYN], [STT], [NGAYBT], [NGAYKT], [GHICHU]) VALUES (N'NNIN0502', N'NNDOT2', N'Q', N'Q', N'admin', CAST(N'2011-11-11T00:00:00.000' AS DateTime), 2, CAST(N'2016-01-01' AS Date), CAST(N'2016-01-06' AS Date), NULL)
+INSERT [dbo].[DOTINHD] ([IDMADOTIN], [MADOTIN], [MAKV], [MAKVPO], [MANVN], [NGAYN], [STT], [NGAYBT], [NGAYKT], [GHICHU]) VALUES (N'NNIN0503', N'NNDOT3', N'Q', N'Q', N'admin', CAST(N'2011-11-11T00:00:00.000' AS DateTime), 3, CAST(N'2016-01-01' AS Date), CAST(N'2016-01-06' AS Date), NULL)
+INSERT [dbo].[DOTINHD] ([IDMADOTIN], [MADOTIN], [MAKV], [MAKVPO], [MANVN], [NGAYN], [STT], [NGAYBT], [NGAYKT], [GHICHU]) VALUES (N'NNIN1111', N'NN1TMD', N'Q', N'Q', N'admin', CAST(N'2020-10-26T00:00:00.000' AS DateTime), 1, CAST(N'2016-01-01' AS Date), CAST(N'2016-01-06' AS Date), NULL)
+INSERT [dbo].[DOTINHD] ([IDMADOTIN], [MADOTIN], [MAKV], [MAKVPO], [MANVN], [NGAYN], [STT], [NGAYBT], [NGAYKT], [GHICHU]) VALUES (N'NNIN1112', N'NN1TMD', N'M', N'M', N'admin', CAST(N'2020-10-26T00:00:00.000' AS DateTime), 1, CAST(N'2016-01-01' AS Date), CAST(N'2016-01-06' AS Date), NULL)
+INSERT [dbo].[DOTINHD] ([IDMADOTIN], [MADOTIN], [MAKV], [MAKVPO], [MANVN], [NGAYN], [STT], [NGAYBT], [NGAYKT], [GHICHU]) VALUES (N'NNIN1113', N'NN1TMD', N'L', N'L', N'admin', CAST(N'2020-10-26T00:00:00.000' AS DateTime), 1, CAST(N'2016-01-01' AS Date), CAST(N'2016-01-06' AS Date), NULL)
+GO
+
+
+/****** Object:  Table [dbo].[DMThuHo]    Script Date: 25/12/2021 8:17:03 SA ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[DMThuHo](
+	[ID] [varchar](3) NOT NULL,
+	[THUHO] [nvarchar](100) NULL,
+	[STT] [int] NULL,
+ CONSTRAINT [PK_DMThuHo] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+INSERT [dbo].[DMThuHo] ([ID], [THUHO], [STT]) VALUES (N'KO', N'Không', 1)
+INSERT [dbo].[DMThuHo] ([ID], [THUHO], [STT]) VALUES (N'Q', N'Kho bạc_Q', 2)
+INSERT [dbo].[DMThuHo] ([ID], [THUHO], [STT]) VALUES (N'T', N'Kho bạc_T', 3)
+INSERT [dbo].[DMThuHo] ([ID], [THUHO], [STT]) VALUES (N'TQ', N'Tại quầy', 4)
+GO
+
+
+
+
+
+r	create table THAYHOPDONGHis
+r	create table KHTENHis
+
+r CREATE TABLE [dbo].[MDSD](
+	[MAMDSD] [varchar](10) NOT NULL,
+	[TENMDSD] [nvarchar](50) NULL,
+	[MOTAMDSD] [nvarchar](100) NULL,
+	[GIAMUC1] [decimal](18, 2) NULL,
+	[GIAMUC2] [decimal](18, 2) NULL,
+	[GIAMUC3] [decimal](18, 2) NULL,
+	[THUEMUC1] [decimal](18, 2) NULL,
+	[THUEMUC2] [decimal](18, 2) NULL,
+	[THUEMUC3] [decimal](18, 2) NULL,
+	[PHINT] [decimal](18, 2) NULL,
+	[THUTU] [int] NULL,
+	[GIAMUC4] [decimal](18, 2) NULL,
+	[GIAMUC5] [decimal](18, 2) NULL,
+	[THUEMUC4] [decimal](18, 2) NULL,
+	[THUEMUC5] [decimal](18, 2) NULL,
+	[PHIMTLX] [decimal](18, 2) NULL,
+	[PHIMTM5] [decimal](18, 2) NULL,
+	[PHIMTM4] [decimal](18, 2) NULL,
+	[PHIMTM3] [decimal](18, 2) NULL,
+	[PHIMTM2] [decimal](18, 2) NULL,
+	[PHIMTM1] [decimal](18, 2) NULL,
+	[GIACOTHUEMUC1] [decimal](18, 2) NULL,
+	[GIACOTHUEMUC2] [decimal](18, 2) NULL,
+	[GIACOTHUEMUC3] [decimal](18, 2) NULL,
+	[GIACOTHUEMUC4] [decimal](18, 2) NULL,
+	[GIACOTHUEMUC5] [decimal](18, 2) NULL,
+ CONSTRAINT [PK_MDSD] PRIMARY KEY CLUSTERED 
+(
+	[MAMDSD] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+rrrrrr
+INSERT [dbo].[MDSD] ([MAMDSD], [TENMDSD], [MOTAMDSD], [GIAMUC1], [GIAMUC2], [GIAMUC3], [THUEMUC1], [THUEMUC2], [THUEMUC3], [PHINT], [THUTU], [GIAMUC4], [GIAMUC5], [THUEMUC4], [THUEMUC5], [PHIMTLX], [PHIMTM5], [PHIMTM4], [PHIMTM3], [PHIMTM2], [PHIMTM1], [GIACOTHUEMUC1], [GIACOTHUEMUC2], [GIACOTHUEMUC3], [GIACOTHUEMUC4], [GIACOTHUEMUC5]) VALUES (N'A', N'Sinh hoạt hộ dân', N'Sinh hoạt hộ dân', CAST(4285.71 AS Decimal(18, 2)), CAST(5333.33 AS Decimal(18, 2)), CAST(6380.95 AS Decimal(18, 2)), CAST(214.29 AS Decimal(18, 2)), CAST(266.67 AS Decimal(18, 2)), CAST(319.05 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), 1, CAST(8761.90 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(438.10 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.03 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(262.86 AS Decimal(18, 2)), CAST(191.43 AS Decimal(18, 2)), CAST(160.00 AS Decimal(18, 2)), CAST(128.57 AS Decimal(18, 2)), CAST(4500.00 AS Decimal(18, 2)), CAST(5600.00 AS Decimal(18, 2)), CAST(6700.00 AS Decimal(18, 2)), CAST(9200.00 AS Decimal(18, 2)), NULL)
+INSERT [dbo].[MDSD] ([MAMDSD], [TENMDSD], [MOTAMDSD], [GIAMUC1], [GIAMUC2], [GIAMUC3], [THUEMUC1], [THUEMUC2], [THUEMUC3], [PHINT], [THUTU], [GIAMUC4], [GIAMUC5], [THUEMUC4], [THUEMUC5], [PHIMTLX], [PHIMTM5], [PHIMTM4], [PHIMTM3], [PHIMTM2], [PHIMTM1], [GIACOTHUEMUC1], [GIACOTHUEMUC2], [GIACOTHUEMUC3], [GIACOTHUEMUC4], [GIACOTHUEMUC5]) VALUES (N'B', N'Hành chính xã (Mã B)', N'Hành chính xã', CAST(6380.95 AS Decimal(18, 2)), CAST(6380.95 AS Decimal(18, 2)), CAST(6380.95 AS Decimal(18, 2)), CAST(319.05 AS Decimal(18, 2)), CAST(319.05 AS Decimal(18, 2)), CAST(319.05 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), 5, CAST(6380.95 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(319.05 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.03 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(191.43 AS Decimal(18, 2)), CAST(191.43 AS Decimal(18, 2)), CAST(191.43 AS Decimal(18, 2)), CAST(191.43 AS Decimal(18, 2)), CAST(6700.00 AS Decimal(18, 2)), CAST(6700.00 AS Decimal(18, 2)), CAST(6700.00 AS Decimal(18, 2)), CAST(6700.00 AS Decimal(18, 2)), NULL)
+INSERT [dbo].[MDSD] ([MAMDSD], [TENMDSD], [MOTAMDSD], [GIAMUC1], [GIAMUC2], [GIAMUC3], [THUEMUC1], [THUEMUC2], [THUEMUC3], [PHINT], [THUTU], [GIAMUC4], [GIAMUC5], [THUEMUC4], [THUEMUC5], [PHIMTLX], [PHIMTM5], [PHIMTM4], [PHIMTM3], [PHIMTM2], [PHIMTM1], [GIACOTHUEMUC1], [GIACOTHUEMUC2], [GIACOTHUEMUC3], [GIACOTHUEMUC4], [GIACOTHUEMUC5]) VALUES (N'C', N'Sản xuất & Sinh hoạt (Mã C)', N'Sản xuất', CAST(4285.71 AS Decimal(18, 2)), CAST(8000.00 AS Decimal(18, 2)), CAST(8000.00 AS Decimal(18, 2)), CAST(214.29 AS Decimal(18, 2)), CAST(400.00 AS Decimal(18, 2)), CAST(400.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), 2, CAST(8000.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(400.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.03 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(240.00 AS Decimal(18, 2)), CAST(240.00 AS Decimal(18, 2)), CAST(240.00 AS Decimal(18, 2)), CAST(128.57 AS Decimal(18, 2)), CAST(4500.00 AS Decimal(18, 2)), CAST(8400.00 AS Decimal(18, 2)), CAST(8400.00 AS Decimal(18, 2)), CAST(8400.00 AS Decimal(18, 2)), NULL)
+INSERT [dbo].[MDSD] ([MAMDSD], [TENMDSD], [MOTAMDSD], [GIAMUC1], [GIAMUC2], [GIAMUC3], [THUEMUC1], [THUEMUC2], [THUEMUC3], [PHINT], [THUTU], [GIAMUC4], [GIAMUC5], [THUEMUC4], [THUEMUC5], [PHIMTLX], [PHIMTM5], [PHIMTM4], [PHIMTM3], [PHIMTM2], [PHIMTM1], [GIACOTHUEMUC1], [GIACOTHUEMUC2], [GIACOTHUEMUC3], [GIACOTHUEMUC4], [GIACOTHUEMUC5]) VALUES (N'D', N'Kinh doanh & Sinh hoạt (Mã D)', N'Kinh doanh dịch vụ', CAST(4285.71 AS Decimal(18, 2)), CAST(10476.19 AS Decimal(18, 2)), CAST(10476.19 AS Decimal(18, 2)), CAST(214.29 AS Decimal(18, 2)), CAST(523.81 AS Decimal(18, 2)), CAST(523.81 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), 3, CAST(10476.19 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(523.81 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.03 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(314.29 AS Decimal(18, 2)), CAST(314.29 AS Decimal(18, 2)), CAST(314.29 AS Decimal(18, 2)), CAST(128.57 AS Decimal(18, 2)), CAST(4500.00 AS Decimal(18, 2)), CAST(11000.00 AS Decimal(18, 2)), CAST(11000.00 AS Decimal(18, 2)), CAST(11000.00 AS Decimal(18, 2)), NULL)
+INSERT [dbo].[MDSD] ([MAMDSD], [TENMDSD], [MOTAMDSD], [GIAMUC1], [GIAMUC2], [GIAMUC3], [THUEMUC1], [THUEMUC2], [THUEMUC3], [PHINT], [THUTU], [GIAMUC4], [GIAMUC5], [THUEMUC4], [THUEMUC5], [PHIMTLX], [PHIMTM5], [PHIMTM4], [PHIMTM3], [PHIMTM2], [PHIMTM1], [GIACOTHUEMUC1], [GIACOTHUEMUC2], [GIACOTHUEMUC3], [GIACOTHUEMUC4], [GIACOTHUEMUC5]) VALUES (N'E', N'', N'', CAST(800000.00 AS Decimal(18, 2)), CAST(800000.00 AS Decimal(18, 2)), CAST(800000.00 AS Decimal(18, 2)), CAST(40000.00 AS Decimal(18, 2)), CAST(40000.00 AS Decimal(18, 2)), CAST(40000.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), 15, CAST(800000.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(40000.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(3.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(80000.00 AS Decimal(18, 2)), CAST(80000.00 AS Decimal(18, 2)), CAST(80000.00 AS Decimal(18, 2)), CAST(80000.00 AS Decimal(18, 2)), CAST(840000.00 AS Decimal(18, 2)), CAST(840000.00 AS Decimal(18, 2)), CAST(840000.00 AS Decimal(18, 2)), CAST(840000.00 AS Decimal(18, 2)), NULL)
+INSERT [dbo].[MDSD] ([MAMDSD], [TENMDSD], [MOTAMDSD], [GIAMUC1], [GIAMUC2], [GIAMUC3], [THUEMUC1], [THUEMUC2], [THUEMUC3], [PHINT], [THUTU], [GIAMUC4], [GIAMUC5], [THUEMUC4], [THUEMUC5], [PHIMTLX], [PHIMTM5], [PHIMTM4], [PHIMTM3], [PHIMTM2], [PHIMTM1], [GIACOTHUEMUC1], [GIACOTHUEMUC2], [GIACOTHUEMUC3], [GIACOTHUEMUC4], [GIACOTHUEMUC5]) VALUES (N'F', N'Sinh hoạt hộ dân (F)', N'Sinh hoạt hộ dân (F)', CAST(4285.71 AS Decimal(18, 2)), CAST(5333.33 AS Decimal(18, 2)), CAST(6380.95 AS Decimal(18, 2)), CAST(214.29 AS Decimal(18, 2)), CAST(266.67 AS Decimal(18, 2)), CAST(319.05 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), 1, CAST(8761.90 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(438.10 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.03 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(262.86 AS Decimal(18, 2)), CAST(191.43 AS Decimal(18, 2)), CAST(160.00 AS Decimal(18, 2)), CAST(128.57 AS Decimal(18, 2)), CAST(4500.00 AS Decimal(18, 2)), CAST(5600.00 AS Decimal(18, 2)), CAST(6700.00 AS Decimal(18, 2)), CAST(9200.00 AS Decimal(18, 2)), NULL)
+INSERT [dbo].[MDSD] ([MAMDSD], [TENMDSD], [MOTAMDSD], [GIAMUC1], [GIAMUC2], [GIAMUC3], [THUEMUC1], [THUEMUC2], [THUEMUC3], [PHINT], [THUTU], [GIAMUC4], [GIAMUC5], [THUEMUC4], [THUEMUC5], [PHIMTLX], [PHIMTM5], [PHIMTM4], [PHIMTM3], [PHIMTM2], [PHIMTM1], [GIACOTHUEMUC1], [GIACOTHUEMUC2], [GIACOTHUEMUC3], [GIACOTHUEMUC4], [GIACOTHUEMUC5]) VALUES (N'G', N'Nhà trọ (Mã G)', N'Nhà trọ tập thể (3/10/2011Thong bao ktn)', CAST(4285.71 AS Decimal(18, 2)), CAST(10476.19 AS Decimal(18, 2)), CAST(10476.19 AS Decimal(18, 2)), CAST(214.29 AS Decimal(18, 2)), CAST(523.81 AS Decimal(18, 2)), CAST(523.81 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), 11, CAST(10476.19 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(523.81 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.03 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(314.29 AS Decimal(18, 2)), CAST(314.29 AS Decimal(18, 2)), CAST(314.29 AS Decimal(18, 2)), CAST(128.57 AS Decimal(18, 2)), CAST(4500.00 AS Decimal(18, 2)), CAST(11000.00 AS Decimal(18, 2)), CAST(11000.00 AS Decimal(18, 2)), CAST(11000.00 AS Decimal(18, 2)), NULL)
+INSERT [dbo].[MDSD] ([MAMDSD], [TENMDSD], [MOTAMDSD], [GIAMUC1], [GIAMUC2], [GIAMUC3], [THUEMUC1], [THUEMUC2], [THUEMUC3], [PHINT], [THUTU], [GIAMUC4], [GIAMUC5], [THUEMUC4], [THUEMUC5], [PHIMTLX], [PHIMTM5], [PHIMTM4], [PHIMTM3], [PHIMTM2], [PHIMTM1], [GIACOTHUEMUC1], [GIACOTHUEMUC2], [GIACOTHUEMUC3], [GIACOTHUEMUC4], [GIACOTHUEMUC5]) VALUES (N'H', N'Hành chính (Mã H)', N'Hành chính', CAST(6380.95 AS Decimal(18, 2)), CAST(6380.95 AS Decimal(18, 2)), CAST(6380.95 AS Decimal(18, 2)), CAST(319.05 AS Decimal(18, 2)), CAST(319.05 AS Decimal(18, 2)), CAST(319.05 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), 4, CAST(6380.95 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(319.05 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.03 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(191.43 AS Decimal(18, 2)), CAST(191.43 AS Decimal(18, 2)), CAST(191.43 AS Decimal(18, 2)), CAST(191.43 AS Decimal(18, 2)), CAST(6700.00 AS Decimal(18, 2)), CAST(6700.00 AS Decimal(18, 2)), CAST(6700.00 AS Decimal(18, 2)), CAST(6700.00 AS Decimal(18, 2)), NULL)
+INSERT [dbo].[MDSD] ([MAMDSD], [TENMDSD], [MOTAMDSD], [GIAMUC1], [GIAMUC2], [GIAMUC3], [THUEMUC1], [THUEMUC2], [THUEMUC3], [PHINT], [THUTU], [GIAMUC4], [GIAMUC5], [THUEMUC4], [THUEMUC5], [PHIMTLX], [PHIMTM5], [PHIMTM4], [PHIMTM3], [PHIMTM2], [PHIMTM1], [GIACOTHUEMUC1], [GIACOTHUEMUC2], [GIACOTHUEMUC3], [GIACOTHUEMUC4], [GIACOTHUEMUC5]) VALUES (N'J', N'Sinh hoạt hộ dân  (J)', N'Sinh hoạt hộ dân  (J)', CAST(4285.71 AS Decimal(18, 2)), CAST(5333.33 AS Decimal(18, 2)), CAST(6380.95 AS Decimal(18, 2)), CAST(214.29 AS Decimal(18, 2)), CAST(266.67 AS Decimal(18, 2)), CAST(319.05 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), 1, CAST(8761.90 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(438.10 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.03 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(262.86 AS Decimal(18, 2)), CAST(191.43 AS Decimal(18, 2)), CAST(160.00 AS Decimal(18, 2)), CAST(128.57 AS Decimal(18, 2)), CAST(4500.00 AS Decimal(18, 2)), CAST(5600.00 AS Decimal(18, 2)), CAST(6700.00 AS Decimal(18, 2)), CAST(9200.00 AS Decimal(18, 2)), NULL)
+INSERT [dbo].[MDSD] ([MAMDSD], [TENMDSD], [MOTAMDSD], [GIAMUC1], [GIAMUC2], [GIAMUC3], [THUEMUC1], [THUEMUC2], [THUEMUC3], [PHINT], [THUTU], [GIAMUC4], [GIAMUC5], [THUEMUC4], [THUEMUC5], [PHIMTLX], [PHIMTM5], [PHIMTM4], [PHIMTM3], [PHIMTM2], [PHIMTM1], [GIACOTHUEMUC1], [GIACOTHUEMUC2], [GIACOTHUEMUC3], [GIACOTHUEMUC4], [GIACOTHUEMUC5]) VALUES (N'L', N'Điện lưc TB', N'50%SX,50DV', CAST(4285.71 AS Decimal(18, 2)), CAST(5333.33 AS Decimal(18, 2)), CAST(6380.95 AS Decimal(18, 2)), CAST(214.29 AS Decimal(18, 2)), CAST(266.67 AS Decimal(18, 2)), CAST(319.05 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), 1, CAST(8761.90 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(438.10 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.03 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(262.86 AS Decimal(18, 2)), CAST(191.43 AS Decimal(18, 2)), CAST(160.00 AS Decimal(18, 2)), CAST(128.57 AS Decimal(18, 2)), CAST(4500.00 AS Decimal(18, 2)), CAST(5600.00 AS Decimal(18, 2)), CAST(6700.00 AS Decimal(18, 2)), CAST(9200.00 AS Decimal(18, 2)), NULL)
+INSERT [dbo].[MDSD] ([MAMDSD], [TENMDSD], [MOTAMDSD], [GIAMUC1], [GIAMUC2], [GIAMUC3], [THUEMUC1], [THUEMUC2], [THUEMUC3], [PHINT], [THUTU], [GIAMUC4], [GIAMUC5], [THUEMUC4], [THUEMUC5], [PHIMTLX], [PHIMTM5], [PHIMTM4], [PHIMTM3], [PHIMTM2], [PHIMTM1], [GIACOTHUEMUC1], [GIACOTHUEMUC2], [GIACOTHUEMUC3], [GIACOTHUEMUC4], [GIACOTHUEMUC5]) VALUES (N'M', N'Bql chợ cái dầu ', N'chợ nông sản', CAST(838095.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(41905.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), 13, CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(3.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(83809.00 AS Decimal(18, 2)), CAST(880000.00 AS Decimal(18, 2)), CAST(880000.00 AS Decimal(18, 2)), CAST(880000.00 AS Decimal(18, 2)), CAST(880000.00 AS Decimal(18, 2)), NULL)
+INSERT [dbo].[MDSD] ([MAMDSD], [TENMDSD], [MOTAMDSD], [GIAMUC1], [GIAMUC2], [GIAMUC3], [THUEMUC1], [THUEMUC2], [THUEMUC3], [PHINT], [THUTU], [GIAMUC4], [GIAMUC5], [THUEMUC4], [THUEMUC5], [PHIMTLX], [PHIMTM5], [PHIMTM4], [PHIMTM3], [PHIMTM2], [PHIMTM1], [GIACOTHUEMUC1], [GIACOTHUEMUC2], [GIACOTHUEMUC3], [GIACOTHUEMUC4], [GIACOTHUEMUC5]) VALUES (N'N', N'KHU CACH LY', N'KHU CÁCH LY', CAST(3428.57 AS Decimal(18, 2)), CAST(3428.57 AS Decimal(18, 2)), CAST(3428.57 AS Decimal(18, 2)), CAST(171.42 AS Decimal(18, 2)), CAST(171.42 AS Decimal(18, 2)), CAST(171.42 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), 19, CAST(3428.57 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(171.42 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.03 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(191.43 AS Decimal(18, 2)), CAST(160.00 AS Decimal(18, 2)), CAST(128.57 AS Decimal(18, 2)), CAST(102.86 AS Decimal(18, 2)), CAST(3600.00 AS Decimal(18, 2)), CAST(3600.00 AS Decimal(18, 2)), CAST(3600.00 AS Decimal(18, 2)), CAST(3600.00 AS Decimal(18, 2)), NULL)
+INSERT [dbo].[MDSD] ([MAMDSD], [TENMDSD], [MOTAMDSD], [GIAMUC1], [GIAMUC2], [GIAMUC3], [THUEMUC1], [THUEMUC2], [THUEMUC3], [PHINT], [THUTU], [GIAMUC4], [GIAMUC5], [THUEMUC4], [THUEMUC5], [PHIMTLX], [PHIMTM5], [PHIMTM4], [PHIMTM3], [PHIMTM2], [PHIMTM1], [GIACOTHUEMUC1], [GIACOTHUEMUC2], [GIACOTHUEMUC3], [GIACOTHUEMUC4], [GIACOTHUEMUC5]) VALUES (N'P', N'Sản xuất miễn thuế', N'Sản xuất miễn thuế', CAST(6857.00 AS Decimal(18, 2)), CAST(6857.00 AS Decimal(18, 2)), CAST(6857.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), 10, CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.03 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(205.71 AS Decimal(18, 2)), CAST(205.71 AS Decimal(18, 2)), CAST(205.71 AS Decimal(18, 2)), CAST(6700.00 AS Decimal(18, 2)), CAST(6700.00 AS Decimal(18, 2)), CAST(6700.00 AS Decimal(18, 2)), CAST(6700.00 AS Decimal(18, 2)), NULL)
+INSERT [dbo].[MDSD] ([MAMDSD], [TENMDSD], [MOTAMDSD], [GIAMUC1], [GIAMUC2], [GIAMUC3], [THUEMUC1], [THUEMUC2], [THUEMUC3], [PHINT], [THUTU], [GIAMUC4], [GIAMUC5], [THUEMUC4], [THUEMUC5], [PHIMTLX], [PHIMTM5], [PHIMTM4], [PHIMTM3], [PHIMTM2], [PHIMTM1], [GIACOTHUEMUC1], [GIACOTHUEMUC2], [GIACOTHUEMUC3], [GIACOTHUEMUC4], [GIACOTHUEMUC5]) VALUES (N'Q', N'SX 100% không tính thuế (8400)', N'SX 100% không tính thuế (8400)', CAST(8400.00 AS Decimal(18, 2)), CAST(8400.00 AS Decimal(18, 2)), CAST(8400.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), 9, CAST(8400.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.03 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(257.13 AS Decimal(18, 2)), CAST(257.13 AS Decimal(18, 2)), CAST(257.13 AS Decimal(18, 2)), CAST(8400.00 AS Decimal(18, 2)), CAST(8400.00 AS Decimal(18, 2)), CAST(8400.00 AS Decimal(18, 2)), CAST(8400.00 AS Decimal(18, 2)), NULL)
+INSERT [dbo].[MDSD] ([MAMDSD], [TENMDSD], [MOTAMDSD], [GIAMUC1], [GIAMUC2], [GIAMUC3], [THUEMUC1], [THUEMUC2], [THUEMUC3], [PHINT], [THUTU], [GIAMUC4], [GIAMUC5], [THUEMUC4], [THUEMUC5], [PHIMTLX], [PHIMTM5], [PHIMTM4], [PHIMTM3], [PHIMTM2], [PHIMTM1], [GIACOTHUEMUC1], [GIACOTHUEMUC2], [GIACOTHUEMUC3], [GIACOTHUEMUC4], [GIACOTHUEMUC5]) VALUES (N'S', N'Sinh hoạt xã', N'Sinh hoạt xã', CAST(4285.71 AS Decimal(18, 2)), CAST(5333.33 AS Decimal(18, 2)), CAST(6380.95 AS Decimal(18, 2)), CAST(214.29 AS Decimal(18, 2)), CAST(266.67 AS Decimal(18, 2)), CAST(319.05 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), 6, CAST(8761.90 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(438.10 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.03 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(262.86 AS Decimal(18, 2)), CAST(191.43 AS Decimal(18, 2)), CAST(160.00 AS Decimal(18, 2)), CAST(128.57 AS Decimal(18, 2)), CAST(4500.00 AS Decimal(18, 2)), CAST(5600.00 AS Decimal(18, 2)), CAST(6700.00 AS Decimal(18, 2)), CAST(9200.00 AS Decimal(18, 2)), NULL)
+INSERT [dbo].[MDSD] ([MAMDSD], [TENMDSD], [MOTAMDSD], [GIAMUC1], [GIAMUC2], [GIAMUC3], [THUEMUC1], [THUEMUC2], [THUEMUC3], [PHINT], [THUTU], [GIAMUC4], [GIAMUC5], [THUEMUC4], [THUEMUC5], [PHIMTLX], [PHIMTM5], [PHIMTM4], [PHIMTM3], [PHIMTM2], [PHIMTM1], [GIACOTHUEMUC1], [GIACOTHUEMUC2], [GIACOTHUEMUC3], [GIACOTHUEMUC4], [GIACOTHUEMUC5]) VALUES (N'T', N' ', N' ', CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), 0, CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), NULL)
+INSERT [dbo].[MDSD] ([MAMDSD], [TENMDSD], [MOTAMDSD], [GIAMUC1], [GIAMUC2], [GIAMUC3], [THUEMUC1], [THUEMUC2], [THUEMUC3], [PHINT], [THUTU], [GIAMUC4], [GIAMUC5], [THUEMUC4], [THUEMUC5], [PHIMTLX], [PHIMTM5], [PHIMTM4], [PHIMTM3], [PHIMTM2], [PHIMTM1], [GIACOTHUEMUC1], [GIACOTHUEMUC2], [GIACOTHUEMUC3], [GIACOTHUEMUC4], [GIACOTHUEMUC5]) VALUES (N'U', N'TT NUOC SACH', N'TRUNG TÂM NƯỚC SẠCH', CAST(428571.00 AS Decimal(18, 2)), CAST(428571.00 AS Decimal(18, 2)), CAST(428571.00 AS Decimal(18, 2)), CAST(21429.00 AS Decimal(18, 2)), CAST(21429.00 AS Decimal(18, 2)), CAST(21429.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), 19, CAST(428571.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(21429.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(3.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(87619.00 AS Decimal(18, 2)), CAST(63810.00 AS Decimal(18, 2)), CAST(53333.00 AS Decimal(18, 2)), CAST(42857.00 AS Decimal(18, 2)), CAST(450000.00 AS Decimal(18, 2)), CAST(450000.00 AS Decimal(18, 2)), CAST(450000.00 AS Decimal(18, 2)), CAST(450000.00 AS Decimal(18, 2)), NULL)
+INSERT [dbo].[MDSD] ([MAMDSD], [TENMDSD], [MOTAMDSD], [GIAMUC1], [GIAMUC2], [GIAMUC3], [THUEMUC1], [THUEMUC2], [THUEMUC3], [PHINT], [THUTU], [GIAMUC4], [GIAMUC5], [THUEMUC4], [THUEMUC5], [PHIMTLX], [PHIMTM5], [PHIMTM4], [PHIMTM3], [PHIMTM2], [PHIMTM1], [GIACOTHUEMUC1], [GIACOTHUEMUC2], [GIACOTHUEMUC3], [GIACOTHUEMUC4], [GIACOTHUEMUC5]) VALUES (N'V', N'Dịch vụ 100% (Mã V)', N'Kinh doanh 100%', CAST(10476.19 AS Decimal(18, 2)), CAST(10476.19 AS Decimal(18, 2)), CAST(10476.19 AS Decimal(18, 2)), CAST(523.81 AS Decimal(18, 2)), CAST(523.81 AS Decimal(18, 2)), CAST(523.81 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), 7, CAST(10476.19 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(523.81 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.03 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(314.29 AS Decimal(18, 2)), CAST(314.29 AS Decimal(18, 2)), CAST(314.29 AS Decimal(18, 2)), CAST(314.29 AS Decimal(18, 2)), CAST(11000.00 AS Decimal(18, 2)), CAST(11000.00 AS Decimal(18, 2)), CAST(11000.00 AS Decimal(18, 2)), CAST(11000.00 AS Decimal(18, 2)), NULL)
+INSERT [dbo].[MDSD] ([MAMDSD], [TENMDSD], [MOTAMDSD], [GIAMUC1], [GIAMUC2], [GIAMUC3], [THUEMUC1], [THUEMUC2], [THUEMUC3], [PHINT], [THUTU], [GIAMUC4], [GIAMUC5], [THUEMUC4], [THUEMUC5], [PHIMTLX], [PHIMTM5], [PHIMTM4], [PHIMTM3], [PHIMTM2], [PHIMTM1], [GIACOTHUEMUC1], [GIACOTHUEMUC2], [GIACOTHUEMUC3], [GIACOTHUEMUC4], [GIACOTHUEMUC5]) VALUES (N'X', N'Sản xuất 100% (Mã X)', N'Sản xuất 100%', CAST(8000.00 AS Decimal(18, 2)), CAST(8000.00 AS Decimal(18, 2)), CAST(8000.00 AS Decimal(18, 2)), CAST(400.00 AS Decimal(18, 2)), CAST(400.00 AS Decimal(18, 2)), CAST(400.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), 8, CAST(8000.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(400.00 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.03 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(240.00 AS Decimal(18, 2)), CAST(240.00 AS Decimal(18, 2)), CAST(240.00 AS Decimal(18, 2)), CAST(240.00 AS Decimal(18, 2)), CAST(8400.00 AS Decimal(18, 2)), CAST(8400.00 AS Decimal(18, 2)), CAST(8400.00 AS Decimal(18, 2)), CAST(8400.00 AS Decimal(18, 2)), NULL)
+INSERT [dbo].[MDSD] ([MAMDSD], [TENMDSD], [MOTAMDSD], [GIAMUC1], [GIAMUC2], [GIAMUC3], [THUEMUC1], [THUEMUC2], [THUEMUC3], [PHINT], [THUTU], [GIAMUC4], [GIAMUC5], [THUEMUC4], [THUEMUC5], [PHIMTLX], [PHIMTM5], [PHIMTM4], [PHIMTM3], [PHIMTM2], [PHIMTM1], [GIACOTHUEMUC1], [GIACOTHUEMUC2], [GIACOTHUEMUC3], [GIACOTHUEMUC4], [GIACOTHUEMUC5]) VALUES (N'XA', N'Một mức giá 4100', N'Một mức giá Sinh hoạt', CAST(4285.71 AS Decimal(18, 2)), CAST(4285.71 AS Decimal(18, 2)), CAST(4285.71 AS Decimal(18, 2)), CAST(214.29 AS Decimal(18, 2)), CAST(214.29 AS Decimal(18, 2)), CAST(214.29 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), 12, CAST(4285.71 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(214.29 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.03 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(128.57 AS Decimal(18, 2)), CAST(128.57 AS Decimal(18, 2)), CAST(128.57 AS Decimal(18, 2)), CAST(128.57 AS Decimal(18, 2)), CAST(4500.00 AS Decimal(18, 2)), CAST(4500.00 AS Decimal(18, 2)), CAST(4500.00 AS Decimal(18, 2)), CAST(4500.00 AS Decimal(18, 2)), NULL)
+INSERT [dbo].[MDSD] ([MAMDSD], [TENMDSD], [MOTAMDSD], [GIAMUC1], [GIAMUC2], [GIAMUC3], [THUEMUC1], [THUEMUC2], [THUEMUC3], [PHINT], [THUTU], [GIAMUC4], [GIAMUC5], [THUEMUC4], [THUEMUC5], [PHIMTLX], [PHIMTM5], [PHIMTM4], [PHIMTM3], [PHIMTM2], [PHIMTM1], [GIACOTHUEMUC1], [GIACOTHUEMUC2], [GIACOTHUEMUC3], [GIACOTHUEMUC4], [GIACOTHUEMUC5]) VALUES (N'Z', N'Hộ nghèo (Mã Z)', N'Hộ nghèo (Mã Z)', CAST(3428.57 AS Decimal(18, 2)), CAST(4285.71 AS Decimal(18, 2)), CAST(5333.33 AS Decimal(18, 2)), CAST(171.43 AS Decimal(18, 2)), CAST(214.29 AS Decimal(18, 2)), CAST(266.67 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), 12, CAST(6380.95 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(319.05 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(0.03 AS Decimal(18, 2)), CAST(0.00 AS Decimal(18, 2)), CAST(191.43 AS Decimal(18, 2)), CAST(160.00 AS Decimal(18, 2)), CAST(128.57 AS Decimal(18, 2)), CAST(102.86 AS Decimal(18, 2)), CAST(3600.00 AS Decimal(18, 2)), CAST(4500.00 AS Decimal(18, 2)), CAST(5600.00 AS Decimal(18, 2)), CAST(6700.00 AS Decimal(18, 2)), NULL)
+GO
+
+
+r CREATE TABLE [dbo].[PoDMDieuKien](
+	[Id] [int] NOT NULL,
+	[Code] [nvarchar](50) NULL,
+	[Ten] [nvarchar](100) NULL,
+	[MaTenCot] [int] NULL,
+	[TenCot] [nvarchar](100) NULL,
+	[GhiChu] [nvarchar](1000) NULL,
+	[Status] [int] NULL,
+	[Active] [bit] NULL,
+	[Stt] [int] NULL,
+	[CreateBy] [varchar](20) NULL,
+	[CreateDate] [datetime] NULL,
+	[UpdateBy] [varchar](20) NULL,
+	[UpdateDate] [datetime] NULL,
+ CONSTRAINT [PK_PoDMDieuKien] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+GO
+
+
+
+r update procedure [dbo].[Update_TTDangKyDien_ByXacNhanDienToDDKPo]
+r update procedure [dbo].[Update_TTDangKyNuoc_ByXacNhanNuocToDDK]
+
+r update procedure [dbo].[Create_DonDangKyPo_ByDkDienId]
+r update procedure [dbo].[Create_DonDangKy_ByDkNuocId]
+
+r create procedure [dbo].[Update_TTDangKyDien_ByAllDienNuocDichVu]
+
+
+r create procedure [dbo].[Get_TTDangKyDien_AllPagingTT]
+r create procedure [dbo].[Get_TTDangKyNuoc_AllPagingTT] 
+r create procedure [dbo].[Get_TTCacDichVuDien_AllPagingTT]
+r create procedure [dbo].[Get_TTCacDichVuNuoc_AllPagingTT]
+
+r create procedure [dbo].[Create_ThayHopDong]
+r create procedure [dbo].[Update_ThayHopDong] 
+
+r create procedure [dbo].[Get_KhachHang_ByDieuKien]
+r create procedure [dbo].[Get_KhachHang_ByMaKhachHang]
+
+r create procedure [dbo].[Get_DonDangKy_AllPaging]
+r create procedure [dbo].[Get_DonDangKy_ByLichSuDDK]
+r create procedure [dbo].[Get_DonDangKy_ByLichSuTTDangKyNuocId]
+
+r create procedure [dbo].[Get_DonDangKyPo_AllPaging]
+r create procedure [dbo].[Get_DonDangKyPo_ByLichSuTTDangKyDienId]
+
+r create procedure [dbo].[Get_ThayHopDong_AllPaging]
+r create procedure [dbo].[Get_ThayHopDong_ByLoaiHopDongPaging]
+r create procedure [dbo].[Get_ThayHopDong_ByDsHopDongTheoPaging]
+r create procedure [dbo].[Get_ThayHopDong_ByIdMakv]
+
+r create procedure [dbo].[Get_ThayHopDongPo_AllPaging]
+r create procedure [dbo].[Get_ThayHopDongPo_ByLoaiHopDongPaging]
+r create procedure [dbo].[Get_ThayHopDongPo_ByDsHopDongTheoPaging]
+r create procedure [dbo].[Get_ThayHopDongPo_ByIdMakvPo]
+
+
+r create procedure [dbo].[Get_MDSD_ByAll]
+
+r create procedure [dbo].[Get_ThanhPhoTinh_ByAll]
+
+r create procedure [dbo].[Get_PoDMDieuKien_ByCode]
+
+r create procedure [dbo].[Get_LockStatus_ByMaDPKyThay]
+
+
+rrrrr
+INSERT [dbo].[PoDMDieuKien] ([Id], [Code], [Ten], [MaTenCot], [TenCot], [GhiChu], [Status], [Active], [Stt], [CreateBy], [CreateDate], [UpdateBy], [UpdateDate]) VALUES (1, N'LoaiHopDong', N'H.đồng không xác định thời hạn', NULL, NULL, NULL, 1, 1, 1, N'admin', CAST(N'2021-11-26T00:00:00.000' AS DateTime), NULL, NULL)
+INSERT [dbo].[PoDMDieuKien] ([Id], [Code], [Ten], [MaTenCot], [TenCot], [GhiChu], [Status], [Active], [Stt], [CreateBy], [CreateDate], [UpdateBy], [UpdateDate]) VALUES (2, N'LoaiHopDong', N'H.đồng có xác định thời hạn', NULL, NULL, NULL, 1, 1, 2, N'admin', CAST(N'2021-11-26T00:00:00.000' AS DateTime), NULL, NULL)
+INSERT [dbo].[PoDMDieuKien] ([Id], [Code], [Ten], [MaTenCot], [TenCot], [GhiChu], [Status], [Active], [Stt], [CreateBy], [CreateDate], [UpdateBy], [UpdateDate]) VALUES (3, N'LoaiHopDong', N'H.đồng ngắn hạn', NULL, NULL, NULL, 1, 1, 3, N'admin', CAST(N'2021-11-26T00:00:00.000' AS DateTime), NULL, NULL)
+INSERT [dbo].[PoDMDieuKien] ([Id], [Code], [Ten], [MaTenCot], [TenCot], [GhiChu], [Status], [Active], [Stt], [CreateBy], [CreateDate], [UpdateBy], [UpdateDate]) VALUES (4, N'ThayHopDongTheoTDCT', N'Thay đổi tên khách hàng', NULL, NULL, NULL, 1, 1, 1, N'admin', CAST(N'2021-11-26T00:00:00.000' AS DateTime), NULL, NULL)
+INSERT [dbo].[PoDMDieuKien] ([Id], [Code], [Ten], [MaTenCot], [TenCot], [GhiChu], [Status], [Active], [Stt], [CreateBy], [CreateDate], [UpdateBy], [UpdateDate]) VALUES (5, N'ThayHopDongTheoTDCT', N'Thay đổi địa chỉ tên khách hàng', NULL, NULL, NULL, 1, 1, 2, N'admin', CAST(N'2021-11-26T00:00:00.000' AS DateTime), NULL, NULL)
+INSERT [dbo].[PoDMDieuKien] ([Id], [Code], [Ten], [MaTenCot], [TenCot], [GhiChu], [Status], [Active], [Stt], [CreateBy], [CreateDate], [UpdateBy], [UpdateDate]) VALUES (6, N'ThayHopDongTheoTDCT', N'Thay đổi mã số thuế', NULL, NULL, NULL, 1, 1, 3, N'admin', CAST(N'2021-11-26T00:00:00.000' AS DateTime), NULL, NULL)
+INSERT [dbo].[PoDMDieuKien] ([Id], [Code], [Ten], [MaTenCot], [TenCot], [GhiChu], [Status], [Active], [Stt], [CreateBy], [CreateDate], [UpdateBy], [UpdateDate]) VALUES (7, N'ThayHopDongTheoTDCT', N'Thay đổi đối tượng sử dụng (MĐSD)', NULL, NULL, NULL, 1, 1, 4, N'admin', CAST(N'2021-11-26T00:00:00.000' AS DateTime), NULL, NULL)
+GO
+
+
+
+
+rr
+update procedure [dbo].[Create_DonDangKyPo_ByDkDienId]
+update procedure [dbo].[Create_DonDangKy_ByDkNuocId] 
+
+
+
+rr
+update procedure [dbo].[Update_TTDangKyDien_ByXacNhanDienToDDKPo]
+update procedure [dbo].[Update_TTDangKyNuoc_ByXacNhanNuocToDDK]
+
+rr
+update procedure [dbo].Create_DonDangKyPo_ByDkDienId
+update procedure [dbo].[Create_DonDangKy_ByDkNuocId]
+
+
+r	create procedure [dbo].[Update_TTDangKyDien_ByXacNhanDienToDDKPo]
+r	create procedure [dbo].[Update_TTDangKyNuoc_ByXacNhanNuocToDDK]
+r	create procedure [dbo].[Create_DonDangKyPo_ByDkDienId]
+r	create procedure [dbo].[Create_DonDangKy_ByDkNuocId]
+
+
+r	create procedure [dbo].[Update_TTDangKyDien_ById]
+r	create procedure [dbo].[Update_TTDangKyDien_ByTuChoi]
+r	create procedure [dbo].[Update_TTDangKyDien_ByPhucHoiTuChoi]
+
+r	create procedure [dbo].[Update_TTDangKyNuoc_ById]
+r	create procedure [dbo].[Update_TTDangKyNuoc_ByTuChoi]
+r	create procedure [dbo].[Update_TTDangKyNuoc_ByPhucHoiTuChoi]
+
+r	create procedure [dbo].[Update_TTCacDichVuDien_ById]
+r	create procedure [dbo].[Update_TTCacDichVuDien_ByTuChoi]
+r	create procedure [dbo].[Update_TTCacDichVuDien_ByPhucHoiTuChoi]
+r	create procedure [dbo].[Update_TTCacDichVuDien_ByXacNhan]
+
+r	create procedure [dbo].[Update_TTCacDichVuNuoc_ById]
+r	create procedure [dbo].[Update_TTCacDichVuNuoc_ByTuChoi]
+r	create procedure [dbo].[Update_TTCacDichVuNuoc_ByPhucHoiTuChoi]
+r	create procedure [dbo].[Update_TTCacDichVuNuoc_ByXacNhan]
+
+
+r	create procedure [dbo].[Get_TTCacDichVuDien_ByIdNoTest]
+r	create procedure [dbo].[Get_TTCacDichVuNuoc_ByIdNoTest]
+r	create procedure [dbo].[Get_TTDangKyDien_ByIdNoTest]
+r	create procedure [dbo].[Get_TTDangKyNuoc_ByIdNoTest]
+
+r	create procedure [dbo].[Get_TTCacDichVuDien_ByDsTheoTuNgay] 
+r	create procedure [dbo].[Get_TTCacDichVuNuoc_ByDsTheoTuNgay] 
+r	create procedure [dbo].[Get_TTDangKyDien_ByDsTheoTuNgay] 
+r	create procedure [dbo].[Get_TTDangKyNuoc_ByDsTheoTuNgay] 
+
+r	create procedure [dbo].[Get_TTDangKyFile_ByDangKy]
+
+r	create procedure [dbo].[Get_TTCountDangKy]
+
+
+r	create procedure [dbo].[Create_HsNhomHoSoDM]
+r	create procedure [dbo].[Update_HsNhomHoSoDM]
+
+
+r	create procedure [dbo].[Get_ThanhPhoTinh_ById]
+r	create procedure [dbo].[Get_QuanHuyen_ById]
+
+r	create procedure [dbo].[Get_PhuongXa_ByAll]
+
+
+
+
+r	update procedure [dbo].[Create_TTCacDichVuDien]
+r	update procedure [dbo].[Create_TTCacDichVuNuoc]
+r	update procedure [dbo].[Create_TTDangKyDien]
+r	update procedure [dbo].[Create_TTDangKyNuoc]
+
+r	update procedure [dbo].[Get_TTDangKyDien_AllPaging]
+r	update procedure [dbo].[Get_TTDangKyNuoc_AllPaging]
+
+r	update procedure [dbo].[Get_TTCacDichVuDien_AllPaging]
+r	update procedure [dbo].[Get_TTCacDichVuNuoc_AllPaging]
+
+r	update procedure [dbo].[Get_HsNhomHoSoDM_AllPaging]
+
+r	updare procedure [dbo].[Get_TTDMDangKy_ByTenCot]
+
+
+
+r	update procedure [dbo].[Create_TTDangKyDien]
+r	update procedure [dbo].[Create_TTDangKyNuoc]
+r	update procedure [dbo].[Create_TTDangKyFile]
+r	update procedure [dbo].[Create_TTCacDichVuDien]
+r	update procedure [dbo].[Create_TTCacDichVuNuoc]
+
+r	create table TTHis
+
+
+r	update datat table HoSoNhomHoSo	(fa fa-file-archive-o	DM Nhóm hồ sơ	HoSoLuuTru	6	1	/admin/hsnhomhs/index)
+	update Functions set IconCss = 'fa fa-file-archive-o', Name = N'DM Nhóm hồ sơ'
+		, ParentId = 'HoSoLuuTru', SortOrder = 6, Status = 1, URL = '/admin/hsnhomhs/index'
+
+		
+r	insert column table dangkydien, dangkydienhis, dangkynuoc, dangkynuochis, dichvudien, dichvunuoc, dichvudienhis, dichvunuochis
+	NgayNhapChuyenTK datetime, NgayNhapTuChoi datetime cac table con lai
+
+
+r	insert column table PhuongXa: MAXA varchar(50)
+
+insert into database Functions 
+r	insert into Functions ([Id]      ,[IconCss]      ,[Name]      ,[ParentId]
+		,[SortOrder]      ,[Status]      ,[URL])
+	select 'DANGKYTRUCTUYEN', 'fa fa-edit', N'Đăng ký trực tuyền', NULL
+		, 300, 1 , '/'
+r	insert into Functions ([Id]      ,[IconCss]      ,[Name]      ,[ParentId]
+		,[SortOrder]      ,[Status]      ,[URL])
+	select 'DANGKYTRUCTUYENCHUYEN', 'fa fa-edit', N'Xác nhận đăng ký trực tuyến', 'DANGKYTRUCTUYEN'
+		, 1, 1 , '/admin/ttdangkytt/index'
+
+
+	
+
+rrrrrr
+update table PhuongXa
+//Chau phu		
+update PhuongXa set MAXA='BM02' where Id=30487
+update PhuongXa set MAXA='CD01' where Id=30463
+update PhuongXa set MAXA='0069' where Id=30466
+update PhuongXa set MAXA='0070' where Id=30469
+update PhuongXa set MAXA='0071' where Id=30472
+update PhuongXa set MAXA='0072' where Id=30475
+update PhuongXa set MAXA='0073' where Id=30478
+update PhuongXa set MAXA='0074' where Id=30481
+update PhuongXa set MAXA='0075' where Id=30484
+update PhuongXa set MAXA='0076' where Id=30487
+update PhuongXa set MAXA='0077' where Id=30490
+update PhuongXa set MAXA='0078' where Id=30493
+update PhuongXa set MAXA='0079' where Id=30496
+update PhuongXa set MAXA='0080' where Id=30499
+//chau thanh
+update PhuongXa set MAXA='CD01' where Id=30595
+update PhuongXa set MAXA='AC01' where Id=30589
+update PhuongXa set MAXA='AH01' where Id=30592
+update PhuongXa set MAXA='BH01' where Id=30607
+update PhuongXa set MAXA='HB01' where Id=30613
+update PhuongXa set MAXA='VA01' where Id=30610
+update PhuongXa set MAXA='VB01' where Id=30604
+update PhuongXa set MAXA='TP01' where Id=30622
+update PhuongXa set MAXA='VH01' where Id=30598
+update PhuongXa set MAXA='VL01' where Id=30616
+update PhuongXa set MAXA='VN01' where Id=30490
+update PhuongXa set MAXA='VT01' where Id=30625
+update PhuongXa set MAXA='BT02' where Id=30613
+//thoai son
+update PhuongXa set MAXA='AB01' where Id=30692
+update PhuongXa set MAXA='MPD1' where Id=30712
+update PhuongXa set MAXA='PT01' where Id=30700
+update PhuongXa set MAXA='TG01' where Id=30721
+update PhuongXa set MAXA='HB01' where Id=30613
+update PhuongXa set MAXA='NS01' where Id=30682
+update PhuongXa set MAXA='OCEO' where Id=30688
+update PhuongXa set MAXA='PH01' where Id=30685
+update PhuongXa set MAXA='BT01' where Id=30724
+update PhuongXa set MAXA='DM01' where Id=30706
+update PhuongXa set MAXA='DT01' where Id=30709
+update PhuongXa set MAXA='VT01' where Id=30727
+update PhuongXa set MAXA='VTR1' where Id=30697
+update PhuongXa set MAXA='VP01' where Id=30694
+update PhuongXa set MAXA='VK01' where Id=30718
+// long xuyen
+update PhuongXa set MAXA='DX01' where Id=30285
+update PhuongXa set MAXA='MB01' where Id=30280
+update PhuongXa set MAXA='MH01' where Id=30307
+update PhuongXa set MAXA='MHH1' where Id=30313
+update PhuongXa set MAXA='MK01' where Id=30310
+update PhuongXa set MAXA='ML01' where Id=30283
+update PhuongXa set MAXA='MP01' where Id=30295
+update PhuongXa set MAXA='PH01' where Id=30685
+update PhuongXa set MAXA='MQ01' where Id=30298
+update PhuongXa set MAXA='MT01' where Id=30301
+update PhuongXa set MAXA='MTA1' where Id=30304
+update PhuongXa set MAXA='MX01' where Id=30286
+update PhuongXa set MAXA='BD01' where Id=30289
+update PhuongXa set MAXA='BK01' where Id=30292
+//chau doc
+update PhuongXa set MAXA='CBA1' where Id=30319
+update PhuongXa set MAXA='CPB1' where Id=30316
+update PhuongXa set MAXA='VCS1' where Id=30334
+update PhuongXa set MAXA='VM01' where Id=30322
+update PhuongXa set MAXA='VNS1' where Id=30328
+update PhuongXa set MAXA='VTS1' where Id=30331
+update PhuongXa set MAXA='NSS1' where Id=30325
+//cho moi
+update PhuongXa set MAXA='0101' where Id=30628
+update PhuongXa set MAXA='0102' where Id=30631
+update PhuongXa set MAXA='0103' where Id=30634
+update PhuongXa set MAXA='0104' where Id=30637
+update PhuongXa set MAXA='0105' where Id=30640
+update PhuongXa set MAXA='0106' where Id=30643
+update PhuongXa set MAXA='0107' where Id=30646
+update PhuongXa set MAXA='0108' where Id=30649
+update PhuongXa set MAXA='0109' where Id=30652
+update PhuongXa set MAXA='0110' where Id=30655
+update PhuongXa set MAXA='0111' where Id=30658
+update PhuongXa set MAXA='0112' where Id=30661
+update PhuongXa set MAXA='0113' where Id=30664
+update PhuongXa set MAXA='0114' where Id=30667
+update PhuongXa set MAXA='0115' where Id=30670
+update PhuongXa set MAXA='0116' where Id=30673
+update PhuongXa set MAXA='0117' where Id=30679
+update PhuongXa set MAXA='HB01' where Id=30676
+//phu tan
+update PhuongXa set MAXA='HLP1' where Id=30430
+update PhuongXa set MAXA='HX01' where Id=30442
+update PhuongXa set MAXA='LH01' where Id=30415
+update PhuongXa set MAXA='PA01' where Id=30436
+update PhuongXa set MAXA='PBP1' where Id=30445
+update PhuongXa set MAXA='PH01' where Id=30451
+update PhuongXa set MAXA='PHP1' where Id=30424
+update PhuongXa set MAXA='PL01' where Id=30418
+update PhuongXa set MAXA='PT01' where Id=30448
+update PhuongXa set MAXA='PTD1' where Id=30454
+update PhuongXa set MAXA='PTP1' where Id=30427
+update PhuongXa set MAXA='PTP2' where Id=30433
+update PhuongXa set MAXA='PLP1' where Id=30421
+update PhuongXa set MAXA='PMP1' where Id=30406
+update PhuongXa set MAXA='PX01' where Id=30439
+update PhuongXa set MAXA='TTP1' where Id=30460
+update PhuongXa set MAXA='TH01' where Id=30457
+update PhuongXa set MAXA='CVP1' where Id=30409
+//tan chau
+update PhuongXa set MAXA='TTT1' where Id=30387
+update PhuongXa set MAXA='VH01' where Id=30385
+update PhuongXa set MAXA='VX01' where Id=30382
+update PhuongXa set MAXA='TAT1' where Id=30388
+update PhuongXa set MAXA='PV01' where Id=30400
+update PhuongXa set MAXA='PL01' where Id=30379
+update PhuongXa set MAXA='LH01' where Id=30377
+update PhuongXa set MAXA='LP01' where Id=30394
+update PhuongXa set MAXA='LS01' where Id=30412
+update PhuongXa set MAXA='LA03' where Id=30391
+update PhuongXa set MAXA='LC01' where Id=30378
+update PhuongXa set MAXA='LCT1' where Id=30403
+update PhuongXa set MAXA='CP01' where Id=30397
+//tri ton 
+update PhuongXa set MAXA='BC01' where Id=30544
+update PhuongXa set MAXA='0177' where Id=30547
+update PhuongXa set MAXA='0178' where Id=30550
+update PhuongXa set MAXA='0179' where Id=30553
+update PhuongXa set MAXA='0180' where Id=30556
+update PhuongXa set MAXA='0181' where Id=30559
+update PhuongXa set MAXA='0182' where Id=30562
+update PhuongXa set MAXA='0183' where Id=30565
+update PhuongXa set MAXA='0184' where Id=30568
+update PhuongXa set MAXA='0185' where Id=30571
+update PhuongXa set MAXA='0186' where Id=30574
+update PhuongXa set MAXA='0187' where Id=30577
+update PhuongXa set MAXA='0188' where Id=30580
+update PhuongXa set MAXA='0189' where Id=30583
+update PhuongXa set MAXA='0190' where Id=30586
+// tinh bien
+update PhuongXa set MAXA='0164' where Id=30505
+update PhuongXa set MAXA='0165' where Id=30520
+update PhuongXa set MAXA='0166' where Id=30508
+update PhuongXa set MAXA='0168' where Id=30514
+update PhuongXa set MAXA='0169' where Id=30517
+update PhuongXa set MAXA='0170' where Id=30523
+update PhuongXa set MAXA='0171' where Id=30526
+update PhuongXa set MAXA='0172' where Id=30529
+update PhuongXa set MAXA='0173' where Id=30532
+update PhuongXa set MAXA='0174' where Id=30535
+update PhuongXa set MAXA='0175' where Id=30538
+update PhuongXa set MAXA='0176' where Id=30541
+update PhuongXa set MAXA='NB01' where Id=30502
+//an phu
+update PhuongXa set MAXA='0151' where Id=30341
+update PhuongXa set MAXA='0152' where Id=30340
+update PhuongXa set MAXA='0153' where Id=30343
+update PhuongXa set MAXA='0154' where Id=30346
+update PhuongXa set MAXA='0155' where Id=30349
+update PhuongXa set MAXA='0156' where Id=30352
+update PhuongXa set MAXA='0157' where Id=30355
+update PhuongXa set MAXA='0158' where Id=30358
+update PhuongXa set MAXA='0159' where Id=30361
+update PhuongXa set MAXA='0160' where Id=30364
+update PhuongXa set MAXA='0161' where Id=30367
+update PhuongXa set MAXA='0162' where Id=30370
+update PhuongXa set MAXA='0163' where Id=30373
+update PhuongXa set MAXA='AT01' where Id=30337
+
+Trong Devexpress Reporting
+dung Rich text	chọn html expression '<img style="width:500px; height:300" src="' + [ImageFile] + '" />'
+
+
+
+
+r create procedure [dbo].[Create_AppUserLogin]
+
+
+r update procedure [dbo].[HoSoNhanVienAUD]
+
+r update table AppUserLogin (Active	bit	, SortOrder	int)
+
+
+
+
+
+
+r create procedure [dbo].[Get_HsChuyenBoHoSoMuonTra_ById]
+r create procedure [dbo].[Get_HsChuyenBoHoSoMuonTra_ByHsBoHoSoCuId]
+r create procedure [dbo].[Get_HsChuyenBoHoSoMuonTra_ByIdIsTra]
+
+r create procedure [dbo].[Create_HsChuyenBoHoSoMuonTra]
+
+r create procedure [dbo].[Update_HsChuyenBoHoSoMuonTra_ByMuon]
+r create procedure [dbo].[Update_HsChuyenBoHoSoMuonTra_ByTra]
+r create procedure [dbo].[Update_HsChuyenBoHoSoMuonTra_ByTraUpdate]
+r create procedure [dbo].[Update_HsChuyenBoHoSoMuonTra_ByTraChuaTra]
+
+r create procedure [dbo].[Delete_HsChuyenBoHoSoMuonTra]
+
+
+
+r create procedure [dbo].[Get_HsBoHoSoFile_ById]
+r create procedure [dbo].[Get_HsBoHoSoFile_ByHsBoHoSoId]
+
+r create procedure [dbo].[Create_HsBoHoSoFile]
+
+r create procedure [dbo].[Update_HsBoHoSoFile]
+r create procedure [dbo].[Delete_HsBoHoSoFile]
+
+
+r create procedure [dbo].[Get_HsThoiHanBaoQuanDM_ByAll]
+
+
+r create procedure [dbo].[Get_HsNhomHoSoDM_ById]
+r create procedure [dbo].[Get_HsNhomHoSoDM_ByCor]
+r create procedure [dbo].[Get_HsNhomHoSoDM_AllPaging]
+
+r create procedure [dbo].[Create_HsBoHoSo]
+r create procedure [dbo].[Update_HsBoHoSo]
+
+
+r create procedure [dbo].[Get_HsBoHoSo_AllPaging]
+r create procedure [dbo].[Get_HsBoHoSo_ById]
+
+
+r create procedure [dbo].[Get_HsKeTuBao_AllPaging]
+r create procedure [dbo].[Get_HsKeTuBao_ById]
+r create procedure [dbo].[Get_HsKeTuBao_ByCor]
+
+r create procedure [dbo].[Create_HsKeTuBao]
+
+
+r create procedure [dbo].[Get_HsChuyenKeTu_ById]
+r create procedure [dbo].[Get_HsChuyenKeTu_ByHsKeTuBaoId]
+
+r create procedure [dbo].[Create_HsChuyenKeTu]
+
+
+r create procedure [dbo].[Update_HsChuyenKeTu]
+
+
+r create procedure [dbo].[Get_HoSoNhanVien_ByUserName]
+
+r create procedure [dbo].[Get_PhongDanhMuc_ByAll]
+
+
+
+
+rrrrrrrrrrrrr
+insert into [dbo].[HsKeTuBaoDM] ([Id]      ,[Ten]     
+      ,[Status]      ,[Active]      ,[Stt]      ,[CreateBy]      ,[CreateDate])
+select 1, N'Kệ sắt'
+	,1, 1, 1, 'admin', '2021-07-06 00:00:00.000'
+insert into [dbo].[HsKeTuBaoDM] ([Id]      ,[Ten]     
+      ,[Status]      ,[Active]      ,[Stt]      ,[CreateBy]      ,[CreateDate])
+select 2, N'Bao nilon'
+	,1, 1, 2, 'admin', '2021-07-06 00:00:00.000'
+insert into [dbo].[HsKeTuBaoDM] ([Id]      ,[Ten]     
+      ,[Status]      ,[Active]      ,[Stt]      ,[CreateBy]      ,[CreateDate])
+select 3, N'Tủ'
+	,1, 1, 3, 'admin', '2021-07-06 00:00:00.000'
+insert into [dbo].[HsKeTuBaoDM] ([Id]      ,[Ten]     
+      ,[Status]      ,[Active]      ,[Stt]      ,[CreateBy]      ,[CreateDate])
+select 4, N'Thùng giấy'
+	,1, 1, 4, 'admin', '2021-07-06 00:00:00.000'
+
+insert into [dbo].[HsNhomHoSoDM] ([Id]      ,[Ten]     
+      ,[Status]      ,[Active]      ,[Stt]      ,[CreateBy]      ,[CreateDate])
+select 1, N'Giám sát'
+	,1, 1, 1, 'admin', '2021-07-06 00:00:00.000'
+insert into [dbo].[HsNhomHoSoDM] ([Id]      ,[Ten]     
+      ,[Status]      ,[Active]      ,[Stt]      ,[CreateBy]      ,[CreateDate])
+select 2, N'Thanh lý'
+	,1, 1, 2, 'admin', '2021-07-06 00:00:00.000'
+
+insert into [dbo].[HsThoiHanBaoQuanDM] ([Id]      ,[Ten]        
+	,[Status]      ,[Active]      ,[Stt]      ,[CreateBy]      ,[CreateDate])
+select 1, N'Vĩnh viễn' , 1, 1, 1, 'admin', '2021-06-07 00:00:00.000'
+insert into [dbo].[HsThoiHanBaoQuanDM] ([Id]      ,[Ten]        
+	,[Status]      ,[Active]      ,[Stt]      ,[CreateBy]      ,[CreateDate])
+select 2, N'10 năm' , 1, 1, 2, 'admin', '2021-06-07 00:00:00.000'
+insert into [dbo].[HsThoiHanBaoQuanDM] ([Id]      ,[Ten]        
+	,[Status]      ,[Active]      ,[Stt]      ,[CreateBy]      ,[CreateDate])
+select 3, N'15 năm' , 1, 1, 3, 'admin', '2021-06-07 00:00:00.000'
+
+
+
+
+
+
+rrrrrrrrrr
+insert into [dbo].[Functions]  ([Id]      ,[IconCss]      ,[Name]      ,[ParentId]      ,[SortOrder]      ,[Status]      ,[URL])
+  select N'HoSoLuuTru', 'fa fa-file-archive-o', N'Lưu trữ hồ sơ', null, '160', 1, '/'
+
+insert into [dbo].[Functions]  ([Id]      ,[IconCss]      ,[Name]      ,[ParentId]      ,[SortOrder]      ,[Status]      ,[URL])
+  select N'HoSoNhapHoSo', 'fa fa-file-archive-o', N'Nhập hồ sơ', 'HoSoLuuTru', '2', 1, '/admin/hshoso/index'
+
+insert into [dbo].[Functions]  ([Id]      ,[IconCss]      ,[Name]      ,[ParentId]      ,[SortOrder]      ,[Status]      ,[URL])
+  select N'HoSoKeBao', 'fa fa-file-archive-o', N'Nhập Kệ - Bao - Tủ', 'HoSoLuuTru', '4', 1, '/admin/hskebao/index'
+
+insert into [dbo].[Functions]  ([Id]      ,[IconCss]      ,[Name]      ,[ParentId]      ,[SortOrder]      ,[Status]      ,[URL])
+  select N'HoSoNhomHoSo', 'fa fa-file-archive-o', N'DM Nhóm hồ sơ', 'HoSoLuuTru', '6', 1, '/admin/hsnhom/index'
+
+
+
+rrr
+	create procedure [dbo].[Create_VanBanNhomXuLy_ByCorCode]
+	create procedure [dbo].[Update_VanBanNhomXuLy_ById]
+
+	create procedure [dbo].[Get_VanBanNhomXuLy_AllPaging]
+	create procedure [dbo].[Get_VanBanNhomXuLy_ByCorCodeNhomXL]
+	create procedure [dbo].[Get_VanBanNhomXuLy_ById]
+
+
+	create procedure [dbo].[Create_VanBanNhomNhanVien]
+	create procedure [dbo].[Delete_VanBanNhomNhanVien]
+
+	create procedure [dbo].[Get_VanBanNhomNhanVien_ByCorCodeNhomXL]
+	create procedure [dbo].[Get_VanBanNhomNhanVien_ByNhomXuLyId]
+
+
+
+create procedure [dbo].[Create_GDNThietKeNuoc]
+create procedure [dbo].[Create_GDNThietKeDien]
+create procedure [dbo].[Create_GDNThietKeNuoc_ByKetThucDD]
+create procedure [dbo].[Create_GDNThietKeDien_ByKetThucDD]
+
+create procedure [dbo].[Create_GDNThiCongNuoc]
+create procedure [dbo].[Create_GDNThiCongDien]
+create procedure [dbo].[Create_GDNNghiemThuNuoc]
+create procedure [dbo].[Create_GDNNghiemThuDien]
+
+create procedure [dbo].[Create_GDNXuLyKiemDinhNuoc]
+create procedure [dbo].[Create_GDNXuLyKiemDinhDien]
+
+create procedure [dbo].[Create_GiayDeNghiCungCapNuoc]
+create procedure [dbo].[Create_GiayDeNghiCungCapDien]
+create procedure [dbo].[Create_GiayDeNghiDMCungCapNuoc_ByCodeXuLy]
+create procedure [dbo].[Create_GiayDeNghiDMCungCapDien_ByCodeXuLy]
+
+
+create procedure [dbo].[Update_GDNXuLyKiemDinhNuoc_ByGDNDMId]
+create procedure [dbo].[Update_GDNXuLyKiemDinhDien_ByGDNDMId]
+create procedure [dbo].[Update_GDNXuLyKiemDinhNuoc_ByGDNDMIdKetThucHS]
+create procedure [dbo].[Update_GDNXuLyKiemDinhDien_ByGDNDMIdKetThucHS]
+create procedure [dbo].[Update_GDNXuLyKiemDinhNuoc_ByGDNDMIdBBTT]
+create procedure [dbo].[Update_GDNXuLyKiemDinhDien_ByGDNDMIdBBTT]
+create procedure [dbo].[Update_GDNXuLyKiemDinhNuoc_ByGDNDMIdBBTTUp]
+create procedure [dbo].[Update_GDNXuLyKiemDinhDien_ByGDNDMIdBBTTUp]
+
+
+create procedure [dbo].[Update_GiayDeNghiCungCapNuoc]
+create procedure [dbo].[Update_GiayDeNghiCungCapDien]
+create procedure [dbo].[Update_GiayDeNghiDMCungCapNuoc_ByIdXuLy]
+create procedure [dbo].[Update_GiayDeNghiDMCungCapDien_ByIdXuLy]
+
+create procedure [dbo].[Update_GDNThietKeNuoc_ByGDNDMId]
+create procedure [dbo].[Update_GDNThietKeDien_ByGDNDMId]
+create procedure [dbo].[Update_GDNThietKeNuoc_ByGDNDMIdKSTK]
+create procedure [dbo].[Update_GDNThietKeDien_ByGDNDMIdKSTK]
+create procedure [dbo].[Update_GDNThietKeNuoc_ByGDNDMIdDuyetTK]
+create procedure [dbo].[Update_GDNThietKeDien_ByGDNDMIdDuyetTK]
+create procedure [dbo].[Update_GDNThietKeNuoc_ByGDNDMIdKSTKNoDuyet]
+create procedure [dbo].[Update_GDNThietKeDien_ByGDNDMIdKSTKNoDuyet]
+
+create procedure [dbo].[Update_GDNThiCongNuoc_ByGDNDMIdDuyetTC]
+create procedure [dbo].[Update_GDNThiCongDien_ByGDNDMIdDuyetTC]
+create procedure [dbo].[Update_GDNNghiemThuNuoc_ByGDNDMIdDuyetNT]
+create procedure [dbo].[Update_GDNNghiemThuDien_ByGDNDMIdDuyetNT]
+
+
+create procedure [dbo].[Delete_GiayDeNghiDMCungCapNuoc]
+create procedure [dbo].[Delete_GiayDeNghiDMCungCapDien]
+
+create procedure [dbo].[Get_DMCungCapDichVu_ByLoaiDichVuId]
+create procedure [dbo].[Get_GiayDeNghiDMCungCapNuoc_ByCodeXuLy]
+create procedure [dbo].[Get_GiayDeNghiDMCungCapDien_ByCodeXuLy]
+create procedure [dbo].[Get_GiayDeNghiDMCungCapNuoc_ByGDNId]
+create procedure [dbo].[Get_GiayDeNghiDMCungCapDien_ByGDNId]
+create procedure [dbo].[Get_GiayDeNghiDMCungCapNuoc_ByGDNId1Top]
+create procedure [dbo].[Get_GiayDeNghiDMCungCapDien_ByGDNId1Top]
+create procedure [dbo].[Get_GiayDeNghiDMCungCapNuoc_AllByTTTK]
+create procedure [dbo].[Get_GiayDeNghiDMCungCapDien_AllByTTTK]
+create procedure [dbo].[Get_GiayDeNghiDMCungCapNuoc_AllByTTTC]
+create procedure [dbo].[Get_GiayDeNghiDMCungCapDien_AllByTTTC]
+create procedure [dbo].[Get_GiayDeNghiDMCungCapNuoc_AllByTTNT]
+create procedure [dbo].[Get_GiayDeNghiDMCungCapDien_AllByTTNT]
+create procedure [dbo].[Get_GiayDeNghiDMCungCapNuoc_ById]
+create procedure [dbo].[Get_GiayDeNghiDMCungCapDien_ById]
+
+create procedure [dbo].[Get_GiayDeNghiDMCungCapNuoc_Tim]
+create procedure [dbo].[Get_GiayDeNghiDMCungCapDien_Tim]
+
+create procedure [dbo].[Get_GiayDeNghiDMCungCapNuoc_AllByTTKTKD]
+create procedure [dbo].[Get_GiayDeNghiDMCungCapDien_AllByTTKTKD]
+create procedure [dbo].[Get_GiayDeNghiDMCungCapNuoc_AllByTTXLKD]
+create procedure [dbo].[Get_GiayDeNghiDMCungCapDien_AllByTTXLKD]
+
+create procedure [dbo].[Get_GiayDeNghiCungCapNuoc_AllPaging]
+create procedure [dbo].[Get_GiayDeNghiCungCapDien_AllPaging]
+create procedure [dbo].[Get_GiayDeNghiCungCapNuoc_ById]
+create procedure [dbo].[Get_GiayDeNghiCungCapDien_ById]
+
+create procedure [dbo].[Get_GiayDeNghiQuaTrinhCungCap_ByIsNuoc]
+
+create procedure [dbo].[Get_GDNThietKeNuoc_ByGDNDMCCNuocId]
+create procedure [dbo].[Get_GDNThietKeDien_ByGDNDMCCDienId]
+create procedure [dbo].[Get_GDNThiCongNuoc_ByGDNDMCCNuocId]
+create procedure [dbo].[Get_GDNThiCongDien_ByGDNDMCCDienId]
+create procedure [dbo].[Get_GDNNghiemThuNuoc_ByGDNDMCCNuocId]
+create procedure [dbo].[Get_GDNNghiemThuDien_ByGDNDMCCDienId]
+
+create procedure [dbo].[Get_GDNXuLyKiemDinhNuoc_ByGDNDMCCNuocId]
+create procedure [dbo].[Get_GDNXuLyKiemDinhDien_ByGDNDMCCDienId]
+
+
+create procedure [dbo].[Update_HoSoNhanVien_DaoTaoHV]
+
+create procedure [dbo].[Get_HoSoNhanVien_AllPaging]
+create procedure [dbo].[Get_HoSoNhanVien_ById]
+
+create procedure [dbo].[Get_ChucVuNhanVien_ByCor]
+create procedure [dbo].[Get_CongViecNhanVien_ByHoSoNhanVienId]
+
+create procedure [dbo].[Create_TrinhDo_ById]	
+create procedure [dbo].[Update_TrinhDo_ById]
+create procedure [dbo].[Delete_TrinhDo_ById]
+
+
+create procedure [dbo].[Get_DaoTaoNhanVien_ByLop]
+create procedure [dbo].[Get_DaoTaoNhanVien_ByHoSoId]
+
+
+update procedure [dbo].[PhongDanhMucGetList]
+update procedure [dbo].[VBAutocompleteGetList]
+
+
+insert into GiayDeNghiQuaTrinhCungCap ( [Id]      ,[IsGiayDeNghiNuoc]      ,[GiayDeNghiDMCungCapNuocId]
+      ,[GiayDeNghiDMCungCapDienId]      ,[TrangThai]      ,[MoTa]           
+	  ,[Status]    ,[Active]      ,[Stt]      ,[CreateBy]      ,[CreateDate]      )
+		select @gdnQuaTrinhNuocId, 1, 0
+		, 0, 'InGDNNuoc', N'Nhập giấy đề nghị nước'
+		,  1, 1, 1, @CreateBy, @CreateDate
+insert into GiayDeNghiQuaTrinhCungCap ( [Id]      ,[IsGiayDeNghiNuoc]      ,[GiayDeNghiDMCungCapNuocId]
+      ,[GiayDeNghiDMCungCapDienId]      ,[TrangThai]      ,[MoTa] , [GhiChu]          
+	  ,[Status]    ,[Active]      ,[Stt]      ,[CreateBy]      ,[CreateDate]      )
+		select @gdnQuaTrinhNuocId, 1, @GiayDeNghiDMCungCapNuocId
+		, 0, 'UpGDNDMNuoc', N'Chuyển kiểm tra xử lý', @GhiChuXuLy
+		,  1, 1, 1, @UpdateBy, getdate()
+insert into GiayDeNghiQuaTrinhCungCap ( [Id]      ,[IsGiayDeNghiNuoc]      ,[GiayDeNghiDMCungCapNuocId]
+      ,[GiayDeNghiDMCungCapDienId]      ,[TrangThai]      ,[MoTa]           
+	  ,[Status]    ,[Active]      ,[Stt]      ,[CreateBy]      ,[CreateDate]      )
+		select @gdnQuaTrinhNuocId, 1, @GiayDeNghiDMCungCapNuocId
+		, 0, 'UpKetThucKiemTra', N'Kết thúc kiểm tra di dời nước'
+		,  1, 1, 1, @CreateBy, getdate()
+insert into GiayDeNghiQuaTrinhCungCap ( [Id]      ,[IsGiayDeNghiNuoc]      ,[GiayDeNghiDMCungCapNuocId]
+      ,[GiayDeNghiDMCungCapDienId]      ,[TrangThai]      ,[MoTa]           
+	  ,[Status]    ,[Active]      ,[Stt]      ,[CreateBy]      ,[CreateDate]      )
+		select @gdnQuaTrinhNuocId, 1, 0
+		, 0, 'InGDNThietKeNuoc', N'Nhập giấy đề nghị thiết kế nước'
+		,  1, 1, 1, @CreateBy, getdate()
+insert into GiayDeNghiQuaTrinhCungCap ( [Id]      ,[IsGiayDeNghiNuoc]      ,[GiayDeNghiDMCungCapNuocId]
+      ,[GiayDeNghiDMCungCapDienId]      ,[TrangThai]      ,[MoTa]           
+	  ,[Status]    ,[Active]      ,[Stt]      ,[CreateBy]      ,[CreateDate]      )
+		select @gdnQuaTrinhNuocId, 1, @GiayDeNghiDMCungCapNuocId
+		, 0, 'UpChoDuyetTK', N'Chờ Duyệt thiết kế di dời'
+		,  1, 1, 1, @UpdateBy, getdate()
+insert into GiayDeNghiQuaTrinhCungCap ( [Id]      ,[IsGiayDeNghiNuoc]      ,[GiayDeNghiDMCungCapNuocId]
+      ,[GiayDeNghiDMCungCapDienId]      ,[TrangThai]      ,[MoTa]           
+	  ,[Status]    ,[Active]      ,[Stt]      ,[CreateBy]      ,[CreateDate]      )
+		select @gdnQuaTrinhNuocId, 1, @GiayDeNghiDMCungCapNuocId
+		, 0, 'UpDuyetTK', N'Duyệt thiết kế di dời'
+		,  1, 1, 1, @UpdateBy, getdate()
+insert into GiayDeNghiQuaTrinhCungCap ( [Id]      ,[IsGiayDeNghiNuoc]      ,[GiayDeNghiDMCungCapNuocId]
+      ,[GiayDeNghiDMCungCapDienId]      ,[TrangThai]      ,[MoTa]           
+	  ,[Status]    ,[Active]      ,[Stt]      ,[CreateBy]      ,[CreateDate]      )
+		select @gdnQuaTrinhNuocId, 1, @GiayDeNghiDMCungCapNuocId
+		, 0, 'InGDNThiCongNuoc', N'Nhập thi công nước'
+		,  1, 1, 1, @CreateBy, getdate()
+insert into GiayDeNghiQuaTrinhCungCap ( [Id]      ,[IsGiayDeNghiNuoc]      ,[GiayDeNghiDMCungCapNuocId]
+      ,[GiayDeNghiDMCungCapDienId]      ,[TrangThai]      ,[MoTa]           
+	  ,[Status]    ,[Active]      ,[Stt]      ,[CreateBy]      ,[CreateDate]      )
+		select @gdnQuaTrinhNuocId, 1, @GiayDeNghiDMCungCapNuocId
+		, 0, 'InGDNNghiemThuNuoc', N'Nhập, duyệt Nghiệm thu nước'
+		,  1, 1, 1, @CreateBy, getdate()
+
+
+
+insert into GDNChuyenPhong ([Id]      ,[IsGiayDeNghiNuoc]      ,[GiayDeNghiDMCungCapNuocId]
+      ,[GiayDeNghiDMCungCapDienId]      --,[CodeXuLy]      
+	  ,[PhongDanhMucId]      ,[NhanVienId]      
+	  ,[TTChuyen]      ,[TTDen]      ,[NgayChuyen]      ,[LyDoChuyen]      --,[NgayDen]      ,[LyDoDen]      ,[GhiChu]      
+	  ,[Status]      ,[Active]      ,[Stt]      ,[CreateBy]      ,[CreateDate])
+		select @gdnchuyenphongId, 1, @GiayDeNghiDMCungCapNuocId
+		, 0
+		, @PhongDanhMucId, @UpdateBy
+		, 'GDNToTK', '0', @NgayXuLy, N'GĐN chuyển đến Tổ thiết kế.'
+		, 1, 1, 1, @UpdateBy, getdate()
+
+
+create table [dbo].[DMCungCapDichVu] (update data luon)
+create table [dbo].[DMVatTuThietKe] (update data tu QLKH qua luon)
+
+create table [dbo].[GDNThietKeNuoc]
+create table [dbo].[GDNThietKeChiTietNuoc]
+create table [dbo].[GiayDeNghiCungCapNuoc]
+create table [dbo].[GiayDeNghiDMCungCapNuoc]
+create table [dbo].[GiayDeNghiQuaTrinhCungCapNuoc]
+
+
+R	insert column data table Corporations: MAKV varchar(10), MAKVPO varchar(10) and update database from Quan ly khach hang (qlkh) to NitiErp
+	, MaDinhDanh	nvarchar(50), MoTa	nvarchar(1000), GhiChu	nvarchar(1000)	Checked
+R	insert column data table CorporationsHis: MAKV varchar(10), MAKVPO varchar(10) and update database from Quan ly khach hang (qlkh) to NitiErp
+	, MaDinhDanh	nvarchar(50), MoTa	nvarchar(1000), GhiChu	nvarchar(1000)	Checked
+
+R	insert column data table KhuVuc: MAKV varchar(10), MAKVPO varchar(10) and update database from Quan ly khach hang to NitiErp
+
+R	insert column data table VBAutocomplete: HoSoNhanVienId uniqueidentifier, CorporationId varchar(10)
+
+R	insert column date table HoSoNhanVien: BaoHiemXaHoiId	int	,MaSoBHXH	nvarchar(50)	,NgayThamGiaBHXH	datetime	
+R	insert column date table HoSoNhanVienHis: BaoHiemXaHoiId	int	,MaSoBHXH	nvarchar(50)	,NgayThamGiaBHXH	datetime
+
+R	insert column date table DaoTaoNhanVien: MaSoTheHocVien	nvarchar(50),	BacDaoTao	nvarchar(50)
+	GhiChuBacDaoTao	nvarchar(1000)	
+R	insert column date table DaoTaoNhanVienHis: MaSoTheHocVien	nvarchar(50), BacDaoTao	nvarchar(50)
+	GhiChuBacDaoTao	nvarchar(1000)	
+
+
+
+RRRRR
+  insert into [dbo].[Functions]  ([Id]      ,[IconCss]      ,[Name]      ,[ParentId]      ,[SortOrder]      ,[Status]      ,[URL])
+  select N'DiDoiNuoc', 'fa fa-expand', N'Di dời đồng hồ nước', null, '40', 1, '/'
+  insert into [dbo].[Functions]  ([Id]      ,[IconCss]      ,[Name]      ,[ParentId]      ,[SortOrder]      ,[Status]      ,[URL])
+  select N'DiDoiDien', 'fa fa-compress', N'Di dời đồng hồ điện', null, '60', 1, '/'
+  insert into [dbo].[Functions]  ([Id]      ,[IconCss]      ,[Name]      ,[ParentId]      ,[SortOrder]      ,[Status]      ,[URL])
+  select N'KiemDinhNuoc', 'fa fa-arrows-h', N'Kiểm định đồng hồ nước', null, '80', 1, '/'
+  insert into [dbo].[Functions]  ([Id]      ,[IconCss]      ,[Name]      ,[ParentId]      ,[SortOrder]      ,[Status]      ,[URL])
+  select N'KiemDinhDien', 'fa fa-arrows-v', N'Kiểm định đồng hồ điện', null, '100', 1, '/'
+
+  insert into [dbo].[Functions]  ([Id]      ,[IconCss]      ,[Name]      ,[ParentId]      ,[SortOrder]      ,[Status]      ,[URL])
+  select N'DiDoiNuocThietKe', 'fa fa-expand', N'Khảo sát - Thiết kế di dời nước', 'DiDoiNuoc', '4', 1, '/admin/ddnuockstk/index'
+  insert into [dbo].[Functions]  ([Id]      ,[IconCss]      ,[Name]      ,[ParentId]      ,[SortOrder]      ,[Status]      ,[URL])
+  select N'DiDoiNuocDuyetThietKe', 'fa fa-expand', N'Duyệt thiết kế nước', 'DiDoiNuoc', '5', 1, '/'
+
+  insert into [dbo].[Functions]  ([Id]      ,[IconCss]      ,[Name]      ,[ParentId]      ,[SortOrder]      ,[Status]      ,[URL])
+  select N'DiDoiNuocThiCong', 'fa fa-expand', N'Thi công di dời nước', 'DiDoiNuoc', '6', 1, '/admin/ddnuoctc/index'
+  insert into [dbo].[Functions]  ([Id]      ,[IconCss]      ,[Name]      ,[ParentId]      ,[SortOrder]      ,[Status]      ,[URL])
+  select N'DiDoiNuocNghiemThu', 'fa fa-expand', N'Nghiệm thu di dời nước', 'DiDoiNuoc', '8', 1, '/admin/ddnuocnt/index'
+
+  insert into [dbo].[Functions]  ([Id]      ,[IconCss]      ,[Name]      ,[ParentId]      ,[SortOrder]      ,[Status]      ,[URL])
+  select N'DiDoiDienThietKe', 'fa fa-compress', N'Khảo sát - Thiết kế di dời điện', 'DiDoiDien', '4', 1, '/admin/dddienkstk/index'
+  insert into [dbo].[Functions]  ([Id]      ,[IconCss]      ,[Name]      ,[ParentId]      ,[SortOrder]      ,[Status]      ,[URL])
+  select N'DiDoiDienThiCong', 'fa fa-compress', N'Thi công di dời điện', 'DiDoiDien', '6', 1, '/admin/dddientc/index'
+  insert into [dbo].[Functions]  ([Id]      ,[IconCss]      ,[Name]      ,[ParentId]      ,[SortOrder]      ,[Status]      ,[URL])
+  select N'DiDoiDienNghiemThu', 'fa fa-compress', N'Nghiệm thu di dời điện', 'DiDoiDien', '8', 1, '/admin/dddiennt/index'
+
+  insert into [dbo].[Functions]  ([Id]      ,[IconCss]      ,[Name]      ,[ParentId]      ,[SortOrder]      ,[Status]      ,[URL])
+  select N'GiayDeNghi', 'fa fa-align-center', N'Giấy đề nghị', null, '120', 1, '/'
+  insert into [dbo].[Functions]  ([Id]      ,[IconCss]      ,[Name]      ,[ParentId]      ,[SortOrder]      ,[Status]      ,[URL])
+  select N'GiayDeNghiThem', 'fa fa-align-center', N'Nhập giấy đề nghị Nước', 'GiayDeNghi', '2', 1, '/admin/giaydn/index'
+  insert into [dbo].[Functions]  ([Id]      ,[IconCss]      ,[Name]      ,[ParentId]      ,[SortOrder]      ,[Status]      ,[URL])
+  select N'GiayDeNghiThemPo', 'fa fa-align-center', N'Nhập giấy đề nghị Điện', 'GiayDeNghi', '3', 1, '/admin/giaydnpo/index'
+
+  insert into [dbo].[Functions]  ([Id]      ,[IconCss]      ,[Name]      ,[ParentId]      ,[SortOrder]      ,[Status]      ,[URL])
+  select N'GiayDeNghiTim', 'fa fa-align-center', N'Tra cứu giấy đề nghị Nước', 'GiayDeNghi', '4', 1, '/admin/giaydnnt/index'
+  insert into [dbo].[Functions]  ([Id]      ,[IconCss]      ,[Name]      ,[ParentId]      ,[SortOrder]      ,[Status]      ,[URL])
+  select N'GiayDeNghiTimPo', 'fa fa-align-center', N'Tra cứu giấy đề nghị Điện', 'GiayDeNghi', '5', 1, '/admin/giaydndt/index'
+
+  insert into [dbo].[Functions]  ([Id]      ,[IconCss]      ,[Name]      ,[ParentId]      ,[SortOrder]      ,[Status]      ,[URL])
+  select N'KiemDinhNuocThietKe', 'fa fa-arrows-h', N'Khảo sát kiểm định nước', 'KiemDinhNuoc', '2', 1, '/admin/kdnuocks/index'
+  
+  insert into [dbo].[Functions]  ([Id]      ,[IconCss]      ,[Name]      ,[ParentId]      ,[SortOrder]      ,[Status]      ,[URL])
+  select N'KiemDinhNuocKeQua', 'fa fa-arrows-h', N'Kết quả kiểm định nước', 'KiemDinhNuoc', '6', 1, '/admin/kdnuocbbtt/index'
+
+  insert into [dbo].[Functions]  ([Id]      ,[IconCss]      ,[Name]      ,[ParentId]      ,[SortOrder]      ,[Status]      ,[URL])
+  select N'KiemDinhDienThietKe', 'fa fa-arrows-v', N'Khảo sát kiểm định điện', 'KiemDinhDien', '2', 1, '/admin/kddienks/index'
+  
+  insert into [dbo].[Functions]  ([Id]      ,[IconCss]      ,[Name]      ,[ParentId]      ,[SortOrder]      ,[Status]      ,[URL])
+  select N'KiemDinhDienKeQua', 'fa fa-arrows-v', N'Kết quả kiểm định điện', 'KiemDinhDien', '6', 1, '/admin/kddienbbtt/index'
+
+  insert into [dbo].[Functions]  ([Id]      ,[IconCss]      ,[Name]      ,[ParentId]      ,[SortOrder]      ,[Status]      ,[URL])
+  select N'DAOTAOHOCVIEN', 'fa-graduation-cap', N'Hồ sơ học viên', 'DAOTAO', '4', 1, '/admin/daotaohv/index'
+
+
+
+  insert into [dbo].[Permissions] ([CanCreate]      ,[CanDelete]      ,[CanRead]      ,[CanUpdate]      ,[FunctionId]      ,[RoleId])
+	select 1, 1, 1, 1, 'DiDoiNuoc', '0c69edb5-77c6-4024-1870-08d572278fa0'
+	insert into [dbo].[Permissions] ([CanCreate]      ,[CanDelete]      ,[CanRead]      ,[CanUpdate]      ,[FunctionId]      ,[RoleId])
+	select 1, 1, 1, 1, 'DiDoiDien',	'0c69edb5-77c6-4024-1870-08d572278fa0'
+	insert into [dbo].[Permissions] ([CanCreate]      ,[CanDelete]      ,[CanRead]      ,[CanUpdate]      ,[FunctionId]      ,[RoleId])
+	select 1, 1, 1, 1,'KiemDinhNuoc'			,			'0c69edb5-77c6-4024-1870-08d572278fa0'
+	insert into [dbo].[Permissions] ([CanCreate]      ,[CanDelete]      ,[CanRead]      ,[CanUpdate]      ,[FunctionId]      ,[RoleId])
+	select 1, 1, 1, 1,'KiemDinhDien'			,			'0c69edb5-77c6-4024-1870-08d572278fa0'
+	insert into [dbo].[Permissions] ([CanCreate]      ,[CanDelete]      ,[CanRead]      ,[CanUpdate]      ,[FunctionId]      ,[RoleId])
+	select 1, 1, 1, 1,'DiDoiNuocThem'			,			'0c69edb5-77c6-4024-1870-08d572278fa0'
+	insert into [dbo].[Permissions] ([CanCreate]      ,[CanDelete]      ,[CanRead]      ,[CanUpdate]      ,[FunctionId]      ,[RoleId])
+	select 1, 1, 1, 1,'DiDoiNuocThietKe'		,			'0c69edb5-77c6-4024-1870-08d572278fa0'
+	insert into [dbo].[Permissions] ([CanCreate]      ,[CanDelete]      ,[CanRead]      ,[CanUpdate]      ,[FunctionId]      ,[RoleId])
+	select 1, 1, 1, 1,'DiDoiNuocDuyetThietKe'		,			'0c69edb5-77c6-4024-1870-08d572278fa0'
+
+	insert into [dbo].[Permissions] ([CanCreate]      ,[CanDelete]      ,[CanRead]      ,[CanUpdate]      ,[FunctionId]      ,[RoleId])
+	select 1, 1, 1, 1,'DiDoiNuocThiCong'		,			'0c69edb5-77c6-4024-1870-08d572278fa0'
+	insert into [dbo].[Permissions] ([CanCreate]      ,[CanDelete]      ,[CanRead]      ,[CanUpdate]      ,[FunctionId]      ,[RoleId])
+	select 1, 1, 1, 1,'DiDoiNuocNghiemThu'	,			'0c69edb5-77c6-4024-1870-08d572278fa0'
+	insert into [dbo].[Permissions] ([CanCreate]      ,[CanDelete]      ,[CanRead]      ,[CanUpdate]      ,[FunctionId]      ,[RoleId])
+	select 1, 1, 1, 1,'DiDoiDienThem'			,			'0c69edb5-77c6-4024-1870-08d572278fa0'
+	insert into [dbo].[Permissions] ([CanCreate]      ,[CanDelete]      ,[CanRead]      ,[CanUpdate]      ,[FunctionId]      ,[RoleId])
+	select 1, 1, 1, 1,'DiDoiDienThietKe'		,			'0c69edb5-77c6-4024-1870-08d572278fa0'
+	insert into [dbo].[Permissions] ([CanCreate]      ,[CanDelete]      ,[CanRead]      ,[CanUpdate]      ,[FunctionId]      ,[RoleId])
+	select 1, 1, 1, 1,'DiDoiDienThiCong'		,			'0c69edb5-77c6-4024-1870-08d572278fa0'
+	insert into [dbo].[Permissions] ([CanCreate]      ,[CanDelete]      ,[CanRead]      ,[CanUpdate]      ,[FunctionId]      ,[RoleId])
+	select 1, 1, 1, 1,'DiDoiDienNghiemThu'	,			'0c69edb5-77c6-4024-1870-08d572278fa0'
+	insert into [dbo].[Permissions] ([CanCreate]      ,[CanDelete]      ,[CanRead]      ,[CanUpdate]      ,[FunctionId]      ,[RoleId])
+	select 1, 1, 1, 1,'GiayDeNghi'			,			'0c69edb5-77c6-4024-1870-08d572278fa0'
+	insert into [dbo].[Permissions] ([CanCreate]      ,[CanDelete]      ,[CanRead]      ,[CanUpdate]      ,[FunctionId]      ,[RoleId])
+	select 1, 1, 1, 1,'GiayDeNghiThem'		,			'0c69edb5-77c6-4024-1870-08d572278fa0'
+	insert into [dbo].[Permissions] ([CanCreate]      ,[CanDelete]      ,[CanRead]      ,[CanUpdate]      ,[FunctionId]      ,[RoleId])
+	select 1, 1, 1, 1,'GiayDeNghiThemPo'		,			'0c69edb5-77c6-4024-1870-08d572278fa0'
+
+	insert into [dbo].[Permissions] ([CanCreate]      ,[CanDelete]      ,[CanRead]      ,[CanUpdate]      ,[FunctionId]      ,[RoleId])
+	select 1, 1, 1, 1,'KiemDinhNuocThietKe'	,			'0c69edb5-77c6-4024-1870-08d572278fa0'
+	insert into [dbo].[Permissions] ([CanCreate]      ,[CanDelete]      ,[CanRead]      ,[CanUpdate]      ,[FunctionId]      ,[RoleId])
+	select 1, 1, 1, 1,'KiemDinhNuocThiCong'	,			'0c69edb5-77c6-4024-1870-08d572278fa0'
+	insert into [dbo].[Permissions] ([CanCreate]      ,[CanDelete]      ,[CanRead]      ,[CanUpdate]      ,[FunctionId]      ,[RoleId])
+	select 1, 1, 1, 1,'KiemDinhNuocKeQua'		,			'0c69edb5-77c6-4024-1870-08d572278fa0'
+	insert into [dbo].[Permissions] ([CanCreate]      ,[CanDelete]      ,[CanRead]      ,[CanUpdate]      ,[FunctionId]      ,[RoleId])
+	select 1, 1, 1, 1,'KiemDinhDienThietKe'	,			'0c69edb5-77c6-4024-1870-08d572278fa0'
+	insert into [dbo].[Permissions] ([CanCreate]      ,[CanDelete]      ,[CanRead]      ,[CanUpdate]      ,[FunctionId]      ,[RoleId])
+	select 1, 1, 1, 1,'KiemDinhDienThiCong'	,			'0c69edb5-77c6-4024-1870-08d572278fa0'
+	insert into [dbo].[Permissions] ([CanCreate]      ,[CanDelete]      ,[CanRead]      ,[CanUpdate]      ,[FunctionId]      ,[RoleId])
+	select 1, 1, 1, 1,'KiemDinhDienKeQua'		,			'0c69edb5-77c6-4024-1870-08d572278fa0'
+

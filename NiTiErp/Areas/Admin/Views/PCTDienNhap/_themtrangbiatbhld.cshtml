@@ -1,0 +1,114 @@
+﻿
+<div id="modal-add-edit-ThemTrangBiATBHLD" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style="overflow-y: auto; max-height:85%;  margin-top: 50px; margin-bottom:50px; ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Thêm / Sửa trang bị an toàn bảo hộ lao động </h4>
+            </div>
+            <div class="modal-body">
+
+                <div id="formMainEditPCTDienThemTrangBiATBHLD">
+                    <form class="form-horizontal form-label-left" id="frmMainEditPCTDienThemTrangBiATBHLD">
+                        <div class="item form-group">
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <label for="lbThemNDCTCodeThemTrangBiATBHLD">
+                                    Mã thêm trang bị an toàn bảo hộ lao động <a style="color:#f00"> (*) </a>
+                                </label>
+                                <select id="ddlThemNDCTCodeThemTrangBiATBHLD" name="ddlThemNDCTCodeThemTrangBiATBHLD" class="form-control"></select>
+                            </div>
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <label for="lbThemTrangBiATBHLDNgayNhap">
+                                    Ngày nhập <a style="color:#f00"> (*) </a>
+                                </label>
+                                <input type="text" id="txtThemTrangBiATBHLDNgayNhap" name="txtThemTrangBiATBHLDNgayNhap" class="form-control" placeholder="Ngày nhập">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <label for="lbThemNDCTTenThemTrangBiATBHLD">
+                                    Tên trang bị an toàn bảo hộ lao động <a style="color:#f00"> (*) </a>
+                                </label>
+                                <textarea id="txtThemNDCTTenThemTrangBiATBHLD" required="required" class="form-control" name="txtThemNDCTTenThemTrangBiATBHLD"
+                                          data-parsley-trigger="keyup" data-parsley-maxlength="1000">
+                                </textarea>
+                            </div>
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <label for="lbThemNDCTSttThemTrangBiATBHLD">
+                                    Số thứ tự <a style="color:#f00"> (*) </a>
+                                </label>
+                                <input type="number" id="txtThemNDCTSttThemTrangBiATBHLD" name="txtThemNDCTSttThemTrangBiATBHLD" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="button" id="btnCancelThemTrangBiATBHLDHuy" data-dismiss="modal" class="btn btn-default">Đóng</button>
+                                <button type="button" id="btnSaveEditThemTrangBiATBHLDLuu" class="btn btn-warning">Lưu trang bị an toàn BHLĐ </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="row">
+                    <div class="x_panel">
+                        <div class="table-responsive" id="table-responsiveThemTrangBiATBHLD">
+                            <table id="tblPCTDienThemTrangBiATBHLD" class="table table-striped jambo_table bulk_action" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Tên trang bị ATBHĐ</th>
+                                        <th>Ngày nhập</th>
+                                        <th>Stt</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tblContentPCTDienThemTrangBiATBHLD"></tbody>
+                            </table>
+                            <div class="row">
+                                <div class="col-sm-5">
+                                    <div class="dataTables_info" id="datatable-checkbox_infoPCTDienThemTrangBiATBHLD" role="status" aria-live="polite">
+                                        <select id="ddl-show-pagePCTDienThemTrangBiATBHLD">
+                                            <option value="10" selected="selected">10</option>
+                                            <option value="20">20</option>
+                                            <option value="30">30</option>
+                                            <option value="50">50</option>
+                                        </select>
+                                        <span class="item-per-page">
+                                            dòng/trang.
+                                        </span>
+                                        Tổng cộng: <strong id="lbPCTDienThemTrangBiATBHLDTotalRecords"></strong>
+                                    </div>
+                                </div>
+                                <div class="col-sm-7">
+                                    <div class="dataTables_paginate" id="datatable-checkbox_paginatePCTDienThemTrangBiATBHLD">
+                                        <ul id="paginationULPCTDienThemTrangBiATBHLD"></ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <script id="table-PCTDienThemTrangBiATBHLD" type="x-tmpl-mustache">
+                    <tr>
+                        <th scope="row">
+                            <a class="btn-link btn-addeditPCTDienTrangBiATBHLD" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Id">
+                                <i class="fa fa-pencil"></i>
+                            </a>
+                        </th>
+
+                        <td>{{TenNoiDung}}</td>
+                        <td>{{NgayNhap}}</td>
+                        <td>{{Stt}}</td>
+
+                        <th scope="row">
+                            <a class="btn-link btn-deletePCTDienThemTrangBiATBHLD" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Xóa">
+                                <i class="fa fa-trash-o" style="color:red"></i>
+                            </a>
+                        </th>
+
+                    </tr>
+                </script>
+            </div>
+        </div>
+    </div>
+</div>

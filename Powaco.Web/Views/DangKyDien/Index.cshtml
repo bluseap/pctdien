@@ -1,0 +1,48 @@
+﻿
+@section Styles{
+    @*<link href="~/lib/jQuery-EasyUI/themes/bootstrap/easyui.css" rel="stylesheet" />
+        <link href="~/lib/jQuery-EasyUI/themes/icon.css" rel="stylesheet" />*@
+    <link href="~/css/bootstrap-datepicker.css" rel="stylesheet" asp-append-version="true"/>
+
+}
+@section Scripts{
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.min.js" asp-append-version="true"></script>
+
+
+    @*<script src="~/js/jquery.easyui.min.js" asp-append-version="true"></script>*@
+    <script src="~/js/bootstrap-datepicker.js" asp-append-version="true"></script>
+    <script src="~/js/bootstrap-datepicker.vi.min.js" charset="UTF-8" asp-append-version="true"></script>
+
+    <script src="~/js/jquery.smartWizard.dien.js" asp-append-version="true"></script>
+
+    <script src="~/client-app/controllers/dangkydien/index.js" asp-append-version="true"></script>
+    <script>
+        var dangkydien = new dangkydienController();
+        dangkydien.initialize();</script>
+
+}
+
+<input type="hidden" id="hidNewGuidTTDangKyFile" value="" />
+<input type="hidden" id="hidTTDangKyDienId" value="" />
+
+<div class="container bg-container bg-element-phu">
+    <div class="container-fluid main_container bg-overflow">
+        <div class="row ">
+            <div class="top-tab absolute">
+                <div class="col-md-2 col-sm-1 col-xs-1 "></div>
+                <div class="col-md-8 col-sm-12 col-xs-12 bg-tab ">
+                    <partial name="_DangKyDien.cshtml" />
+
+                </div>
+                <div class="col-md-2 col-sm-1 col-xs-1 "></div>
+            </div>
+            <div class='col-md-12 absolute logopowaco'>
+                <img class="logopowaco-size" src="/images/powaco148.png">
+            </div>
+        </div>
+    </div>
+</div>
+
+<partial name="_InPhieu.cshtml" />
+<partial name="_ThongBao.cshtml" />

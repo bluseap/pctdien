@@ -1,0 +1,5 @@
+2021-08-02T14:44:33.3213058+07:00 0HMALH5F6PK5T:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:60013/swagger/index.html   (ca22a1cb)
+2021-08-02T14:44:33.3534588+07:00 0HMALH5F6PK5T:00000001 [WRN] "AcceptLanguageHeaderRequestCultureProvider" returned the following unsupported UI Cultures '["vi-VN", "vi", "fr-FR"]'. (31a7522c)
+2021-08-02T14:44:33.4406736+07:00 0HMALH5F6PK5T:00000001 [INF] Request finished in 123.3788ms 200 text/html (791a596a)
+2021-08-02T14:44:36.9593121+07:00 0HMALH5F6PK5T:00000002 [INF] Request starting HTTP/1.1 POST http://127.0.0.1:21104/iisintegration  0 (ca22a1cb)
+2021-08-02T14:44:36.9605416+07:00 0HMALH5F6PK5T:00000002 [INF] Request finished in 1.2251ms 202  (791a596a)

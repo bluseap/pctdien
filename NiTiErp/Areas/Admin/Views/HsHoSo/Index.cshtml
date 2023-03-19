@@ -1,0 +1,160 @@
+﻿@{ ViewData["Title"] = "Index"; }
+@section Styles{
+    <link href="~/lib/jQuery-EasyUI/themes/bootstrap/easyui.css" rel="stylesheet" />
+    <link href="~/lib/jQuery-EasyUI/themes/icon.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap-datepicker/dist/css/bootstrap-datepicker.css" rel="stylesheet" />
+}
+@section Scripts{
+
+    <script src="~/lib/jQuery-EasyUI/jquery.easyui.min.js" asp-append-version="true"></script>
+    <script src="~/lib/bootstrap-datepicker/dist/js/bootstrap-datepicker.js" asp-append-version="true"></script>
+    <script src="~/lib/bootstrap-datepicker/dist/locales/bootstrap-datepicker.vi.min.js" charset="UTF-8" asp-append-version="true"></script>
+
+    <script src="~/app/controllers/hshoso/chitiettrongbohoso.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/hshoso/trahoso.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/hshoso/muontrahs.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/hshoso/filehoso.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/hshoso/addedithshoso.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/hshoso/index.js" asp-append-version="true"></script>
+    <script>
+        var hshoso = new hshosoController();
+        hshoso.initialize();</script>
+
+}
+
+<div class="">
+    <div class="page-title">
+        <div class="title_left">
+            <small>
+                <a class="btn btn-link ">
+                    Hồ sơ lưu trữ
+                </a>
+                >>
+                <a class="btn btn-link ">
+                    Nhập hồ sơ vào kệ - tủ - bao
+                </a>
+            </small>
+        </div>
+        <div class="title_right">
+            <div class="col-md-3 col-sm-3 col-xs-12 form-group pull-right top_search">
+                <button class="btn btn-round btn-success" id="btn-create" type="button">Thêm mới hồ sơ</button>
+            </div>
+        </div>
+    </div>
+    <div class="page-title">
+        <div class="title_left">
+            <h3>  <small></small></h3>
+        </div>
+        <div class="title_right">
+            <div class="col-md-3 col-sm-3 col-xs-12 form-group pull-right">
+                <div class="input-group">
+                    <label>Tìm..</label>
+                    <input type="text" id="txtTimNoiDung" class="form-control" placeholder="Tên kệ tủ...">                    
+                    <span class="input-group-btn padding-top-5px">
+                        <button class="btn btn-success" id="btnTimNoiDung" type="button">Tìm !</button>
+                    </span>                    
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-12 form-group pull-right top_search">
+                <div class="input-group">
+                    <label>Hồ sơ đặt tại</label>
+                    <select id="ddlPhongNhaphoSo" class="form-control"></select>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-12 form-group pull-right top_search">
+                <div class="input-group">
+                    <label>Phòng, ban</label>
+                    <select id="ddlPhongTo" class="form-control"></select>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-12 form-group pull-right top_search">
+                <div class="input-group">
+                    <label>Khu vực</label>
+                    <select id="ddlKhuVuc" class="form-control"></select>
+                </div>
+            </div>
+        </div>        
+    </div>
+
+    <div class="row">
+        <div class="x_panel">
+            <div class="table-responsive" id="table-responsiveNhapBoHoSoVaoKe">
+                <table id="tblNhapBoHoSoVaoKe" class="table table-striped jambo_table bulk_action" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th width="=10%">#</th>
+                            <th>Tên bộ hs</th>
+                            <th>Tên nhóm</th>
+                            <th>Tên kệ - tủ</th>
+                            <th>Nơi lưu hs</th>
+                            <th>Khu vực</th>
+                            <th>Hs của Phòng, ban</th>
+                            <th>.</th>
+                            <th>Trạng thái</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tblContentNhapBoHoSoVaoKe"></tbody>
+                </table>
+                <div class="row">
+                    <div class="col-sm-5">
+                        <div class="dataTables_info" id="datatable-checkbox_infoNhapBoHoSoVaoKe" role="status" aria-live="polite">
+                            <select id="ddl-show-pageNhapBoHoSoVaoKe">
+                                <option value="10" selected="selected">10</option>
+                                <option value="20">20</option>
+                                <option value="30">30</option>
+                                <option value="50">50</option>
+                            </select>
+                            <span class="item-per-page">
+                                dòng/trang.
+                            </span>
+                            Tổng cộng: <strong id="lbNhapBoHoSoVaoKeTotalRecords"></strong>
+                        </div>
+                    </div>
+                    <div class="col-sm-7">
+                        <div class="dataTables_paginate" id="datatable-checkbox_paginateNhapBoHoSoVaoKe">
+                            <ul id="paginationULNhapBoHoSoVaoKe"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script id="table-NhapBoHoSoVaoKe" type="x-tmpl-mustache">
+        <tr>
+            <th scope="row">
+                <a class="btn-lg btn-link btn-addeditNhapBoHoSoVaoKe" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" 
+                    title="Sửa tên kệ - tủ - bao"><i class="fa fa-pencil"></i> </a>
+            </th>
+            <td>{{TieuDeBoHoSo}}</td>
+            <td>{{TenNhomHoSo}}</td>
+            <td>{{TenKeTuBao}}</td>
+            <td>{{TenPhongBan}}</td>
+            <td>{{TenKhuVuc}}</td>
+            <td>{{TenPhongNhapHs}}</td>
+
+            <th scope="row">
+                <a class="btn-lg btn-link btn-FileHoSo" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Upload file hồ sơ">
+                    <i class="fa fa-paperclip" > </i>
+                </a>
+                <a class="btn-lg btn-link btn-ChoMuonFileHoSo" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Mượn hồ sơ">
+                    <i class="fa fa-send" > </i>
+                </a>
+                <a class="btn-lg btn-link btn-ChiTietTrongBoHoSo" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Chi tiết trong bộ hồ sơ">
+                    <i class="fa fa-clipboard">  </i>
+                </a>
+            </th>
+            <td>{{{TrangThaiBoHoSo}}}</td>
+        </tr>
+    </script>
+</div>
+
+    <partial name="_AddEditModel.cshtml" />
+    <partial name="_FileBoHoSo.cshtml" />
+    <partial name="_ChuyenBoHoSoMuonTra.cshtml" />
+    <partial name="_TraBoHoSo.cshtml" />
+    <partial name="_ChiTietTrongBoHoSo.cshtml" />
+
+
+
+
+

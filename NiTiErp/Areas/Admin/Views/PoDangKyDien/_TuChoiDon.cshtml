@@ -1,0 +1,58 @@
+﻿<div id="modal-add-edit-TuChoiDk" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style="overflow-y: auto; max-height:85%;  margin-top: 50px; margin-bottom:50px; ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Từ chối đơn đăng ký </h4>
+            </div>
+            <div class="modal-body">
+                <div id="horizontal-form">
+                    <form class="form-horizontal form-label-left input_mask" role="form" id="frmMainTuChoiDon">
+
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <label for="lbNgayTuChoiDon">
+                                    Ngày từ chối đơn
+                                    <a style="color:red">(*)</a>
+                                </label>
+                                <input type="text" name="txtNgayTuChoiDon" class="form-control has-feedback-right" id="txtNgayTuChoiDon" placeholder="Ngày từ chối đơn">
+                            </div>
+                            @*<div class="col-sm-6">
+                                    <label for="lbNhanVienDuyetDon">Nhân viên duyệt đơn </label>
+                                    <input type="text" name="txtNhanVienDuyetDon" class="form-control has-feedback-right" id="txtNhanVienDuyetDon" placeholder="Nhân viên duyệt đơn">
+                                </div>*@
+                        </div>
+                        @*<div class="form-group">
+                                <div class="col-sm-6">
+                                    <label for="lbGiaoHoSoThietKeCho">
+                                        Giao hồ sơ thiết kế cho
+                                        <a style="color:red">(*)</a>
+                                    </label>
+                                    <select id="ddlGiaoHoSoThietKeCho" name="ddlGiaoHoSoThietKeCho" class="form-control"></select>
+                                </div>
+                            </div>*@
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <label for="lbGhiChuTuChoiDon">Ghi chú từ chối đơn</label>
+                                <textarea id="txtGhiChuTuChoiDon" required="required" class="form-control" name="txtGhiChuTuChoiDon"
+                                          data-parsley-trigger="keyup" data-parsley-maxlength="1000">
+                                </textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="button" id="btnPhucHoiTuChoiDon" class="btn btn-warning">Phục hồi Từ chối đơn</button>
+                                <button type="button" id="btnCancelTuChoiDon" data-dismiss="modal" class="btn btn-default">Đóng</button>
+                                <button type="button" id="btnSaveTuChoiDon" class="btn btn-success">Từ chối đơn </button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+                <div class="ln_solid"></div>
+            </div>
+        </div>
+    </div>
+</div>

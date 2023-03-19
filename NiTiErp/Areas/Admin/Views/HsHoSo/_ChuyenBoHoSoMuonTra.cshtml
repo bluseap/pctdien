@@ -1,0 +1,95 @@
+﻿<div id="modal-add-edit-MuonTraHoSo" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true" >
+    <div class="modal-dialog modal-lg" style="overflow-y: hidden; max-height:85%;  margin-top: 50px; margin-bottom:50px; ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Mượn trả hồ sơ </h4>
+            </div>
+            <div class="modal-body">
+                <div id="horizontal-form">
+                    <form class="form-horizontal form-label-left input_mask" role="form" id="frmMainMuonTraHoSo">
+
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <label for="lbMuonTraTieuDeBoHoSo">
+                                    Tiêu đề hồ sơ
+                                </label>
+                                <input type="text" name="txtMuonTraTieuDeBoHoSo" class="form-control has-feedback-right" id="txtMuonTraTieuDeBoHoSo" placeholder="Tiêu đề bộ hồ sơ">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <label for="lbMuonTraNgayMuon">
+                                    Ngày mượn bộ hồ sơ  <a style="color:red">(*)</a>
+                                </label>
+                                <input type="text" name="txtMuonTraNgayMuon" class="form-control has-feedback-right" id="txtMuonTraNgayMuon" placeholder="Ngày mượn ">
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="lbMuonTraTenNguoiMuon">
+                                    Tên nhân viên mượn hồ sơ  <a style="color:red">(*)</a>
+                                </label>
+                                <input type="text" name="txtMuonTraTenNguoiMuon" class="form-control has-feedback-right" id="txtMuonTraTenNguoiMuon" placeholder="Tên nhân viên mượn hồ sơ">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <label for="lbMuonTraGhiChuMuon">
+                                    Ghi chú mượn bộ hồ sơ  <a style="color:red">(*)</a>
+                                </label>
+                                <input type="text" name="txtMuonTraGhiChuMuon" class="form-control has-feedback-right" id="txtMuonTraGhiChuMuon" placeholder="Ghi chú mượn bộ hồ sơ">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="button" id="btnCancelMuonTraHoSo" data-dismiss="modal" class="btn btn-default">Đóng</button>
+                                <button type="button" id="btnSaveMuonTraHoSo" class="btn btn-success">Lưu mượn bộ hồ sơ </button>
+                            </div>
+                        </div>
+                        <table class="table table-striped jambo_table bulk_action" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th width="=20%">#</th>
+                                    <th>Tên nhân viên mượn</th>
+                                    <th>Ngày mượn</th>
+                                    <th>Tên nhân viên trả</th>
+                                    <th>Ngày trả</th>
+                                    <th>.</th>
+                                    <th>Trạng thái</th>
+                                </tr>
+                            </thead>
+                            <tbody id="table-contentFileMuonTraHoSo"></tbody>
+                        </table>
+                    </form>
+                </div>
+              
+            </div>
+        </div>
+    </div>
+    <script type="x-tmpl-mustache" id="template-table-MuonTraHoSo">
+        <tr>
+            <th scope="row">
+                <a class="btn-link btn-editMuonBoHoSo" data-id="{{Id}}" data-toggle="tooltip"
+                    data-placement="top" title="Sửa mượn bộ hồ sơ "><i class="fa fa-pencil"></i> </a>
+            </th>
+            <td>
+                {{TenNguoiMuon}}               
+            </td>
+            <td>{{NgayMuon}}</td>
+            <td>{{TenNguoiTra}}</td>
+            <td>{{NgayTra}}</td>
+            <th scope="row">
+                <a class="btn-link btn-editTraBoHoSo" data-id="{{Id}}" data-toggle="tooltip"
+                            data-placement="top" title="Trả hồ sơ">
+                            <i >Trả h.sơ</i>
+                 </a>
+            </th>
+            <td>{{{TrangThaiBoHoSo}}}</td>
+        </tr>
+    </script>
+</div>
+
+
+
+

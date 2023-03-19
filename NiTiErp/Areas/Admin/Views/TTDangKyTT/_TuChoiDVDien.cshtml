@@ -1,0 +1,44 @@
+﻿<div id="modal-add-edit-TuChoiDVDien" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style="overflow-y: auto; max-height:85%;  margin-top: 50px; margin-bottom:50px; ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Từ chối dịch vụ điện </h4>
+            </div>
+            <div class="modal-body">
+
+                <form class="form-horizontal form-label-left" id="frmMainTuChoiDVDien">
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-12 col-xs-12">
+                            <label>Ngày từ chối <a style="color:red">(*)</a></label>
+                            <input type="text" name="txtNgayTuChoiTuChoiDVDien" class="form-control has-feedback-right" id="txtNgayTuChoiDVDien" placeholder="Ngày từ chối dịch vụ điện">
+                        </div>
+                        <div class="col-md-6 col-sm-12 col-xs-12">
+                            <label for="lbNhanVienTuChoiGDNDien">Tên nhân viên nhập </label>
+                            <input type="text" name="txtNhanVienTuChoiDVDien" class="form-control has-feedback-right" id="txtNhanVienTuChoiDVDien" placeholder="Nhân viên từ chối dịch vụ điện">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-12 col-xs-12">
+                            <label for="lbGhiChuTuChoiDVDien">Ghi chú từ chối</label>
+                            <textarea id="txtGhiChuTuChoiDVDien" required="required" class="form-control" name="txtGhiChuTuChoiDVDien"
+                                      data-parsley-trigger="keyup" data-parsley-maxlength="1000">
+                            </textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="button" id="btnPhucHoiTuChoiDVDien" class="btn btn-danger">Phục hồi từ chối </button>
+                            <button type="button" id="btnCancelTuChoiDVDien" data-dismiss="modal" class="btn btn-default">Đóng</button>
+                            <button type="button" id="btnSaveTuChoiDVDien" class="btn btn-warning">Lưu từ chối dịch vụ </button>
+                        </div>
+                    </div>
+                </form>
+
+                <div class="ln_solid"></div>
+            </div>
+        </div>
+    </div>
+</div>

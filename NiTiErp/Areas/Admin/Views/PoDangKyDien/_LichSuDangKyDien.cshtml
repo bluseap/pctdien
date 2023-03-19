@@ -1,0 +1,36 @@
+﻿<div id="modal-add-edit-LichSuDangKyDien" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style="overflow-y: auto; max-height:85%;  margin-top: 50px; margin-bottom:50px; ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Lịch sử đăng ký điện </h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="x_panel">
+                        <div class="table-responsive" id="table-responsiveLichSuDangKyDien">
+                            <table id="tblLichSuDangKyDien" class="table table-striped jambo_table bulk_action" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>Ngày thực hiện</th>
+                                        <th>Ghi chú</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tblContentLichSuDangKyDien"></tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+                <script id="table-LichSuDangKyDien" type="x-tmpl-mustache">
+                    <tr>
+                        <td>{{NgayThucHien}}</td>
+                        <td>{{NgayThucHienGhiChu}}</td>
+                    </tr>
+                </script>
+
+            </div>
+        </div>
+    </div>
+</div>

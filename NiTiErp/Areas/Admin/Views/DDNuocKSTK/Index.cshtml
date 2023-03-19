@@ -1,0 +1,147 @@
+﻿@{ ViewData["Title"] = "Index"; }
+@section Styles{
+    <link href="~/lib/jQuery-EasyUI/themes/bootstrap/easyui.css" rel="stylesheet" />
+    <link href="~/lib/jQuery-EasyUI/themes/icon.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap-datepicker/dist/css/bootstrap-datepicker.css" rel="stylesheet" />
+}
+@section Scripts{
+
+    <script src="~/lib/jQuery-EasyUI/jquery.easyui.min.js" asp-append-version="true"></script>
+    <script src="~/lib/bootstrap-datepicker/dist/js/bootstrap-datepicker.js" asp-append-version="true"></script>
+    <script src="~/lib/bootstrap-datepicker/dist/locales/bootstrap-datepicker.vi.min.js" charset="UTF-8" asp-append-version="true"></script>
+    <script src="~/admin-side/js/jquery.autocomplete.js" asp-append-version="true"></script>
+
+    <script src="~/app/controllers/ddnuockstk/duyetthietke.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/ddnuockstk/khaosatthietke.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/ddnuockstk/addeditddn.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/ddnuockstk/index.js" asp-append-version="true"></script>
+    <script>var didoinuoc = new didoinuocController();
+        didoinuoc.initialize();</script>
+}
+
+<div class="">
+    <div class="page-title">
+        <div class="title_left">
+            <small>
+                <a class="btn btn-link ">
+                    Di dời nước
+                </a>
+                >>
+                <a class="btn btn-link ">
+                    Khảo sát - Thiết kế Nước
+                </a>
+            </small>
+        </div>
+        @*<div class="title_right">
+                <div class="col-md-3 col-sm-3 col-xs-12 form-group pull-right top_search">
+                    <button class="btn btn-round btn-success" id="btn-create" type="button">Thêm mới</button>
+                </div>
+                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                    <div class="input-group">
+                    </div>
+                </div>
+            </div>*@
+    </div>
+    <div class="page-title">
+        <div class="title_left">
+            <h3>  <small></small></h3>
+        </div>
+        <div class="title_right">
+            <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right">
+                <div class="input-group">
+                    <input type="text" id="txtTimNoiDung" class="form-control" placeholder="Tên khách hàng...">
+                    <span class="input-group-btn">
+                        <button class="btn btn-success" id="btnTimNoiDung" type="button">Tìm !</button>
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-12 form-group pull-right top_search">
+                <div class="input-group">
+                    <select id="ddlPhongTo" class="form-control"></select>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-12 form-group pull-right top_search">
+                <div class="input-group">
+                    <select id="ddlKhuVuc" class="form-control"></select>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="x_panel">
+            <div class="table-responsive" id="table-responsiveDiDoiNuocKSTK">
+                <table id="tblDiDoiNuoc" class="table table-striped jambo_table bulk_action" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th width="=10%">#</th>
+                            <th>Tên khách hàng</th>
+                            <th>Danh số</th>
+                            <th>Khu vực</th>
+                            <th>Tên dịch vụ cung cấp</th>
+                            <th>Xử lý</th>
+                            <th>.</th>
+                            <th>Trạng thái</th>
+
+                        </tr>
+                    </thead>
+                    <tbody id="tblContentDiDoiNuocKSTK"></tbody>
+                </table>
+                <div class="row">
+                    <div class="col-sm-5">
+                        <div class="dataTables_info" id="datatable-checkbox_infoDiDoiNuocKSTK" role="status" aria-live="polite">
+                            <select id="ddl-show-pageDiDoiNuocKSTK">
+                                <option value="10" selected="selected">10</option>
+                                <option value="20">20</option>
+                                <option value="30">30</option>
+                                <option value="50">50</option>
+                            </select>
+                            <span class="item-per-page">
+                                dòng/trang.
+                            </span>
+                            Tổng cộng: <strong id="lbDiDoiNuocKSTKTotalRecords"></strong>
+                        </div>
+                    </div>
+                    <div class="col-sm-7">
+                        <div class="dataTables_paginate" id="datatable-checkbox_paginateDiDoiNuocKSTK">
+                            <ul id="paginationULDiDoiNuocKSTK"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script id="table-DiDoiNuocKSTK" type="x-tmpl-mustache">
+        <tr>
+            <th scope="row">               
+                <a class="btn-link btn-addeditDDNuocKSTK" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Kiểm tra - Sửa di dời nước KSTK">
+                    <i>Kiểm tra</i>
+                </a>
+            </th>
+            <td>{{TenKhachHang}}</td>
+            <td>
+                {{DanhSo}}
+            </td>
+            <td>
+                {{TenKhuVuc}}
+            </td>
+            <td>{{TenDMCungCapDichVu}}</td>
+            <th scope="row">
+                <a class="btn-link btn-KhaoSatTK" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Khảo sát - Thiết kế">
+                    <i>Thiết kế</i>
+                </a>
+            </th>
+            <th scope="row">
+                <a class="btn-link btn-DuyetThietKe" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Duyệt Thiết kế">
+                    <i>Duyệt T.Kế</i>
+                </a>
+            </th>
+            <td>{{{TTThietKe}}}</td>
+
+        </tr>
+    </script>
+</div>
+
+<partial name="_AddEditModel.cshtml" />
+<partial name="_KhaoSatTK.cshtml" />
+<partial name="_DuyetThietKe.cshtml" />

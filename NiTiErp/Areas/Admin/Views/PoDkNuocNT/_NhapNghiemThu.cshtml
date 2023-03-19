@@ -1,0 +1,256 @@
+﻿
+<div id="modal-add-edit-NhapNghiemThu" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style="overflow-y: auto; max-height:85%;  margin-top: 50px; margin-bottom:50px; ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Nhập nghiệm thu </h4>
+            </div>
+            <div class="modal-body">
+
+                <form class="form-horizontal form-label-left" id="frmMainNhapNghiemThu">
+                    <div class="item form-group">
+                        <div class="col-md-4 col-sm-12 col-xs-12">
+                            <label for="lbNhapNTMaDonDangKyKH">
+                                Mã đơn đăng ký
+                            </label>
+                            <input type="text" id="txtNhapNTMaDonDangKyKH" name="txtNhapNTMaDonDangKyKH" class="form-control has-feedback-right" placeholder="Mã đơn đăng ký">
+                        </div>
+                        <div class="col-md-4 col-sm-12 col-xs-12">
+                            <label for="lbNhapNTTenKhachHangKH">
+                                Tên khách hàng
+                            </label>
+                            <input type="text" id="txtNhapNTTenKhachHangKH" name="txtNhapNTTenKhachHangKH" class="form-control has-feedback-right" placeholder="Tên khách hàng">
+                        </div>
+                        <div class="col-md-4 col-sm-12 col-xs-12">
+                            <label for="lbNhapNTDiaChiLD">
+                                Địa chỉ lắp đặt
+                            </label>
+                            <input type="text" id="txtNhapNTDiaChiLD" name="txtNhapNTDiaChiLD" class="form-control has-feedback-right" placeholder="Địa chỉ lắp đặt">
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <div class="col-md-4 col-sm-12 col-xs-12">
+                            <label for="lbNhapNTDanhSo">
+                                Danh số khách hàng
+                            </label>
+                            <input type="text" id="txtNhapNTDanhSo" name="txtNhapNTDanhSo" class="form-control has-feedback-right" placeholder="Danh số khách hàng">
+                        </div>
+                        <div class="col-md-4 col-sm-12 col-xs-12">
+                            <label for="lbNhapNTLoaiDongHo">
+                                Loại đồng hồ
+                            </label>
+                            <input type="text" id="txtNhapNTLoaiDongHo" name="txtNhapNTLoaiDongHo" class="form-control has-feedback-right" placeholder="Loại đồng hồ">
+                        </div>
+                        <div class="col-md-4 col-sm-12 col-xs-12">
+                            <label for="lbNhapNTHieuDongHo">
+                                Hiệu đồng hồ
+                            </label>
+                            <input type="text" id="txtNhapNTHieuDongHo" name="txtNhapNTHieuDongHo" class="form-control has-feedback-right" placeholder="Hiệu đồng hồ">
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <div class="col-md-4 col-sm-12 col-xs-12">
+                            <label for="lbNhapNTNuocSanXuat">
+                                Nước sản xuất
+                            </label>
+                            <input type="text" id="txtNhapNTNuocSanXuat" name="txtNhapNTNuocSanXuat" class="form-control has-feedback-right" placeholder="Nước sản xuất">
+                        </div>
+                        <div class="col-md-4 col-sm-12 col-xs-12">
+                            <label for="lbNhapNTSoNoDongHo">
+                                Số No đồng hồ
+                            </label>
+                            <input type="text" id="txtNhapNTSoNoDongHo" name="txtNhapNTSoNoDongHo" class="form-control has-feedback-right" placeholder="Số No đồng hồ">
+                        </div>
+                        <div class="col-md-4 col-sm-12 col-xs-12">
+                            <label for="lbNhapNTChiSoBatDauDongHo">
+                                Chỉ số bắt đầu đồng hồ
+                            </label>
+                            <input type="text" id="txtNhapNTChiSoBatDauDongHo" name="txtNhapNTChiSoBatDauDongHo" class="form-control has-feedback-right" placeholder="Chỉ số bắt đầu đồng hồ">
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <div class="col-md-4 col-sm-12 col-xs-12">
+                            <label for="lbNhapNTNgayNhanHoSo">
+                                Ngày nhận hồ sơ
+                                <a style="color:red">(*)</a>
+                            </label>
+                            <input type="text" id="txtNhapNTNgayNhanHoSo" name="txtNhapNTNgayNhanHoSo" class="form-control has-feedback-right" placeholder="Ngày nhận hồ sơ">
+                        </div>
+                        <div class="col-md-4 col-sm-12 col-xs-12">
+                            <label for="lbNhapNTNgayLapBienBan">
+                                Ngày lập biên bản
+                                <a style="color:red">(*)</a>
+                            </label>
+                            <input type="text" id="txtNhapNTNgayLapBienBan" name="txtNhapNTNgayLapBienBan" class="form-control has-feedback-right" placeholder="Ngày lập biên bản">
+                        </div>
+                        <div class="col-md-4 col-sm-12 col-xs-12">
+                            <label for="lbNhapNTHeThongCapNuoc">
+                                Hệ thống cấp nước
+                            </label>
+                            <input type="text" id="txtNhapNTHeThongCapNuoc" name="txtNhapNTHeThongCapNuoc" class="form-control has-feedback-right" placeholder="Hệ thống cấp nước">
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <div class="col-md-4 col-sm-12 col-xs-12">
+                            <label for="lbNhapNTNhanVienBB1">
+                                Tên nhân viên 1
+                                <a style="color:red">(*)</a>
+                            </label>
+                            <input type="text" id="txtNhapNTNhanVienBB1" name="txtNhapNTNhanVienBB1" class="form-control has-feedback-right" placeholder="Tên nhân viên 1">
+                        </div>
+                        <div class="col-md-4 col-sm-12 col-xs-12">
+                            <label for="lbNhapNTNhanVienBB2">
+                                Tên nhân viên 2
+                                <a style="color:red">(*)</a>
+                            </label>
+                            <input type="text" id="txtNhapNTNhanVienBB2" name="txtNhapNTNhanVienBB2" class="form-control has-feedback-right" placeholder="Tên nhân viên 2">
+                        </div>
+                        <div class="col-md-4 col-sm-12 col-xs-12">
+                            <label for="lbNhapNTNhanVienBB1">
+                                Tên nhân viên 3
+                                <a style="color:red">(*)</a>
+                            </label>
+                            <input type="text" id="txtNhapNTNhanVienBB3" name="txtNhapNTNhanVienBB3" class="form-control has-feedback-right" placeholder="Tên nhân viên 3">
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <div class="col-md-4 col-sm-12 col-xs-12">
+                            <label for="lbNhapNTChiSoDongHo">
+                                Chỉ số đồng hồ
+                            </label>
+                            <input type="text" id="txtNhapNTChiSoDongHo" name="txtNhapNTChiSoDongHo" class="form-control has-feedback-right" placeholder="Chỉ số đồng hồ">
+                        </div>
+                        <div class="col-md-4 col-sm-12 col-xs-12">
+                            <label for="lbNhapNTChieuCaoLap">
+                                Chiều cao lắp
+                            </label>
+                            <input type="text" id="txtNhapNTChieuCaoLap" name="txtNhapNTChieuCaoLap" class="form-control has-feedback-right" placeholder="Chiều cao lắp">
+                        </div>
+                        <div class="col-md-4 col-sm-12 col-xs-12">
+                            <label for="lbNhapNTKhoanCachTuOngDenDH">
+                                Khoản cách từ ống đến đồng hồ
+                            </label>
+                            <input type="text" id="txtNhapNTKhoanCachTuOngDenDH" name="txtNhapNTKhoanCachTuOngDenDH" class="form-control has-feedback-right" placeholder="Khoản cách từ ống đến đồng hồ ">
+                        </div>
+                    </div>
+                    
+                    <div class="item form-group">
+                        <div class="col-md-4 col-sm-12 col-xs-12">
+                            <label for="lbNhapNTViTriLapDongHo">
+                                Vị trí lắp đồng hồ
+                            </label>
+                            <input type="text" id="txtNhapNTViTriLapDongHo" name="txtNhapNTViTriLapDongHo" class="form-control has-feedback-right" placeholder="Vị trí lắp đồng hồ">
+                        </div>
+                        <div class="col-md-4 col-sm-12 col-xs-12">
+                            <label for="lbNhapNTMaChiMat1">
+                                Mã chì mặt KĐ 1
+                            </label>
+                            <input type="text" id="txtNhapNTMaChiMat1" name="txtNhapNTMaChiMat1" class="form-control has-feedback-right" placeholder="Mã chì mặt 1">
+                        </div>
+                        <div class="col-md-4 col-sm-12 col-xs-12">
+                            <label for="lbNhapNTMaChiMat2">
+                                Mã chì mặt KĐ 2
+                            </label>
+                            <input type="text" id="txtNhapNTMaChiMat2" name="txtNhapNTMaChiMat2" class="form-control has-feedback-right" placeholder="Mã chì mặt 2">
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <div class="col-md-4 col-sm-12 col-xs-12">
+                            <label for="lbNhapNTMaSoKimMat1">
+                                Mã số kìm mặt 1
+                            </label>
+                            <input type="text" id="txtNhapNTMaSoKimMat1" name="txtNhapNTMaSoKimMat1" class="form-control has-feedback-right" placeholder="Mã số kìm mặt 1">
+                        </div>
+                        <div class="col-md-4 col-sm-12 col-xs-12">
+                            <label for="lbNhapNTMaSoKimMat2">
+                                Mã số kìm mặt 2
+                            </label>
+                            <input type="text" id="txtNhapNTMaSoKimMat2" name="txtNhapNTMaSoKimMat2" class="form-control has-feedback-right" placeholder="Mã số kìm mặt 2">
+                        </div>
+                        <div class="col-md-4 col-sm-12 col-xs-12">
+                            <label for="lbNhapNTKetLuanSauChayThu">
+                                Kết luận và kiến nghị sau khi chạy thử
+                            </label>
+                            <input type="text" id="txtNhapNTKetLuanSauChayThu" name="txtNhapNTKetLuanSauChayThu" class="form-control has-feedback-right" placeholder="Kết luận và kiến nghị sau khi chạy thử">
+                        </div>
+                    </div>
+                    <div class="item form-group">
+                        <div class="col-md-4 col-sm-12 col-xs-12">
+                            <label for="lbNhapNTNgayChuyenHoSo">
+                                Ngày chuyển hồ sơ
+                            </label>
+                            <input type="text" id="txtNhapNTNgayChuyenHoSo" name="txtNhapNTNgayChuyenHoSo" class="form-control has-feedback-right" placeholder="Ngày chuyển hồ sơ">
+                        </div>
+                        <div class="col-md-4 col-sm-12 col-xs-12">
+                            <label for="lbNhapNTGhiChuBBNT">
+                                Ghi chú biên bản nghiệm thu
+                            </label>
+                            <input type="text" id="txtNhapNTGhiChuBBNT" name="txtNhapNTGhiChuBBNT" class="form-control has-feedback-right" placeholder="Ghi chú biên bản nghiệm thu">
+                        </div>                        
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="button" id="btnCancelNhapNghiemThu" data-dismiss="modal" class="btn btn-default">Đóng</button>
+                            <button type="button" id="btnSaveNhapNghiemThu" class="btn btn-warning">Lưu nhập nghiệm thu </button>
+                        </div>
+                    </div>
+                </form>
+                <form class="form-horizontal form-label-left" id="frmMainNhapNghiemThuTim">
+                    <div class="item form-group">
+                        <div class="col-md-3 col-sm-12 col-xs-12">
+                            <label for="lbNhapNTKhuVuc">
+                                Khu vực
+                            </label>
+                            <select id="ddlNhapNTKhuVuc" name="ddlNhapNTKhuVuc" class="form-control"></select>
+                        </div>
+                        <div class="col-md-3 col-sm-12 col-xs-12">
+                            <label for="lbNhapNTPhongTo">
+                                Phòng, tổ
+                            </label>
+                            <select id="ddlNhapNTPhongTo" class="form-control"></select>
+                        </div>
+                        <div class="col-md-3 col-sm-12 col-xs-12">
+                            <label for="lbNhapNTTenKhachHang">
+                                Mã đơn, tên
+                            </label>
+                            <input type="text" id="txtNhapNTTenKhachHang" name="txtNhapNTTenKhachHang" class="form-control has-feedback-right" placeholder="Tên khách hàng">
+                        </div>
+                        <div class="col-md-3 col-sm-12 col-xs-12">
+                            <label for="lbbtnNhapNTTim">
+                                .
+                            </label>
+                            <span class="input-group-btn ">
+                                <button type="button" id="btnNhapNTTimKhachHang" class="btn btn-success">Tìm khách hàng </button>
+                            </span>
+                        </div>
+                    </div>
+                    <table class="table table-striped jambo_table bulk_action" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Maddk</th>
+                                <th>Tên khách hàng</th>
+                                <th>Khu vực</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-contentNhapNTKhachHang"></tbody>
+                    </table>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <script type="x-tmpl-mustache" id="template-table-NhapNTKhachHang">
+        <tr>
+            <th scope="row">
+                <a class="btn-link btn-EditNhapNghiemThuChuanBi" data-id="{{MADDK}}-{{TENKH}}-{{DIACHILD}}-{{DanhSo}}-{{DongHoMaLDH}}-{{DongHoSXTai}}-{{DongHoSoNo}}-{{ThiCongChiSoDau}}-{{CHIKDM1}}-{{CHIKDM2}}" data-toggle="tooltip" data-placement="top" title="Mã đơn">
+                    <i >{{MADDK}}</i>
+                </a>
+            </th>
+            <td>{{TENKH}}</td>
+            <td>{{TENKV}}</td>
+        </tr>
+    </script>
+</div>
+

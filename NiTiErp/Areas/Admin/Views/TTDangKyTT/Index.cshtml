@@ -1,0 +1,1021 @@
+﻿
+@{ ViewData["Title"] = "Index"; }
+@section Styles{
+    <link href="~/lib/jQuery-EasyUI/themes/bootstrap/easyui.css" rel="stylesheet" />
+    <link href="~/lib/jQuery-EasyUI/themes/icon.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap-datepicker/dist/css/bootstrap-datepicker.css" rel="stylesheet" />
+}
+@section Scripts{
+
+    <script src="~/lib/jQuery-EasyUI/jquery.easyui.min.js" asp-append-version="true"></script>
+    <script src="~/lib/bootstrap-datepicker/dist/js/bootstrap-datepicker.js" asp-append-version="true"></script>
+    <script src="~/lib/bootstrap-datepicker/dist/locales/bootstrap-datepicker.vi.min.js" charset="UTF-8" asp-append-version="true"></script>
+
+    <script src="~/app/controllers/ttdangkytt/lichsudangkynuoc.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/ttdangkytt/lichsudangkydien.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/ttdangkytt/xacnhandvnuoc.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/ttdangkytt/editdvnuoc.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/ttdangkytt/tuchoidvnuoc.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/ttdangkytt/filehosodvnuoc.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/ttdangkytt/dichvunuoc.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/ttdangkytt/xacnhandvdien.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/ttdangkytt/editdvdien.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/ttdangkytt/tuchoidvdien.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/ttdangkytt/filehosodvdien.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/ttdangkytt/dichvudien.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/ttdangkytt/chuyenTKNuoc.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/ttdangkytt/editdangkynuoc.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/ttdangkytt/tuchoinuoc.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/ttdangkytt/filehosonuoc.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/ttdangkytt/dangkynuoc.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/ttdangkytt/chuyenTK.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/ttdangkytt/editdangkydien.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/ttdangkytt/tuchoi.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/ttdangkytt/filehoso.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/ttdangkytt/dangkydien.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/ttdangkytt/index.js" asp-append-version="true"></script>
+    <script>var ttdangkytt = new ttdangkyttController();
+        ttdangkytt.initialize();</script>
+}
+
+<input type="hidden" id="hidTTDangKyDien" value="" />
+<input type="hidden" id="hidInsertUpdateTTDangKyDien" value="" />
+
+<input type="hidden" id="hidTTDangKyNuoc" value="" />
+<input type="hidden" id="hidInsertUpdateTTDangKyNuoc" value="" />
+
+<input type="hidden" id="hidTTCacDichVuDien" value="" />
+<input type="hidden" id="hidInsertUpdateTTCacDichVuDien" value="" />
+
+<input type="hidden" id="hidTTCacDichVuNuoc" value="" />
+<input type="hidden" id="hidInsertUpdateTTCacDichVuNuoc" value="" />
+
+<div class="">
+    <div class="page-title">
+        <div class="title_left">
+            <small>
+                <a class="btn btn-link ">
+                    Đăng ký trực tuyến
+                </a>
+                >>
+                <a class="btn btn-link ">
+                    Kiểm tra và chuyển khách hàng sang thiết kế
+                </a>
+            </small>
+        </div>
+        <div class="title_right">
+            @*<div class="col-md-3 col-sm-3 col-xs-12 form-group pull-right top_search">
+                    <button class="btn btn-round btn-success" id="btn-create" type="button">Thêm mới</button>
+                </div>*@
+            @*<div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                    <div class="input-group">
+                    </div>
+                </div>*@
+        </div>
+    </div>
+    <div class="page-title">
+        <div class="title_left">
+            <h3>  <small></small></h3>
+        </div>
+        <div class="title_right">
+            <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right">
+                <div class="input-group">
+                    <select id="ddlKhuVuc" class="form-control"></select>
+                    <span class="input-group-btn">
+                        <button class="btn btn-success" id="btnTimNoiDung" type="button">Tìm !</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="x_content">
+        <div id="divBaoCaoTrucTuyen" class="row">
+            <div class="x_panel">
+                <div class="x_title div-h2-fontbold">
+                    <h2>Các báo cáo đăng ký trực tuyến<small></small></h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <form id="formTTBaoCao" data-parsley-validate class="form-horizontal form-label-left">
+                        <div class="form-group">
+                            <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                <div class="input-group">
+                                    <label>Danh sách theo</label>
+                                    <select id="ddlTrucTuyenBaoCaoTheo" name="ddlBaoCaoTrucTuyenTheo" class="form-control"></select>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-12 ">
+                                <div class="col-md-3 col-sm-12 col-xs-12 ">
+                                    <div class="input-group">
+                                        <label>Từ ngày</label>
+                                        <input type="text" id="txtTrucTuyenTuNgay" class="form-control" placeholder="Từ ngày">
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-12 col-xs-12 ">
+                                    <div class="input-group">
+                                        <label>Đến ngày</label>
+                                        <input type="text" id="txtTrucTuyenDenNgay" class="form-control" placeholder="Đến ngày">                                        
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-12 col-xs-12 ">
+                                    <div class="input-group">
+                                        <label>Chọn theo ngày</label>
+                                        <input id="ckChonTheoNgay" type="checkbox" class="checkbox" style="width:20px;"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-12 col-xs-12 ">
+                                    <div class="input-group">
+                                        <label></label>
+                                        <span class="input-group-btn padding-top-5px">
+                                            <button class="btn btn-warning" id="btnTrucTuyenBaoCaoTheo" type="button">Danh sách </button>
+                                        </span>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div id="divPowaco" class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title div-h2-fontbold">
+                        <h2>Tổng các khách hàng đăng ký trực tuyến<small></small></h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <form id="formPowaco" data-parsley-validate class="form-horizontal form-label-left">
+                            <div class="form-group">
+                                <div class="col-md-3 col-sm-12 col-xs-12 div-text-center">
+                                    <a class="btn btn-app div-a-button btnPODangKyDien">
+                                        <span id="spanPODangKyDien" class="badge bg-orange span-fontSize-large">0</span>
+                                        <i class="fa fa-files-o" style="color: dodgerblue"></i> Đăng ký điện
+                                    </a>
+                                </div>
+                                <div class="col-md-3 col-sm-12 col-xs-12 div-text-center">
+                                    <a class="btn btn-app div-a-button btnPODangKyNuoc">
+                                        <span id="spanPODangKyNuoc" class="badge bg-blue span-fontSize-large">0</span>
+                                        <i class="fa fa-files-o" style="color: dodgerblue"></i> Đăng ký nước
+                                    </a>
+                                </div>
+                                <div class="col-md-3 col-sm-12 col-xs-12 div-text-center">
+                                    <a class="btn btn-app div-a-button btnPOCacDichVuDien">
+                                        <span id="spanPOCacDichVuDien" class="badge bg-orange span-fontSize-large">0</span>
+                                        <i class="fa fa-files-o" style="color: dodgerblue"></i> Các dịch vụ điện
+                                    </a>
+                                </div>
+                                <div class="col-md-3 col-sm-12 col-xs-12 div-text-center">
+                                    <a class="btn btn-app div-a-button btnPOCacDichVuNuoc">
+                                        <span id="spanPOCacDichVuNuoc" class="badge bg-blue span-fontSize-large">0</span>
+                                        <i class="fa fa-files-o" style="color: dodgerblue"></i> Các dịch vụ nước
+                                    </a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="divLongXuyen" class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title div-h2-fontbold">
+                        <h2>Xí nghiệp cấp nước Long Xuyên<small></small></h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <form id="formLongXuyen" data-parsley-validate class="form-horizontal form-label-left">
+                            <div class="form-group">
+                                <div class="col-md-3 col-sm-12 col-xs-12 div-text-center">
+                                </div>
+                                <div class="col-md-3 col-sm-12 col-xs-12 div-text-center">
+                                    <a class="btn btn-app div-a-button btnLXDangKyNuoc">
+                                        <span id="spanLXDangKyNuoc" class="badge bg-blue span-fontSize-large">0</span>
+                                        <i class="fa fa-files-o" style="color: dodgerblue"></i> Đăng ký nước
+                                    </a>
+                                </div>
+                                <div class="col-md-3 col-sm-12 col-xs-12 div-text-center">
+                                    <a class="btn btn-app div-a-button btnLXCacDichVuNuoc">
+                                        <span id="spanLXCacDichVuNuoc" class="badge bg-green span-fontSize-large">0</span>
+                                        <i class="fa fa-files-o" style="color: dodgerblue"></i> Các dịch vụ nước
+                                    </a>
+                                </div>
+                                <div class="col-md-3 col-sm-12 col-xs-12 div-text-center">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="divChauDoc" class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title div-h2-fontbold">
+                        <h2>Xí nghiệp điện nước Châu Đốc<small></small></h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <form id="formChauDoc" data-parsley-validate class="form-horizontal form-label-left">
+                            <div class="form-group">
+                                <div class="col-md-3 col-sm-12 col-xs-12 div-text-center">
+                                    <a class="btn btn-app div-a-button btnCDDangKyDien">
+                                        <span id="spanCDDangKyDien" class="badge bg-orange span-fontSize-large">0</span>
+                                        <i class="fa fa-files-o" style="color: dodgerblue"></i> Đăng ký điện
+                                    </a>
+                                </div>
+                                <div class="col-md-3 col-sm-12 col-xs-12 div-text-center">
+                                    <a class="btn btn-app div-a-button btnCDDangKyNuoc">
+                                        <span id="spanCDDangKyNuoc" class="badge bg-blue span-fontSize-large">0</span>
+                                        <i class="fa fa-files-o" style="color: dodgerblue"></i> Đăng ký nước
+                                    </a>
+                                </div>
+                                <div class="col-md-3 col-sm-12 col-xs-12 div-text-center">
+                                    <a class="btn btn-app div-a-button btnCDCacDichVuDien">
+                                        <span id="spanCDCacDichVuDien" class="badge bg-orange span-fontSize-large">0</span>
+                                        <i class="fa fa-files-o" style="color: dodgerblue"></i> Các dịch vụ điện
+                                    </a>
+                                </div>
+                                <div class="col-md-3 col-sm-12 col-xs-12 div-text-center">
+                                    <a class="btn btn-app div-a-button btnCDCacDichVuNuoc">
+                                        <span id="spanCDCacDichVuNuoc" class="badge bg-blue span-fontSize-large">0</span>
+                                        <i class="fa fa-files-o" style="color: dodgerblue"></i> Các dịch vụ nước
+                                    </a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="divAnPhu" class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title div-h2-fontbold">
+                        <h2>Xí nghiệp điện nước An Phú<small></small></h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <form id="formAnPhu" data-parsley-validate class="form-horizontal form-label-left">
+                            <div class="form-group">
+                                <div class="col-md-3 col-sm-12 col-xs-12 div-text-center">
+                                    <a class="btn btn-app div-a-button btnAPDangKyDien">
+                                        <span id="spanAPDangKyDien" class="badge bg-orange span-fontSize-large">0</span>
+                                        <i class="fa fa-files-o" style="color: dodgerblue"></i> Đăng ký điện
+                                    </a>
+                                </div>
+                                <div class="col-md-3 col-sm-12 col-xs-12 div-text-center">
+                                    <a class="btn btn-app div-a-button btnAPDangKyNuoc">
+                                        <span id="spanAPDangKyNuoc" class="badge bg-blue span-fontSize-large">0</span>
+                                        <i class="fa fa-files-o" style="color: dodgerblue"></i> Đăng ký nước
+                                    </a>
+                                </div>
+                                <div class="col-md-3 col-sm-12 col-xs-12 div-text-center">
+                                    <a class="btn btn-app div-a-button btnAPCacDichVuDien">
+                                        <span id="spanAPCacDichVuDien" class="badge bg-orange span-fontSize-large">0</span>
+                                        <i class="fa fa-files-o" style="color: dodgerblue"></i> Các dịch vụ điện
+                                    </a>
+                                </div>
+                                <div class="col-md-3 col-sm-12 col-xs-12 div-text-center">
+                                    <a class="btn btn-app div-a-button btnAPCacDichVuNuoc">
+                                        <span id="spanAPCacDichVuNuoc" class="badge bg-blue span-fontSize-large">0</span>
+                                        <i class="fa fa-files-o" style="color: dodgerblue"></i> Các dịch vụ nước
+                                    </a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="divTanChau" class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title div-h2-fontbold">
+                        <h2>Xí nghiệp điện nước Tân Châu<small></small></h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <form id="formTanChau" data-parsley-validate class="form-horizontal form-label-left">
+                            <div class="form-group">
+                                <div class="col-md-3 col-sm-12 col-xs-12 div-text-center">
+                                    <a class="btn btn-app div-a-button btnTCDangKyDien">
+                                        <span id="spanTCDangKyDien" class="badge bg-orange span-fontSize-large">0</span>
+                                        <i class="fa fa-files-o" style="color: dodgerblue"></i> Đăng ký điện
+                                    </a>
+                                </div>
+                                <div class="col-md-3 col-sm-12 col-xs-12 div-text-center">
+                                    <a class="btn btn-app div-a-button btnTCDangKyNuoc">
+                                        <span id="spanTCDangKyNuoc" class="badge bg-blue span-fontSize-large">0</span>
+                                        <i class="fa fa-files-o" style="color: dodgerblue"></i> Đăng ký nước
+                                    </a>
+                                </div>
+                                <div class="col-md-3 col-sm-12 col-xs-12 div-text-center">
+                                    <a class="btn btn-app div-a-button btnTCCacDichVuDien">
+                                        <span id="spanTCCacDichVuDien" class="badge bg-orange span-fontSize-large">0</span>
+                                        <i class="fa fa-files-o" style="color: dodgerblue"></i> Các dịch vụ điện
+                                    </a>
+                                </div>
+                                <div class="col-md-3 col-sm-12 col-xs-12 div-text-center">
+                                    <a class="btn btn-app div-a-button btnTCCacDichVuNuoc">
+                                        <span id="spanTCCacDichVuNuoc" class="badge bg-blue span-fontSize-large">0</span>
+                                        <i class="fa fa-files-o" style="color: dodgerblue"></i> Các dịch vụ nước
+                                    </a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="divPhuTan" class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title div-h2-fontbold">
+                        <h2>Xí nghiệp điện nước Phú Tân<small></small></h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <form id="formPhuTan" data-parsley-validate class="form-horizontal form-label-left">
+                            <div class="form-group">
+                                <div class="col-md-3 col-sm-12 col-xs-12 div-text-center">
+                                    <a class="btn btn-app div-a-button btnPTDangKyDien">
+                                        <span id="spanPTDangKyDien" class="badge bg-orange span-fontSize-large">0</span>
+                                        <i class="fa fa-files-o" style="color: dodgerblue"></i> Đăng ký điện
+                                    </a>
+                                </div>
+                                <div class="col-md-3 col-sm-12 col-xs-12 div-text-center">
+                                    <a class="btn btn-app div-a-button btnPTDangKyNuoc">
+                                        <span id="spanPTDangKyNuoc" class="badge bg-blue span-fontSize-large">0</span>
+                                        <i class="fa fa-files-o" style="color: dodgerblue"></i> Đăng ký nước
+                                    </a>
+                                </div>
+                                <div class="col-md-3 col-sm-12 col-xs-12 div-text-center">
+                                    <a class="btn btn-app div-a-button btnPTCacDichVuDien">
+                                        <span id="spanPTCacDichVuDien" class="badge bg-orange span-fontSize-large">0</span>
+                                        <i class="fa fa-files-o" style="color: dodgerblue"></i> Các dịch vụ điện
+                                    </a>
+                                </div>
+                                <div class="col-md-3 col-sm-12 col-xs-12 div-text-center">
+                                    <a class="btn btn-app div-a-button btnPTCacDichVuNuoc">
+                                        <span id="spanPTCacDichVuNuoc" class="badge bg-blue span-fontSize-large">0</span>
+                                        <i class="fa fa-files-o" style="color: dodgerblue"></i> Các dịch vụ nước
+                                    </a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="divChauPhu" class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title div-h2-fontbold">
+                        <h2>Xí nghiệp điện nước Châu Phú<small></small></h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <form id="formChauPhu" data-parsley-validate class="form-horizontal form-label-left">
+                            <div class="form-group">
+                                <div class="col-md-3 col-sm-12 col-xs-12 div-text-center">
+                                    <a class="btn btn-app div-a-button btnCPDangKyDien">
+                                        <span id="spanCPDangKyDien" class="badge bg-orange span-fontSize-large">0</span>
+                                        <i class="fa fa-files-o" style="color: dodgerblue"></i> Đăng ký điện
+                                    </a>
+                                </div>
+                                <div class="col-md-3 col-sm-12 col-xs-12 div-text-center">
+                                    <a class="btn btn-app div-a-button btnCPDangKyNuoc">
+                                        <span id="spanCPDangKyNuoc" class="badge bg-blue span-fontSize-large">0</span>
+                                        <i class="fa fa-files-o" style="color: dodgerblue"></i> Đăng ký nước
+                                    </a>
+                                </div>
+                                <div class="col-md-3 col-sm-12 col-xs-12 div-text-center">
+                                    <a class="btn btn-app div-a-button btnCPCacDichVuDien">
+                                        <span id="spanCPCacDichVuDien" class="badge bg-orange span-fontSize-large">0</span>
+                                        <i class="fa fa-files-o" style="color: dodgerblue"></i> Các dịch vụ điện
+                                    </a>
+                                </div>
+                                <div class="col-md-3 col-sm-12 col-xs-12 div-text-center">
+                                    <a class="btn btn-app div-a-button btnCPCacDichVuNuoc">
+                                        <span id="spanCPCacDichVuNuoc" class="badge bg-blue span-fontSize-large">0</span>
+                                        <i class="fa fa-files-o" style="color: dodgerblue"></i> Các dịch vụ nước
+                                    </a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="divTinhBien" class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title div-h2-fontbold">
+                        <h2>Xí nghiệp điện nước Tịnh Biên<small></small></h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <form id="formTinhBien" data-parsley-validate class="form-horizontal form-label-left">
+                            <div class="form-group">
+                                <div class="col-md-3 col-sm-12 col-xs-12 div-text-center">
+                                    <a class="btn btn-app div-a-button btnTBDangKyDien">
+                                        <span id="spanTBDangKyDien" class="badge bg-orange span-fontSize-large">0</span>
+                                        <i class="fa fa-files-o" style="color: dodgerblue"></i> Đăng ký điện
+                                    </a>
+                                </div>
+                                <div class="col-md-3 col-sm-12 col-xs-12 div-text-center">
+                                    <a class="btn btn-app div-a-button btnTBDangKyNuoc">
+                                        <span id="spanTBDangKyNuoc" class="badge bg-blue span-fontSize-large">0</span>
+                                        <i class="fa fa-files-o" style="color: dodgerblue"></i> Đăng ký nước
+                                    </a>
+                                </div>
+                                <div class="col-md-3 col-sm-12 col-xs-12 div-text-center">
+                                    <a class="btn btn-app div-a-button btnTBCacDichVuDien">
+                                        <span id="spanTBCacDichVuDien" class="badge bg-orange span-fontSize-large">0</span>
+                                        <i class="fa fa-files-o" style="color: dodgerblue"></i> Các dịch vụ điện
+                                    </a>
+                                </div>
+                                <div class="col-md-3 col-sm-12 col-xs-12 div-text-center">
+                                    <a class="btn btn-app div-a-button btnTBCacDichVuNuoc">
+                                        <span id="spanTBCacDichVuNuoc" class="badge bg-blue span-fontSize-large">0</span>
+                                        <i class="fa fa-files-o" style="color: dodgerblue"></i> Các dịch vụ nước
+                                    </a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="divTriTon" class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title div-h2-fontbold">
+                        <h2>Xí nghiệp điện nước Tri Tôn<small></small></h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <form id="formTriTon" data-parsley-validate class="form-horizontal form-label-left">
+                            <div class="form-group">
+                                <div class="col-md-3 col-sm-12 col-xs-12 div-text-center">
+                                    <a class="btn btn-app div-a-button btnTTDangKyDien">
+                                        <span id="spanTTDangKyDien" class="badge bg-orange span-fontSize-large">0</span>
+                                        <i class="fa fa-files-o" style="color: dodgerblue"></i> Đăng ký điện
+                                    </a>
+                                </div>
+                                <div class="col-md-3 col-sm-12 col-xs-12 div-text-center">
+                                    <a class="btn btn-app div-a-button btnTTDangKyNuoc">
+                                        <span id="spanTTDangKyNuoc" class="badge bg-blue span-fontSize-large">0</span>
+                                        <i class="fa fa-files-o" style="color: dodgerblue"></i> Đăng ký nước
+                                    </a>
+                                </div>
+                                <div class="col-md-3 col-sm-12 col-xs-12 div-text-center">
+                                    <a class="btn btn-app div-a-button btnTTCacDichVuDien">
+                                        <span id="spanTTCacDichVuDien" class="badge bg-orange span-fontSize-large">0</span>
+                                        <i class="fa fa-files-o" style="color: dodgerblue"></i> Các dịch vụ điện
+                                    </a>
+                                </div>
+                                <div class="col-md-3 col-sm-12 col-xs-12 div-text-center">
+                                    <a class="btn btn-app div-a-button btnTTCacDichVuNuoc">
+                                        <span id="spanTTCacDichVuNuoc" class="badge bg-blue span-fontSize-large">0</span>
+                                        <i class="fa fa-files-o" style="color: dodgerblue"></i> Các dịch vụ nước
+                                    </a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="divChauThanh" class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title div-h2-fontbold">
+                        <h2>Xí nghiệp điện nước Châu Thành<small></small></h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <form id="formChauThanh" data-parsley-validate class="form-horizontal form-label-left">
+                            <div class="form-group">
+                                <div class="col-md-3 col-sm-12 col-xs-12 div-text-center">
+                                    <a class="btn btn-app div-a-button btnCTDangKyDien">
+                                        <span id="spanCTDangKyDien" class="badge bg-orange span-fontSize-large">0</span>
+                                        <i class="fa fa-files-o" style="color: dodgerblue"></i> Đăng ký điện
+                                    </a>
+                                </div>
+                                <div class="col-md-3 col-sm-12 col-xs-12 div-text-center">
+                                    <a class="btn btn-app div-a-button btnCTDangKyNuoc">
+                                        <span id="spanCTDangKyNuoc" class="badge bg-blue span-fontSize-large">0</span>
+                                        <i class="fa fa-files-o" style="color: dodgerblue"></i> Đăng ký nước
+                                    </a>
+                                </div>
+                                <div class="col-md-3 col-sm-12 col-xs-12 div-text-center">
+                                    <a class="btn btn-app div-a-button btnCTCacDichVuDien">
+                                        <span id="spanCTCacDichVuDien" class="badge bg-orange span-fontSize-large">0</span>
+                                        <i class="fa fa-files-o" style="color: dodgerblue"></i> Các dịch vụ điện
+                                    </a>
+                                </div>
+                                <div class="col-md-3 col-sm-12 col-xs-12 div-text-center">
+                                    <a class="btn btn-app div-a-button btnCTCacDichVuNuoc">
+                                        <span id="spanCTCacDichVuNuoc" class="badge bg-blue span-fontSize-large">0</span>
+                                        <i class="fa fa-files-o" style="color: dodgerblue"></i> Các dịch vụ nước
+                                    </a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="divChoMoi" class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title div-h2-fontbold">
+                        <h2>Xí nghiệp điện nước Chợ Mới<small></small></h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <form id="formChoMoi" data-parsley-validate class="form-horizontal form-label-left">
+                            <div class="form-group">
+                                <div class="col-md-3 col-sm-12 col-xs-12 div-text-center">
+                                    <a class="btn btn-app div-a-button btnCMDangKyDien">
+                                        <span id="spanCMDangKyDien" class="badge bg-orange span-fontSize-large">0</span>
+                                        <i class="fa fa-files-o" style="color: dodgerblue"></i> Đăng ký điện
+                                    </a>
+                                </div>
+                                <div class="col-md-3 col-sm-12 col-xs-12 div-text-center">
+                                    <a class="btn btn-app div-a-button btnCMDangKyNuoc">
+                                        <span id="spanCMDangKyNuoc" class="badge bg-blue span-fontSize-large">0</span>
+                                        <i class="fa fa-files-o" style="color: dodgerblue"></i> Đăng ký nước
+                                    </a>
+                                </div>
+                                <div class="col-md-3 col-sm-12 col-xs-12 div-text-center">
+                                    <a class="btn btn-app div-a-button btnCMCacDichVuDien">
+                                        <span id="spanCMCacDichVuDien" class="badge bg-orange span-fontSize-large">0</span>
+                                        <i class="fa fa-files-o" style="color: dodgerblue"></i> Các dịch vụ điện
+                                    </a>
+                                </div>
+                                <div class="col-md-3 col-sm-12 col-xs-12 div-text-center">
+                                    <a class="btn btn-app div-a-button btnCMCacDichVuNuoc">
+                                        <span id="spanCMCacDichVuNuoc" class="badge bg-blue span-fontSize-large">0</span>
+                                        <i class="fa fa-files-o" style="color: dodgerblue"></i> Các dịch vụ nước
+                                    </a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="divThoaiSon" class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title div-h2-fontbold">
+                        <h2>Xí nghiệp điện nước Thoại Sơn<small></small></h2>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <form id="formChauDoc" data-parsley-validate class="form-horizontal form-label-left">
+                            <div class="form-group">
+                                <div class="col-md-3 col-sm-12 col-xs-12 div-text-center">
+                                    <a class="btn btn-app div-a-button btnTSDangKyDien">
+                                        <span id="spanTSDangKyDien" class="badge bg-orange span-fontSize-large">0</span>
+                                        <i class="fa fa-files-o" style="color: dodgerblue"></i> Đăng ký điện
+                                    </a>
+                                </div>
+                                <div class="col-md-3 col-sm-12 col-xs-12 div-text-center">
+                                    <a class="btn btn-app div-a-button btnTSDangKyNuoc">
+                                        <span id="spanTSDangKyNuoc" class="badge bg-blue span-fontSize-large">0</span>
+                                        <i class="fa fa-files-o" style="color: dodgerblue"></i> Đăng ký nước
+                                    </a>
+                                </div>
+                                <div class="col-md-3 col-sm-12 col-xs-12 div-text-center">
+                                    <a class="btn btn-app div-a-button btnTSCacDichVuDien">
+                                        <span id="spanTSCacDichVuDien" class="badge bg-orange span-fontSize-large">0</span>
+                                        <i class="fa fa-files-o" style="color: dodgerblue"></i> Các dịch vụ điện
+                                    </a>
+                                </div>
+                                <div class="col-md-3 col-sm-12 col-xs-12 div-text-center">
+                                    <a class="btn btn-app div-a-button btnTSCacDichVuNuoc">
+                                        <span id="spanTSCacDichVuNuoc" class="badge bg-blue span-fontSize-large">0</span>
+                                        <i class="fa fa-files-o" style="color: dodgerblue"></i> Các dịch vụ nước
+                                    </a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="divDangKyDien" class="row">
+        <div class="x_panel">
+            <div>
+                <div class="col-md-3 col-sm-3 col-xs-12 form-group pull-right">
+                    <div class="input-group">
+                        <label>Tìm theo tên, số điện thoại</label>
+                        <input type="text" id="txtTimKhachHangTenSDT" class="form-control" placeholder="Tìm khách hàng...">
+                        <span class="input-group-btn padding-top-5px">
+                            <button class="btn btn-success" id="btnTimKhachHangTenSDT" type="button">Tìm !</button>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-12 form-group pull-right">
+                    <div class="input-group">
+                        <label>Lọc theo trạng thái</label>
+                        <select id="ddlLocTheoTrangThaiDien" name="ddlLocTheoTrangThaiDien" class="form-control"></select>                     
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="table-responsive" id="table-responsiveTTDangKyDien">
+            <table id="tblTTDangKyDien" class="table table-striped jambo_table bulk_action" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th width="=5%">#</th>
+                        <th>Tên người yêu cầu</th>
+                        <th>Khu vực</th>
+                        <th>Nơi lắp</th>
+                        @*<th>Số CCCD / CMND</th>*@
+                        <th>Số điện thoại</th>
+                        <th>Ngày nhận Hs</th>
+                        <th>Ngày trả Hs</th>
+                        <th>.</th>
+                        <th></th>
+                        <th></th>
+                        <th>Trạng thái</th>
+                    </tr>
+                </thead>
+                <tbody id="tblContentTTDangKyDien"></tbody>
+            </table>
+            <div class="row">
+                <div class="col-sm-5">
+                    <div class="dataTables_info" id="datatable-checkbox_infoTTDangKyDien" role="status" aria-live="polite">
+                        <select id="ddl-show-pageTTDangKyDien">
+                            <option value="10" selected="selected">10</option>
+                            <option value="20">20</option>
+                            <option value="30">30</option>
+                            <option value="50">50</option>
+                        </select>
+                        <span class="item-per-page">
+                            dòng/trang.
+                        </span>
+                        Tổng cộng: <strong id="lbTTDangKyDienTotalRecords"></strong>
+                    </div>
+                </div>
+                <div class="col-sm-7">
+                    <div class="dataTables_paginate" id="datatable-checkbox_paginateTTDangKyDien">
+                        <ul id="paginationULTTDangKyDien"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="divDangKyNuoc" class="row">
+        <div class="x_panel">
+            <div>
+                <div class="col-md-3 col-sm-3 col-xs-12 form-group pull-right">
+                    <div class="input-group">
+                        <label>Tìm theo tên, số điện thoại</label>
+                        <input type="text" id="txtTimKhachHangTenSDTNuoc" class="form-control" placeholder="Tìm khách hàng...">
+                        <span class="input-group-btn padding-top-5px">
+                            <button class="btn btn-success" id="btnTimKhachHangTenSDTNuoc" type="button">Tìm !</button>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-12 form-group pull-right">
+                    <div class="input-group">
+                        <label>Lọc theo trạng thái</label>
+                        <select id="ddlLocTheoTrangThaiNuoc" name="ddlLocTheoTrangThaiNuoc" class="form-control"></select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="table-responsive" id="table-responsiveTTDangKyNuoc">
+            <table id="tblTTDangKyNuoc" class="table table-striped jambo_table bulk_action" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th width="=5%">#</th>
+                        <th>Tên người yêu cầu</th>
+                        <th>Khu vực</th>
+                        <th>Nơi lắp</th>
+                        @*<th>Số CCCD / CMND</th>*@
+                        <th>Số điện thoại</th>
+                        <th>Ngày nhận Hs</th>
+                        <th>Ngày trả Hs</th>
+                        <th>.</th>
+                        <th></th>
+                        <th></th>
+                        <th>Trạng thái</th>
+                    </tr>
+                </thead>
+                <tbody id="tblContentTTDangKyNuoc"></tbody>
+            </table>
+            <div class="row">
+                <div class="col-sm-5">
+                    <div class="dataTables_info" id="datatable-checkbox_infoTTDangKyNuoc" role="status" aria-live="polite">
+                        <select id="ddl-show-pageTTDangKyNuoc">
+                            <option value="10" selected="selected">10</option>
+                            <option value="20">20</option>
+                            <option value="30">30</option>
+                            <option value="50">50</option>
+                        </select>
+                        <span class="item-per-page">
+                            dòng/trang.
+                        </span>
+                        Tổng cộng: <strong id="lbTTDangKyNuocTotalRecords"></strong>
+                    </div>
+                </div>
+                <div class="col-sm-7">
+                    <div class="dataTables_paginate" id="datatable-checkbox_paginateTTDangKyNuoc">
+                        <ul id="paginationULTTDangKyNuoc"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="divDichVuDien" class="row">
+        <div class="x_panel">
+            <div>
+                <div class="col-md-3 col-sm-3 col-xs-12 form-group pull-right">
+                    <div class="input-group">
+                        <label>Tìm theo tên, số điện thoại</label>
+                        <input type="text" id="txtTimKhachHangTenSDTDVDien" class="form-control" placeholder="Tìm khách hàng...">
+                        <span class="input-group-btn padding-top-5px">
+                            <button class="btn btn-success" id="btnTimKhachHangTenSDTDVDien" type="button">Tìm !</button>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-12 form-group pull-right">
+                    <div class="input-group">
+                        <label>Lọc theo trạng thái</label>
+                        <select id="ddlLocTheoTrangThaiDVDien" name="ddlLocTheoTrangThaiDVDien" class="form-control"></select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="table-responsive" id="table-responsiveTTDangKyDVDien">
+            <table id="tblTTDangKyDVDien" class="table table-striped jambo_table bulk_action" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th width="=5%">#</th>
+                        <th>Tên người yêu cầu</th>
+                        <th>Khu vực</th>
+                        <th>Địa chỉ</th>
+                        @*<th>Số CCCD / CMND</th>*@
+                        <th>Số điện thoại</th>
+                        <th>Dịch vụ</th>
+                        <th>Ngày nhận Hs</th>
+                        <th>Ngày trả Hs</th>
+                        <th>.</th>
+                        <th></th>
+                        <th></th>
+                        <th>Trạng thái</th>
+                    </tr>
+                </thead>
+                <tbody id="tblContentTTDangKyDVDien"></tbody>
+            </table>
+            <div class="row">
+                <div class="col-sm-5">
+                    <div class="dataTables_info" id="datatable-checkbox_infoTTDangKyDVDien" role="status" aria-live="polite">
+                        <select id="ddl-show-pageTTDangKyDVDien">
+                            <option value="10" selected="selected">10</option>
+                            <option value="20">20</option>
+                            <option value="30">30</option>
+                            <option value="50">50</option>
+                        </select>
+                        <span class="item-per-page">
+                            dòng/trang.
+                        </span>
+                        Tổng cộng: <strong id="lbTTDangKyDVDienTotalRecords"></strong>
+                    </div>
+                </div>
+                <div class="col-sm-7">
+                    <div class="dataTables_paginate" id="datatable-checkbox_paginateTTDangKyDVDien">
+                        <ul id="paginationULTTDangKyDVDien"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="divDichVuNuoc" class="row">
+        <div class="x_panel">
+            <div>
+                <div class="col-md-3 col-sm-3 col-xs-12 form-group pull-right">
+                    <div class="input-group">
+                        <label>Tìm theo tên, số điện thoại</label>
+                        <input type="text" id="txtTimKhachHangTenSDTDVNuoc" class="form-control" placeholder="Tìm khách hàng...">
+                        <span class="input-group-btn padding-top-5px">
+                            <button class="btn btn-success" id="btnTimKhachHangTenSDTDVNuoc" type="button">Tìm !</button>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-12 form-group pull-right">
+                    <div class="input-group">
+                        <label>Lọc theo trạng thái</label>
+                        <select id="ddlLocTheoTrangThaiDVNuoc" name="ddlLocTheoTrangThaiDVNuoc" class="form-control"></select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="table-responsive" id="table-responsiveTTDangKyDVNuoc">
+            <table id="tblTTDangKyDVNuoc" class="table table-striped jambo_table bulk_action" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th width="=5%">#</th>
+                        <th>Tên người yêu cầu</th>
+                        <th>Khu vực</th>
+                        <th>Địa chỉ</th>
+                        @*<th>Số CCCD / CMND</th>*@
+                        <th>Số điện thoại</th>
+                        <th>Dịch vụ</th>
+                        <th>Ngày nhận Hs</th>
+                        <th>Ngày trả Hs</th>
+                        <th>.</th>
+                        <th></th>
+                        <th></th>
+                        <th>Trạng thái</th>
+                    </tr>
+                </thead>
+                <tbody id="tblContentTTDangKyDVNuoc"></tbody>
+            </table>
+            <div class="row">
+                <div class="col-sm-5">
+                    <div class="dataTables_info" id="datatable-checkbox_infoTTDangKyDVNuoc" role="status" aria-live="polite">
+                        <select id="ddl-show-pageTTDangKyDVNuoc">
+                            <option value="10" selected="selected">10</option>
+                            <option value="20">20</option>
+                            <option value="30">30</option>
+                            <option value="50">50</option>
+                        </select>
+                        <span class="item-per-page">
+                            dòng/trang.
+                        </span>
+                        Tổng cộng: <strong id="lbTTDangKyDVNuocTotalRecords"></strong>
+                    </div>
+                </div>
+                <div class="col-sm-7">
+                    <div class="dataTables_paginate" id="datatable-checkbox_paginateTTDangKyDVNuoc">
+                        <ul id="paginationULTTDangKyDVNuoc"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script id="table-TTDangKyDien" type="x-tmpl-mustache">
+        <tr>
+            <th scope="row">
+                <a class="btn-lg btn-link btn-EditDangKy" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Sửa đang ký"><i class="fa fa-pencil"></i> </a>
+            </th>
+            <td>{{HoTenNguoiYeuCau}}</td>
+            <td>{{TenQuan}}</td>
+            <td>{{NoiLap}}</td>
+            @*<td>{{SoTheCCCD}}</td>*@
+            <td>{{DienThoai}}</td>
+            <td>{{ThoiGianNhanHoSo}}</td>
+            <td>{{ThoiGianTraKetQuaHoSo}}</td>
+            <th scope="row">
+                <a class="btn-link btn-TuChoi" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Từ chối">
+                    <i >Từ chối</i>
+                </a>
+            </th>
+            <th scope="row">
+                <a class="btn-link btn-FileDinhKem" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Các file đính kèm">
+                    <i >In G.đề nghị</i>
+                </a>
+            </th>
+            <th scope="row">
+                <a class="btn-link btn-ChuyenToTK" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Chuyển đến Thiết kế">
+                    <i >Xác nhận đơn</i>
+                </a>
+            </th>
+            <td>
+                <a class="btn-link btn-LichSuDangKyDien" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Lịch sử đăng ký điện">
+                   {{{TTDangyOnline}}}
+                </a>
+            </td>
+            @*<td>{{{TTDangyOnline}}}</td>*@
+        </tr>
+</script>
+<script id="table-TTDangKyNuoc" type="x-tmpl-mustache">
+        <tr>
+            <th scope="row">
+                <a class="btn-lg btn-link btn-EditDangKyNuoc" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Sửa đang ký"><i class="fa fa-pencil"></i> </a>
+            </th>
+            <td>{{HoTenNguoiYeuCau}}</td>
+            <td>{{TenQuan}}</td>
+            <td>{{NoiLap}}</td>
+            @*<td>{{SoTheCCCD}}</td>*@
+            <td>{{DienThoai}}</td>
+            <td>{{ThoiGianNhanHoSo}}</td>
+            <td>{{ThoiGianTraKetQuaHoSo}}</td>
+            <th scope="row">
+                <a class="btn-link btn-TuChoiNuoc" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Từ chối">
+                    <i >Từ chối</i>
+                </a>
+            </th>
+            <th scope="row">
+                <a class="btn-link btn-FileDinhKemNuoc" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Các file đính kèm">
+                    <i >In G.đề nghị</i>
+                </a>
+            </th>
+            <th scope="row">
+                <a class="btn-link btn-ChuyenToTKNuoc" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Chuyển đến Thiết kế">
+                    <i >Xác nhận đơn</i>
+                </a>
+            </th>
+            <td>
+                 <a class="btn-link btn-LichSuDangKyNuoc" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Lịch sử đăng ký nước">
+                   {{{TTDangyOnline}}}
+                </a>
+                @*{{{TTDangyOnline}}}*@
+            </td>
+        </tr>
+</script>
+
+<script id="table-TTDangKyDVDien" type="x-tmpl-mustache">
+        <tr>
+            <th scope="row">
+                <a class="btn-lg btn-link btn-EditDangKyDVDien" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Sửa đang ký"><i class="fa fa-pencil"></i> </a>
+            </th>
+            <td>{{HoTenNguoiYeuCau}}</td>
+            <td>{{TenQuan}}</td>
+            <td>{{NoiLap}}</td>
+            <td>{{DienThoai}}</td>
+            <td>{{DichVuKhachHang}}</td>
+            <td>{{ThoiGianNhanHoSo}}</td>
+            <td>{{ThoiGianTraKetQuaHoSo}}</td>
+            <th scope="row">
+                <a class="btn-link btn-TuChoiDVDien" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Từ chối">
+                    <i >Từ chối</i>
+                </a>
+            </th>
+            <th scope="row">
+                <a class="btn-link btn-FileDinhKemDVDien" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Các file đính kèm">
+                    <i >In G.đề nghị</i>
+                </a>
+            </th>
+            <th scope="row">
+                <a class="btn-link btn-XacNhanDVDien" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Xác nhận dịch vụ">
+                    <i >Xác nhận</i>
+                </a>
+            </th>
+            <td>{{{TTDichVuOnline}}}</td>
+        </tr>
+</script>
+<script id="table-TTDangKyDVNuoc" type="x-tmpl-mustache">
+        <tr>
+            <th scope="row">
+                <a class="btn-lg btn-link btn-EditDangKyDVNuoc" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Sửa đang ký"><i class="fa fa-pencil"></i> </a>
+            </th>
+            <td>{{HoTenNguoiYeuCau}}</td>
+            <td>{{TenQuan}}</td>
+            <td>{{NoiLap}}</td>
+            <td>{{DienThoai}}</td>
+            <td>{{DichVuKhachHang}}</td>
+            <td>{{ThoiGianNhanHoSo}}</td>
+            <td>{{ThoiGianTraKetQuaHoSo}}</td>
+            <th scope="row">
+                <a class="btn-link btn-TuChoiDVNuoc" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Từ chối">
+                    <i >Từ chối</i>
+                </a>
+            </th>
+            <th scope="row">
+                <a class="btn-link btn-FileDinhKemDVNuoc" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Các file đính kèm">
+                    <i >In G.đề nghị</i>
+                </a>
+            </th>
+            <th scope="row">
+                <a class="btn-link btn-XacNhanDVNuoc" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Xác nhận dịch vụ">
+                    <i >Xác nhận</i>
+                </a>
+            </th>
+            <td>{{{TTDichVuOnline}}}</td>
+        </tr>
+</script>
+
+<partial name="_XacNhanDVNuoc.cshtml" />
+<partial name="_EditDVNuoc.cshtml" />
+<partial name="_TuChoiDVNuoc.cshtml" />
+<partial name="_XacNhanDVDien.cshtml" />
+<partial name="_EditDVDien.cshtml" />
+<partial name="_TuChoiDVDien.cshtml" />
+<partial name="_ChuyenTKNuoc.cshtml" />
+<partial name="_EditDangKyNuoc.cshtml" />
+<partial name="_TuChoiNuoc.cshtml" />
+<partial name="_ChuyenTK.cshtml" />
+<partial name="_EditDangKyDien.cshtml" />
+<partial name="_TuChoi.cshtml" />
+<partial name="_FileHoSoDVNuoc.cshtml" />
+<partial name="_FileHoSoDVDien.cshtml" />
+<partial name="_FileDinhKemNuoc.cshtml" />
+<partial name="_FileDinhKem.cshtml" />
+<partial name="_LichSuDangKyDien.cshtml" />
+<partial name="_LichSuDangKyNuoc.cshtml" />
+
+
+

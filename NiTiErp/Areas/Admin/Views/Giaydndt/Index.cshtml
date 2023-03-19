@@ -1,0 +1,158 @@
+﻿@{ ViewData["Title"] = "Index"; }
+@section Styles{
+    <link href="~/lib/jQuery-EasyUI/themes/bootstrap/easyui.css" rel="stylesheet" />
+    <link href="~/lib/jQuery-EasyUI/themes/icon.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap-datepicker/dist/css/bootstrap-datepicker.css" rel="stylesheet" />
+}
+@section Scripts{
+
+    <script src="~/lib/jQuery-EasyUI/jquery.easyui.min.js" asp-append-version="true"></script>
+    <script src="~/lib/bootstrap-datepicker/dist/js/bootstrap-datepicker.js" asp-append-version="true"></script>
+    <script src="~/lib/bootstrap-datepicker/dist/locales/bootstrap-datepicker.vi.min.js" charset="UTF-8" asp-append-version="true"></script>
+    @*<script src="~/admin-side/js/jquery.autocomplete.js" asp-append-version="true"></script>*@
+
+    <script src="~/app/controllers/giaydndt/addeditgdndt.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/giaydndt/index.js" asp-append-version="true"></script>
+    <script>var giaydenghidt = new giaydndtController();
+        giaydenghidt.initialize();</script>
+}
+
+<div class="">
+    <div class="page-title">
+        <div class="title_left">
+            <small>
+                <a class="btn btn-link ">
+                    Giấy đề nghị
+                </a>
+                >>
+                <a class="btn btn-link ">
+                    Tra cứu giấy đề nghị Điện
+                </a>
+            </small>
+        </div>
+        @*<div class="title_right">
+                <div class="col-md-3 col-sm-3 col-xs-12 form-group pull-right top_search">
+                    <button class="btn btn-round btn-success" id="btn-create" type="button">Thêm mới</button>
+                </div>
+                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                    <div class="input-group">
+                    </div>
+                </div>
+            </div>*@
+    </div>
+    <div class="page-title">
+        <div class="title_left">
+            <h3>  <small></small></h3>
+        </div>
+        <div class="title_right">
+            <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right">
+                <div class="input-group">
+                    <input type="text" id="txtTimNoiDung" class="form-control" placeholder="Tên khách hàng...">
+                    <span class="input-group-btn">
+                        <button class="btn btn-warning" id="btnTimNoiDung" type="button">Tìm !</button>
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-12 form-group pull-right top_search">
+                <div class="input-group">
+                    <select id="ddlPhongTo" class="form-control"></select>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-3 col-xs-12 form-group pull-right top_search">
+                <div class="input-group">
+                    <select id="ddlKhuVuc" class="form-control"></select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="x_panel">
+            <div class="row">
+                <div class="col-sm-4">
+                    <label for="lbGDNDieuKien">Điều kiện </label>
+                    <select id="ddlGDNDieuKien" class="form-control"></select>
+                </div>
+                <div class="col-sm-2">
+                    <label for="lbGDNTuNgay">Từ ngày </label>
+                    <input type="text" name="txtGDNTuNgay" class="form-control has-feedback-right" id="txtGDNTuNgay" placeholder="Từ ngày">
+                </div>
+                <div class="col-sm-2">
+                    <label for="lbGDNDenNgay">Đến ngày </label>
+                    <input type="text" name="txtGDNDenNgay" class="form-control has-feedback-right" id="txtGDNDenNgay" placeholder="Đến ngày">
+                </div>
+                <div class="col-sm-2">
+                    <label for="lbGDNDSExcelNgayTiepNhan" style="color:white">Xuất Excel  </label>
+                    <button type="button" id="btnGDNDSExcel" class="form-control btn-default" style="color: #f0ad4e;
+                        border-color: #f0ad4e">Xuất Excel</button>
+                </div>
+            </div>
+            <div class="table-responsive" id="table-responsiveTraCuuGiayDeNghiDien">
+                <table id="tblTraCuuGiayDeNghiDien" class="table table-striped jambo_table bulk_action" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th width="=10%">#</th>
+                            <th>Tên khách hàng</th>
+                            <th>Danh số</th>
+                            <th>Khu vực</th>
+                            <th>Địa chỉ mua điện</th>
+                            <th>Số điện thoại</th>
+                            <th>Tên dịch vụ cung cấp</th>
+                            <th>Trạng thái</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tblContentTraCuuGiayDeNghiDien"></tbody>
+                </table>
+                <div class="row">
+                    <div class="col-sm-5">
+                        <div class="dataTables_info" id="datatable-checkbox_infoTraCuuGiayDeNghiDien" role="status" aria-live="polite">
+                            <select id="ddl-show-pageTraCuuGiayDeNghiDien">
+                                <option value="10" selected="selected">10</option>
+                                <option value="20">20</option>
+                                <option value="30">30</option>
+                                <option value="50">50</option>
+                            </select>
+                            <span class="item-per-page">
+                                dòng/trang.
+                            </span>
+                            Tổng cộng: <strong id="lbTraCuuGiayDeNghiDienTotalRecords"></strong>
+                        </div>
+                    </div>
+                    <div class="col-sm-7">
+                        <div class="dataTables_paginate" id="datatable-checkbox_paginateTraCuuGiayDeNghiDien">
+                            <ul id="paginationULTraCuuGiayDeNghiDien"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script id="table-TraCuuGiayDeNghiDien" type="x-tmpl-mustache">
+        <tr>
+            <th scope="row">
+                <a class="btn-lg btn-link btn-addeditTraCuuGiayDeNghiDien" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Sửa giấy đề nghị điện"><i class="fa fa-pencil"></i> </a>
+            </th>
+            <td>{{TenKhachHang}}</td>
+            <td>
+                {{DanhSoKhachHang}}
+            </td>
+            <td>{{TenKhuVuc}}</td>
+            <td>{{DiaChiMuaNuoc}}</td>
+            <td>{{SoDienThoai}}</td>
+            <td>{{TenDMCungCapDichVu}}</td>
+
+            <th scope="row">
+                <a class="btn-link btn-XemThongTinDiDoi" data-id="{{Id}}" data-toggle="tooltip" data-placement="top"
+                    title="Xem thông tin di dời điện">
+                    <i >Xem th.tin x.lý</i>
+                </a>
+            </th>
+        </tr>
+    </script>
+</div>
+
+<partial name="_AddEditModel.cshtml" />
+<partial name="_XemThongTinXuLy.cshtml" />
+
+
+
+
