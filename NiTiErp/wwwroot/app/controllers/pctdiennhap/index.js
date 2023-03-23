@@ -96,16 +96,13 @@
             ketthuccongtac.loadEditKetThucCongTac();
         });
 
-        //$('body').on('click', '.btn-EditPCTDienKetThucCongTac', function (e) {
-        //    e.preventDefault();
-        //    var pctdienid = $(this).data('id');
-        //    $('#hidPCTDienId').val(pctdienid);
-        //    // 2 - Update Order
-        //    $('#hidInsertPCTDien').val(2);
+        $('body').on('click', '.btn-InPhieuCongTac', function (e) {
+            e.preventDefault();
+            var pctdienid = $(this).data('id');            
+            $('#hidPCTDienId').val(pctdienid);
 
-        //    $('#modal-add-edit-EditPCTDienKetThucCongTac').modal('show');
-        //    //addeditpokhachhangnuoc.loadEditKhachHangNuoc();
-        //});
+            inPhieuCongTac(pctdienid);
+        });
 
         // Chon Khu vuc trong phan Nhap PCT dien de the hien ds nhan vien xi nghiep khac
         $('#ddlPCTDienNhap1KhuVuc').on('change', function () {
@@ -117,11 +114,7 @@
             var corporationId = $('#ddlKhuVuc').val();
 
             loadPhongKhuVuc(corporationId);
-
-            //if (corporationId !== 'PO') {
-            //    //addeditpokhachhangnuoc.loadTableKhachHangNuoc();
-            //    //addeditpokhachhangnuoc.loadDotIn();
-            //}
+            
         });
 
         $("#btnTimNoiDung").on('click', function () {
@@ -132,10 +125,10 @@
             if (e.which === 13) {
                 addeditpctdien.loadTablePCTDien();
             }
-        });
+        });        
 
         $('#btnPCTDBaoCaoDieuKien').on('keypress', function (e) {
-            //tedu.notify('bao cao kh nuoc theo', 'success');
+            tedu.notify('bao cao pct dien .. theo', 'success');
             //danhsachBaoCaoKhachHangNuoc();
         });
 
@@ -389,6 +382,33 @@
             return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
         });
         return guid;
-    }     
+    }
+
+    function inPhieuCongTac(pctdienid) {
+        //tedu.notify('in phieu cong tac dien', 'success');
+
+        $.ajax({
+            type: 'GET',
+            url: '/admin/pctdiennhap/InPCTD',
+            data: {
+                PCTDienId: pctdienid
+            },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                nguyen.appUserLoginLogger(userName, "In Phiếu công tác điện.");
+
+                if (response.Result.length !== 0) {
+                    window.open('/Admin/RpPCTDienInPCT/Index', '_blank');
+                }
+                else {
+                    window.open('/Admin/RpPCTDienInPCT/Index', '_blank');
+                }
+                tedu.stopLoading();
+            },
+        });
+    }
 
 }

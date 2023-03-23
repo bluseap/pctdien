@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using NiTiErp.Application.Dapper.Interfaces;
@@ -9,6 +10,7 @@ using NiTiErp.Application.Dapper.ViewModels;
 using NiTiErp.Application.Dapper.ViewModels.PhieuCongTacDien;
 using NiTiErp.Authorization;
 using NiTiErp.Extensions;
+using NiTiErp.Helpers;
 using NiTiErp.Utilities.Dtos;
 using System;
 using System.Collections.Generic;
@@ -468,6 +470,68 @@ namespace NiTiErp.Areas.Admin.Controllers
 
         #endregion
 
+        #region In Crystal Report
+
+        [HttpGet]
+        public IActionResult InPCTD(int PCTDienId)
+        {
+            ////var ttdmdangkyfile = _ttdangkyfileService.Get_TTDangKyFile_ByDangKy(ttdangkynuocId, "Nuoc");
+
+            var nhanviencongtac1 = _pctnhanviencongtacService.PCTD_Get_PCTNhanVienCongTac_ByPCTDienIdInPCT(PCTDienId);
+            
+            SessionHelper.SetObjectAsJson(HttpContext.Session, "nhanviencongtac1", nhanviencongtac1.Result);
+            
+
+            ////var ttdangkydien = _ttdangkynuocService.Get_TTDangKyNuoc_ByIdNoTest(ttdangkynuocId);
+
+            ////var quanhuyen = _quanhuyenService.Get_QuanHuyen_ById(xiNghiep);
+
+            //string tenxinghiep = quanhuyen.Result.MAKV == "LX" ? "XÍ NGHIỆP CẤP NƯỚC " + quanhuyen.Result.TenQuanHuyen.ToUpper() :
+            //    quanhuyen.Result.TenQuanHuyen.ToUpper();
+
+            //string hoten = ttdangkydien.Result.HoTenNguoiYeuCau.ToString();
+            //string socmnd = ttdangkydien.Result.SoTheCCCD.ToString();
+            //string ngaycap = ttdangkydien.Result.NgayCap.ToString("dd/MM/yyyy");
+            //string noicap = ttdangkydien.Result.NoiCap.ToString();
+
+            ////string diachi = ttdangkydien.Result.SoNha != null ? ttdangkydien.Result.SoNha.ToString() : ""
+            ////    + " " + ttdangkydien.Result.TenDuongApTo != null ? ttdangkydien.Result.TenDuongApTo.ToString() : "" +
+            ////    "," + ttdangkydien.Result.Tenphuong.ToString() + "," + ttdangkydien.Result.TenQuan.ToString() + "," +
+            ////    ttdangkydien.Result.TenTinh.ToString();
+
+            //string diachi = ttdangkydien.Result.DiaChiLD != null ? ttdangkydien.Result.DiaChiLD.ToString() : "";
+            //string dienthoai = ttdangkydien.Result.DienThoai != null ? ttdangkydien.Result.DienThoai.ToString() : "";
+
+            ////string diachi = ttdangkydien.Result.DiaChiLD.ToString();
+            ////string dienthoai = ttdangkydien.Result.DienThoai.ToString();
+
+            //string dvgiadinh = ttdangkydien.Result.TTDMDangKyLoaiHinhDichVu == 3 ? "X" : "";
+            //string dvcoquan = ttdangkydien.Result.TTDMDangKyLoaiHinhDichVu == 4 ? "X" : "";
+            //string dvtruonghoc = ttdangkydien.Result.TTDMDangKyLoaiHinhDichVu == 5 ? "X" : "";
+            //string dvsanxuatc = ttdangkydien.Result.TTDMDangKyLoaiHinhDichVu == 6 ? "X" : "";
+            //string dvkinhdoanh = ttdangkydien.Result.TTDMDangKyLoaiHinhDichVu == 7 ? "X" : "";
+
+            //HttpContext.Session.SetInt32("age", 20);
+            //HttpContext.Session.SetString("TenXiNghiepNuoc", tenxinghiep);
+            //HttpContext.Session.SetString("HotenNuoc", hoten);
+            //HttpContext.Session.SetString("SoCMNDNuoc", socmnd);
+            //HttpContext.Session.SetString("NgayCapNuoc", ngaycap);
+            //HttpContext.Session.SetString("NoiCapNuoc", noicap);
+            //HttpContext.Session.SetString("DiaChiNuoc", diachi);
+            //HttpContext.Session.SetString("DienThoaiNuoc", dienthoai);
+
+            //HttpContext.Session.SetString("dvGiaDinhNuoc", dvgiadinh);
+            //HttpContext.Session.SetString("dvCoQuanNuoc", dvcoquan);
+            //HttpContext.Session.SetString("dvTruongHocNuoc", dvtruonghoc);
+            //HttpContext.Session.SetString("dvSanXuatNuoc", dvsanxuatc);
+            //HttpContext.Session.SetString("dvKinhDoanhNuoc", dvkinhdoanh);
+
+            //SessionHelper.SetObjectAsJson(HttpContext.Session, "ttdmdangkyfileNuoc", ttdmdangkyfile.Result);
+            
+            return new OkObjectResult(nhanviencongtac1);
+        }
+
+        #endregion
 
     }
 }

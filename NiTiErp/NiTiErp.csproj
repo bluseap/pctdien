@@ -12,6 +12,8 @@
     <None Remove="Reports\DichVuDien\repDsDvDien.repx" />
     <None Remove="Reports\DichVuNuoc\repDsDvNuoc.repx" />
     <None Remove="Reports\HopDongNuoc\repPoHopDongNuoc.repx" />
+    <None Remove="Reports\PCTDienInPCT\repInPCTDien.repx" />
+    <None Remove="Reports\PCTDienInPCT\repPCTDienInPCT.repx" />
     <None Remove="Reports\repCacDichVuDien.repx" />
     <None Remove="Reports\repGiayDeNghi.repx" />
     <None Remove="Reports\repGiayDeNghiNuoc.repx" />
@@ -31,6 +33,7 @@
     <EmbeddedResource Include="Reports\DichVuDien\repDichVuDien.repx" />
     <EmbeddedResource Include="Reports\DichVuNuoc\repDsDvNuoc.repx" />
     <EmbeddedResource Include="Reports\HopDongNuoc\repPoHopDongNuoc.repx" />
+    <EmbeddedResource Include="Reports\PCTDienInPCT\repInPCTDien.repx" />
     <EmbeddedResource Include="Reports\repCacDichVuDien.repx" />
     <EmbeddedResource Include="Reports\repGiayDeNghiNuoc.repx" />
     <EmbeddedResource Include="Reports\repGiayDeNghi.repx" />
@@ -251,6 +254,18 @@
     </Compile>
     <Compile Update="Reports\HopDongNuoc\repPoHopDongNuoc.Designer.cs">
       <DependentUpon>repPoHopDongNuoc.repx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\PCTDienInPCT\repInPCTDien.cs">
+      <DependentUpon>repInPCTDien.repx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\PCTDienInPCT\repInPCTDien.Designer.cs">
+      <DependentUpon>repInPCTDien.repx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\PCTDienInPCT\repPCTDienInPCT.cs">
+      <DependentUpon>repPCTDienInPCT.repx</DependentUpon>
+    </Compile>
+    <Compile Update="Reports\PCTDienInPCT\repPCTDienInPCT.Designer.cs">
+      <DependentUpon>repPCTDienInPCT.repx</DependentUpon>
     </Compile>
     <Compile Update="Reports\repCacDichVuDien.cs">
       <DependentUpon>repCacDichVuDien.repx</DependentUpon>

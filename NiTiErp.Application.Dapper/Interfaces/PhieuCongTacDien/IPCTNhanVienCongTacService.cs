@@ -7,7 +7,11 @@ using System.Threading.Tasks;
 namespace NiTiErp.Application.Dapper.Interfaces.PhieuCongTacDien
 {
     public interface IPCTNhanVienCongTacService
-    {       
+    {
+        Task<List<PCTNhanVienCongTacViewModel>> PCTD_Get_PCTNhanVienCongTac_ByPCTDienIdInPCT(int pctdien);
+
+        Task<List<PCTNhanVienCongTacViewModel>> PCTD_Get_PCTNhanVienCongTac_ByPCTDienId(int pctdien);
+
         Task<List<PCTNhanVienCongTacViewModel>> PCTD_Get_PCTNhanVienCongTac_ByCode(string code);
 
         Task<bool> PCTD_Create_PCTNhanVienCongTac(PCTNhanVienCongTacViewModel pctnhanviencongtac, DateTime createDate, string createBy);

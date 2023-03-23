@@ -103,7 +103,7 @@
                 txtKTCTPhutNgayTraLamViec: { required: true },
                 txtKTCTNgayTraLamViec: { required: true, isDateVietNam: true },
 
-                txtLyDoTonChuaThucHien: { required: true },
+                //txtLyDoTonChuaThucHien: { required: true },
                 txtLyDoChuaThucHien: { required: true },
                 txtKTCTTenNguoiChiHuyTrucTiep: { required: true },
 

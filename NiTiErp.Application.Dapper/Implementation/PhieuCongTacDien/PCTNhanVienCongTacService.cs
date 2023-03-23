@@ -21,7 +21,51 @@ namespace NiTiErp.Application.Dapper.Implementation.PhieuCongTacDien
         public PCTNhanVienCongTacService(IConfiguration configuration)
         {
             _configuration = configuration;
-        }       
+        }
+
+        public async Task<List<PCTNhanVienCongTacViewModel>> PCTD_Get_PCTNhanVienCongTac_ByPCTDienIdInPCT(int pctdien)
+        {
+            using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            {
+                await sqlConnection.OpenAsync();
+                var dynamicParameters = new DynamicParameters();
+
+                dynamicParameters.Add("@PCTDienId", pctdien);
+
+                try
+                {
+                    var query = await sqlConnection.QueryAsync<PCTNhanVienCongTacViewModel>(
+                        "PCTD_Get_PCTNhanVienCongTac_ByPCTDienIdInPCT", dynamicParameters, commandType: CommandType.StoredProcedure);
+                    return query.AsList();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
+        public async Task<List<PCTNhanVienCongTacViewModel>> PCTD_Get_PCTNhanVienCongTac_ByPCTDienId(int pctdien)
+        {
+            using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            {
+                await sqlConnection.OpenAsync();
+                var dynamicParameters = new DynamicParameters();
+
+                dynamicParameters.Add("@PCTDienId", pctdien);
+
+                try
+                {
+                    var query = await sqlConnection.QueryAsync<PCTNhanVienCongTacViewModel>(
+                        "PCTD_Get_PCTNhanVienCongTac_ByPCTDienId", dynamicParameters, commandType: CommandType.StoredProcedure);
+                    return query.AsList();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
 
         public async Task<List<PCTNhanVienCongTacViewModel>> PCTD_Get_PCTNhanVienCongTac_ByCode(string code)
         {

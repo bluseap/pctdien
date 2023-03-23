@@ -1,6 +1,86 @@
 ﻿
 
 
+create procedure [dbo].[PCTD_Get_PCTNhanVienCongTac_ByPCTDienId]
+create procedure [dbo].[PCTD_Get_PCTNhanVienCongTac_ByPCTDienIdInPCT]
+
+
+r create procedure [dbo].[Get_BacAnToanDien_All]
+
+r create procedure [dbo].[PCTD_Get_PCTDiaDiemCongTac_ById] 
+r create procedure [dbo].[PCTD_Get_PCTDiaDiemCongTac_ByDienId] 
+r create procedure [dbo].[PCTD_Get_PCTDien_ById] 
+r create procedure [dbo].[PCTD_Get_PCTDien_AllPaging] 
+r create procedure [dbo].[PCTD_Get_PCTDanhMuc_ByCode]
+r create procedure [dbo].[PCTD_Get_PCTDanhMuc_ById]
+r create procedure [dbo].[PCTD_Get_PCTNhanVienCongTac_ByCode]
+
+r create procedure [dbo].[PCTD_Create_PCTDien]
+r create procedure [dbo].[PCTD_Update_PCTDien]
+r create procedure [dbo].[PCTD_Update_PCTDien_ByIdChoPhepLamViec]
+r create procedure [dbo].[PCTD_Update_PCTDien_ByIdKetThucCongViec]
+
+r create procedure [dbo].[PCTD_Create_PCTDiaDiemCongTac]
+r create procedure [dbo].[PCTD_Update_PCTDiaDiemCongTac]
+r create procedure [dbo].[PCTD_Delete_PCTDiaDiemCongTac]
+
+r create procedure [dbo].[PCTD_Create_PCTNhanVienCongTac]
+r create procedure [dbo].[PCTD_Delete_PCTNhanVienCongTac]
+
+r create procedure [dbo].[PCTD_Create_PCTDanhMuc]
+r create procedure [dbo].[PCTD_Update_PCTDanhMuc]
+r create procedure [dbo].[PCTD_Delete_PCTDanhMuc]
+
+
+r create procedure [dbo].[Update_HoSoNhanVien_ByBacATD]
+
+r create table PCTDanhMuc
+r create table PCTDiaDiemCongTac
+r create table PCTDien
+r create table PCTDieuKienATD
+r create table PCTDonVi
+r create table PCTGiayPhoiHopChoPhep
+r create table PCTNhanVienCongTac
+r create table PCTNoiDungCT
+r create table PCTTrangBiATBHLDLamViec
+
+r create table BacAnToanDien
+
+
+r update procedure [dbo].[Get_HoSoNhanVien_ByCorId]
+
+r add table HoSoNhanVien, HoSoNhanVienHis column BacAnToanDienId	int	Checked
+	TenBacAnToanDien	nvarchar(100)	Checked
+
+
+
+ , ( STUFF((SELECT ',' + convert(nvarchar(100), bh.Ten) --QUOTENAME(Week) 
+                    from VanBanDiNoiNhan vn inner join VanBanCoQuanBanHanh bh on vn.VanBanCoQuanBanHanhId = bh.Id
+                    where vn.VanBanDiId = vbd.Id
+            FOR XML PATH(''), TYPE  ).value('.', 'NVARCHAR(MAX)') 
+        ,1,1,'')   ) as CacDonViNhanVanBan
+
+
+
+
+
+
+
+
+
+
+
+
+r create table [dbo].[LoaiThue]
+r create table [dbo].[LoaiPhi]
+r create table [dbo].[BBGiaoNhanHoaDon]
+r create table [dbo].[BBGiaoNhanHoaDonLoaiPhiAll]
+
+
+r update all data table [dbo].[LoaiThue]
+r update all data table [dbo].[LoaiPhi]
+
+
 r create procedure [dbo].[Get_BBNghiemThu_ByDSChuyenKeToan]
 r create procedure [dbo].[Get_BBNghiemThu_ByDSNhanHoSo]
 r create procedure [dbo].[Get_BBNghiemThu_ByMaDon]

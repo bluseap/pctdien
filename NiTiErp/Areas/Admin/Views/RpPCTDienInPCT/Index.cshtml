@@ -1,0 +1,85 @@
+﻿@{ Layout = null; }
+@using Microsoft.AspNetCore.Http;
+
+@using DevExpress.AspNetCore
+@using DevExpress.XtraReports.UI;
+@using DevExpress.XtraReports.Parameters;
+
+@using NiTiErp.Reports.PCTDienInPCT;
+
+@using NiTiErp.Helpers;
+
+@using NiTiErp.Application.Dapper.ViewModels.PhieuCongTacDien;
+
+@namespace NiTiErp.Pages
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="/admin-side/images/powaco.ico" />
+
+    <link rel="stylesheet" href="~/css/thirdparty.bundle.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <script src="~/js/thirdparty.bundle.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+</head>
+<body>
+    <link rel="stylesheet" href="~/css/viewer.part.bundle.css" />
+    <link rel="stylesheet" href="~/css/designer.part.bundle.css" />
+
+    <script src="~/js/viewer.part.bundle.js"></script>
+    <script src="~/js/designer.part.bundle.js"></script>
+
+    @{ 
+
+        List<PCTNhanVienCongTacViewModel> nhanvienct1 = SessionHelper.GetObjectFromJson<List<PCTNhanVienCongTacViewModel>>(Context.Session, "nhanviencongtac1");
+        
+        var nuoc = new repInPCTDien();
+        //nuoc.DataSource = nhanvienct1;
+        nuoc.DataSource = nhanvienct1;
+        //nuoc.DataMember = "NhanVien1";
+
+        //nuoc.DataSource = nhanvienct2;
+        //nuoc.DataMember = "NhanVien2";
+
+        nuoc.Parameters["prTenNguoiLanhDao"].Value = "phieu";
+        nuoc.Parameters["prTenNguoiLanhDao"].Visible = false;
+        //nuoc.Parameters["prTenXiNghiep"].Value = @Context.Session.GetString("TenXiNghiepNuoc");
+        //nuoc.Parameters["prTenXiNghiep"].Visible = false;
+        //nuoc.Parameters["prHoten"].Value = @Context.Session.GetString("HotenNuoc");
+        //nuoc.Parameters["prHoten"].Visible = false;
+        //nuoc.Parameters["prSoCMND"].Value = @Context.Session.GetString("SoCMNDNuoc");
+        //nuoc.Parameters["prSoCMND"].Visible = false;
+        //nuoc.Parameters["prNgayCap"].Value = @Context.Session.GetString("NgayCapNuoc");
+        //nuoc.Parameters["prNgayCap"].Visible = false;
+        //nuoc.Parameters["prNoiCap"].Value = @Context.Session.GetString("NoiCapNuoc");
+        //nuoc.Parameters["prNoiCap"].Visible = false;
+        //nuoc.Parameters["prDiaChi"].Value = @Context.Session.GetString("DiaChiNuoc");
+        //nuoc.Parameters["prDiaChi"].Visible = false;
+        //nuoc.Parameters["prDienThoai"].Value = @Context.Session.GetString("DienThoaiNuoc");
+        //nuoc.Parameters["prDienThoai"].Visible = false;
+
+        //nuoc.Parameters["prdvGiaDinh"].Value = @Context.Session.GetString("dvGiaDinhNuoc");
+        //nuoc.Parameters["prdvGiaDinh"].Visible = false;
+        //nuoc.Parameters["prdvCoQuan"].Value = @Context.Session.GetString("dvCoQuanNuoc");
+        //nuoc.Parameters["prdvCoQuan"].Visible = false;
+        //nuoc.Parameters["prdvTruongHoc"].Value = @Context.Session.GetString("dvTruongHocNuoc");
+        //nuoc.Parameters["prdvTruongHoc"].Visible = false;
+        //nuoc.Parameters["prdvSanXuat"].Value = @Context.Session.GetString("dvSanXuatNuoc");
+        //nuoc.Parameters["prdvSanXuat"].Visible = false;
+        //nuoc.Parameters["prdvKinhDoanh"].Value = @Context.Session.GetString("dvKinhDoanhNuoc");
+        //nuoc.Parameters["prdvKinhDoanh"].Visible = false; 
+    }
+
+    <div class="container-fluid body-content">
+        @Html.DevExpress().WebDocumentViewer("DocumentViewer").Height("1000px").Bind(nuoc)
+    </div>
+
+</body>
+</html>
