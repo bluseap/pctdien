@@ -1,6 +1,9 @@
 ﻿
+create procedure [dbo].[PCTD_Create_PCTNhanVienCongTac_ByIdThayDoi]
+create procedure [dbo].[PCTD_Update_PCTNhanVienCongTac_ByIdThayDoi]
 
-
+create procedure [dbo].[PCTD_Get_PCTNhanVienCongTac_ById]
+create procedure [dbo].[PCTD_Get_PCTNhanVienCongTac_ByThayDoiNguoiDienId]
 create procedure [dbo].[PCTD_Get_PCTNhanVienCongTac_ByPCTDienId]
 create procedure [dbo].[PCTD_Get_PCTNhanVienCongTac_ByPCTDienIdInPCT]
 

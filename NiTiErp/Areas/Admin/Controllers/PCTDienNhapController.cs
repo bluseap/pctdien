@@ -120,9 +120,24 @@ namespace NiTiErp.Areas.Admin.Controllers
         }
 
         [HttpGet]
+        public IActionResult GetNVCongTac(int PCTNhanVienCongTacId)
+        {
+            var model = _pctnhanviencongtacService.PCTD_Get_PCTNhanVienCongTac_ById(PCTNhanVienCongTacId);
+
+            return new OkObjectResult(model);
+        }
+
+        [HttpGet]
         public IActionResult ListNVCongTac(string Code)
         {
             var model = _pctnhanviencongtacService.PCTD_Get_PCTNhanVienCongTac_ByCode(Code);
+            return new OkObjectResult(model);
+        }
+
+        [HttpGet]
+        public IActionResult ListNVThayDoi(int PCTDienId)
+        {
+            var model = _pctnhanviencongtacService.PCTD_Get_PCTNhanVienCongTac_ByThayDoiNguoiDienId(PCTDienId);
             return new OkObjectResult(model);
         }
 
@@ -345,6 +360,55 @@ namespace NiTiErp.Areas.Admin.Controllers
         #endregion
 
         #region PCT Nhan vien cong tac
+
+        [HttpPost]
+        public async Task<IActionResult> SaveThayDoiLV(PCTNhanVienCongTacViewModel pctnhanviencongtac)
+        {
+            if (!ModelState.IsValid)
+            {
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return new BadRequestObjectResult(allErrors);
+            }
+            else
+            {
+                var result = _authorizationService.AuthorizeAsync(User, "PCTDIENNHAP", Operations.Create);
+                if (result.Result.Succeeded == false)
+                {
+                    return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền thêm."));
+                }
+
+                DateTime CreateDate = DateTime.Now;
+                string CreateBy = User.GetSpecificClaim("UserName");
+
+                var model = await _pctnhanviencongtacService.PCTD_Create_PCTNhanVienCongTac_ByIdThayDoi(pctnhanviencongtac, CreateDate, CreateBy);
+                return new OkObjectResult(model);
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UpdateThayDoiLV(PCTNhanVienCongTacViewModel pctnhanviencongtac)
+        {
+            if (!ModelState.IsValid)
+            {
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return new BadRequestObjectResult(allErrors);
+            }
+            else
+            {
+                var result = _authorizationService.AuthorizeAsync(User, "PCTDIENNHAP", Operations.Update);
+                if (result.Result.Succeeded == false)
+                {
+                    return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền thêm."));
+                }
+
+                DateTime CreateDate = DateTime.Now;
+                string CreateBy = User.GetSpecificClaim("UserName");
+
+                var model = await _pctnhanviencongtacService.PCTD_Update_PCTNhanVienCongTac_ByIdThayDoi(pctnhanviencongtac, CreateDate, CreateBy);
+                return new OkObjectResult(model);
+            }
+        }
+
         [HttpPost]
         public async Task<IActionResult> AddDsNVCT(PCTNhanVienCongTacViewModel pctnhanviencongtac)
         {

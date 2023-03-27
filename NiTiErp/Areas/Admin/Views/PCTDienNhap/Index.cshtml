@@ -24,6 +24,7 @@
     <script src="~/app/controllers/PCTDienNhap/ketthuccongtac.js" asp-append-version="true"></script>
     <script src="~/app/controllers/PCTDienNhap/diadiemcongtac.js" asp-append-version="true"></script>
     <script src="~/app/controllers/PCTDienNhap/chopheplamviec.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/PCTDienNhap/thaydoinguoilamviec.js" asp-append-version="true"></script>
     <script src="~/app/controllers/PCTDienNhap/addeditpctdien.js" asp-append-version="true"></script>
     <script src="~/app/controllers/PCTDienNhap/index.js" asp-append-version="true"></script>
     <script>
@@ -137,6 +138,7 @@
                             <th></th>
                             <th></th>
                             <th></th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody id="tblContentPCTDien"></tbody>
@@ -180,6 +182,11 @@
             <td>{{{TrangThaiPCT}}}</td>
 
             <th scope="row">
+                <a class="btn-link btn-ThayDoiNguoiCT" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Thay đổi người công tác">
+                    <i>Thay đổi người CT </i>
+                </a>
+            </th>
+            <th scope="row">
                 <a class="btn-link btn-ChoPhepLamViec" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Cho phép làm việc">
                     <i>Ch.phép LV </i>
                 </a>
@@ -204,6 +211,8 @@
 </div>
 
 <partial name="_AddEditModel.cshtml" />
+
+<partial name="_ThayDoiNguoiCongTac" />
 <partial name="_ChoPhepLamViec.cshtml" />
 <partial name="_DiaDiemCongTac.cshtml" />
 <partial name="_KetThucCongTac.cshtml" />

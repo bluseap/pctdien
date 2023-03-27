@@ -271,12 +271,12 @@
                 },
                 success: function (response) {
                     if (response.Result === false) {
-                        tedu.notify("Lưu Địa điểm công tác điện.", "error");
+                        tedu.notify("Lưu Sửa Địa điểm công tác điện.", "error");
                     }
                     else {
-                        nguyen.appUserLoginLogger(userName, "Lưu Địa điểm công tác điện. PCTDienId: " + pctdiadiemcongtacid);
+                        nguyen.appUserLoginLogger(userName, "Lưu Sửa Địa điểm công tác điện. PCTDienId: " + pctdiadiemcongtacid);
 
-                        tedu.notify('Lưu Địa điểm công tác điện.', 'success');
+                        tedu.notify('Lưu Sửa Địa điểm công tác điện.', 'success');
 
                         $('#hidInsertDiaDiemCongTac').val(1);
 
@@ -288,7 +288,7 @@
                     }
                 },
                 error: function () {
-                    tedu.notify('Có lỗi! Không thể Lưu Địa điểm công tác điện.', 'error');
+                    tedu.notify('Có lỗi! Không thể Lưu Sửa Địa điểm công tác điện.', 'error');
                     tedu.stopLoading();
                 }
             });

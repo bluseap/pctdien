@@ -22,6 +22,15 @@ namespace NiTiErp.Application.Dapper.ViewModels.PhieuCongTacDien
         public int BacATDNhanVienCongTac2 { get; set; }
 
 
+        public string TuNgayDenNgay { get; set; }
+
+        public string GioDenLamViec { get; set; }
+        public string PhutDenLamViec { get; set; }
+
+        public string GioRutKhoi { get; set; }
+        public string PhutRutKhoi { get; set; }
+
+
         public int BacATDNhanVienCongTac { get; set; }
 
 

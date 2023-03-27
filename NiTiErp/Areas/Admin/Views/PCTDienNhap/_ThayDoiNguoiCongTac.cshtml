@@ -1,0 +1,116 @@
+﻿<div id="modal-add-edit-EditThayDoiNguoiCongTac" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style="overflow-y: auto; max-height:85%;  margin-top: 50px; margin-bottom:50px; ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Thêm / Sửa danh sách nhân viên đơn vị công tác và thay đổi người </h4>
+            </div>
+            <div class="modal-body">
+
+                <div id="formMainEditThayDoiNguoiCongTac">
+                    <form class="form-horizontal form-label-left" id="frmMainEditThayDoiNguoiCongTac">
+                        <div class="item form-group">
+                            <div class="col-md-3 col-sm-12 col-xs-12">
+                                <label for="lbThayDoiNguoiCongTacKhuVuc">
+                                    Khu vực <a style="color:#f00"> (*) </a>
+                                </label>
+                                <select id="ddlThayDoiNguoiCongTacKhuVuc" name="ddlThayDoiNguoiCongTacKhuVuc" class="form-control"></select>
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <label for="lbTenNhanVienThayDoiCongTac">
+                                    Tên nhân viên thay đổi công tác <a style="color:#f00"> (*) </a>
+                                </label>
+                                <input type="text" id="txtTenNhanVienThayDoiCongTac" name="txtTenNhanVienThayDoiCongTac" class="form-control" placeholder="Tên nhân viên thay đổi công tác">
+                            </div>
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <label for="lbTenNhanVienThayDoiCongTacBacATD">
+                                    Bậc ATĐ <a style="color:#f00"> (*) </a>
+                                </label>
+                                <select id="ddlTenNhanVienThayDoiCongTacBacATD" name="ddlTenNhanVienThayDoiCongTacBacATD" class="form-control"></select>
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <div class="input-group">
+                                    <label>Thời gian đến làm việc <a style="color:#f00"> (*) </a> </label>
+                                    <div class="input-group">
+                                        <div class="col-md-3 col-sm-12 col-xs-12">
+                                            <input type="text" id="txtThayDoiNguoiCongTacGioDenLamViec" name="txtThayDoiNguoiCongTacGioDenLamViec" class="form-control" placeholder="Giờ đến làm việc">
+                                        </div>
+                                        <div class="col-md-3 col-sm-12 col-xs-12">
+                                            <input type="text" id="txtThayDoiNguoiCongTacPhutDenLamViec" name="txtThayDoiNguoiCongTacPhutDenLamViec" class="form-control" placeholder="Phút đến làm việc">
+                                        </div>
+                                        <div class="col-md-6 col-sm-12 col-xs-12">
+                                            <input type="text" id="txtThayDoiNguoiCongTacNgayDenLamViec" name="txtThayDoiNguoiCongTacNgayDenLamViec" class="form-control" placeholder="Ngày đến làm việc">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <div class="input-group">
+                                    <label>Thời gian rút khỏi nơi công việc <a style="color:#f00"> (*) </a> </label>
+                                    <div class="input-group">
+                                        <div class="col-md-3 col-sm-12 col-xs-12">
+                                            <input type="text" id="txtThayDoiNguoiCongTacGioRutKhoiLamViec" name="txtThayDoiNguoiCongTacGioRutKhoiLamViec" class="form-control" placeholder="Giờ rút khỏi">
+                                        </div>
+                                        <div class="col-md-3 col-sm-12 col-xs-12">
+                                            <input type="text" id="txtThayDoiNguoiCongTacPhutRutKhoiLamViec" name="txtThayDoiNguoiCongTacPhutRutKhoiLamViec" class="form-control" placeholder="Phút rút khỏi">
+                                        </div>
+                                        <div class="col-md-6 col-sm-12 col-xs-12">
+                                            <input type="text" id="txtThayDoiNguoiCongTacNgayRutKhoiLamViec" name="txtThayDoiNguoiCongTacNgayRutKhoiLamViec" class="form-control" placeholder="Ngày rút khỏi">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="button" id="btnCancelEditThayDoiNguoiCongTac" data-dismiss="modal" class="btn btn-default">Đóng</button>
+                                <button type="button" id="btnSaveEditThayDoiNguoiCongTac" class="btn btn-warning">Lưu thay đổi người CT </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div id="formDSThayDoiNguoiCongTac">
+                    <form class="form-horizontal" role="form" id="frmMainDSThayDoiNguoiCongTac">
+                        <table class="table table-striped jambo_table bulk_action" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Họ tên</th>
+                                    <th>Bậc ATĐ</th>
+                                    <th>Thời gian đến - rút khỏi LV</th>                                                                    
+                                    <td></td>
+                                </tr>
+                            </thead>
+                            <tbody id="table-contentDSThayDoiNguoiCongTac"></tbody>
+                        </table>
+                    </form>
+                    <script type="x-tmpl-mustache" id="template-table-DSThayDoiNguoiCongTac">
+                            <tr>
+                                <th scope="row">
+                                    <a class="btn-link btn-addeditDSThayDoiNguoiCongTac" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Id">
+                                        <i class="fa fa-pencil"></i>
+                                    </a>
+                                </th>
+                                <td>{{TenNhanVienCongTac}}</td>
+                                <td>{{BacATDNhanVienCongTac}}</td>
+                                <td>{{TuNgayDenNgay}}</td>                               
+                                <th scope="row">
+                                    <a class="btn-link btn-deleteDSThayDoiNguoiCongTac" data-id="{{Id}}" data-toggle="tooltip"
+                                                data-placement="top" title="Xóa danh sách người thay đổi công tác">
+                                                <i class="fa fa-trash-o"  style="color:red"></i>
+                                     </a>
+                                </th>
+                            </tr>
+                    </script>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -7,6 +7,7 @@
     var chopheplamviec = new chopheplamviecController();
     var diadiemcongtac = new diadiemcongtacController();
     var ketthuccongtac = new ketthuccongtacController();
+    var thaydoinguoilamviec = new thaydoinguoilamviecController();
 
     this.initialize = function () {
         loadKhuVuc();
@@ -20,7 +21,7 @@
         chopheplamviec.initialize();  
         diadiemcongtac.initialize(); 
         ketthuccongtac.initialize(); 
-
+        thaydoinguoilamviec.initialize(); 
     }
 
     function registerEvents() {
@@ -62,6 +63,18 @@
             $('#hidInsertPCTDien').val(2);
             
             addeditpctdien.loaEditPCTDien();              
+        });
+
+        $('body').on('click', '.btn-ThayDoiNguoiCT', function (e) {
+            e.preventDefault();
+            var pctdienid = $(this).data('id');
+            $('#hidPCTDienId').val(pctdienid);
+            //1 - insert ;  2 - Update Order
+            $('#hidInsertPCTDien').val(2);
+            $('#hidInsertThayDoiNguoiCongTac').val(1);
+
+            $('#modal-add-edit-EditThayDoiNguoiCongTac').modal('show');
+            thaydoinguoilamviec.loadTableThayDoiNguoiLamViec();
         });
 
         $('body').on('click', '.btn-ChoPhepLamViec', function (e) {
@@ -108,6 +121,12 @@
         $('#ddlPCTDienNhap1KhuVuc').on('change', function () {
             var corporationId = $('#ddlPCTDienNhap1KhuVuc').val();
             loadAutocompleteNhanVienByCor(corporationId);
+        });
+
+        // Chon Khu vuc trong phan danh sach thay doi nhan vien cong tac
+        $('#ddlThayDoiNguoiCongTacKhuVuc').on('change', function () {
+            var corporationId = $('#ddlThayDoiNguoiCongTacKhuVuc').val();
+            loadAutocompleteNhanVienByCorThayDoiNguoi(corporationId);
         });
 
         $('#ddlKhuVuc').on('change', function () {
@@ -172,6 +191,7 @@
                 $('#ddlPCTDienNhap1KhuVuc').html(render);
 
                 $('#ddlPCTDienChonThuocCongTyDonVi').html(render);
+                $('#ddlThayDoiNguoiCongTacKhuVuc').html(render);
 
                 if (userCorporationId !== "PO") {
                     $('#ddlKhuVuc').prop('disabled', true);
@@ -181,6 +201,7 @@
                     $('#ddlPCTDienNhap1PhongBan').prop('disabled', true);
 
                     $('#ddlPCTDienChonThuocCongTyDonVi').prop('disabled', true);
+                    $('#ddlThayDoiNguoiCongTacKhuVuc').prop('disabled', true);
                 }
                 else {
                     $('#ddlKhuVuc').prop('disabled', false);
@@ -190,9 +211,11 @@
                     $('#ddlPCTDienNhap1PhongBan').prop('disabled', false);
 
                     $('#ddlPCTDienChonThuocCongTyDonVi').prop('disabled', false);
+                    $('#ddlThayDoiNguoiCongTacKhuVuc').prop('disabled', false);
                 }
                 $("#ddlKhuVuc")[0].selectedIndex = 1;  
                 $("#ddlPCTDienNhap1KhuVuc")[0].selectedIndex = 1;
+                $("#ddlThayDoiNguoiCongTacKhuVuc")[0].selectedIndex = 1;
 
                 $("#ddlPCTDienChonThuocCongTyDonVi")[0].selectedIndex = 0;
 
@@ -200,6 +223,7 @@
                 loadPCTDienNhapPhongKhuVuc($("#ddlPCTDienNhap1KhuVuc").val()); 
 
                 loadAutocompleteNhanVienByCor($("#ddlKhuVuc").val());
+                loadAutocompleteNhanVienByCorThayDoiNguoi($("#ddlThayDoiNguoiCongTacKhuVuc").val())
 
                 //addeditpokhachhangnuoc.loadTableKhachHangNuoc();
             },
@@ -369,6 +393,45 @@
             onSelect: function (suggestion) {
                 $('#hidDDLVNguoiChoPhepId').val(suggestion.Id);
                 $('#txtDDLVNguoiChoPhep').val(suggestion.Ten);
+            }
+        });        
+    }
+
+    function loadAutocompleteNhanVienByCorThayDoiNguoi(corporationId) {
+        $.ajax({
+            type: 'GET',
+            url: "/admin/pctdiennhap/GetNhanVienByCor",
+            data: {
+                corporationid: corporationId
+            },
+            async: true,
+            dataType: 'json',
+            success: function (database) {
+                arrayReturn = [];
+                var data = database.Result;
+                for (var i = 0, len = data.length; i < len; i++) {
+                    arrayReturn.push({
+                        'value': data[i].Ten + '-' + data[i].TenChucVu,
+                        'TenChucVu': data[i].TenChucVu,
+                        'BacAnToanDienId': data[i].BacAnToanDienId,
+                        'Ten': data[i].Ten,
+                        'Id': data[i].Id
+                    });
+                }
+                //send parse data to autocomplete function
+                loadSuggestionsThayDoiNguoi(arrayReturn);
+                //console.log(countries);               
+            }
+        });
+    }
+
+    function loadSuggestionsThayDoiNguoi(options) {        
+        //Danh sach thay doi nguoi cong tac
+        $('#txtTenNhanVienThayDoiCongTac').autocomplete({
+            lookup: options,
+            onSelect: function (suggestion) {
+                $('#hidThayDoiNguoiCongTacTenNhanVienThayDoiId').val(suggestion.Id);
+                $('#txtTenNhanVienThayDoiCongTac').val(suggestion.Ten);
             }
         });
     }

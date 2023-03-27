@@ -299,6 +299,9 @@
 
                 $('#ddlPCTDienNguoiChoPhepATDATD').html(render);
                 $("#ddlPCTDienNguoiChoPhepATDATD")[0].selectedIndex = 0;
+
+                $('#ddlTenNhanVienThayDoiCongTacBacATD').html(render);
+                $("#ddlTenNhanVienThayDoiCongTacBacATD")[0].selectedIndex = 0;
             },
             error: function (status) {
                 console.log(status);
