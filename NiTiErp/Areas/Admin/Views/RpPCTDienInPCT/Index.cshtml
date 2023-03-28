@@ -39,42 +39,76 @@
     @{ 
 
         List<PCTNhanVienCongTacViewModel> nhanvienct1 = SessionHelper.GetObjectFromJson<List<PCTNhanVienCongTacViewModel>>(Context.Session, "nhanviencongtac1");
-        
+
         var nuoc = new repInPCTDien();
-        //nuoc.DataSource = nhanvienct1;
         nuoc.DataSource = nhanvienct1;
-        //nuoc.DataMember = "NhanVien1";
 
-        //nuoc.DataSource = nhanvienct2;
-        //nuoc.DataMember = "NhanVien2";
+        nuoc.Parameters["prTenXiNghiep"].Value = @Context.Session.GetString("TenXiNghiepNuoc");
+        nuoc.Parameters["prTenXiNghiep"].Visible = false;
+        nuoc.Parameters["SoPhieuCongTac"].Value = @Context.Session.GetString("SoPhieuCongTac");
+        nuoc.Parameters["SoPhieuCongTac"].Visible = false;
+        nuoc.Parameters["TenNguoiLanhDaoCongViec"].Value = @Context.Session.GetString("TenNguoiLanhDaoCongViec");
+        nuoc.Parameters["TenNguoiLanhDaoCongViec"].Visible = false;
+        nuoc.Parameters["BacATDNguoiLanhDaoCongViecId"].Value = @Context.Session.GetString("BacATDNguoiLanhDaoCongViecId");
+        nuoc.Parameters["BacATDNguoiLanhDaoCongViecId"].Visible = false;
+        nuoc.Parameters["TenNguoiChiHuyTrucTiep"].Value = @Context.Session.GetString("TenNguoiChiHuyTrucTiep");
+        nuoc.Parameters["TenNguoiChiHuyTrucTiep"].Visible = false;
+        nuoc.Parameters["BacATDNguoiChiHuyTrucTiepId"].Value = @Context.Session.GetString("BacATDNguoiChiHuyTrucTiepId");
+        nuoc.Parameters["BacATDNguoiChiHuyTrucTiepId"].Visible = false;
+        nuoc.Parameters["CacCongTyDonVi"].Value = @Context.Session.GetString("CacCongTyDonVi");
+        nuoc.Parameters["CacCongTyDonVi"].Visible = false;
+        nuoc.Parameters["DiaDiemCongTac"].Value = @Context.Session.GetString("DiaDiemCongTac");
+        nuoc.Parameters["DiaDiemCongTac"].Visible = false;
+        nuoc.Parameters["CacNoiDungCongTac"].Value = @Context.Session.GetString("CacNoiDungCongTac");
+        nuoc.Parameters["CacNoiDungCongTac"].Visible = false;
 
-        nuoc.Parameters["prTenNguoiLanhDao"].Value = "phieu";
-        nuoc.Parameters["prTenNguoiLanhDao"].Visible = false;
-        //nuoc.Parameters["prTenXiNghiep"].Value = @Context.Session.GetString("TenXiNghiepNuoc");
-        //nuoc.Parameters["prTenXiNghiep"].Visible = false;
-        //nuoc.Parameters["prHoten"].Value = @Context.Session.GetString("HotenNuoc");
-        //nuoc.Parameters["prHoten"].Visible = false;
-        //nuoc.Parameters["prSoCMND"].Value = @Context.Session.GetString("SoCMNDNuoc");
-        //nuoc.Parameters["prSoCMND"].Visible = false;
-        //nuoc.Parameters["prNgayCap"].Value = @Context.Session.GetString("NgayCapNuoc");
-        //nuoc.Parameters["prNgayCap"].Visible = false;
-        //nuoc.Parameters["prNoiCap"].Value = @Context.Session.GetString("NoiCapNuoc");
-        //nuoc.Parameters["prNoiCap"].Visible = false;
-        //nuoc.Parameters["prDiaChi"].Value = @Context.Session.GetString("DiaChiNuoc");
-        //nuoc.Parameters["prDiaChi"].Visible = false;
-        //nuoc.Parameters["prDienThoai"].Value = @Context.Session.GetString("DienThoaiNuoc");
-        //nuoc.Parameters["prDienThoai"].Visible = false;
+        nuoc.Parameters["thoigianbatdaukehoach"].Value = @Context.Session.GetString("thoigianbatdaukehoach");
+        nuoc.Parameters["thoigianbatdaukehoach"].Visible = false;
+        nuoc.Parameters["thoigianketthuckehoach"].Value = @Context.Session.GetString("thoigianketthuckehoach");
+        nuoc.Parameters["thoigianketthuckehoach"].Visible = false;
+        nuoc.Parameters["CacDieuKiemATLD"].Value = @Context.Session.GetString("CacDieuKiemATLD");
+        nuoc.Parameters["CacDieuKiemATLD"].Visible = false;
+        nuoc.Parameters["CacTrangBiATBHLDLamViec"].Value = @Context.Session.GetString("CacTrangBiATBHLDLamViec");
+        nuoc.Parameters["CacTrangBiATBHLDLamViec"].Visible = false;
+        nuoc.Parameters["TongHangMucDaTrangCap"].Value = @Context.Session.GetString("TongHangMucDaTrangCap");
+        nuoc.Parameters["TongHangMucDaTrangCap"].Visible = false;
+        nuoc.Parameters["CacDonViQLVHCoLienQuan"].Value = @Context.Session.GetString("CacDonViQLVHCoLienQuan");
+        nuoc.Parameters["CacDonViQLVHCoLienQuan"].Visible = false;
+        nuoc.Parameters["TenNguoiGiamSatATD"].Value = @Context.Session.GetString("TenNguoiGiamSatATD");
+        nuoc.Parameters["TenNguoiGiamSatATD"].Visible = false;
+        nuoc.Parameters["BacATDNguoiGiamSatATD"].Value = @Context.Session.GetString("BacATDNguoiGiamSatATD");
+        nuoc.Parameters["BacATDNguoiGiamSatATD"].Visible = false;
+        nuoc.Parameters["TenNguoiChoPhep"].Value = @Context.Session.GetString("TenNguoiChoPhep");
+        nuoc.Parameters["TenNguoiChoPhep"].Visible = false;
+        nuoc.Parameters["BacNguoiChoPhep"].Value = @Context.Session.GetString("BacNguoiChoPhep");
+        nuoc.Parameters["BacNguoiChoPhep"].Visible = false;
+        nuoc.Parameters["NgayCapPCT"].Value = @Context.Session.GetString("NgayCapPCT");
+        nuoc.Parameters["NgayCapPCT"].Visible = false;
+        nuoc.Parameters["TenNguoiCapPCT"].Value = @Context.Session.GetString("TenNguoiCapPCT");
+        nuoc.Parameters["TenNguoiCapPCT"].Visible = false;
+        nuoc.Parameters["ThietBiDuongDayDaCatDien"].Value = @Context.Session.GetString("ThietBiDuongDayDaCatDien");
+        nuoc.Parameters["ThietBiDuongDayDaCatDien"].Visible = false;
+        nuoc.Parameters["DaTiepDatTai"].Value = @Context.Session.GetString("DaTiepDatTai");
+        nuoc.Parameters["DaTiepDatTai"].Visible = false;
+        nuoc.Parameters["DaLamRaoChanTreoBienBaoTai"].Value = @Context.Session.GetString("DaLamRaoChanTreoBienBaoTai");
+        nuoc.Parameters["DaLamRaoChanTreoBienBaoTai"].Visible = false;
+        nuoc.Parameters["PhamViDuocPhepLamViec"].Value = @Context.Session.GetString("PhamViDuocPhepLamViec");
+        nuoc.Parameters["PhamViDuocPhepLamViec"].Visible = false;
+        nuoc.Parameters["CanhBaoChiDanNguyHiem"].Value = @Context.Session.GetString("CanhBaoChiDanNguyHiem");
+        nuoc.Parameters["CanhBaoChiDanNguyHiem"].Visible = false;
+        nuoc.Parameters["NguoiChiHuyTTKiemTraDamBaoAT"].Value = @Context.Session.GetString("NguoiChiHuyTTKiemTraDamBaoAT");
+        nuoc.Parameters["NguoiChiHuyTTKiemTraDamBaoAT"].Visible = false;
+        nuoc.Parameters["LamTiepDatTai"].Value = @Context.Session.GetString("LamTiepDatTai");
+        nuoc.Parameters["LamTiepDatTai"].Visible = false;
+        nuoc.Parameters["TongHangMucDaKiemTraBHLD"].Value = @Context.Session.GetString("TongHangMucDaKiemTraBHLD");
+        nuoc.Parameters["TongHangMucDaKiemTraBHLD"].Visible = false;
+        nuoc.Parameters["CacGiayPhoiHopChoPhep"].Value = @Context.Session.GetString("CacGiayPhoiHopChoPhep");
+        nuoc.Parameters["CacGiayPhoiHopChoPhep"].Visible = false;
+        nuoc.Parameters["thoigianchophepdonvicongtac"].Value = @Context.Session.GetString("thoigianchophepdonvicongtac");
+        nuoc.Parameters["thoigianchophepdonvicongtac"].Visible = false;
+        nuoc.Parameters["sonhanviencongtac"].Value = @Context.Session.GetString("sonhanviencongtac");
+        nuoc.Parameters["sonhanviencongtac"].Visible = false;
 
-        //nuoc.Parameters["prdvGiaDinh"].Value = @Context.Session.GetString("dvGiaDinhNuoc");
-        //nuoc.Parameters["prdvGiaDinh"].Visible = false;
-        //nuoc.Parameters["prdvCoQuan"].Value = @Context.Session.GetString("dvCoQuanNuoc");
-        //nuoc.Parameters["prdvCoQuan"].Visible = false;
-        //nuoc.Parameters["prdvTruongHoc"].Value = @Context.Session.GetString("dvTruongHocNuoc");
-        //nuoc.Parameters["prdvTruongHoc"].Visible = false;
-        //nuoc.Parameters["prdvSanXuat"].Value = @Context.Session.GetString("dvSanXuatNuoc");
-        //nuoc.Parameters["prdvSanXuat"].Visible = false;
-        //nuoc.Parameters["prdvKinhDoanh"].Value = @Context.Session.GetString("dvKinhDoanhNuoc");
-        //nuoc.Parameters["prdvKinhDoanh"].Visible = false; 
     }
 
     <div class="container-fluid body-content">
