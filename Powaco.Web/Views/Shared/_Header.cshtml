@@ -1,7 +1,7 @@
 ﻿
 <!-- Header Start -->
 <div class="container header-bg-top">
-    <nav class="navbar navbar-inverse header-bg-top">
+    @*<nav class="navbar navbar-inverse header-bg-top">
         <div class="col-xl-7 col-md-7 col-sm-7 col-xs-12 col-12 header-bg-top">
             <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
                 <span class="sr-only">POWACO</span>
@@ -13,21 +13,48 @@
                 <img src="~/images/powacmo.png" alt="..." class="top-img-logo">
             </a>
             <a href="~/home" id="Top_TieuDe" class="navbar-brand">
-                Công ty Cổ phần Điện nước An Giang
+                POWACO
             </a>
         </div>        
 
-    </nav>
+    </nav>*@
     <nav class="navbar navbar-inverse header-bg">
-        <div id="navbarCollapse" class=" collapse navbar-collapse">
+        <div id="navbarCollapse" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="dropdown">
-                    <a data-toggle="dropdown" class="user-profile dropdown-toggle header-ul-li-a-size2" href="~/home#">Trang chủ </a>
+                <li class="dropdown">                    
+                    <a data-toggle="dropdown" class="dropdown-toggle header-ul-li-a-size2 " href="~/">
+                        <img src="~/images/powacmo.png" alt="..." class=""  > 
+                    </a>
                 </li>
             </ul>
-            <ul class="nav navbar-nav">
+            <ul class="nav navbar-nav navbar-margin">
                 <li class="dropdown">
-                    <a data-toggle="dropdown" class="user-profile dropdown-toggle header-ul-li-a-size2" href="~/home#">Giới thiệu </a>
+                    <a data-toggle="dropdown" class="user-profile dropdown-toggle header-ul-li-a-size2 " 
+                       href="~/home#">Giới thiệu </a>
+                    <ul class="dropdown-menu dropdown-usermenu dropdown-dangky" style="display: none;">
+                        <li><a class="click-active-2" href="~/dangkydien/">Giới thiệu chung</a></li>
+                        <li><a href="~/dangkynuoc/">Cơ cấu tổ chức</a></li>
+                        @*<li class="divider"></li>*@
+                        <li><a href="~/dichvudien/">Thành tích</a></li>
+                        <li><a href="~/dichvunuoc/">Định hướng phát triển</a></li>
+                    </ul>                    
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-margin">
+                <li class="dropdown">
+                    <a data-toggle="dropdown" class="user-profile dropdown-toggle header-ul-li-a-size2 " href="~/home#">Tin tức </a>
+                    <ul class="dropdown-menu dropdown-usermenu dropdown-dangky" style="display: none;">
+                        <li><a href="~/dangkydien/">Giới thiệu chung</a></li>
+                        <li><a href="~/dangkynuoc/">Cơ cấu tổ chức</a></li>
+                        @*<li class="divider"></li>*@
+                        <li><a href="~/dichvudien/">Thành tích</a></li>
+                        <li><a href="~/dichvunuoc/">Định hướng phát triển</a></li>
+                    </ul>                    
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-margin">
+                <li class="dropdown">
+                    <a data-toggle="dropdown" class="user-profile dropdown-toggle header-ul-li-a-size2 " href="~/home#">Dịch vụ </a>
                     <ul class="dropdown-menu dropdown-usermenu dropdown-dangky" style="display: none;">
                         <li><a href="~/dangkydien/">Giới thiệu chung</a></li>
                         <li><a href="~/dangkynuoc/">Cơ cấu tổ chức</a></li>
@@ -37,9 +64,9 @@
                     </ul>
                 </li>
             </ul>
-            <ul class="nav navbar-nav">
+            <ul class="nav navbar-nav navbar-margin">
                 <li class="dropdown">
-                    <a data-toggle="dropdown" class="user-profile dropdown-toggle header-ul-li-a-size2" href="~/home#">Tin tức </a>
+                    <a data-toggle="dropdown" class="user-profile dropdown-toggle header-ul-li-a-size2 " href="~/home#">Khách hàng </a>
                     <ul class="dropdown-menu dropdown-usermenu dropdown-dangky" style="display: none;">
                         <li><a href="~/dangkydien/">Giới thiệu chung</a></li>
                         <li><a href="~/dangkynuoc/">Cơ cấu tổ chức</a></li>
@@ -49,33 +76,9 @@
                     </ul>
                 </li>
             </ul>
-            <ul class="nav navbar-nav">
+            <ul class="nav navbar-nav navbar-margin">
                 <li class="dropdown">
-                    <a data-toggle="dropdown" class="user-profile dropdown-toggle header-ul-li-a-size2" href="~/home#">Dịch vụ </a>
-                    <ul class="dropdown-menu dropdown-usermenu dropdown-dangky" style="display: none;">
-                        <li><a href="~/dangkydien/">Giới thiệu chung</a></li>
-                        <li><a href="~/dangkynuoc/">Cơ cấu tổ chức</a></li>
-                        @*<li class="divider"></li>*@
-                        <li><a href="~/dichvudien/">Thành tích</a></li>
-                        <li><a href="~/dichvunuoc/">Định hướng phát triển</a></li>
-                    </ul>
-                </li>
-            </ul>
-            <ul class="nav navbar-nav">
-                <li class="dropdown">
-                    <a data-toggle="dropdown" class="user-profile dropdown-toggle header-ul-li-a-size2" href="~/home#">Khách hàng </a>
-                    <ul class="dropdown-menu dropdown-usermenu dropdown-dangky" style="display: none;">
-                        <li><a href="~/dangkydien/">Giới thiệu chung</a></li>
-                        <li><a href="~/dangkynuoc/">Cơ cấu tổ chức</a></li>
-                        @*<li class="divider"></li>*@
-                        <li><a href="~/dichvudien/">Thành tích</a></li>
-                        <li><a href="~/dichvunuoc/">Định hướng phát triển</a></li>
-                    </ul>
-                </li>
-            </ul>
-            <ul class="nav navbar-nav">
-                <li class="dropdown">
-                    <a data-toggle="dropdown" class="user-profile dropdown-toggle header-ul-li-a-size2" href="~/home#">Dịch vụ trực tuyến </a>
+                    <a data-toggle="dropdown" class="user-profile dropdown-toggle header-ul-li-a-size2 " href="~/home#">Dịch vụ trực tuyến </a>
                     <ul class="dropdown-menu dropdown-usermenu dropdown-dangky" style="display: none;">
                         <li><a href="~/dangkydien/">Lắp đặt mới đồng hồ điện</a></li>
                         <li><a href="~/dangkynuoc/">Lắp đặt mới đồng hồ nước</a></li>
@@ -85,9 +88,9 @@
                     </ul>
                 </li>
             </ul>
-            <ul class="nav navbar-nav">
+            <ul class="nav navbar-nav navbar-margin">
                 <li class="dropdown">
-                    <a data-toggle="dropdown" class="user-profile dropdown-toggle header-ul-li-a-size2" href="~/home#">Quan hệ cổ đông </a>
+                    <a data-toggle="dropdown" class="user-profile dropdown-toggle header-ul-li-a-size2 " href="~/home#">Quan hệ cổ đông </a>
                     <ul class="dropdown-menu dropdown-usermenu dropdown-dangky" style="display: none;">
                         <li><a href="~/dangkydien/">Giới thiệu chung</a></li>
                         <li><a href="~/dangkynuoc/">Cơ cấu tổ chức</a></li>
@@ -97,9 +100,9 @@
                     </ul>
                 </li>
             </ul>
-            <ul class="nav navbar-nav">
+            <ul class="nav navbar-nav navbar-margin">
                 <li class="dropdown">
-                    <a data-toggle="dropdown" class="user-profile dropdown-toggle header-ul-li-a-size2" href="~/home#">Liên hệ </a>
+                    <a data-toggle="dropdown" class="user-profile dropdown-toggle header-ul-li-a-size2 " href="~/home#">Liên hệ </a>
                     <ul class="dropdown-menu dropdown-usermenu dropdown-dangky" style="display: none;">
                         <li><a href="~/dangkydien/">Giới thiệu chung</a></li>
                         <li><a href="~/dangkynuoc/">Cơ cấu tổ chức</a></li>
@@ -108,7 +111,7 @@
                         <li><a href="~/dichvunuoc/">Định hướng phát triển</a></li>
                     </ul>
                 </li>
-            </ul>
+            </ul>            
         </div>        
     </nav>
 </div>

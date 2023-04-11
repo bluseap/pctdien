@@ -593,6 +593,28 @@ namespace NiTiErp.Areas.Admin.Controllers
             var sonhanviencongtac = nhanviencongtac1.Result.Count().ToString();
             HttpContext.Session.SetString("sonhanviencongtac", sonhanviencongtac);
 
+            HttpContext.Session.SetString("TraLamViecTenOngBa", pctdien.Result.TraLamViecTenOngBa);
+            HttpContext.Session.SetString("TraLamViecOngBaTenChucVu", pctdien.Result.TraLamViecOngBaTenChucVu);
+            HttpContext.Session.SetString("TenDaiDienQuanLyVanHanh", pctdien.Result.TenDaiDienQuanLyVanHanh);
+
+            string thoigiantralamviec = pctdien.Result.GioTraLamViec + " giờ " + pctdien.Result.PhutTraLamViec + " phút" + ", ngày " +
+                pctdien.Result.NgayTraLamViec.ToString("dd/MM/yyyy");
+            HttpContext.Session.SetString("thoigiantralamviec", thoigiantralamviec);
+
+            HttpContext.Session.SetString("LyDoTonChuaThucHien", pctdien.Result.LyDoTonChuaThucHien);
+            HttpContext.Session.SetString("LyDoChuaThucHien", pctdien.Result.LyDoChuaThucHien);
+
+            string thoigiankhoapct = pctdien.Result.GioKhoaPCT + " giờ " + pctdien.Result.PhutKhoaPCT + " phút" + ", ngày " +
+                pctdien.Result.NgayKhoaPCT.ToString("dd/MM/yyyy");
+            HttpContext.Session.SetString("thoigiankhoapct", thoigiankhoapct);
+
+            string NgayKiemTraHoanThanhPCT = pctdien.Result.NgayKiemTraHoanThanhPCT.ToString("dd/MM/yyyy");
+            HttpContext.Session.SetString("NgayKiemTraHoanThanhPCT", NgayKiemTraHoanThanhPCT);
+
+            HttpContext.Session.SetString("tennguoicapphieu", pctdien.Result.TenNguoiLanhDaoCongViec);
+            HttpContext.Session.SetString("TenNguoiKiemTraATLDTaiHienTruong", pctdien.Result.TenNguoiKiemTraATLDTaiHienTruong);
+            HttpContext.Session.SetString("ChucVuNguoiKiemTraATLDTaiHienTruong", pctdien.Result.ChucVuNguoiKiemTraATLDTaiHienTruong);
+
             return new OkObjectResult(nhanviencongtac1);
         }
 

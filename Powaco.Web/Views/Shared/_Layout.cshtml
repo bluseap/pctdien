@@ -24,7 +24,12 @@
     <link href="~/css/bootstrap.css" rel="stylesheet" />
 
     <!-- Font Awesome -->
-    <link href="~/css/font-awesome.css" rel="stylesheet" />
+    @*<link href="~/css/font-awesome.css" rel="stylesheet" />*@
+    <link href="~/css/fontawesome/fontawesome.css" rel="stylesheet" />
+    <link href="~/css/fontawesome/solid.css" rel="stylesheet" />
+    <link href="~/css/fontawesome/brands.css" rel="stylesheet" />
+    <link href="~/css/fontawesome/v4-shims.css" rel="stylesheet" />
+
     <!-- NProgress -->
     <link href="~/css/nprogress.css" rel="stylesheet" />
 
@@ -36,9 +41,7 @@
         <link href="~/css/pnotify.nonblock.css" rel="stylesheet" />*@
 
     <link href="~/css/dropzone.css" rel="stylesheet" asp-append-version="true" />
-
-    @*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">*@
-
+  
     <link href="~/css/custom.css" rel="stylesheet" asp-append-version="true" />
 
     <link href="~/css/powanguyen.css" rel="stylesheet" asp-append-version="true" />
@@ -47,11 +50,11 @@
 </head>
 
 <body class="nav-md">
-    <div class="container body">
+    <div class="container body bg-element">
         <div class="main_container">
             <Partial name="_Header.cshtml" />
 
-            <div class="bg-element " role="main">
+            <div class=" " role="main">
 
                 <div class="">
                     @RenderBody()
@@ -62,7 +65,7 @@
     </div>
 
     <Partial name="_Footer.cshtml" />
-   
+
 
     <script src="~/js/jquery.js"></script>
 
@@ -86,9 +89,12 @@
     <script src="~/js/notify-metro.js"></script>
     <script src="~/js/bootbox.js"></script>
 
-    @*<script src="~/js/pnotify.js"></script>
-        <script src="~/js/pnotify.buttons.js" ></script>
-        <script src="~/js/pnotify.nonblock.js" ></script>*@
+    <!-- Font-awesome -->
+    <script src="~/js/fontawesome/solid.js"></script>
+    <script src="~/js/fontawesome/brands.js"></script>
+    <script src="~/js/fontawesome/fontawesome.js"></script>
+    <script src="~/js/fontawesome/v4-shims.js"></script>
+
 
     <script src="~/js/dropzone.js"></script>
 
@@ -98,7 +104,7 @@
 
     <script src="~/js/jquery.printThis.js" asp-append-version="true"></script>
 
-    <script src="~/js/powanguyen.js" ></script>
+    <script src="~/js/powanguyen.js"></script>
 
     <script src="~/client-app/shared/powa.js" asp-append-version="true"></script>
 

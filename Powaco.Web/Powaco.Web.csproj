@@ -51,6 +51,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\css\webfonts\fa-brands-400.woff2" />
+    <None Include="wwwroot\css\webfonts\fa-regular-400.woff2" />
+    <None Include="wwwroot\css\webfonts\fa-solid-900.woff2" />
+    <None Include="wwwroot\css\webfonts\fa-v4compatibility.woff2" />
     <None Include="wwwroot\lib\PgwSlider\jquery.js" />
     <None Include="wwwroot\lib\PgwSlider\LICENSE.md" />
     <None Include="wwwroot\lib\PgwSlider\pgwslider.js" />

@@ -53,7 +53,7 @@
     position: absolute;
     width: 100%;
     padding: 12px;
-    background: rgba(0, 0, 0, 0.7);
+    background: none;
     filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000,endColorstr=#99000000);
     left: 0;
     bottom: 0;
