@@ -546,7 +546,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             string tenxinghiep = "XÍ NGHIỆP ĐIỆN NƯỚC " + pctdien.Result.TenKhuVuc != null ? pctdien.Result.TenKhuVuc.ToUpper() : "";
 
             HttpContext.Session.SetString("TenXiNghiepNuoc", tenxinghiep);
-            HttpContext.Session.SetString("SoPhieuCongTac", pctdien.Result.SoPhieuCongTac != null ? pctdien.Result.SoPhieuCongTac.ToString() : "");
+            HttpContext.Session.SetString("SoPhieuCongTac", pctdien.Result.SoPhieuCongTac != null ? pctdien.Result.CorporationId + pctdien.Result.SoPhieuCongTac.ToString() : "");
             HttpContext.Session.SetString("TenNguoiLanhDaoCongViec", pctdien.Result.TenNguoiLanhDaoCongViec != null ? pctdien.Result.TenNguoiLanhDaoCongViec : "");
             HttpContext.Session.SetString("BacATDNguoiLanhDaoCongViecId", pctdien.Result.BacATDNguoiLanhDaoCongViecId != null ? pctdien.Result.BacATDNguoiLanhDaoCongViecId.ToString() : "");
             HttpContext.Session.SetString("TenNguoiChiHuyTrucTiep", pctdien.Result.TenNguoiChiHuyTrucTiep != null ? pctdien.Result.TenNguoiChiHuyTrucTiep : "");

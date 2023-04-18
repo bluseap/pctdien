@@ -119,16 +119,16 @@
           </ExpressionBindings>
           <StylePriority Ref="80" UseFont="false" />
         </Item5>
-        <Item6 Ref="81" ControlType="XRLabel" Name="label51" Multiline="true" Text="label51" SizeF="87.69617,17.7784328" LocationFloat="692.3444,9.999996" Font="Times New Roman, 10pt" Padding="2,2,0,0,100">
+        <Item6 Ref="81" ControlType="XRLabel" Name="label51" Multiline="true" Text="label51" SizeF="130.0971,17.77843" LocationFloat="546.6564,10.0000067" Font="Times New Roman, 9pt" Padding="2,2,0,0,100">
           <ExpressionBindings>
             <Item1 Ref="82" EventName="BeforePrint" PropertyName="Text" Expression="?SoPhieuCongTac" />
           </ExpressionBindings>
           <StylePriority Ref="83" UseFont="false" />
         </Item6>
-        <Item7 Ref="84" ControlType="XRLabel" Name="label50" Multiline="true" Text="Số: " TextAlignment="TopJustify" SizeF="28.1589355,17.7784348" LocationFloat="664.1855,9.999996" Font="Times New Roman, 10pt" Padding="2,2,0,0,100">
+        <Item7 Ref="84" ControlType="XRLabel" Name="label50" Multiline="true" Text="Số: " TextAlignment="TopJustify" SizeF="28.1589355,17.7784348" LocationFloat="518.497437,10.0000067" Font="Times New Roman, 9pt" Padding="2,2,0,0,100">
           <StylePriority Ref="85" UseFont="false" UseTextAlignment="false" />
         </Item7>
-        <Item8 Ref="86" ControlType="XRLabel" Name="label49" Multiline="true" Text="label49" TextAlignment="TopCenter" SizeF="313.237183,23.0000019" LocationFloat="61.6203842,30.5128231" Font="Times New Roman, 12pt, style=Bold" Padding="2,2,0,0,100">
+        <Item8 Ref="86" ControlType="XRLabel" Name="label49" Multiline="true" Text="label49" TextAlignment="TopCenter" SizeF="276.053284,23.0000019" LocationFloat="4.70733643,30.5128422" Font="Times New Roman, 12pt, style=Bold" Padding="2,2,0,0,100">
           <ExpressionBindings>
             <Item1 Ref="87" EventName="BeforePrint" PropertyName="Text" Expression="?prTenXiNghiep" />
           </ExpressionBindings>
@@ -183,10 +183,10 @@
         <Item17 Ref="115" ControlType="XRLabel" Name="label6" Multiline="true" Text="1.2 Người chỉ huy trực tiếp:" TextAlignment="TopJustify" SizeF="173.31514,17.1274033" LocationFloat="34.999897,95.53149" Font="Times New Roman, 10pt" Padding="2,2,0,0,100">
           <StylePriority Ref="116" UseFont="false" UseTextAlignment="false" />
         </Item17>
-        <Item18 Ref="117" ControlType="XRLabel" Name="label3" Multiline="true" Text="CÔNG TY CP ĐIỆN NƯỚC AG" TextAlignment="TopCenter" SizeF="313.237152,20.5128174" LocationFloat="61.6203842,9.999997" Font="Times New Roman, 12pt" Padding="2,2,0,0,100">
+        <Item18 Ref="117" ControlType="XRLabel" Name="label3" Multiline="true" Text="CÔNG TY CP ĐIỆN NƯỚC AG" TextAlignment="TopCenter" SizeF="276.053284,20.5128174" LocationFloat="4.70733643,10.0000067" Font="Times New Roman, 12pt" Padding="2,2,0,0,100">
           <StylePriority Ref="118" UseFont="false" UseTextAlignment="false" />
         </Item18>
-        <Item19 Ref="119" ControlType="XRLabel" Name="label4" Multiline="true" Text="PHIẾU CÔNG TÁC" TextAlignment="TopCenter" SizeF="182.995087,34.4016838" LocationFloat="450.2712,9.999996" Font="Times New Roman, 12pt, style=Bold" Padding="2,2,0,0,100">
+        <Item19 Ref="119" ControlType="XRLabel" Name="label4" Multiline="true" Text="PHIẾU CÔNG TÁC" TextAlignment="TopCenter" SizeF="182.995087,34.4016838" LocationFloat="306.146,10.0000067" Font="Times New Roman, 12pt, style=Bold" Padding="2,2,0,0,100">
           <StylePriority Ref="120" UseFont="false" UseTextAlignment="false" />
         </Item19>
       </Controls>
@@ -223,7 +223,7 @@
         <Item10 Ref="140" ControlType="XRLabel" Name="label108" Multiline="true" Text="..........................................................................................................................................." TextAlignment="TopJustify" SizeF="517.399963,17.04065" LocationFloat="262.640625,1745.32324" Font="Times New Roman, 10pt, style=Italic" Padding="2,2,0,0,100">
           <StylePriority Ref="141" UseFont="false" UseTextAlignment="false" />
         </Item10>
-        <Item11 Ref="142" ControlType="XRLabel" Name="label105" Multiline="true" Text="label105" SizeF="474.544434,17.04065" LocationFloat="305.495361,1728.28259" Font="Times New Roman, 10pt" Padding="2,2,0,0,96">
+        <Item11 Ref="142" ControlType="XRLabel" Name="label105" Multiline="true" Text="label105" SizeF="474.544434,17.04065" LocationFloat="305.495361,1728.28259" Font="Times New Roman, 10pt" Padding="2,2,0,0,100">
           <ExpressionBindings>
             <Item1 Ref="143" EventName="BeforePrint" PropertyName="Text" Expression="?NgayKiemTraHoanThanhPCT" />
           </ExpressionBindings>
@@ -241,7 +241,7 @@
         <Item15 Ref="151" ControlType="XRLabel" Name="label103" Multiline="true" Text="............................................................................................................................................." TextAlignment="TopJustify" SizeF="528.3639,17.0405273" LocationFloat="251.675888,1711.24207" Font="Times New Roman, 10pt, style=Italic" Padding="2,2,0,0,100">
           <StylePriority Ref="152" UseFont="false" UseTextAlignment="false" />
         </Item15>
-        <Item16 Ref="153" ControlType="XRLabel" Name="label100" Multiline="true" Text="label100" SizeF="263.235474,17.0407715" LocationFloat="516.805054,1694.20142" Font="Times New Roman, 10pt" Padding="2,2,0,0,96">
+        <Item16 Ref="153" ControlType="XRLabel" Name="label100" Multiline="true" Text="label100" SizeF="263.235474,17.0407715" LocationFloat="516.805054,1694.20142" Font="Times New Roman, 10pt" Padding="2,2,0,0,100">
           <ExpressionBindings>
             <Item1 Ref="154" EventName="BeforePrint" PropertyName="Text" Expression="?thoigiankhoapct" />
           </ExpressionBindings>
@@ -259,7 +259,7 @@
         <Item20 Ref="162" ControlType="XRLabel" Name="label96" Multiline="true" Text="Người chỉ huy trực tiếp" TextAlignment="TopJustify" SizeF="153.225266,17.0405273" LocationFloat="35.000515,1677.161" Font="Times New Roman, 10pt, style=Bold" Padding="2,2,0,0,100">
           <StylePriority Ref="163" UseFont="false" UseTextAlignment="false" />
         </Item20>
-        <Item21 Ref="164" ControlType="XRLabel" Name="label95" Multiline="true" Text="label95" SizeF="608.627747,17.0405273" LocationFloat="171.4128,1660.12048" Font="Times New Roman, 10pt" Padding="2,2,0,0,96">
+        <Item21 Ref="164" ControlType="XRLabel" Name="label95" Multiline="true" Text="label95" SizeF="608.627747,17.0405273" LocationFloat="171.4128,1660.12048" Font="Times New Roman, 10pt" Padding="2,2,0,0,100">
           <ExpressionBindings>
             <Item1 Ref="165" EventName="BeforePrint" PropertyName="Text" Expression="?LyDoChuaThucHien" />
           </ExpressionBindings>
@@ -268,7 +268,7 @@
         <Item22 Ref="167" ControlType="XRLabel" Name="label94" Multiline="true" Text="lý do chưa thực hiện:" TextAlignment="TopJustify" SizeF="136.412262,17.04065" LocationFloat="35.00048,1660.12036" Font="Times New Roman, 10pt" Padding="2,2,0,0,100">
           <StylePriority Ref="168" UseFont="false" UseTextAlignment="false" />
         </Item22>
-        <Item23 Ref="169" ControlType="XRLabel" Name="label93" Multiline="true" Text="label93" SizeF="441.062775,18.4293213" LocationFloat="338.977753,1641.69116" Font="Times New Roman, 10pt" Padding="2,2,0,0,96">
+        <Item23 Ref="169" ControlType="XRLabel" Name="label93" Multiline="true" Text="label93" SizeF="441.062775,18.4293213" LocationFloat="338.977753,1641.69116" Font="Times New Roman, 10pt" Padding="2,2,0,0,100">
           <ExpressionBindings>
             <Item1 Ref="170" EventName="BeforePrint" PropertyName="Text" Expression="?LyDoTonChuaThucHien" />
           </ExpressionBindings>
@@ -277,7 +277,7 @@
         <Item24 Ref="172" ControlType="XRLabel" Name="label92" Multiline="true" Text="* Công việc còn tồn động chưa thực hiện (nếu có)" TextAlignment="TopJustify" SizeF="303.977966,18.4293213" LocationFloat="34.9997978,1641.69116" Font="Times New Roman, 10pt, style=Bold" Padding="2,2,0,0,100">
           <StylePriority Ref="173" UseFont="false" UseTextAlignment="false" />
         </Item24>
-        <Item25 Ref="174" ControlType="XRLabel" Name="label91" Multiline="true" Text="label91" SizeF="415.038239,17.0407715" LocationFloat="74.10285,1624.65027" Font="Times New Roman, 10pt" Padding="2,2,0,0,96">
+        <Item25 Ref="174" ControlType="XRLabel" Name="label91" Multiline="true" Text="label91" SizeF="415.038239,17.0407715" LocationFloat="74.10285,1624.65027" Font="Times New Roman, 10pt" Padding="2,2,0,0,100">
           <ExpressionBindings>
             <Item1 Ref="175" EventName="BeforePrint" PropertyName="Text" Expression="?thoigiantralamviec" />
           </ExpressionBindings>
@@ -286,7 +286,7 @@
         <Item26 Ref="177" ControlType="XRLabel" Name="label90" Multiline="true" Text="lúc" TextAlignment="TopJustify" SizeF="39.10237,17.04065" LocationFloat="35.0002747,1624.65039" Font="Times New Roman, 10pt" Padding="2,2,0,0,100">
           <StylePriority Ref="178" UseFont="false" UseTextAlignment="false" />
         </Item26>
-        <Item27 Ref="179" ControlType="XRLabel" Name="label89" Multiline="true" Text="label89" SizeF="290.899445,17.04065" LocationFloat="489.141083,1607.60974" Font="Times New Roman, 10pt" Padding="2,2,0,0,96">
+        <Item27 Ref="179" ControlType="XRLabel" Name="label89" Multiline="true" Text="label89" SizeF="290.899445,17.04065" LocationFloat="489.141083,1607.60974" Font="Times New Roman, 10pt" Padding="2,2,0,0,100">
           <ExpressionBindings>
             <Item1 Ref="180" EventName="BeforePrint" PropertyName="Text" Expression="?TenDaiDienQuanLyVanHanh" />
           </ExpressionBindings>
@@ -295,7 +295,7 @@
         <Item28 Ref="182" ControlType="XRLabel" Name="label88" Multiline="true" Text="đại diện đơn vị quản lý vận hành " TextAlignment="TopJustify" SizeF="198.282043,17.04065" LocationFloat="290.859039,1607.60962" Font="Times New Roman, 10pt" Padding="2,2,0,0,100">
           <StylePriority Ref="183" UseFont="false" UseTextAlignment="false" />
         </Item28>
-        <Item29 Ref="184" ControlType="XRLabel" Name="label87" Multiline="true" Text="label87" SizeF="168.2294,17.0405273" LocationFloat="112.531189,1607.60974" Font="Times New Roman, 10pt" Padding="2,2,0,0,96">
+        <Item29 Ref="184" ControlType="XRLabel" Name="label87" Multiline="true" Text="label87" SizeF="168.2294,17.0405273" LocationFloat="112.531189,1607.60974" Font="Times New Roman, 10pt" Padding="2,2,0,0,100">
           <ExpressionBindings>
             <Item1 Ref="185" EventName="BeforePrint" PropertyName="Text" Expression="?TraLamViecOngBaTenChucVu" />
           </ExpressionBindings>
@@ -304,7 +304,7 @@
         <Item30 Ref="187" ControlType="XRLabel" Name="label86" Multiline="true" Text="chức danh" TextAlignment="TopJustify" SizeF="73.29257,17.04065" LocationFloat="35.0002747,1607.60974" Font="Times New Roman, 10pt" Padding="2,2,0,0,100">
           <StylePriority Ref="188" UseFont="false" UseTextAlignment="false" />
         </Item30>
-        <Item31 Ref="189" ControlType="XRLabel" Name="label85" Multiline="true" Text="label85" SizeF="322.9507,18.4294434" LocationFloat="457.0898,1589.1803" Font="Times New Roman, 10pt" Padding="2,2,0,0,96">
+        <Item31 Ref="189" ControlType="XRLabel" Name="label85" Multiline="true" Text="label85" SizeF="322.9507,18.4294434" LocationFloat="457.0898,1589.1803" Font="Times New Roman, 10pt" Padding="2,2,0,0,100">
           <ExpressionBindings>
             <Item1 Ref="190" EventName="BeforePrint" PropertyName="Text" Expression="?TraLamViecTenOngBa" />
           </ExpressionBindings>
