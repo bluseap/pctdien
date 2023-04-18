@@ -543,77 +543,82 @@ namespace NiTiErp.Areas.Admin.Controllers
 
             var nhanviencongtac1 = _pctnhanviencongtacService.PCTD_Get_PCTNhanVienCongTac_ByPCTDienIdInPCT(PCTDienId);
 
-            string tenxinghiep = "XÍ NGHIỆP ĐIỆN NƯỚC " + pctdien.Result.TenKhuVuc.ToUpper();
+            string tenxinghiep = "XÍ NGHIỆP ĐIỆN NƯỚC " + pctdien.Result.TenKhuVuc != null ? pctdien.Result.TenKhuVuc.ToUpper() : "";
 
             HttpContext.Session.SetString("TenXiNghiepNuoc", tenxinghiep);
-            HttpContext.Session.SetString("SoPhieuCongTac", pctdien.Result.SoPhieuCongTac.ToString());
-            HttpContext.Session.SetString("TenNguoiLanhDaoCongViec", pctdien.Result.TenNguoiLanhDaoCongViec);
-            HttpContext.Session.SetString("BacATDNguoiLanhDaoCongViecId", pctdien.Result.BacATDNguoiLanhDaoCongViecId.ToString());
-            HttpContext.Session.SetString("TenNguoiChiHuyTrucTiep", pctdien.Result.TenNguoiChiHuyTrucTiep);
-            HttpContext.Session.SetString("BacATDNguoiChiHuyTrucTiepId", pctdien.Result.BacATDNguoiChiHuyTrucTiepId.ToString());
-            HttpContext.Session.SetString("CacCongTyDonVi", pctdien.Result.CacCongTyDonVi);
-            HttpContext.Session.SetString("DiaDiemCongTac", pctdien.Result.DiaDiemCongTac);
-            HttpContext.Session.SetString("CacNoiDungCongTac", pctdien.Result.CacNoiDungCongTac);
+            HttpContext.Session.SetString("SoPhieuCongTac", pctdien.Result.SoPhieuCongTac != null ? pctdien.Result.SoPhieuCongTac.ToString() : "");
+            HttpContext.Session.SetString("TenNguoiLanhDaoCongViec", pctdien.Result.TenNguoiLanhDaoCongViec != null ? pctdien.Result.TenNguoiLanhDaoCongViec : "");
+            HttpContext.Session.SetString("BacATDNguoiLanhDaoCongViecId", pctdien.Result.BacATDNguoiLanhDaoCongViecId != null ? pctdien.Result.BacATDNguoiLanhDaoCongViecId.ToString() : "");
+            HttpContext.Session.SetString("TenNguoiChiHuyTrucTiep", pctdien.Result.TenNguoiChiHuyTrucTiep != null ? pctdien.Result.TenNguoiChiHuyTrucTiep : "");
+            HttpContext.Session.SetString("BacATDNguoiChiHuyTrucTiepId", pctdien.Result.BacATDNguoiChiHuyTrucTiepId != null ? pctdien.Result.BacATDNguoiChiHuyTrucTiepId.ToString() : "");
+            HttpContext.Session.SetString("CacCongTyDonVi", pctdien.Result.CacCongTyDonVi != null ? pctdien.Result.CacCongTyDonVi : "");
+            HttpContext.Session.SetString("DiaDiemCongTac", pctdien.Result.DiaDiemCongTac != null ? pctdien.Result.DiaDiemCongTac : "");
+            HttpContext.Session.SetString("CacNoiDungCongTac", pctdien.Result.CacNoiDungCongTac != null ? pctdien.Result.CacNoiDungCongTac : "");
 
-            string thoigianbatdaukehoach = pctdien.Result.GioBatDauKH + " giờ " + pctdien.Result.PhutBatDauKH + " phút" + ", ngày " +
-                pctdien.Result.NgayBatDauKH.ToString("dd/MM/yyyy");
+            string thoigianbatdaukehoach = pctdien.Result.GioBatDauKH != null ? pctdien.Result.GioBatDauKH  : "" 
+                + " giờ " + pctdien.Result.PhutBatDauKH != null ? pctdien.Result.PhutBatDauKH : "" + " phút" + ", ngày " +
+                pctdien.Result.NgayBatDauKH != null ? pctdien.Result.NgayBatDauKH.ToString("dd/MM/yyyy") : "";
             HttpContext.Session.SetString("thoigianbatdaukehoach", thoigianbatdaukehoach);
 
-            string thoigianketthuckehoach = pctdien.Result.GioKetThucKH + " giờ " + pctdien.Result.PhutKetThucKH + " phút" + ", ngày " +
-                pctdien.Result.NgayKetThucKH.ToString("dd/MM/yyyy");
+            string thoigianketthuckehoach = pctdien.Result.GioKetThucKH != null ? pctdien.Result.GioKetThucKH : ""
+                + " giờ " + pctdien.Result.PhutKetThucKH != null ? pctdien.Result.PhutKetThucKH : ""  + " phút" + ", ngày " +
+                pctdien.Result.NgayKetThucKH != null ? pctdien.Result.NgayKetThucKH.ToString("dd/MM/yyyy") : "";
             HttpContext.Session.SetString("thoigianketthuckehoach", thoigianketthuckehoach);
 
-            HttpContext.Session.SetString("CacDieuKiemATLD", pctdien.Result.CacDieuKiemATLD);
-            HttpContext.Session.SetString("CacTrangBiATBHLDLamViec", pctdien.Result.CacTrangBiATBHLDLamViec);
-            HttpContext.Session.SetString("TongHangMucDaTrangCap", pctdien.Result.TongHangMucDaTrangCap);
-            HttpContext.Session.SetString("CacDonViQLVHCoLienQuan", pctdien.Result.CacDonViQLVHCoLienQuan);
-            HttpContext.Session.SetString("TenNguoiGiamSatATD", pctdien.Result.TenNguoiGiamSatATD);
-            HttpContext.Session.SetString("BacATDNguoiGiamSatATD", pctdien.Result.BacATDNguoiGiamSatATD.ToString());
-            HttpContext.Session.SetString("TenNguoiChoPhep", pctdien.Result.TenNguoiChoPhep);
-            HttpContext.Session.SetString("BacNguoiChoPhep", pctdien.Result.BacNguoiChoPhep.ToString());
-            HttpContext.Session.SetString("NgayCapPCT", pctdien.Result.NgayCapPCT.ToString("dd/MM/yyyy"));
-            HttpContext.Session.SetString("TenNguoiCapPCT", pctdien.Result.TenNguoiCapPCT);
+            HttpContext.Session.SetString("CacDieuKiemATLD", pctdien.Result.CacDieuKiemATLD != null ? pctdien.Result.CacDieuKiemATLD : "");
+            HttpContext.Session.SetString("CacTrangBiATBHLDLamViec", pctdien.Result.CacTrangBiATBHLDLamViec != null ? pctdien.Result.CacTrangBiATBHLDLamViec : "");
+            HttpContext.Session.SetString("TongHangMucDaTrangCap", pctdien.Result.TongHangMucDaTrangCap != null ? pctdien.Result.TongHangMucDaTrangCap : "");
+            HttpContext.Session.SetString("CacDonViQLVHCoLienQuan", pctdien.Result.CacDonViQLVHCoLienQuan != null ? pctdien.Result.CacDonViQLVHCoLienQuan : "");
+            HttpContext.Session.SetString("TenNguoiGiamSatATD", pctdien.Result.TenNguoiGiamSatATD != null ? pctdien.Result.TenNguoiGiamSatATD : "");
+            HttpContext.Session.SetString("BacATDNguoiGiamSatATD", pctdien.Result.BacATDNguoiGiamSatATD != null ? pctdien.Result.BacATDNguoiGiamSatATD.ToString() : "");
+            HttpContext.Session.SetString("TenNguoiChoPhep", pctdien.Result.TenNguoiChoPhep != null ? pctdien.Result.TenNguoiChoPhep : "");
+            HttpContext.Session.SetString("BacNguoiChoPhep", pctdien.Result.BacNguoiChoPhep != null ? pctdien.Result.BacNguoiChoPhep.ToString() : "");
+            HttpContext.Session.SetString("NgayCapPCT", pctdien.Result.NgayCapPCT != null ? pctdien.Result.NgayCapPCT.ToString("dd/MM/yyyy") : "");
+            HttpContext.Session.SetString("TenNguoiCapPCT", pctdien.Result.TenNguoiCapPCT != null ? pctdien.Result.TenNguoiCapPCT : "");
 
-            HttpContext.Session.SetString("ThietBiDuongDayDaCatDien", pctdien.Result.ThietBiDuongDayDaCatDien);
-            HttpContext.Session.SetString("DaTiepDatTai", pctdien.Result.DaTiepDatTai);
-            HttpContext.Session.SetString("DaLamRaoChanTreoBienBaoTai", pctdien.Result.DaLamRaoChanTreoBienBaoTai);
-            HttpContext.Session.SetString("PhamViDuocPhepLamViec", pctdien.Result.PhamViDuocPhepLamViec);
-            HttpContext.Session.SetString("CanhBaoChiDanNguyHiem", pctdien.Result.CanhBaoChiDanNguyHiem);
-            HttpContext.Session.SetString("NguoiChiHuyTTKiemTraDamBaoAT", pctdien.Result.NguoiChiHuyTTKiemTraDamBaoAT);
-            HttpContext.Session.SetString("LamTiepDatTai", pctdien.Result.LamTiepDatTai);
-            HttpContext.Session.SetString("TongHangMucDaKiemTraBHLD", pctdien.Result.TongHangMucDaKiemTraBHLD);
-            HttpContext.Session.SetString("CacGiayPhoiHopChoPhep", pctdien.Result.CacGiayPhoiHopChoPhep);
+            HttpContext.Session.SetString("ThietBiDuongDayDaCatDien", pctdien.Result.ThietBiDuongDayDaCatDien != null ? pctdien.Result.ThietBiDuongDayDaCatDien : "");
+            HttpContext.Session.SetString("DaTiepDatTai", pctdien.Result.DaTiepDatTai != null ? pctdien.Result.DaTiepDatTai : "");
+            HttpContext.Session.SetString("DaLamRaoChanTreoBienBaoTai", pctdien.Result.DaLamRaoChanTreoBienBaoTai != null ? pctdien.Result.DaLamRaoChanTreoBienBaoTai : "");
+            HttpContext.Session.SetString("PhamViDuocPhepLamViec", pctdien.Result.PhamViDuocPhepLamViec != null ? pctdien.Result.PhamViDuocPhepLamViec : "");
+            HttpContext.Session.SetString("CanhBaoChiDanNguyHiem", pctdien.Result.CanhBaoChiDanNguyHiem != null ? pctdien.Result.CanhBaoChiDanNguyHiem : "");
+            HttpContext.Session.SetString("NguoiChiHuyTTKiemTraDamBaoAT", pctdien.Result.NguoiChiHuyTTKiemTraDamBaoAT != null ? pctdien.Result.NguoiChiHuyTTKiemTraDamBaoAT : "");
+            HttpContext.Session.SetString("LamTiepDatTai", pctdien.Result.LamTiepDatTai != null ? pctdien.Result.LamTiepDatTai : "");
+            HttpContext.Session.SetString("TongHangMucDaKiemTraBHLD", pctdien.Result.TongHangMucDaKiemTraBHLD != null ? pctdien.Result.TongHangMucDaKiemTraBHLD : "");
+            HttpContext.Session.SetString("CacGiayPhoiHopChoPhep", pctdien.Result.CacGiayPhoiHopChoPhep != null ? pctdien.Result.CacGiayPhoiHopChoPhep : "");
 
-            string thoigianchophepdonvicongtac = pctdien.Result.GioChoPhepDonViCT + " giờ " + pctdien.Result.PhutChoPhepDonViCT + " phút" + ", ngày " +
-                pctdien.Result.NgayChoPhepDonViCT.ToString("dd/MM/yyyy");
-            HttpContext.Session.SetString("thoigianchophepdonvicongtac", thoigianchophepdonvicongtac);
+            string thoigianchophepdonvicongtac = pctdien.Result.GioChoPhepDonViCT != null ? pctdien.Result.GioChoPhepDonViCT : ""
+                + " giờ " + pctdien.Result.PhutChoPhepDonViCT != null ? pctdien.Result.PhutChoPhepDonViCT : "" + " phút" + ", ngày " +
+                pctdien.Result.NgayChoPhepDonViCT != null ? pctdien.Result.NgayChoPhepDonViCT.ToString("dd/MM/yyyy") : "";
+            HttpContext.Session.SetString("thoigianchophepdonvicongtac", thoigianchophepdonvicongtac != null ? thoigianchophepdonvicongtac : "");
 
             SessionHelper.SetObjectAsJson(HttpContext.Session, "nhanviencongtac1", nhanviencongtac1.Result);
 
             var sonhanviencongtac = nhanviencongtac1.Result.Count().ToString();
             HttpContext.Session.SetString("sonhanviencongtac", sonhanviencongtac);
 
-            HttpContext.Session.SetString("TraLamViecTenOngBa", pctdien.Result.TraLamViecTenOngBa);
-            HttpContext.Session.SetString("TraLamViecOngBaTenChucVu", pctdien.Result.TraLamViecOngBaTenChucVu);
-            HttpContext.Session.SetString("TenDaiDienQuanLyVanHanh", pctdien.Result.TenDaiDienQuanLyVanHanh);
+            HttpContext.Session.SetString("TraLamViecTenOngBa", pctdien.Result.TraLamViecTenOngBa != null ? pctdien.Result.TraLamViecTenOngBa : "");
+            HttpContext.Session.SetString("TraLamViecOngBaTenChucVu", pctdien.Result.TraLamViecOngBaTenChucVu != null ? pctdien.Result.TraLamViecOngBaTenChucVu : "");
+            HttpContext.Session.SetString("TenDaiDienQuanLyVanHanh", pctdien.Result.TenDaiDienQuanLyVanHanh != null ? pctdien.Result.TenDaiDienQuanLyVanHanh : "");
 
-            string thoigiantralamviec = pctdien.Result.GioTraLamViec + " giờ " + pctdien.Result.PhutTraLamViec + " phút" + ", ngày " +
-                pctdien.Result.NgayTraLamViec.ToString("dd/MM/yyyy");
-            HttpContext.Session.SetString("thoigiantralamviec", thoigiantralamviec);
+            string thoigiantralamviec = pctdien.Result.GioTraLamViec != null ? pctdien.Result.GioTraLamViec : ""
+                + " giờ " + pctdien.Result.PhutTraLamViec != null ? pctdien.Result.PhutTraLamViec : "" + " phút" + ", ngày " +
+                pctdien.Result.NgayTraLamViec != null ? pctdien.Result.NgayTraLamViec.ToString("dd/MM/yyyy") : "";
+            HttpContext.Session.SetString("thoigiantralamviec", thoigiantralamviec != null ? thoigiantralamviec : "");
 
-            HttpContext.Session.SetString("LyDoTonChuaThucHien", pctdien.Result.LyDoTonChuaThucHien);
-            HttpContext.Session.SetString("LyDoChuaThucHien", pctdien.Result.LyDoChuaThucHien);
+            HttpContext.Session.SetString("LyDoTonChuaThucHien", pctdien.Result.LyDoTonChuaThucHien != null ? pctdien.Result.LyDoTonChuaThucHien : "");
+            HttpContext.Session.SetString("LyDoChuaThucHien", pctdien.Result.LyDoChuaThucHien != null ? pctdien.Result.LyDoChuaThucHien : "");
 
-            string thoigiankhoapct = pctdien.Result.GioKhoaPCT + " giờ " + pctdien.Result.PhutKhoaPCT + " phút" + ", ngày " +
-                pctdien.Result.NgayKhoaPCT.ToString("dd/MM/yyyy");
-            HttpContext.Session.SetString("thoigiankhoapct", thoigiankhoapct);
+            string thoigiankhoapct = pctdien.Result.GioKhoaPCT != null ? pctdien.Result.GioKhoaPCT : ""
+                + " giờ " + pctdien.Result.PhutKhoaPCT != null ? pctdien.Result.PhutKhoaPCT : "" + " phút" + ", ngày " +
+                pctdien.Result.NgayKhoaPCT != null ? pctdien.Result.NgayKhoaPCT.ToString("dd/MM/yyyy") : "";
+            HttpContext.Session.SetString("thoigiankhoapct", thoigiankhoapct != null ? thoigiankhoapct : "");
 
-            string NgayKiemTraHoanThanhPCT = pctdien.Result.NgayKiemTraHoanThanhPCT.ToString("dd/MM/yyyy");
-            HttpContext.Session.SetString("NgayKiemTraHoanThanhPCT", NgayKiemTraHoanThanhPCT);
+            string NgayKiemTraHoanThanhPCT = pctdien.Result.NgayKiemTraHoanThanhPCT != null ? pctdien.Result.NgayKiemTraHoanThanhPCT.ToString("dd/MM/yyyy") : "";
+            HttpContext.Session.SetString("NgayKiemTraHoanThanhPCT", NgayKiemTraHoanThanhPCT != null ? NgayKiemTraHoanThanhPCT : "");
 
-            HttpContext.Session.SetString("tennguoicapphieu", pctdien.Result.TenNguoiLanhDaoCongViec);
-            HttpContext.Session.SetString("TenNguoiKiemTraATLDTaiHienTruong", pctdien.Result.TenNguoiKiemTraATLDTaiHienTruong);
-            HttpContext.Session.SetString("ChucVuNguoiKiemTraATLDTaiHienTruong", pctdien.Result.ChucVuNguoiKiemTraATLDTaiHienTruong);
+            HttpContext.Session.SetString("tennguoicapphieu", pctdien.Result.TenNguoiLanhDaoCongViec != null ? pctdien.Result.TenNguoiLanhDaoCongViec : "");
+            HttpContext.Session.SetString("TenNguoiKiemTraATLDTaiHienTruong", pctdien.Result.TenNguoiKiemTraATLDTaiHienTruong != null ? pctdien.Result.TenNguoiKiemTraATLDTaiHienTruong : "");
+            HttpContext.Session.SetString("ChucVuNguoiKiemTraATLDTaiHienTruong", pctdien.Result.ChucVuNguoiKiemTraATLDTaiHienTruong != null ? pctdien.Result.ChucVuNguoiKiemTraATLDTaiHienTruong : "");
 
             return new OkObjectResult(nhanviencongtac1);
         }

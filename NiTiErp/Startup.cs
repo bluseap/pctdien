@@ -4,7 +4,9 @@ using DevExpress.AspNetCore.Reporting;
 using DevExpress.XtraReports.Web.Extensions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.CookiePolicy;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -107,6 +109,9 @@ namespace NiTiErp
                 options.Cookie.HttpOnly = true;
                 // Make the session cookie essential
                 options.Cookie.IsEssential = true;
+
+                options.Cookie.SameSite = SameSiteMode.Strict;
+                options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
             });
             services.AddImageResizer();
             services.AddAutoMapper();
@@ -451,10 +456,16 @@ namespace NiTiErp
 
             //app.UseHttpsRedirection();
 
+            app.UseSession();
             app.UseStaticFiles();
             app.UseMinResponse();
-            app.UseAuthentication();
-            app.UseSession();
+
+            //app.UseCookiePolicy(new CookiePolicyOptions
+            //{
+            //    HttpOnly = HttpOnlyPolicy.Always,
+            //    Secure = CookieSecurePolicy.Always,
+            //    MinimumSameSitePolicy = SameSiteMode.None
+            //});
 
             app.Use(async (context, next) =>
             {
@@ -470,7 +481,15 @@ namespace NiTiErp
                 routes.MapHub<TinNhanHub>("/tinnhan");
                 routes.MapHub<ChatUserHub>("/chatuser");
             });
-          
+
+            //app.UseCors(x => x
+            //    .AllowAnyMethod()
+            //    .AllowAnyHeader()
+            //    .SetIsOriginAllowed(origin => true) // allow any origin
+            //    .AllowCredentials()); // allow credentials
+
+            app.UseAuthentication();
+
             app.UseMvc(routes =>
             {
                 //routes.MapRoute(
