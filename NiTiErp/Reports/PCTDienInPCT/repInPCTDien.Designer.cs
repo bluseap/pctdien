@@ -316,6 +316,8 @@ namespace NiTiErp.Reports.PCTDienInPCT {
             this.tableCell79 = reportInitializer.GetControl<DevExpress.XtraReports.UI.XRTableCell>("tableCell79");
             this.tableCell80 = reportInitializer.GetControl<DevExpress.XtraReports.UI.XRTableCell>("tableCell80");
             this.tableCell81 = reportInitializer.GetControl<DevExpress.XtraReports.UI.XRTableCell>("tableCell81");
+            this.barCode1 = reportInitializer.GetControl<DevExpress.XtraReports.UI.XRBarCode>("barCode1");
+            this.barCode2 = reportInitializer.GetControl<DevExpress.XtraReports.UI.XRBarCode>("barCode2");
 
             // Parameters
             this.prTenXiNghiep = reportInitializer.GetParameter("prTenXiNghiep");
@@ -361,6 +363,7 @@ namespace NiTiErp.Reports.PCTDienInPCT {
             this.TenNguoiKiemTraATLDTaiHienTruong = reportInitializer.GetParameter("TenNguoiKiemTraATLDTaiHienTruong");
             this.ChucVuNguoiKiemTraATLDTaiHienTruong = reportInitializer.GetParameter("ChucVuNguoiKiemTraATLDTaiHienTruong");
             this.TenDaiDienQuanLyVanHanh = reportInitializer.GetParameter("TenDaiDienQuanLyVanHanh");
+            this.qrPCTDienId = reportInitializer.GetParameter("qrPCTDienId");
 
             // Data Sources
             this.objectDataSourceNV1 = reportInitializer.GetDataSource<DevExpress.DataAccess.ObjectBinding.ObjectDataSource>("objectDataSourceNV1");
@@ -710,5 +713,8 @@ namespace NiTiErp.Reports.PCTDienInPCT {
         private DevExpress.XtraReports.Parameters.Parameter ChucVuNguoiKiemTraATLDTaiHienTruong;
         private DevExpress.XtraReports.Parameters.Parameter TenDaiDienQuanLyVanHanh;
         private DevExpress.DataAccess.ObjectBinding.ObjectDataSource objectDataSourceNV1;
+        private DevExpress.XtraReports.UI.XRBarCode barCode1;
+        private DevExpress.XtraReports.Parameters.Parameter qrPCTDienId;
+        private DevExpress.XtraReports.UI.XRBarCode barCode2;
     }
 }

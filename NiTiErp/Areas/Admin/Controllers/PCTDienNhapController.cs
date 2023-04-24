@@ -12,8 +12,10 @@ using NiTiErp.Authorization;
 using NiTiErp.Extensions;
 using NiTiErp.Helpers;
 using NiTiErp.Utilities.Dtos;
+using QRCoder;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -545,6 +547,19 @@ namespace NiTiErp.Areas.Admin.Controllers
 
             string tenxinghiep = "XÍ NGHIỆP ĐIỆN NƯỚC " + pctdien.Result.TenKhuVuc != null ? pctdien.Result.TenKhuVuc.ToUpper() : "";
 
+            HttpContext.Session.SetString("PCTDienId", PCTDienId.ToString());
+
+            // create image QR
+            QRCodeGenerator QrGenerator = new QRCodeGenerator();
+            QRCodeData QrCodeInfo = QrGenerator.CreateQrCode(pctdien.Id.ToString(), QRCodeGenerator.ECCLevel.Q);
+            QRCode QrCode = new QRCode(QrCodeInfo);
+            Bitmap QrBitmap = QrCode.GetGraphic(60);
+            byte[] BitmapArray = QrBitmap.BitmapToByteArray();
+            string QrUri = string.Format("data:image/png;base64,{0}", Convert.ToBase64String(BitmapArray));
+            string QrUri2 = string.Format("{0}", Convert.ToBase64String(BitmapArray));
+            //ViewBag.QrCodeUri = QrUri;
+            HttpContext.Session.SetString("qrPCTDienId", QrUri2);
+
             HttpContext.Session.SetString("TenXiNghiepNuoc", tenxinghiep);
             HttpContext.Session.SetString("SoPhieuCongTac", pctdien.Result.SoPhieuCongTac != null ? pctdien.Result.CorporationId + pctdien.Result.SoPhieuCongTac.ToString() : "");
             HttpContext.Session.SetString("TenNguoiLanhDaoCongViec", pctdien.Result.TenNguoiLanhDaoCongViec != null ? pctdien.Result.TenNguoiLanhDaoCongViec : "");
@@ -624,6 +639,8 @@ namespace NiTiErp.Areas.Admin.Controllers
         }
 
         #endregion
+
+        
 
     }
 }

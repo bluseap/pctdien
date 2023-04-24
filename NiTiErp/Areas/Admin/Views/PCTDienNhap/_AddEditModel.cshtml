@@ -155,10 +155,18 @@
                                 <label for="lbPCTDienChonNoiDungCongTac">
                                     Chọn nội dung công tác
                                 </label>
-                                <div class="input-group">
-                                    <select id="ddlPCTDienChonNoiDungCongTac" name="ddlPCTDienChonNoiDungCongTac" class="form-control"></select>
+                                <div class="input-group">                                    
+                                    <div class="dropdown">
+                                        <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown">
+                                            <span class="dropdown-text"> -- Chọn nội dung Công tác --</span>
+                                            <span class="caret"></span>
+                                        </button>
+                                        
+                                        <ul id="ulPCTDienChonNoiDungCongTac" class="dropdown-menu">
+                                        </ul>
+                                    </div>                                    
                                     <span class="input-group-btn">
-                                        <button type="button" class="btn btn-info" id="btnThemNoiDungCongTac">Thêm mới ND</button>
+                                        <button type="button" class="btn btn-default" id="btnThemNoiDungCongTac">Thêm mới ND</button>
                                     </span>
                                 </div>
                             </div>

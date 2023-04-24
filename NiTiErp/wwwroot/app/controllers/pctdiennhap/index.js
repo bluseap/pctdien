@@ -22,9 +22,11 @@
         diadiemcongtac.initialize(); 
         ketthuccongtac.initialize(); 
         thaydoinguoilamviec.initialize(); 
-    }
+        
+    }    
 
     function registerEvents() {
+        
         $('#txtPCTDBaoCaoTuNgay, #txtPCTDBaoCaoDenNgay ').datepicker({
             autoclose: true,
             format: 'dd/mm/yyyy',

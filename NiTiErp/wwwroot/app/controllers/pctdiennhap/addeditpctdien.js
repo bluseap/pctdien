@@ -49,6 +49,8 @@
 
         loadTagsInput();        
 
+        loadTabsRemoved();
+
         $('#ddlPCTDienNhap1KhuVuc').on('change', function () {
             var corporationId = $('#ddlPCTDienNhap1KhuVuc').val();
             loadPCTDienNhapPhongKhuVuc(corporationId);            
@@ -77,6 +79,34 @@
             }
         });
 
+        checkboxDropdown();
+        
+    }
+
+    function checkboxDropdown() {
+        $('body').on('change', '.ul-checkbox-cacnoidungct:checked', function (e) {
+            e.preventDefault();            
+            let chonnoidungcongtac = this.value;              
+            $('#txtPCTDienNoiDungCongTac').addTag(chonnoidungcongtac);     
+        });  
+        $('body').on('change', '.ul-checkbox-cacnoidungct:unchecked', function (e) {
+            e.preventDefault();            
+            let chonnoidungcongtac = this.value;            
+            $('#txtPCTDienNoiDungCongTac').removeTag(chonnoidungcongtac);       
+        });
+
+    }
+    
+    function loadEditCheckBoxCacNoiDungCongTac(cacnoidungcongtac) {        
+        let arrayCacNoiDungCongTac = cacnoidungcongtac.split(",");
+        let checkboxCacNoiDungCongTac = document.getElementsByClassName("ul-checkbox-cacnoidungct");
+        $.each(arrayCacNoiDungCongTac, function (indexArray, valueArray) {    
+            $.each(checkboxCacNoiDungCongTac, function (indexCheckBox, valueCheckBox) {
+                if (valueArray === valueCheckBox.value) {
+                    checkboxCacNoiDungCongTac[indexCheckBox].checked = true;
+                }
+            });
+        });
     }
 
     function loadAddEditPhongBanTheoKhuVuc(makhuvuc, maphongban) {
@@ -163,14 +193,14 @@
             }
         });
 
-        $("#ddlPCTDienChonNoiDungCongTac").on('change', function () {
-            var chonnoidungct = $("#ddlPCTDienChonNoiDungCongTac").val();
-            var chonnoidungctSelect = $("#ddlPCTDienChonNoiDungCongTac").find(":selected").text();
+        //$("#ddlPCTDienChonNoiDungCongTac").on('change', function () {
+        //    var chonnoidungct = $("#ddlPCTDienChonNoiDungCongTac").val();
+        //    var chonnoidungctSelect = $("#ddlPCTDienChonNoiDungCongTac").find(":selected").text();
 
-            if (chonnoidungct !== '%') {
-                $('#txtPCTDienNoiDungCongTac').addTag(chonnoidungctSelect);
-            }
-        });
+        //    if (chonnoidungct !== '%') {
+        //        $('#txtPCTDienNoiDungCongTac').addTag(chonnoidungctSelect);
+        //    }
+        //});
 
         $("#ddlPCTDienChonDieuKienATD").on('change', function () {
             var dieukienatd = $("#ddlPCTDienChonDieuKienATD").val();
@@ -194,21 +224,40 @@
     function loadTagsInput() {
         $('#txtPCTDienThuocCongTyDonVi').tagsInput({
             width: 'auto',
-            height: '50px'
+            height: '60px',
+            allowDuplicates: false
         });        
         $('#txtPCTDienNoiDungCongTac').tagsInput({
             width: 'auto',
-            height: '50px'
+            height: '60px',
+            allowDuplicates: false
         });
         $('#txtPCTDienDieuKienATD').tagsInput({
             width: 'auto',
-            height: '50px'
+            height: '60px',
+            allowDuplicates: false
         });
         $('#txtPCTDienTrangBiATBHLDLamViec').tagsInput({
             width: 'auto',
-            height: '100px'
+            height: '100px',
+            allowDuplicates: false
         });
     }
+
+    function loadTabsRemoved() {
+        $('body').on('focusout', '#txtPCTDienNoiDungCongTac_tagsinput .tag', function (e) {
+            e.preventDefault(); 
+            var tagspan = $(this).context['children']['0'].innerText.trim();
+            //console.log(tagspan);              
+            let checkboxCacNoiDungCongTac = document.getElementsByClassName("ul-checkbox-cacnoidungct");
+            $.each(checkboxCacNoiDungCongTac, function (indexCheckBox, valueCheckBox) {
+                if (tagspan === valueCheckBox.value) {
+                    checkboxCacNoiDungCongTac[indexCheckBox].checked = false;
+                }
+            });
+        });
+
+    }    
 
     function loadEditData() {
         $('#txtSoPhieuCongTac').prop('disabled', true);
@@ -246,8 +295,18 @@
         $("#ddlPCTDienChonThuocCongTyDonVi")[0].selectedIndex = 0;
         $("#txtPCTDienThuocCongTyDonVi").val('');
         $("#txtPCTDiaDiemCongTac").val('');
-        $("#ddlPCTDienChonNoiDungCongTac")[0].selectedIndex = 0;
+        //$("#ddlPCTDienChonNoiDungCongTac")[0].selectedIndex = 0;
         $("#txtPCTDienNoiDungCongTac").val('');
+
+        $("#txtPCTDienThuocCongTyDonVi").importTags('');
+        $("#txtPCTDienNoiDungCongTac").importTags('');
+        $("#txtPCTDienDieuKienATD").importTags('');
+        $("#txtPCTDienTrangBiATBHLDLamViec").importTags('');
+
+        let checkboxDropdown = document.getElementsByClassName("ul-checkbox");
+        $.each(checkboxDropdown, function (indexCheckBox, valueCheckBox) {
+            checkboxDropdown[indexCheckBox].checked = false;
+        });
 
         $("#txtPCTDienGioBatDauCongViec").val(tedu.getFormattedDateGio(datenow));
         $("#txtPCTDienPhutBatDauCongViec").val(tedu.getFormattedDatePhut(datenow));
@@ -927,11 +986,16 @@
                 $("#txtPCTDienGioKetThucCongViec").val(pctdien.GioKetThucKH);
                 $("#txtPCTDienPhutKetThucCongViec").val(pctdien.PhutKetThucKH);
                 $("#txtPCTDienNgayKetThucCongViec").val(pctdien.NgayKetThucKH !== '0001-01-01T00:00:00' ? tedu.getFormattedDate(pctdien.NgayKetThucKH) : '');
-               
-                $("#txtPCTDienThuocCongTyDonVi").importTags(pctdien.CacCongTyDonVi != null ? pctdien.CacCongTyDonVi : '');
-                $("#txtPCTDienNoiDungCongTac").importTags(pctdien.CacNoiDungCongTac != null ? pctdien.CacNoiDungCongTac : '');
+
+                let caccongtydonvi = pctdien.CacCongTyDonVi != null ? pctdien.CacCongTyDonVi : ''
+                let cacnoidungcongtac = pctdien.CacNoiDungCongTac != null ? pctdien.CacNoiDungCongTac : '';
+
+                $("#txtPCTDienThuocCongTyDonVi").importTags(caccongtydonvi);
+                $("#txtPCTDienNoiDungCongTac").importTags(cacnoidungcongtac);
                 $("#txtPCTDienDieuKienATD").importTags(pctdien.CacDieuKiemATLD != null ? pctdien.CacDieuKiemATLD : '');
                 $("#txtPCTDienTrangBiATBHLDLamViec").importTags(pctdien.CacTrangBiATBHLDLamViec != null ? pctdien.CacTrangBiATBHLDLamViec : '');
+
+                loadEditCheckBoxCacNoiDungCongTac(cacnoidungcongtac);
 
                 $("#txtPCTDienTongHangMucDaTrangCap").val(pctdien.TongHangMucDaTrangCap);
                 $("#txtPCTDienCacDonViQLVHCoLienQuan").val(pctdien.CacDonViQLVHCoLienQuan);

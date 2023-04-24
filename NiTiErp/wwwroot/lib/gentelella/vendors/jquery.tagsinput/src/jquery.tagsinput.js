@@ -44,7 +44,8 @@
 
 
   };
-  $.fn.resetAutosize = function(options){
+
+	$.fn.resetAutosize = function (options) {
     // alert(JSON.stringify(options));
     var minWidth =  $(this).data('minwidth') || options.minInputWidth || $(this).width(),
         maxWidth = $(this).data('maxwidth') || options.maxInputWidth || ($(this).closest('.tagsinput').width() - options.inputPadding),
@@ -97,11 +98,12 @@
 
 				if (value !='' && skipTag != true) {
                     $('<span>').addClass('tag').append(
-                        $('<span>').text(value).append('&nbsp;&nbsp;'),
-                        $('<a>', {
+                        $('<span class="idtagspan">').text(value).append('&nbsp;&nbsp;'),
+						$('<a>', {
                             href  : '#',
                             title : 'Removing tag',
-                            text  : 'x'
+							text: 'x',
+							class: 'idtagsa'
                         }).click(function () {
                             return $('#' + id).removeTag(escape(value));
                         })
@@ -168,7 +170,7 @@
 	};
 
    // clear all existing tags and import new ones from a string
-   $.fn.importTags = function(str) {
+    $.fn.importTags = function(str) {
       var id = $(this).attr('id');
       $('#'+id+'_tagsinput .tag').remove();
       $.fn.tagsInput.importTags(this,str);

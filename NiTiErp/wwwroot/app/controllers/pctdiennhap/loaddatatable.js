@@ -13,20 +13,7 @@
 
     this.loadCodeDanhMucNoiDungCongTac = function (code) {
         loadCodeDanhMucNoiDungCongTac(code);
-    }
-
-    //this.initialize = function () {
-    //    registerEvents();
-    //    loadEditData();
-    //    loaddatatableClearData();
-    //}
-    //function registerEvents() {
-    //}
-    //function loadEditData() {        
-    //}
-    //function loaddatatableClearData() {
-    //    var datenow = new Date();        
-    //}
+    }    
 
     function loadCodeDanhMucNoiDungCongTac(code) {
         return $.ajax({
@@ -37,12 +24,13 @@
             },
             dataType: 'json',
             success: function (response) {
-                var render = "<option value='%' >-- Lựa chọn --</option>";
+                var render = '';
                 $.each(response.Result, function (i, item) {
-                    render += "<option value='" + item.Id + "'>" + item.TenNoiDung + "</option>";
-                });
-                $('#ddlPCTDienChonNoiDungCongTac').html(render);
-                $("#ddlPCTDienChonNoiDungCongTac")[0].selectedIndex = 0;
+                    render += '<li><a><label ><input id="ndct' + item.Id
+                        + '" type="checkbox" class="ul-checkbox ul-checkbox-cacnoidungct" name="amenities[]" value="'
+                        + item.TenNoiDung + '"> ' + item.TenNoiDung + '</label ></a ></li >';
+                });                    
+                $('#ulPCTDienChonNoiDungCongTac').html(render);
             },
             error: function (status) {
                 console.log(status);
