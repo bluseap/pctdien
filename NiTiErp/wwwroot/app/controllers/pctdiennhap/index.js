@@ -10,6 +10,7 @@
     var thaydoinguoilamviec = new thaydoinguoilamviecController();
 
     this.initialize = function () {
+        loadPhongUserName(userName);
         loadKhuVuc();
         loadData();
 
@@ -52,6 +53,15 @@
 
             var guid = CreateGuid();
             $('#hidPCTDienCode').val(guid);
+
+            // tai khoan thuoc Xi nghiep 
+            if (userCorporationId !== "PO") {
+                $("#ddlPCTDienChonThuocCongTyDonVi")[0].selectedIndex = 1;
+                var ChonThuocCongTyDonVi = $('#ddlPCTDienChonThuocCongTyDonVi :selected').text();
+                if (ChonThuocCongTyDonVi !== '%') {
+                    $('#txtPCTDienThuocCongTyDonVi').addTag(ChonThuocCongTyDonVi);
+                }
+            }            
 
             $('#modal-add-edit-EditPCTDienNhap').modal('show');
         });
@@ -202,7 +212,7 @@
                     $('#ddlPCTDienNhap1KhuVuc').prop('disabled', true);
                     $('#ddlPCTDienNhap1PhongBan').prop('disabled', true);
 
-                    $('#ddlPCTDienChonThuocCongTyDonVi').prop('disabled', true);
+                    //$('#ddlPCTDienChonThuocCongTyDonVi').prop('disabled', true);
                     $('#ddlThayDoiNguoiCongTacKhuVuc').prop('disabled', true);
                 }
                 else {
@@ -212,14 +222,14 @@
                     $('#ddlPCTDienNhap1KhuVuc').prop('disabled', false);
                     $('#ddlPCTDienNhap1PhongBan').prop('disabled', false);
 
-                    $('#ddlPCTDienChonThuocCongTyDonVi').prop('disabled', false);
+                    //$('#ddlPCTDienChonThuocCongTyDonVi').prop('disabled', false);
                     $('#ddlThayDoiNguoiCongTacKhuVuc').prop('disabled', false);
                 }
                 $("#ddlKhuVuc")[0].selectedIndex = 1;  
                 $("#ddlPCTDienNhap1KhuVuc")[0].selectedIndex = 1;
                 $("#ddlThayDoiNguoiCongTacKhuVuc")[0].selectedIndex = 1;
 
-                $("#ddlPCTDienChonThuocCongTyDonVi")[0].selectedIndex = 0;
+                //$("#ddlPCTDienChonThuocCongTyDonVi")[0].selectedIndex = 0;
 
                 loadPhongKhuVuc($("#ddlKhuVuc").val()); 
                 loadPCTDienNhapPhongKhuVuc($("#ddlPCTDienNhap1KhuVuc").val()); 
@@ -251,7 +261,15 @@
                     render += "<option value='" + item.Id + "'>" + item.TenPhong + "</option>";
                 });
                 $('#ddlPhongTo').html(render);
-                $("#ddlPhongTo")[0].selectedIndex = 0;                
+                //$("#ddlPhongTo")[0].selectedIndex = 0;       
+                var phongdanhmucid = $('#hidPhongDanhMucId').val();
+                $("#ddlPhongTo").val(phongdanhmucid);
+
+                let tenphongto = $("#ddlPhongTo :selected").text();
+                // chi tai khoan thuoc phong KT Điện Nước thi cho hien het de quan ly
+                if (tenphongto === "Phòng KT Điện Nước") {
+                    $('#ddlPhongTo').prop('disabled', false);
+                }
             },
             error: function (status) {
                 console.log(status);
@@ -275,9 +293,9 @@
                     render += "<option value='" + item.Id + "'>" + item.TenPhong + "</option>";
                 });
                 $('#ddlPCTDienNhap1PhongBan').html(render);
-                $("#ddlPCTDienNhap1PhongBan")[0].selectedIndex = 0;
-
-                loadPhongBanByUserName(userName);
+                //$("#ddlPCTDienNhap1PhongBan")[0].selectedIndex = 0;
+                var phongdanhmucid = $('#hidPhongDanhMucId').val();
+                $("#ddlPCTDienNhap1PhongBan").val(phongdanhmucid);
             },
             error: function (status) {
                 console.log(status);
@@ -286,26 +304,26 @@
         });
     } 
 
-    function loadPhongBanByUserName(userName) {
-        $.ajax({
-            type: 'GET',
-            url: '/admin/hskebao/getHoSonv',
-            data: { username: userName },
-            dataType: "json",
-            beforeSend: function () {
-                tedu.startLoading();
-            },
-            success: function (response) {
-                var hosonhanvien = response.Result;
-                $('#ddlPCTDienNhap1PhongBan').val(hosonhanvien.PhongBanDanhMucId);
-                //$('#ddlAddEditPhongNhaphoSo').val(hosonhanvien.PhongBanDanhMucId);
-            },
-            error: function (status) {
-                console.log(status);
-                tedu.notify('Không có danh mục Phòng.', 'error');
-            }
-        });
-    }
+    //function loadPhongBanByUserName(userName) {
+    //    $.ajax({
+    //        type: 'GET',
+    //        url: '/admin/hskebao/getHoSonv',
+    //        data: { username: userName },
+    //        dataType: "json",
+    //        beforeSend: function () {
+    //            tedu.startLoading();
+    //        },
+    //        success: function (response) {
+    //            var hosonhanvien = response.Result;
+    //            $('#ddlPCTDienNhap1PhongBan').val(hosonhanvien.PhongBanDanhMucId);
+    //            //$('#ddlAddEditPhongNhaphoSo').val(hosonhanvien.PhongBanDanhMucId);
+    //        },
+    //        error: function (status) {
+    //            console.log(status);
+    //            tedu.notify('Không có danh mục Phòng.', 'error');
+    //        }
+    //    });
+    //}
 
     function loadAutocompleteNhanVienByCor(corporationId) {
         $.ajax({
@@ -473,6 +491,28 @@
                 }
                 tedu.stopLoading();
             },
+        });
+    }
+
+    function loadPhongUserName(username) {
+        $.ajax({
+            type: 'GET',
+            url: '/admin/podangkynuoc/PhongByUserName',
+            data: {
+                UserName: username
+            },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                $('#hidPhongDanhMucId').val(response.Result.PhongBanDanhMucId);
+                $('#hidPhongDanhMucMAPB').val(response.Result.MAPB);
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không có danh mục Phòng.', 'error');
+            }
         });
     }
 

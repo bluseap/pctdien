@@ -34,6 +34,9 @@
                 <input type="hidden" id="hidThayDoiNguoiCongTacTenNhanVienThayDoiId" value="" />
                 <input type="hidden" id="hidInsertThayDoiNguoiCongTac" value="" />
 
+                <input type="hidden" id="hidPhongDanhMucId" value="" />
+                <input type="hidden" id="hidPhongDanhMucMAPB" value="" />
+
                 <div id="formMainEditPCTDienNhap1">
                     <form class="form-horizontal form-label-left" id="frmMainEditPCTDienNhap1">
                         <div class="item form-group">
@@ -155,16 +158,16 @@
                                 <label for="lbPCTDienChonNoiDungCongTac">
                                     Chọn nội dung công tác
                                 </label>
-                                <div class="input-group">                                    
+                                <div class="input-group">
                                     <div class="dropdown">
                                         <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown">
                                             <span class="dropdown-text"> -- Chọn nội dung Công tác --</span>
                                             <span class="caret"></span>
                                         </button>
-                                        
+
                                         <ul id="ulPCTDienChonNoiDungCongTac" class="dropdown-menu">
                                         </ul>
-                                    </div>                                    
+                                    </div>
                                     <span class="input-group-btn">
                                         <button type="button" class="btn btn-default" id="btnThemNoiDungCongTac">Thêm mới ND</button>
                                     </span>
@@ -217,9 +220,17 @@
                                     Chọn điều kiện về ATĐ để tiến hành công việc
                                 </label>
                                 <div class="input-group">
-                                    <select id="ddlPCTDienChonDieuKienATD" name="ddlPCTDienChonDieuKienATD" class="form-control"></select>
+                                    @*<select id="ddlPCTDienChonDieuKienATD" name="ddlPCTDienChonDieuKienATD" class="form-control"></select>*@
+                                    <div class="dropdown">
+                                        <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown">
+                                            <span class="dropdown-text"> -- Chọn điều kiện an toàn điện --</span>
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul id="ulPCTDienChonDieuKienATD" class="dropdown-menu">
+                                        </ul>
+                                    </div>
                                     <span class="input-group-btn">
-                                        <button type="button" class="btn btn-info" id="btnThemDieuKienATD">Thêm ĐK ATĐ</button>
+                                        <button type="button" class="btn btn-default" id="btnThemDieuKienATD">Thêm ĐK ATĐ</button>
                                     </span>
                                 </div>
                             </div>
@@ -236,9 +247,17 @@
                                     Chọn trang bị an toàn BHLĐ khi làm việc
                                 </label>
                                 <div class="input-group">
-                                    <select id="ddlPCTDienChonTrangBiATBHLDLamViec" name="ddlPCTDienChonTrangBiATBHLDLamViec" class="form-control"></select>
+                                    @*<select id="ddlPCTDienChonTrangBiATBHLDLamViec" name="ddlPCTDienChonTrangBiATBHLDLamViec" class="form-control"></select>*@
+                                    <div class="dropdown">
+                                        <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown">
+                                            <span class="dropdown-text"> -- Chọn trang bị an toàn BHLĐ LV --</span>
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul id="ulPCTDienChonTrangBiATBHLDLamViec" class="dropdown-menu">
+                                        </ul>
+                                    </div>
                                     <span class="input-group-btn">
-                                        <button type="button" class="btn btn-info" id="btnThemTrangBiATBHLDLamViec">Thêm T.bị ATBHLĐ</button>
+                                        <button type="button" class="btn btn-default" id="btnThemTrangBiATBHLDLamViec">Thêm T.bị ATBHLĐ</button>
                                     </span>
                                 </div>
                             </div>

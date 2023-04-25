@@ -95,6 +95,27 @@
             $('#txtPCTDienNoiDungCongTac').removeTag(chonnoidungcongtac);       
         });
 
+        $('body').on('change', '.ul-checkbox-cacdieukienatd:checked', function (e) {
+            e.preventDefault();
+            let chondieukienat = this.value;
+            $('#txtPCTDienDieuKienATD').addTag(chondieukienat);
+        });
+        $('body').on('change', '.ul-checkbox-cacdieukienatd:unchecked', function (e) {
+            e.preventDefault();
+            let chondieukienat = this.value;
+            $('#txtPCTDienDieuKienATD').removeTag(chondieukienat);
+        });
+
+        $('body').on('change', '.ul-checkbox-cactrangbibhldlv:checked', function (e) {
+            e.preventDefault();
+            let trangbiantoan = this.value;
+            $('#txtPCTDienTrangBiATBHLDLamViec').addTag(trangbiantoan);
+        });
+        $('body').on('change', '.ul-checkbox-cactrangbibhldlv:unchecked', function (e) {
+            e.preventDefault();
+            let trangbiantoan = this.value;
+            $('#txtPCTDienTrangBiATBHLDLamViec').removeTag(trangbiantoan);
+        });
     }
     
     function loadEditCheckBoxCacNoiDungCongTac(cacnoidungcongtac) {        
@@ -104,6 +125,28 @@
             $.each(checkboxCacNoiDungCongTac, function (indexCheckBox, valueCheckBox) {
                 if (valueArray === valueCheckBox.value) {
                     checkboxCacNoiDungCongTac[indexCheckBox].checked = true;
+                }
+            });
+        });
+    }
+    function loadEditCheckBoxCacDieuKienATD(cacdieukienatd) {
+        let arrayCacDieuKienATD = cacdieukienatd.split(",");
+        let checkboxCacDieuKienATD = document.getElementsByClassName("ul-checkbox-cacdieukienatd");
+        $.each(arrayCacDieuKienATD, function (indexArray, valueArray) {
+            $.each(checkboxCacDieuKienATD, function (indexCheckBox, valueCheckBox) {
+                if (valueArray === valueCheckBox.value) {
+                    checkboxCacDieuKienATD[indexCheckBox].checked = true;
+                }
+            });
+        });
+    } 
+    function loadEditCheckBoxCacTrangBiBHLDLV(cactrangbibhld) {
+        let arrayCacTrangBiBHLDLV = cactrangbibhld.split(",");
+        let checkboxCacTrangBiBHLDLV = document.getElementsByClassName("ul-checkbox-cactrangbibhldlv");
+        $.each(arrayCacTrangBiBHLDLV, function (indexArray, valueArray) {
+            $.each(checkboxCacTrangBiBHLDLV, function (indexCheckBox, valueCheckBox) {
+                if (valueArray === valueCheckBox.value) {
+                    checkboxCacTrangBiBHLDLV[indexCheckBox].checked = true;
                 }
             });
         });
@@ -202,23 +245,23 @@
         //    }
         //});
 
-        $("#ddlPCTDienChonDieuKienATD").on('change', function () {
-            var dieukienatd = $("#ddlPCTDienChonDieuKienATD").val();
-            var dieukienatdSelect = $("#ddlPCTDienChonDieuKienATD").find(":selected").text();
+        //$("#ddlPCTDienChonDieuKienATD").on('change', function () {
+        //    var dieukienatd = $("#ddlPCTDienChonDieuKienATD").val();
+        //    var dieukienatdSelect = $("#ddlPCTDienChonDieuKienATD").find(":selected").text();
 
-            if (dieukienatd !== '%') {
-                $('#txtPCTDienDieuKienATD').addTag(dieukienatdSelect);
-            }
-        });
+        //    if (dieukienatd !== '%') {
+        //        $('#txtPCTDienDieuKienATD').addTag(dieukienatdSelect);
+        //    }
+        //});
 
-        $("#ddlPCTDienChonTrangBiATBHLDLamViec").on('change', function () {
-            var trangbiatd = $("#ddlPCTDienChonTrangBiATBHLDLamViec").val();
-            var trangbiatdSelect = $("#ddlPCTDienChonTrangBiATBHLDLamViec").find(":selected").text();
+        //$("#ddlPCTDienChonTrangBiATBHLDLamViec").on('change', function () {
+        //    var trangbiatd = $("#ddlPCTDienChonTrangBiATBHLDLamViec").val();
+        //    var trangbiatdSelect = $("#ddlPCTDienChonTrangBiATBHLDLamViec").find(":selected").text();
 
-            if (trangbiatd !== '%') {
-                $('#txtPCTDienTrangBiATBHLDLamViec').addTag(trangbiatdSelect);
-            }
-        });
+        //    if (trangbiatd !== '%') {
+        //        $('#txtPCTDienTrangBiATBHLDLamViec').addTag(trangbiatdSelect);
+        //    }
+        //});
     }
 
     function loadTagsInput() {
@@ -256,6 +299,28 @@
                 }
             });
         });
+        $('body').on('focusout', '#txtPCTDienDieuKienATD_tagsinput .tag', function (e) {
+            e.preventDefault();
+            var tagspan = $(this).context['children']['0'].innerText.trim();
+            //console.log(tagspan);              
+            let checkboxCacdieukienatd = document.getElementsByClassName("ul-checkbox-cacdieukienatd");
+            $.each(checkboxCacdieukienatd, function (indexCheckBox, valueCheckBox) {
+                if (tagspan === valueCheckBox.value) {
+                    checkboxCacdieukienatd[indexCheckBox].checked = false;
+                }
+            });
+        });
+        $('body').on('focusout', '#txtPCTDienTrangBiATBHLDLamViec_tagsinput .tag', function (e) {
+            e.preventDefault();
+            var tagspan = $(this).context['children']['0'].innerText.trim();
+            //console.log(tagspan);              
+            let checkboxCacTrangBiATBHLD = document.getElementsByClassName("ul-checkbox-cactrangbibhldlv");
+            $.each(checkboxCacTrangBiATBHLD, function (indexCheckBox, valueCheckBox) {
+                if (tagspan === valueCheckBox.value) {
+                    checkboxCacTrangBiATBHLD[indexCheckBox].checked = false;
+                }
+            });
+        });
 
     }    
 
@@ -284,7 +349,7 @@
         $('#hidPCTDienTenNguoiCapPCTId').val(0);
 
         $("#ddlPCTDienNhap1KhuVuc")[0].selectedIndex = 1;
-        $("#ddlPCTDienNhap1PhongBan")[0].selectedIndex = 0; 
+        //$("#ddlPCTDienNhap1PhongBan")[0].selectedIndex = 0; 
         $("#txtSoPhieuCongTac").val('');
 
         $("#txtNguoiLanhDaoCongViec").val('');
@@ -315,9 +380,9 @@
         $("#txtPCTDienPhutKetThucCongViec").val(tedu.getFormattedDatePhut(datenow));
         $("#txtPCTDienNgayKetThucCongViec").val(tedu.getFormattedDate(datenow));
 
-        $("#ddlPCTDienChonDieuKienATD")[0].selectedIndex = 0;
+        //$("#ddlPCTDienChonDieuKienATD")[0].selectedIndex = 0;
         $("#txtPCTDienDieuKienATD").val('');
-        $("#ddlPCTDienChonTrangBiATBHLDLamViec")[0].selectedIndex = 0;
+        //$("#ddlPCTDienChonTrangBiATBHLDLamViec")[0].selectedIndex = 0;
         $("#txtPCTDienTrangBiATBHLDLamViec").val('');
 
         $("#txtPCTDienTongHangMucDaTrangCap").val('');
@@ -989,13 +1054,17 @@
 
                 let caccongtydonvi = pctdien.CacCongTyDonVi != null ? pctdien.CacCongTyDonVi : ''
                 let cacnoidungcongtac = pctdien.CacNoiDungCongTac != null ? pctdien.CacNoiDungCongTac : '';
+                let cacdieukienatd = pctdien.CacDieuKiemATLD != null ? pctdien.CacDieuKiemATLD : '';
+                let cactrangbiatbhldlamviec = pctdien.CacTrangBiATBHLDLamViec != null ? pctdien.CacTrangBiATBHLDLamViec : '';
 
                 $("#txtPCTDienThuocCongTyDonVi").importTags(caccongtydonvi);
                 $("#txtPCTDienNoiDungCongTac").importTags(cacnoidungcongtac);
-                $("#txtPCTDienDieuKienATD").importTags(pctdien.CacDieuKiemATLD != null ? pctdien.CacDieuKiemATLD : '');
-                $("#txtPCTDienTrangBiATBHLDLamViec").importTags(pctdien.CacTrangBiATBHLDLamViec != null ? pctdien.CacTrangBiATBHLDLamViec : '');
+                $("#txtPCTDienDieuKienATD").importTags(cacdieukienatd);
+                $("#txtPCTDienTrangBiATBHLDLamViec").importTags(cactrangbiatbhldlamviec);
 
                 loadEditCheckBoxCacNoiDungCongTac(cacnoidungcongtac);
+                loadEditCheckBoxCacDieuKienATD(cacdieukienatd);
+                loadEditCheckBoxCacTrangBiBHLDLV(cactrangbiatbhldlamviec);
 
                 $("#txtPCTDienTongHangMucDaTrangCap").val(pctdien.TongHangMucDaTrangCap);
                 $("#txtPCTDienCacDonViQLVHCoLienQuan").val(pctdien.CacDonViQLVHCoLienQuan);

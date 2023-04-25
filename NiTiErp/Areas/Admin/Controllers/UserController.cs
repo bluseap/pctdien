@@ -154,6 +154,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             else
             {
                 var username = User.GetSpecificClaim("UserName");    
+                //var username = userVm.UserName;
 
                 if (userVm.Id == null)
                 {

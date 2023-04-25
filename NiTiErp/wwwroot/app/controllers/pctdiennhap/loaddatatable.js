@@ -48,12 +48,13 @@
             },
             dataType: 'json',
             success: function (response) {
-                var render = "<option value='%' >-- Lựa chọn --</option>";
+                var render = '';
                 $.each(response.Result, function (i, item) {
-                    render += "<option value='" + item.Id + "'>" + item.TenNoiDung + "</option>";
+                    render += '<li><a><label ><input id="dkatd' + item.Id
+                        + '" type="checkbox" class="ul-checkbox ul-checkbox-cacdieukienatd" name="amenities[]" value="'
+                        + item.TenNoiDung + '"> ' + item.TenNoiDung + '</label ></a ></li >';
                 });
-                $('#ddlPCTDienChonDieuKienATD').html(render);
-                $("#ddlPCTDienChonDieuKienATD")[0].selectedIndex = 0;
+                $('#ulPCTDienChonDieuKienATD').html(render);                
             },
             error: function (status) {
                 console.log(status);
@@ -71,16 +72,17 @@
             },
             dataType: 'json',
             success: function (response) {
-                var render = "<option value='%' >-- Lựa chọn --</option>";
+                var render = '';
                 $.each(response.Result, function (i, item) {
-                    render += "<option value='" + item.Id + "'>" + item.TenNoiDung + "</option>";
+                    render += '<li><a><label ><input id="tbbhldlv' + item.Id
+                        + '" type="checkbox" class="ul-checkbox ul-checkbox-cactrangbibhldlv" name="amenities[]" value="'
+                        + item.TenNoiDung + '"> ' + item.TenNoiDung + '</label ></a ></li >';
                 });
-                $('#ddlPCTDienChonTrangBiATBHLDLamViec').html(render);
-                $("#ddlPCTDienChonTrangBiATBHLDLamViec")[0].selectedIndex = 0;
+                $('#ulPCTDienChonTrangBiATBHLDLamViec').html(render);   
             },
             error: function (status) {
                 console.log(status);
-                tedu.notify('Không có danh mục Nội dung công tác.', 'error');
+                tedu.notify('Không có danh mục trang bị bảo hiểm lao động.', 'error');
             }
         });
     }

@@ -182,6 +182,7 @@
                         HoSoNhanVienId: hosoid, 
                         UserName: userName,
                         Password: password,
+                        CurrentPassword: password,
                         Email: email,
                         PhoneNumber: phoneNumber,
                         CorporationId: corporationId,
