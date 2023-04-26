@@ -563,8 +563,10 @@
             return '<span class="badge bg-purple">Kiểm tra LV</span>';
         else if (trangthai === 10)
             return '<span class="badge bg-purple">Kiểm tra ATLĐ</span>';
+        else if (trangthai === 20)
+            return '<span class="badge bg-red">Hủy PCT</span>';     
         else
-            return '<span class="badge bg-red">Không biết</span>';        
+            return '<span class="badge bg-red">Không biết</span>';   
     },
 
     formatNumber: function (number, precision) {

@@ -67,6 +67,30 @@ namespace NiTiErp.Application.Dapper.Implementation
             }
         }
 
+        public async Task<List<HoSoNhanVienViewModel>> Get_HoSoNhanVien_ByCorPhongId(string corporationid, string phongdanhmucid)
+        {
+            using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            {
+                await sqlConnection.OpenAsync();
+                var dynamicParameters = new DynamicParameters();
+
+                dynamicParameters.Add("@CorporationId", corporationid);
+                dynamicParameters.Add("@PhongDanhMucId", phongdanhmucid);
+
+                try
+                {
+                    var query = await sqlConnection.QueryAsync<HoSoNhanVienViewModel>(
+                        "Get_HoSoNhanVien_ByCorPhongId", dynamicParameters, commandType: CommandType.StoredProcedure);
+
+                    return query.AsList();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
         public async Task<List<HoSoNhanVienViewModel>> Get_HoSoNhanVien_ById(string hosonhanvienid)
         {
             using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))

@@ -13,6 +13,8 @@ namespace NiTiErp.Application.Dapper.Interfaces
 
         Task<List<HoSoNhanVienViewModel>> Get_HoSoNhanVien_ByCorId(string corporationid);
 
+        Task<List<HoSoNhanVienViewModel>> Get_HoSoNhanVien_ByCorPhongId(string corporationid, string phongdanhmucid);
+
         Task<List<HoSoNhanVienViewModel>> Get_HoSoNhanVien_ById(string hosonhanvienid);
 
         Task<PagedResult<HoSoNhanVienViewModel>> Get_HoSoNhanVien_AllPaging(string corporationId, string phongdanhmucId,

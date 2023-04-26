@@ -1,11 +1,22 @@
 ﻿
-create procedure [dbo].[PCTD_Create_PCTNhanVienCongTac_ByIdThayDoi]
-create procedure [dbo].[PCTD_Update_PCTNhanVienCongTac_ByIdThayDoi]
+create procedure [dbo].[PCTD_Get_PCTDien_AllTrangThai] 
 
-create procedure [dbo].[PCTD_Get_PCTNhanVienCongTac_ById]
-create procedure [dbo].[PCTD_Get_PCTNhanVienCongTac_ByThayDoiNguoiDienId]
-create procedure [dbo].[PCTD_Get_PCTNhanVienCongTac_ByPCTDienId]
-create procedure [dbo].[PCTD_Get_PCTNhanVienCongTac_ByPCTDienIdInPCT]
+create procedure [dbo].[Get_HoSoNhanVien_ByCorPhongId]
+
+add table PCTDien and PCTDienHis: 
+	IsHuyPCT	bit	Checked
+	NgayHuyPCT	datetime	Checked
+	GhiChuHuyPCT	nvarchar(1000)	Checked
+
+
+
+rcreate procedure [dbo].[PCTD_Create_PCTNhanVienCongTac_ByIdThayDoi]
+rcreate procedure [dbo].[PCTD_Update_PCTNhanVienCongTac_ByIdThayDoi]
+r
+rcreate procedure [dbo].[PCTD_Get_PCTNhanVienCongTac_ById]
+rcreate procedure [dbo].[PCTD_Get_PCTNhanVienCongTac_ByThayDoiNguoiDienId]
+rcreate procedure [dbo].[PCTD_Get_PCTNhanVienCongTac_ByPCTDienId]
+rcreate procedure [dbo].[PCTD_Get_PCTNhanVienCongTac_ByPCTDienIdInPCT]
 
 
 r create procedure [dbo].[Get_BacAnToanDien_All]

@@ -22,6 +22,7 @@
     <script src="~/app/controllers/PCTDienNhap/themdieukienatd.js" asp-append-version="true"></script>
     <script src="~/app/controllers/PCTDienNhap/themnoidungcongtac.js" asp-append-version="true"></script>
 
+    <script src="~/app/controllers/PCTDienNhap/huycongtac.js" asp-append-version="true"></script>
     <script src="~/app/controllers/PCTDienNhap/ketthuccongtac.js" asp-append-version="true"></script>
     <script src="~/app/controllers/PCTDienNhap/diadiemcongtac.js" asp-append-version="true"></script>
     <script src="~/app/controllers/PCTDienNhap/chopheplamviec.js" asp-append-version="true"></script>
@@ -87,9 +88,17 @@
                 <form id="formPCTDBaoCao" data-parsley-validate class="form-horizontal form-label-left">
                     <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 ">
-                            <div class="input-group">
-                                <label>Danh sách điều kiện</label>
-                                <select id="ddlPCTDBaoCaoDieuKien" name="ddlPCTDBaoCaoDieuKien" class="form-control"></select>
+                            <div class="col-md-8 col-sm-12 col-xs-12 ">
+                                <div class="input-group">
+                                    <label>Danh sách điều kiện</label>
+                                    <select id="ddlPCTDBaoCaoDieuKien" name="ddlPCTDBaoCaoDieuKien" class="form-control"></select>
+                                </div>
+                            </div>                            
+                            <div class="col-md-4 col-sm-12 col-xs-12 ">
+                                <div class="input-group">
+                                    <label>Chọn hết Nh.viên XN</label>
+                                    <input id="ckPCTDChonHetNhanVienKhuVuc" type="checkbox" class="checkbox" style="width:20px;" />
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-6 col-sm-6 col-xs-12 ">
@@ -115,7 +124,7 @@
                                 <div class="input-group">
                                     <label></label>
                                     <span class="input-group-btn padding-top-5px">
-                                        <button class="btn btn-warning" id="btnPCTDBaoCaoDieuKien" type="button">Danh sách </button>
+                                        <button class="btn btn-round btn-warning" id="btnPCTDBaoCaoDieuKien" type="button">Danh sách đ.kiện </button>
                                     </span>
                                 </div>
                             </div>
@@ -135,6 +144,7 @@
                             <th>Địa điểm - Nội dung</th>
                             <th>Từ ngày - Đến ngày (KH)</th>
                             <th>Trạng thái</th>
+                            <th></th>
                             <th></th>
                             <th></th>
                             <th></th>
@@ -207,6 +217,12 @@
                     <i>In PCT </i>
                 </a>
             </th>
+            <th scope="row">
+                <a class="btn-link btn-HuyCongTac" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Hủy công tác">
+                    <i>Hủy PCT </i>
+                </a>
+            </th>
+
         </tr>
     </script>
 </div>
@@ -217,6 +233,7 @@
 <partial name="_ChoPhepLamViec.cshtml" />
 <partial name="_DiaDiemCongTac.cshtml" />
 <partial name="_KetThucCongTac.cshtml" />
+<partial name="_HuyPhieuCongTac.cshtml" />
 
 <partial name="_themnoidungcongtac.cshtml" />
 <partial name="_themdieukienatd.cshtml" />

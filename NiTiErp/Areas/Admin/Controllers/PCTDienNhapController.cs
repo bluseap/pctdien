@@ -74,6 +74,14 @@ namespace NiTiErp.Areas.Admin.Controllers
         }
 
         [HttpGet]
+        public IActionResult ListPCTDienByTrThai(string KhuVuc, string PhongTo, int TrangThai, int page, int pageSize)
+        {            
+            var model = _pctdienService.PCTD_Get_PCTDien_AllTrangThai(KhuVuc, PhongTo, TrangThai, page, pageSize);
+
+            return new OkObjectResult(model);
+        }
+
+        [HttpGet]
         public IActionResult ListPCTDien(string KhuVuc, string PhongTo, string keyword, int page, int pageSize)
         {
             var tukhoa = !string.IsNullOrEmpty(keyword) ? keyword : "%";
@@ -87,6 +95,14 @@ namespace NiTiErp.Areas.Admin.Controllers
         public IActionResult GetNhanVienByCor(string corporationid)
         {
             var model = _hosonhanvienService.Get_HoSoNhanVien_ByCorId(corporationid);
+
+            return new OkObjectResult(model);
+        }
+
+        [HttpGet]
+        public IActionResult GetNVByCorPhong(string corporationid, string phongbandanhmucid)
+        {
+            var model = _hosonhanvienService.Get_HoSoNhanVien_ByCorPhongId(corporationid, phongbandanhmucid);
 
             return new OkObjectResult(model);
         }

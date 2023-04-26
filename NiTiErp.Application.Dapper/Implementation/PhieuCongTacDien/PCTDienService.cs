@@ -37,6 +37,46 @@ namespace NiTiErp.Application.Dapper.Implementation.PhieuCongTacDien
             }
         }
 
+        public async Task<PagedResult<PCTDienViewModel>> PCTD_Get_PCTDien_AllTrangThai(string corporationid, string phongbandanhmucid,
+            int trangthai, int page, int pageSize)
+        {
+            using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            {
+                await sqlConnection.OpenAsync();
+                var dynamicParameters = new DynamicParameters();
+
+                dynamicParameters.Add("@CorporationId", corporationid);
+                dynamicParameters.Add("@PhongBanDanhMucId", phongbandanhmucid);
+                dynamicParameters.Add("@TrangThaiPCT", trangthai);
+
+                dynamicParameters.Add("@pageIndex", page);
+                dynamicParameters.Add("@pageSize", pageSize);
+
+                dynamicParameters.Add("@totalRow", dbType: System.Data.DbType.Int32, direction: System.Data.ParameterDirection.Output);
+
+                try
+                {
+                    var result = await sqlConnection.QueryAsync<PCTDienViewModel>("PCTD_Get_PCTDien_AllTrangThai", dynamicParameters, null, null,
+                        System.Data.CommandType.StoredProcedure);
+
+                    int totalRow = dynamicParameters.Get<int>("@totalRow");
+
+                    var pagedResult = new PagedResult<PCTDienViewModel>()
+                    {
+                        Results = result.ToList(),
+                        CurrentPage = page,
+                        RowCount = totalRow,
+                        PageSize = pageSize
+                    };
+                    return pagedResult;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
         public async Task<PagedResult<PCTDienViewModel>> PCTD_Get_PCTDien_AllPaging(string corporationid, string phongbandanhmucid,
             string keyword, int page, int pageSize)
         {
