@@ -25,5 +25,9 @@ namespace NiTiErp.Application.Dapper.Interfaces.PhieuCongTacDien
 
         Task<bool> PCTD_Update_PCTDien_ByIdKetThucCongViec(PCTDienViewModel pctdien, DateTime updateDate, string updateBy);
 
+        Task<bool> PCTD_Update_PCTDien_ByIdHuyCT(PCTDienViewModel pctdien, DateTime updateDate, string updateBy);
+
+        Task<bool> PCTD_Update_PCTDien_ByIdXacNhanDaCap(string username, int pctdienid, DateTime updateDate, string updateBy);
+
     }
 }

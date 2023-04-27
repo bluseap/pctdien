@@ -13,7 +13,11 @@
 
     this.loadCodeDanhMucNoiDungCongTac = function (code) {
         loadCodeDanhMucNoiDungCongTac(code);
-    }    
+    }
+
+    this.loadTablePCTDien = function () {
+        loadTablePCTDien(true);
+    }  
 
     function loadCodeDanhMucNoiDungCongTac(code) {
         return $.ajax({
@@ -83,6 +87,145 @@
             error: function (status) {
                 console.log(status);
                 tedu.notify('Không có danh mục trang bị bảo hiểm lao động.', 'error');
+            }
+        });
+    }
+
+    function loadTablePCTDien(isPageChanged) {
+        var template = $('#table-PCTDien').html();
+        var render = "";
+
+        var makhuvuc = $('#ddlKhuVuc').val();
+        var phongtoid = $('#ddlPhongTo').val();
+        var timnoidung = $('#txtTimNoiDung').val();
+
+        var trangthaipct = $('#ddlPCTDBaoCaoDieuKien').val();
+
+        if (trangthaipct === '0') {
+            $.ajax({
+                type: 'GET',
+                url: '/admin/pctdiennhap/ListPCTDien',
+                data: {
+                    KhuVuc: makhuvuc,
+                    PhongTo: phongtoid,
+                    keyword: timnoidung,
+
+                    page: tedu.configs.pageIndex,
+                    pageSize: tedu.configs.pageSize
+                },
+                dataType: 'json',
+                success: function (response) {
+                    if (response.Result.Results.length === 0) {
+                        render = "<tr><th><a>Không có dữ liệu</a></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>";
+                    }
+                    else {
+                        $.each(response.Result.Results, function (i, item) {
+                            render += Mustache.render(template, {
+                                Id: item.Id,
+
+                                DiaDiemCongTac: item.DiaDiemCongTac,
+                                CacNoiDungCongTac: item.CacNoiDungCongTac,
+                                TuNgayDenNgay: item.TuNgayDenNgay,
+
+                                TrangThaiPCT: tedu.getPhieuCongTacDien(item.TrangThaiPCT)
+                                //NgayDenCuaVanBan: tedu.getFormattedDate(item.NgayDenCuaVanBan),                            
+                                // Price: tedu.formatNumber(item.Price, 0),                          
+                            });
+                        });
+                    }
+
+                    $('#lbPCTDienTotalRecords').text(response.Result.RowCount);
+
+                    if (render !== '') {
+                        $('#tblContentPCTDien').html(render);
+                    }
+
+                    if (response.Result.RowCount !== 0) {
+                        wrapPagingPCTDien(response.Result.RowCount, function () {
+                            loadTablePCTDien();
+                        },
+                            isPageChanged);
+                    }
+                },
+                error: function (status) {
+                    console.log(status);
+                    tedu.notify('Không thể lấy dữ liệu về.', 'error');
+                }
+            });
+        }
+        else {
+            $.ajax({
+                type: 'GET',
+                url: '/admin/pctdiennhap/ListPCTDienByTrThai',
+                data: {
+                    KhuVuc: makhuvuc,
+                    PhongTo: phongtoid,
+                    TrangThai: trangthaipct,
+
+                    page: tedu.configs.pageIndex,
+                    pageSize: tedu.configs.pageSize
+                },
+                dataType: 'json',
+                success: function (response) {
+                    if (response.Result.Results.length === 0) {
+                        render = "<tr><th><a>Không có dữ liệu</a></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>";
+                    }
+                    else {
+                        $.each(response.Result.Results, function (i, item) {
+                            render += Mustache.render(template, {
+                                Id: item.Id,
+
+                                DiaDiemCongTac: item.DiaDiemCongTac,
+                                CacNoiDungCongTac: item.CacNoiDungCongTac,
+                                TuNgayDenNgay: item.TuNgayDenNgay,
+
+                                TrangThaiPCT: tedu.getPhieuCongTacDien(item.TrangThaiPCT)
+                            });
+                        });
+                    }
+
+                    $('#lbPCTDienTotalRecords').text(response.Result.RowCount);
+
+                    if (render !== '') {
+                        $('#tblContentPCTDien').html(render);
+                    }
+
+                    if (response.Result.RowCount !== 0) {
+                        wrapPagingPCTDien(response.Result.RowCount, function () {
+                            loadTablePCTDien();
+                        },
+                            isPageChanged);
+                    }
+                },
+                error: function (status) {
+                    console.log(status);
+                    tedu.notify('Không thể lấy dữ liệu về.', 'error');
+                }
+            });
+        }
+
+    }
+    function wrapPagingPCTDien(recordCount, callBack, changePageSize) {
+        var totalsize = Math.ceil(recordCount / tedu.configs.pageSize);
+        //Unbind pagination if it existed or click change pagesize
+        if ($('#paginationULPCTDien a').length === 0 || changePageSize === true) {
+            $('#paginationULPCTDien').empty();
+            $('#paginationULPCTDien').removeData("twbs-pagination");
+            $('#paginationULPCTDien').unbind("page");
+        }
+        //Bind Pagination Event
+        $('#paginationULPCTDien').twbsPagination({
+            totalPages: totalsize,
+            visiblePages: 7,
+            first: 'Đầu',
+            prev: 'Trước',
+            next: 'Tiếp',
+            last: 'Cuối',
+            onPageClick: function (event, p) {
+                if (tedu.configs.pageIndex !== p) {
+                    tedu.configs.pageIndex = p;
+                    setTimeout(callBack(), 200);
+                }
             }
         });
     }

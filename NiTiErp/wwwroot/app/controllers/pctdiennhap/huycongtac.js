@@ -3,6 +3,8 @@
     var userCorporationId = $("#hidUserCorporationId").val();
     var userName = $("#hidUserName").val();
 
+    var loaddatatable = new loaddatatableController();
+
     this.loadEditHuyCongTac = function () {
         loadEditHuyCongTac();
     }
@@ -25,7 +27,7 @@
             var ispctdien = $('#hidInsertPCTDien').val(); // 1: insert; 2: update; 
 
             if (ispctdien == "2") {
-                //updateHuyCongTac();
+                updateHuyCongTac();
             }
         });
 
@@ -102,101 +104,50 @@
         });
     }
 
-    //function updateKetThucCongTac() {
-    //    var pctdienId = $('#hidPCTDienId').val();
+    function updateHuyCongTac() {
+        var pctdienId = $('#hidPCTDienId').val();
 
-    //    var isMainValidate = isFormMainValidate();
-    //    if (isMainValidate === true) {
-    //        var tenongba = $("#txtTraLamViecTenOngBa").val();
-    //        var ongbachucvu = $("#txtTraLamViecOngBaTenChucVu").val();
-    //        var daidienquanlyvanhanh = $("#txtTenDaiDienQuanLyVanHanh").val();
+        var isMainValidate = isFormMainValidate();
+        if (isMainValidate === true) {
+            var ngayhuyct = $("#txtNgayHuyPCT").val();
+            var ghichuhuyct = $("#txtGhiChuHuyPCT").val();            
 
-    //        var giongaytralamviec = $("#txtKTCTGioNgayTraLamViec").val();
-    //        var phuttralamviec = $("#txtKTCTPhutNgayTraLamViec").val();
-    //        var ngaytralamviec = tedu.getFormatDateYYMMDD($('#txtKTCTNgayTraLamViec').val());
+            $.ajax({
+                type: "POST",
+                url: "/Admin/pctdiennhap/UpHuyCT",
+                data: {
+                    Id: pctdienId,
 
-    //        var lydotonchuathuchien = $("#txtLyDoTonChuaThucHien").val();
-    //        var lydochuathuchien = $("#txtLyDoChuaThucHien").val();
+                    NgayHuyPCT: ngayhuyct,
+                    GhiChuHuyPCT: ghichuhuyct                    
+                },
+                dataType: "json",
+                beforeSend: function () {
+                    tedu.startLoading();
+                },
+                success: function (response) {
+                    if (response.Result === false) {
+                        tedu.notify("Update Phiếu công tác điện.", "error");
+                    }
+                    else {
+                        nguyen.appUserLoginLogger(userName, "Update Hủy phiếu công tác điện. Id: " + pctdienId);
 
-    //        var nguoichihuytructiepid = $("#hidPCTDienNguoiChiHuyTrucTiepId").val();
-    //        var tennguoichihuytructiep = $("#txtKTCTTenNguoiChiHuyTrucTiep").val();
+                        tedu.notify('Update Hủy phiếu công tác điện.', 'success');
 
-    //        var giongaykhoapct = $("#txtKTCTGioNgayKhoaPCT").val();
-    //        var phutkhoapct = $("#txtKTCTPhutNgayKhoaPCT").val();
-    //        var ngaykhoapct = tedu.getFormatDateYYMMDD($('#txtKTCTNgayNgayKhoaPCT').val());
+                        ClearData();
 
-    //        var nguoichophepid = $("#hidPCTDienNguoiChoPhepId").val();
-    //        var tennguoichophep = $("#txtKTCTTenNguoiChoPhep").val();
+                        loaddatatable.loadTablePCTDien();
 
-    //        var ngayhoanthanhpct = tedu.getFormatDateYYMMDD($('#txtKTCTNgayKiemTraHoanThanhPCT').val());
-
-    //        var tennguoicapid = $("#hidPCTDienTenNguoiCapPCTId").val();
-    //        var tennguoicap = $("#txtKTCTTenNguoiCapPCT").val();
-
-    //        var tennguoicapphieutaihientruongid = $("#hidPCTDienTenNguoiCapPhieuTaiHienTruongId").val();
-    //        var tennguoicapphieutaihientruong = $("#txtKTCTTenNguoiKiemTraATLDTaiHienTruong").val();
-    //        var chucvutennguoicapphieutaihientruong = $("#txtKTCTChucVuNguoiKiemTraATLDTaiHienTruong").val();
-
-    //        $.ajax({
-    //            type: "POST",
-    //            url: "/Admin/pctdiennhap/UpKeTThucCT",
-    //            data: {
-    //                Id: pctdienId,
-
-    //                TraLamViecTenOngBa: tenongba,
-    //                TraLamViecOngBaTenChucVu: ongbachucvu,
-    //                TenDaiDienQuanLyVanHanh: daidienquanlyvanhanh,
-
-    //                GioTraLamViec: giongaytralamviec,
-    //                PhutTraLamViec: phuttralamviec,
-    //                NgayTraLamViec: ngaytralamviec,
-
-    //                LyDoTonChuaThucHien: lydotonchuathuchien,
-    //                LyDoChuaThucHien: lydochuathuchien,
-
-    //                NguoiChiHuyTrucTiepId: nguoichihuytructiepid,
-    //                TenNguoiChiHuyTrucTiep: tennguoichihuytructiep,
-
-    //                GioKhoaPCT: giongaykhoapct,
-    //                PhutKhoaPCT: phutkhoapct,
-    //                NgayKhoaPCT: ngaykhoapct,
-
-    //                NguoiChoPhepId: nguoichophepid,
-    //                TenNguoiChoPhep: tennguoichophep,
-    //                NgayKiemTraHoanThanhPCT: ngayhoanthanhpct,
-
-    //                TenNguoiCapPCTId: tennguoicapid,
-    //                TenNguoiCapPCT: tennguoicap,
-
-    //                NguoiKiemTraATLDTaiHienTruongId: tennguoicapphieutaihientruongid,
-    //                TenNguoiKiemTraATLDTaiHienTruong: tennguoicapphieutaihientruong,
-    //                ChucVuNguoiKiemTraATLDTaiHienTruong: chucvutennguoicapphieutaihientruong
-    //            },
-    //            dataType: "json",
-    //            beforeSend: function () {
-    //                tedu.startLoading();
-    //            },
-    //            success: function (response) {
-    //                if (response.Result === false) {
-    //                    tedu.notify("Update Phiếu công tác điện.", "error");
-    //                }
-    //                else {
-    //                    nguyen.appUserLoginLogger(userName, "Update Phiếu công tác điện. Id: " + pctdienId);
-
-    //                    tedu.notify('Update Phiếu công tác điện.', 'success');
-
-    //                    ClearData();
-
-    //                    $('#modal-add-edit-EditPCTDienKetThucCongTac').modal('hide');
-    //                    tedu.stopLoading();
-    //                }
-    //            },
-    //            error: function () {
-    //                tedu.notify('Có lỗi! Không thể Update Phiếu công tác điện.', 'error');
-    //                tedu.stopLoading();
-    //            }
-    //        });
-    //    }
-    //}
+                        $('#modal-add-edit-EditPCTDienHuyCongTac').modal('hide');
+                        tedu.stopLoading();
+                    }
+                },
+                error: function () {
+                    tedu.notify('Có lỗi! Không thể Update Hủy phiếu công tác điện.', 'error');
+                    tedu.stopLoading();
+                }
+            });
+        }
+    }
 
 }

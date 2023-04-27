@@ -200,10 +200,10 @@
     </Item4>
     <Item5 Ref="126" ControlType="ReportFooterBand" Name="ReportFooter" HeightF="1851.50366">
       <Controls>
-        <Item1 Ref="127" ControlType="XRLabel" Name="label116" Multiline="true" Text="Số: " TextAlignment="TopJustify" SizeF="28.1589355,17.7784348" LocationFloat="636.0267,816.3267" Font="Times New Roman, 8pt" Padding="2,2,0,0,100">
+        <Item1 Ref="127" ControlType="XRLabel" Name="label116" Multiline="true" Text="Số: " TextAlignment="TopJustify" SizeF="28.1589355,17.7784348" LocationFloat="634.352661,834.2753" Font="Times New Roman, 8pt" Padding="2,2,0,0,100">
           <StylePriority Ref="128" UseFont="false" UseTextAlignment="false" />
         </Item1>
-        <Item2 Ref="129" ControlType="XRLabel" Name="label117" Multiline="true" Text="label51" SizeF="117.529175,17.77843" LocationFloat="664.1856,816.3267" Font="Times New Roman, 8pt" Padding="2,2,0,0,100">
+        <Item2 Ref="129" ControlType="XRLabel" Name="label117" Multiline="true" Text="label51" SizeF="117.529175,17.77843" LocationFloat="662.5116,834.2753" Font="Times New Roman, 8pt" Padding="2,2,0,0,100">
           <ExpressionBindings>
             <Item1 Ref="130" EventName="BeforePrint" PropertyName="Text" Expression="?SoPhieuCongTac" />
           </ExpressionBindings>

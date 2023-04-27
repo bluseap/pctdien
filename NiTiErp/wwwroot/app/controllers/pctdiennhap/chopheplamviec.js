@@ -3,6 +3,8 @@
     var userCorporationId = $("#hidUserCorporationId").val();
     var userName = $("#hidUserName").val();
 
+    var loaddatatable = new loaddatatableController();
+
     this.loadEditChoPhepLamViec = function () {
         loadEditChoPhepLamViec();
     }
@@ -215,6 +217,8 @@
                         tedu.notify('Update Phiếu công tác điện.', 'success');                        
 
                         ClearData();
+
+                        loaddatatable.loadTablePCTDien();
 
                         $('#modal-add-edit-EditPCTDienChoPhepLamViec').modal('hide');
                         tedu.stopLoading();

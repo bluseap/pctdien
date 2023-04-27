@@ -275,6 +275,30 @@ namespace NiTiErp.Areas.Admin.Controllers
                 return new OkObjectResult(model);
             }
         }
+
+        [HttpPost]
+        public async Task<IActionResult> UpHuyCT(PCTDienViewModel pctdien)
+        {
+            if (!ModelState.IsValid)
+            {
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return new BadRequestObjectResult(allErrors);
+            }
+            else
+            {
+                var result = _authorizationService.AuthorizeAsync(User, "PCTDIENNHAP", Operations.Update);
+                if (result.Result.Succeeded == false)
+                {
+                    return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền cập nhật."));
+                }
+
+                DateTime CreateDate = DateTime.Now;
+                string CreateBy = User.GetSpecificClaim("UserName");
+
+                var model = await _pctdienService.PCTD_Update_PCTDien_ByIdHuyCT(pctdien, CreateDate, CreateBy);
+                return new OkObjectResult(model);
+            }
+        }
         #endregion
 
         #region PCT Dia Diem Cong Tac
@@ -563,18 +587,24 @@ namespace NiTiErp.Areas.Admin.Controllers
 
             string tenxinghiep = "XÍ NGHIỆP ĐIỆN NƯỚC " + pctdien.Result.TenKhuVuc != null ? pctdien.Result.TenKhuVuc.ToUpper() : "";
 
+            string username = User.GetSpecificClaim("UserName");
+
             HttpContext.Session.SetString("PCTDienId", PCTDienId.ToString());
+            HttpContext.Session.SetString("UserName", username);
 
             // create image QR
-            QRCodeGenerator QrGenerator = new QRCodeGenerator();
-            QRCodeData QrCodeInfo = QrGenerator.CreateQrCode(pctdien.Id.ToString(), QRCodeGenerator.ECCLevel.Q);
-            QRCode QrCode = new QRCode(QrCodeInfo);
-            Bitmap QrBitmap = QrCode.GetGraphic(60);
-            byte[] BitmapArray = QrBitmap.BitmapToByteArray();
-            string QrUri = string.Format("data:image/png;base64,{0}", Convert.ToBase64String(BitmapArray));
-            string QrUri2 = string.Format("{0}", Convert.ToBase64String(BitmapArray));
+            //QRCodeGenerator QrGenerator = new QRCodeGenerator();
+            //QRCodeData QrCodeInfo = QrGenerator.CreateQrCode(pctdien.Id.ToString(), QRCodeGenerator.ECCLevel.Q);
+            //QRCode QrCode = new QRCode(QrCodeInfo);
+            //Bitmap QrBitmap = QrCode.GetGraphic(60);
+            //byte[] BitmapArray = QrBitmap.BitmapToByteArray();
+            //string QrUri = string.Format("data:image/png;base64,{0}", Convert.ToBase64String(BitmapArray));
+            //string QrUri2 = string.Format("{0}", Convert.ToBase64String(BitmapArray));
             //ViewBag.QrCodeUri = QrUri;
-            HttpContext.Session.SetString("qrPCTDienId", QrUri2);
+            //HttpContext.Session.SetString("qrPCTDienId", QrUri2);
+
+            // 52 ma vach QR phieu cong tac dien
+            HttpContext.Session.SetString("qrPCTDienId", "52" + PCTDienId.ToString());
 
             HttpContext.Session.SetString("TenXiNghiepNuoc", tenxinghiep);
             HttpContext.Session.SetString("SoPhieuCongTac", pctdien.Result.SoPhieuCongTac != null ? pctdien.Result.CorporationId + pctdien.Result.SoPhieuCongTac.ToString() : "");

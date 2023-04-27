@@ -3,6 +3,8 @@
     var userCorporationId = $("#hidUserCorporationId").val();
     var userName = $("#hidUserName").val();
 
+    var loaddatatable = new loaddatatableController();
+
     this.loadEditKetThucCongTac = function () {
         loadEditKetThucCongTac();
     }
@@ -266,6 +268,8 @@
                         tedu.notify('Update Phiếu công tác điện.', 'success');
 
                         ClearData();
+
+                        loaddatatable.loadTablePCTDien();
 
                         $('#modal-add-edit-EditPCTDienKetThucCongTac').modal('hide');
                         tedu.stopLoading();

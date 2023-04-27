@@ -54,6 +54,8 @@ namespace NiTiErp.Reports.PCTDienInPCT {
             this.tableCell4 = reportInitializer.GetControl<DevExpress.XtraReports.UI.XRTableCell>("tableCell4");
             this.tableCell5 = reportInitializer.GetControl<DevExpress.XtraReports.UI.XRTableCell>("tableCell5");
             this.tableCell6 = reportInitializer.GetControl<DevExpress.XtraReports.UI.XRTableCell>("tableCell6");
+            this.label116 = reportInitializer.GetControl<DevExpress.XtraReports.UI.XRLabel>("label116");
+            this.label117 = reportInitializer.GetControl<DevExpress.XtraReports.UI.XRLabel>("label117");
             this.barCode2 = reportInitializer.GetControl<DevExpress.XtraReports.UI.XRBarCode>("barCode2");
             this.label115 = reportInitializer.GetControl<DevExpress.XtraReports.UI.XRLabel>("label115");
             this.label114 = reportInitializer.GetControl<DevExpress.XtraReports.UI.XRLabel>("label114");
@@ -318,8 +320,6 @@ namespace NiTiErp.Reports.PCTDienInPCT {
             this.tableCell79 = reportInitializer.GetControl<DevExpress.XtraReports.UI.XRTableCell>("tableCell79");
             this.tableCell80 = reportInitializer.GetControl<DevExpress.XtraReports.UI.XRTableCell>("tableCell80");
             this.tableCell81 = reportInitializer.GetControl<DevExpress.XtraReports.UI.XRTableCell>("tableCell81");
-            this.label116 = reportInitializer.GetControl<DevExpress.XtraReports.UI.XRLabel>("label116");
-            this.label117 = reportInitializer.GetControl<DevExpress.XtraReports.UI.XRLabel>("label117");
 
             // Parameters
             this.prTenXiNghiep = reportInitializer.GetParameter("prTenXiNghiep");
@@ -409,6 +409,8 @@ namespace NiTiErp.Reports.PCTDienInPCT {
         private DevExpress.XtraReports.UI.XRTableCell tableCell4;
         private DevExpress.XtraReports.UI.XRTableCell tableCell5;
         private DevExpress.XtraReports.UI.XRTableCell tableCell6;
+        private DevExpress.XtraReports.UI.XRLabel label116;
+        private DevExpress.XtraReports.UI.XRLabel label117;
         private DevExpress.XtraReports.UI.XRBarCode barCode2;
         private DevExpress.XtraReports.UI.XRLabel label115;
         private DevExpress.XtraReports.UI.XRLabel label114;
@@ -718,7 +720,5 @@ namespace NiTiErp.Reports.PCTDienInPCT {
         private DevExpress.XtraReports.Parameters.Parameter ChucVuNguoiKiemTraATLDTaiHienTruong;
         private DevExpress.XtraReports.Parameters.Parameter TenDaiDienQuanLyVanHanh;
         private DevExpress.XtraReports.Parameters.Parameter qrPCTDienId;
-        private DevExpress.XtraReports.UI.XRLabel label116;
-        private DevExpress.XtraReports.UI.XRLabel label117;
     }
 }

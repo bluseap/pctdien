@@ -329,5 +329,58 @@ namespace NiTiErp.Application.Dapper.Implementation.PhieuCongTacDien
             }
         }
 
+        public async Task<bool> PCTD_Update_PCTDien_ByIdHuyCT(PCTDienViewModel pctdien, DateTime updateDate, string updateBy)
+        {
+            using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            {
+                await sqlConnection.OpenAsync();
+                var dynamicParameters = new DynamicParameters();
+
+                dynamicParameters.Add("@Id", pctdien.Id);                
+
+                dynamicParameters.Add("@NgayHuyPCT", pctdien.NgayHuyPCT);
+                dynamicParameters.Add("@GhiChuHuyPCT", pctdien.GhiChuHuyPCT);                
+
+                dynamicParameters.Add("@UpdateDate", updateDate);
+                dynamicParameters.Add("@UpdateBy", updateBy);
+                try
+                {
+                    await sqlConnection.QueryAsync<PCTDienViewModel>(
+                        "PCTD_Update_PCTDien_ByIdHuyCT", dynamicParameters, commandType: CommandType.StoredProcedure);
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
+        public async Task<bool> PCTD_Update_PCTDien_ByIdXacNhanDaCap(string username, int pctdienid, DateTime updateDate, string updateBy)
+        {
+            using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            {
+                await sqlConnection.OpenAsync();
+                var dynamicParameters = new DynamicParameters();
+
+                dynamicParameters.Add("@Id", pctdienid);
+
+                dynamicParameters.Add("@UserName", username);
+
+                dynamicParameters.Add("@UpdateDate", updateDate);
+                dynamicParameters.Add("@UpdateBy", updateBy);
+                try
+                {
+                    await sqlConnection.QueryAsync<PCTDienViewModel>(
+                        "PCTD_Update_PCTDien_ByIdXacNhanDaCap", dynamicParameters, commandType: CommandType.StoredProcedure);
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
     }
 }

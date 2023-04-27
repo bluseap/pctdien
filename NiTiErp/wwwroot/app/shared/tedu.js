@@ -555,6 +555,8 @@
     getPhieuCongTacDien: function (trangthai) {
         if (trangthai === 2)
             return '<span class="badge bg-orange">Đã cấp PCT</span>';
+        else if (trangthai === 3)
+            return '<span class="badge bg-orange">Xác nhận Đ.cấp PCT</span>';
         else if (trangthai === 4)
             return '<span class="badge bg-blue">Cho phép LV</span>';
         else if (trangthai === 6)
