@@ -452,6 +452,59 @@ $('body').on('click', '.btnDoiMatMaUser', function (e) {
 
 });
 
+$('body').on('click', '.bntQRCode', function (e) {
+    e.preventDefault();
+    html5QrCodeScanner.render(onScanSuccess, onScanError);
+    $('#modal-add-edit-QRCode').modal('show');
+});
+// Setting up Qr Scanner properties
+var html5QrCodeScanner = new Html5QrcodeScanner("reader", {
+    fps: 10,
+    qrbox: 250
+});
+// When scan is successful fucntion will produce data
+function onScanSuccess(qrCodeMessage) {
+    document.getElementById("result").innerHTML = '<span class="result">' + qrCodeMessage + "</span>";
+    $('#hdQRCodePCTDien').val(qrCodeMessage);
+    let qrcode = qrCodeMessage;
+    let pctdienid = qrcode.substring(2, qrcode.length);    
+
+    html5QrCodeScanner.clear();
+    $('#modal-add-edit-QRCode').modal('hide');   
+
+    window.location.href = "/admin/pctdiennhap/index";
+    
+    if (qrCodeMessage.substring(0, 2) == '52') {
+        $.ajax({
+            type: 'GET',
+            url: '/admin/pctdiennhap/InPCTD',
+            data: {
+                PCTDienId: pctdienid
+            },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                nguyen.appUserLoginLogger(userName, "In Phiếu công tác điện.");
+
+                if (response.Result.length !== 0) {
+                    window.open('/Admin/RpPCTDienInPCT/Index', '_blank');
+                }
+                else {
+                    window.open('/Admin/RpPCTDienInPCT/Index', '_blank');
+                }
+                tedu.stopLoading();
+            },
+        });
+    }
+}
+// When scan is unsuccessful fucntion will produce error message
+function onScanError(errorMessage) {
+    // Handle Scan Error
+}
+        
+
 $(document).on('click', '#btnSaveEditPass', function () {
     var id = hidEditPassId;
     var currentpassword = $('#txtCurrentPassword').val();

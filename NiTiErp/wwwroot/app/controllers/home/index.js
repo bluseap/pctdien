@@ -7,7 +7,13 @@
         .build();
     connection.start().catch(err => console.error(err.toString()));
 
+   
+   
+
     this.initialize = function () {
+        // in
+        //html5QrCodeScanner.render(onScanSuccess, onScanError);        
+        
         loadKhuVuc();
         
         loadData();      
@@ -924,5 +930,9 @@
             }
         });
     }
+
+    
+   
+
 
 }
