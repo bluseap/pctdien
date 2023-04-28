@@ -50,6 +50,13 @@
             deletePCTNhanVienCongTac(pctdiadiemcongtacid);
         });
 
+        $('body').on('click', '.btn-AddHinhVideo', function (e) {
+            e.preventDefault();
+            var pctdiadiemcongtacid = $(this).data('id');
+            $('#hidPCTDiaDiemCongTacId').val(pctdiadiemcongtacid);
+            $('#modal-add-edit-EditDiaDiemCongTacAddHinh').modal('show');
+        });
+
     }    
 
     function ClearData() {

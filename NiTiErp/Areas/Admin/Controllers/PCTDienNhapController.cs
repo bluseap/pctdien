@@ -82,6 +82,14 @@ namespace NiTiErp.Areas.Admin.Controllers
         }
 
         [HttpGet]
+        public IActionResult ListPCTDTrThaiCount(string KhuVuc, string PhongTo, int TrangThai)
+        {
+            var model = _pctdienService.PCTD_Get_PCTDien_AllTrangThaiCount(KhuVuc, PhongTo, TrangThai);
+
+            return new OkObjectResult(model);
+        }
+
+        [HttpGet]
         public IActionResult ListPCTDien(string KhuVuc, string PhongTo, string keyword, int page, int pageSize)
         {
             var tukhoa = !string.IsNullOrEmpty(keyword) ? keyword : "%";

@@ -99,7 +99,14 @@
         var phongtoid = $('#ddlPhongTo').val();
         var timnoidung = $('#txtTimNoiDung').val();
 
-        var trangthaipct = $('#ddlPCTDBaoCaoDieuKien').val();
+        let trangthaipct = '';
+
+        let bienloadtable = $('#hidBienLoadTable').val(); // 0 ko cho thuc hien ; 1 cho thuc hien load table
+        if (bienloadtable == '1') {
+            trangthaipct = $('#hidValueBienLoadTable').val();
+        } else {
+            trangthaipct = $('#ddlPCTDBaoCaoDieuKien').val();
+        }        
 
         if (trangthaipct === '0') {
             $.ajax({

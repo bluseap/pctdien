@@ -14,6 +14,9 @@ namespace NiTiErp.Application.Dapper.Interfaces.PhieuCongTacDien
         Task<PagedResult<PCTDienViewModel>> PCTD_Get_PCTDien_AllTrangThai(string corporationid, string phongbandanhmucid,
             int trangthai, int page, int pageSize);
 
+        Task<List<PCTDienViewModel>> PCTD_Get_PCTDien_AllTrangThaiCount(string corporationid, string phongbandanhmucid,
+            int trangthai);
+
         Task<PagedResult<PCTDienViewModel>> PCTD_Get_PCTDien_AllPaging(string corporationid, string phongbandanhmucid,
             string keyword, int page, int pageSize);
 

@@ -1,0 +1,47 @@
+﻿
+<div id="modal-add-edit-EditDiaDiemCongTacAddHinh" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style="overflow-y: auto; max-height:85%;  margin-top: 50px; margin-bottom:50px; ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Hủy phiếu công tác </h4>
+            </div>
+            <div class="modal-body">
+
+                <div id="formMainEditDiaDiemCongTacAddHinh">
+                    <form class="form-horizontal form-label-left" id="frmMainEditDiaDiemCongTacAddHinh">
+
+                        <div class="item form-group">
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <label for="lbNgayHuyPCT">
+                                    Ngày hủy phiếu công tác <a style="color:#f00"> (*) </a>
+                                </label>
+                                <input type="text" id="txtNgayHuyPCT" name="txtNgayHuyPCT" class="form-control" placeholder="Ngày hủy phiếu công tác">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <label for="lbGhiChuHuyPCT">
+                                    Ghi chú hủy phiếu công tác
+                                </label>
+                                <textarea id="txtGhiChuHuyPCT" required="" class="form-control" name="txtGhiChuHuyPCT" data-parsley-trigger="keyup" data-parsley-maxlength="1000"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="item form-group">
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button type="button" id="btnCancelEditHuyPCT" data-dismiss="modal" class="btn btn-default">Đóng</button>
+                                    <button type="button" id="btnSaveEditHuyPCT" class="btn btn-warning">Lưu hủy PCT </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>

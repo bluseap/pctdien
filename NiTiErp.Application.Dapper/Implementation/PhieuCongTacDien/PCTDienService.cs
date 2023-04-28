@@ -77,6 +77,32 @@ namespace NiTiErp.Application.Dapper.Implementation.PhieuCongTacDien
             }
         }
 
+        public async Task<List<PCTDienViewModel>> PCTD_Get_PCTDien_AllTrangThaiCount(string corporationid, string phongbandanhmucid,
+            int trangthai)
+        {
+            using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            {
+                await sqlConnection.OpenAsync();
+                var dynamicParameters = new DynamicParameters();
+
+                dynamicParameters.Add("@CorporationId", corporationid);
+                dynamicParameters.Add("@PhongBanDanhMucId", phongbandanhmucid);
+                dynamicParameters.Add("@TrangThaiPCT", trangthai);
+
+                try
+                {
+                    var result = await sqlConnection.QueryAsync<PCTDienViewModel>("PCTD_Get_PCTDien_AllTrangThaiCount", dynamicParameters, null, null,
+                        System.Data.CommandType.StoredProcedure);
+                    
+                    return result.AsList();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
         public async Task<PagedResult<PCTDienViewModel>> PCTD_Get_PCTDien_AllPaging(string corporationid, string phongbandanhmucid,
             string keyword, int page, int pageSize)
         {

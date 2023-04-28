@@ -30,6 +30,18 @@ namespace NiTiErp.Application.Dapper.ViewModels.PhieuCongTacDien
         public string TuNgayDenNgay { get; set; }
 
 
+        public int DaCapPCT { get; set; }
+
+        public int XacNhanDaCapPCT { get; set; }
+
+        public int ChoPhepLV { get; set; }
+
+        public int KetThucPCT { get; set; }
+
+        public int HuyPCT { get; set; }
+
+
+
         public Guid NguoiLanhDaoCongViecId { get; set; }
 
         public Guid NguoiChiHuyTrucTiepId { get; set; }

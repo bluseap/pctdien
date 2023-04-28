@@ -9,6 +9,9 @@
     var ketthuccongtac = new ketthuccongtacController();
     var thaydoinguoilamviec = new thaydoinguoilamviecController();
     var huycongtac = new huycongtacController();
+    var ddctaddhinh = new ddctaddhinhController();
+
+    var loaddatatable = new loaddatatableController();
 
     this.initialize = function () {
         loadPhongUserName(userName);
@@ -18,6 +21,8 @@
         registerEvents();
 
         clearData();
+        
+        buttonTongHopPCTDien();
 
         addeditpctdien.initialize();     
         chopheplamviec.initialize();  
@@ -25,6 +30,8 @@
         ketthuccongtac.initialize(); 
         thaydoinguoilamviec.initialize(); 
         huycongtac.initialize();
+        ddctaddhinh.initialize();
+
     }    
 
     function registerEvents() {
@@ -177,16 +184,20 @@
         $("#btnTimNoiDung").on('click', function () {
             $('#ddlPCTDBaoCaoDieuKien')[0].selectedIndex = 0;
             addeditpctdien.loadTablePCTDien();
+            countTongHopPCTDien();
         });
 
         $('#txtTimNoiDung').on('keypress', function (e) {
             if (e.which === 13) {
                 $('#ddlPCTDBaoCaoDieuKien')[0].selectedIndex = 0;
                 addeditpctdien.loadTablePCTDien();
+                countTongHopPCTDien();
             }
         });        
 
-        $('#btnPCTDBaoCaoDieuKien').on('click', function (e) {            
+        $('#btnPCTDBaoCaoDieuKien').on('click', function (e) {
+            $('#hidBienLoadTable').val(0); // 0 ko cho thuc hien ; 1 cho thuc hien load table
+
             addeditpctdien.loadTablePCTDien();
         });
 
@@ -294,17 +305,34 @@
                     render += "<option value='" + item.Id + "'>" + item.TenPhong + "</option>";
                 });
                 $('#ddlPhongTo').html(render);
-                //$("#ddlPhongTo")[0].selectedIndex = 0;       
-                var phongdanhmucid = $('#hidPhongDanhMucId').val();
-                $("#ddlPhongTo").val(phongdanhmucid);
+                //$("#ddlPhongTo")[0].selectedIndex = 0;    
 
+                let phongdanhmucid = $('#hidPhongDanhMucId').val();
                 let tenphongto = $("#ddlPhongTo :selected").text();
-                // chi tai khoan thuoc phong KT Điện Nước thi cho hien het de quan ly
-                if (tenphongto === "Phòng KT Điện Nước") {
-                    $('#ddlPhongTo').prop('disabled', false);
+
+                if (makhuvuc == 'PO') {                    
+                    $("#ddlPhongTo").val(phongdanhmucid);   
+                    
+                    // chi tai khoan thuoc phong KT Điện Nước thi cho hien het de quan ly
+                    if (tenphongto === "Phòng KT Điện Nước") {
+                        $('#ddlPhongTo').prop('disabled', false);
+                    }
+                }
+                else {
+                    $("#ddlPhongTo").val(phongdanhmucid);
+
+                    // chi tai khoan thuoc phong KT Điện Nước thi cho hien het de quan ly
+                    if (tenphongto === "Phòng KT Điện Nước") {
+                        $('#ddlPhongTo').prop('disabled', false);
+                    }
+                    else {
+                        $("#ddlPhongTo")[0].selectedIndex = 0;    
+                    }
                 }
 
                 addeditpctdien.loadTablePCTDien();
+
+                countTongHopPCTDien(); 
             },
             error: function (status) {
                 console.log(status);
@@ -535,6 +563,68 @@
                 console.log(status);
                 tedu.notify('Không có danh mục Phòng.', 'error');
             }
+        });
+    }
+
+    function countTongHopPCTDien() {
+        var makhuvuc = $('#ddlKhuVuc').val();
+        var phongtoid = $('#ddlPhongTo').val();
+        var timnoidung = $('#txtTimNoiDung').val();
+
+        let trangthaipct = 0;         
+
+        $.ajax({
+            type: 'GET',
+            url: '/admin/pctdiennhap/ListPCTDTrThaiCount',
+            data: {
+                KhuVuc: makhuvuc,
+                PhongTo: phongtoid,
+                TrangThai: trangthaipct
+            },
+            dataType: 'json',
+            success: function (response) {
+                let pctdtrangthai = response.Result[0];
+                $('#spanDaCapPCT').html(pctdtrangthai.DaCapPCT);
+                $('#spanXacNhanDaCapPCT').html(pctdtrangthai.XacNhanDaCapPCT);
+                $('#spanChoPhepLVPCT').html(pctdtrangthai.ChoPhepLV);
+                $('#spanHuyPCT').html(pctdtrangthai.HuyPCT);
+                $('#spanKetThucPCT').html(pctdtrangthai.KetThucPCT);
+                
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không thể lấy dữ liệu về.', 'error');
+            }
+        });
+    }
+
+    function buttonTongHopPCTDien() {
+        $('#hidBienLoadTable').val(1); // 0 ko cho thuc hien ; 1 cho thuc hien load table
+
+        $('body').on('click', '.btnDaCapPCT', function (e) {
+            e.preventDefault();            
+            $('#hidValueBienLoadTable').val(2); // 2 : da cap pct
+            loaddatatable.loadTablePCTDien();
+        });
+        $('body').on('click', '.btnXacNhanDaCapPCT', function (e) {
+            e.preventDefault();
+            $('#hidValueBienLoadTable').val(3); // 3 : xac nhan da cap pct
+            loaddatatable.loadTablePCTDien();
+        });
+        $('body').on('click', '.btnChoPhepLVPCT', function (e) {
+            e.preventDefault();
+            $('#hidValueBienLoadTable').val(4); // 4 : cho phep lam viec
+            loaddatatable.loadTablePCTDien();
+        });
+        $('body').on('click', '.btnHuyPCT', function (e) {
+            e.preventDefault();
+            $('#hidValueBienLoadTable').val(20); // 20 : huy pct
+            loaddatatable.loadTablePCTDien();
+        });
+        $('body').on('click', '.btnKetThucPCT', function (e) {
+            e.preventDefault();
+            $('#hidValueBienLoadTable').val(6); // 6 : ket thuc pct
+            loaddatatable.loadTablePCTDien();
         });
     }
 
