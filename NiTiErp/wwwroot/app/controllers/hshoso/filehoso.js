@@ -7,7 +7,7 @@
     }
 
     this.loadTableHsBoHoSoFile = function (hsbohosoid) {
-        loadEditHsBoHoSo(hsbohosoid)
+        loadEditHsBoHoSo(hsbohosoid);
         loadTableHsBoHoSoFile();
     }
 

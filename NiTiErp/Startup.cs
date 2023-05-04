@@ -417,6 +417,7 @@ namespace NiTiErp
             services.AddTransient<IPCTDienService, PCTDienService>();
             services.AddTransient<IPCTNhanVienCongTacService, PCTNhanVienCongTacService>();
             services.AddTransient<IPCTDiaDiemCongTacService, PCTDiaDiemCongTacService>();
+            services.AddTransient<IPCTDDCTHinhService, PCTDDCTHinhService>();
 
             //dung DAO
             //Orm.DatabaseConnection.ConnectionString = Configuration["ConnectionStrings:ConnectionString"];

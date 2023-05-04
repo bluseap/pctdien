@@ -1,4 +1,9 @@
 ﻿
+create procedure [dbo].[PCTD_Delete_PCTDDCTHinh]
+create procedure [dbo].[PCTD_Get_PCTDDCTHinh_ById] 
+create procedure [dbo].[PCTD_Create_PCTDDCTHinh]
+create procedure [dbo].[PCTD_Get_PCTDDCTHinh_ByDiaDiemCongTacId] 
+
 create procedure [dbo].[PCTD_Get_PCTDien_AllTrangThaiCount]
 create procedure [dbo].[PCTD_Update_PCTDien_ByIdXacNhanDaCap]
 create procedure [dbo].[PCTD_Update_PCTDien_ByIdHuyCTc]
@@ -10,6 +15,7 @@ add table PCTDien and PCTDienHis:
 	IsHuyPCT	bit	Checked
 	NgayHuyPCT	datetime	Checked
 	GhiChuHuyPCT	nvarchar(1000)	Checked
+add table PCTDDCTHinh, PCTDDCTHinhHis
 
 
 

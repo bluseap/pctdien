@@ -3,6 +3,7 @@
     var userCorporationId = $("#hidUserCorporationId").val();
     var userName = $("#hidUserName").val();
 
+    var ddctaddhinh = new ddctaddhinhController();
 
     this.loadTableDiaDiemCongTac = function () {
         ClearData();
@@ -54,6 +55,8 @@
             e.preventDefault();
             var pctdiadiemcongtacid = $(this).data('id');
             $('#hidPCTDiaDiemCongTacId').val(pctdiadiemcongtacid);
+            $('#hidInsertDDCTHinh').val(1);
+            ddctaddhinh.loadTableDDCTHinh();
             $('#modal-add-edit-EditDiaDiemCongTacAddHinh').modal('show');
         });
 
