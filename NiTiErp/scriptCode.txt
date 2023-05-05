@@ -9,13 +9,14 @@ create procedure [dbo].[PCTD_Update_PCTDien_ByIdXacNhanDaCap]
 create procedure [dbo].[PCTD_Update_PCTDien_ByIdHuyCTc]
 create procedure [dbo].[PCTD_Get_PCTDien_AllTrangThai] 
 
-create procedure [dbo].[Get_HoSoNhanVien_ByCorPhongId]
+r create procedure [dbo].[Get_HoSoNhanVien_ByCorPhongId]
 
-add table PCTDien and PCTDienHis: 
+r add table PCTDien and PCTDienHis: 
 	IsHuyPCT	bit	Checked
 	NgayHuyPCT	datetime	Checked
 	GhiChuHuyPCT	nvarchar(1000)	Checked
-add table PCTDDCTHinh, PCTDDCTHinhHis
+
+r add table PCTDDCTHinh, PCTDDCTHinhHis
 
 
 

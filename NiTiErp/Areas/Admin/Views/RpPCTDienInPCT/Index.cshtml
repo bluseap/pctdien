@@ -37,58 +37,9 @@
     <script src="~/js/viewer.part.bundle.js"></script>
     <script src="~/js/designer.part.bundle.js"></script>
 
-    <script>
-        function customizeActions(s, e) {
-            var printAction = e.Actions.filter(function (action) { return action.text === "Print"; })[0];
-            var printActionPrintPage = e.Actions.filter(function (action) { return action.text === "Print Page"; })[0];
 
-            let pctdienId = $('#hidPCTDienId').val();
-            let hidUserName = $('#hidUserName').val();
-            
-            if (printAction) {
-                var defaultPrintFunction = printAction.clickAction;
-                printAction.clickAction = function () {
-                    //alert("Prignt clicked 1! " + pctdienId + "," + hidUserName);
-                    defaultPrintFunction();   
-                    updateXacNhanDaCapPCT(hidUserName, pctdienId);                    
-                }                
-            }
-            else if (printActionPrintPage) {
-                var defaultPrintFunction = printActionPrintPage.clickAction;
-                printActionPrintPage.clickAction = function () {     
-                    defaultPrintFunction();
-                    updateXacNhanDaCapPCT(hidUserName, pctdienId);                    
-                }
-            }
-        }
-        function updateXacNhanDaCapPCT(usernameid, pctdienId) {
-            $.ajax({
-                type: "POST",
-                url: "/Admin/RpPCTDienInPCT/UpXacNhanDaCap",
-                data: {
-                    pctdienid: pctdienId,
-
-                    username: usernameid
-                },
-                dataType: "json",
-                //beforeSend: function () {
-                //    tedu.startLoading();
-                //},
-                success: function (response) {
-                    //alert("fwef wasfaweg qte2! ");
-                },
-                error: function () {
-                    alert("fwefsdfsdf we2! ");
-                }
-            });
-        }
-    </script>
-
-    <input type="hidden" id="hidPCTDienId" value=@Context.Session.GetString("PCTDienId") />
-    <input type="hidden" id="hidUserName" value=@Context.Session.GetString("UserName") />
 
     @{
-
         List<PCTNhanVienCongTacViewModel> nhanvienct1 = SessionHelper.GetObjectFromJson<List<PCTNhanVienCongTacViewModel>>(Context.Session, "nhanviencongtac1");
 
         var nuoc = new repInPCTDien();
@@ -112,6 +63,7 @@
         nuoc.Parameters["qrPCTDienId"].Visible = false;
 
         nuoc.Parameters["prTenXiNghiep"].Value = @Context.Session.GetString("TenXiNghiepNuoc");
+        //nuoc.Parameters["prTenXiNghiep"].Value = "ddd";
         nuoc.Parameters["prTenXiNghiep"].Visible = false;
         nuoc.Parameters["SoPhieuCongTac"].Value = @Context.Session.GetString("SoPhieuCongTac");
         nuoc.Parameters["SoPhieuCongTac"].Visible = false;
@@ -199,13 +151,64 @@
         nuoc.Parameters["TenNguoiKiemTraATLDTaiHienTruong"].Visible = false;
         nuoc.Parameters["ChucVuNguoiKiemTraATLDTaiHienTruong"].Value = @Context.Session.GetString("ChucVuNguoiKiemTraATLDTaiHienTruong");
         nuoc.Parameters["ChucVuNguoiKiemTraATLDTaiHienTruong"].Visible = false;
-
     }
 
+    <script>
+        function customizeActions(s, e) {
+            var printAction = e.Actions.filter(function (action) { return action.text === "Print"; })[0];
+            var printActionPrintPage = e.Actions.filter(function (action) { return action.text === "Print Page"; })[0];
 
+            let pctdienId = $('#hidPCTDienId').val();
+            let hidUserName = $('#hidUserName').val();
+
+            if (printAction) {
+                var defaultPrintFunction = printAction.clickAction;
+                printAction.clickAction = function () {
+                    //alert("Prignt clicked 1! " + pctdienId + "," + hidUserName);
+                    defaultPrintFunction();
+                    updateXacNhanDaCapPCT(hidUserName, pctdienId);
+                }
+            }
+            else if (printActionPrintPage) {
+                var defaultPrintFunction = printActionPrintPage.clickAction;
+                printActionPrintPage.clickAction = function () {
+                    defaultPrintFunction();
+                    updateXacNhanDaCapPCT(hidUserName, pctdienId);
+                }
+            }
+        }
+        function updateXacNhanDaCapPCT(usernameid, pctdienId) {
+            $.ajax({
+                type: "POST",
+                url: "/Admin/RpPCTDienInPCT/UpXacNhanDaCap",
+                data: {
+                    pctdienid: pctdienId,
+
+                    username: usernameid
+                },
+                dataType: "json",
+                //beforeSend: function () {
+                //    tedu.startLoading();
+                //},
+                success: function (response) {
+                    //alert("fwef wasfaweg qte2! ");
+                },
+                error: function () {
+                    alert("fwefsdfsdf we2! ");
+                }
+            });
+        }
+    </script>
+    <input type="hidden" id="hidPCTDienId" value=@Context.Session.GetString("PCTDienId") />
+    <input type="hidden" id="hidUserName" value=@Context.Session.GetString("UserName") />
     <div class="container-fluid body-content">
-        @*@Html.DevExpress().WebDocumentViewer("DocumentViewer").Height("1000px").ClientSideEvents(configure => { configure.BeforeRender("GetDocumentViewer"); }).Bind(nuoc)*@
-        @Html.DevExpress().WebDocumentViewer("DocumentViewer").Height("1000px").ClientSideEvents(configure => { configure.CustomizeMenuActions("customizeActions"); }).Bind(nuoc)
+        @Html.DevExpress().WebDocumentViewer("DocumentViewer").Height("1000px").Bind(nuoc)
+
+
+        @*@Html.DevExpress().WebDocumentViewer("DocumentViewer").Height("1000px").ClientSideEvents(configure => { configure.BeforeRender("GetDocumentViewer"); }).Bind(nuoc)
+                @Html.DevExpress().WebDocumentViewer("DocumentViewer").Height("1000px").Bind(thd)
+            @Html.DevExpress().WebDocumentViewer("DocumentViewer").Height("1000px").ClientSideEvents(configure => { configure.CustomizeMenuActions("customizeActions"); }).Bind(nuoc)
+        *@
     </div>
 
 </body>

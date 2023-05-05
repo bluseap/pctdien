@@ -692,13 +692,13 @@ namespace NiTiErp.Areas.Admin.Controllers
             HttpContext.Session.SetString("DiaDiemCongTac", pctdien.Result.DiaDiemCongTac != null ? pctdien.Result.DiaDiemCongTac : "");
             HttpContext.Session.SetString("CacNoiDungCongTac", pctdien.Result.CacNoiDungCongTac != null ? pctdien.Result.CacNoiDungCongTac : "");
 
-            string thoigianbatdaukehoach = pctdien.Result.GioBatDauKH != null ? pctdien.Result.GioBatDauKH  : "" 
+            string thoigianbatdaukehoach = pctdien.Result.GioBatDauKH != null ? pctdien.Result.GioBatDauKH : ""
                 + " giờ " + pctdien.Result.PhutBatDauKH != null ? pctdien.Result.PhutBatDauKH : "" + " phút" + ", ngày " +
                 pctdien.Result.NgayBatDauKH != null ? pctdien.Result.NgayBatDauKH.ToString("dd/MM/yyyy") : "";
             HttpContext.Session.SetString("thoigianbatdaukehoach", thoigianbatdaukehoach);
 
             string thoigianketthuckehoach = pctdien.Result.GioKetThucKH != null ? pctdien.Result.GioKetThucKH : ""
-                + " giờ " + pctdien.Result.PhutKetThucKH != null ? pctdien.Result.PhutKetThucKH : ""  + " phút" + ", ngày " +
+                + " giờ " + pctdien.Result.PhutKetThucKH != null ? pctdien.Result.PhutKetThucKH : "" + " phút" + ", ngày " +
                 pctdien.Result.NgayKetThucKH != null ? pctdien.Result.NgayKetThucKH.ToString("dd/MM/yyyy") : "";
             HttpContext.Session.SetString("thoigianketthuckehoach", thoigianketthuckehoach);
 
@@ -757,7 +757,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             HttpContext.Session.SetString("TenNguoiKiemTraATLDTaiHienTruong", pctdien.Result.TenNguoiKiemTraATLDTaiHienTruong != null ? pctdien.Result.TenNguoiKiemTraATLDTaiHienTruong : "");
             HttpContext.Session.SetString("ChucVuNguoiKiemTraATLDTaiHienTruong", pctdien.Result.ChucVuNguoiKiemTraATLDTaiHienTruong != null ? pctdien.Result.ChucVuNguoiKiemTraATLDTaiHienTruong : "");
 
-            return new OkObjectResult(nhanviencongtac1);
+            return new OkObjectResult(pctdien);
         }
 
         #endregion
