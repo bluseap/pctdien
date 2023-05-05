@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 namespace NiTiErp.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class RpPCTDienInPCTController : Controller
+    public class RpPCTDienInPCTController : BaseController
     {
         private readonly IAuthorizationService _authorizationService;
 

@@ -118,8 +118,8 @@ namespace NiTiErp
                 // Make the session cookie essential
                 options.Cookie.IsEssential = true;
 
-                options.Cookie.SameSite = SameSiteMode.Strict;
-                options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+                //options.Cookie.SameSite = SameSiteMode.Strict;
+                //options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
             });
             services.AddImageResizer();
             services.AddAutoMapper();
@@ -426,12 +426,7 @@ namespace NiTiErp
             services.AddTransient<IPCTNhanVienCongTacService, PCTNhanVienCongTacService>();
             services.AddTransient<IPCTDiaDiemCongTacService, PCTDiaDiemCongTacService>();
             services.AddTransient<IPCTDDCTHinhService, PCTDDCTHinhService>();
-
-            //dung DAO
-            //Orm.DatabaseConnection.ConnectionString = Configuration["ConnectionStrings:ConnectionString"];
-
-            //services.AddTransient<Database>();
-            //services.AddTransient<IHoSoNhanVienDao, HoSoNhanVienDao>();
+           
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -516,8 +511,6 @@ namespace NiTiErp
                     name: "default",
                     areaName: "Admin",
                     template: "{controller=Login}/{action=Index}/{id?}");         //  localhost/admin: login to admin
-
-
 
 
                 //routes.MapRoute(

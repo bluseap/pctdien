@@ -202,12 +202,13 @@
     <input type="hidden" id="hidPCTDienId" value=@Context.Session.GetString("PCTDienId") />
     <input type="hidden" id="hidUserName" value=@Context.Session.GetString("UserName") />
     <div class="container-fluid body-content">
-        @Html.DevExpress().WebDocumentViewer("DocumentViewer").Height("1000px").Bind(nuoc)
 
+        @Html.DevExpress().WebDocumentViewer("DocumentViewer").Height("1000px").ClientSideEvents(configure => { configure.CustomizeMenuActions("customizeActions"); }).Bind(nuoc)
 
         @*@Html.DevExpress().WebDocumentViewer("DocumentViewer").Height("1000px").ClientSideEvents(configure => { configure.BeforeRender("GetDocumentViewer"); }).Bind(nuoc)
-                @Html.DevExpress().WebDocumentViewer("DocumentViewer").Height("1000px").Bind(thd)
-            @Html.DevExpress().WebDocumentViewer("DocumentViewer").Height("1000px").ClientSideEvents(configure => { configure.CustomizeMenuActions("customizeActions"); }).Bind(nuoc)
+                 @Html.DevExpress().WebDocumentViewer("DocumentViewer").Height("1000px").Bind(thd)
+             @Html.DevExpress().WebDocumentViewer("DocumentViewer").Height("1000px").ClientSideEvents(configure => { configure.CustomizeMenuActions("customizeActions"); }).Bind(nuoc)
+        @Html.DevExpress().WebDocumentViewer("DocumentViewer").Height("1000px").Bind(nuoc)
         *@
     </div>
 
