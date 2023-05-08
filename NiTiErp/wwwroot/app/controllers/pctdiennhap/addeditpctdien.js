@@ -931,9 +931,14 @@
             var khuvuc1 = $("#ddlPCTDienNhap1KhuVuc").val();
             var phongban1 = $("#ddlPCTDienNhap1PhongBan").val();
 
-            var nguoilanhdaocongviecId = $('#hidPCTDienNguoiLanhDaoCongViecId').val();
+            let nguoilanhdaocongviecidguid = $('#hidPCTDienNguoiLanhDaoCongViecId').val() == '0' ?
+                $('#hidPCTDienNguoiLanhDaoCongViecId').val(tedu.getNewGuid()) : $('#hidPCTDienNguoiLanhDaoCongViecId').val();
+            var nguoilanhdaocongviecId = nguoilanhdaocongviecidguid;
             var nguoichihuytructiepId = $('#hidPCTDienNguoiChiHuyTrucTiepId').val();
-            var nguoigiamsatatdId = $('#hidPCTDienNguoiGiamSatATDId').val();
+
+            let nguoigiamsatidguid = $('#hidPCTDienNguoiGiamSatATDId').val() == '0' ?
+                $('#hidPCTDienNguoiGiamSatATDId').val(tedu.getNewGuid()) : $('#hidPCTDienNguoiGiamSatATDId').val();
+            var nguoigiamsatatdId = nguoigiamsatidguid;
             var nguoichophepId = $('#hidPCTDienNguoiChoPhepId').val();
             var tennguoicappctId = $('#hidPCTDienTenNguoiCapPCTId').val();
 
