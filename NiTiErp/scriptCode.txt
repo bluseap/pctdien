@@ -1,13 +1,24 @@
 ﻿
-create procedure [dbo].[PCTD_Delete_PCTDDCTHinh]
-create procedure [dbo].[PCTD_Get_PCTDDCTHinh_ById] 
-create procedure [dbo].[PCTD_Create_PCTDDCTHinh]
-create procedure [dbo].[PCTD_Get_PCTDDCTHinh_ByDiaDiemCongTacId] 
 
-create procedure [dbo].[PCTD_Get_PCTDien_AllTrangThaiCount]
-create procedure [dbo].[PCTD_Update_PCTDien_ByIdXacNhanDaCap]
-create procedure [dbo].[PCTD_Update_PCTDien_ByIdHuyCTc]
-create procedure [dbo].[PCTD_Get_PCTDien_AllTrangThai] 
+update procedure [dbo].[PCTD_Get_PCTDien_AllTrangThai] 
+update procedure [dbo].[PCTD_Get_PCTDien_AllPaging] 
+update procedure [dbo].[PCTD_Get_PCTDien_AllTrangThaiCount] 
+
+
+
+
+
+
+
+r create procedure [dbo].[PCTD_Delete_PCTDDCTHinh]
+r create procedure [dbo].[PCTD_Get_PCTDDCTHinh_ById] 
+r create procedure [dbo].[PCTD_Create_PCTDDCTHinh]
+r create procedure [dbo].[PCTD_Get_PCTDDCTHinh_ByDiaDiemCongTacId] 
+
+r create procedure [dbo].[PCTD_Get_PCTDien_AllTrangThaiCount]
+r create procedure [dbo].[PCTD_Update_PCTDien_ByIdXacNhanDaCap]
+r create procedure [dbo].[PCTD_Update_PCTDien_ByIdHuyCTc]
+r create procedure [dbo].[PCTD_Get_PCTDien_AllTrangThai] 
 
 r create procedure [dbo].[Get_HoSoNhanVien_ByCorPhongId]
 

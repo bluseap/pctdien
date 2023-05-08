@@ -70,7 +70,8 @@
 
         $("#btn-create").on('click', function () {
             $('#hidInsertPCTDien').val(1);         
-            
+
+            $('#table-contentPCTThemNhanVienCT').html('');
             addeditpctdien.addeditClearData();
 
             var guid = CreateGuid();

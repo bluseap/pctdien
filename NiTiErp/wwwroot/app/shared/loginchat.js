@@ -461,9 +461,7 @@ $('body').on('click', '.bntQRCode', function (e) {
 var html5QrCodeScanner = new Html5QrcodeScanner("reader", {
     fps: 10,
     qrbox: { width: 100, height: 100 },
-    rememberLastUsedCamera: true,
-    // Only support camera scan type.
-    supportedScanTypes: [Html5QrcodeScanType.SCAN_TYPE_CAMERA]
+    rememberLastUsedCamera: true
 });
 // When scan is successful fucntion will produce data
 function onScanSuccess(qrCodeMessage) {

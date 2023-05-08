@@ -191,6 +191,40 @@
             return '<span class="badge bg-purple">Không biết</span>';
     },
 
+    getSoThanhChu: function (number) {
+        if (number === null || number === '')
+            return '';
+
+        let chu = '';
+
+        if (number == '1')
+            chu = 'Một';
+        if (number == '2')
+            chu = 'Hai';
+        if (number == '3')
+            chu = 'Ba';
+        if (number == '4')
+            chu = 'Bốn';
+        if (number == '5')
+            chu = 'Năm';
+        if (number == '6')
+            chu = 'Sáu';
+        if (number == '7')
+            chu = 'Bảy';
+        if (number == '8')
+            chu = 'Tám';
+        if (number == '9')
+            chu = 'Chín';
+        if (number == '10')
+            chu = 'Mười';
+        if (number == '11')
+            chu = 'Mười một';
+        if (number == '12')
+            chu = 'Mười hai';
+
+        return chu;
+    },
+
     startLoading: function () {             
         $('body').loading({
             stoppable: true,

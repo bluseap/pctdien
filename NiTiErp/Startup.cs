@@ -181,6 +181,20 @@ namespace NiTiErp
             })
                 .AddJsonOptions(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
 
+            //services.AddHsts(options =>
+            //{
+            //    options.Preload = true;
+            //    options.IncludeSubDomains = true;
+            //    options.MaxAge = TimeSpan.FromDays(60);
+            //    options.ExcludedHosts.Add("powaco.ddns.com");
+            //    options.ExcludedHosts.Add("www.powaco.ddns.com");
+            //});
+            //services.AddHttpsRedirection(options =>
+            //{
+            //    options.RedirectStatusCode = StatusCodes.Status307TemporaryRedirect;
+            //    options.HttpsPort = 5001;
+            //});
+
             services.Configure<FormOptions>(o =>  // currently all set to max, configure it to your needs!
             {
                 o.MultipartBodyLengthLimit = 2147483647;
@@ -452,6 +466,7 @@ namespace NiTiErp
             else
             {
                 app.UseExceptionHandler("/Home/Error");
+                //app.UseHsts();
             }
 
             app.UseDevExpressControls();
@@ -492,7 +507,7 @@ namespace NiTiErp
             //    .SetIsOriginAllowed(origin => true) // allow any origin
             //    .AllowCredentials()); // allow credentials
 
-            app.UseAuthentication();
+            app.UseAuthentication();            
 
             app.UseMvc(routes =>
             {

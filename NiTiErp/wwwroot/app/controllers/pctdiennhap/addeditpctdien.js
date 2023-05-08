@@ -87,34 +87,38 @@
         $('body').on('change', '.ul-checkbox-cacnoidungct:checked', function (e) {
             e.preventDefault();            
             let chonnoidungcongtac = this.value;              
-            $('#txtPCTDienNoiDungCongTac').addTag(chonnoidungcongtac);     
+            $('#txtPCTDienNoiDungCongTac').addTag(chonnoidungcongtac);                 
         });  
         $('body').on('change', '.ul-checkbox-cacnoidungct:unchecked', function (e) {
             e.preventDefault();            
             let chonnoidungcongtac = this.value;            
-            $('#txtPCTDienNoiDungCongTac').removeTag(chonnoidungcongtac);       
+            $('#txtPCTDienNoiDungCongTac').removeTag(chonnoidungcongtac);                
         });
 
         $('body').on('change', '.ul-checkbox-cacdieukienatd:checked', function (e) {
             e.preventDefault();
             let chondieukienat = this.value;
-            $('#txtPCTDienDieuKienATD').addTag(chondieukienat);
+            $('#txtPCTDienDieuKienATD').addTag(chondieukienat);            
         });
         $('body').on('change', '.ul-checkbox-cacdieukienatd:unchecked', function (e) {
             e.preventDefault();
             let chondieukienat = this.value;
-            $('#txtPCTDienDieuKienATD').removeTag(chondieukienat);
+            $('#txtPCTDienDieuKienATD').removeTag(chondieukienat);            
         });
 
         $('body').on('change', '.ul-checkbox-cactrangbibhldlv:checked', function (e) {
             e.preventDefault();
             let trangbiantoan = this.value;
             $('#txtPCTDienTrangBiATBHLDLamViec').addTag(trangbiantoan);
+            let count = $('#txtPCTDienTrangBiATBHLDLamViec_tagsinput').children('span').length;
+            $('#txtPCTDienTongHangMucDaTrangCap').val(nguyen.getSoThanhChu(count));
         });
         $('body').on('change', '.ul-checkbox-cactrangbibhldlv:unchecked', function (e) {
             e.preventDefault();
             let trangbiantoan = this.value;
             $('#txtPCTDienTrangBiATBHLDLamViec').removeTag(trangbiantoan);
+            let count = $('#txtPCTDienTrangBiATBHLDLamViec_tagsinput').children('span').length;            
+            $('#txtPCTDienTongHangMucDaTrangCap').val(nguyen.getSoThanhChu(count));
         });
     }
     
@@ -612,20 +616,21 @@
             errorClass: 'red',
             ignore: [],
             language: 'vi',
-            rules: {         
-                txtPCTDienThuocCongTyDonVi_tag: { required: true },
-                txtPCTDiaDiemCongTac: { required: true },
-                txtPCTDienNoiDungCongTac_tag: { required: true },
+            rules: {
+                txtPCTDienThuocCongTyDonVi: { required: true },
+                txtPCTDiaDiemCongTac: { required: true },   
+                txtPCTDienNoiDungCongTac: { required: true },   
 
                 txtPCTDienGioBatDauCongViec: { required: true },
                 txtPCTDienPhutBatDauCongViec: { required: true },
                 txtPCTDienNgayBatDauCongViec: { required: true, isDateVietNam: true },
                 txtPCTDienGioKetThucCongViec: { required: true },
                 txtPCTDienPhutKetThucCongViec: { required: true },
-                txtPCTDienNgayKetThucCongViec: { required: true, isDateVietNam: true },
+                txtPCTDienNgayKetThucCongViec: { required: true, isDateVietNam: true },                
 
-                txtPCTDienDieuKienATD_tag: { required: true },
-                txtPCTDienTrangBiATBHLDLamViec_tag: { required: true },
+                txtPCTDienDieuKienATD: { required: true },   
+                txtPCTDienTrangBiATBHLDLamViec: { required: true },   
+
                 txtPCTDienTongHangMucDaTrangCap: { required: true },
                 txtPCTDienCacDonViQLVHCoLienQuan: { required: true },
 
@@ -800,9 +805,14 @@
             var khuvuc1 = $("#ddlPCTDienNhap1KhuVuc").val();
             var phongban1 = $("#ddlPCTDienNhap1PhongBan").val();
 
-            var nguoilanhdaocongviecId = $('#hidPCTDienNguoiLanhDaoCongViecId').val();
+            let nguoilanhdaocongviecidguid = $('#hidPCTDienNguoiLanhDaoCongViecId').val() == '0' ?
+                $('#hidPCTDienNguoiLanhDaoCongViecId').val(tedu.getNewGuid()) : $('#hidPCTDienNguoiLanhDaoCongViecId').val();
+            var nguoilanhdaocongviecId = nguoilanhdaocongviecidguid;
             var nguoichihuytructiepId = $('#hidPCTDienNguoiChiHuyTrucTiepId').val();
-            var nguoigiamsatatdId = $('#hidPCTDienNguoiGiamSatATDId').val();
+
+            let nguoigiamsatidguid = $('#hidPCTDienNguoiGiamSatATDId').val() == '0' ?
+                $('#hidPCTDienNguoiGiamSatATDId').val(tedu.getNewGuid()) : $('#hidPCTDienNguoiGiamSatATDId').val();
+            var nguoigiamsatatdId = nguoigiamsatidguid;
             var nguoichophepId = $('#hidPCTDienNguoiChoPhepId').val();
             var tennguoicappctId = $('#hidPCTDienTenNguoiCapPCTId').val();            
 
