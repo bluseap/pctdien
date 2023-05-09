@@ -32,7 +32,7 @@
                 $.each(response.Result, function (i, item) {
                     render += '<li><a><label ><input id="ndct' + item.Id
                         + '" type="checkbox" class="ul-checkbox ul-checkbox-cacnoidungct" name="amenities[]" value="'
-                        + item.TenNoiDung + '"> ' + item.TenNoiDung + '</label ></a ></li >';
+                        + item.TenNoiDung.trim() + '"> ' + item.TenNoiDung + '</label ></a ></li >';
                 });                    
                 $('#ulPCTDienChonNoiDungCongTac').html(render);
             },
@@ -56,7 +56,7 @@
                 $.each(response.Result, function (i, item) {
                     render += '<li><a><label ><input id="dkatd' + item.Id
                         + '" type="checkbox" class="ul-checkbox ul-checkbox-cacdieukienatd" name="amenities[]" value="'
-                        + item.TenNoiDung + '"> ' + item.TenNoiDung + '</label ></a ></li >';
+                        + item.TenNoiDung.trim() + '"> ' + item.TenNoiDung + '</label ></a ></li >';
                 });
                 $('#ulPCTDienChonDieuKienATD').html(render);                
             },
@@ -80,7 +80,7 @@
                 $.each(response.Result, function (i, item) {
                     render += '<li><a><label ><input id="tbbhldlv' + item.Id
                         + '" type="checkbox" class="ul-checkbox ul-checkbox-cactrangbibhldlv" name="amenities[]" value="'
-                        + item.TenNoiDung + '"> ' + item.TenNoiDung + '</label ></a ></li >';
+                        + item.TenNoiDung.trim() + '"> ' + item.TenNoiDung + '</label ></a ></li >';
                 });
                 $('#ulPCTDienChonTrangBiATBHLDLamViec').html(render);   
             },

@@ -1,13 +1,10 @@
 ﻿
 
-update procedure [dbo].[PCTD_Get_PCTDien_AllTrangThai] 
-update procedure [dbo].[PCTD_Get_PCTDien_AllPaging] 
-update procedure [dbo].[PCTD_Get_PCTDien_AllTrangThaiCount] 
 
 
-
-
-
+rupdate procedure [dbo].[PCTD_Get_PCTDien_AllTrangThai] 
+rupdate procedure [dbo].[PCTD_Get_PCTDien_AllPaging] 
+rupdate procedure [dbo].[PCTD_Get_PCTDien_AllTrangThaiCount] 
 
 
 r create procedure [dbo].[PCTD_Delete_PCTDDCTHinh]
