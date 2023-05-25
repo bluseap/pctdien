@@ -245,6 +245,9 @@ body {
 .fontSize13 {
     font-size: 13px;
 }
+.fontSize15 {
+    font-size: 15px !important;
+}
 
 #hexagon {
     width: 100px;
