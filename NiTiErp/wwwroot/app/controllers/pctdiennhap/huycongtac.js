@@ -109,7 +109,7 @@
 
         var isMainValidate = isFormMainValidate();
         if (isMainValidate === true) {
-            var ngayhuyct = $("#txtNgayHuyPCT").val();
+            var ngayhuyct = tedu.getFormatDateYYMMDD($('#txtNgayHuyPCT').val());
             var ghichuhuyct = $("#txtGhiChuHuyPCT").val();            
 
             $.ajax({

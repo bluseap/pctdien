@@ -97,8 +97,27 @@
 
         $('body').on('change', '.ul-checkbox-cacdieukienatd:checked', function (e) {
             e.preventDefault();
-            let chondieukienat = this.value;
-            $('#txtPCTDienDieuKienATD').addTag(chondieukienat);            
+
+            $("#txtPCTDienDieuKienATD").importTags('');
+            let checkboxCacDieuKienATD = document.getElementsByClassName("ul-checkbox-cacdieukienatd");
+            $.each(checkboxCacDieuKienATD, function (indexCheckBox, valueCheckBox) {
+                checkboxCacDieuKienATD[indexCheckBox].checked = false;
+            });
+
+            let chondieukienat = this.value;            
+            var elementCountDKAT = $("#txtPCTDienDieuKienATD_tagsinput .tag").length;
+            //console.log(elementCount);
+            if (elementCountDKAT < 1) {
+                $.each(checkboxCacDieuKienATD, function (indexCheckBox, valueCheckBox) {
+                    if (chondieukienat === valueCheckBox.value) {
+                        checkboxCacDieuKienATD[indexCheckBox].checked = true;
+                    }
+                });
+                $('#txtPCTDienDieuKienATD').addTag(chondieukienat);
+            }
+            else {
+                tedu.notify('Chỉ chọn 1 điều kiện về ATĐ','error');
+            }
         });
         $('body').on('change', '.ul-checkbox-cacdieukienatd:unchecked', function (e) {
             e.preventDefault();
@@ -280,7 +299,7 @@
         $('body').on('focusout', '#txtPCTDienDieuKienATD_tagsinput .tag', function (e) {
             e.preventDefault();
             var tagspan = $(this).context['children']['0'].innerText.trim();
-            //console.log(tagspan);              
+            //console.log($(this).context['children'].length);              
             let checkboxCacdieukienatd = document.getElementsByClassName("ul-checkbox-cacdieukienatd");
             $.each(checkboxCacdieukienatd, function (indexCheckBox, valueCheckBox) {
                 if (tagspan === valueCheckBox.value) {
@@ -668,7 +687,7 @@
                 else {
                     nguyen.appUserLoginLogger(userName, "Lưu PCT Nhân viên công tác. Id: " + id);
 
-                    tedu.notify('Lưu PCT Nhân viên công tác.', 'success');
+                    //tedu.notify('Lưu PCT Nhân viên công tác.', 'success');
 
                     loadTableDSNhanVienDonViCT();
 

@@ -692,14 +692,23 @@ namespace NiTiErp.Areas.Admin.Controllers
             HttpContext.Session.SetString("DiaDiemCongTac", pctdien.Result.DiaDiemCongTac != null ? pctdien.Result.DiaDiemCongTac : "");
             HttpContext.Session.SetString("CacNoiDungCongTac", pctdien.Result.CacNoiDungCongTac != null ? pctdien.Result.CacNoiDungCongTac : "");
 
-            string thoigianbatdaukehoach = pctdien.Result.GioBatDauKH != null ? pctdien.Result.GioBatDauKH : ""
-                + " giờ " + pctdien.Result.PhutBatDauKH != null ? pctdien.Result.PhutBatDauKH : "" + " phút" + ", ngày " +
-                pctdien.Result.NgayBatDauKH != null ? pctdien.Result.NgayBatDauKH.ToString("dd/MM/yyyy") : "";
+            string giobatdaukethoach = pctdien.Result.GioBatDauKH != null ? pctdien.Result.GioBatDauKH : "";
+            string phutbatdaukehoach = pctdien.Result.PhutBatDauKH != null ? pctdien.Result.PhutBatDauKH : "";
+            string ngaybatdaukehoach = pctdien.Result.NgayBatDauKH != null ? pctdien.Result.NgayBatDauKH.Day.ToString() : "";
+            string thangbatdaukehoach = pctdien.Result.NgayBatDauKH != null ? pctdien.Result.NgayBatDauKH.Month.ToString() : "";
+            string nambatdaukehoach = pctdien.Result.NgayBatDauKH != null ? pctdien.Result.NgayBatDauKH.Year.ToString() : "";
+            string thoigianbatdaukehoach = giobatdaukethoach
+                + " giờ " + phutbatdaukehoach + " phút" + ", ngày " + ngaybatdaukehoach + " tháng "
+                + thangbatdaukehoach + " năm " + nambatdaukehoach;
             HttpContext.Session.SetString("thoigianbatdaukehoach", thoigianbatdaukehoach);
 
-            string thoigianketthuckehoach = pctdien.Result.GioKetThucKH != null ? pctdien.Result.GioKetThucKH : ""
-                + " giờ " + pctdien.Result.PhutKetThucKH != null ? pctdien.Result.PhutKetThucKH : "" + " phút" + ", ngày " +
-                pctdien.Result.NgayKetThucKH != null ? pctdien.Result.NgayKetThucKH.ToString("dd/MM/yyyy") : "";
+            string gioketthuckehoach = pctdien.Result.GioKetThucKH != null ? pctdien.Result.GioKetThucKH : "";
+            string phutketthuckehoach = pctdien.Result.PhutKetThucKH != null ? pctdien.Result.PhutKetThucKH : "";            
+            string ngayketthuctheokehoach = pctdien.Result.NgayKetThucKH != null ? pctdien.Result.NgayKetThucKH.Day.ToString() : "";
+            string thangketthuctheokehoach = pctdien.Result.NgayKetThucKH != null ? pctdien.Result.NgayKetThucKH.Month.ToString() : "";
+            string namketthuctheokehoach = pctdien.Result.NgayKetThucKH != null ? pctdien.Result.NgayKetThucKH.Year.ToString() : "";
+            string thoigianketthuckehoach = gioketthuckehoach + " giờ " + phutketthuckehoach + " phút" + ", ngày " + ngayketthuctheokehoach + " tháng " 
+                + thangketthuctheokehoach + " năm " + namketthuctheokehoach;
             HttpContext.Session.SetString("thoigianketthuckehoach", thoigianketthuckehoach);
 
             HttpContext.Session.SetString("CacDieuKiemATLD", pctdien.Result.CacDieuKiemATLD != null ? pctdien.Result.CacDieuKiemATLD : "");
@@ -723,10 +732,11 @@ namespace NiTiErp.Areas.Admin.Controllers
             HttpContext.Session.SetString("TongHangMucDaKiemTraBHLD", pctdien.Result.TongHangMucDaKiemTraBHLD != null ? pctdien.Result.TongHangMucDaKiemTraBHLD : "");
             HttpContext.Session.SetString("CacGiayPhoiHopChoPhep", pctdien.Result.CacGiayPhoiHopChoPhep != null ? pctdien.Result.CacGiayPhoiHopChoPhep : "");
 
-            string thoigianchophepdonvicongtac = pctdien.Result.GioChoPhepDonViCT != null ? pctdien.Result.GioChoPhepDonViCT : ""
-                + " giờ " + pctdien.Result.PhutChoPhepDonViCT != null ? pctdien.Result.PhutChoPhepDonViCT : "" + " phút" + ", ngày " +
-                pctdien.Result.NgayChoPhepDonViCT != null ? pctdien.Result.NgayChoPhepDonViCT.ToString("dd/MM/yyyy") : "";
-            HttpContext.Session.SetString("thoigianchophepdonvicongtac", thoigianchophepdonvicongtac != null ? thoigianchophepdonvicongtac : "");
+            string giochophep = pctdien.Result.GioChoPhepDonViCT != null ? pctdien.Result.GioChoPhepDonViCT : "";
+            string phutchophep = pctdien.Result.PhutChoPhepDonViCT != null ? pctdien.Result.PhutChoPhepDonViCT : "";
+            string ngaychophep = pctdien.Result.NgayChoPhepDonViCT != null ? pctdien.Result.NgayChoPhepDonViCT.ToString("dd/MM/yyyy") : "";
+            string thoigianchophepdonvicongtac = giochophep + " giờ " + phutchophep + " phút" + ", ngày " +  ngaychophep;
+            HttpContext.Session.SetString("thoigianchophepdonvicongtac", thoigianchophepdonvicongtac);
 
             SessionHelper.SetObjectAsJson(HttpContext.Session, "nhanviencongtac1", nhanviencongtac1.Result);
 
@@ -737,18 +747,20 @@ namespace NiTiErp.Areas.Admin.Controllers
             HttpContext.Session.SetString("TraLamViecOngBaTenChucVu", pctdien.Result.TraLamViecOngBaTenChucVu != null ? pctdien.Result.TraLamViecOngBaTenChucVu : "");
             HttpContext.Session.SetString("TenDaiDienQuanLyVanHanh", pctdien.Result.TenDaiDienQuanLyVanHanh != null ? pctdien.Result.TenDaiDienQuanLyVanHanh : "");
 
-            string thoigiantralamviec = pctdien.Result.GioTraLamViec != null ? pctdien.Result.GioTraLamViec : ""
-                + " giờ " + pctdien.Result.PhutTraLamViec != null ? pctdien.Result.PhutTraLamViec : "" + " phút" + ", ngày " +
-                pctdien.Result.NgayTraLamViec != null ? pctdien.Result.NgayTraLamViec.ToString("dd/MM/yyyy") : "";
-            HttpContext.Session.SetString("thoigiantralamviec", thoigiantralamviec != null ? thoigiantralamviec : "");
+            string giotralamviec = pctdien.Result.GioTraLamViec != null ? pctdien.Result.GioTraLamViec : "";
+            string phuttralamviec = pctdien.Result.PhutTraLamViec != null ? pctdien.Result.PhutTraLamViec : "";
+            string ngaytralamviec = pctdien.Result.NgayTraLamViec != null ? pctdien.Result.NgayTraLamViec.ToString("dd/MM/yyyy") : "";
+            string thoigiantralamviec = giotralamviec + " giờ " + phuttralamviec + " phút, ngày " + ngaytralamviec;
+            HttpContext.Session.SetString("thoigiantralamviec", thoigiantralamviec);
 
             HttpContext.Session.SetString("LyDoTonChuaThucHien", pctdien.Result.LyDoTonChuaThucHien != null ? pctdien.Result.LyDoTonChuaThucHien : "");
             HttpContext.Session.SetString("LyDoChuaThucHien", pctdien.Result.LyDoChuaThucHien != null ? pctdien.Result.LyDoChuaThucHien : "");
 
-            string thoigiankhoapct = pctdien.Result.GioKhoaPCT != null ? pctdien.Result.GioKhoaPCT : ""
-                + " giờ " + pctdien.Result.PhutKhoaPCT != null ? pctdien.Result.PhutKhoaPCT : "" + " phút" + ", ngày " +
-                pctdien.Result.NgayKhoaPCT != null ? pctdien.Result.NgayKhoaPCT.ToString("dd/MM/yyyy") : "";
-            HttpContext.Session.SetString("thoigiankhoapct", thoigiankhoapct != null ? thoigiankhoapct : "");
+            string giokhoaPCT = pctdien.Result.GioKhoaPCT != null ? pctdien.Result.GioKhoaPCT : "";
+            string phutkhoaPCT = pctdien.Result.PhutKhoaPCT != null ? pctdien.Result.PhutKhoaPCT : "";
+            string ngaykhoaPCT = pctdien.Result.NgayKhoaPCT != null ? pctdien.Result.NgayKhoaPCT.ToString("dd/MM/yyyy") : "";
+            string thoigiankhoapct = giokhoaPCT + " giờ " + phutkhoaPCT + " phút, ngày " + ngaykhoaPCT;
+            HttpContext.Session.SetString("thoigiankhoapct", thoigiankhoapct);
 
             string NgayKiemTraHoanThanhPCT = pctdien.Result.NgayKiemTraHoanThanhPCT != null ? pctdien.Result.NgayKiemTraHoanThanhPCT.ToString("dd/MM/yyyy") : "";
             HttpContext.Session.SetString("NgayKiemTraHoanThanhPCT", NgayKiemTraHoanThanhPCT != null ? NgayKiemTraHoanThanhPCT : "");
