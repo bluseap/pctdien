@@ -377,6 +377,30 @@ namespace NiTiErp.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        public async Task<IActionResult> UpDDCongTacHT(PCTDiaDiemCongTacViewModel pctdiadiemcongtac)
+        {
+            if (!ModelState.IsValid)
+            {
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return new BadRequestObjectResult(allErrors);
+            }
+            else
+            {
+                var result = _authorizationService.AuthorizeAsync(User, "PCTDIENNHAP", Operations.Update);
+                if (result.Result.Succeeded == false)
+                {
+                    return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền cập nhật."));
+                }
+
+                DateTime CreateDate = DateTime.Now;
+                string CreateBy = User.GetSpecificClaim("UserName");
+
+                var model = await _pctdiadiemcongtacService.PCTD_Update_PCTDiaDiemCongTacHoanThanh(pctdiadiemcongtac, CreateDate, CreateBy);
+                return new OkObjectResult(model);
+            }
+        }
+
+        [HttpPost]
         public async Task<IActionResult> DelDDCongTac(int PCTDiaDiemCongTacId)
         {
             if (!ModelState.IsValid)

@@ -139,6 +139,30 @@ namespace NiTiErp.Application.Dapper.Implementation.PhieuCongTacDien
             }
         }
 
+        public async Task<bool> PCTD_Update_PCTDiaDiemCongTacHoanThanh(PCTDiaDiemCongTacViewModel pctdiadiemcongtac, DateTime updateDate, string updateBy)
+        {
+            using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            {
+                await sqlConnection.OpenAsync();
+                var dynamicParameters = new DynamicParameters();
+
+                dynamicParameters.Add("@Id", pctdiadiemcongtac.Id);                
+
+                dynamicParameters.Add("@UpdateDate", updateDate);
+                dynamicParameters.Add("@UpdateBy", updateBy);
+                try
+                {
+                    await sqlConnection.QueryAsync<PCTDiaDiemCongTacViewModel>(
+                        "PCTD_Update_PCTDiaDiemCongTacHoanThanh", dynamicParameters, commandType: CommandType.StoredProcedure);
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
         public async Task<bool> PCTD_Delete_PCTDiaDiemCongTac(int Id, DateTime updateDate, string updateBy)
         {
             using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))

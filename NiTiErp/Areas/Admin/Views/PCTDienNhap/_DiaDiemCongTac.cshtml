@@ -70,6 +70,7 @@
                             <div class="col-sm-offset-2 col-sm-10">
                                 <button type="button" id="btnCancelEditDDLVDiaDiemLamViec" data-dismiss="modal" class="btn btn-default">Đóng</button>
                                 <button type="button" id="btnSaveEditDDLVDiaDiemLamViec" class="btn btn-warning">Lưu địa điểm LV </button>
+                                <button type="button" id="btnSaveEditDDLVHoanThanhCT" class="btn btn-danger">Hoàn thành LV </button>
                             </div>
                         </div>
                     </form>
@@ -85,6 +86,8 @@
                                     <th>Kết thúc</th>
                                     <th>Người chỉ huy trực tiếp</th>
                                     <th>Người cho phép</th>
+                                    <td></td>
+                                    <td></td>
                                     <td></td>
                                     <td></td>
                                 </tr>
@@ -104,9 +107,15 @@
                                 <td>{{NgayKetThuc}}</td>
                                 <td>{{TenNguoiChiHuyTrucTiep}}</td>
                                 <td>{{TenNguoiChoPhep}}</td>
+                                <td>{{{TTDiaDiemCT}}}</td>
                                 <th scope="row">
                                     <a class="btn-link btn-AddHinhVideo" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Thêm hình, video">
                                         <i>Thêm Hình </i>
+                                    </a>
+                                </th>
+                                <th scope="row">
+                                    <a class="btn-link btn-HoanThanhCT" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Hoàn thành">
+                                        <i>Hoàn thành </i>
                                     </a>
                                 </th>
                                 <th scope="row">

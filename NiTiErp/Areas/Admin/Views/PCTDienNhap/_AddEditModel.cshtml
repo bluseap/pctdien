@@ -14,6 +14,7 @@
                 <input type="hidden" id="hidInsertThemNoiDungCongTac" value="" />
                 <input type="hidden" id="hidInsertThemDieuKienATD" value="" />
                 <input type="hidden" id="hidInsertThemTrangBiATBHLDLamViec" value="" />
+                <input type="hidden" id="hidInsertThemCacDonViQuanLyVanHanh" value="" />
 
                 <input type="hidden" id="hidPCTDienCode" value="" />
 
@@ -31,6 +32,7 @@
                 <input type="hidden" id="hidInsertDiaDiemCongTac" value="" />
                 <input type="hidden" id="hidInsertDDCTHinh" value="" />
                 <input type="hidden" id="hidCodeDDCTFileHinhVideoId" value="" />
+                <input type="hidden" id="hidInsertDDCTHoanThanh" value="" />
 
                 <input type="hidden" id="hidPCTNhanVienCongTacId" value="" />
                 <input type="hidden" id="hidThayDoiNguoiCongTacTenNhanVienThayDoiId" value="" />
@@ -279,6 +281,26 @@
                                     Tổng cộng hạng mục đã được trang cấp (ghi bằng chữ) <a style="color:#f00"> (*) </a>
                                 </label>
                                 <input type="text" id="txtPCTDienTongHangMucDaTrangCap" name="txtPCTDienTongHangMucDaTrangCap" class="form-control" placeholder="Tổng cộng hạng mục đã được trang cấp (ghi bằng chữ)">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <label for="lbPCTDienChonCacDonViQuanLyVanHanh">
+                                    Chọn các đơn vị quản lý vận hành
+                                </label>
+                                <div class="input-group">
+                                    <div class="dropdown">
+                                        <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown">
+                                            <span class="dropdown-text"> -- Chọn các đơn vị quản lý vận hành --</span>
+                                            <span class="caret"></span>
+                                        </button>
+                                        <ul id="ulPCTDienChonCacDonViQuanLyVanHanh" class="dropdown-menu">
+                                        </ul>
+                                    </div>
+                                    <span class="input-group-btn">
+                                        <button type="button" class="btn btn-default" id="btnThemChonCacDonViQuanLyVanHanh">Thêm đ.vị QLVH</button>
+                                    </span>
+                                </div>
                             </div>
                             <div class="col-md-6 col-sm-12 col-xs-12">
                                 <label for="lbPCTDienCacDonViQLVHCoLienQuan">

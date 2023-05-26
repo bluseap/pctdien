@@ -12,7 +12,7 @@
 
     this.initialize = function () {
         registerEvents();
-        
+        loadData();
         ClearData();
     }
 
@@ -42,6 +42,8 @@
             var pctdiadiemcongtacid = $(this).data('id');
             $('#hidPCTDiaDiemCongTacId').val(pctdiadiemcongtacid);
 
+            $('#btnSaveEditDDLVDiaDiemLamViec').show();
+            $('#btnSaveEditDDLVHoanThanhCT').hide();
             loadEditPCTDiaDiemCongTac();
         });
 
@@ -60,7 +62,33 @@
             $('#modal-add-edit-EditDiaDiemCongTacAddHinh').modal('show');
         });
 
-    }    
+        $('body').on('click', '.btn-HoanThanhCT', function (e) {
+            e.preventDefault();
+            var pctdiadiemcongtacid = $(this).data('id');
+            $('#hidPCTDiaDiemCongTacId').val(pctdiadiemcongtacid);
+            $('#hidInsertDDCTHoanThanh').val(1);
+
+            $('#btnSaveEditDDLVDiaDiemLamViec').hide();
+            $('#btnSaveEditDDLVHoanThanhCT').show();
+            loadEditPCTDiaDiemCongTac();
+        });
+
+        $('#btnSaveEditDDLVHoanThanhCT').on('click', function () {
+            var ispctdien = $('#hidInsertPCTDien').val(); // 1: insert; 2: update; 
+            var isdiadiemcongtac = $('#hidInsertDiaDiemCongTac').val(); // 1: insert; 2: update; 
+            var isdiadiemcongtachoanthanh = $('#hidInsertDDCTHoanThanh').val(); // 1: insert; 2: update; 
+
+            if (ispctdien == "2" && isdiadiemcongtac == '2' && isdiadiemcongtachoanthanh == '1') {
+                updateDiaDiemCongTacHoanThanh();
+            }
+        });
+
+    }
+
+    function loadData() {
+        $('#btnSaveEditDDLVDiaDiemLamViec').show();
+        $('#btnSaveEditDDLVHoanThanhCT').hide();
+    }
 
     function ClearData() {
         var datenow = new Date();
@@ -106,7 +134,8 @@
                             NgayKetThuc: tedu.getFormattedDateTimeN(item.NgayKetThuc),
                             TenNguoiChiHuyTrucTiep: item.TenNguoiChiHuyTrucTiep,
                             TenNguoiChoPhep: item.TenNguoiChoPhep,
-                            
+
+                            TTDiaDiemCT: tedu.getPhieuCongTacDienDDCT(item.TTDiaDiemCT),
                             //NgayDenCuaVanBan: tedu.getFormattedDate(item.NgayDenCuaVanBan),                            
                             // Price: tedu.formatNumber(item.Price, 0),                          
                         });
@@ -303,6 +332,48 @@
                 }
             });
         }
+    }
+
+    function updateDiaDiemCongTacHoanThanh() {
+        var pctdiadiemcongtacid = $('#hidPCTDiaDiemCongTacId').val();
+
+        $.ajax({
+            type: "POST",
+            url: "/Admin/pctdiennhap/UpDDCongTacHT",
+            data: {
+                Id: pctdiadiemcongtacid                
+            },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                if (response.Result === false) {
+                    tedu.notify("Lưu Địa điểm công tác điện Hoàn thành.", "error");
+                }
+                else {
+                    nguyen.appUserLoginLogger(userName, "Lưu Sửa Địa điểm công tác điện. PCTDienId: " + pctdiadiemcongtacid);
+
+                    tedu.notify('Lưu Địa điểm công tác điện Hoàn thành.', 'success');
+
+                    $('#hidInsertDiaDiemCongTac').val(1);
+                    $('#hidInsertDDCTHoanThanh').val(0);
+
+                    $('#btnSaveEditDDLVDiaDiemLamViec').show();
+                    $('#btnSaveEditDDLVHoanThanhCT').hide();
+
+                    loadTableDiaDiemCongTac();
+
+                    ClearData();
+
+                    tedu.stopLoading();
+                }
+            },
+            error: function () {
+                tedu.notify('Có lỗi! Không thể Lưu Địa điểm công tác điện Hoàn thành.', 'error');
+                tedu.stopLoading();
+            }
+        });
     }
 
     function loadEditPCTDiaDiemCongTac() {

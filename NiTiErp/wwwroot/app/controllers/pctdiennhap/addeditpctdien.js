@@ -8,6 +8,7 @@
     var themnoidungcongtac = new themnoidungcongtacController();  
     var themdieukienatd = new themdieukienatdController();  
     var themtrangbiatbhld = new themtrangbiatbhldController();  
+    var themcacdonviqlvh = new themcacdonviqlvhController();  
 
     var loaddatatable = new loaddatatableController();
 
@@ -35,6 +36,7 @@
         themnoidungcongtac.initialize();
         themdieukienatd.initialize();
         themtrangbiatbhld.initialize();
+        themcacdonviqlvh.initialize();
     }
 
     function registerEvents() {
@@ -139,6 +141,17 @@
             let count = $('#txtPCTDienTrangBiATBHLDLamViec_tagsinput').children('span').length;            
             $('#txtPCTDienTongHangMucDaTrangCap').val(nguyen.getSoThanhChu(count));
         });
+
+        $('body').on('change', '.ul-checkbox-cacdonviqlvh:checked', function (e) {
+            e.preventDefault();
+            let trangbiantoan = this.value;
+            $('#txtPCTDienCacDonViQLVHCoLienQuan').addTag(trangbiantoan);            
+        });
+        $('body').on('change', '.ul-checkbox-cacdonviqlvh:unchecked', function (e) {
+            e.preventDefault();
+            let dvqlvh = this.value;
+            $('#txtPCTDienCacDonViQLVHCoLienQuan').removeTag(dvqlvh);            
+        });
     }
     
     function loadEditCheckBoxCacNoiDungCongTac(cacnoidungcongtac) {        
@@ -170,6 +183,17 @@
             $.each(checkboxCacTrangBiBHLDLV, function (indexCheckBox, valueCheckBox) {
                 if (valueArray === valueCheckBox.value) {
                     checkboxCacTrangBiBHLDLV[indexCheckBox].checked = true;
+                }
+            });
+        });
+    }
+    function loadEditCheckBoxCacDonViQLVH(cacdonviqlvh) {
+        let arrayCacDobViQLVH = cacdonviqlvh.split(",");
+        let checkboxCacDobViQLVH = document.getElementsByClassName("ul-checkbox-cacdonviqlvh");
+        $.each(arrayCacDobViQLVH, function (indexArray, valueArray) {
+            $.each(checkboxCacDobViQLVH, function (indexCheckBox, valueCheckBox) {
+                if (valueArray === valueCheckBox.value) {
+                    checkboxCacDobViQLVH[indexCheckBox].checked = true;
                 }
             });
         });
@@ -216,6 +240,12 @@
             $('#hidInsertThemTrangBiATBHLDLamViec').val(1);
             themtrangbiatbhld.loadTablePCTDienThemTrangBiATBHLD();
             $('#modal-add-edit-ThemTrangBiATBHLD').modal('show');
+        });
+
+        $('#btnThemChonCacDonViQuanLyVanHanh').on('click', function () {
+            $('#hidInsertThemCacDonViQuanLyVanHanh').val(1);
+            themcacdonviqlvh.loadTablePCTDienThemCacDonViQLVH();
+            $('#modal-add-edit-ThemCacDonViQuanLyVanHanh').modal('show');
         });
     }
 
@@ -282,13 +312,17 @@
             height: '100px',
             allowDuplicates: false
         });
+        $('#txtPCTDienCacDonViQLVHCoLienQuan').tagsInput({
+            width: 'auto',
+            height: '60px',
+            allowDuplicates: false
+        });
     }
 
     function loadTabsRemoved() {
         $('body').on('focusout', '#txtPCTDienNoiDungCongTac_tagsinput .tag', function (e) {
             e.preventDefault(); 
-            var tagspan = $(this).context['children']['0'].innerText.trim();
-            //console.log(tagspan);              
+            var tagspan = $(this).context['children']['0'].innerText.trim();                         
             let checkboxCacNoiDungCongTac = document.getElementsByClassName("ul-checkbox-cacnoidungct");
             $.each(checkboxCacNoiDungCongTac, function (indexCheckBox, valueCheckBox) {
                 if (tagspan === valueCheckBox.value) {
@@ -298,8 +332,7 @@
         });
         $('body').on('focusout', '#txtPCTDienDieuKienATD_tagsinput .tag', function (e) {
             e.preventDefault();
-            var tagspan = $(this).context['children']['0'].innerText.trim();
-            //console.log($(this).context['children'].length);              
+            var tagspan = $(this).context['children']['0'].innerText.trim();                         
             let checkboxCacdieukienatd = document.getElementsByClassName("ul-checkbox-cacdieukienatd");
             $.each(checkboxCacdieukienatd, function (indexCheckBox, valueCheckBox) {
                 if (tagspan === valueCheckBox.value) {
@@ -322,7 +355,17 @@
                 }
             }); 
             //console.log(count);
-        });       
+        });  
+        $('body').on('focusout', '#txtPCTDienCacDonViQLVHCoLienQuan_tagsinput .tag', function (e) {
+            e.preventDefault();
+            var tagspan = $(this).context['children']['0'].innerText.trim();
+            let checkboxCacDonViQLVH = document.getElementsByClassName("ul-checkbox-cacdonviqlvh");
+            $.each(checkboxCacDonViQLVH, function (indexCheckBox, valueCheckBox) {
+                if (tagspan === valueCheckBox.value) {
+                    checkboxCacDonViQLVH[indexCheckBox].checked = false;
+                }
+            });
+        });
 
     }    
 
@@ -1122,18 +1165,21 @@
                 let cacnoidungcongtac = pctdien.CacNoiDungCongTac != null ? pctdien.CacNoiDungCongTac : '';
                 let cacdieukienatd = pctdien.CacDieuKiemATLD != null ? pctdien.CacDieuKiemATLD : '';
                 let cactrangbiatbhldlamviec = pctdien.CacTrangBiATBHLDLamViec != null ? pctdien.CacTrangBiATBHLDLamViec : '';
+                let cacdonviqlvh = pctdien.CacDonViQLVHCoLienQuan != null ? pctdien.CacDonViQLVHCoLienQuan : '';
 
                 $("#txtPCTDienThuocCongTyDonVi").importTags(caccongtydonvi);
                 $("#txtPCTDienNoiDungCongTac").importTags(cacnoidungcongtac);
                 $("#txtPCTDienDieuKienATD").importTags(cacdieukienatd);
                 $("#txtPCTDienTrangBiATBHLDLamViec").importTags(cactrangbiatbhldlamviec);
+                $("#txtPCTDienCacDonViQLVHCoLienQuan").importTags(cacdonviqlvh);
 
                 loadEditCheckBoxCacNoiDungCongTac(cacnoidungcongtac);
                 loadEditCheckBoxCacDieuKienATD(cacdieukienatd);
                 loadEditCheckBoxCacTrangBiBHLDLV(cactrangbiatbhldlamviec);
+                loadEditCheckBoxCacDonViQLVH(cacdonviqlvh);
 
                 $("#txtPCTDienTongHangMucDaTrangCap").val(pctdien.TongHangMucDaTrangCap);
-                $("#txtPCTDienCacDonViQLVHCoLienQuan").val(pctdien.CacDonViQLVHCoLienQuan);
+                //$("#txtPCTDienCacDonViQLVHCoLienQuan").val(pctdien.CacDonViQLVHCoLienQuan);
 
                 $("#txtPCTDienNguoiGiamSatATD").val(pctdien.TenNguoiGiamSatATD);
                 $("#ddlPCTDienNguoiGiamSatATDBacATD").val(pctdien.BacATDNguoiGiamSatATD);

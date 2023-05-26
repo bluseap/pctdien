@@ -1,0 +1,114 @@
+﻿
+<div id="modal-add-edit-ThemCacDonViQuanLyVanHanh" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style="overflow-y: auto; max-height:85%;  margin-top: 50px; margin-bottom:50px; ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Thêm / Sửa các đơn vị quản lý vận hành </h4>
+            </div>
+            <div class="modal-body">
+
+                <div id="formMainEditPCTDienThemCacDonViQuanLyVanHanh">
+                    <form class="form-horizontal form-label-left" id="frmMainEditPCTDienThemCacDonViQuanLyVanHanh">
+                        <div class="item form-group">
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <label for="lbThemDVQLVHCodeThemCacDonViQuanLyVanHanh">
+                                    Mã thêm các đơn vị quản lý vận hành <a style="color:#f00"> (*) </a>
+                                </label>
+                                <select id="ddlThemDVQLVHCodeThemCacDonViQuanLyVanHanh" name="ddlThemDVQLVHCodeThemCacDonViQuanLyVanHanh" class="form-control"></select>
+                            </div>
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <label for="lbThemCacDonViQuanLyVanHanhNgayNhap">
+                                    Ngày nhập <a style="color:#f00"> (*) </a>
+                                </label>
+                                <input type="text" id="txtThemCacDonViQuanLyVanHanhNgayNhap" name="txtThemCacDonViQuanLyVanHanhNgayNhap" class="form-control" placeholder="Ngày nhập">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <label for="lbThemDVQLVHTenThemCacDonViQuanLyVanHanh">
+                                    Tên đơn vị quản lý vận hành <a style="color:#f00"> (*) </a>
+                                </label>
+                                <textarea id="txtThemDVQLVHTenThemCacDonViQuanLyVanHanh" required="required" class="form-control" name="txtThemDVQLVHTenThemCacDonViQuanLyVanHanh"
+                                          data-parsley-trigger="keyup" data-parsley-maxlength="1000">
+                                </textarea>
+                            </div>
+                            <div class="col-md-6 col-sm-12 col-xs-12">
+                                <label for="lbThemDVQLVHSttThemCacDonViQuanLyVanHanh">
+                                    Số thứ tự <a style="color:#f00"> (*) </a>
+                                </label>
+                                <input type="number" id="txtThemDVQLVHSttThemCacDonViQuanLyVanHanh" name="txtThemDVQLVHSttThemCacDonViQuanLyVanHanh" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="button" id="btnCancelThemCacDonViQuanLyVanHanhHuy" data-dismiss="modal" class="btn btn-default">Đóng</button>
+                                <button type="button" id="btnSaveEditThemCacDonViQuanLyVanHanhLuu" class="btn btn-warning">Lưu đơn vị QLVH </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="row">
+                    <div class="x_panel">
+                        <div class="table-responsive" id="table-responsiveThemCacDonViQuanLyVanHanh">
+                            <table id="tblPCTDienThemCacDonViQuanLyVanHanh" class="table table-striped jambo_table bulk_action" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Tên đơn vị QLVH</th>
+                                        <th>Ngày nhập</th>
+                                        <th>Stt</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tblContentPCTDienThemCacDonViQuanLyVanHanh"></tbody>
+                            </table>
+                            <div class="row">
+                                <div class="col-sm-5">
+                                    <div class="dataTables_info" id="datatable-checkbox_infoPCTDienThemCacDonViQuanLyVanHanh" role="status" aria-live="polite">
+                                        <select id="ddl-show-pagePCTDienThemCacDonViQuanLyVanHanh">
+                                            <option value="10" selected="selected">10</option>
+                                            <option value="20">20</option>
+                                            <option value="30">30</option>
+                                            <option value="50">50</option>
+                                        </select>
+                                        <span class="item-per-page">
+                                            dòng/trang.
+                                        </span>
+                                        Tổng cộng: <strong id="lbPCTDienThemCacDonViQuanLyVanHanhTotalRecords"></strong>
+                                    </div>
+                                </div>
+                                <div class="col-sm-7">
+                                    <div class="dataTables_paginate" id="datatable-checkbox_paginatePCTDienThemCacDonViQuanLyVanHanh">
+                                        <ul id="paginationULPCTDienThemCacDonViQuanLyVanHanh"></ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <script id="table-PCTDienThemCacDonViQuanLyVanHanh" type="x-tmpl-mustache">
+                    <tr>
+                        <th scope="row">
+                            <a class="btn-link btn-addeditPCTDienCacDonViQuanLyVanHanh" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Id">
+                                <i class="fa fa-pencil"></i>
+                            </a>
+                        </th>
+
+                        <td>{{TenNoiDung}}</td>
+                        <td>{{NgayNhap}}</td>
+                        <td>{{Stt}}</td>
+
+                        <th scope="row">
+                            <a class="btn-link btn-deletePCTDienThemCacDonViQuanLyVanHanh" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Xóa">
+                                <i class="fa fa-trash-o" style="color:red"></i>
+                            </a>
+                        </th>
+
+                    </tr>
+                </script>
+            </div>
+        </div>
+    </div>
+</div>

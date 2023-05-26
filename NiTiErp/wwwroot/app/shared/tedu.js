@@ -570,6 +570,16 @@
         else
             return '<span class="badge bg-red">Không biết</span>';   
     },
+    getPhieuCongTacDienDDCT: function (trangthai) {
+        if (trangthai === 2)
+            return '<span class="badge bg-orange">Đang làm</span>';
+        else if (trangthai === 4)
+            return '<span class="badge bg-blue">Hoàn thành</span>';
+        else if (trangthai === 6)
+            return '<span class="badge bg-purple">Chưa hoàn thành</span>';        
+        else
+            return '<span class="badge bg-red">Không biết</span>';
+    },
 
     formatNumber: function (number, precision) {
         if (!isFinite(number)) {

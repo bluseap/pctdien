@@ -16,6 +16,8 @@ namespace NiTiErp.Application.Dapper.Interfaces.PhieuCongTacDien
 
         Task<bool> PCTD_Update_PCTDiaDiemCongTac(PCTDiaDiemCongTacViewModel pctdiadiemcongtac, DateTime updateDate, string updateBy);
 
+        Task<bool> PCTD_Update_PCTDiaDiemCongTacHoanThanh(PCTDiaDiemCongTacViewModel pctdiadiemcongtac, DateTime updateDate, string updateBy);
+
         Task<bool> PCTD_Delete_PCTDiaDiemCongTac(int Id, DateTime updateDate, string updateBy);
     }
 }
