@@ -116,8 +116,8 @@
                 txtKTCTTenNguoiChoPhep: { required: true },
                 txtKTCTNgayKiemTraHoanThanhPCT: { required: true },
                 txtKTCTTenNguoiCapPCT: { required: true },
-                txtKTCTTenNguoiKiemTraATLDTaiHienTruong: { required: true },
-                txtKTCTChucVuNguoiKiemTraATLDTaiHienTruong: { required: true },
+                //txtKTCTTenNguoiKiemTraATLDTaiHienTruong: { required: true },
+                //txtKTCTChucVuNguoiKiemTraATLDTaiHienTruong: { required: true },
 
                 //txtNgaySinh: { required: true, isDateVietNam: true },
                 //ddlMaMDSD: { required: true, isDanhMuc: true }, 

@@ -309,15 +309,20 @@
         });
         $('body').on('focusout', '#txtPCTDienTrangBiATBHLDLamViec_tagsinput .tag', function (e) {
             e.preventDefault();
-            var tagspan = $(this).context['children']['0'].innerText.trim();
-            //console.log(tagspan);              
-            let checkboxCacTrangBiATBHLD = document.getElementsByClassName("ul-checkbox-cactrangbibhldlv");
+            var tagspan = $(this).context['children']['0'].innerText.trim();                       
+            let checkboxCacTrangBiATBHLD = document.getElementsByClassName("ul-checkbox-cactrangbibhldlv");            
+            let count = 0;
             $.each(checkboxCacTrangBiATBHLD, function (indexCheckBox, valueCheckBox) {
                 if (tagspan === valueCheckBox.value) {
-                    checkboxCacTrangBiATBHLD[indexCheckBox].checked = false;
+                    checkboxCacTrangBiATBHLD[indexCheckBox].checked = false;                    
                 }
-            });
-        });
+                if (checkboxCacTrangBiATBHLD[indexCheckBox].checked == true) {
+                    count = count + 1;
+                    $('#txtPCTDienTongHangMucDaTrangCap').val(nguyen.getSoThanhChu(count));
+                }
+            }); 
+            //console.log(count);
+        });       
 
     }    
 
@@ -604,7 +609,7 @@
     }
     function formMainValidate() {
         jQuery.validator.addMethod("isDanhMuc", function (value, element) {
-            if (value === "%")
+            if (value === "%" || value == "0")
                 return false;
             else
                 return true;
@@ -651,7 +656,7 @@
                 txtPCTDienTrangBiATBHLDLamViec: { required: true },   
 
                 txtPCTDienTongHangMucDaTrangCap: { required: true },
-                txtPCTDienCacDonViQLVHCoLienQuan: { required: true },
+                //txtPCTDienCacDonViQLVHCoLienQuan: { required: true },
 
                 txtPCTDienNguoiChoPhep: { required: true },
                 ddlPCTDienNguoiChiHuyTrucTiepBacATD: { required: true, isDanhMuc: true },

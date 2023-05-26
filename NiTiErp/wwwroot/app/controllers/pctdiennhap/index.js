@@ -472,7 +472,7 @@
             onSelect: function (suggestion) {
                 $('#hidPCTDienNguoiChoPhepId').val(suggestion.Id);
                 $('#txtPCTDienNguoiChoPhep').val(suggestion.Ten);
-                $('#ddlPCTDienNguoiChiHuyTrucTiepBacATD').val(suggestion.BacAnToanDienId);
+                $('#ddlPCTDienNguoiChoPhepATDATD').val(suggestion.BacAnToanDienId);                
             }
         });
         $('#txtPCTDienTenNguoiCapPCT').autocomplete({
