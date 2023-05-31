@@ -34,6 +34,7 @@ namespace NiTiErp.Areas.Admin.Controllers
         private readonly IPCTNhanVienCongTacService _pctnhanviencongtacService;
         private readonly IPCTDiaDiemCongTacService _pctdiadiemcongtacService;
         private readonly IPCTDDCTHinhService _pctddcthinhService;
+        private readonly IPCTDienDiaDiemCongTacService _pctdiendiadiemcongtacService;
 
         public PCTDienNhapController(IHostingEnvironment hostingEnvironment,
             NiTiErp.Application.Interfaces.IUserService userService,
@@ -41,7 +42,8 @@ namespace NiTiErp.Areas.Admin.Controllers
 
             IPCTDienService pctdienService, IBacAnToanDienService bacantoandienService, IPCTDanhMucService pctdanhmucService,
             IHoSoNhanVienService hosonhanvienService, IPCTNhanVienCongTacService pctnhanviencongtacService,
-            IPCTDiaDiemCongTacService pctdiadiemcongtacService, IPCTDDCTHinhService pctddcthinhService
+            IPCTDiaDiemCongTacService pctdiadiemcongtacService, IPCTDDCTHinhService pctddcthinhService,
+            IPCTDienDiaDiemCongTacService pctdiendiadiemcongtacService
             )
         {
             _hostingEnvironment = hostingEnvironment;
@@ -55,6 +57,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             _pctnhanviencongtacService = pctnhanviencongtacService;
             _pctdiadiemcongtacService = pctdiadiemcongtacService;
             _pctddcthinhService = pctddcthinhService;
+            _pctdiendiadiemcongtacService = pctdiendiadiemcongtacService;
         }
 
         public IActionResult Index()
@@ -186,6 +189,14 @@ namespace NiTiErp.Areas.Admin.Controllers
         }
 
         [HttpGet]
+        public IActionResult GetDDCTIdHoanThanh(int PCTDienId)
+        {
+            var model = _pctdiadiemcongtacService.PCTD_Get_PCTDiaDiemCongTac_ByDienIdTenDDCTHoanThanh(PCTDienId);
+
+            return new OkObjectResult(model);
+        }
+
+        [HttpGet]
         public IActionResult ListDDCTHinh(int ddctid)
         {
             var model = _pctddcthinhService.PCTD_Get_PCTDDCTHinh_ByDiaDiemCongTacId(ddctid);
@@ -198,6 +209,13 @@ namespace NiTiErp.Areas.Admin.Controllers
         {
             var model = _pctddcthinhService.PCTD_Get_PCTDDCTHinh_ById(ddcthinhId);
 
+            return new OkObjectResult(model);
+        }
+
+        [HttpGet]
+        public IActionResult ListDienDDCT(string Code)
+        {
+            var model = _pctdiendiadiemcongtacService.PCTD_Get_PCTDienDiaDiemCongTac_ByCode(Code);
             return new OkObjectResult(model);
         }
 
@@ -669,6 +687,56 @@ namespace NiTiErp.Areas.Admin.Controllers
                 string CreateBy = User.GetSpecificClaim("UserName");
 
                 var model = await _pctddcthinhService.PCTD_Delete_PCTDDCTHinh(pctddcthinhid, CreateDate, CreateBy);
+                return new OkObjectResult(model);
+            }
+        }
+        #endregion
+
+        #region PCT Dien Dia diem cong tac hinh
+        [HttpPost]
+        public async Task<IActionResult> SaveDienDDCT(PCTDienDiaDiemCongTacViewModel pctdiendiadiemcongtac)
+        {
+            if (!ModelState.IsValid)
+            {
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return new BadRequestObjectResult(allErrors);
+            }
+            else
+            {
+                var result = _authorizationService.AuthorizeAsync(User, "PCTDIENNHAP", Operations.Create);
+                if (result.Result.Succeeded == false)
+                {
+                    return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền thêm."));
+                }
+
+                DateTime CreateDate = DateTime.Now;
+                string CreateBy = User.GetSpecificClaim("UserName");
+
+                var model = await _pctdiendiadiemcongtacService.PCTD_Create_PCTDienDiaDiemCongTac(pctdiendiadiemcongtac, CreateDate, CreateBy);
+                return new OkObjectResult(model);
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DelDienDDCT(int pctdiendiadiemcongtacId)
+        {
+            if (!ModelState.IsValid)
+            {
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return new BadRequestObjectResult(allErrors);
+            }
+            else
+            {
+                var result = _authorizationService.AuthorizeAsync(User, "PCTDIENNHAP", Operations.Delete);
+                if (result.Result.Succeeded == false)
+                {
+                    return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền xóa."));
+                }
+
+                DateTime CreateDate = DateTime.Now;
+                string CreateBy = User.GetSpecificClaim("UserName");
+
+                var model = await _pctdiendiadiemcongtacService.PCTD_Delete_PCTDienDiaDiemCongTac(pctdiendiadiemcongtacId, CreateDate, CreateBy);
                 return new OkObjectResult(model);
             }
         }

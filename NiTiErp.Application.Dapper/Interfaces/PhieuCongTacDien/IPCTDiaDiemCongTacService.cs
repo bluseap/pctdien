@@ -10,6 +10,8 @@ namespace NiTiErp.Application.Dapper.Interfaces.PhieuCongTacDien
     {
         Task<PCTDiaDiemCongTacViewModel> PCTD_Get_PCTDiaDiemCongTac_ById(int Id);
 
+        Task<PCTDiaDiemCongTacViewModel> PCTD_Get_PCTDiaDiemCongTac_ByDienIdTenDDCTHoanThanh(int PCTDienId);
+
         Task<List<PCTDiaDiemCongTacViewModel>> PCTD_Get_PCTDiaDiemCongTac_ByDienId(int pctdienid);
 
         Task<bool> PCTD_Create_PCTDiaDiemCongTac(PCTDiaDiemCongTacViewModel pctdiadiemcongtac, DateTime createDate, string createBy);

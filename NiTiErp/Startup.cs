@@ -440,7 +440,8 @@ namespace NiTiErp
             services.AddTransient<IPCTNhanVienCongTacService, PCTNhanVienCongTacService>();
             services.AddTransient<IPCTDiaDiemCongTacService, PCTDiaDiemCongTacService>();
             services.AddTransient<IPCTDDCTHinhService, PCTDDCTHinhService>();
-           
+            services.AddTransient<IPCTDienDiaDiemCongTacService, PCTDienDiaDiemCongTacService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

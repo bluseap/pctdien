@@ -24,6 +24,8 @@
 
         formMainValidate();
 
+        loadTagsInput();
+
         $('#btnSaveEditKTCTKetThucCT').on('click', function () {
             var ispctdien = $('#hidInsertPCTDien').val(); // 1: insert; 2: update; 
 
@@ -32,9 +34,13 @@
             }
         });
 
+        $('#btnLayDSDDCTChuaHoanThanh').on('click', function () {
+            loaEditPCTDien();
+        });
+
     }
 
-    function loadEditData() {
+    function loadEditData() {       
         $('#txtKTCTTenNguoiChiHuyTrucTiep').prop('disabled', true);
         $('#txtKTCTTenNguoiChoPhep').prop('disabled', true);
         $('#txtKTCTTenNguoiCapPCT').prop('disabled', true);
@@ -65,6 +71,15 @@
         $("#txtKTCTTenNguoiCapPCT").val('');
         $("#txtKTCTTenNguoiKiemTraATLDTaiHienTruong").val('');
         $("#txtKTCTChucVuNguoiKiemTraATLDTaiHienTruong").val('');
+    }
+
+    function loadTagsInput() {        
+        $('#txtLyDoTonChuaThucHien').tagsInput({
+            width: 'auto',
+            height: '60px',
+            allowDuplicates: false
+        });
+
     }
 
     function isFormMainValidate() {
@@ -106,7 +121,7 @@
                 txtKTCTNgayTraLamViec: { required: true, isDateVietNam: true },
 
                 //txtLyDoTonChuaThucHien: { required: true },
-                txtLyDoChuaThucHien: { required: true },
+                //txtLyDoChuaThucHien: { required: true },
                 txtKTCTTenNguoiChiHuyTrucTiep: { required: true },
 
                 txtKTCTGioNgayKhoaPCT: { required: true },
@@ -152,7 +167,9 @@
                 $("#txtKTCTPhutNgayTraLamViec").val(pctdien.PhutTraLamViec != null ? pctdien.PhutTraLamViec : tedu.getFormattedDatePhut(datenow));
                 $("#txtKTCTNgayTraLamViec").val(pctdien.NgayTraLamViec !== '0001-01-01T00:00:00' ? tedu.getFormattedDate(pctdien.NgayTraLamViec) : tedu.getFormattedDate(datenow));
 
-                $('#txtLyDoTonChuaThucHien').val(pctdien.LyDoTonChuaThucHien);
+                let cacvieclydotonchuathuchien = pctdien.LyDoTonChuaThucHien != null ? pctdien.LyDoTonChuaThucHien : '';
+                $("#txtLyDoTonChuaThucHien").importTags(cacvieclydotonchuathuchien);
+                //$('#txtLyDoTonChuaThucHien').val(pctdien.LyDoTonChuaThucHien);
                 $('#txtLyDoChuaThucHien').val(pctdien.LyDoChuaThucHien);
 
                 $('#hidPCTDienNguoiChiHuyTrucTiepId').val(pctdien.NguoiChiHuyTrucTiepId); 
@@ -199,6 +216,7 @@
 
             var lydotonchuathuchien = $("#txtLyDoTonChuaThucHien").val();
             var lydochuathuchien = $("#txtLyDoChuaThucHien").val();
+            let kiemtranhaplydoton = lydotonchuathuchien === '' ? 0 : (lydochuathuchien === '' ? 1 : 0);
 
             var nguoichihuytructiepid = $("#hidPCTDienNguoiChiHuyTrucTiepId").val();
             var tennguoichihuytructiep = $("#txtKTCTTenNguoiChiHuyTrucTiep").val();
@@ -219,68 +237,100 @@
             var tennguoicapphieutaihientruong = $("#txtKTCTTenNguoiKiemTraATLDTaiHienTruong").val();
             var chucvutennguoicapphieutaihientruong = $("#txtKTCTChucVuNguoiKiemTraATLDTaiHienTruong").val();
 
-            $.ajax({
-                type: "POST",
-                url: "/Admin/pctdiennhap/UpKeTThucCT",
-                data: {
-                    Id: pctdienId,
+            if (kiemtranhaplydoton == '0') {
+                $.ajax({
+                    type: "POST",
+                    url: "/Admin/pctdiennhap/UpKeTThucCT",
+                    data: {
+                        Id: pctdienId,
 
-                    TraLamViecTenOngBa: tenongba,
-                    TraLamViecOngBaTenChucVu: ongbachucvu,
-                    TenDaiDienQuanLyVanHanh: daidienquanlyvanhanh,
+                        TraLamViecTenOngBa: tenongba,
+                        TraLamViecOngBaTenChucVu: ongbachucvu,
+                        TenDaiDienQuanLyVanHanh: daidienquanlyvanhanh,
 
-                    GioTraLamViec: giongaytralamviec,
-                    PhutTraLamViec: phuttralamviec,
-                    NgayTraLamViec: ngaytralamviec,
+                        GioTraLamViec: giongaytralamviec,
+                        PhutTraLamViec: phuttralamviec,
+                        NgayTraLamViec: ngaytralamviec,
 
-                    LyDoTonChuaThucHien: lydotonchuathuchien,
-                    LyDoChuaThucHien: lydochuathuchien,
+                        LyDoTonChuaThucHien: lydotonchuathuchien,
+                        LyDoChuaThucHien: lydochuathuchien,
 
-                    NguoiChiHuyTrucTiepId: nguoichihuytructiepid,
-                    TenNguoiChiHuyTrucTiep: tennguoichihuytructiep,
+                        NguoiChiHuyTrucTiepId: nguoichihuytructiepid,
+                        TenNguoiChiHuyTrucTiep: tennguoichihuytructiep,
 
-                    GioKhoaPCT: giongaykhoapct,
-                    PhutKhoaPCT: phutkhoapct,
-                    NgayKhoaPCT: ngaykhoapct,
+                        GioKhoaPCT: giongaykhoapct,
+                        PhutKhoaPCT: phutkhoapct,
+                        NgayKhoaPCT: ngaykhoapct,
 
-                    NguoiChoPhepId: nguoichophepid,
-                    TenNguoiChoPhep: tennguoichophep,
-                    NgayKiemTraHoanThanhPCT: ngayhoanthanhpct,
+                        NguoiChoPhepId: nguoichophepid,
+                        TenNguoiChoPhep: tennguoichophep,
+                        NgayKiemTraHoanThanhPCT: ngayhoanthanhpct,
 
-                    TenNguoiCapPCTId: tennguoicapid,
-                    TenNguoiCapPCT: tennguoicap,
+                        TenNguoiCapPCTId: tennguoicapid,
+                        TenNguoiCapPCT: tennguoicap,
 
-                    NguoiKiemTraATLDTaiHienTruongId: tennguoicapphieutaihientruongid,
-                    TenNguoiKiemTraATLDTaiHienTruong: tennguoicapphieutaihientruong,
-                    ChucVuNguoiKiemTraATLDTaiHienTruong: chucvutennguoicapphieutaihientruong
-                },
-                dataType: "json",
-                beforeSend: function () {
-                    tedu.startLoading();
-                },
-                success: function (response) {
-                    if (response.Result === false) {
-                        tedu.notify("Update Phiếu công tác điện.", "error");
-                    }
-                    else {
-                        nguyen.appUserLoginLogger(userName, "Update Phiếu công tác điện. Id: " + pctdienId);
+                        NguoiKiemTraATLDTaiHienTruongId: tennguoicapphieutaihientruongid,
+                        TenNguoiKiemTraATLDTaiHienTruong: tennguoicapphieutaihientruong,
+                        ChucVuNguoiKiemTraATLDTaiHienTruong: chucvutennguoicapphieutaihientruong
+                    },
+                    dataType: "json",
+                    beforeSend: function () {
+                        tedu.startLoading();
+                    },
+                    success: function (response) {
+                        if (response.Result === false) {
+                            tedu.notify("Update Phiếu công tác điện.", "error");
+                        }
+                        else {
+                            nguyen.appUserLoginLogger(userName, "Update Phiếu công tác điện. Id: " + pctdienId);
 
-                        tedu.notify('Update Phiếu công tác điện.', 'success');
+                            tedu.notify('Update Phiếu công tác điện.', 'success');
 
-                        ClearData();
+                            ClearData();
 
-                        loaddatatable.loadTablePCTDien();
+                            loaddatatable.loadTablePCTDien();
 
-                        $('#modal-add-edit-EditPCTDienKetThucCongTac').modal('hide');
+                            $('#modal-add-edit-EditPCTDienKetThucCongTac').modal('hide');
+                            tedu.stopLoading();
+                        }
+                    },
+                    error: function () {
+                        tedu.notify('Có lỗi! Không thể Update Phiếu công tác điện.', 'error');
                         tedu.stopLoading();
                     }
-                },
-                error: function () {
-                    tedu.notify('Có lỗi! Không thể Update Phiếu công tác điện.', 'error');
-                    tedu.stopLoading();
-                }
-            });
+                });
+            }
+            else {
+                tedu.notify('Đề nghị nhập lý do chưa thực hiện', 'error');
+            }
         }
+    }
+
+    function loaEditPCTDien() {
+        var pctdienId = $('#hidPCTDienId').val();
+
+        $.ajax({
+            type: "GET",
+            url: "/Admin/pctdiennhap/GetDDCTIdHoanThanh",
+            data: {
+                PCTDienId: pctdienId
+            },
+            dataType: "json",
+
+            success: function (response) {
+                var ddcongtac = response.Result;
+
+                let lydotonchuathuchien = ddcongtac.TenDiaDiemCongTac != null ? ddcongtac.TenDiaDiemCongTac : ''               
+
+                $("#txtLyDoTonChuaThucHien").importTags(lydotonchuathuchien);               
+               
+                tedu.stopLoading();
+            },
+            error: function () {
+                tedu.notify('Có lỗi xảy ra', 'error');
+                tedu.stopLoading();
+            }
+        });
     }
 
 }

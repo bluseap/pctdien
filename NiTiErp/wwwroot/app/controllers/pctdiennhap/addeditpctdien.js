@@ -82,6 +82,17 @@
         });
 
         checkboxDropdown();
+
+        $('#btnThemDiaDiemCongTac').on('click', function () {
+            AddToTablePCTDienThemDiaDiemCongTac();
+        });
+
+        $('body').on('click', '.btn-deletePCTThemDDCT', function (e) {
+            e.preventDefault();
+            var diendiadiemcongtac = $(this).data('id');
+
+            deletePCTDienDiaDiemCongTac(diendiadiemcongtac);
+        });
         
     }
 
@@ -316,7 +327,7 @@
             width: 'auto',
             height: '60px',
             allowDuplicates: false
-        });
+        });        
     }
 
     function loadTabsRemoved() {
@@ -404,7 +415,7 @@
 
         $("#ddlPCTDienChonThuocCongTyDonVi")[0].selectedIndex = 0;
         $("#txtPCTDienThuocCongTyDonVi").val('');
-        $("#txtPCTDiaDiemCongTac").val('');
+        //$("#txtPCTDiaDiemCongTac").val('');
         //$("#ddlPCTDienChonNoiDungCongTac")[0].selectedIndex = 0;
         $("#txtPCTDienNoiDungCongTac").val('');
 
@@ -685,7 +696,7 @@
             language: 'vi',
             rules: {
                 txtPCTDienThuocCongTyDonVi: { required: true },
-                txtPCTDiaDiemCongTac: { required: true },   
+                //txtPCTDiaDiemCongTac: { required: true },   
                 txtPCTDienNoiDungCongTac: { required: true },   
 
                 txtPCTDienGioBatDauCongViec: { required: true },
@@ -888,7 +899,8 @@
             var tennguoichihuytructiep = $("#txtNguoiChiHuyTrucTiep").val();
             var nguoichihuytructiepbacatd = $("#ddlNguoiChiHuyTrucTiepBacATD").val();
 
-            var diadiemcongtac = $("#txtPCTDiaDiemCongTac").val();            
+            //var diadiemcongtac = $("#txtPCTDiaDiemCongTac").val();      
+            var diadiemcongtac = '';
 
             var giobatdaucongviec = $("#txtPCTDienGioBatDauCongViec").val();
             var phutbatdaucongviec = $("#txtPCTDienPhutBatDauCongViec").val();
@@ -1014,7 +1026,8 @@
             var tennguoichihuytructiep = $("#txtNguoiChiHuyTrucTiep").val();
             var nguoichihuytructiepbacatd = $("#ddlNguoiChiHuyTrucTiepBacATD").val();
 
-            var diadiemcongtac = $("#txtPCTDiaDiemCongTac").val();
+            //var diadiemcongtac = $("#txtPCTDiaDiemCongTac").val();
+            var diadiemcongtac = '';
 
             var giobatdaucongviec = $("#txtPCTDienGioBatDauCongViec").val();
             var phutbatdaucongviec = $("#txtPCTDienPhutBatDauCongViec").val();
@@ -1152,7 +1165,7 @@
                 $("#txtNguoiChiHuyTrucTiep").val(pctdien.TenNguoiChiHuyTrucTiep);
                 $("#ddlNguoiChiHuyTrucTiepBacATD").val(pctdien.BacATDNguoiChiHuyTrucTiepId);
 
-                $("#txtPCTDiaDiemCongTac").val(pctdien.DiaDiemCongTac);
+                //$("#txtPCTDiaDiemCongTac").val(pctdien.DiaDiemCongTac);
 
                 $("#txtPCTDienGioBatDauCongViec").val(pctdien.GioBatDauKH);
                 $("#txtPCTDienPhutBatDauCongViec").val(pctdien.PhutBatDauKH);
@@ -1197,6 +1210,137 @@
                 tedu.notify('Có lỗi xảy ra', 'error');
                 tedu.stopLoading();
             }
+        });
+    }
+
+    function clearPCTDienThemDiaDiemCongTac() {
+        $("#txtDDCTTramBienAp").val('');
+        $("#txtDDCTSoTru").val('');
+        $("#txtDDCTGhiChuHoTen").val('');
+    }
+
+    function AddToTablePCTDienThemDiaDiemCongTac() {
+        let pctdiencode = $('#hidPCTDienCode').val();
+
+        let trambienap = $("#txtDDCTTramBienAp").val();
+        let sotru = $("#txtDDCTSoTru").val();
+        let ghichu = $("#txtDDCTGhiChuHoTen").val();        
+
+        $.ajax({
+            type: "POST",
+            url: "/Admin/pctdiennhap/SaveDienDDCT",
+            data: {                
+                PCTDienCode: pctdiencode,
+                TramBienApDuongDay: trambienap,
+                SoTru: sotru,
+                GhiChuHoTen: ghichu,
+                NgayNhap: '2011-11-11',
+                Stt: 1
+            },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                if (response.Result === false) {
+                    tedu.notify("Lưu PCT điện địa điểm công tác.", "error");
+                }
+                else {
+                    nguyen.appUserLoginLogger(userName, "Lưu PCT điện địa điểm công tác. Id: " + trambienap);
+
+                    tedu.notify('Lưu PCT điện địa điểm công tác.', 'success');
+
+                    clearPCTDienThemDiaDiemCongTac();
+
+                    loadTablePCTDienDiaDiemCongTac();
+
+                    tedu.stopLoading();
+                }
+            },
+            error: function () {
+                tedu.notify('Có lỗi! Không thể Lưu PCT điện địa điểm công tác.', 'error');
+                tedu.stopLoading();
+            }
+        });
+    }
+
+    function loadTablePCTDienDiaDiemCongTac() {
+        var template = $('#template-table-PCTThemDDCT').html();
+        var render = "";
+
+        var pctdiencode = $('#hidPCTDienCode').val();
+
+        $.ajax({
+            type: 'GET',
+            url: '/admin/pctdiennhap/ListDienDDCT',
+            data: {
+                Code: pctdiencode
+            },
+            dataType: 'json',
+            success: function (response) {
+                if (response.Result.length === 0) {
+                    render = "<tr><th><a>Không có dữ liệu</a></th><th></th><th></th><th></th><th></th><th></th></tr>";
+                }
+                else {
+                    $.each(response.Result, function (i, item) {
+                        render += Mustache.render(template, {
+                            Id: item.Id,
+
+                            STT: item.SoThuTu,
+                            TramBienApDuongDay: item.TramBienApDuongDay,
+                            SoTru: item.SoTru,
+                            GhiChuHoTen: item.GhiChuHoTen                           
+
+                            //TrangThaiPCT: tedu.getPhieuCongTacDien(item.TrangThaiBoHoSo)
+                            //NgayDenCuaVanBan: tedu.getFormattedDate(item.NgayDenCuaVanBan),                            
+                            // Price: tedu.formatNumber(item.Price, 0),                          
+                        });
+                    });
+                }
+
+                if (render !== '') {
+                    $('#table-contentPCTThemDDCT').html(render);
+                }
+
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không thể lấy dữ liệu về.', 'error');
+            }
+        });
+    }
+
+    function deletePCTDienDiaDiemCongTac(diendiadiemcongtac) {
+        tedu.confirm('Bạn có chắc chắn xóa địa điểm công tác này?', function () {
+            $.ajax({
+                type: "POST",
+                url: "/Admin/pctdiennhap/DelDienDDCT",
+                data: {
+                    pctdiendiadiemcongtacId: diendiadiemcongtac
+                },
+                dataType: "json",
+                beforeSend: function () {
+                    tedu.startLoading();
+                },
+                success: function (response) {
+                    if (response.Result === false) {
+                        tedu.notify("Xóa địa điểm công tác.", "error");
+                    }
+                    else {
+                        nguyen.appUserLoginLogger(userName, "Xóa địa điểm công tác. Id: " + diendiadiemcongtac);
+
+                        tedu.notify('Xóa địa điểm công tác.', 'success');
+
+                        loadTablePCTDienDiaDiemCongTac();
+
+                        tedu.stopLoading();
+                    }
+                },
+                error: function () {
+                    tedu.notify('Có lỗi! Không thể Xóa địa điểm công tác.', 'error');
+                    tedu.stopLoading();
+                }
+            });
         });
     }
 

@@ -1,4 +1,11 @@
 ﻿
+create procedure [dbo].[PCTD_Get_PCTDienDiaDiemCongTac_ById] 
+create procedure [dbo].[PCTD_Get_PCTDienDiaDiemCongTac_ByCode] 
+create procedure [dbo].[PCTD_Get_PCTDienDiaDiemCongTac_ByDienId] 
+create procedure [dbo].[PCTD_Create_PCTDienDiaDiemCongTac]
+create procedure [dbo].[PCTD_Delete_PCTDienDiaDiemCongTac]
+
+create procedure [dbo].[PCTD_Get_PCTDiaDiemCongTac_ByDienIdTenDDCTHoanThanh] 
 create procedure [dbo].[PCTD_Update_PCTDiaDiemCongTacHoanThanh]
 
 
@@ -6,10 +13,14 @@ update procedure [dbo].[PCTD_Update_PCTDiaDiemCongTac]
 
 
 
+create table PCTDienDiaDiemCongTac, PCTDienDiaDiemCongTacHis
 
-rupdate procedure [dbo].[PCTD_Get_PCTDien_AllTrangThai] 
-rupdate procedure [dbo].[PCTD_Get_PCTDien_AllPaging] 
-rupdate procedure [dbo].[PCTD_Get_PCTDien_AllTrangThaiCount] 
+
+
+
+r update procedure [dbo].[PCTD_Get_PCTDien_AllTrangThai] 
+r update procedure [dbo].[PCTD_Get_PCTDien_AllPaging] 
+r update procedure [dbo].[PCTD_Get_PCTDien_AllTrangThaiCount] 
 
 
 r create procedure [dbo].[PCTD_Delete_PCTDDCTHinh]
