@@ -23,6 +23,7 @@
     <script src="~/app/controllers/PCTDienNhap/themdieukienatd.js" asp-append-version="true"></script>
     <script src="~/app/controllers/PCTDienNhap/themnoidungcongtac.js" asp-append-version="true"></script>
 
+    <script src="~/app/controllers/PCTDienNhap/kiemtrathuchien.js" asp-append-version="true"></script>
     <script src="~/app/controllers/PCTDienNhap/ddctaddhinh.js" asp-append-version="true"></script>
     <script src="~/app/controllers/PCTDienNhap/huycongtac.js" asp-append-version="true"></script>
     <script src="~/app/controllers/PCTDienNhap/ketthuccongtac.js" asp-append-version="true"></script>
@@ -266,10 +267,15 @@
                 </a>
             </th>
             <th scope="row">
+                <a class="btn-link btn-KiemTraThucHien" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Kiểm tra thực hiện">
+                    <i>Kiểm tra th.hiện </i>
+                </a>
+            </th>
+            @*<th scope="row">
                 <a class="btn-link btn-HuyCongTac" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Hủy công tác">
                     <i>Hủy PCT </i>
                 </a>
-            </th>
+            </th>*@
 
         </tr>
     </script>
@@ -284,6 +290,7 @@
 <partial name="_HuyPhieuCongTac.cshtml" />
 <partial name="_DDCTAddHinh.cshtml" />
 <partial name="_DDCTHoanThanh.cshtml" />
+<partial name="_KiemTraThucHien.cshtml" />
 
 <partial name="_themnoidungcongtac.cshtml" />
 <partial name="_themdieukienatd.cshtml" />

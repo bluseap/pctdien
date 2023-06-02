@@ -190,6 +190,15 @@ namespace NiTiErp.Application.Dapper.ViewModels.PhieuCongTacDien
         public string GhiChuHuyPCT { get; set; }
 
 
+        public bool IsKiemTraThucHien { get; set; }
+
+        public DateTime NgayKiemTraThucHien { get; set; }
+
+        public int TrangThaiKiemTraThucHien { get; set; }
+
+        public string GhiChuKiemTraThucHien { get; set; }
+
+
 
         public DateTime NgayNhap { get; set; }
 

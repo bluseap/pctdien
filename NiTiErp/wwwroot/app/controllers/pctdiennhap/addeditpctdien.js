@@ -67,7 +67,8 @@
             deletePCTNhanVienCongTac(pctnhanviencongtac);
         });
 
-        loadTenHoSoNhanVien();        
+        // luu bac an toan den table HoSoNhanVien
+        //loadTenHoSoNhanVien();        
 
         loadChonCacThuocTinhDll();        
 

@@ -8,6 +8,8 @@ create procedure [dbo].[PCTD_Delete_PCTDienDiaDiemCongTac]
 create procedure [dbo].[PCTD_Get_PCTDiaDiemCongTac_ByDienIdTenDDCTHoanThanh] 
 create procedure [dbo].[PCTD_Update_PCTDiaDiemCongTacHoanThanh]
 
+create PROCEDURE [dbo].[PCTD_Update_PCTDien_ByIdKiemTraThucHien]
+
 
 update procedure [dbo].[PCTD_Update_PCTDiaDiemCongTac]
 update procedure [dbo].[PCTD_Update_PCTDien]

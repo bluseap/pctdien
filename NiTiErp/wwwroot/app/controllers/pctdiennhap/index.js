@@ -10,6 +10,7 @@
     var thaydoinguoilamviec = new thaydoinguoilamviecController();
     var huycongtac = new huycongtacController();
     var ddctaddhinh = new ddctaddhinhController();
+    var kiemtrathuchien = new kiemtrathuchienController();
 
     var loaddatatable = new loaddatatableController();
 
@@ -31,7 +32,7 @@
         thaydoinguoilamviec.initialize(); 
         huycongtac.initialize();
         ddctaddhinh.initialize();
-
+        kiemtrathuchien.initialize();
     }    
 
     function registerEvents() {
@@ -134,16 +135,16 @@
             $('#modal-add-edit-EditPCTDienDiaDiemCongTac').modal('show');            
         });
 
-        $('body').on('click', '.btn-HuyCongTac', function (e) {
-            e.preventDefault();
-            var pctdienid = $(this).data('id');
-            $('#hidPCTDienId').val(pctdienid);
-            //1 - insert ;  2 - Update Order
-            $('#hidInsertPCTDien').val(2);            
+        //$('body').on('click', '.btn-HuyCongTac', function (e) {
+        //    e.preventDefault();
+        //    var pctdienid = $(this).data('id');
+        //    $('#hidPCTDienId').val(pctdienid);
+        //    //1 - insert ;  2 - Update Order
+        //    $('#hidInsertPCTDien').val(2);            
 
-            $('#modal-add-edit-EditPCTDienHuyCongTac').modal('show');
-            huycongtac.loadEditHuyCongTac();
-        });
+        //    $('#modal-add-edit-EditPCTDienHuyCongTac').modal('show');
+        //    huycongtac.loadEditHuyCongTac();
+        //});
 
         $('body').on('click', '.btn-KetThucCongTac', function (e) {
             e.preventDefault();
@@ -200,6 +201,17 @@
             $('#hidBienLoadTable').val(0); // 0 ko cho thuc hien ; 1 cho thuc hien load table
 
             addeditpctdien.loadTablePCTDien();
+        });
+
+        $('body').on('click', '.btn-KiemTraThucHien', function (e) {
+            e.preventDefault();
+            var pctdienid = $(this).data('id');
+            $('#hidPCTDienId').val(pctdienid);
+            //1 - insert ;  2 - Update Order
+            $('#hidInsertPCTDien').val(2);            
+
+            //$('#modal-add-edit-EditKiemTraThucHien').modal('show');
+            kiemtrathuchien.loadEditKiemTraThucHien();
         });
 
     }
