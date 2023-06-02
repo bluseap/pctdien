@@ -10,10 +10,11 @@ create procedure [dbo].[PCTD_Update_PCTDiaDiemCongTacHoanThanh]
 
 
 update procedure [dbo].[PCTD_Update_PCTDiaDiemCongTac]
+update procedure [dbo].[PCTD_Update_PCTDien]
 
 
 
-create table PCTDienDiaDiemCongTac, PCTDienDiaDiemCongTacHis
+create table PCTDienDiaDiemCongTac, PCTDienDiaDiemCongTacHis, PCTChucDanhNhanVien
 
 
 

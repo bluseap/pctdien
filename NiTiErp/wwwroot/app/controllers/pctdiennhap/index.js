@@ -130,8 +130,8 @@
             $('#hidInsertPCTDien').val(2);
             $('#hidInsertDiaDiemCongTac').val(1);
 
-            $('#modal-add-edit-EditPCTDienDiaDiemCongTac').modal('show');
             diadiemcongtac.loadTableDiaDiemCongTac();
+            $('#modal-add-edit-EditPCTDienDiaDiemCongTac').modal('show');            
         });
 
         $('body').on('click', '.btn-HuyCongTac', function (e) {

@@ -219,6 +219,13 @@ namespace NiTiErp.Areas.Admin.Controllers
             return new OkObjectResult(model);
         }
 
+        [HttpGet]
+        public IActionResult ListDDCTdienId(int pctdienid)
+        {
+            var model = _pctdiendiadiemcongtacService.PCTD_Get_PCTDienDiaDiemCongTac_ByDienId(pctdienid);
+            return new OkObjectResult(model);
+        }
+
         #endregion
 
         #region Create, Update, Delete
@@ -474,25 +481,26 @@ namespace NiTiErp.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> SaveThayDoiLV(PCTNhanVienCongTacViewModel pctnhanviencongtac)
         {
-            if (!ModelState.IsValid)
+            var result = _authorizationService.AuthorizeAsync(User, "PCTDIENNHAP", Operations.Create);
+            if (result.Result.Succeeded == false)
             {
-                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
-                return new BadRequestObjectResult(allErrors);
+                return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền thêm."));
             }
-            else
+
+            DateTime CreateDate = DateTime.Now;
+            string CreateBy = User.GetSpecificClaim("UserName");
+
+            if (pctnhanviencongtac.GioRutKhoi is null && pctnhanviencongtac.PhutRutKhoi is null)
+            {                
+                pctnhanviencongtac.NgayRutKhoi = DateTime.Now;
+            }
+            else if (pctnhanviencongtac.GioRutKhoi != null && pctnhanviencongtac.PhutRutKhoi is null)
             {
-                var result = _authorizationService.AuthorizeAsync(User, "PCTDIENNHAP", Operations.Create);
-                if (result.Result.Succeeded == false)
-                {
-                    return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền thêm."));
-                }
-
-                DateTime CreateDate = DateTime.Now;
-                string CreateBy = User.GetSpecificClaim("UserName");
-
-                var model = await _pctnhanviencongtacService.PCTD_Create_PCTNhanVienCongTac_ByIdThayDoi(pctnhanviencongtac, CreateDate, CreateBy);
-                return new OkObjectResult(model);
+                pctnhanviencongtac.PhutRutKhoi = "00";
             }
+
+            var model = await _pctnhanviencongtacService.PCTD_Create_PCTNhanVienCongTac_ByIdThayDoi(pctnhanviencongtac, CreateDate, CreateBy);
+            return new OkObjectResult(model);
         }
 
         [HttpPost]

@@ -8,6 +8,8 @@
     this.loadTableDiaDiemCongTac = function () {
         ClearData();
         loadTableDiaDiemCongTac();
+        loadTablePCTDienDiaDiemCongTacByDienId();
+        loadNguoiChiHuyChoPhep();
     }
 
     this.initialize = function () {
@@ -83,9 +85,20 @@
             }
         });
 
+        $('body').on('click', '.btn-AddToDiaDiemCongTac', function (e) {
+            e.preventDefault();
+            var adddendiadiemcongtac = $(this).data('id');
+            $('#txtTenDiaDiemCongTacDiChuyen').val(adddendiadiemcongtac);
+        });
+
+        KiemTraThoiGianLamViecChange();
+
     }
 
     function loadData() {
+        $('#txtDDLVNguoiChiHuyTrucTiep').prop('disabled', true);
+        $('#txtDDLVNguoiChoPhep').prop('disabled', true);
+
         $('#btnSaveEditDDLVDiaDiemLamViec').show();
         $('#btnSaveEditDDLVHoanThanhCT').hide();
     }
@@ -98,8 +111,9 @@
         $("#txtDDLVGioBatDauDiaDiemCongTacDiChuyen").val(tedu.getFormattedDateGio(datenow));
         $("#txtDDLVPhutBatDauDiaDiemCongTacDiChuyen").val(tedu.getFormattedDatePhut(datenow));
         $("#txtDDLVNgayBatDauDiaDiemCongTacDiChuyen").val(tedu.getFormattedDate(datenow));
-
-        $("#txtDDLVGioKetThucDiaDiemCongTacDiChuyen").val(tedu.getFormattedDateGio(datenow));
+        
+        let gio1 = datenow.getHours() + 1;
+        $("#txtDDLVGioKetThucDiaDiemCongTacDiChuyen").val(gio1 < 10 ? '0' + gio1.toString() : gio1.toString());
         $("#txtDDLVPhutKetThucDiaDiemCongTacDiChuyen").val(tedu.getFormattedDatePhut(datenow));
         $("#txtDDLVNgayKetThucDiaDiemCongTacDiChuyen").val(tedu.getFormattedDate(datenow));
 
@@ -452,6 +466,132 @@
                 }
             });
         });  
+    }
+
+    function loadTablePCTDienDiaDiemCongTacByDienId() {
+        var template = $('#template-table-PCTDienThemDDCT').html();
+        var render = "";
+
+        var pctdienId = $('#hidPCTDienId').val();
+
+        $.ajax({
+            type: 'GET',
+            url: '/admin/pctdiennhap/ListDDCTdienId',
+            data: {
+                pctdienid: pctdienId
+            },
+            dataType: 'json',
+            success: function (response) {
+                if (response.Result.length === 0) {
+                    render = "<tr><th><a>Không có dữ liệu</a></th><th></th><th></th><th></th><th></th><th></th></tr>";
+                }
+                else {
+                    $.each(response.Result, function (i, item) {
+                        render += Mustache.render(template, {
+                            Id: item.Id,
+
+                            STT: item.SoThuTu,
+                            TramBienApDuongDay: item.TramBienApDuongDay,
+                            SoTru: item.SoTru,
+                            GhiChuHoTen: item.GhiChuHoTen,
+                            TuNgayDenNgay: item.TuNgayDenNgay
+                        });
+                    });
+                }
+
+                if (render !== '') {
+                    $('#table-contentPCTDienThemDDCT').html(render);
+                }
+
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không thể lấy dữ liệu về.', 'error');
+            }
+        });
+    }
+
+    function KiemTraThoiGianLamViecChange() {
+        $('#txtDDLVGioBatDauDiaDiemCongTacDiChuyen').on('change', function () {
+            let giobatdau = parseInt($("#txtDDLVGioBatDauDiaDiemCongTacDiChuyen").val());
+            let gioketthuc = parseInt($("#txtDDLVGioKetThucDiaDiemCongTacDiChuyen").val());
+
+            if (giobatdau > gioketthuc) {
+                tedu.confirm('Giờ bắt đầu nhỏ hơn giờ kết thúc. ', function () {
+                    tedu.notify('Kiểm tra giờ lại.', 'error');
+                    $("#txtDDLVGioBatDauDiaDiemCongTacDiChuyen").val(gioketthuc < 10 ? '0' + gioketthuc.toString() : gioketthuc.toString());
+                });
+            }            
+        });
+        $('#txtDDLVNgayBatDauDiaDiemCongTacDiChuyen').on('change', function () {
+            let ngaybatdaukh = tedu.getFormatDateYYMMDD($('#txtDDLVNgayBatDauDiaDiemCongTacDiChuyen').val());
+            let ngayketthuckh = tedu.getFormatDateYYMMDD($('#txtDDLVNgayKetThucDiaDiemCongTacDiChuyen').val());
+
+            if (ngaybatdaukh !== ngayketthuckh) {
+                tedu.confirm('Ngày bắt đầu và ngày kết thúc phải bằng nhau. ', function () {
+                    tedu.notify('Kiểm tra ngày lại.', 'error');
+                    $("#txtDDLVNgayBatDauDiaDiemCongTacDiChuyen").val(tedu.getFormattedDate(ngayketthuckh));
+                });
+                $("#txtDDLVNgayBatDauDiaDiemCongTacDiChuyen").val(tedu.getFormattedDate(ngayketthuckh));
+            }
+
+        });
+
+        $('#txtDDLVGioKetThucDiaDiemCongTacDiChuyen').on('change', function () {
+            let giobatdau = parseInt($("#txtDDLVGioBatDauDiaDiemCongTacDiChuyen").val());
+            let gioketthuc = parseInt($("#txtDDLVGioKetThucDiaDiemCongTacDiChuyen").val());
+
+            if (giobatdau > gioketthuc) {
+                tedu.confirm('Giờ bắt đầu nhỏ hơn giờ kết thúc. ', function () {
+                    tedu.notify('Kiểm tra giờ lại.', 'error');
+                    $("#txtDDLVGioKetThucDiaDiemCongTacDiChuyen").val(giobatdau + 1 < 10 ? '0' + (giobatdau + 1).toString() : (giobatdau + 1).toString());
+                });
+            }
+        });
+        $('#txtDDLVNgayKetThucDiaDiemCongTacDiChuyen').on('change', function () {
+            let ngaybatdaukh = tedu.getFormatDateYYMMDD($('#txtDDLVNgayBatDauDiaDiemCongTacDiChuyen').val());
+            let ngayketthuckh = tedu.getFormatDateYYMMDD($('#txtDDLVNgayKetThucDiaDiemCongTacDiChuyen').val());
+
+            if (ngaybatdaukh !== ngayketthuckh) {
+                tedu.confirm('Ngày bắt đầu và ngày kết thúc phải bằng nhau. ', function () {
+                    tedu.notify('Kiểm tra ngày lại.', 'error');
+                    $("#txtDDLVNgayKetThucDiaDiemCongTacDiChuyen").val(tedu.getFormattedDate(ngaybatdaukh));
+                });
+                $("#txtDDLVNgayKetThucDiaDiemCongTacDiChuyen").val(tedu.getFormattedDate(ngaybatdaukh));
+            }
+        });
+
+    }
+
+    function loadNguoiChiHuyChoPhep() {
+        var pctdienId = $('#hidPCTDienId').val();        
+
+        $.ajax({
+            type: "GET",
+            url: "/Admin/pctdiennhap/GetpctdId",
+            data: {
+                PCTDienId: pctdienId
+            },
+            dataType: "json",
+
+            success: function (response) {
+                var pctdien = response.Result;              
+
+                $('#hidPCTDienCode').val(pctdien.Code);                    
+               
+                $('#hidPCTDienNguoiChiHuyTrucTiepId').val(pctdien.NguoiChiHuyTrucTiepId);
+                $('#txtDDLVNguoiChiHuyTrucTiep').val(pctdien.TenNguoiChiHuyTrucTiep);
+               
+                $('#hidPCTDienNguoiChoPhepId').val(pctdien.NguoiChoPhepId);
+                $('#txtDDLVNguoiChoPhep').val(pctdien.TenNguoiChoPhep);
+                
+                tedu.stopLoading();
+            },
+            error: function () {
+                tedu.notify('Có lỗi xảy ra', 'error');
+                tedu.stopLoading();
+            }
+        });
     }
 
 }

@@ -556,15 +556,13 @@
         if (trangthai === 2)
             return '<span class="badge bg-orange">Đã cấp PCT</span>';
         else if (trangthai === 3)
-            return '<span class="badge bg-orange">Xác nhận Đ.cấp PCT</span>';
+            return '<span class="badge bg-purple">Xác nhận Đ.cấp PCT</span>';
         else if (trangthai === 4)
             return '<span class="badge bg-blue">Cho phép LV</span>';
         else if (trangthai === 6)
             return '<span class="badge bg-green">Kết thúc CT</span>';
         else if (trangthai === 8)
-            return '<span class="badge bg-purple">Kiểm tra LV</span>';
-        else if (trangthai === 10)
-            return '<span class="badge bg-purple">Kiểm tra ATLĐ</span>';
+            return '<span class="badge bg-red">Khóa PCT</span>';        
         else if (trangthai === 20)
             return '<span class="badge bg-red">Hủy PCT</span>';     
         else

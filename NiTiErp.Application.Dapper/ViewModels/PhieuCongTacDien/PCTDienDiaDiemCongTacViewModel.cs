@@ -15,6 +15,8 @@ namespace NiTiErp.Application.Dapper.ViewModels.PhieuCongTacDien
 
         public int SoThuTu { get; set; }
 
+        public string TuNgayDenNgay { get; set; }
+
 
         public string TramBienApDuongDay { get; set; }
 

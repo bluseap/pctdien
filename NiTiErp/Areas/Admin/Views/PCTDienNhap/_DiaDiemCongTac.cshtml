@@ -11,6 +11,38 @@
                 <div id="formMainEditPCTDienCacDiaDiemCongTacDiChuyen">
                     <form class="form-horizontal form-label-left" id="frmMainEditPCTDienCacDiaDiemCongTacDiChuyen">
                         <div class="item form-group">
+                            <table class="table table-striped jambo_table bulk_action" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>STT</th>
+                                        <th>Trạm biến áp / Đường dây</th>
+                                        <th>Số trụ</th>
+                                        <th>Ghi chú (họ tên)</th>
+                                        <th>Từ ngày đến ngày KH</th>
+                                        <td></td>
+                                    </tr>
+                                </thead>
+                                <tbody id="table-contentPCTDienThemDDCT"></tbody>
+                            </table>
+                            <script type="x-tmpl-mustache" id="template-table-PCTDienThemDDCT">
+                            <tr>
+                                <th scope="row">
+                                    {{STT}}
+                                </th>
+                                <td>{{TramBienApDuongDay}}</td>
+                                <td>{{SoTru}}</td>
+                                <td>{{GhiChuHoTen}}</td>
+                                <td>{{TuNgayDenNgay}}</td>
+                                <th scope="row">
+                                    <a class="btn-link btn-AddToDiaDiemCongTac" data-id="{{TramBienApDuongDay}}, {{SoTru}}, {{GhiChuHoTen}}" data-toggle="tooltip"
+                                                data-placement="top" title="Mang sang địa điểm công tác">
+                                                <i class="fa fa-arrow-down"  style="color:blue"></i>
+                                     </a>
+                                </th>
+                            </tr>
+                            </script>
+                        </div>
+                        <div class="item form-group">
                             <div class="col-md-12 col-sm-12 col-xs-12">
                                 <label for="lbTenDiaDiemCongTacDiChuyen">
                                     Địa điểm công tác <a style="color:#f00"> (*) </a>
@@ -30,7 +62,7 @@
                                             <input type="text" id="txtDDLVPhutBatDauDiaDiemCongTacDiChuyen" name="txtDDLVPhutBatDauDiaDiemCongTacDiChuyen" class="form-control" placeholder="Phút bắt đầu">
                                         </div>
                                         <div class="col-md-6 col-sm-12 col-xs-12">
-                                            <input type="text" id="txtDDLVNgayBatDauDiaDiemCongTacDiChuyen" name="txtDDLVNgayBatDauDiaDiemCongTacDiChuyen"class="form-control" placeholder="Ngày bắt đầu">
+                                            <input type="text" id="txtDDLVNgayBatDauDiaDiemCongTacDiChuyen" name="txtDDLVNgayBatDauDiaDiemCongTacDiChuyen" class="form-control" placeholder="Ngày bắt đầu">
                                         </div>
                                     </div>
                                 </div>

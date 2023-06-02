@@ -87,9 +87,10 @@
                 txtThayDoiNguoiCongTacGioDenLamViec: { required: true },
                 txtThayDoiNguoiCongTacPhutDenLamViec: { required: true },
                 txtThayDoiNguoiCongTacNgayDenLamViec: { required: true, isDateVietNam: true },
-                txtThayDoiNguoiCongTacGioRutKhoiLamViec: { required: true },
-                txtThayDoiNguoiCongTacPhutRutKhoiLamViec: { required: true },
-                txtThayDoiNguoiCongTacNgayRutKhoiLamViec: { required: true, isDateVietNam: true },
+
+                //txtThayDoiNguoiCongTacGioRutKhoiLamViec: { required: true },
+                //txtThayDoiNguoiCongTacPhutRutKhoiLamViec: { required: true },
+                //txtThayDoiNguoiCongTacNgayRutKhoiLamViec: { required: true, isDateVietNam: true },
             },
         });
     } 
@@ -104,9 +105,9 @@
         $("#txtThayDoiNguoiCongTacPhutDenLamViec").val(tedu.getFormattedDatePhut(datenow));
         $("#txtThayDoiNguoiCongTacNgayDenLamViec").val(tedu.getFormattedDate(datenow));
 
-        $("#txtThayDoiNguoiCongTacGioRutKhoiLamViec").val(tedu.getFormattedDateGio(datenow));
-        $("#txtThayDoiNguoiCongTacPhutRutKhoiLamViec").val(tedu.getFormattedDatePhut(datenow));
-        $("#txtThayDoiNguoiCongTacNgayRutKhoiLamViec").val(tedu.getFormattedDate(datenow));        
+        $("#txtThayDoiNguoiCongTacGioRutKhoiLamViec").val('');
+        $("#txtThayDoiNguoiCongTacPhutRutKhoiLamViec").val('');
+        $("#txtThayDoiNguoiCongTacNgayRutKhoiLamViec").val('');
     }
 
     function loadTableThayDoiNguoiLamViec() {
