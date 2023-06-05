@@ -441,6 +441,7 @@ namespace NiTiErp
             services.AddTransient<IPCTDiaDiemCongTacService, PCTDiaDiemCongTacService>();
             services.AddTransient<IPCTDDCTHinhService, PCTDDCTHinhService>();
             services.AddTransient<IPCTDienDiaDiemCongTacService, PCTDienDiaDiemCongTacService>();
+            services.AddTransient<IPCTChucDanhNhanVienService, PCTChucDanhNhanVienService>();
 
         }
 

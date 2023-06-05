@@ -385,6 +385,8 @@ namespace NiTiErp.Application.Dapper.Implementation
                 dynamicParameters.Add("@ChucVuNhanVienId", hosohocvien.ChucVuNhanVienId);
                 dynamicParameters.Add("@PhongBanDanhMucId", hosohocvien.PhongBanDanhMucId);
 
+                dynamicParameters.Add("@BacAnToanDienId", hosohocvien.BacAnToanDienId);
+
                 dynamicParameters.Add("@UpdateDate", updateDate);
                 dynamicParameters.Add("@UpdateBy", updateBy);
 

@@ -48,6 +48,7 @@
         $('body').on('click', '.btn-EditHoSoHocVien', function (e) {
             e.preventDefault();
             var hosonhanvienid = $(this).data('id');
+            $('#hidHoSoNhanVienId').val(hosonhanvienid);
 
             addeditdaotaohv.loadEditHoSoHocVien(hosonhanvienid);
             $('#modal-add-edit-EditHoSoHocVien').modal('show');

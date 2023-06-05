@@ -3,7 +3,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using NiTiErp.Application.Dapper.Interfaces;
+using NiTiErp.Application.Dapper.Interfaces.PhieuCongTacDien;
 using NiTiErp.Application.Dapper.ViewModels;
+using NiTiErp.Application.Dapper.ViewModels.PhieuCongTacDien;
 using NiTiErp.Authorization;
 using NiTiErp.Extensions;
 using NiTiErp.Utilities.Dtos;
@@ -31,6 +33,7 @@ namespace NiTiErp.Areas.Admin.Controllers
         private readonly ICongViecService _congviecService;
         private readonly ITrinhDoService _trinhdoService;
         private readonly IDaoTaoNhanVienService _daotaonhanvienService;
+        private readonly IPCTChucDanhNhanVienService _chucdanhnhanvienService;        
 
         public DaoTaoHVController(IHostingEnvironment hostingEnvironment,
             NiTiErp.Application.Interfaces.IUserService userService,
@@ -40,7 +43,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             IChucVuNhanVienService chucvunhanvienService,
             ICongViecService congviecService,
             ITrinhDoService trinhdoService,
-            IDaoTaoNhanVienService daotaonhanvienService
+            IDaoTaoNhanVienService daotaonhanvienService, IPCTChucDanhNhanVienService chucdanhnhanvienService
             )
         {
             _hostingEnvironment = hostingEnvironment;
@@ -52,6 +55,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             _congviecService = congviecService;
             _trinhdoService = trinhdoService;
             _daotaonhanvienService = daotaonhanvienService;
+            _chucdanhnhanvienService = chucdanhnhanvienService;
         }
 
         public IActionResult Index()
@@ -64,6 +68,14 @@ namespace NiTiErp.Areas.Admin.Controllers
         }
 
         #region Get list
+
+        [HttpGet]
+        public IActionResult ListChucDanhNV(Guid hosonhanvienid)
+        {
+            var model = _chucdanhnhanvienService.PCTD_Get_PCTChucDanhNhanVien_ByHoSoNhanVienId(hosonhanvienid);
+
+            return new OkObjectResult(model);
+        }
 
         [HttpGet]
         public IActionResult congtac(string hosonhanvienId)
@@ -382,6 +394,78 @@ namespace NiTiErp.Areas.Admin.Controllers
                 }
             }
             return new OkObjectResult(url);
+        }
+
+        [HttpPost]
+        public IActionResult AddChucDanh(PCTChucDanhNhanVienViewModel chucdanh)
+        {
+            if (!ModelState.IsValid)
+            {
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return new BadRequestObjectResult(allErrors);
+            }
+            else
+            {
+                var result = _authorizationService.AuthorizeAsync(User, "DAOTAOHOCVIEN", Operations.Create);
+                if (result.Result.Succeeded == false)
+                {
+                    return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền thêm."));
+                }
+
+                DateTime createDate = DateTime.Now;
+                string createBy = User.GetSpecificClaim("UserName");
+
+                var model = _chucdanhnhanvienService.PCTD_Create_PCTChucDanhNhanVien(chucdanh, createDate, createBy);
+                return new OkObjectResult(model);
+            }
+        }
+
+        [HttpPost]
+        public IActionResult DeleteChucDanh(int chucdanhnhanvienid)
+        {
+            if (!ModelState.IsValid)
+            {
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return new BadRequestObjectResult(allErrors);
+            }
+            else
+            {
+                var result = _authorizationService.AuthorizeAsync(User, "DAOTAOHOCVIEN", Operations.Delete);
+                if (result.Result.Succeeded == false)
+                {
+                    return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền thêm."));
+                }
+
+                DateTime createDate = DateTime.Now;
+                string createBy = User.GetSpecificClaim("UserName");
+
+                var model = _chucdanhnhanvienService.PCTD_Delete_PCTChucDanhNhanVien(chucdanhnhanvienid, createDate, createBy);
+                return new OkObjectResult(model);
+            }
+        }
+
+        [HttpPost]
+        public IActionResult UpBacATDHoSoNV(string HoSoNhanVienId, int BacAnToanDienId)
+        {
+            if (!ModelState.IsValid)
+            {
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return new BadRequestObjectResult(allErrors);
+            }
+            else
+            {
+                var result = _authorizationService.AuthorizeAsync(User, "DAOTAOHOCVIEN", Operations.Update);
+                if (result.Result.Succeeded == false)
+                {
+                    return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền thêm."));
+                }
+
+                DateTime updateDate = DateTime.Now;
+                string updateBy = User.GetSpecificClaim("UserName");
+
+                var model = _hosonhanvienService.Update_HoSoNhanVien_ByBacATD(HoSoNhanVienId, BacAnToanDienId, updateDate, updateBy);
+                return new OkObjectResult(model);
+            }
         }
 
         #endregion

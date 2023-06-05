@@ -3,7 +3,8 @@
     var imageNhanVien = [];
 
     this.loadEditHoSoHocVien = function (hosonhanvienid) {
-        loadEditHoSoHocVien(hosonhanvienid);
+        addeditClearData(); 
+        loadEditHoSoHocVien(hosonhanvienid);        
     }
 
     this.loadTableHoSoHocVien = function () {
@@ -12,7 +13,8 @@
 
     this.initialize = function () {       
         registerEvents();
-        addeditClearData();        
+        addeditClearData(); 
+        loadData();
     }
 
     function registerEvents() {
@@ -71,6 +73,29 @@
             });
         });
 
+        $('body').on('click', '.btn-delete-ChucDanhNhanVien', function (e) {
+            e.preventDefault();
+            let chucdanhnhanvienid = $(this).data('id');
+            
+            deleteChucDanh(chucdanhnhanvienid);
+        });
+
+        $('#ddlChucDanhNhanVien').on('change', function () {
+            let chucdanh = $('#ddlChucDanhNhanVien').val();
+            
+            if (chucdanh !== '0') {
+                addChucDanhNhanVien();
+            }
+        });
+
+        $('#ddlBacAnToanDien').on('change', function () {
+            let bacantoandienid = $('#ddlBacAnToanDien').val();
+
+            if (bacantoandienid !== '0') {
+                updateBacAnToanDienToHoSoNhanVien();
+            }
+        });
+
     }   
 
     function addeditClearData() {
@@ -99,7 +124,24 @@
         $('#ddlKhuVucCT')[0].selectedIndex = 0;
         $('#ddlChucVuCT')[0].selectedIndex = 0;
         $('#ddlPhongBanCT')[0].selectedIndex = 0;        
-       
+
+        $("#ddlBacAnToanDien")[0].selectedIndex = 0;
+        $("#ddlChucDanhNhanVien")[0].selectedIndex = 0;
+        $('#CacChucDanhNhanVien-list').html('');
+    }
+
+    function loadData() {
+        disabledAllFieldDataForm();
+        loadBacAnToanDien(true);
+
+        let tenchucdanh = "<option value='0' >-- Lựa chọn --</option>";
+        tenchucdanh += "<option value='NGUOICAPPHIEU' >Người cấp phiếu</option>";
+        tenchucdanh += "<option value='NGUOICHIHUYTT' >Người chỉ huy trực tiếp</option>";
+        tenchucdanh += "<option value='NGUOICHOPHEP' >Người cho phép</option>";
+        tenchucdanh += "<option value='NGUOIKTATLD' >Người kiểm tra ATLĐ</option>";
+        tenchucdanh += "<option value='NGUOILANHDAOCV' >Người lãnh đạo công việc</option>";
+        $('#ddlChucDanhNhanVien').html(tenchucdanh);
+                     
     }
 
     function clearFileHinhNhanVienInput(ctrl) {
@@ -373,7 +415,7 @@
             success: function (response) {
                 var hoso = response.Result[0];
 
-                addeditClearData();
+                //addeditClearData();
 
                 $('#hidHoSoNhanVienId').val(hoso.Id);
                 $('#hidInsertHoSoNhanVienId').val(2);
@@ -402,8 +444,11 @@
                 $('#ddlKhuVucCT').val(hoso.CorporationId);
                 loadPhongKhuVuc(hoso.CorporationId, hoso.PhongBanDanhMucId);
                 loadChucVuNhanVien(hoso.CorporationId, hoso.ChucVuNhanVienId);
-               
-                
+
+                $('#ddlBacAnToanDien').val(hoso.BacAnToanDienId);
+
+                loadDataChucDanhNhanVien();
+
                 tedu.stopLoading();
             },
             error: function (status) {
@@ -431,6 +476,8 @@
             var chucvu = $('#ddlChucVuCT').val();
             var phongban = $('#ddlPhongBanCT').val();
 
+            var bacantoandienid = $('#ddlBacAnToanDien').val();
+
             $.ajax({
                 type: "POST",
                 url: "/Admin/daotaohv/UpHoSoNV",
@@ -452,7 +499,9 @@
 
                     CorporationId: khuvuc,
                     ChucVuNhanVienId: chucvu,
-                    PhongBanDanhMucId: phongban
+                    PhongBanDanhMucId: phongban,
+
+                    BacAnToanDienId: bacantoandienid
                 },
                 dataType: "json",
                 beforeSend: function () {
@@ -481,5 +530,166 @@
         }
     }
 
-    
+    function disabledAllFieldDataForm() {
+        $('#txtTenNhanVien').prop('disabled', true);
+        $('#txtNgaySinh').prop('disabled', true);
+        $('#txtSoBHXH').prop('disabled', true);
+        $('#txtNgayThamGiaBHXH').prop('disabled', true);
+        $('#txtSoCCCD').prop('disabled', true);
+        $('#txtNgayCap').prop('disabled', true);
+        $('#txtSoDienThoai').prop('disabled', true);
+        $('#txtEmail').prop('disabled', true);
+        $('#txtNoiSinh').prop('disabled', true);
+        $('#txtNoiThuongTru').prop('disabled', true);
+        $('#txtNgayCongTac').prop('disabled', true);
+        $('#ddlKhuVucCT').prop('disabled', true);
+        $('#ddlChucVuCT').prop('disabled', true);
+        $('#ddlPhongBanCT').prop('disabled', true);        
+    }
+
+    function loadDataChucDanhNhanVien() {
+        var hosonhanvienId = $('#hidHoSoNhanVienId').val();
+
+        $.ajax({
+            url: '/admin/daotaohv/ListChucDanhNV',
+            data: {
+                hosonhanvienid: hosonhanvienId
+            },
+            type: 'get',
+            dataType: 'json',
+            success: function (response) {
+                var render = '';
+                $.each(response.Result, function (i, item) {                    
+                    render += '<div class="col-md-3"> <label><span style="color: blue" class="text">' + item.TenChucDanh + '</span></label> <br/> <a href="#" data-id="' + item.Id + '" class="btn-delete-ChucDanhNhanVien">Xóa</a></div>'
+                });
+                $('#CacChucDanhNhanVien-list').html(render);
+            }
+        });
+    }
+
+    function loadBacAnToanDien(Active) {
+        $.ajax({
+            type: 'GET',
+            url: '/admin/pctdiennhap/ListBacATD',
+            data: { active: Active },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                var render = "<option value='0' >-- Lựa chọn --</option>";
+                $.each(response.Result, function (i, item) {
+                    render += "<option value='" + item.Id + "'>" + item.TenBacAnToanDien + "</option>";
+                });
+                $('#ddlBacAnToanDien').html(render);
+                $("#ddlBacAnToanDien")[0].selectedIndex = 0;                
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không có danh mục Bậc an toàn điện.', 'error');
+            }
+        });
+    }
+
+    function addChucDanhNhanVien() {
+        let hosonhanvienid = $("#hidHoSoNhanVienId").val();        
+        //let bacantoandienid = $("#ddlBacAnToanDien").val();
+        let chucdanhnhanviencode = $("#ddlChucDanhNhanVien").val();
+        let tenchucdanhnhanvien = $("#ddlChucDanhNhanVien option:selected").text();
+
+        $.ajax({
+            type: "POST",
+            url: "/Admin/daotaohv/AddChucDanh",
+            data: {
+                HoSoNhanVienId: hosonhanvienid,
+
+                CodeChucDanh: chucdanhnhanviencode,
+                TenChucDanh: tenchucdanhnhanvien
+            },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                if (response.Result === false) {
+                    tedu.notify("Update Phiếu công tác điện.", "error");
+                }
+                else {
+                    nguyen.appUserLoginLogger(userName, "Add chức danh nhân viên. Id: " + hosonhanvienid);
+
+                    tedu.notify('Add chức danh nhân viên.', 'success');
+
+                    loadDataChucDanhNhanVien();
+                }
+            },
+            error: function () {
+                tedu.notify('Có lỗi! Không thể Add chức danh nhân viên.', 'error');
+                tedu.stopLoading();
+            }
+        });
+    }
+
+    function deleteChucDanh(chucdanhnhanvienId) {
+        tedu.confirm('Bạn có chắc chắn xóa chức danh nhân viên này?', function () {
+            $.ajax({
+                type: "POST",
+                url: "/Admin/daotaohv/DeleteChucDanh",
+                data: {
+                    chucdanhnhanvienid: chucdanhnhanvienId
+                },
+                dataType: "json",
+                beforeSend: function () {
+                    tedu.startLoading();
+                },
+                success: function (response) {
+                    if (response.Result === false) {
+                        tedu.notify("Xóa PCT chức danh nhân viên.", "error");
+                    }
+                    else {
+                        nguyen.appUserLoginLogger(userName, "Xóa PCT chức danh nhân viên. Id: " + chucdanhnhanvienId);
+
+                        tedu.notify('Xóa PCT chức danh nhân viên công tác.', 'success');
+
+                        loadDataChucDanhNhanVien();
+                    }
+                },
+                error: function () {
+                    tedu.notify('Có lỗi! Không thể Xóa PCT chức danh nhân viên công tác.', 'error');
+                    tedu.stopLoading();
+                }
+            });
+        });  
+    }  
+
+    function updateBacAnToanDienToHoSoNhanVien() {
+        let hosonhanvienid = $("#hidHoSoNhanVienId").val();
+        let bacantoandienid = $("#ddlBacAnToanDien").val();        
+
+        $.ajax({
+            type: "POST",
+            url: "/Admin/daotaohv/UpBacATDHoSoNV",
+            data: {
+                HoSoNhanVienId: hosonhanvienid,
+                BacAnToanDienId: bacantoandienid
+            },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                if (response.Result === false) {
+                    tedu.notify("Update Bậc an toàn điện đến hồ sơ nhân viên.", "error");
+                }
+                else {
+                    nguyen.appUserLoginLogger(userName, "Update Bậc an toàn điện đến hồ sơ nhân viên. Id: " + hosonhanvienid);
+                    tedu.notify('Update Bậc an toàn điện đến hồ sơ nhân viên.', 'success');
+                }
+            },
+            error: function () {
+                tedu.notify('Có lỗi! Không thể Update Bậc an toàn điện đến hồ sơ nhân viên.', 'error');
+                tedu.stopLoading();
+            }
+        });
+    }
+
 }
