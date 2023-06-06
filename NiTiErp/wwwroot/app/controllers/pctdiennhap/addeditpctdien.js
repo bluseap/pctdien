@@ -73,19 +73,32 @@
         loadChonCacThuocTinhDll();        
 
         $('#btnSaveEditPCTDien').on('click', function () {
-            var ispctdien = $('#hidInsertPCTDien').val(); // 1: insert; 2: update; 
+            const ispctdien = $('#hidInsertPCTDien').val(); // 1: insert; 2: update; 
+            const isnguoicapphieu = $('#hidisNGUOICAPPHIEU').val();
 
-            if (ispctdien == "1") {
-                savePCTDien();
-            } else if (ispctdien == "2") {
-                updatePCTDien();
+            if (isnguoicapphieu == 'false') {
+                tedu.notify('Phải là người có chức danh cấp phiếu.', 'error');                
+            }
+            else {
+                if (ispctdien == "1" && isnguoicapphieu == 'true') {
+                    savePCTDien();
+                } else if (ispctdien == "2" && isnguoicapphieu == 'true') {
+                    updatePCTDien();
+                }
             }
         });
 
         checkboxDropdown();
 
         $('#btnThemDiaDiemCongTac').on('click', function () {
-            AddToTablePCTDienThemDiaDiemCongTac();
+            const isnguoicapphieu = $('#hidisNGUOICAPPHIEU').val();
+
+            if (isnguoicapphieu == 'true') {
+                AddToTablePCTDienThemDiaDiemCongTac();
+            }  
+            else {
+                tedu.notify('Phải là người có chức danh cấp phiếu.', 'error');
+            }
         });
 
         $('body').on('click', '.btn-deletePCTThemDDCT', function (e) {

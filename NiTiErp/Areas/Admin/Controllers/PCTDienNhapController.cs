@@ -113,6 +113,14 @@ namespace NiTiErp.Areas.Admin.Controllers
         }
 
         [HttpGet]
+        public IActionResult GetNhanVienByCorChucDanh(string corporationid, string codeChucDanhNhanVien)
+        {
+            var model = _hosonhanvienService.Get_HoSoNhanVien_ByCorIdChucDanh(corporationid, codeChucDanhNhanVien);
+
+            return new OkObjectResult(model);
+        }
+
+        [HttpGet]
         public IActionResult GetNVByCorPhong(string corporationid, string phongbandanhmucid)
         {
             var model = _hosonhanvienService.Get_HoSoNhanVien_ByCorPhongId(corporationid, phongbandanhmucid);

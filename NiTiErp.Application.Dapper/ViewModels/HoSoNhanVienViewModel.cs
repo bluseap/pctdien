@@ -136,6 +136,8 @@ namespace NiTiErp.Application.Dapper.ViewModels
 
         public string MAPB { get; set; }
 
+        public string CacChucDanhNhanVien { get; set; }
+
 
         public int Status { get; set; }
 

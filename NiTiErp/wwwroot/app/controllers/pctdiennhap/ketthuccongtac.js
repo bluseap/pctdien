@@ -27,11 +27,27 @@
         loadTagsInput();
 
         $('#btnSaveEditKTCTKetThucCT').on('click', function () {
-            var ispctdien = $('#hidInsertPCTDien').val(); // 1: insert; 2: update; 
+            const ispctdien = $('#hidInsertPCTDien').val(); // 1: insert; 2: update; 
+            const trangthaipct = $('#hidPCTDienTrangThaiPCT').val(); // 3: Xac nhan da cap PCT ; 
 
-            if (ispctdien == "2") {
-                updateKetThucCongTac();
+            const isnguoicapphieu = $('#hidisNGUOICAPPHIEU').val();
+            const isnguoichihuytt = $('#hidisNGUOICHIHUYTT').val();
+
+            if (isnguoicapphieu == 'true' || isnguoichihuytt == 'true') {
+                if (trangthaipct == '3') {
+                    if (ispctdien == "2") {
+                        updateKhoaPhieuCongTac();
+                    }
+                }
+                else {
+                    if (ispctdien == "2") {
+                        updateKetThucCongTac();
+                    }
+                }
             }
+            else {
+                tedu.notify('Phải là người có chức danh cấp phiếu hoặc người chỉ huy trực tiếp.', 'error');             
+            }            
         });
 
         $('#btnLayDSDDCTChuaHoanThanh').on('click', function () {
@@ -158,6 +174,7 @@
                 ClearData();
 
                 $('#hidPCTDienCode').val(pctdien.Code);
+                $('#hidPCTDienTrangThaiPCT').val(pctdien.TrangThaiPCT);
 
                 $('#txtTraLamViecTenOngBa').val(pctdien.TraLamViecTenOngBa);
                 $('#txtTraLamViecOngBaTenChucVu').val(pctdien.TraLamViecOngBaTenChucVu);
@@ -303,6 +320,108 @@
             else {
                 tedu.notify('Đề nghị nhập lý do chưa thực hiện', 'error');
             }
+        }
+    }
+
+    function updateKhoaPhieuCongTac() {
+        var pctdienId = $('#hidPCTDienId').val();
+
+        var tenongba = '';
+        var ongbachucvu = '';
+        var daidienquanlyvanhanh = '';
+
+        var giongaytralamviec = $("#txtKTCTGioNgayTraLamViec").val();
+        var phuttralamviec = $("#txtKTCTPhutNgayTraLamViec").val();
+        var ngaytralamviec = tedu.getFormatDateYYMMDD($('#txtKTCTNgayTraLamViec').val());
+
+        var lydotonchuathuchien = $("#txtLyDoTonChuaThucHien").val();
+        var lydochuathuchien = $("#txtLyDoChuaThucHien").val();
+        let kiemtranhaplydoton = lydotonchuathuchien === '' ? 0 : (lydochuathuchien === '' ? 1 : 0);
+
+        var nguoichihuytructiepid = $("#hidPCTDienNguoiChiHuyTrucTiepId").val();
+        var tennguoichihuytructiep = $("#txtKTCTTenNguoiChiHuyTrucTiep").val();
+
+        var giongaykhoapct = $("#txtKTCTGioNgayKhoaPCT").val();
+        var phutkhoapct = $("#txtKTCTPhutNgayKhoaPCT").val();
+        var ngaykhoapct = tedu.getFormatDateYYMMDD($('#txtKTCTNgayNgayKhoaPCT').val());
+
+        var nguoichophepid = $("#hidPCTDienNguoiChoPhepId").val();
+        var tennguoichophep = $("#txtKTCTTenNguoiChoPhep").val();
+
+        var ngayhoanthanhpct = tedu.getFormatDateYYMMDD($('#txtKTCTNgayKiemTraHoanThanhPCT').val());
+
+        var tennguoicapid = $("#hidPCTDienTenNguoiCapPCTId").val();
+        var tennguoicap = $("#txtKTCTTenNguoiCapPCT").val();
+
+        var tennguoicapphieutaihientruongid = $("#hidPCTDienTenNguoiCapPhieuTaiHienTruongId").val();
+        var tennguoicapphieutaihientruong = $("#txtKTCTTenNguoiKiemTraATLDTaiHienTruong").val();
+        var chucvutennguoicapphieutaihientruong = $("#txtKTCTChucVuNguoiKiemTraATLDTaiHienTruong").val();
+
+        if (kiemtranhaplydoton == '0') {
+            $.ajax({
+                type: "POST",
+                url: "/Admin/pctdiennhap/UpKeTThucCT",
+                data: {
+                    Id: pctdienId,
+
+                    TraLamViecTenOngBa: tenongba,
+                    TraLamViecOngBaTenChucVu: ongbachucvu,
+                    TenDaiDienQuanLyVanHanh: daidienquanlyvanhanh,
+
+                    GioTraLamViec: giongaytralamviec,
+                    PhutTraLamViec: phuttralamviec,
+                    NgayTraLamViec: ngaytralamviec,
+
+                    LyDoTonChuaThucHien: lydotonchuathuchien,
+                    LyDoChuaThucHien: lydochuathuchien,
+
+                    NguoiChiHuyTrucTiepId: nguoichihuytructiepid,
+                    TenNguoiChiHuyTrucTiep: tennguoichihuytructiep,
+
+                    GioKhoaPCT: giongaykhoapct,
+                    PhutKhoaPCT: phutkhoapct,
+                    NgayKhoaPCT: ngaykhoapct,
+
+                    NguoiChoPhepId: nguoichophepid,
+                    TenNguoiChoPhep: tennguoichophep,
+                    NgayKiemTraHoanThanhPCT: ngayhoanthanhpct,
+
+                    TenNguoiCapPCTId: tennguoicapid,
+                    TenNguoiCapPCT: tennguoicap,
+
+                    NguoiKiemTraATLDTaiHienTruongId: tennguoicapphieutaihientruongid,
+                    TenNguoiKiemTraATLDTaiHienTruong: tennguoicapphieutaihientruong,
+                    ChucVuNguoiKiemTraATLDTaiHienTruong: chucvutennguoicapphieutaihientruong
+                },
+                dataType: "json",
+                beforeSend: function () {
+                    tedu.startLoading();
+                },
+                success: function (response) {
+                    if (response.Result === false) {
+                        tedu.notify("Update Phiếu công tác điện.", "error");
+                    }
+                    else {
+                        nguyen.appUserLoginLogger(userName, "Update Khóa Phiếu công tác điện. Id: " + pctdienId);
+
+                        tedu.notify('Update Khóa Phiếu công tác điện.', 'success');
+
+                        ClearData();
+
+                        loaddatatable.loadTablePCTDien();
+
+                        $('#modal-add-edit-EditPCTDienKetThucCongTac').modal('hide');
+                        tedu.stopLoading();
+                    }
+                },
+                error: function () {
+                    tedu.notify('Có lỗi! Không thể Update Khóa Phiếu công tác điện.', 'error');
+                    tedu.stopLoading();
+                }
+            });
+        }
+        else {
+            tedu.notify('Đề nghị nhập lý do chưa thực hiện', 'error');
         }
     }
 
