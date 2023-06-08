@@ -6497,3 +6497,46 @@ END" (0723d8ff)
 2023-06-06T15:17:04.3082269+07:00 0HMR6BTEQB1BO:00000009 [INF] Request finished in 27.0022ms 200 application/json; charset=utf-8 (791a596a)
 2023-06-06T15:17:04.3441532+07:00 0HMR6BTEQB1BT:00000005 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.PCTDienNhapController.ListPCTDien (NiTiErp)" in 62.1804ms (afa2e885)
 2023-06-06T15:17:04.3467429+07:00 0HMR6BTEQB1BT:00000005 [INF] Request finished in 65.8834ms 200 application/json; charset=utf-8 (791a596a)
+2023-06-06T15:34:45.9451894+07:00 0HMR6D3H1FTV6:00000001 [INF] Request starting HTTP/1.1 GET http://localhost:57431/admin/pctdiennhap/ListNVThayDoi?PCTDienId=8   (ca22a1cb)
+2023-06-06T15:34:46.0173542+07:00 0HMR6D3H1FTV6:00000001 [INF] Entity Framework Core "2.1.14-servicing-32113" initialized '"AppDbContext"' using provider '"Microsoft.EntityFrameworkCore.SqlServer"' with options: "MigrationsAssembly=NiTiErp.Data.EF " (9958f5bb)
+2023-06-06T15:34:46.0687958+07:00 0HMR6D3H1FTV6:00000001 [INF] Executed DbCommand ("9"ms) [Parameters=["@__get_Item_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [e].[Id], [e].[AccessFailedCount], [e].[Avatar], [e].[Balance], [e].[BirthDay], [e].[ConcurrencyStamp], [e].[CorporationId], [e].[DateCreated], [e].[DateModified], [e].[Email], [e].[EmailConfirmed], [e].[FullName], [e].[HoSoNhanVienId], [e].[LockoutEnabled], [e].[LockoutEnd], [e].[NormalizedEmail], [e].[NormalizedUserName], [e].[PasswordHash], [e].[PhoneNumber], [e].[PhoneNumberConfirmed], [e].[SecurityStamp], [e].[Status], [e].[TwoFactorEnabled], [e].[UserCreated], [e].[UserModified], [e].[UserName]
+FROM [AppUsers] AS [e]
+WHERE [e].[Id] = @__get_Item_0" (0723d8ff)
+2023-06-06T15:34:46.1913530+07:00 0HMR6D3H1FTV6:00000001 [INF] Executed DbCommand ("2"ms) [Parameters=["@__user_Id_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [uc].[Id], [uc].[ClaimType], [uc].[ClaimValue], [uc].[UserId]
+FROM [AppUserClaims] AS [uc]
+WHERE [uc].[UserId] = @__user_Id_0" (0723d8ff)
+2023-06-06T15:34:46.2286060+07:00 0HMR6D3H1FTV6:00000001 [INF] Executed DbCommand ("3"ms) [Parameters=["@__userId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2023-06-06T15:34:46.2422165+07:00 0HMR6D3H1FTV6:00000001 [INF] Executed DbCommand ("2"ms) [Parameters=["@__normalizedName_0='?' (Size = 4000)"], CommandType='Text', CommandTimeout='30']"
+""SELECT TOP(1) [r].[Id], [r].[ConcurrencyStamp], [r].[CorporationId], [r].[Description], [r].[Name], [r].[NormalizedName]
+FROM [AppRoles] AS [r]
+WHERE [r].[NormalizedName] = @__normalizedName_0" (0723d8ff)
+2023-06-06T15:34:46.2608179+07:00 0HMR6D3H1FTV6:00000001 [INF] Executed DbCommand ("3"ms) [Parameters=["@__role_Id_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [rc].[ClaimType], [rc].[ClaimValue]
+FROM [AppRoleClaims] AS [rc]
+WHERE [rc].[RoleId] = @__role_Id_0" (0723d8ff)
+2023-06-06T15:34:46.2649421+07:00 0HMR6D3H1FTV6:00000001 [INF] Executed DbCommand ("0"ms) [Parameters=["@__userId_0='?' (DbType = Guid)"], CommandType='Text', CommandTimeout='30']"
+""SELECT [role].[Name]
+FROM [AppUserRoles] AS [userRole]
+INNER JOIN [AppRoles] AS [role] ON [userRole].[RoleId] = [role].[Id]
+WHERE [userRole].[UserId] = @__userId_0" (0723d8ff)
+2023-06-06T15:34:46.7306899+07:00 0HMR6D3H1FTV6:00000001 [INF] Route matched with "{area = \"Admin\", action = \"ListNVThayDoi\", controller = \"PCTDienNhap\"}". Executing controller action with signature "Microsoft.AspNetCore.Mvc.IActionResult ListNVThayDoi(Int32)" on controller "NiTiErp.Areas.Admin.Controllers.PCTDienNhapController" ("NiTiErp"). (122b2fdf)
+2023-06-06T15:34:46.7414884+07:00 0HMR6D3H1FTV6:00000001 [INF] Authorization was successful. (0d575a54)
+2023-06-06T15:34:46.7592255+07:00 0HMR6D3H1FTV6:00000001 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.PCTDienNhapController.ListNVThayDoi (NiTiErp)" - Validation state: Valid (dad538d7)
+2023-06-06T15:34:46.8024720+07:00 0HMR6D3H1FTV6:00000001 [INF] Executed action method "NiTiErp.Areas.Admin.Controllers.PCTDienNhapController.ListNVThayDoi (NiTiErp)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 40.4955ms. (50a9e262)
+2023-06-06T15:34:46.8077563+07:00 0HMR6D3H1FTV6:00000001 [INF] Executing ObjectResult, writing value of type '"System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[[System.Collections.Generic.List`1[[NiTiErp.Application.Dapper.ViewModels.PhieuCongTacDien.PCTNhanVienCongTacViewModel, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[NiTiErp.Application.Dapper.Implementation.PhieuCongTacDien.PCTNhanVienCongTacService+<PCTD_Get_PCTNhanVienCongTac_ByThayDoiNguoiDienId>d__6, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2023-06-06T15:34:46.9084349+07:00 0HMR6D3H1FTV6:00000001 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.PCTDienNhapController.ListNVThayDoi (NiTiErp)" in 174.6501ms (afa2e885)
+2023-06-06T15:34:46.9437471+07:00 0HMR6D3H1FTV6:00000001 [INF] Request finished in 1003.0579ms 200 application/json; charset=utf-8 (791a596a)
+2023-06-06T15:34:49.5789798+07:00 0HMR6D3H1FTV6:00000002 [INF] Request starting HTTP/1.1 GET http://localhost:57431/admin/pctdiennhap/ListNVThayDoi?PCTDienId=8   (ca22a1cb)
+2023-06-06T15:34:49.5819713+07:00 0HMR6D3H1FTV6:00000002 [INF] Route matched with "{area = \"Admin\", action = \"ListNVThayDoi\", controller = \"PCTDienNhap\"}". Executing controller action with signature "Microsoft.AspNetCore.Mvc.IActionResult ListNVThayDoi(Int32)" on controller "NiTiErp.Areas.Admin.Controllers.PCTDienNhapController" ("NiTiErp"). (122b2fdf)
+2023-06-06T15:34:49.5823116+07:00 0HMR6D3H1FTV6:00000002 [INF] Authorization was successful. (0d575a54)
+2023-06-06T15:34:49.5830452+07:00 0HMR6D3H1FTV6:00000002 [INF] Executing action method "NiTiErp.Areas.Admin.Controllers.PCTDienNhapController.ListNVThayDoi (NiTiErp)" - Validation state: Valid (dad538d7)
+2023-06-06T15:34:49.5834672+07:00 0HMR6D3H1FTV6:00000002 [INF] Executed action method "NiTiErp.Areas.Admin.Controllers.PCTDienNhapController.ListNVThayDoi (NiTiErp)", returned result "Microsoft.AspNetCore.Mvc.OkObjectResult" in 0.3317ms. (50a9e262)
+2023-06-06T15:34:49.5839610+07:00 0HMR6D3H1FTV6:00000002 [INF] Executing ObjectResult, writing value of type '"System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1[[System.Collections.Generic.List`1[[NiTiErp.Application.Dapper.ViewModels.PhieuCongTacDien.PCTNhanVienCongTacViewModel, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[NiTiErp.Application.Dapper.Implementation.PhieuCongTacDien.PCTNhanVienCongTacService+<PCTD_Get_PCTNhanVienCongTac_ByThayDoiNguoiDienId>d__6, NiTiErp.Application.Dapper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]"'. (8a1b66c8)
+2023-06-06T15:34:49.5956123+07:00 0HMR6D3H1FTV6:00000002 [INF] Executed action "NiTiErp.Areas.Admin.Controllers.PCTDienNhapController.ListNVThayDoi (NiTiErp)" in 13.5379ms (afa2e885)
+2023-06-06T15:34:49.6000325+07:00 0HMR6D3H1FTV6:00000002 [INF] Request finished in 21.0745ms 200 application/json; charset=utf-8 (791a596a)

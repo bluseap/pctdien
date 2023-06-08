@@ -23,6 +23,21 @@ namespace NiTiErp.Application.Dapper.Implementation.PhieuCongTacDien
             _configuration = configuration;
         }
 
+        public async Task<PCTDienViewModel> PCTD_Get_PCTDien_UpdateDaKhoaSo_ById(int id, Guid PCTDienCode)
+        {
+            using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            {
+                await sqlConnection.OpenAsync();
+                var dynamicParameters = new DynamicParameters();
+
+                dynamicParameters.Add("@Id", id);
+                dynamicParameters.Add("@PCTDienCode", PCTDienCode);
+
+                var result = await sqlConnection.QueryAsync<PCTDienViewModel>("PCTD_Get_PCTDien_UpdateDaKhoaSo_ById", dynamicParameters, null, null, System.Data.CommandType.StoredProcedure);
+                return result.Single();
+            }
+        }
+
         public async Task<PCTDienViewModel> PCTD_Get_PCTDien_ById(int id)
         {
             using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
@@ -34,6 +49,51 @@ namespace NiTiErp.Application.Dapper.Implementation.PhieuCongTacDien
 
                 var result = await sqlConnection.QueryAsync<PCTDienViewModel>("PCTD_Get_PCTDien_ById", dynamicParameters, null, null, System.Data.CommandType.StoredProcedure);
                 return result.Single();
+            }
+        }
+
+        public async Task<PagedResult<PCTDienViewModel>> PCTD_Get_PCTDien_AllTrangThaiTuDenNgay(string corporationid, string phongbandanhmucid,
+            int trangthai, string chucdanh, DateTime TuNgayBaoCao, DateTime DenNgayBaoCao, int page, int pageSize)
+        {
+            using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            {
+                await sqlConnection.OpenAsync();
+                var dynamicParameters = new DynamicParameters();
+
+                dynamicParameters.Add("@CorporationId", corporationid);
+                dynamicParameters.Add("@PhongBanDanhMucId", phongbandanhmucid);
+                dynamicParameters.Add("@TrangThaiPCT", trangthai);
+
+                dynamicParameters.Add("@ChucDanhNhaVienCode", chucdanh);
+
+                dynamicParameters.Add("@TuNgayBaoCao", TuNgayBaoCao);
+                dynamicParameters.Add("@DenNgayBaoCao", DenNgayBaoCao);
+
+                dynamicParameters.Add("@pageIndex", page);
+                dynamicParameters.Add("@pageSize", pageSize);
+
+                dynamicParameters.Add("@totalRow", dbType: System.Data.DbType.Int32, direction: System.Data.ParameterDirection.Output);
+
+                try
+                {
+                    var result = await sqlConnection.QueryAsync<PCTDienViewModel>("PCTD_Get_PCTDien_AllTrangThaiTuDenNgay", dynamicParameters, null, null,
+                        System.Data.CommandType.StoredProcedure);
+
+                    int totalRow = dynamicParameters.Get<int>("@totalRow");
+
+                    var pagedResult = new PagedResult<PCTDienViewModel>()
+                    {
+                        Results = result.ToList(),
+                        CurrentPage = page,
+                        RowCount = totalRow,
+                        PageSize = pageSize
+                    };
+                    return pagedResult;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
             }
         }
 

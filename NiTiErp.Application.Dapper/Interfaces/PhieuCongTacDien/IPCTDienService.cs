@@ -9,7 +9,12 @@ namespace NiTiErp.Application.Dapper.Interfaces.PhieuCongTacDien
 {
     public interface IPCTDienService
     {
+        Task<PCTDienViewModel> PCTD_Get_PCTDien_UpdateDaKhoaSo_ById(int id, Guid PCTDienCode);
+
         Task<PCTDienViewModel> PCTD_Get_PCTDien_ById(int id);
+
+        Task<PagedResult<PCTDienViewModel>> PCTD_Get_PCTDien_AllTrangThaiTuDenNgay(string corporationid, string phongbandanhmucid,
+            int trangthai, string chucdanh, DateTime TuNgayBaoCao, DateTime DenNgayBaoCao, int page, int pageSize);
 
         Task<PagedResult<PCTDienViewModel>> PCTD_Get_PCTDien_AllTrangThai(string corporationid, string phongbandanhmucid,
             int trangthai, int page, int pageSize);

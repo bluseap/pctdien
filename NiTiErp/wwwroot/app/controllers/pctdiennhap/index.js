@@ -17,6 +17,7 @@
     var huycongtac = new huycongtacController();
     var ddctaddhinh = new ddctaddhinhController();
     var kiemtrathuchien = new kiemtrathuchienController();
+    var dsdakhoasopct = new dsdakhoasopctController();
 
     var loaddatatable = new loaddatatableController();
 
@@ -39,6 +40,7 @@
         huycongtac.initialize();
         ddctaddhinh.initialize();
         kiemtrathuchien.initialize();
+        dsdakhoasopct.initialize();
     }    
 
     function registerEvents() {
@@ -88,8 +90,7 @@
 
         $("#btn-create").on('click', function () {
             $('#hidInsertPCTDien').val(1);         
-
-            $('#table-contentPCTThemNhanVienCT').html('');
+            
             addeditpctdien.addeditClearData();
 
             var guid = CreateGuid();
@@ -104,6 +105,8 @@
                 }
             }            
 
+            $('#divbtnDaKhoaSoPCT').show();            
+
             $('#modal-add-edit-EditPCTDienNhap').modal('show');
         });
 
@@ -114,7 +117,9 @@
             
             // 2 - Update Order
             $('#hidInsertPCTDien').val(2);
-            
+
+            $('#divbtnDaKhoaSoPCT').hide();
+
             addeditpctdien.loaEditPCTDien();              
         });
 
@@ -178,7 +183,15 @@
             var pctdienid = $(this).data('id');            
             $('#hidPCTDienId').val(pctdienid);
 
-            inPhieuCongTac(pctdienid);
+            const isnguoicapphieu = $('#hidisNGUOICAPPHIEU').val();
+            const isnguoichihuytt = $('#hidisNGUOICHIHUYTT').val();
+
+            if (isnguoicapphieu == 'true' || isnguoichihuytt == 'true') {
+                inPhieuCongTac(pctdienid);
+            }
+            else {
+                tedu.notify('Phải là người có chức danh cấp phiếu hoặc người chỉ huy trực tiếp.', 'error');
+            }             
         });
 
         // Chon Khu vuc trong phan Nhap PCT dien de the hien ds nhan vien xi nghiep khac
@@ -196,8 +209,7 @@
         $('#ddlKhuVuc').on('change', function () {
             var corporationId = $('#ddlKhuVuc').val();
 
-            loadPhongKhuVuc(corporationId);
-            
+            loadPhongKhuVuc(corporationId);            
         });
 
         $("#btnTimNoiDung").on('click', function () {
@@ -214,10 +226,22 @@
             }
         });        
 
+        $("#ddl-show-pagePCTDien").on('change', function () {
+            tedu.configs.pageSize = $(this).val();
+            tedu.configs.pageIndex = 1;
+
+            loaddatatable.loadTablePCTDien();
+        });
+
         $('#btnPCTDBaoCaoDieuKien').on('click', function (e) {
             $('#hidBienLoadTable').val(0); // 0 ko cho thuc hien ; 1 cho thuc hien load table
 
-            addeditpctdien.loadTablePCTDien();
+            let ckTheoNgay = document.getElementById('ckPCTDBaoCaoChonTheoNgay');
+            if (ckTheoNgay.checked == true) {
+                loaddatatable.loadTablePCTDien();
+            } else {
+                addeditpctdien.loadTablePCTDien();
+            }            
         });
 
         $('body').on('click', '.btn-KiemTraThucHien', function (e) {
@@ -229,11 +253,13 @@
 
             //$('#modal-add-edit-EditKiemTraThucHien').modal('show');
             kiemtrathuchien.loadEditKiemTraThucHien();
-        });
+        });        
 
     }
 
     function loadData() {
+        $('#divbtnDaKhoaSoPCT').hide();    
+
         loadDataDanhSachTheo();
     }
 
@@ -242,7 +268,8 @@
         render += "<option value='2' >-- D.sách Đã cấp PCT --</option>";
         render += "<option value='4' >-- D.sách Cho phép làm việc --</option>";
         render += "<option value='6' >-- D.sách Kết thúc công tác --</option>";
-        render += "<option value='20' >-- D.sách Hủy PCT --</option>";
+        render += "<option value='8' >-- D.sách Khóa phiếu công tác --</option>";
+        //render += "<option value='20' >-- D.sách Hủy PCT --</option>";
         render += "<option value='PCTXN' >-- D.sách Phiếu công tác theo Xí nghiệp --</option>";
         render += "<option value='PCTTO' >-- D.sách Phiếu công tác theo phòng, tổ --</option>";
         render += "<option value='PCTCT' >-- D.sách Phiếu công tác All --</option>";
@@ -364,6 +391,7 @@
                 }
 
                 addeditpctdien.loadTablePCTDien();
+                dsdakhoasopct.loadTableDsDaKhoaSoPCT();
 
                 countTongHopPCTDien(); 
             },
@@ -656,7 +684,6 @@
 
     function inPhieuCongTac(pctdienid) {
         //tedu.notify('in phieu cong tac dien', 'success');
-
         $.ajax({
             type: 'GET',
             url: '/admin/pctdiennhap/InPCTD',
@@ -754,27 +781,32 @@
         $('#hidBienLoadTable').val(1); // 0 ko cho thuc hien ; 1 cho thuc hien load table
 
         $('body').on('click', '.btnDaCapPCT', function (e) {
-            e.preventDefault();            
+            e.preventDefault();
+            $('#hidBienLoadTable').val(1); // 0 ko cho thuc hien ; 1 cho thuc hien load table
             $('#hidValueBienLoadTable').val(2); // 2 : da cap pct
             loaddatatable.loadTablePCTDien();
         });
         $('body').on('click', '.btnXacNhanDaCapPCT', function (e) {
             e.preventDefault();
+            $('#hidBienLoadTable').val(1); // 0 ko cho thuc hien ; 1 cho thuc hien load table
             $('#hidValueBienLoadTable').val(3); // 3 : xac nhan da cap pct
             loaddatatable.loadTablePCTDien();
         });
         $('body').on('click', '.btnChoPhepLVPCT', function (e) {
             e.preventDefault();
+            $('#hidBienLoadTable').val(1); // 0 ko cho thuc hien ; 1 cho thuc hien load table
             $('#hidValueBienLoadTable').val(4); // 4 : cho phep lam viec
             loaddatatable.loadTablePCTDien();
         });
         $('body').on('click', '.btnHuyPCT', function (e) {
             e.preventDefault();
+            $('#hidBienLoadTable').val(1); // 0 ko cho thuc hien ; 1 cho thuc hien load table
             $('#hidValueBienLoadTable').val(20); // 20 : huy pct
             loaddatatable.loadTablePCTDien();
         });
         $('body').on('click', '.btnKetThucPCT', function (e) {
             e.preventDefault();
+            $('#hidBienLoadTable').val(1); // 0 ko cho thuc hien ; 1 cho thuc hien load table
             $('#hidValueBienLoadTable').val(6); // 6 : ket thuc pct
             loaddatatable.loadTablePCTDien();
         });

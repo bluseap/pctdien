@@ -1,7 +1,7 @@
 ﻿var loaddatatableController = function () {
 
     //var userCorporationId = $("#hidUserCorporationId").val();
-    //var userName = $("#hidUserName").val();
+    //var userName = $("#hidUserName").val();    
 
     this.loadCodeDanhMucDonViQLVH = function (code) {
         loadCodeDanhMucDonViQLVH(code);
@@ -134,7 +134,11 @@
             trangthaipct = $('#hidValueBienLoadTable').val();
         } else {
             trangthaipct = $('#ddlPCTDBaoCaoDieuKien').val();
-        }        
+        } 
+
+        let ckTheoNgay = document.getElementById('ckPCTDBaoCaoChonTheoNgay');
+        let tungaybaocao = tedu.getFormatDateYYMMDD($('#txtPCTDBaoCaoTuNgay').val());
+        let denngaybaocao = tedu.getFormatDateYYMMDD($('#txtPCTDBaoCaoDenNgay').val());
 
         if (trangthaipct === '0') {
             $.ajax({
@@ -165,6 +169,59 @@
                                 TrangThaiPCT: tedu.getPhieuCongTacDien(item.TrangThaiPCT)
                                 //NgayDenCuaVanBan: tedu.getFormattedDate(item.NgayDenCuaVanBan),                            
                                 // Price: tedu.formatNumber(item.Price, 0),                          
+                            });
+                        });
+                    }
+
+                    $('#lbPCTDienTotalRecords').text(response.Result.RowCount);
+
+                    if (render !== '') {
+                        $('#tblContentPCTDien').html(render);
+                    }
+
+                    if (response.Result.RowCount !== 0) {
+                        wrapPagingPCTDien(response.Result.RowCount, function () {
+                            loadTablePCTDien();
+                        },
+                            isPageChanged);
+                    }
+                },
+                error: function (status) {
+                    console.log(status);
+                    tedu.notify('Không thể lấy dữ liệu về.', 'error');
+                }
+            });
+        }
+        if (trangthaipct === '0' && ckTheoNgay.checked == true) {
+            $.ajax({
+                type: 'GET',
+                url: '/admin/pctdiennhap/ListPCTByTrThaiTuDenNgay',
+                data: {
+                    KhuVuc: makhuvuc,
+                    PhongTo: phongtoid,
+                    TrangThai: trangthaipct,
+
+                    TuNgayBaoCao: tungaybaocao,
+                    DenNgayBaoCao: denngaybaocao,
+
+                    page: tedu.configs.pageIndex,
+                    pageSize: tedu.configs.pageSize
+                },
+                dataType: 'json',
+                success: function (response) {
+                    if (response.Result.Results.length === 0) {
+                        render = "<tr><th><a>Không có dữ liệu</a></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>";
+                    }
+                    else {
+                        $.each(response.Result.Results, function (i, item) {
+                            render += Mustache.render(template, {
+                                Id: item.Id,
+
+                                DiaDiemCongTac: item.DiaDiemCongTac,
+                                CacNoiDungCongTac: item.CacNoiDungCongTac,
+                                TuNgayDenNgay: item.TuNgayDenNgay,
+
+                                TrangThaiPCT: tedu.getPhieuCongTacDien(item.TrangThaiPCT)
                             });
                         });
                     }
@@ -239,6 +296,8 @@
             });
         }
 
+        
+
     }
     function wrapPagingPCTDien(recordCount, callBack, changePageSize) {
         var totalsize = Math.ceil(recordCount / tedu.configs.pageSize);
@@ -263,6 +322,6 @@
                 }
             }
         });
-    }
+    }    
 
 }

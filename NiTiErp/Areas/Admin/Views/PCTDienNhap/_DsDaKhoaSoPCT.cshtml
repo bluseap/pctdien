@@ -1,0 +1,62 @@
+﻿<div id="modal-add-edit-DsDaKhoaSoPCT" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style="overflow-y: auto; max-height:85%;  margin-top: 50px; margin-bottom:50px; ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Danh sách đã khóa sổ phiếu công tác </h4>
+            </div>
+            <div class="modal-body">                
+                <div id="formDSDaKhoaSoPCT">
+                    <form class="form-horizontal" role="form" id="frmMainDSDaKhoaSoPCT">
+                        <table id="tblPCTDienDSDaKhoaSoPCT" class="table table-striped jambo_table bulk_action" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Địa điểm - Nội dung</th>
+                                    <th>Từ ngày - Đến ngày (KH)</th>
+                                    <th>Trạng thái</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tblContentPCTDienDSDaKhoaSoPCT"></tbody>
+                        </table>
+                        <div class="row">
+                            <div class="col-sm-5">
+                                <div class="dataTables_info" id="datatable-checkbox_infoPCTDienDSDaKhoaSoPCT" role="status" aria-live="polite">
+                                    <select id="ddl-show-pagePCTDienDSDaKhoaSoPCT">
+                                        <option value="10" selected="selected">10</option>
+                                        <option value="20">20</option>
+                                        <option value="30">30</option>
+                                        <option value="50">50</option>
+                                    </select>
+                                    <span class="item-per-page">
+                                        dòng/trang.
+                                    </span>
+                                    Tổng cộng: <strong id="lbPCTDienDSDaKhoaSoPCTTotalRecords"></strong>
+                                </div>
+                            </div>
+                            <div class="col-sm-7">
+                                <div class="dataTables_paginate" id="datatable-checkbox_paginatePCTDienDSDaKhoaSoPCT">
+                                    <ul id="paginationULPCTDienDSDaKhoaSoPCT"></ul>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <script type="x-tmpl-mustache" id="template-table-DSDaKhoaSoPCT">
+                            <tr>
+                                <th scope="row">
+                                    <a class="btn-link btn-addeditDSDaKhoaSoPCT" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Id">
+                                        <i class="fa fa-arrow-down"></i>
+                                    </a>
+                                </th>
+                                <td>{{TenNhanVienCongTac}}</td>
+                                <td>{{BacATDNhanVienCongTac}}</td>
+                                <td>{{TuNgayDenNgay}}</td>
+                                
+                            </tr>
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

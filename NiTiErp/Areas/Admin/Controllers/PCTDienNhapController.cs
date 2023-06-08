@@ -71,10 +71,26 @@ namespace NiTiErp.Areas.Admin.Controllers
         #region Get list
 
         [HttpGet]
+        public IActionResult GetIdDaKhoaSo(int PCTDienId, Guid PCTDienCode)
+        {
+            var model = _pctdienService.PCTD_Get_PCTDien_UpdateDaKhoaSo_ById(PCTDienId, PCTDienCode);
+            return new OkObjectResult(model);
+        }
+
+        [HttpGet]
         public IActionResult GetpctdId(int PCTDienId)
         {
             var model = _pctdienService.PCTD_Get_PCTDien_ById(PCTDienId);
+            return new OkObjectResult(model);
+        }
 
+        [HttpGet]
+        public IActionResult ListPCTByTrThaiTuDenNgay(string KhuVuc, string PhongTo, int TrangThai, 
+            DateTime TuNgayBaoCao, DateTime DenNgayBaoCao, int page, int pageSize)
+        {
+            string ChucDanhNhanVien = "0";
+            var model = _pctdienService.PCTD_Get_PCTDien_AllTrangThaiTuDenNgay(KhuVuc, PhongTo, TrangThai, ChucDanhNhanVien,
+                TuNgayBaoCao, DenNgayBaoCao, page, pageSize);
             return new OkObjectResult(model);
         }
 
@@ -82,7 +98,6 @@ namespace NiTiErp.Areas.Admin.Controllers
         public IActionResult ListPCTDienByTrThai(string KhuVuc, string PhongTo, int TrangThai, int page, int pageSize)
         {            
             var model = _pctdienService.PCTD_Get_PCTDien_AllTrangThai(KhuVuc, PhongTo, TrangThai, page, pageSize);
-
             return new OkObjectResult(model);
         }
 
@@ -90,7 +105,6 @@ namespace NiTiErp.Areas.Admin.Controllers
         public IActionResult ListPCTDTrThaiCount(string KhuVuc, string PhongTo, int TrangThai)
         {
             var model = _pctdienService.PCTD_Get_PCTDien_AllTrangThaiCount(KhuVuc, PhongTo, TrangThai);
-
             return new OkObjectResult(model);
         }
 
@@ -98,9 +112,7 @@ namespace NiTiErp.Areas.Admin.Controllers
         public IActionResult ListPCTDien(string KhuVuc, string PhongTo, string keyword, int page, int pageSize)
         {
             var tukhoa = !string.IsNullOrEmpty(keyword) ? keyword : "%";
-
             var model = _pctdienService.PCTD_Get_PCTDien_AllPaging(KhuVuc, PhongTo, tukhoa, page, pageSize);
-
             return new OkObjectResult(model);
         }
 
@@ -108,7 +120,6 @@ namespace NiTiErp.Areas.Admin.Controllers
         public IActionResult GetNhanVienByCor(string corporationid)
         {
             var model = _hosonhanvienService.Get_HoSoNhanVien_ByCorId(corporationid);
-
             return new OkObjectResult(model);
         }
 
@@ -116,7 +127,6 @@ namespace NiTiErp.Areas.Admin.Controllers
         public IActionResult GetNhanVienByCorChucDanh(string corporationid, string codeChucDanhNhanVien)
         {
             var model = _hosonhanvienService.Get_HoSoNhanVien_ByCorIdChucDanh(corporationid, codeChucDanhNhanVien);
-
             return new OkObjectResult(model);
         }
 
@@ -124,7 +134,6 @@ namespace NiTiErp.Areas.Admin.Controllers
         public IActionResult GetNVByCorPhong(string corporationid, string phongbandanhmucid)
         {
             var model = _hosonhanvienService.Get_HoSoNhanVien_ByCorPhongId(corporationid, phongbandanhmucid);
-
             return new OkObjectResult(model);
         }
 
@@ -132,7 +141,6 @@ namespace NiTiErp.Areas.Admin.Controllers
         public IActionResult GetDanhMucId(int pctdanhmucid)
         {
             var model = _pctdanhmucService.PCTD_Get_PCTDanhMuc_ById(pctdanhmucid);
-
             return new OkObjectResult(model);
         }
 
@@ -140,7 +148,6 @@ namespace NiTiErp.Areas.Admin.Controllers
         public IActionResult ListDMCongTac(string codedanhmuccongtac, int page, int pageSize)
         {       
             var model = _pctdanhmucService.PCTD_Get_PCTDanhMuc_AllPaging(codedanhmuccongtac, page, pageSize);
-
             return new OkObjectResult(model);
         }
 
@@ -162,7 +169,6 @@ namespace NiTiErp.Areas.Admin.Controllers
         public IActionResult GetNVCongTac(int PCTNhanVienCongTacId)
         {
             var model = _pctnhanviencongtacService.PCTD_Get_PCTNhanVienCongTac_ById(PCTNhanVienCongTacId);
-
             return new OkObjectResult(model);
         }
 
@@ -184,7 +190,6 @@ namespace NiTiErp.Areas.Admin.Controllers
         public IActionResult ListDDCongTac(int PCTDienId)
         {
             var model = _pctdiadiemcongtacService.PCTD_Get_PCTDiaDiemCongTac_ByDienId(PCTDienId);
-
             return new OkObjectResult(model);
         }
 
@@ -192,7 +197,6 @@ namespace NiTiErp.Areas.Admin.Controllers
         public IActionResult GetDDCongTacId(int pctdiadiemcongtacid)
         {
             var model = _pctdiadiemcongtacService.PCTD_Get_PCTDiaDiemCongTac_ById(pctdiadiemcongtacid);
-
             return new OkObjectResult(model);
         }
 
@@ -200,7 +204,6 @@ namespace NiTiErp.Areas.Admin.Controllers
         public IActionResult GetDDCTIdHoanThanh(int PCTDienId)
         {
             var model = _pctdiadiemcongtacService.PCTD_Get_PCTDiaDiemCongTac_ByDienIdTenDDCTHoanThanh(PCTDienId);
-
             return new OkObjectResult(model);
         }
 
@@ -208,7 +211,6 @@ namespace NiTiErp.Areas.Admin.Controllers
         public IActionResult ListDDCTHinh(int ddctid)
         {
             var model = _pctddcthinhService.PCTD_Get_PCTDDCTHinh_ByDiaDiemCongTacId(ddctid);
-
             return new OkObjectResult(model);
         }
 
@@ -216,7 +218,6 @@ namespace NiTiErp.Areas.Admin.Controllers
         public IActionResult GetFileHinh(int ddcthinhId)
         {
             var model = _pctddcthinhService.PCTD_Get_PCTDDCTHinh_ById(ddcthinhId);
-
             return new OkObjectResult(model);
         }
 

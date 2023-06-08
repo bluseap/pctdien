@@ -40,10 +40,16 @@
 
         $('#btnSaveEditChoPhepLamViec').on('click', function () {
             var ispctdien = $('#hidInsertPCTDien').val(); // 1: insert; 2: update; 
+            const isnguoichihuytt = $('#hidisNGUOICHIHUYTT').val();
 
-            if (ispctdien == "2") {
-                updateChoPhepLamViec();
+            if (isnguoichihuytt == 'true') {
+                if (ispctdien == "2") {
+                    updateChoPhepLamViec();
+                }
             }
+            else {
+                tedu.notify('Phải là người có chức danh người chỉ huy trực tiếp.', 'error');
+            }            
         });
 
     }    

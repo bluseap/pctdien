@@ -26,13 +26,19 @@
         $('#btnSaveEditThayDoiNguoiCongTac').on('click', function () {
             var ispctdien = $('#hidInsertPCTDien').val(); // 1: insert; 2: update; 
             var isthaydoinguoilamviec = $('#hidInsertThayDoiNguoiCongTac').val(); // 1: insert; 2: update; 
+            const isnguoichihuytt = $('#hidisNGUOICHIHUYTT').val();
 
-            if (ispctdien == "2" && isthaydoinguoilamviec == '1') {
-                saveThayDoiNguoiLamViec();
+            if (isnguoichihuytt == 'true') {
+                if (ispctdien == "2" && isthaydoinguoilamviec == '1') {
+                    saveThayDoiNguoiLamViec();
+                }
+                else if (ispctdien == "2" && isthaydoinguoilamviec == '2') {
+                    updateThayDoiNguoiLamViec();
+                }
             }
-            else if (ispctdien == "2" && isthaydoinguoilamviec == '2') {
-                updateThayDoiNguoiLamViec();
-            }
+            else {
+                tedu.notify('Phải là người có chức danh người chỉ huy trực tiếp.', 'error');
+            }              
         });
 
         $('body').on('click', '.btn-addeditDSThayDoiNguoiCongTac', function (e) {
@@ -46,7 +52,13 @@
         $('body').on('click', '.btn-deleteDSThayDoiNguoiCongTac', function (e) {
             e.preventDefault();
             var pctnhanviencongtacid = $(this).data('id');
-            deletePCTNhanVienCongTac(pctnhanviencongtacid);
+            const isnguoichihuytt = $('#hidisNGUOICHIHUYTT').val();
+            if (isnguoichihuytt == 'true') {
+                deletePCTNhanVienCongTac(pctnhanviencongtacid);
+            }
+            else {
+                tedu.notify('Phải là người có chức danh người chỉ huy trực tiếp.', 'error');
+            } 
         });
 
     }

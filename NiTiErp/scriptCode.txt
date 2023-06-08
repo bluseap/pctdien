@@ -1,4 +1,6 @@
 ﻿
+create PROCEDURE [dbo].[PCTD_Get_PCTDien_AllTrangThaiTuDenNgay] 
+create PROCEDURE [dbo].[PCTD_Get_PCTDien_UpdateDaKhoaSo_ById] 
 create procedure [dbo].[PCTD_Get_PCTDienDiaDiemCongTac_ById] 
 create procedure [dbo].[PCTD_Get_PCTDienDiaDiemCongTac_ByCode] 
 create procedure [dbo].[PCTD_Get_PCTDienDiaDiemCongTac_ByDienId] 
@@ -19,6 +21,7 @@ create PROCEDURE [dbo].[PCTD_Delete_PCTChucDanhNhanVien]
 
 update procedure [dbo].[PCTD_Update_PCTDiaDiemCongTac]
 update procedure [dbo].[PCTD_Update_PCTDien]
+update procedure [dbo].[PCTD_Create_PCTDien]
 
 
 

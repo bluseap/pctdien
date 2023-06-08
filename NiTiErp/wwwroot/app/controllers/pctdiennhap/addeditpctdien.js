@@ -8,9 +8,13 @@
     var themnoidungcongtac = new themnoidungcongtacController();  
     var themdieukienatd = new themdieukienatdController();  
     var themtrangbiatbhld = new themtrangbiatbhldController();  
-    var themcacdonviqlvh = new themcacdonviqlvhController();  
+    var themcacdonviqlvh = new themcacdonviqlvhController();      
 
     var loaddatatable = new loaddatatableController();
+
+    this.loaEditPCTDienDaKhoaSo = function (pctdienId, PCTDienCode) {
+        loaEditPCTDienDaKhoaSo(pctdienId, PCTDienCode);
+    }
 
     this.loaEditPCTDien = function () {
         loaEditPCTDien();
@@ -109,6 +113,11 @@
         });
 
         KiemTraThoiGianKeHoachChange();
+
+        $("#btnDaKhoaSoPCT").on('click', function () {
+            //dsdakhoasopct.loadTableDsDaKhoaSoPCT();
+            $('#modal-add-edit-DsDaKhoaSoPCT').modal('show');
+        });
         
     }
 
@@ -433,12 +442,17 @@
         $("#txtPCTDienThuocCongTyDonVi").val('');
         //$("#txtPCTDiaDiemCongTac").val('');
         //$("#ddlPCTDienChonNoiDungCongTac")[0].selectedIndex = 0;
+
+        $('#table-contentPCTThemNhanVienCT').html('');
+        $('#table-contentPCTThemDDCT').html('');
+
         $("#txtPCTDienNoiDungCongTac").val('');
 
         $("#txtPCTDienThuocCongTyDonVi").importTags('');
         $("#txtPCTDienNoiDungCongTac").importTags('');
         $("#txtPCTDienDieuKienATD").importTags('');
         $("#txtPCTDienTrangBiATBHLDLamViec").importTags('');
+        $("#txtPCTDienCacDonViQLVHCoLienQuan").importTags('');
 
         let checkboxDropdown = document.getElementsByClassName("ul-checkbox");
         $.each(checkboxDropdown, function (indexCheckBox, valueCheckBox) {
@@ -1453,8 +1467,91 @@
                 });
                 $("#txtPCTDienNgayKetThucCongViec").val(tedu.getFormattedDate(ngaybatdaukh));
             }
+        });        
+    }
+
+    function loaEditPCTDienDaKhoaSo(pctdienId, pctdiencode) {
+        //var pctdienId = $('#hidPCTDienId').val();
+        $.ajax({
+            type: "GET",
+            url: "/Admin/pctdiennhap/GetIdDaKhoaSo",
+            data: {
+                PCTDienId: pctdienId,
+                PCTDienCode: pctdiencode
+            },
+            dataType: "json",
+
+            success: function (response) {
+                var pctdien = response.Result;
+               
+                //$('#hidPCTDienCode').val(pctdien.Code);
+
+                loadTableDSNhanVienDonViCT();
+                loadTablePCTDienDiaDiemCongTac();
+
+                var makhuvuc1 = pctdien.CorporationId;
+                $("#ddlPCTDienNhap1KhuVuc").val(makhuvuc1);
+                //$("#ddlPCTDienNhap1PhongBan").val(pctdien.PhongBanDanhMucId);
+                loadAddEditPhongBanTheoKhuVuc(makhuvuc1, pctdien.PhongBanDanhMucId);
+
+                $('#hidPCTDienNguoiLanhDaoCongViecId').val(pctdien.NguoiLanhDaoCongViecId);
+                $('#hidPCTDienNguoiChiHuyTrucTiepId').val(pctdien.NguoiChiHuyTrucTiepId);
+                $('#hidPCTDienNguoiGiamSatATDId').val(pctdien.NguoiGiamSatATDId);
+                $('#hidPCTDienNguoiChoPhepId').val(pctdien.NguoiChoPhepId);
+                $('#hidPCTDienTenNguoiCapPCTId').val(pctdien.TenNguoiCapPCTId);
+
+                $("#txtSoPhieuCongTac").val(pctdien.SoPhieuCongTac);
+
+                $("#txtNguoiLanhDaoCongViec").val(pctdien.TenNguoiLanhDaoCongViec);
+                $("#ddlNguoiLanhDaoCongViecBacATD").val(pctdien.BacATDNguoiLanhDaoCongViecId);
+                $("#txtNguoiChiHuyTrucTiep").val(pctdien.TenNguoiChiHuyTrucTiep);
+                $("#ddlNguoiChiHuyTrucTiepBacATD").val(pctdien.BacATDNguoiChiHuyTrucTiepId);
+
+                //$("#txtPCTDiaDiemCongTac").val(pctdien.DiaDiemCongTac);
+
+                $("#txtPCTDienGioBatDauCongViec").val(pctdien.GioBatDauKH);
+                $("#txtPCTDienPhutBatDauCongViec").val(pctdien.PhutBatDauKH);
+                $("#txtPCTDienNgayBatDauCongViec").val(pctdien.NgayBatDauKH !== '0001-01-01T00:00:00' ? tedu.getFormattedDate(pctdien.NgayBatDauKH) : '');
+                $("#txtPCTDienGioKetThucCongViec").val(pctdien.GioKetThucKH);
+                $("#txtPCTDienPhutKetThucCongViec").val(pctdien.PhutKetThucKH);
+                $("#txtPCTDienNgayKetThucCongViec").val(pctdien.NgayKetThucKH !== '0001-01-01T00:00:00' ? tedu.getFormattedDate(pctdien.NgayKetThucKH) : '');
+
+                let caccongtydonvi = pctdien.CacCongTyDonVi != null ? pctdien.CacCongTyDonVi : ''
+                let cacnoidungcongtac = pctdien.CacNoiDungCongTac != null ? pctdien.CacNoiDungCongTac : '';
+                let cacdieukienatd = pctdien.CacDieuKiemATLD != null ? pctdien.CacDieuKiemATLD : '';
+                let cactrangbiatbhldlamviec = pctdien.CacTrangBiATBHLDLamViec != null ? pctdien.CacTrangBiATBHLDLamViec : '';
+                let cacdonviqlvh = pctdien.CacDonViQLVHCoLienQuan != null ? pctdien.CacDonViQLVHCoLienQuan : '';
+
+                $("#txtPCTDienThuocCongTyDonVi").importTags(caccongtydonvi);
+                $("#txtPCTDienNoiDungCongTac").importTags(cacnoidungcongtac);
+                $("#txtPCTDienDieuKienATD").importTags(cacdieukienatd);
+                $("#txtPCTDienTrangBiATBHLDLamViec").importTags(cactrangbiatbhldlamviec);
+                $("#txtPCTDienCacDonViQLVHCoLienQuan").importTags(cacdonviqlvh);
+
+                loadEditCheckBoxCacNoiDungCongTac(cacnoidungcongtac);
+                loadEditCheckBoxCacDieuKienATD(cacdieukienatd);
+                loadEditCheckBoxCacTrangBiBHLDLV(cactrangbiatbhldlamviec);
+                loadEditCheckBoxCacDonViQLVH(cacdonviqlvh);
+
+                $("#txtPCTDienTongHangMucDaTrangCap").val(pctdien.TongHangMucDaTrangCap);
+                //$("#txtPCTDienCacDonViQLVHCoLienQuan").val(pctdien.CacDonViQLVHCoLienQuan);
+
+                $("#txtPCTDienNguoiGiamSatATD").val(pctdien.TenNguoiGiamSatATD);
+                $("#ddlPCTDienNguoiGiamSatATDBacATD").val(pctdien.BacATDNguoiGiamSatATD);
+                $("#txtPCTDienNguoiChoPhep").val(pctdien.TenNguoiChoPhep);
+                $("#ddlPCTDienNguoiChoPhepATDATD").val(pctdien.BacNguoiChoPhep);
+
+                $("#txtPCTDienNgayCapPCT").val(pctdien.NgayCapPCT !== '0001-01-01T00:00:00' ? tedu.getFormattedDate(pctdien.NgayCapPCT) : '');
+                $("#txtPCTDienTenNguoiCapPCT").val(pctdien.TenNguoiCapPCT);
+
+                //$('#modal-add-edit-EditPCTDienNhap').modal('show');
+                tedu.stopLoading();
+            },
+            error: function () {
+                tedu.notify('Có lỗi xảy ra', 'error');
+                tedu.stopLoading();
+            }
         });
-        
     }
 
 }

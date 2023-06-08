@@ -9,15 +9,16 @@
     <script src="~/lib/jQuery-EasyUI/jquery.easyui.min.js" asp-append-version="true"></script>
     <script src="~/lib/bootstrap-datepicker/dist/js/bootstrap-datepicker.js" asp-append-version="true"></script>
     <script src="~/lib/bootstrap-datepicker/dist/locales/bootstrap-datepicker.vi.min.js" charset="UTF-8" asp-append-version="true"></script>
-        
+
     <script src="~/app/shared/dropdown-checkboxes.js" asp-append-version="true"></script>
     <script src="~/admin-side/js/jquery.autocomplete.js" asp-append-version="true"></script>
-        
+
     <!-- jQuery Tags Input -->
     <script src="~/lib/gentelella/vendors/jquery.tagsinput/src/jquery.tagsinput.js" asp-append-version="true"></script>
-
+    dsdakhoasopct
     <script src="~/app/controllers/PCTDienNhap/loaddatatable.js" asp-append-version="true"></script>
 
+    <script src="~/app/controllers/PCTDienNhap/dsdakhoasopct.js" asp-append-version="true"></script>
     <script src="~/app/controllers/PCTDienNhap/themcacdonviqlvh.js" asp-append-version="true"></script>
     <script src="~/app/controllers/PCTDienNhap/themtrangbiatbhld.js" asp-append-version="true"></script>
     <script src="~/app/controllers/PCTDienNhap/themdieukienatd.js" asp-append-version="true"></script>
@@ -31,6 +32,7 @@
     <script src="~/app/controllers/PCTDienNhap/chopheplamviec.js" asp-append-version="true"></script>
     <script src="~/app/controllers/PCTDienNhap/thaydoinguoilamviec.js" asp-append-version="true"></script>
     <script src="~/app/controllers/PCTDienNhap/addeditpctdien.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/PCTDienNhap/dsdakhoasopct.js" asp-append-version="true"></script>
     <script src="~/app/controllers/PCTDienNhap/index.js" asp-append-version="true"></script>
     <script>
         var pctdiennhap = new pctdiennhapController();
@@ -96,7 +98,7 @@
                                     <label>Danh sách điều kiện</label>
                                     <select id="ddlPCTDBaoCaoDieuKien" name="ddlPCTDBaoCaoDieuKien" class="form-control"></select>
                                 </div>
-                            </div>                            
+                            </div>
                             <div class="col-md-4 col-sm-12 col-xs-12 ">
                                 <div class="input-group">
                                     <label>Chọn hết Nh.viên XN</label>
@@ -291,6 +293,7 @@
 <partial name="_DDCTAddHinh.cshtml" />
 <partial name="_DDCTHoanThanh.cshtml" />
 <partial name="_KiemTraThucHien.cshtml" />
+<partial name="_DsDaKhoaSoPCT.cshtml" />
 
 <partial name="_themnoidungcongtac.cshtml" />
 <partial name="_themdieukienatd.cshtml" />
