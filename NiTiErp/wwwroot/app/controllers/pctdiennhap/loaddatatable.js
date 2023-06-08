@@ -294,9 +294,7 @@
                     tedu.notify('Không thể lấy dữ liệu về.', 'error');
                 }
             });
-        }
-
-        
+        }        
 
     }
     function wrapPagingPCTDien(recordCount, callBack, changePageSize) {
