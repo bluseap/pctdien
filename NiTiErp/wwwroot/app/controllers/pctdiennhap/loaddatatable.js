@@ -120,6 +120,7 @@
     }
 
     function loadTablePCTDien(isPageChanged) {
+        
         var template = $('#table-PCTDien').html();
         var render = "";
 
@@ -140,7 +141,7 @@
         let tungaybaocao = tedu.getFormatDateYYMMDD($('#txtPCTDBaoCaoTuNgay').val());
         let denngaybaocao = tedu.getFormatDateYYMMDD($('#txtPCTDBaoCaoDenNgay').val());
 
-        if (trangthaipct === '0') {
+        if (trangthaipct === '0' && ckTheoNgay.checked == false) {
             $.ajax({
                 type: 'GET',
                 url: '/admin/pctdiennhap/ListPCTDien',
@@ -192,7 +193,7 @@
                 }
             });
         }
-        if (trangthaipct === '0' && ckTheoNgay.checked == true) {
+        else if (trangthaipct === '0' && ckTheoNgay.checked == true) {
             $.ajax({
                 type: 'GET',
                 url: '/admin/pctdiennhap/ListPCTByTrThaiTuDenNgay',

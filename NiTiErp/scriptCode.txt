@@ -25,7 +25,7 @@ update procedure [dbo].[PCTD_Create_PCTDien]
 
 
 
-create table PCTDienDiaDiemCongTac, PCTDienDiaDiemCongTacHis, PCTChucDanhNhanVien, PCTChucDanhNhanVienHis
+r create table PCTDienDiaDiemCongTac, PCTDienDiaDiemCongTacHis, PCTChucDanhNhanVien, PCTChucDanhNhanVienHis
 
 
 
