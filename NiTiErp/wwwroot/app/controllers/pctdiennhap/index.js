@@ -166,7 +166,7 @@
 
         //    $('#modal-add-edit-EditPCTDienHuyCongTac').modal('show');
         //    huycongtac.loadEditHuyCongTac();
-        //});
+        //});        
 
         $('body').on('click', '.btn-KetThucCongTac', function (e) {
             e.preventDefault();
@@ -766,7 +766,8 @@
                 $('#spanDaCapPCT').html(pctdtrangthai.DaCapPCT);
                 $('#spanXacNhanDaCapPCT').html(pctdtrangthai.XacNhanDaCapPCT);
                 $('#spanChoPhepLVPCT').html(pctdtrangthai.ChoPhepLV);
-                $('#spanHuyPCT').html(pctdtrangthai.HuyPCT);
+                //$('#spanHuyPCT').html(pctdtrangthai.HuyPCT);
+                $('#spanKhoaPhieuKhiSai').html(pctdtrangthai.KhoaKhiSaiPCT);
                 $('#spanKetThucPCT').html(pctdtrangthai.KetThucPCT);
                 
             },
@@ -798,10 +799,16 @@
             $('#hidValueBienLoadTable').val(4); // 4 : cho phep lam viec
             loaddatatable.loadTablePCTDien();
         });
-        $('body').on('click', '.btnHuyPCT', function (e) {
+        //$('body').on('click', '.btnHuyPCT', function (e) {
+        //    e.preventDefault();
+        //    $('#hidBienLoadTable').val(1); // 0 ko cho thuc hien ; 1 cho thuc hien load table
+        //    $('#hidValueBienLoadTable').val(20); // 20 : huy pct
+        //    loaddatatable.loadTablePCTDien();
+        //});
+        $('body').on('click', '.btnKhoaPhieuKhiSai', function (e) {
             e.preventDefault();
             $('#hidBienLoadTable').val(1); // 0 ko cho thuc hien ; 1 cho thuc hien load table
-            $('#hidValueBienLoadTable').val(20); // 20 : huy pct
+            $('#hidValueBienLoadTable').val(8); // 8 : khoa phieu khi nhap sai
             loaddatatable.loadTablePCTDien();
         });
         $('body').on('click', '.btnKetThucPCT', function (e) {
