@@ -51,7 +51,7 @@
             language: 'vi'
         });
 
-        formMainValidate();
+        //formMainValidate();
 
         loadTagsInput();        
 
@@ -118,6 +118,8 @@
             //dsdakhoasopct.loadTableDsDaKhoaSoPCT();
             $('#modal-add-edit-DsDaKhoaSoPCT').modal('show');
         });
+
+        formMainValidate();
         
     }
 
@@ -685,7 +687,7 @@
     }
 
     function isFormMainValidate() {
-        if ($('#frmMainEditPCTDienNhap1').valid() && $('#frmMainEditPCTDienNhap2').valid()) {
+        if ($('#frmMainEditPCTDienNhap1').valid() && $('#frmMainEditPCTDienNhap2').valid()) {        
             return true;
         }
         else {
@@ -694,12 +696,21 @@
     }
     function formMainValidate() {
         jQuery.validator.addMethod("isDanhMuc", function (value, element) {
-            if (value === "%" || value == "0")
+            if (value === "%")            
                 return false;
             else
                 return true;
         },
-            "Xin chọn danh mục.."
+            "Xin chọn danh mục..."
+        );
+
+        jQuery.validator.addMethod("isDanhMuc00", function (value, element) {
+            if (value === "0")
+                return false;
+            else
+                return true;
+        },
+            "Chọn danh mục..."
         );
 
         jQuery.validator.addMethod("isDateVietNam", function (value, element) {
@@ -714,10 +725,13 @@
             ignore: [],
             language: 'vi',
             rules: {
-                ddlPCTDienNhap1KhuVuc: { required: true, isDanhMuc: true },  
+                ddlPCTDienNhap1KhuVuc: {
+                    required: true,
+                    isDanhMuc: true
+                },  
                 ddlPCTDienNhap1PhongBan: { required: true, isDanhMuc: true },  
                 txtNguoiChiHuyTrucTiep: { required: true },
-                ddlNguoiChiHuyTrucTiepBacATD: { required: true, isDanhMuc: true },  
+                ddlNguoiChiHuyTrucTiepBacATD: { required: true, isDanhMuc00: true }                
             },
         });
 
@@ -746,8 +760,9 @@
                 txtPCTDienNguoiChoPhep: { required: true },
                 ddlPCTDienNguoiChiHuyTrucTiepBacATD: { required: true, isDanhMuc: true },
                 txtPCTDienNgayCapPCT: { required: true, isDateVietNam: true },
-                txtPCTDienTenNguoiCapPCT: { required: true }
+                txtPCTDienTenNguoiCapPCT: { required: true },
 
+                ddlPCTDienNguoiChoPhepATDATD: { required: true, isDanhMuc00: true }
                 //txtTenKhachHang: { required: true },
                 //txtNgaySinh: { required: true, isDateVietNam: true },
                 //ddlMaMDSD: { required: true, isDanhMuc: true },               
