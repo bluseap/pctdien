@@ -119,7 +119,7 @@
             $('#modal-add-edit-DsDaKhoaSoPCT').modal('show');
         });
 
-        formMainValidate();
+        formMainValidate();       
         
     }
 
@@ -393,7 +393,9 @@
                 }
             }); 
             //console.log(count);
-        });  
+        });
+        $('#txtPCTDienTrangBiATBHLDLamViec_tag').hide();
+        
         $('body').on('focusout', '#txtPCTDienCacDonViQLVHCoLienQuan_tagsinput .tag', function (e) {
             e.preventDefault();
             var tagspan = $(this).context['children']['0'].innerText.trim();
@@ -769,8 +771,8 @@
 
             },
         });
-    }    
-
+    }  
+      
     function AddToTableDSNhanVienDonViCT(id) {
         var pctdiencode = $('#hidPCTDienCode').val();
 
@@ -940,8 +942,18 @@
             var nguoichophepId = $('#hidPCTDienNguoiChoPhepId').val();
             var tennguoicappctId = $('#hidPCTDienTenNguoiCapPCTId').val();            
 
-            var tennguoilanhdaocongviec = $("#txtNguoiLanhDaoCongViec").val();
-            var nguoilanhdaocongviecbacatd = $("#ddlNguoiLanhDaoCongViecBacATD").val();
+            let tennguoilanhdaocongviec2 = $("#txtNguoiLanhDaoCongViec").val();
+            let nguoilanhdaocongviecbacatd2 = $("#ddlNguoiLanhDaoCongViecBacATD").val();
+            let tennguoilanhdaocongviec = '';
+            let nguoilanhdaocongviecbacatd = '';
+            if (tennguoilanhdaocongviec2 !== '' && nguoilanhdaocongviecbacatd2 !== '0') {
+                tennguoilanhdaocongviec = $("#txtNguoiLanhDaoCongViec").val();
+                nguoilanhdaocongviecbacatd = $("#ddlNguoiLanhDaoCongViecBacATD").val();
+            }
+            else {
+                tedu.notify('Chọn bậc an toàn điện người lãnh đạo công việc.', 'error')
+            }
+
             var tennguoichihuytructiep = $("#txtNguoiChiHuyTrucTiep").val();
             var nguoichihuytructiepbacatd = $("#ddlNguoiChiHuyTrucTiepBacATD").val();
 
@@ -963,8 +975,18 @@
             var tonghangmucdatrangcap = $("#txtPCTDienTongHangMucDaTrangCap").val();
             var cacdonviqlvhcolienquan = $("#txtPCTDienCacDonViQLVHCoLienQuan").val();
 
-            var tennguoigiamsatatd = $("#txtPCTDienNguoiGiamSatATD").val();
-            var nguoigiamsatatdbacatd = $("#ddlPCTDienNguoiGiamSatATDBacATD").val();
+            let tennguoigiamsatatd2 = $("#txtPCTDienNguoiGiamSatATD").val();
+            let nguoigiamsatatdbacatd2 = $("#ddlPCTDienNguoiGiamSatATDBacATD").val();
+            let tennguoigiamsatatd = '';
+            let nguoigiamsatatdbacatd = '';
+            if (tennguoigiamsatatd2 !== '' && nguoigiamsatatdbacatd2 !== '0') {
+                tennguoigiamsatatd = $("#txtPCTDienNguoiGiamSatATD").val();
+                nguoigiamsatatdbacatd = $("#ddlPCTDienNguoiGiamSatATDBacATD").val();
+            }
+            else {
+                tedu.notify('Chọn bậc an toàn điện người giám sát an toàn điện.', 'error')
+            }
+
             var nguoichophep = $("#txtPCTDienNguoiChoPhep").val();
             var nguoichiphepbacatd = $("#ddlPCTDienNguoiChoPhepATDATD").val();
 
@@ -1067,8 +1089,18 @@
             var nguoichophepId = $('#hidPCTDienNguoiChoPhepId').val();
             var tennguoicappctId = $('#hidPCTDienTenNguoiCapPCTId').val();
 
-            var tennguoilanhdaocongviec = $("#txtNguoiLanhDaoCongViec").val();
-            var nguoilanhdaocongviecbacatd = $("#ddlNguoiLanhDaoCongViecBacATD").val();
+            let tennguoilanhdaocongviec2 = $("#txtNguoiLanhDaoCongViec").val();
+            let nguoilanhdaocongviecbacatd2 = $("#ddlNguoiLanhDaoCongViecBacATD").val();
+            let tennguoilanhdaocongviec = '';
+            let nguoilanhdaocongviecbacatd = '';
+            if (tennguoilanhdaocongviec2 !== '' && nguoilanhdaocongviecbacatd2 !== '0') {
+                tennguoilanhdaocongviec = $("#txtNguoiLanhDaoCongViec").val();
+                nguoilanhdaocongviecbacatd = $("#ddlNguoiLanhDaoCongViecBacATD").val();
+            }
+            else {
+                tedu.notify('Chọn bậc an toàn điện người lãnh đạo công việc.', 'error')
+            }
+            
             var tennguoichihuytructiep = $("#txtNguoiChiHuyTrucTiep").val();
             var nguoichihuytructiepbacatd = $("#ddlNguoiChiHuyTrucTiepBacATD").val();
 
@@ -1090,8 +1122,18 @@
             var tonghangmucdatrangcap = $("#txtPCTDienTongHangMucDaTrangCap").val();
             var cacdonviqlvhcolienquan = $("#txtPCTDienCacDonViQLVHCoLienQuan").val();
 
-            var tennguoigiamsatatd = $("#txtPCTDienNguoiGiamSatATD").val();
-            var nguoigiamsatatdbacatd = $("#ddlPCTDienNguoiGiamSatATDBacATD").val();
+            let tennguoigiamsatatd2 = $("#txtPCTDienNguoiGiamSatATD").val();
+            let nguoigiamsatatdbacatd2 = $("#ddlPCTDienNguoiGiamSatATDBacATD").val();
+            let tennguoigiamsatatd = '';
+            let nguoigiamsatatdbacatd = '';
+            if (tennguoigiamsatatd2 !== '' && nguoigiamsatatdbacatd2 !== '0') {
+                tennguoigiamsatatd = $("#txtPCTDienNguoiGiamSatATD").val();
+                nguoigiamsatatdbacatd = $("#ddlPCTDienNguoiGiamSatATDBacATD").val();
+            }
+            else {
+                tedu.notify('Chọn bậc an toàn điện người giám sát an toàn điện.', 'error')
+            }
+
             var nguoichophep = $("#txtPCTDienNguoiChoPhep").val();
             var nguoichiphepbacatd = $("#ddlPCTDienNguoiChoPhepATDATD").val();
 
