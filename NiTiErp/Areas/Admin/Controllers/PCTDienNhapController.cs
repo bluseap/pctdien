@@ -539,25 +539,26 @@ namespace NiTiErp.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> UpdateThayDoiLV(PCTNhanVienCongTacViewModel pctnhanviencongtac)
         {
-            if (!ModelState.IsValid)
+            var result = _authorizationService.AuthorizeAsync(User, "PCTDIENNHAP", Operations.Update);
+            if (result.Result.Succeeded == false)
             {
-                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
-                return new BadRequestObjectResult(allErrors);
+                return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền thêm."));
             }
-            else
+
+            DateTime CreateDate = DateTime.Now;
+            string CreateBy = User.GetSpecificClaim("UserName");
+
+            if (pctnhanviencongtac.GioRutKhoi is null && pctnhanviencongtac.PhutRutKhoi is null)
             {
-                var result = _authorizationService.AuthorizeAsync(User, "PCTDIENNHAP", Operations.Update);
-                if (result.Result.Succeeded == false)
-                {
-                    return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền thêm."));
-                }
-
-                DateTime CreateDate = DateTime.Now;
-                string CreateBy = User.GetSpecificClaim("UserName");
-
-                var model = await _pctnhanviencongtacService.PCTD_Update_PCTNhanVienCongTac_ByIdThayDoi(pctnhanviencongtac, CreateDate, CreateBy);
-                return new OkObjectResult(model);
+                pctnhanviencongtac.NgayRutKhoi = DateTime.Now;
             }
+            else if (pctnhanviencongtac.GioRutKhoi != null && pctnhanviencongtac.PhutRutKhoi is null)
+            {
+                pctnhanviencongtac.PhutRutKhoi = "00";
+            }
+
+            var model = await _pctnhanviencongtacService.PCTD_Update_PCTNhanVienCongTac_ByIdThayDoi(pctnhanviencongtac, CreateDate, CreateBy);
+            return new OkObjectResult(model);
         }
 
         [HttpPost]

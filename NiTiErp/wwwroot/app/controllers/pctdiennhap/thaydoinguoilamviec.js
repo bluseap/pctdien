@@ -322,9 +322,9 @@
                 $("#txtThayDoiNguoiCongTacPhutDenLamViec").val(pctnhanviencongtac.PhutDenLamViec != null ? pctnhanviencongtac.PhutDenLamViec : tedu.getFormattedDateGio(datenow));
                 $("#txtThayDoiNguoiCongTacNgayDenLamViec").val(pctnhanviencongtac.NgayDenLamViec !== '0001-01-01T00:00:00' ? tedu.getFormattedDate(pctnhanviencongtac.NgayDenLamViec) : tedu.getFormattedDate(datenow));
 
-                $("#txtThayDoiNguoiCongTacGioRutKhoiLamViec").val(pctnhanviencongtac.GioRutKhoi != null ? pctnhanviencongtac.GioRutKhoi : tedu.getFormattedDateGio(datenow));
-                $("#txtThayDoiNguoiCongTacPhutRutKhoiLamViec").val(pctnhanviencongtac.PhutRutKhoi != null ? pctnhanviencongtac.PhutRutKhoi : tedu.getFormattedDateGio(datenow));
-                $("#txtThayDoiNguoiCongTacNgayRutKhoiLamViec").val(pctnhanviencongtac.NgayRutKhoi !== '0001-01-01T00:00:00' ? tedu.getFormattedDate(pctnhanviencongtac.NgayRutKhoi) : tedu.getFormattedDate(datenow));
+                $("#txtThayDoiNguoiCongTacGioRutKhoiLamViec").val(pctnhanviencongtac.GioRutKhoi != null ? pctnhanviencongtac.GioRutKhoi : '');
+                $("#txtThayDoiNguoiCongTacPhutRutKhoiLamViec").val(pctnhanviencongtac.PhutRutKhoi != null ? pctnhanviencongtac.PhutRutKhoi : '');
+                $("#txtThayDoiNguoiCongTacNgayRutKhoiLamViec").val(pctnhanviencongtac.NgayRutKhoi !== '0001-01-01T00:00:00' ? tedu.getFormattedDate(pctnhanviencongtac.NgayRutKhoi) : '');
                                 
                 tedu.stopLoading();
             },
