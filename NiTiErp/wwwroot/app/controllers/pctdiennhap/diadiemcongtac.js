@@ -32,17 +32,24 @@
             var isdiadiemcongtac = $('#hidInsertDiaDiemCongTac').val(); // 1: insert; 2: update; 
             const isnguoichihuytt = $('#hidisNGUOICHIHUYTT').val();
 
-            if (isnguoichihuytt == 'true') {
-                if (ispctdien == "2" && isdiadiemcongtac == '1') {
-                    saveDiaDiemCongTac();
+            let istestThoiGianLamViecKhiKetThuc = testThoiGianLamViecKhiKetThuc();
+
+            if (istestThoiGianLamViecKhiKetThuc === true) {
+                if (isnguoichihuytt == 'true') {
+                    if (ispctdien == "2" && isdiadiemcongtac == '1') {
+                        saveDiaDiemCongTac();
+                    }
+                    else if (ispctdien == "2" && isdiadiemcongtac == '2') {
+                        updateDiaDiemCongTac();
+                    }
                 }
-                else if (ispctdien == "2" && isdiadiemcongtac == '2') {
-                    updateDiaDiemCongTac();
+                else {
+                    tedu.notify('Phải là người có chức danh người chỉ huy trực tiếp.', 'error');
                 }
             }
             else {
-                tedu.notify('Phải là người có chức danh người chỉ huy trực tiếp.', 'error');
-            }            
+                tedu.notify('Kiểm tra lại thời gian làm việc.', 'error');
+            }
         });
 
         $('body').on('click', '.btn-addeditPCTDienDSCacDiaDiemCongTac', function (e) {
@@ -94,13 +101,20 @@
             var isdiadiemcongtachoanthanh = $('#hidInsertDDCTHoanThanh').val(); // 1: insert; 2: update; 
             const isnguoichihuytt = $('#hidisNGUOICHIHUYTT').val();
 
-            if (isnguoichihuytt == 'true') {
-                if (ispctdien == "2" && isdiadiemcongtac == '2' && isdiadiemcongtachoanthanh == '1') {
-                    updateDiaDiemCongTacHoanThanh();
+            let istestThoiGianLamViecKhiKetThuc = testThoiGianLamViecKhiKetThuc();
+
+            if (istestThoiGianLamViecKhiKetThuc === true) {
+                if (isnguoichihuytt == 'true') {
+                    if (ispctdien == "2" && isdiadiemcongtac == '2' && isdiadiemcongtachoanthanh == '1') {
+                        updateDiaDiemCongTacHoanThanh();
+                    }
+                }
+                else {
+                    tedu.notify('Phải là người có chức danh người chỉ huy trực tiếp.', 'error');
                 }
             }
             else {
-                tedu.notify('Phải là người có chức danh người chỉ huy trực tiếp.', 'error');
+                tedu.notify('Kiểm tra lại thời gian làm việc.', 'error');
             }
         });
 
@@ -135,8 +149,8 @@
         $("#txtDDLVPhutKetThucDiaDiemCongTacDiChuyen").val(tedu.getFormattedDatePhut(datenow));
         $("#txtDDLVNgayKetThucDiaDiemCongTacDiChuyen").val(tedu.getFormattedDate(datenow));
 
-        $("#txtDDLVNguoiChiHuyTrucTiep").val('');
-        $("#txtDDLVNguoiChoPhep").val('');
+        //$("#txtDDLVNguoiChiHuyTrucTiep").val('');
+        //$("#txtDDLVNguoiChoPhep").val('');
     }
 
     function loadTableDiaDiemCongTac() {
@@ -541,6 +555,20 @@
                 });
             }            
         });
+        $('#txtDDLVPhutBatDauDiaDiemCongTacDiChuyen').on('change', function () {
+            let giobatdau = parseInt($("#txtDDLVGioBatDauDiaDiemCongTacDiChuyen").val());
+            let phutbatdau = parseInt($("#txtDDLVPhutBatDauDiaDiemCongTacDiChuyen").val());
+
+            let gioketthuc = parseInt($("#txtDDLVGioKetThucDiaDiemCongTacDiChuyen").val());
+            let phutketthuc = parseInt($("#txtDDLVPhutKetThucDiaDiemCongTacDiChuyen").val());
+
+            if (giobatdau == gioketthuc && phutbatdau > phutketthuc) {
+                tedu.confirm('Phút bắt đầu nhỏ hơn hoặc bằng phút kết thúc. ', function () {
+                    tedu.notify('Kiểm tra phút lại.', 'error');
+                    $("#txtDDLVPhutBatDauDiaDiemCongTacDiChuyen").val(phutketthuc < 10 ? '0' + phutketthuc.toString() : phutketthuc.toString());
+                });
+            }            
+        });
         $('#txtDDLVNgayBatDauDiaDiemCongTacDiChuyen').on('change', function () {
             let ngaybatdaukh = tedu.getFormatDateYYMMDD($('#txtDDLVNgayBatDauDiaDiemCongTacDiChuyen').val());
             let ngayketthuckh = tedu.getFormatDateYYMMDD($('#txtDDLVNgayKetThucDiaDiemCongTacDiChuyen').val());
@@ -552,7 +580,6 @@
                 });
                 $("#txtDDLVNgayBatDauDiaDiemCongTacDiChuyen").val(tedu.getFormattedDate(ngayketthuckh));
             }
-
         });
 
         $('#txtDDLVGioKetThucDiaDiemCongTacDiChuyen').on('change', function () {
@@ -566,6 +593,20 @@
                 });
             }
         });
+        $('#txtDDLVPhutKetThucDiaDiemCongTacDiChuyen').on('change', function () {
+            let giobatdau = parseInt($("#txtDDLVGioBatDauDiaDiemCongTacDiChuyen").val());
+            let phutbatdau = parseInt($("#txtDDLVPhutBatDauDiaDiemCongTacDiChuyen").val());
+
+            let gioketthuc = parseInt($("#txtDDLVGioKetThucDiaDiemCongTacDiChuyen").val());
+            let phutketthuc = parseInt($("#txtDDLVPhutKetThucDiaDiemCongTacDiChuyen").val());
+
+            if (giobatdau == gioketthuc && phutbatdau > phutketthuc) {
+                tedu.confirm('Phút bắt đầu nhỏ hơn hoặc bằng phút kết thúc. ', function () {
+                    tedu.notify('Kiểm tra phút lại.', 'error');
+                    $("#txtDDLVPhutKetThucDiaDiemCongTacDiChuyen").val(phutketthuc < 10 ? '0' + phutketthuc.toString() : phutketthuc.toString());
+                });
+            }   
+        });
         $('#txtDDLVNgayKetThucDiaDiemCongTacDiChuyen').on('change', function () {
             let ngaybatdaukh = tedu.getFormatDateYYMMDD($('#txtDDLVNgayBatDauDiaDiemCongTacDiChuyen').val());
             let ngayketthuckh = tedu.getFormatDateYYMMDD($('#txtDDLVNgayKetThucDiaDiemCongTacDiChuyen').val());
@@ -578,7 +619,28 @@
                 $("#txtDDLVNgayKetThucDiaDiemCongTacDiChuyen").val(tedu.getFormattedDate(ngaybatdaukh));
             }
         });
+    }
 
+    function testThoiGianLamViecKhiKetThuc() {        
+        let giobatdau = parseInt($("#txtDDLVGioBatDauDiaDiemCongTacDiChuyen").val());
+        let phutbatdau = parseInt($("#txtDDLVPhutBatDauDiaDiemCongTacDiChuyen").val());
+        let gioketthuc = parseInt($("#txtDDLVGioKetThucDiaDiemCongTacDiChuyen").val());
+        let phutketthuc = parseInt($("#txtDDLVPhutKetThucDiaDiemCongTacDiChuyen").val());
+        let ngaybatdaukh = tedu.getFormatDateYYMMDD($('#txtDDLVNgayBatDauDiaDiemCongTacDiChuyen').val());
+        let ngayketthuckh = tedu.getFormatDateYYMMDD($('#txtDDLVNgayKetThucDiaDiemCongTacDiChuyen').val());
+
+        if (ngaybatdaukh !== ngayketthuckh) {            
+            return false;
+        }
+        else if (giobatdau > gioketthuc) {            
+            return false;
+        }
+        else if (giobatdau == gioketthuc && phutbatdau > phutketthuc) {            
+            return false;
+        }
+        else {
+            return true;
+        }
     }
 
     function loadNguoiChiHuyChoPhep() {
