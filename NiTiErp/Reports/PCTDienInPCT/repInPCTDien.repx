@@ -1097,7 +1097,7 @@
         <Item96 Ref="649" ControlType="XRLabel" Name="label17" Multiline="true" Text="1.4 Địa điểm  công tác:" TextAlignment="TopJustify" SizeF="136.41272,16.1973629" LocationFloat="35.00005,27.6854153" Font="Times New Roman, 10pt" Padding="2,2,0,0,100">
           <StylePriority Ref="650" UseFont="false" UseTextAlignment="false" />
         </Item96>
-        <Item97 Ref="651" ControlType="XRLabel" Name="label16" Multiline="true" Text="Thuộc (công ty, đon vị:...):" TextAlignment="TopJustify" SizeF="177.5312,17.6854324" LocationFloat="34.99999,10" Font="Times New Roman, 10pt" Padding="2,2,0,0,100">
+        <Item97 Ref="651" ControlType="XRLabel" Name="label16" Multiline="true" Text="Thuộc (công ty, đơn vị:...):" TextAlignment="TopJustify" SizeF="177.5312,17.6854324" LocationFloat="34.99999,10" Font="Times New Roman, 10pt" Padding="2,2,0,0,100">
           <StylePriority Ref="652" UseFont="false" UseTextAlignment="false" />
         </Item97>
       </Controls>
