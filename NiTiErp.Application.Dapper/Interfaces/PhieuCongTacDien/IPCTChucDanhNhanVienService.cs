@@ -14,6 +14,8 @@ namespace NiTiErp.Application.Dapper.Interfaces.PhieuCongTacDien
 
         Task<List<PCTChucDanhNhanVienViewModel>> PCTD_Get_PCTChucDanhNhanVien_ByHoSoNhanVienId(Guid HoSoNhanVienId);
 
+        Task<List<PCTChucDanhNhanVienViewModel>> PCTD_Get_PCTChucDanhNhanVien_ByCorCodeChucDanh(string corporationid, string codechucdanh);
+
         Task<bool> PCTD_Create_PCTChucDanhNhanVien(PCTChucDanhNhanVienViewModel pctchucdanhnhanvien, DateTime createDate, string createBy);
 
         Task<bool> PCTD_Delete_PCTChucDanhNhanVien(int ChucDanhNhanVienId, DateTime updateDate, string updateBy);

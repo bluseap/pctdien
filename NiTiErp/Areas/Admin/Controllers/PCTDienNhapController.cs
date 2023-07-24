@@ -35,6 +35,7 @@ namespace NiTiErp.Areas.Admin.Controllers
         private readonly IPCTDiaDiemCongTacService _pctdiadiemcongtacService;
         private readonly IPCTDDCTHinhService _pctddcthinhService;
         private readonly IPCTDienDiaDiemCongTacService _pctdiendiadiemcongtacService;
+        private readonly IPCTChucDanhNhanVienService _pctchucdanhnhanvienService;
 
         public PCTDienNhapController(IHostingEnvironment hostingEnvironment,
             NiTiErp.Application.Interfaces.IUserService userService,
@@ -43,7 +44,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             IPCTDienService pctdienService, IBacAnToanDienService bacantoandienService, IPCTDanhMucService pctdanhmucService,
             IHoSoNhanVienService hosonhanvienService, IPCTNhanVienCongTacService pctnhanviencongtacService,
             IPCTDiaDiemCongTacService pctdiadiemcongtacService, IPCTDDCTHinhService pctddcthinhService,
-            IPCTDienDiaDiemCongTacService pctdiendiadiemcongtacService
+            IPCTDienDiaDiemCongTacService pctdiendiadiemcongtacService, IPCTChucDanhNhanVienService pctchucdanhnhanvienService
             )
         {
             _hostingEnvironment = hostingEnvironment;
@@ -58,6 +59,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             _pctdiadiemcongtacService = pctdiadiemcongtacService;
             _pctddcthinhService = pctddcthinhService;
             _pctdiendiadiemcongtacService = pctdiendiadiemcongtacService;
+            _pctchucdanhnhanvienService = pctchucdanhnhanvienService;
         }
 
         public IActionResult Index()
@@ -90,6 +92,16 @@ namespace NiTiErp.Areas.Admin.Controllers
         {
             string ChucDanhNhanVien = "0";
             var model = _pctdienService.PCTD_Get_PCTDien_AllTrangThaiTuDenNgay(KhuVuc, PhongTo, TrangThai, ChucDanhNhanVien,
+                TuNgayBaoCao, DenNgayBaoCao, page, pageSize);
+            return new OkObjectResult(model);
+        }
+
+        [HttpGet]
+        public IActionResult ListPCTByTenChucDanhTuDenNgay(string KhuVuc, string ChucDanh, int ChucDanhNhanVienId,
+            DateTime TuNgayBaoCao, DateTime DenNgayBaoCao, int page, int pageSize)
+        {
+            string ChucDanhNhanVien = "0";
+            var model = _pctdienService.PCTD_Get_PCTDien_TenChucDanhTuDenNgay(KhuVuc, ChucDanh, ChucDanhNhanVienId,
                 TuNgayBaoCao, DenNgayBaoCao, page, pageSize);
             return new OkObjectResult(model);
         }
@@ -232,6 +244,13 @@ namespace NiTiErp.Areas.Admin.Controllers
         public IActionResult ListDDCTdienId(int pctdienid)
         {
             var model = _pctdiendiadiemcongtacService.PCTD_Get_PCTDienDiaDiemCongTac_ByDienId(pctdienid);
+            return new OkObjectResult(model);
+        }
+
+        [HttpGet]
+        public IActionResult ListTenNVTheoChucDanh(string corporationId, string tenchucdanh)
+        {            
+            var model = _pctchucdanhnhanvienService.PCTD_Get_PCTChucDanhNhanVien_ByCorCodeChucDanh(corporationId, tenchucdanh);
             return new OkObjectResult(model);
         }
 
@@ -824,6 +843,7 @@ namespace NiTiErp.Areas.Admin.Controllers
             HttpContext.Session.SetString("TenNguoiChiHuyTrucTiep", pctdien.Result.TenNguoiChiHuyTrucTiep != null ? pctdien.Result.TenNguoiChiHuyTrucTiep : "");
             HttpContext.Session.SetString("BacATDNguoiChiHuyTrucTiepId", pctdien.Result.BacATDNguoiChiHuyTrucTiepId != null ? pctdien.Result.BacATDNguoiChiHuyTrucTiepId.ToString() : "");
             HttpContext.Session.SetString("CacCongTyDonVi", pctdien.Result.CacCongTyDonVi != null ? pctdien.Result.CacCongTyDonVi : "");
+            
             HttpContext.Session.SetString("DiaDiemCongTac", pctdien.Result.DiaDiemCongTac != null ? pctdien.Result.DiaDiemCongTac : "");
             HttpContext.Session.SetString("CacNoiDungCongTac", pctdien.Result.CacNoiDungCongTac != null ? pctdien.Result.CacNoiDungCongTac : "");
 

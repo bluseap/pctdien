@@ -312,6 +312,13 @@ namespace NiTiErp.Reports.PCTDienInPCT {
             this.tableCell72 = reportInitializer.GetControl<DevExpress.XtraReports.UI.XRTableCell>("tableCell72");
             this.tableCell73 = reportInitializer.GetControl<DevExpress.XtraReports.UI.XRTableCell>("tableCell73");
             this.tableCell74 = reportInitializer.GetControl<DevExpress.XtraReports.UI.XRTableCell>("tableCell74");
+            this.tableRow13 = reportInitializer.GetControl<DevExpress.XtraReports.UI.XRTableRow>("tableRow13");
+            this.tableCell75 = reportInitializer.GetControl<DevExpress.XtraReports.UI.XRTableCell>("tableCell75");
+            this.tableCell77 = reportInitializer.GetControl<DevExpress.XtraReports.UI.XRTableCell>("tableCell77");
+            this.tableCell78 = reportInitializer.GetControl<DevExpress.XtraReports.UI.XRTableCell>("tableCell78");
+            this.tableCell79 = reportInitializer.GetControl<DevExpress.XtraReports.UI.XRTableCell>("tableCell79");
+            this.tableCell80 = reportInitializer.GetControl<DevExpress.XtraReports.UI.XRTableCell>("tableCell80");
+            this.tableCell76 = reportInitializer.GetControl<DevExpress.XtraReports.UI.XRTableCell>("tableCell76");
 
             // Parameters
             this.prTenXiNghiep = reportInitializer.GetParameter("prTenXiNghiep");
@@ -704,5 +711,12 @@ namespace NiTiErp.Reports.PCTDienInPCT {
         private DevExpress.XtraReports.Parameters.Parameter ChucVuNguoiKiemTraATLDTaiHienTruong;
         private DevExpress.XtraReports.Parameters.Parameter TenDaiDienQuanLyVanHanh;
         private DevExpress.XtraReports.Parameters.Parameter qrPCTDienId;
+        private DevExpress.XtraReports.UI.XRTableRow tableRow13;
+        private DevExpress.XtraReports.UI.XRTableCell tableCell75;
+        private DevExpress.XtraReports.UI.XRTableCell tableCell77;
+        private DevExpress.XtraReports.UI.XRTableCell tableCell78;
+        private DevExpress.XtraReports.UI.XRTableCell tableCell79;
+        private DevExpress.XtraReports.UI.XRTableCell tableCell80;
+        private DevExpress.XtraReports.UI.XRTableCell tableCell76;
     }
 }

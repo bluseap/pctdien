@@ -10,6 +10,10 @@ namespace NiTiErp.Application.Dapper.ViewModels.PhieuCongTacDien
 
         public Guid HoSoNhanVienId { get; set; }
 
+
+        public string TenNhanVien { get; set; }
+
+
         public Guid Code { get; set; }
 
         public string CodeChucDanh { get; set; }

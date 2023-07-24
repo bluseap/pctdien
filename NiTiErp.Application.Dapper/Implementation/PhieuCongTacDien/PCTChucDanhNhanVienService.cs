@@ -67,6 +67,29 @@ namespace NiTiErp.Application.Dapper.Implementation.PhieuCongTacDien
             }
         }
 
+        public async Task<List<PCTChucDanhNhanVienViewModel>> PCTD_Get_PCTChucDanhNhanVien_ByCorCodeChucDanh(string corporationid, string codechucdanh)
+        {
+            using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            {
+                await sqlConnection.OpenAsync();
+                var dynamicParameters = new DynamicParameters();
+
+                dynamicParameters.Add("@CorporationId", corporationid);
+                dynamicParameters.Add("@CodeChucdanh", codechucdanh);
+
+                try
+                {
+                    var query = await sqlConnection.QueryAsync<PCTChucDanhNhanVienViewModel>(
+                        "PCTD_Get_PCTChucDanhNhanVien_ByCorCodeChucDanh", dynamicParameters, commandType: CommandType.StoredProcedure);
+                    return query.AsList();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
         public async Task<bool> PCTD_Create_PCTChucDanhNhanVien(PCTChucDanhNhanVienViewModel pctchucdanhnhanvien, DateTime createDate, string createBy)
         {
             using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))

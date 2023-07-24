@@ -253,14 +253,31 @@
 
             //$('#modal-add-edit-EditKiemTraThucHien').modal('show');
             kiemtrathuchien.loadEditKiemTraThucHien();
-        });        
+        }); 
+
+        $('#ddlChucDanhNhanVien').on('change', function () {
+            let corporationId = $('#ddlKhuVuc').val();
+            let chucdanhnhanvien = $('#ddlChucDanhNhanVien').val();
+            loadTenNhanVienTheoChucDanh(corporationId, chucdanhnhanvien);
+        });
+
+        $('#ddlTenNhanVienTheoChucDanh').on('change', function () {
+            let corporationId = $('#ddlKhuVuc').val();
+            let chucdanhnhanvien = $('#ddlChucDanhNhanVien').val();
+            let tenchucdanhtheonhanvien = $('#ddlTenNhanVienTheoChucDanh').val();
+            loaddatatable.loadTablePCTDienTheoTenChucDanhNhanVien(corporationId, chucdanhnhanvien, tenchucdanhtheonhanvien);
+        });
 
     }
 
     function loadData() {
         $('#divbtnDaKhoaSoPCT').hide();    
 
-        loadDataDanhSachTheo();
+        loadDataDanhSachTheo();    
+        loadDataTenChucDanh();
+
+        let tennhanvientheochucdanh = "<option value='0' >-- Lựa chọn --</option>";
+        $('#ddlTenNhanVienTheoChucDanh').html(tennhanvientheochucdanh);
     }
 
     function loadDataDanhSachTheo() {
@@ -270,11 +287,21 @@
         render += "<option value='6' >-- D.sách Kết thúc công tác --</option>";
         render += "<option value='8' >-- D.sách Khóa phiếu công tác --</option>";
         //render += "<option value='20' >-- D.sách Hủy PCT --</option>";
-        render += "<option value='PCTXN' >-- D.sách Phiếu công tác theo Xí nghiệp --</option>";
-        render += "<option value='PCTTO' >-- D.sách Phiếu công tác theo phòng, tổ --</option>";
-        render += "<option value='PCTCT' >-- D.sách Phiếu công tác All --</option>";
+        //render += "<option value='PCTXN' >-- D.sách Phiếu công tác theo Xí nghiệp --</option>";
+        //render += "<option value='PCTTO' >-- D.sách Phiếu công tác theo phòng, tổ --</option>";
+        //render += "<option value='PCTCT' >-- D.sách Phiếu công tác All --</option>";
 
         $('#ddlPCTDBaoCaoDieuKien').html(render);
+    }
+
+    function loadDataTenChucDanh() {
+        let tenchucdanh = "<option value='0' >-- Lựa chọn --</option>";
+        tenchucdanh += "<option value='NGUOICAPPHIEU' >Người cấp phiếu</option>";
+        tenchucdanh += "<option value='NGUOICHIHUYTT' >Người chỉ huy trực tiếp</option>";
+        tenchucdanh += "<option value='NGUOICHOPHEP' >Người cho phép</option>";
+        tenchucdanh += "<option value='NGUOIKTATLD' >Người kiểm tra ATLĐ</option>";
+        tenchucdanh += "<option value='NGUOILANHDAOCV' >Người lãnh đạo công việc</option>";
+        $('#ddlChucDanhNhanVien').html(tenchucdanh);
     }
 
     function clearData() {
@@ -286,6 +313,9 @@
         $('#txtPCTDBaoCaoDenNgay').prop('disabled', true);
         var ckTheoNgay = document.getElementById('ckPCTDBaoCaoChonTheoNgay');
         ckTheoNgay.checked = false;
+
+        $("#ddlChucDanhNhanVien")[0].selectedIndex = 0;
+        $("#ddlTenNhanVienTheoChucDanh")[0].selectedIndex = 0;
     }
 
     function loadKhuVuc() {
@@ -817,6 +847,32 @@
             $('#hidBienLoadTable').val(1); // 0 ko cho thuc hien ; 1 cho thuc hien load table
             $('#hidValueBienLoadTable').val(6); // 6 : ket thuc pct
             loaddatatable.loadTablePCTDien();
+        });
+    }
+
+    function loadTenNhanVienTheoChucDanh(corporationid, chucdanhnhanvien) {
+        $.ajax({
+            type: 'GET',
+            url: '/admin/pctdiennhap/ListTenNVTheoChucDanh',
+            data: {
+                corporationId: corporationid,
+                tenchucdanh: chucdanhnhanvien
+            },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                var render = "<option value='0' >-- Lựa chọn --</option>";
+                $.each(response.Result, function (i, item) {
+                    render += "<option value='" + item.Id + "'>" + item.TenNhanVien + "</option>";
+                });
+                $('#ddlTenNhanVienTheoChucDanh').html(render);                
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không có danh mục Tên nhân viên theo chức danh.', 'error');
+            }
         });
     }
 

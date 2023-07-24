@@ -3,6 +3,10 @@
     //var userCorporationId = $("#hidUserCorporationId").val();
     //var userName = $("#hidUserName").val();    
 
+    this.loadTablePCTDienTheoTenChucDanhNhanVien = function (corporationId, chucdanhnhanvien, tenchucdanhtheonhanvien) {
+        loadTablePCTDienTheoTenChucDanhNhanVien(corporationId, chucdanhnhanvien, tenchucdanhtheonhanvien);
+    }
+
     this.loadCodeDanhMucDonViQLVH = function (code) {
         loadCodeDanhMucDonViQLVH(code);
     }
@@ -321,6 +325,69 @@
                 }
             }
         });
-    }    
+    }
+
+    function loadTablePCTDienTheoTenChucDanhNhanVien(corporationId, chucdanhnhanvien, tenchucdanhtheonhanvien) {
+        var template = $('#table-PCTDien').html();
+        var render = "";       
+
+        //let ckTheoNgay = document.getElementById('ckPCTDBaoCaoChonTheoNgay');
+        //let tungaybaocao = tedu.getFormatDateYYMMDD($('#txtPCTDBaoCaoTuNgay').val());
+        //let denngaybaocao = tedu.getFormatDateYYMMDD($('#txtPCTDBaoCaoDenNgay').val());
+        //if (ckTheoNgay.checked == true) {        }
+
+        $.ajax({
+            type: 'GET',
+            url: '/admin/pctdiennhap/ListPCTByTenChucDanhTuDenNgay',
+            data: {
+                KhuVuc: corporationId,
+                ChucDanh: chucdanhnhanvien,
+                ChucDanhNhanVienId: tenchucdanhtheonhanvien,
+
+                TuNgayBaoCao: tungaybaocao,
+                DenNgayBaoCao: denngaybaocao,
+
+                page: tedu.configs.pageIndex,
+                pageSize: tedu.configs.pageSize
+            },
+            dataType: 'json',
+            success: function (response) {
+                if (response.Result.Results.length === 0) {
+                    render = "<tr><th><a>Không có dữ liệu</a></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>";
+                }
+                else {
+                    $.each(response.Result.Results, function (i, item) {
+                        render += Mustache.render(template, {
+                            Id: item.Id,
+
+                            DiaDiemCongTac: item.DiaDiemCongTac,
+                            CacNoiDungCongTac: item.CacNoiDungCongTac,
+                            TuNgayDenNgay: item.TuNgayDenNgay,
+
+                            TrangThaiPCT: tedu.getPhieuCongTacDien(item.TrangThaiPCT)
+                        });
+                    });
+                }
+
+                $('#lbPCTDienTotalRecords').text(response.Result.RowCount);
+
+                if (render !== '') {
+                    $('#tblContentPCTDien').html(render);
+                }
+
+                if (response.Result.RowCount !== 0) {
+                    wrapPagingPCTDien(response.Result.RowCount, function () {
+                        loadTablePCTDien();
+                    },
+                        isPageChanged);
+                }
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không thể lấy dữ liệu về.', 'error');
+            }
+        }); 
+        
+    }
 
 }
