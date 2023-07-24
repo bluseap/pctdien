@@ -126,7 +126,7 @@ namespace NiTiErp.Application.Dapper.Implementation.PhieuCongTacDien
 
                     var pagedResult = new PagedResult<PCTDienViewModel>()
                     {
-                        Results = result.ToList(),
+                        Results = result.ToList(), 
                         CurrentPage = page,
                         RowCount = totalRow,
                         PageSize = pageSize
