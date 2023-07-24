@@ -344,8 +344,8 @@
                 ChucDanh: chucdanhnhanvien,
                 ChucDanhNhanVienId: tenchucdanhtheonhanvien,
 
-                TuNgayBaoCao: tungaybaocao,
-                DenNgayBaoCao: denngaybaocao,
+                //TuNgayBaoCao: tungaybaocao,
+                //DenNgayBaoCao: denngaybaocao,
 
                 page: tedu.configs.pageIndex,
                 pageSize: tedu.configs.pageSize

@@ -100,9 +100,11 @@ namespace NiTiErp.Areas.Admin.Controllers
         public IActionResult ListPCTByTenChucDanhTuDenNgay(string KhuVuc, string ChucDanh, int ChucDanhNhanVienId,
             DateTime TuNgayBaoCao, DateTime DenNgayBaoCao, int page, int pageSize)
         {
-            string ChucDanhNhanVien = "0";
+            var tungay = DateTime.Now;
+            var denngay = DateTime.Now;
+
             var model = _pctdienService.PCTD_Get_PCTDien_TenChucDanhTuDenNgay(KhuVuc, ChucDanh, ChucDanhNhanVienId,
-                TuNgayBaoCao, DenNgayBaoCao, page, pageSize);
+                tungay, denngay, page, pageSize);
             return new OkObjectResult(model);
         }
 
