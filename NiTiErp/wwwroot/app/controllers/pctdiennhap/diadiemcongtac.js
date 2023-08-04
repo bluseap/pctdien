@@ -668,7 +668,7 @@
                 $('#txtDDLVNguoiChoPhep').val(pctdien.TenNguoiChoPhep);
                 
                 tedu.stopLoading();
-            },
+            }, 
             error: function () {
                 tedu.notify('Có lỗi xảy ra', 'error');
                 tedu.stopLoading();
