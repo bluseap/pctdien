@@ -658,11 +658,13 @@
                 var pctdien = response.Result;              
 
                 $('#hidPCTDienCode').val(pctdien.Code);                    
-               
+               //hidDDLVNguoiChiHuyTrucTiepId    hidDDLVNguoiChoPhepId   txtDDLVNguoiChiHuyTrucTiep
                 $('#hidPCTDienNguoiChiHuyTrucTiepId').val(pctdien.NguoiChiHuyTrucTiepId);
+                $('#hidDDLVNguoiChiHuyTrucTiepId').val(pctdien.NguoiChiHuyTrucTiepId);
                 $('#txtDDLVNguoiChiHuyTrucTiep').val(pctdien.TenNguoiChiHuyTrucTiep);
                
                 $('#hidPCTDienNguoiChoPhepId').val(pctdien.NguoiChoPhepId);
+                $('#hidDDLVNguoiChoPhepId').val(pctdien.NguoiChoPhepId);
                 $('#txtDDLVNguoiChoPhep').val(pctdien.TenNguoiChoPhep);
                 
                 tedu.stopLoading();

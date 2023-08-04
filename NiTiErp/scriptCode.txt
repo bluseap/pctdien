@@ -1,13 +1,13 @@
 ﻿
 
-update PROCEDURE [dbo].[PCTD_Delete_PCTNhanVienCongTac]
-update PROCEDURE [dbo].[PCTD_Get_PCTNhanVienCongTac_ByThayDoiNguoiDienId]
-update PROCEDURE [dbo].[PCTD_Delete_PCTDiaDiemCongTac]
-update PROCEDURE [dbo].[PCTD_Get_PCTDien_ById]
+r update PROCEDURE [dbo].[PCTD_Delete_PCTNhanVienCongTac]
+r update PROCEDURE [dbo].[PCTD_Get_PCTNhanVienCongTac_ByThayDoiNguoiDienId]
+r update PROCEDURE [dbo].[PCTD_Delete_PCTDiaDiemCongTac]
+r update PROCEDURE [dbo].[PCTD_Get_PCTDien_ById]
 
 
-create procedure [dbo].[PCTD_Get_PCTChucDanhNhanVien_ByCorCodeChucDanh]
-create procedure [dbo].[PCTD_Get_PCTDien_TenChucDanhTuDenNgay] 
+r create procedure [dbo].[PCTD_Get_PCTChucDanhNhanVien_ByCorCodeChucDanh]
+r create procedure [dbo].[PCTD_Get_PCTDien_TenChucDanhTuDenNgay] 
 
 
 
