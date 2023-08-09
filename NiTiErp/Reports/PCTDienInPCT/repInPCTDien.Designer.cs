@@ -163,6 +163,7 @@ namespace NiTiErp.Reports.PCTDienInPCT {
             this.tableRow23 = reportInitializer.GetControl<DevExpress.XtraReports.UI.XRTableRow>("tableRow23");
             this.tableRow24 = reportInitializer.GetControl<DevExpress.XtraReports.UI.XRTableRow>("tableRow24");
             this.tableRow25 = reportInitializer.GetControl<DevExpress.XtraReports.UI.XRTableRow>("tableRow25");
+            this.tableRow13 = reportInitializer.GetControl<DevExpress.XtraReports.UI.XRTableRow>("tableRow13");
             this.tableCell82 = reportInitializer.GetControl<DevExpress.XtraReports.UI.XRTableCell>("tableCell82");
             this.tableCell83 = reportInitializer.GetControl<DevExpress.XtraReports.UI.XRTableCell>("tableCell83");
             this.tableCell85 = reportInitializer.GetControl<DevExpress.XtraReports.UI.XRTableCell>("tableCell85");
@@ -234,6 +235,12 @@ namespace NiTiErp.Reports.PCTDienInPCT {
             this.tableCell150 = reportInitializer.GetControl<DevExpress.XtraReports.UI.XRTableCell>("tableCell150");
             this.tableCell151 = reportInitializer.GetControl<DevExpress.XtraReports.UI.XRTableCell>("tableCell151");
             this.tableCell152 = reportInitializer.GetControl<DevExpress.XtraReports.UI.XRTableCell>("tableCell152");
+            this.tableCell75 = reportInitializer.GetControl<DevExpress.XtraReports.UI.XRTableCell>("tableCell75");
+            this.tableCell76 = reportInitializer.GetControl<DevExpress.XtraReports.UI.XRTableCell>("tableCell76");
+            this.tableCell77 = reportInitializer.GetControl<DevExpress.XtraReports.UI.XRTableCell>("tableCell77");
+            this.tableCell78 = reportInitializer.GetControl<DevExpress.XtraReports.UI.XRTableCell>("tableCell78");
+            this.tableCell79 = reportInitializer.GetControl<DevExpress.XtraReports.UI.XRTableCell>("tableCell79");
+            this.tableCell80 = reportInitializer.GetControl<DevExpress.XtraReports.UI.XRTableCell>("tableCell80");
             this.tableRow3 = reportInitializer.GetControl<DevExpress.XtraReports.UI.XRTableRow>("tableRow3");
             this.tableRow4 = reportInitializer.GetControl<DevExpress.XtraReports.UI.XRTableRow>("tableRow4");
             this.tableRow5 = reportInitializer.GetControl<DevExpress.XtraReports.UI.XRTableRow>("tableRow5");
@@ -312,13 +319,6 @@ namespace NiTiErp.Reports.PCTDienInPCT {
             this.tableCell72 = reportInitializer.GetControl<DevExpress.XtraReports.UI.XRTableCell>("tableCell72");
             this.tableCell73 = reportInitializer.GetControl<DevExpress.XtraReports.UI.XRTableCell>("tableCell73");
             this.tableCell74 = reportInitializer.GetControl<DevExpress.XtraReports.UI.XRTableCell>("tableCell74");
-            this.tableRow13 = reportInitializer.GetControl<DevExpress.XtraReports.UI.XRTableRow>("tableRow13");
-            this.tableCell75 = reportInitializer.GetControl<DevExpress.XtraReports.UI.XRTableCell>("tableCell75");
-            this.tableCell77 = reportInitializer.GetControl<DevExpress.XtraReports.UI.XRTableCell>("tableCell77");
-            this.tableCell78 = reportInitializer.GetControl<DevExpress.XtraReports.UI.XRTableCell>("tableCell78");
-            this.tableCell79 = reportInitializer.GetControl<DevExpress.XtraReports.UI.XRTableCell>("tableCell79");
-            this.tableCell80 = reportInitializer.GetControl<DevExpress.XtraReports.UI.XRTableCell>("tableCell80");
-            this.tableCell76 = reportInitializer.GetControl<DevExpress.XtraReports.UI.XRTableCell>("tableCell76");
 
             // Parameters
             this.prTenXiNghiep = reportInitializer.GetParameter("prTenXiNghiep");
@@ -517,6 +517,7 @@ namespace NiTiErp.Reports.PCTDienInPCT {
         private DevExpress.XtraReports.UI.XRTableRow tableRow23;
         private DevExpress.XtraReports.UI.XRTableRow tableRow24;
         private DevExpress.XtraReports.UI.XRTableRow tableRow25;
+        private DevExpress.XtraReports.UI.XRTableRow tableRow13;
         private DevExpress.XtraReports.UI.XRTableCell tableCell82;
         private DevExpress.XtraReports.UI.XRTableCell tableCell83;
         private DevExpress.XtraReports.UI.XRTableCell tableCell85;
@@ -588,6 +589,12 @@ namespace NiTiErp.Reports.PCTDienInPCT {
         private DevExpress.XtraReports.UI.XRTableCell tableCell150;
         private DevExpress.XtraReports.UI.XRTableCell tableCell151;
         private DevExpress.XtraReports.UI.XRTableCell tableCell152;
+        private DevExpress.XtraReports.UI.XRTableCell tableCell75;
+        private DevExpress.XtraReports.UI.XRTableCell tableCell76;
+        private DevExpress.XtraReports.UI.XRTableCell tableCell77;
+        private DevExpress.XtraReports.UI.XRTableCell tableCell78;
+        private DevExpress.XtraReports.UI.XRTableCell tableCell79;
+        private DevExpress.XtraReports.UI.XRTableCell tableCell80;
         private DevExpress.XtraReports.UI.XRTableRow tableRow3;
         private DevExpress.XtraReports.UI.XRTableRow tableRow4;
         private DevExpress.XtraReports.UI.XRTableRow tableRow5;
@@ -711,12 +718,5 @@ namespace NiTiErp.Reports.PCTDienInPCT {
         private DevExpress.XtraReports.Parameters.Parameter ChucVuNguoiKiemTraATLDTaiHienTruong;
         private DevExpress.XtraReports.Parameters.Parameter TenDaiDienQuanLyVanHanh;
         private DevExpress.XtraReports.Parameters.Parameter qrPCTDienId;
-        private DevExpress.XtraReports.UI.XRTableRow tableRow13;
-        private DevExpress.XtraReports.UI.XRTableCell tableCell75;
-        private DevExpress.XtraReports.UI.XRTableCell tableCell77;
-        private DevExpress.XtraReports.UI.XRTableCell tableCell78;
-        private DevExpress.XtraReports.UI.XRTableCell tableCell79;
-        private DevExpress.XtraReports.UI.XRTableCell tableCell80;
-        private DevExpress.XtraReports.UI.XRTableCell tableCell76;
     }
 }

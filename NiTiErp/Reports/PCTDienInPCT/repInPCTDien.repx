@@ -135,7 +135,7 @@
         <Item8 Ref="89" ControlType="XRLabel" Name="label50" Multiline="true" Text="Số: " TextAlignment="TopJustify" SizeF="28.1589355,17.7784348" LocationFloat="518.497437,10.0000067" Font="Times New Roman, 8pt" Padding="2,2,0,0,100">
           <StylePriority Ref="90" UseFont="false" UseTextAlignment="false" />
         </Item8>
-        <Item9 Ref="91" ControlType="XRLabel" Name="label49" Multiline="true" Text="label49" TextAlignment="TopCenter" SizeF="276.053284,23.0000019" LocationFloat="4.70733643,30.5128422" Font="Times New Roman, 12pt, style=Bold" Padding="2,2,0,0,100">
+        <Item9 Ref="91" ControlType="XRLabel" Name="label49" Multiline="true" Text="label49" TextAlignment="TopCenter" SizeF="300.787933,23.0000019" LocationFloat="4.70733643,30.5128422" Font="Times New Roman, 12pt, style=Bold" Padding="2,2,0,0,100">
           <ExpressionBindings>
             <Item1 Ref="92" EventName="BeforePrint" PropertyName="Text" Expression="?prTenXiNghiep" />
           </ExpressionBindings>
@@ -190,7 +190,7 @@
         <Item18 Ref="120" ControlType="XRLabel" Name="label6" Multiline="true" Text="1.2 Người chỉ huy trực tiếp:" TextAlignment="TopJustify" SizeF="173.31514,17.1274033" LocationFloat="34.999897,95.53149" Font="Times New Roman, 10pt" Padding="2,2,0,0,100">
           <StylePriority Ref="121" UseFont="false" UseTextAlignment="false" />
         </Item18>
-        <Item19 Ref="122" ControlType="XRLabel" Name="label3" Multiline="true" Text="CÔNG TY CP ĐIỆN NƯỚC AG" TextAlignment="TopCenter" SizeF="276.053284,20.5128174" LocationFloat="4.70733643,10.0000067" Font="Times New Roman, 12pt" Padding="2,2,0,0,100">
+        <Item19 Ref="122" ControlType="XRLabel" Name="label3" Multiline="true" Text="CÔNG TY CP ĐIỆN NƯỚC AG" TextAlignment="TopCenter" SizeF="300.787933,20.5128174" LocationFloat="4.70733643,10.0000067" Font="Times New Roman, 12pt" Padding="2,2,0,0,100">
           <StylePriority Ref="123" UseFont="false" UseTextAlignment="false" />
         </Item19>
         <Item20 Ref="124" ControlType="XRLabel" Name="label4" Multiline="true" Text="PHIẾU CÔNG TÁC" TextAlignment="TopCenter" SizeF="182.995087,34.4016838" LocationFloat="306.146,10.0000067" Font="Times New Roman, 12pt, style=Bold" Padding="2,2,0,0,100">

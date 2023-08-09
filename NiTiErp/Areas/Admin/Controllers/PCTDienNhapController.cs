@@ -816,7 +816,7 @@ namespace NiTiErp.Areas.Admin.Controllers
 
             var nhanviencongtac1 = _pctnhanviencongtacService.PCTD_Get_PCTNhanVienCongTac_ByPCTDienIdInPCT(PCTDienId);
 
-            string tenxinghiep = "XÍ NGHIỆP ĐIỆN NƯỚC " + pctdien.Result.TenKhuVuc != null ? pctdien.Result.TenKhuVuc.ToUpper() : "";
+            string tenxinghiep = pctdien.Result.TenKhuVuc != null ? "XÍ NGHIỆP ĐN " + pctdien.Result.TenKhuVuc.ToUpper() : "";
 
             string username = User.GetSpecificClaim("UserName");
 
