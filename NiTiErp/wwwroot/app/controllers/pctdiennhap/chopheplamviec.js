@@ -41,15 +41,23 @@
         $('#btnSaveEditChoPhepLamViec').on('click', function () {
             var ispctdien = $('#hidInsertPCTDien').val(); // 1: insert; 2: update; 
             const isnguoichihuytt = $('#hidisNGUOICHIHUYTT').val();
+            // 2 : Da cap - 3 : Xac nhan da cap PCT - 4 : cho phep lam viec - 8 : khoa - 6 : ket thuc
+            const trangthaipct = $('#hidPCTDienTrangThaiPCT').val();
 
-            if (isnguoichihuytt == 'true') {
+            if (trangthaipct == '2') {
+                tedu.confirm('Đề nghị in phiếu công tác mới lưu cho phép làm việc !', function () {
+
+                });
+            }
+            else if (isnguoichihuytt == 'true') {
                 if (ispctdien == "2") {
                     updateChoPhepLamViec();
                 }
             }
             else {
                 tedu.notify('Phải là người có chức danh người chỉ huy trực tiếp.', 'error');
-            }            
+            }  
+            
         });
 
     }    
@@ -141,7 +149,8 @@
 
                 ClearData();
 
-                $('#hidPCTDienCode').val(pctdien.Code);                
+                $('#hidPCTDienCode').val(pctdien.Code);     
+                $('#hidPCTDienTrangThaiPCT').val(pctdien.TrangThaiPCT);
 
                 $('#txtThietBiDuongDayDaCatDien').val(pctdien.ThietBiDuongDayDaCatDien);
                 $('#txtDaTiepDat').val(pctdien.DaTiepDatTai);

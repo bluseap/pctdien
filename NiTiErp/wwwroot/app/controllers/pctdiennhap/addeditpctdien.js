@@ -1244,6 +1244,8 @@
                 addeditClearData();
 
                 $('#hidPCTDienCode').val(pctdien.Code);
+                $('#hidPCTDienTrangThaiPCT').val(pctdien.TrangThaiPCT);
+
 
                 loadTableDSNhanVienDonViCT();
 
