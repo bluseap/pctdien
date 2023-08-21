@@ -816,6 +816,8 @@ namespace NiTiErp.Areas.Admin.Controllers
 
             var nhanviencongtac1 = _pctnhanviencongtacService.PCTD_Get_PCTNhanVienCongTac_ByPCTDienIdInPCT(PCTDienId);
 
+            var diadiemcongtac = _pctdiadiemcongtacService.PCTD_Get_PCTDiaDiemCongTac_ByDienId(PCTDienId);
+
             string tenxinghiep = pctdien.Result.TenKhuVuc != null ? "XÍ NGHIỆP ĐN " + pctdien.Result.TenKhuVuc.ToUpper() : "";
 
             string username = User.GetSpecificClaim("UserName");
@@ -926,6 +928,92 @@ namespace NiTiErp.Areas.Admin.Controllers
             HttpContext.Session.SetString("tennguoicapphieu", pctdien.Result.TenNguoiLanhDaoCongViec != null ? pctdien.Result.TenNguoiLanhDaoCongViec : "");
             HttpContext.Session.SetString("TenNguoiKiemTraATLDTaiHienTruong", pctdien.Result.TenNguoiKiemTraATLDTaiHienTruong != null ? pctdien.Result.TenNguoiKiemTraATLDTaiHienTruong : "");
             HttpContext.Session.SetString("ChucVuNguoiKiemTraATLDTaiHienTruong", pctdien.Result.ChucVuNguoiKiemTraATLDTaiHienTruong != null ? pctdien.Result.ChucVuNguoiKiemTraATLDTaiHienTruong : "");
+
+            var countdiadiemcongtac = diadiemcongtac.Result.Count();
+            if (countdiadiemcongtac > 0)
+            {                
+                
+                for (int i = 0; i < countdiadiemcongtac; i++)
+                {
+                    var thoigianbatdau = diadiemcongtac.Result[i].GioBatDau + ":" + diadiemcongtac.Result[i].PhutBatDau + " " +
+                        diadiemcongtac.Result[i].NgayBatDau.ToString("dd'-'MM");
+                    var thoigianketthuc = diadiemcongtac.Result[i].GioKetThuc + ":" + diadiemcongtac.Result[i].PhutKetThuc + " " +
+                        diadiemcongtac.Result[i].NgayKetThuc.ToString("dd'-'MM");
+
+                    HttpContext.Session.SetString("tendiadiemcongtac" + (i + 1).ToString(), diadiemcongtac.Result[i].TenDiaDiemCongTac);
+                    HttpContext.Session.SetString("thoigianbatdau" + (i + 1).ToString(), thoigianbatdau);
+                    HttpContext.Session.SetString("thoigianketthuc" + (i + 1).ToString(), thoigianketthuc);
+                    HttpContext.Session.SetString("tennguoichihuytructiep" + (i + 1).ToString(), diadiemcongtac.Result[i].TenNguoiChiHuyTrucTiep);
+                    HttpContext.Session.SetString("tennguoichophep" + (i + 1).ToString(), diadiemcongtac.Result[i].TenNguoiChoPhep);
+                }
+
+                //for (int i = 0; i < 11 - countdiadiemcongtac; i++)
+                //{
+                //    HttpContext.Session.SetString("tendiadiemcongtac" + (i + (countdiadiemcongtac + 1)).ToString(), "");
+                //}
+            }
+            else
+            {
+                HttpContext.Session.SetString("tendiadiemcongtac1", "");
+                HttpContext.Session.SetString("tendiadiemcongtac2", "");
+                HttpContext.Session.SetString("tendiadiemcongtac3", "");
+                HttpContext.Session.SetString("tendiadiemcongtac4", "");
+                HttpContext.Session.SetString("tendiadiemcongtac5", "");
+                HttpContext.Session.SetString("tendiadiemcongtac6", "");
+                HttpContext.Session.SetString("tendiadiemcongtac7", "");
+                HttpContext.Session.SetString("tendiadiemcongtac8", "");
+                HttpContext.Session.SetString("tendiadiemcongtac9", "");
+                HttpContext.Session.SetString("tendiadiemcongtac10", "");
+                HttpContext.Session.SetString("tendiadiemcongtac11", "");
+
+                HttpContext.Session.SetString("thoigianbatdau1", "");
+                HttpContext.Session.SetString("thoigianbatdau2", "");
+                HttpContext.Session.SetString("thoigianbatdau3", "");
+                HttpContext.Session.SetString("thoigianbatdau4", "");
+                HttpContext.Session.SetString("thoigianbatdau5", "");
+                HttpContext.Session.SetString("thoigianbatdau6", "");
+                HttpContext.Session.SetString("thoigianbatdau7", "");
+                HttpContext.Session.SetString("thoigianbatdau8", "");
+                HttpContext.Session.SetString("thoigianbatdau9", "");
+                HttpContext.Session.SetString("thoigianbatdau10", "");
+                HttpContext.Session.SetString("thoigianbatdau11", "");
+
+                HttpContext.Session.SetString("thoigianketthuc1", "");
+                HttpContext.Session.SetString("thoigianketthuc2", "");
+                HttpContext.Session.SetString("thoigianketthuc3", "");
+                HttpContext.Session.SetString("thoigianketthuc4", "");
+                HttpContext.Session.SetString("thoigianketthuc5", "");
+                HttpContext.Session.SetString("thoigianketthuc6", "");
+                HttpContext.Session.SetString("thoigianketthuc7", "");
+                HttpContext.Session.SetString("thoigianketthuc8", "");
+                HttpContext.Session.SetString("thoigianketthuc9", "");
+                HttpContext.Session.SetString("thoigianketthuc10", "");
+                HttpContext.Session.SetString("thoigianketthuc11", "");
+
+                HttpContext.Session.SetString("tennguoichihuytructiep1", "");
+                HttpContext.Session.SetString("tennguoichihuytructiep2", "");
+                HttpContext.Session.SetString("tennguoichihuytructiep3", "");
+                HttpContext.Session.SetString("tennguoichihuytructiep4", "");
+                HttpContext.Session.SetString("tennguoichihuytructiep5", "");
+                HttpContext.Session.SetString("tennguoichihuytructiep6", "");
+                HttpContext.Session.SetString("tennguoichihuytructiep7", "");
+                HttpContext.Session.SetString("tennguoichihuytructiep8", "");
+                HttpContext.Session.SetString("tennguoichihuytructiep9", "");
+                HttpContext.Session.SetString("tennguoichihuytructiep10", "");
+                HttpContext.Session.SetString("tennguoichihuytructiep11", "");
+
+                HttpContext.Session.SetString("tennguoichophep1", "");
+                HttpContext.Session.SetString("tennguoichophep2", "");
+                HttpContext.Session.SetString("tennguoichophep3", "");
+                HttpContext.Session.SetString("tennguoichophep4", "");
+                HttpContext.Session.SetString("tennguoichophep5", "");
+                HttpContext.Session.SetString("tennguoichophep6", "");
+                HttpContext.Session.SetString("tennguoichophep7", "");
+                HttpContext.Session.SetString("tennguoichophep8", "");
+                HttpContext.Session.SetString("tennguoichophep9", "");
+                HttpContext.Session.SetString("tennguoichophep10", "");
+                HttpContext.Session.SetString("tennguoichophep11", "");
+            }
 
             return new OkObjectResult(pctdien);
         }
