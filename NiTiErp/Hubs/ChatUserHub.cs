@@ -15,8 +15,6 @@ namespace NiTiErp.Hubs
         static string UserImage = "/admin-side/images/img.jpg";
 
 
-
-
         public Task SendMessageToUser2(string connectionId, string message)
         {
             return Clients.Client(connectionId).SendAsync("ClientSendMessageToUser2", message);

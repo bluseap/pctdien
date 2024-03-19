@@ -60,12 +60,13 @@ namespace NiTiErp.WebApi.Controllers
                 var claims = new[]
                 {
                     new Claim("Email", user.Email),
-                    new Claim(NiTiAPI.Utilities.Constants.SystemConstants.UserClaim.Id, user.Id.ToString()),
-                    new Claim(ClaimTypes.Name, user.UserName),
-                    new Claim(NiTiAPI.Utilities.Constants.SystemConstants.UserClaim.FullName, user.FullName??string.Empty),
-                    new Claim(NiTiAPI.Utilities.Constants.SystemConstants.UserClaim.Roles, string.Join(";", roles)),
-                    new Claim(NiTiAPI.Utilities.Constants.SystemConstants.UserClaim.Permissions, JsonConvert.SerializeObject(permissions)),
-                    new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+                    //new Claim(NiTiAPI.Utilities.Constants.SystemConstants.UserClaim.Id, user.Id.ToString()),
+                    //new Claim(ClaimTypes.Name, user.UserName),
+                    //new Claim(NiTiAPI.Utilities.Constants.SystemConstants.UserClaim.FullName, user.FullName??string.Empty),
+                    //new Claim(NiTiAPI.Utilities.Constants.SystemConstants.UserClaim.Roles, string.Join(";", roles)),
+                    //new Claim(NiTiAPI.Utilities.Constants.SystemConstants.UserClaim.Permissions, JsonConvert.SerializeObject(permissions)),
+                    //new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+                
                 };
                 var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Tokens:Key"]));
                 var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
