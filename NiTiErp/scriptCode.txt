@@ -1,5 +1,18 @@
 ﻿
 
+create table KTDCaiTaoSuaChua ,	 KTDCongTacAnToan ,  KTDDuyTuBaoDuong  ,  KTDNangCongSuatCayMoi  ,  KTDPhatTrienKhachHang  ,
+	KTDPhatTrienLuoiDien  ,   KTDThayTheVatTu   ,  KTDXuLyKhac
+
+
+
+create procedure [dbo].[KTD_KTDThayTheVatTu_Get_ByCorKy]
+
+
+
+
+
+
+
 r update PROCEDURE [dbo].[PCTD_Delete_PCTNhanVienCongTac]
 r update PROCEDURE [dbo].[PCTD_Get_PCTNhanVienCongTac_ByThayDoiNguoiDienId]
 r update PROCEDURE [dbo].[PCTD_Delete_PCTDiaDiemCongTac]
@@ -8,18 +21,6 @@ r update PROCEDURE [dbo].[PCTD_Get_PCTDien_ById]
 
 r create procedure [dbo].[PCTD_Get_PCTChucDanhNhanVien_ByCorCodeChucDanh]
 r create procedure [dbo].[PCTD_Get_PCTDien_TenChucDanhTuDenNgay] 
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 create PROCEDURE [dbo].[PCTD_Get_PCTDien_AllTrangThaiTuDenNgay] 

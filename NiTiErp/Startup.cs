@@ -18,10 +18,12 @@ using Newtonsoft.Json.Serialization;
 using NiTiErp.Application.Dapper.Implementation;
 using NiTiErp.Application.Dapper.Implementation.DangKyDien;
 using NiTiErp.Application.Dapper.Implementation.DangKyNuoc;
+using NiTiErp.Application.Dapper.Implementation.KyThuatDien;
 using NiTiErp.Application.Dapper.Implementation.PhieuCongTacDien;
 using NiTiErp.Application.Dapper.Interfaces;
 using NiTiErp.Application.Dapper.Interfaces.DangKyDien;
 using NiTiErp.Application.Dapper.Interfaces.DangKyNuoc;
+using NiTiErp.Application.Dapper.Interfaces.KyThuatDien;
 using NiTiErp.Application.Dapper.Interfaces.PhieuCongTacDien;
 using NiTiErp.Application.Implementation;
 using NiTiErp.Application.Interfaces;
@@ -442,6 +444,8 @@ namespace NiTiErp
             services.AddTransient<IPCTDDCTHinhService, PCTDDCTHinhService>();
             services.AddTransient<IPCTDienDiaDiemCongTacService, PCTDienDiaDiemCongTacService>();
             services.AddTransient<IPCTChucDanhNhanVienService, PCTChucDanhNhanVienService>();
+
+            services.AddTransient<IKTDThayTheVatTuService, KTDThayTheVatTuService>();
 
         }
 

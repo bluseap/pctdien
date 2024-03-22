@@ -1,0 +1,198 @@
+﻿@{ ViewData["Title"] = "Index"; }
+@section Styles{
+    <link href="~/lib/jQuery-EasyUI/themes/bootstrap/easyui.css" rel="stylesheet" />
+    <link href="~/lib/jQuery-EasyUI/themes/icon.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap-datepicker/dist/css/bootstrap-datepicker.css" rel="stylesheet" />
+}
+@section Scripts{
+    <script src="~/lib/jQuery-EasyUI/jquery.easyui.min.js" asp-append-version="true"></script>
+    <script src="~/lib/bootstrap-datepicker/dist/js/bootstrap-datepicker.js" asp-append-version="true"></script>
+    <script src="~/lib/bootstrap-datepicker/dist/locales/bootstrap-datepicker.vi.min.js" charset="UTF-8" asp-append-version="true"></script>
+
+    <script src="~/app/controllers/ktdcongtacquanlyktd/loaddatatable.js" asp-append-version="true"></script>
+
+    <script src="~/app/controllers/ktdcongtacquanlyktd/addeditquanly.js" asp-append-version="true"></script>
+    <script src="~/app/controllers/ktdcongtacquanlyktd/index.js" asp-append-version="true"></script>
+    <script>
+        var ktdcongtacquanly = new ktdcongtacquanlyController();
+        ktdcongtacquanly.initialize();
+    </script>
+}
+<input type="hidden" id="hidKTDQuanLyCongTacKTDId" value="" />
+<input type="hidden" id="hidInsertKTDQuanLyCongTacKTD" value="" />
+
+<input type="hidden" id="hidThayTheVatTuId" value="" />
+<input type="hidden" id="hidPhatTrienLuoiDienId" value="" />
+
+<div class="">
+    <div class="page-title">
+        <div class="title_left">
+            <small>
+                <a class="btn btn-link ">
+                    Công Tác Quản Lý Điện
+                </a>
+                >>
+                <a class="btn btn-link ">
+                    Báo cáo Công tác quản lý kỹ thuật điện
+                </a>
+            </small>
+        </div>
+        @*<div class="title_right">
+                <div class="col-md-3 col-sm-3 col-xs-12 form-group pull-right top_search">
+                    <button class="btn btn-round btn-warning" id="btn-create" type="button">Nhập báo cáo Quản lý</button>
+                </div>
+            </div>*@
+    </div>
+    <div class="row">
+        <div class="x_panel">
+            <div class="x_content">
+                <div class="form-group">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <span class="pull-left">
+                            <button class="btn btn-success" id="btnTraCuuNangCao" type="submit">Tra cứu nâng cao !</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="x_content">
+                <div class="form-group">
+                    <div class="col-md-2 col-sm-12 col-xs-12">
+                        <label for="lbddlXiNghiep">
+                            Xí Nghiệp <a style="color:red">(*)</a>
+                        </label>
+                        <select id="ddlXiNghiep" name="ddlXiNghiep" class="form-control"></select>
+                    </div>
+                    <div class="col-md-2 col-sm-12 col-xs-12">
+                        <label for="lbNam">
+                            Năm <a style="color:red">(*)</a>
+                        </label>
+                        <input type="number" id="txtNam" name="txtNam" class="form-control" placeholder="Năm">
+                    </div>
+                    <div class="col-md-2 col-sm-12 col-xs-12">
+                        <label for="lbThang">
+                            Tháng <a style="color:red">(*)</a>
+                        </label>
+                        <input type="number" id="txtThang" name="txtThang" class="form-control" placeholder="Tháng">
+                    </div>
+                    <div class="col-md-2 col-sm-12 col-xs-12">
+                        <label for="lbTraCuuBaoCao">
+                            .
+                        </label>
+                        <span class="input-group-btn">
+                            <button class="btn btn-success" id="btnTraCuuBaoCao" type="submit">Tra cứu !</button>
+                        </span>
+                    </div>
+                    <div class="col-md-2 col-sm-12 col-xs-12">
+                        <label for="lbDanhMucKhoiTaoBaoCao">
+                            Dm khởi tạo báo cáo <a style="color:red">(*)</a>
+                        </label>
+                        <select id="ddlDanhMucKhoiTaoBaoCao" name="ddlDanhMucKhoiTaoBaoCao" class="form-control"></select>
+                    </div>
+                    <div class="col-md-2 col-sm-12 col-xs-12">
+                        <label for="lbKhoiTaoDanhMucBaoCao">
+                            .
+                        </label>
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary" id="btnKhoiTaoDanhMucBaoCao" type="submit">Khởi tạo BC !</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="x_panel">
+            <div class="form-group">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <label style="font-size:15px">I. Công tác quản lý vận hành lưới điện trong hạ thế</label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <label style="font-size:15px">1. Thay thế vật tư, thiết bị</label>
+                </div>
+            </div>
+            <div class="x-content">
+                <table id="tblKTDThayTheVatTu" class="table" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="tblContentKTDThayTheVatTu"></tbody>
+                </table>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <label style="font-size:15px">2. Công tác phát triển lưới điện</label>
+                </div>
+            </div>
+            <div class="x-content">
+                <table id="tblKTDPhatTrienLuoiDien" class="table" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="tblContentKTDPhatTrienLuoiDien"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script id="table-KTDThayTheVatTu" type="x-tmpl-mustache">
+        <tr>
+            <td>{{TenVatTu}}</td>
+            <td>{{ThietBiKhacThayTheVatTu}}</td>
+
+            <td>{{{SoLuongVatTu}}}</td>
+            <td>{{TenLuyTuyen}}</td>
+            <td>{{{SoLuongLuyTuyen}}}</td>
+            <td>{{TenChiTiet}}</td>
+            <td>{{NoiDungChiTiet}}</td>
+            <th scope="row">
+                    <a class="btn-link btn-addeditKTDThayTheVatTu" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Id">
+                        <i class="fa fa-pencil"></i>
+                    </a>
+                </th>
+            </tr>
+    </script>
+    <script id="table-KTDPhatTrienLuoiDien" type="x-tmpl-mustache">
+        <tr>
+            <td>{{TenVatTu}}</td>
+            <td>{{TenChieuDai}}</td>
+            <td>{{{SoLuongChieuDai}}}</td>
+            <td>{{TenLuyTuyenChieuDai}}</td>
+            <td>{{{SoLuongLuyTuyenChieuDai}}}</td>
+            <th scope="row">
+                    <a class="btn-link btn-addeditKTDPhatTrienLuoiDien" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Id">
+                        <i class="fa fa-pencil"></i>
+                    </a>
+                </th>
+            </tr>
+    </script>
+</div>
+
+<partial name="_AddEditModel.cshtml" />
+<partial name="_ThayTheVatTu.cshtml" />
+<partial name="_PhatTrienLuoiDien.cshtml" />
+<partial name="_NangCongSuat.cshtml" />
+<partial name="_PhatTrienKhachHang.cshtml" />
+<partial name="_XuLyKhac.cshtml" />
+<partial name="_DuyTuBaoDuong.cshtml" />
+<partial name="_CaiTaoSuaChua.cshtml" />
+<partial name="_CongTacAnToan.cshtml" />
+
+
+
