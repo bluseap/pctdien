@@ -46,7 +46,8 @@
             e.preventDefault();
             const phattrienluoidienid = $(this).data('id');
             $('#hidPhatTrienLuoiDienId').val(phattrienluoidienid);
-            $('#modal-add-edit-EditKTDThayTheVatTu').modal('show');
+            loaddatatable.editPhatTrienLuoiDien();
+            $('#modal-add-edit-EditKTDPhatTrienLuoiDien').modal('show');
         });
 
         //$('#txtKTDBaoCaoCongTacQuanLyKTDTuNgay, #txtKTDBaoCaoCongTacQuanLyKTDDenNgay ').datepicker({

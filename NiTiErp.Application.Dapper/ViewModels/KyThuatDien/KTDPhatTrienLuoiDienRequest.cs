@@ -14,6 +14,11 @@ namespace NiTiErp.Application.Dapper.ViewModels.KyThuatDien
         public string TenChieuDai { get; set; }
         public string SoLuongChieuDai { get; set; }
         public string TenLuyTuyenChieuDai { get; set; }
-        public string SoLuongLuyTuyenChieuDai { get; set; }        
+        public string SoLuongLuyTuyenChieuDai { get; set; }
+
+        public string TenPhatTrienLuoiDien { get; set; }
+        public int ChieuDaiPhatTrienLuoiDien { get; set; }
+        public int ChieuDaiLuyTuyenPhatTrienLuoiDien { get; set; }
+
     }
 }

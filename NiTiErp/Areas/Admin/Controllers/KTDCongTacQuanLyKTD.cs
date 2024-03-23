@@ -66,6 +66,13 @@ namespace NiTiErp.Areas.Admin.Controllers
             return new OkObjectResult(model);
         }
 
+        [HttpGet]
+        public IActionResult EditPhatTienLuoiDien(int PhatTrienLuoiDienId)
+        {
+            var model = _ktdthaythevattuService.KTD_KTDPhatTrienLuoiDien_Get_ById(PhatTrienLuoiDienId);
+            return new OkObjectResult(model);
+        }
+
         #endregion
 
         #region Insert, update, delete
@@ -116,6 +123,31 @@ namespace NiTiErp.Areas.Admin.Controllers
 
                 var model = await _ktdthaythevattuService.KTD_KTDThayTheVatTu_Update_ById(ThayTheVatTuId, SoLuongVatTu, 
                     SoLuongLuyTuyen, ChiTietVatTu, ThietBiKhac, UpdateBy);
+                return new OkObjectResult(model);
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> SavePhatTrienLuoiDien(int PhatTrienLuoiDienId, int ChieuDaiPhatTrienLuoiDien, int ChieuDaiLuyTuyenPhatTrienLuoiDien)
+        {
+            if (!ModelState.IsValid)
+            {
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return new BadRequestObjectResult(allErrors);
+            }
+            else
+            {
+                var result = _authorizationService.AuthorizeAsync(User, "KTDCONGTACNHAP", Operations.Create);
+                if (result.Result.Succeeded == false)
+                {
+                    return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền thêm."));
+                }
+
+                //DateTime CreateDate = DateTime.Now;
+                string UpdateBy = User.GetSpecificClaim("UserName");
+
+                var model = await _ktdthaythevattuService.KTD_KTDPhatTrienLuoiDien_Update_ById(PhatTrienLuoiDienId, ChieuDaiPhatTrienLuoiDien,
+                    ChieuDaiLuyTuyenPhatTrienLuoiDien, UpdateBy);
                 return new OkObjectResult(model);
             }
         }

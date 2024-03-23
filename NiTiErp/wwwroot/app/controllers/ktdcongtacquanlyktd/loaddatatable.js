@@ -1,10 +1,13 @@
 ﻿var loaddatatableController = function () {
 
     var userCorporationId = $("#hidUserCorporationId").val();
-    //var userName = $("#hidUserName").val();   
-
+    //var userName = $("#hidUserName").val();  
+    
     this.editThayTheVatTu = function () {
         editThayTheVatTu();
+    }
+    this.editPhatTrienLuoiDien = function () {
+        editPhatTrienLuoiDien();
     }
 
     this.loadTablePhatTrienLuoiDien = function () {
@@ -167,6 +170,11 @@
 
                 if (thaythevattu.MaTenThayTheVatTu == 'THTHIETBIK') {
                     $("#ThayTheVatTu11Den15").hide();
+                    $("#EditThayTheVatTuThietBiKhac").show();
+                }
+                else {
+                    $("#ThayTheVatTu11Den15").show();
+                    $("#EditThayTheVatTuThietBiKhac").hide();
                 }
 
                 $("#lbThayTheVatTuTenVatTu").html(thaythevattu.TenThayTheVatTu);
@@ -181,14 +189,45 @@
             }
         });
     }
-
     function clearDataThayTheVatTu() {
         $("#ThayTheVatTu11Den15").show();
+        $("#EditThayTheVatTuThietBiKhac").show();
+
         $("#lbThayTheVatTuTenVatTu").val('');
         $("#txtThayTheVatTuSoLuongVatTu").val(0);
         $("#txtThayTheVatTuSoLuongLuyTuyen").val(0);
         $("#txtThayTheVatTuChiTiet").val('');
         $("#txtThayTheVatTuThietBiKhac").val('');
+    }
+
+    function editPhatTrienLuoiDien() {
+        var phattrienluoidienid = $('#hidPhatTrienLuoiDienId').val();
+        $.ajax({
+            type: 'GET',
+            url: '/admin/ktdcongtacquanlyktd/EditPhatTienLuoiDien',
+            data: {
+                PhatTrienLuoiDienId: phattrienluoidienid
+            },
+            dataType: 'json',
+            success: function (response) {
+                var thaythevattu = response.Result;
+
+                clearDataPhatTrienLuoiDien();                
+
+                $("#lbPhatTrienLuoiDienTenVatTu").html(thaythevattu.TenPhatTrienLuoiDien);
+                $("#txtPhatTrienLuoiDienSoLuongVatTu").val(thaythevattu.ChieuDaiPhatTrienLuoiDien);
+                $("#txtPhatTrienLuoiDienSoLuongLuyTuyen").val(thaythevattu.ChieuDaiLuyTuyenPhatTrienLuoiDien);                
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không thể lấy dữ liệu về.', 'error');
+            }
+        });
+    }
+    function clearDataPhatTrienLuoiDien() {
+        $("#lbPhatTrienLuoiDienTenVatTu").val('');
+        $("#txtPhatTrienLuoiDienSoLuongVatTu").val(0);
+        $("#txtPhatTrienLuoiDienSoLuongLuyTuyen").val(0);
     }
 
 }

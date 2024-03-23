@@ -35,6 +35,20 @@ namespace NiTiErp.Application.Dapper.Implementation.KyThuatDien
             }
         }
 
+        public async Task<KTDPhatTrienLuoiDienRequest> KTD_KTDPhatTrienLuoiDien_Get_ById(int PhatTrienLuoiDienId)
+        {
+            using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            {
+                await sqlConnection.OpenAsync();
+                var dynamicParameters = new DynamicParameters();
+
+                dynamicParameters.Add("@Id", PhatTrienLuoiDienId);
+
+                var result = await sqlConnection.QueryAsync<KTDPhatTrienLuoiDienRequest>("KTD_KTDPhatTrienLuoiDien_Get_ById", dynamicParameters, null, null, System.Data.CommandType.StoredProcedure);
+                return result.Single();
+            }
+        }
+
         public async Task<List<KTDThayTheVatTuRequest>> KTD_KTDThayTheVatTu_Get_ByCorKy(string makhuvuc, int nam, int thang)
         {
             using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
@@ -122,6 +136,30 @@ namespace NiTiErp.Application.Dapper.Implementation.KyThuatDien
                 {
                     await sqlConnection.QueryAsync<KTDThayTheVatTuRequest>(
                         "KTD_KTDThayTheVatTu_Update_ById", dynamicParameters, commandType: CommandType.StoredProcedure);
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
+        public async Task<bool> KTD_KTDPhatTrienLuoiDien_Update_ById(int PhatTrienLuoiDienId, int ChieuDaiPhatTrienLuoiDien, int ChieuDaiLuyTuyenPhatTrienLuoiDien, string UpdateBy)
+        {
+            using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            {
+                await sqlConnection.OpenAsync();
+                var dynamicParameters = new DynamicParameters();
+
+                dynamicParameters.Add("@Id", PhatTrienLuoiDienId);
+                dynamicParameters.Add("@ChieuDaiPhatTrienLuoiDien", ChieuDaiPhatTrienLuoiDien);
+                dynamicParameters.Add("@ChieuDaiLuyTuyenPhatTrienLuoiDien", ChieuDaiLuyTuyenPhatTrienLuoiDien);
+                dynamicParameters.Add("@UpdateBy", UpdateBy);
+                try
+                {
+                    await sqlConnection.QueryAsync<KTDPhatTrienLuoiDienRequest>(
+                        "KTD_KTDPhatTrienLuoiDien_Update_ById", dynamicParameters, commandType: CommandType.StoredProcedure);
                     return true;
                 }
                 catch (Exception ex)
