@@ -1,1 +1,38 @@
-﻿
+﻿<div id="modal-add-edit-EditKTDPhatTrienKhachHang" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style="overflow-y: auto; max-height:85%;  margin-top: 50px; margin-bottom:50px; ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Thêm / Sửa Phát triển khách hàng </h4>
+            </div>
+            <div class="modal-body">
+
+                <div id="formMainEditKTDPhatTrienKhachHang">
+                    <form class="form-horizontal form-label-left" id="frmMainEditKTDPhatTrienKhachHang">
+                        <div class="item form-group" >
+                            <div class="col-md-3 col-sm-12 col-xs-12">
+                                <label id="lbPhatTrienKhachHangTenVatTu"> </label>
+                                <input type="number" id="txtPhatTrienKhachHangSoLuongVatTu" name="txtPhatTrienKhachHangSoLuongVatTu" class="form-control" placeholder="Số lượng">
+                            </div>
+                            <div class="col-md-3 col-sm-12 col-xs-12">
+                                <label for="lbPhatTrienKhachHangLuyTuyen">
+                                    Lũy tuyến
+                                </label>
+                                <input type="number" id="txtPhatTrienKhachHangSoLuongLuyTuyen" name="txtPhatTrienKhachHangSoLuongLuyTuyen" class="form-control" placeholder="Số lượng Lũy tuyến">
+                            </div>                            
+                        </div>                        
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="button" id="btnCancelEditPhatTrienKhachHang" data-dismiss="modal" class="btn btn-default">Đóng</button>
+                                <button type="button" id="btnSaveEditPhatTrienKhachHang" class="btn btn-warning">Lưu Phát triển khách hàng </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="ln_solid"></div>
+            </div>
+        </div>
+    </div>
+</div>

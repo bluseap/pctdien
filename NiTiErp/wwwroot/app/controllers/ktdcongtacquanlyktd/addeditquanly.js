@@ -17,6 +17,12 @@
         $('#btnSaveEditPhatTrienLuoiDien').on('click', function () {
             savePhatTrienLuoiDien();
         });
+        $('#btnSaveEditNangCongSuatCayMoi').on('click', function () {
+            saveNangCongSuatCayMoi();
+        });
+        $('#btnSaveEditPhatTrienKhachHang').on('click', function () {
+            savePhatTrienKhachHang();
+        });
 
     }
 
@@ -95,6 +101,90 @@
             },
             error: function () {
                 tedu.notify('Có lỗi! Không thể Lưu Công tác phát triển lưới điện.', 'error');
+                tedu.stopLoading();
+            }
+        });
+    }
+
+    function saveNangCongSuatCayMoi() {
+        var nangcongsuatcaymoiid = $('#hidNangCongSuatCayMoiId').val();
+
+        var soluongnangcongsuat = $("#txtNangCongSuatCayMoiSoLuongVatTu").val();
+        var slslnangcongsuat = $("#txtSoLuongSoLuongNangCongSuat").val();
+        var cuthenangcongsuat = $("#txtCuTheNangCongSuat").val();
+        var soluongluytuyen = $("#txtNangCongSuatCayMoiLuyTuyen").val();
+        var congsuatsoluongluytuyen = $("#txtNangCongSuatSoLuongCongSuatCongSuat").val();        
+
+        $.ajax({
+            type: "POST",
+            url: "/Admin/ktdcongtacquanlyktd/SaveNangCongSuatCayMoi",
+            data: {
+                NangCongSuatCayMoiId: nangcongsuatcaymoiid,
+
+                SoLuongNangCongSuat: soluongnangcongsuat,
+                SoLuongSoLuongNangCongSuat: slslnangcongsuat,
+                CuTheNangCongSuat: cuthenangcongsuat,
+                SoLuongLuyTuyenNangCongSuat: soluongluytuyen,
+                CongSuatSoLuongLuyTuyenNangCongSuat: congsuatsoluongluytuyen
+            },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                if (response.Result === false) {
+                    tedu.notify("Lưu nâng công suất cấy mới tba.", "error");
+                }
+                else {
+                    loaddatatable.loadTableCayMoiNangCongSuat();
+                    nguyen.appUserLoginLogger(userName, "Công tác nâng công suất cấy mới tba. NangCongSuatCayMoiId: " + nangcongsuatcaymoiid);
+                    $('#modal-add-edit-EditKTDNangCongSuatCayMoi').modal('hide');
+
+                    tedu.notify('Công tác nâng công suất cấy mới tba.', 'success');
+                    tedu.stopLoading();
+                }
+            },
+            error: function () {
+                tedu.notify('Có lỗi! Không thể Lưu Công tác nâng công suất cấy mới tba.', 'error');
+                tedu.stopLoading();
+            }
+        });
+    }
+
+    function savePhatTrienKhachHang() {
+        var phattrienkhachhangid = $('#hidPhatTrienKhachHangId').val();
+
+        var soluongptkh = $("#txtPhatTrienKhachHangSoLuongVatTu").val();
+        var soluongluytuyen = $("#txtPhatTrienKhachHangSoLuongLuyTuyen").val();
+
+        $.ajax({
+            type: "POST",
+            url: "/Admin/ktdcongtacquanlyktd/SavePhatTrienKhachHang",
+            data: {
+                PhatTrienKhachHangId: phattrienkhachhangid,
+
+                SoLuongPhatTrienKhachHang: soluongptkh,
+                LuyTuyenPhatTrienKhachHang: soluongluytuyen
+            },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                if (response.Result === false) {
+                    tedu.notify("Lưu công tác phát triển khách hàng.", "error");
+                }
+                else {
+                    loaddatatable.loadTablePhatTrienKhachHang();
+                    nguyen.appUserLoginLogger(userName, "Công tác phát triển khách hàng. PhatTrienKhachHangId: " + phattrienkhachhangid);
+                    $('#modal-add-edit-EditKTDPhatTrienKhachHang').modal('hide');
+
+                    tedu.notify('Công tác Công tác phát triển khách hàng.', 'success');
+                    tedu.stopLoading();
+                }
+            },
+            error: function () {
+                tedu.notify('Có lỗi! Không thể Lưu Công tác phát triển khách hàng.', 'error');
                 tedu.stopLoading();
             }
         });

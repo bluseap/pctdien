@@ -60,6 +60,20 @@ namespace NiTiErp.Areas.Admin.Controllers
         }
 
         [HttpGet]
+        public IActionResult ListCayMoiNangCongSuat(string makhuvuc, int nam, int thang)
+        {
+            var model = _ktdthaythevattuService.KTD_KTDNangCongSuatCayMoi_Get_ByCorKy(makhuvuc, nam, thang);
+            return new OkObjectResult(model);
+        }
+
+        [HttpGet]
+        public IActionResult ListPhatTrienKhachHang(string makhuvuc, int nam, int thang)
+        {
+            var model = _ktdthaythevattuService.KTD_KTDPhatTrienKhachHang_Get_ByCorKy(makhuvuc, nam, thang);
+            return new OkObjectResult(model);
+        }
+
+        [HttpGet]
         public IActionResult EditThayTheVatTu(int ThayTheVatTuId)
         {
             var model = _ktdthaythevattuService.KTD_KTDThayTheVatTu_Get_ById(ThayTheVatTuId);
@@ -70,6 +84,20 @@ namespace NiTiErp.Areas.Admin.Controllers
         public IActionResult EditPhatTienLuoiDien(int PhatTrienLuoiDienId)
         {
             var model = _ktdthaythevattuService.KTD_KTDPhatTrienLuoiDien_Get_ById(PhatTrienLuoiDienId);
+            return new OkObjectResult(model);
+        }
+
+        [HttpGet]
+        public IActionResult EditNangCongSuatCayMoi(int NangCongSuatCayMoiId)
+        {
+            var model = _ktdthaythevattuService.KTD_KTDNangCongSuatCayMoi_Get_ById(NangCongSuatCayMoiId);
+            return new OkObjectResult(model);
+        }
+
+        [HttpGet]
+        public IActionResult EditPhatTrienKhachHang(int PhatTrienKhachHangId)
+        {
+            var model = _ktdthaythevattuService.KTD_KTDPhatTrienKhachHang_Get_ById(PhatTrienKhachHangId);
             return new OkObjectResult(model);
         }
 
@@ -148,6 +176,58 @@ namespace NiTiErp.Areas.Admin.Controllers
 
                 var model = await _ktdthaythevattuService.KTD_KTDPhatTrienLuoiDien_Update_ById(PhatTrienLuoiDienId, ChieuDaiPhatTrienLuoiDien,
                     ChieuDaiLuyTuyenPhatTrienLuoiDien, UpdateBy);
+                return new OkObjectResult(model);
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> SaveNangCongSuatCayMoi(int NangCongSuatCayMoiId, int SoLuongNangCongSuat, 
+            int SoLuongSoLuongNangCongSuat, string CuTheNangCongSuat, int SoLuongLuyTuyenNangCongSuat, int CongSuatSoLuongLuyTuyenNangCongSuat)
+        {
+            if (!ModelState.IsValid)
+            {
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return new BadRequestObjectResult(allErrors);
+            }
+            else
+            {
+                var result = _authorizationService.AuthorizeAsync(User, "KTDCONGTACNHAP", Operations.Create);
+                if (result.Result.Succeeded == false)
+                {
+                    return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền thêm."));
+                }
+
+                //DateTime CreateDate = DateTime.Now;
+                string UpdateBy = User.GetSpecificClaim("UserName");
+
+                var model = await _ktdthaythevattuService.KTD_KTDNangCongSuatCayMoi_Update_ById(NangCongSuatCayMoiId, SoLuongNangCongSuat,
+                    SoLuongSoLuongNangCongSuat, CuTheNangCongSuat, SoLuongLuyTuyenNangCongSuat, CongSuatSoLuongLuyTuyenNangCongSuat, UpdateBy);
+                return new OkObjectResult(model);
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> SavePhatTrienKhachHang(int PhatTrienKhachHangId,
+            int SoLuongPhatTrienKhachHang, int LuyTuyenPhatTrienKhachHang)
+        {
+            if (!ModelState.IsValid)
+            {
+                IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
+                return new BadRequestObjectResult(allErrors);
+            }
+            else
+            {
+                var result = _authorizationService.AuthorizeAsync(User, "KTDCONGTACNHAP", Operations.Create);
+                if (result.Result.Succeeded == false)
+                {
+                    return new ObjectResult(new GenericResult(false, "Bạn không đủ quyền thêm."));
+                }
+
+                //DateTime CreateDate = DateTime.Now;
+                string UpdateBy = User.GetSpecificClaim("UserName");
+
+                var model = await _ktdthaythevattuService.KTD_KTDPhatTrienKhachHang_Update_ById(PhatTrienKhachHangId, 
+                    SoLuongPhatTrienKhachHang, LuyTuyenPhatTrienKhachHang, UpdateBy);
                 return new OkObjectResult(model);
             }
         }

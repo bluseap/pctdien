@@ -23,6 +23,8 @@
         $("#btnTraCuuBaoCao").on('click', function () {
             loaddatatable.loadTableThayTheVatTu();
             loaddatatable.loadTablePhatTrienLuoiDien();
+            loaddatatable.loadTableCayMoiNangCongSuat();
+            loaddatatable.loadTablePhatTrienKhachHang();
         });
 
         $("#btnKhoiTaoDanhMucBaoCao").on('click', function () {
@@ -48,6 +50,20 @@
             $('#hidPhatTrienLuoiDienId').val(phattrienluoidienid);
             loaddatatable.editPhatTrienLuoiDien();
             $('#modal-add-edit-EditKTDPhatTrienLuoiDien').modal('show');
+        });
+        $('body').on('click', '.btn-addeditKTDNangCongSuatCayMoi', function (e) {
+            e.preventDefault();
+            const nangcongsuatcaymoiid = $(this).data('id');
+            $('#hidNangCongSuatCayMoiId').val(nangcongsuatcaymoiid);
+            loaddatatable.editNangCongSuatCayMoi();
+            $('#modal-add-edit-EditKTDNangCongSuatCayMoi').modal('show');
+        });
+        $('body').on('click', '.btn-addeditKTDPhatTrienKhachHang', function (e) {
+            e.preventDefault();
+            const phattrienkhachhangid = $(this).data('id');
+            $('#hidPhatTrienKhachHangId').val(phattrienkhachhangid);
+            loaddatatable.editPhatTrienKhachHang();
+            $('#modal-add-edit-EditKTDPhatTrienKhachHang').modal('show');
         });
 
         //$('#txtKTDBaoCaoCongTacQuanLyKTDTuNgay, #txtKTDBaoCaoCongTacQuanLyKTDDenNgay ').datepicker({

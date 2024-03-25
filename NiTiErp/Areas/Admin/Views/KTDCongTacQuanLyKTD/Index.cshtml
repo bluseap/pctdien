@@ -23,6 +23,8 @@
 
 <input type="hidden" id="hidThayTheVatTuId" value="" />
 <input type="hidden" id="hidPhatTrienLuoiDienId" value="" />
+<input type="hidden" id="hidNangCongSuatCayMoiId" value="" />
+<input type="hidden" id="hidPhatTrienKhachHangId" value="" />
 
 <div class="">
     <div class="page-title">
@@ -154,6 +156,52 @@
                     <tbody id="tblContentKTDPhatTrienLuoiDien"></tbody>
                 </table>
             </div>
+            <div class="form-group">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <label style="font-size:15px">3. Công tác nâng công suất, cấy mới TBA</label>
+                </div>
+            </div>
+            <div class="x-content">
+                <table id="tblKTDNangCongSuatCayMoi" class="table" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="tblContentKTDNangCongSuatCayMoi"></tbody>
+                </table>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <label style="font-size:15px">4. Công tác phát triển khách hàng</label>
+                </div>
+            </div>
+            <div class="x-content">
+                <table id="tblKTDPhatTrienKhachHang" class="table" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="tblContentKTDPhatTrienKhachHang"></tbody>
+                </table>
+            </div>
         </div>
     </div>
     <script id="table-KTDThayTheVatTu" type="x-tmpl-mustache">
@@ -182,6 +230,38 @@
             <td>{{{SoLuongLuyTuyenChieuDai}}}</td>
             <th scope="row">
                     <a class="btn-link btn-addeditKTDPhatTrienLuoiDien" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Id">
+                        <i class="fa fa-pencil"></i>
+                    </a>
+                </th>
+            </tr>
+    </script>
+    <script id="table-KTDNangCongSuatCayMoi" type="x-tmpl-mustache">
+        <tr>
+            <td>{{TenVatTu}}</td>
+            <td>{{{TenSoLuongNangCongSuat}}}</td>
+            <td>{{TenChieuDaiSoLuongSoLuongNangCongSuat}}</td>
+            <td>{{{TenSoLuongSoLuongNangCongSuat}}}</td>
+            <td>{{TenCuTheGom}}</td>
+            <td>{{LuyTuyenTenSoLuongLuyTuyenNangCongSuat}}</td>
+            <td>{{{TenSoLuongLuyTuyenNangCongSuat}}}</td>
+            <td>{{{TenCongSuatSoLuongLuyTuyenNangCongSuat}}}</td>
+
+            <th scope="row">
+                    <a class="btn-link btn-addeditKTDNangCongSuatCayMoi" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Id">
+                        <i class="fa fa-pencil"></i>
+                    </a>
+                </th>
+            </tr>
+    </script>
+    <script id="table-KTDPhatTrienKhachHang" type="x-tmpl-mustache">
+        <tr>
+            <td>{{TenVatTu}}</td>
+            <td>{{{TenSoLuongPhatTrienKhachHang}}}</td>
+            <td>{{LuyTuyenTenSoLuongPhatTrienKhachHang}}</td>
+            <td>{{{LuyTuyenSoLuongPhatTrienKhachHang}}}</td>
+            
+            <th scope="row">
+                    <a class="btn-link btn-addeditKTDPhatTrienKhachHang" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Id">
                         <i class="fa fa-pencil"></i>
                     </a>
                 </th>

@@ -2,7 +2,13 @@
 
     var userCorporationId = $("#hidUserCorporationId").val();
     //var userName = $("#hidUserName").val();  
-    
+
+    this.editPhatTrienKhachHang = function () {
+        editPhatTrienKhachHang();
+    }
+    this.editNangCongSuatCayMoi = function () {
+        editNangCongSuatCayMoi();
+    }
     this.editThayTheVatTu = function () {
         editThayTheVatTu();
     }
@@ -10,6 +16,12 @@
         editPhatTrienLuoiDien();
     }
 
+    this.loadTablePhatTrienKhachHang = function () {
+        loadTablePhatTrienKhachHang();
+    }
+    this.loadTableCayMoiNangCongSuat = function () {
+        loadTableCayMoiNangCongSuat();
+    }
     this.loadTablePhatTrienLuoiDien = function () {
         loadTablePhatTrienLuoiDien();
     }
@@ -154,6 +166,110 @@
         });
     }
 
+    function loadTableCayMoiNangCongSuat() {
+        var template = $('#table-KTDNangCongSuatCayMoi').html();
+        var render = "";
+
+        var xinghiep = $('#ddlXiNghiep').val();
+        var nam = $('#txtNam').val();
+        var thang = $('#txtThang').val();
+
+        $.ajax({
+            type: 'GET',
+            url: '/admin/ktdcongtacquanlyktd/ListCayMoiNangCongSuat',
+            data: {
+                makhuvuc: xinghiep,
+                nam: nam,
+                thang: thang
+            },
+            dataType: 'json',
+            success: function (response) {
+                if (response.Result.length === 0) {
+                    render = "<tr><th><a>Không có dữ liệu</a></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>";
+                }
+                else {
+                    $.each(response.Result, function (i, item) {
+                        render += Mustache.render(template, {
+                            Id: item.Id,
+                            CorporationId: item.CorporationId,
+                            MaNangCongSuat: item.MaNangCongSuat,
+                            NgayBaoCao: item.NgayBaoCao,
+
+                            TenVatTu: item.TenVatTu,                            
+                            TenSoLuongNangCongSuat: '<span class="badge bg-green">' + item.TenSoLuongNangCongSuat + '</span>',
+                            TenChieuDaiSoLuongSoLuongNangCongSuat: item.TenChieuDaiSoLuongSoLuongNangCongSuat,
+                            TenSoLuongSoLuongNangCongSuat: '<span class="badge bg-blue">' + item.TenSoLuongSoLuongNangCongSuat + '</span>',
+                            TenCuTheGom: item.TenCuTheGom + ' ' + item.CuTheNangCongSuat !== null ? item.CuTheNangCongSuat : '',                            
+                            LuyTuyenTenSoLuongLuyTuyenNangCongSuat: item.LuyTuyenTenSoLuongLuyTuyenNangCongSuat,
+                            TenSoLuongLuyTuyenNangCongSuat: '<span class="badge bg-green">' + item.TenSoLuongLuyTuyenNangCongSuat + '</span>',
+                            TenCongSuatSoLuongLuyTuyenNangCongSuat: '<span class="badge bg-green">' + item.TenCongSuatSoLuongLuyTuyenNangCongSuat + '</span>'
+                            //TrangThaiPCT: tedu.getPhieuCongTacDien(item.TrangThaiPCT)
+                        });
+                    });
+                }
+
+                if (render !== '') {
+                    $('#tblContentKTDNangCongSuatCayMoi').html(render);
+                }
+
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không thể lấy dữ liệu về.', 'error');
+            }
+        });
+    }
+
+    function loadTablePhatTrienKhachHang() {
+        var template = $('#table-KTDPhatTrienKhachHang').html();
+        var render = "";
+
+        var xinghiep = $('#ddlXiNghiep').val();
+        var nam = $('#txtNam').val();
+        var thang = $('#txtThang').val();
+
+        $.ajax({
+            type: 'GET',
+            url: '/admin/ktdcongtacquanlyktd/ListPhatTrienKhachHang',
+            data: {
+                makhuvuc: xinghiep,
+                nam: nam,
+                thang: thang
+            },
+            dataType: 'json',
+            success: function (response) {
+                if (response.Result.length === 0) {
+                    render = "<tr><th><a>Không có dữ liệu</a></th><th></th><th></th><th></th><th></th><th></th><th></th><th></th></tr>";
+                }
+                else {
+                    $.each(response.Result, function (i, item) {
+                        render += Mustache.render(template, {
+                            Id: item.Id,
+                            CorporationId: item.CorporationId,
+                            MaPhatTrienKhachHang: item.MaPhatTrienKhachHang,
+                            NgayBaoCao: item.NgayBaoCao,
+
+                            TenVatTu: item.TenVatTu,
+                            TenSoLuongPhatTrienKhachHang: '<span class="badge bg-green">' + item.TenSoLuongPhatTrienKhachHang + '</span>',
+                            LuyTuyenTenSoLuongPhatTrienKhachHang: item.LuyTuyenTenSoLuongPhatTrienKhachHang,
+                            LuyTuyenSoLuongPhatTrienKhachHang: '<span class="badge bg-blue">' + item.LuyTuyenSoLuongPhatTrienKhachHang + '</span>'                            
+                            //TrangThaiPCT: tedu.getPhieuCongTacDien(item.TrangThaiPCT)
+                        });
+                    });
+                }
+
+                if (render !== '') {
+                    $('#tblContentKTDPhatTrienKhachHang').html(render);
+                }
+
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không thể lấy dữ liệu về.', 'error');
+            }
+        });
+    }
+
     function editThayTheVatTu() {
         var thaythevattuid = $('#hidThayTheVatTuId').val();
         $.ajax({
@@ -228,6 +344,73 @@
         $("#lbPhatTrienLuoiDienTenVatTu").val('');
         $("#txtPhatTrienLuoiDienSoLuongVatTu").val(0);
         $("#txtPhatTrienLuoiDienSoLuongLuyTuyen").val(0);
+    }
+
+    function editNangCongSuatCayMoi() {
+        var nangcongsuatcaymoiid = $('#hidNangCongSuatCayMoiId').val();
+        $.ajax({
+            type: 'GET',
+            url: '/admin/ktdcongtacquanlyktd/EditNangCongSuatCayMoi',
+            data: {
+                NangCongSuatCayMoiId: nangcongsuatcaymoiid
+            },
+            dataType: 'json',
+            success: function (response) {
+                var nangcongsuat = response.Result;
+
+                clearDataNangCongSuatCayMoi();
+
+                $("#lbNangCongSuatCayMoiTenVatTu").html(nangcongsuat.TenVatTu);
+                $("#txtNangCongSuatCayMoiSoLuongVatTu").val(nangcongsuat.SoLuongNangCongSuat);
+                $("#txtSoLuongSoLuongNangCongSuat").val(nangcongsuat.SoLuongSoLuongNangCongSuat);
+                $("#txtCuTheNangCongSuat").val(nangcongsuat.CuTheNangCongSuat);
+                $("#txtNangCongSuatCayMoiLuyTuyen").val(nangcongsuat.SoLuongLuyTuyenNangCongSuat);
+                $("#txtNangCongSuatSoLuongCongSuatCongSuat").val(nangcongsuat.CongSuatSoLuongLuyTuyenNangCongSuat);
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không thể lấy dữ liệu về.', 'error');
+            }
+        });
+    }
+    function clearDataNangCongSuatCayMoi() {
+        $("#lbNangCongSuatCayMoiTenVatTu").val('');
+        $("#txtNangCongSuatCayMoiSoLuongVatTu").val(0);
+        $("#txtSoLuongSoLuongNangCongSuat").val(0);
+        $("#txtCuTheNangCongSuat").val('');
+        $("#txtNangCongSuatCayMoiLuyTuyen").val(0);
+        $("#txtNangCongSuatSoLuongCongSuatCongSuat").val(0);
+    }
+
+    function editPhatTrienKhachHang() {
+        var phattrienkhachhangid = $('#hidPhatTrienKhachHangId').val();
+        $.ajax({
+            type: 'GET',
+            url: '/admin/ktdcongtacquanlyktd/EditPhatTrienKhachHang',
+            data: {
+                PhatTrienKhachHangId: phattrienkhachhangid
+            },
+            dataType: 'json',
+            success: function (response) {
+                var phattrienkhachhang = response.Result;
+
+                clearDataPhatTrienKhachHang();
+
+                $("#lbPhatTrienKhachHangTenVatTu").html(phattrienkhachhang.TenVatTu);
+                $("#txtPhatTrienKhachHangSoLuongVatTu").val(phattrienkhachhang.SoLuongPhatTrienKhachHang);
+                $("#txtPhatTrienKhachHangSoLuongLuyTuyen").val(phattrienkhachhang.LuyTuyenPhatTrienKhachHang);
+                
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không thể lấy dữ liệu về.', 'error');
+            }
+        });
+    }
+    function clearDataPhatTrienKhachHang() {
+        $("#lbPhatTrienKhachHangTenVatTu").val('');
+        $("#txtPhatTrienKhachHangSoLuongVatTu").val(0);
+        $("#txtPhatTrienKhachHangSoLuongLuyTuyen").val(0);
     }
 
 }

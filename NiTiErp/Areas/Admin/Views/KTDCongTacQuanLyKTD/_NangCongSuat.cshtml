@@ -1,1 +1,58 @@
-﻿
+﻿<div id="modal-add-edit-EditKTDNangCongSuatCayMoi" class="bootbox modal fade modal-darkorange in" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style="overflow-y: auto; max-height:85%;  margin-top: 50px; margin-bottom:50px; ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">Thêm / Sửa Nâng công suất cấy mới </h4>
+            </div>
+            <div class="modal-body">
+
+                <div id="formMainEditKTDNangCongSuatCayMoi">
+                    <form class="form-horizontal form-label-left" id="frmMainEditKTDNangCongSuatCayMoi">
+                        <div class="item form-group" >
+                            <div class="col-md-3 col-sm-12 col-xs-12">
+                                <label id="lbNangCongSuatCayMoiTenVatTu"> </label>
+                                <input type="number" id="txtNangCongSuatCayMoiSoLuongVatTu" name="txtNangCongSuatCayMoiSoLuongVatTu" class="form-control" placeholder="Tên">
+                            </div>
+                            <div class="col-md-3 col-sm-12 col-xs-12">
+                                <label for="lbCongSuatCongSuat">
+                                    Công suất
+                                </label>
+                                <input type="number" id="txtSoLuongSoLuongNangCongSuat" name="txtSoLuongSoLuongNangCongSuat" class="form-control" placeholder="Số lượng công suất">
+                            </div>
+                            <div class="col-md-4 col-sm-12 col-xs-12">
+                                <label for="lbCuTheGom">
+                                    Cụ thể gồm
+                                </label>
+                                <input type="text" id="txtCuTheNangCongSuat" name="txtCuTheNangCongSuat" class="form-control" placeholder="Cụ thể nâng công suất">
+                            </div>
+                        </div>
+                        <div class="item form-group" id="PhatTrienLuoiDien2">
+                            <div class="col-md-3 col-sm-12 col-xs-12">
+                                <label id="lbNangCongSuatCayMoiLuyTuyen"> 
+                                    Lũy tuyến 
+                                </label>
+                                <input type="number" id="txtNangCongSuatCayMoiLuyTuyen" name="txtNangCongSuatCayMoiLuyTuyen" class="form-control" placeholder="Lũy tuyến">
+                            </div>
+                            <div class="col-md-3 col-sm-12 col-xs-12">
+                                <label for="lbSoLuongCongSuatCongSuat">
+                                    KVA
+                                </label>
+                                <input type="number" id="txtNangCongSuatSoLuongCongSuatCongSuat" name="txtNangCongSuatSoLuongCongSuatCongSuat" class="form-control" placeholder="Số lượng công suất kVA">
+                            </div>                            
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="button" id="btnCancelEditNangCongSuatCayMoi" data-dismiss="modal" class="btn btn-default">Đóng</button>
+                                <button type="button" id="btnSaveEditNangCongSuatCayMoi" class="btn btn-warning">Lưu Nâng công suất, cấy mới TBA </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="ln_solid"></div>
+            </div>
+        </div>
+    </div>
+</div>
