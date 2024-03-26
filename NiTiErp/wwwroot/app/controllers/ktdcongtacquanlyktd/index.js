@@ -25,6 +25,9 @@
             loaddatatable.loadTablePhatTrienLuoiDien();
             loaddatatable.loadTableCayMoiNangCongSuat();
             loaddatatable.loadTablePhatTrienKhachHang();
+            loaddatatable.loadTableXuLyKhac();
+            loaddatatable.loadTableDuyTuBaoDuong();
+            loaddatatable.loadTableCaiTaoSuaChua();
         });
 
         $("#btnKhoiTaoDanhMucBaoCao").on('click', function () {
@@ -64,6 +67,27 @@
             $('#hidPhatTrienKhachHangId').val(phattrienkhachhangid);
             loaddatatable.editPhatTrienKhachHang();
             $('#modal-add-edit-EditKTDPhatTrienKhachHang').modal('show');
+        });
+        $('body').on('click', '.btn-addeditKTDXuLyKhac', function (e) {
+            e.preventDefault();
+            const xulykhacid = $(this).data('id');
+            $('#hidXuLyKhacId').val(xulykhacid);
+            loaddatatable.editXuLyKhac();
+            $('#modal-add-edit-EditKTDXuLyKhac').modal('show');
+        });
+        $('body').on('click', '.btn-addeditKTDDuyTuBaoDuong', function (e) {
+            e.preventDefault();
+            const duytubaoduongid = $(this).data('id');
+            $('#hidDuyTuBaoDuongId').val(duytubaoduongid);
+            loaddatatable.editDuyTuBaoDuong();
+            $('#modal-add-edit-EditKTDDuyTuBaoDuong').modal('show');
+        });
+        $('body').on('click', '.btn-addeditKTDCaiTaoSuaChua', function (e) {
+            e.preventDefault();
+            const caitaosuachuaid = $(this).data('id');
+            $('#hidCaiTaoSuaChuaId').val(caitaosuachuaid);
+            loaddatatable.editCaiTaoSuaChua();
+            $('#modal-add-edit-EditKTDCaiTaoSuaChua').modal('show');
         });
 
         //$('#txtKTDBaoCaoCongTacQuanLyKTDTuNgay, #txtKTDBaoCaoCongTacQuanLyKTDDenNgay ').datepicker({
@@ -138,7 +162,7 @@
                     tedu.notify("Khởi tạo báo cáo lỗi.", "error");
                 }
                 else {
-                    nguyen.appUserLoginLogger(userName, "Khởi tạo báo cáo. dmkhoitao: " + DmKhoiTao + ", Khu vực: " + xinghiep + ", Năm: " + nam + ", Tháng: " + thang);
+                    nguyen.appUserLoginLogger(userName, "Khởi tạo báo cáo. dmkhoitao: " + dmkhoitaobaocao + ", Khu vực: " + xinghiep + ", Năm: " + nam + ", Tháng: " + thang);
 
                     tedu.notify('Khởi tạo báo cáo.', 'success');
 

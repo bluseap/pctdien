@@ -77,6 +77,48 @@ namespace NiTiErp.Application.Dapper.Implementation.KyThuatDien
             }
         }
 
+        public async Task<KTDXuLyKhacRequest> KTD_KTDXuLyKhac_Get_ById(int XuLyKhacId)
+        {
+            using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            {
+                await sqlConnection.OpenAsync();
+                var dynamicParameters = new DynamicParameters();
+
+                dynamicParameters.Add("@Id", XuLyKhacId);
+
+                var result = await sqlConnection.QueryAsync<KTDXuLyKhacRequest>("KTD_KTDXuLyKhac_Get_ById", dynamicParameters, null, null, System.Data.CommandType.StoredProcedure);
+                return result.Single();
+            }
+        }
+
+        public async Task<KTDDuyTuBaoDuongRequest> KTD_KTDDuyTuBaoDuong_Get_ById(int DuyTuBaoDuongId)
+        {
+            using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            {
+                await sqlConnection.OpenAsync();
+                var dynamicParameters = new DynamicParameters();
+
+                dynamicParameters.Add("@Id", DuyTuBaoDuongId);
+
+                var result = await sqlConnection.QueryAsync<KTDDuyTuBaoDuongRequest>("KTD_KTDDuyTuBaoDuong_Get_ById", dynamicParameters, null, null, System.Data.CommandType.StoredProcedure);
+                return result.Single();
+            }
+        }
+
+        public async Task<KTDCaiTaoSuaChuaRequest> KTD_KTDCaiTaoSuaChua_Get_ById(int CaiTaoSuaChuaId)
+        {
+            using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            {
+                await sqlConnection.OpenAsync();
+                var dynamicParameters = new DynamicParameters();
+
+                dynamicParameters.Add("@Id", CaiTaoSuaChuaId);
+
+                var result = await sqlConnection.QueryAsync<KTDCaiTaoSuaChuaRequest>("KTD_KTDCaiTaoSuaChua_Get_ById", dynamicParameters, null, null, System.Data.CommandType.StoredProcedure);
+                return result.Single();
+            }
+        }
+
         public async Task<List<KTDThayTheVatTuRequest>> KTD_KTDThayTheVatTu_Get_ByCorKy(string makhuvuc, int nam, int thang)
         {
             using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
@@ -156,6 +198,72 @@ namespace NiTiErp.Application.Dapper.Implementation.KyThuatDien
                 {
                     var query = await sqlConnection.QueryAsync<KTDPhatTrienKhachHangRequest>(
                         "KTD_KTDPhatTrienKhachHang_Get_ByCorKy", dynamicParameters, commandType: CommandType.StoredProcedure);
+                    return query.AsList();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
+        public async Task<List<KTDXuLyKhacRequest>> KTD_KTDXuLyKhac_Get_ByCorKy(string makhuvuc, int nam, int thang)
+        {
+            using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            {
+                await sqlConnection.OpenAsync();
+                var dynamicParameters = new DynamicParameters();
+                dynamicParameters.Add("@CoporationId", makhuvuc);
+                dynamicParameters.Add("@Nam", nam);
+                dynamicParameters.Add("@Thang", thang);
+                try
+                {
+                    var query = await sqlConnection.QueryAsync<KTDXuLyKhacRequest>(
+                        "KTD_KTDXuLyKhac_Get_ByCorKy", dynamicParameters, commandType: CommandType.StoredProcedure);
+                    return query.AsList();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
+        public async Task<List<KTDDuyTuBaoDuongRequest>> KTD_KTDDuyTuBaoDuong_Get_ByCorKy(string makhuvuc, int nam, int thang)
+        {
+            using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            {
+                await sqlConnection.OpenAsync();
+                var dynamicParameters = new DynamicParameters();
+                dynamicParameters.Add("@CoporationId", makhuvuc);
+                dynamicParameters.Add("@Nam", nam);
+                dynamicParameters.Add("@Thang", thang);
+                try
+                {
+                    var query = await sqlConnection.QueryAsync<KTDDuyTuBaoDuongRequest>(
+                        "KTD_KTDDuyTuBaoDuong_Get_ByCorKy", dynamicParameters, commandType: CommandType.StoredProcedure);
+                    return query.AsList();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
+        public async Task<List<KTDCaiTaoSuaChuaRequest>> KTD_KTDCaiTaoSuaChua_Get_ByCorKy(string makhuvuc, int nam, int thang)
+        {
+            using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            {
+                await sqlConnection.OpenAsync();
+                var dynamicParameters = new DynamicParameters();
+                dynamicParameters.Add("@CoporationId", makhuvuc);
+                dynamicParameters.Add("@Nam", nam);
+                dynamicParameters.Add("@Thang", thang);
+                try
+                {
+                    var query = await sqlConnection.QueryAsync<KTDCaiTaoSuaChuaRequest>(
+                        "KTD_KTDCaiTaoSuaChua_Get_ByCorKy", dynamicParameters, commandType: CommandType.StoredProcedure);
                     return query.AsList();
                 }
                 catch (Exception ex)
@@ -293,5 +401,91 @@ namespace NiTiErp.Application.Dapper.Implementation.KyThuatDien
                 }
             }
         }
+
+        public async Task<bool> KTD_KTDXuLyKhac_Update_ById(int XuLyKhacId, string NoiDungXuLyKhac, 
+            string UpdateBy)
+        {
+            using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            {
+                await sqlConnection.OpenAsync();
+                var dynamicParameters = new DynamicParameters();
+
+                dynamicParameters.Add("@Id", XuLyKhacId);
+                dynamicParameters.Add("@NoiDungXuLyKhac", NoiDungXuLyKhac);
+                dynamicParameters.Add("@UpdateBy", UpdateBy);
+                try
+                {
+                    await sqlConnection.QueryAsync<KTDXuLyKhacRequest>(
+                        "KTD_KTDXuLyKhac_Update_ById", dynamicParameters, commandType: CommandType.StoredProcedure);
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
+        public async Task<bool> KTD_KTDDuyTuBaoDuong_Update_ById(int DuyTuBaoDuongId,
+            int SoLuongDuyTuBaoDuong, string CuTheDuyTuBaoDuong, int SoLuongLuyTuyenDuyTuBaoDuong, string UpdateBy)
+        {
+            using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            {
+                await sqlConnection.OpenAsync();
+                var dynamicParameters = new DynamicParameters();
+
+                dynamicParameters.Add("@Id", DuyTuBaoDuongId);
+                dynamicParameters.Add("@SoLuongDuyTuBaoDuong", SoLuongDuyTuBaoDuong);
+                dynamicParameters.Add("@CuTheDuyTuBaoDuong", CuTheDuyTuBaoDuong);
+                dynamicParameters.Add("@SoLuongLuyTuyenDuyTuBaoDuong", SoLuongLuyTuyenDuyTuBaoDuong);
+                dynamicParameters.Add("@UpdateBy", UpdateBy);
+                try
+                {
+                    await sqlConnection.QueryAsync<KTDDuyTuBaoDuongRequest>(
+                        "KTD_KTDDuyTuBaoDuong_Update_ById", dynamicParameters, commandType: CommandType.StoredProcedure);
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
+        public async Task<bool> KTD_KTDCaiTaoSuaChua_Update_ById(KTDCaiTaoSuaChuaRequest caitaosuachua, string UpdateBy)
+        {
+            using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            {
+                await sqlConnection.OpenAsync();
+                var dynamicParameters = new DynamicParameters();
+
+                dynamicParameters.Add("@Id", caitaosuachua.Id);
+                dynamicParameters.Add("@SoLuongCaiTaoSuaChua", caitaosuachua.SoLuongCaiTaoSuaChua);
+                dynamicParameters.Add("@DaiCaiTaoSuaChua", caitaosuachua.DaiCaiTaoSuaChua);
+                dynamicParameters.Add("@CuTheCaiTaoSuaChua", caitaosuachua.CuTheCaiTaoSuaChua);
+                dynamicParameters.Add("@SoLuongLuyTuyenCaiTaoSuaChua", caitaosuachua.SoLuongLuyTuyenCaiTaoSuaChua);
+                dynamicParameters.Add("@SoLuongSoLuongLuyTuyenCaiTaoSuaChua", caitaosuachua.SoLuongSoLuongLuyTuyenCaiTaoSuaChua);
+                dynamicParameters.Add("@SoLuongMuaCaiTaoSuaChua", caitaosuachua.SoLuongMuaCaiTaoSuaChua);
+                dynamicParameters.Add("@SoLuongBanCaiTaoSuaChua", caitaosuachua.SoLuongBanCaiTaoSuaChua);
+                dynamicParameters.Add("@SoLuongTyLeCaiTaoSuaChua", caitaosuachua.SoLuongTyLeCaiTaoSuaChua);
+                dynamicParameters.Add("@SoLuongHaoHutCaiTaoSuaChua", caitaosuachua.SoLuongHaoHutCaiTaoSuaChua);
+
+                dynamicParameters.Add("@SoLuongKHCaiTaoSuaChua", caitaosuachua.SoLuongKHCaiTaoSuaChua);
+                dynamicParameters.Add("@SoLuongThucHienCaiTaoSuaChua", caitaosuachua.SoLuongThucHienCaiTaoSuaChua);
+
+                dynamicParameters.Add("@UpdateBy", UpdateBy);
+                try
+                {
+                    await sqlConnection.QueryAsync<KTDCaiTaoSuaChuaRequest>(
+                        "KTD_KTDCaiTaoSuaChua_Update_ById", dynamicParameters, commandType: CommandType.StoredProcedure);
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
     }
 }

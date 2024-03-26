@@ -25,6 +25,13 @@
 <input type="hidden" id="hidPhatTrienLuoiDienId" value="" />
 <input type="hidden" id="hidNangCongSuatCayMoiId" value="" />
 <input type="hidden" id="hidPhatTrienKhachHangId" value="" />
+<input type="hidden" id="hidXuLyKhacId" value="" />
+<input type="hidden" id="hidDuyTuBaoDuongId" value="" />
+<input type="hidden" id="hidCaiTaoSuaChuaId" value="" />
+<input type="hidden" id="hidCaiTaoSuaChuaSoLuongKH" value="" />
+<input type="hidden" id="hidCaiTaoSuaChuaSoLuongThucHien" value="" />
+
+<input type="hidden" id="hidCongTacAnToanId" value="" />
 
 <div class="">
     <div class="page-title">
@@ -202,6 +209,64 @@
                     <tbody id="tblContentKTDPhatTrienKhachHang"></tbody>
                 </table>
             </div>
+            <div class="form-group">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <label style="font-size:15px">5. Công tác xử lý khác</label>
+                </div>
+            </div>
+            <div class="x-content">
+                <table id="tblKTDXuLyKhac" class="table" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="tblContentKTDXuLyKhac"></tbody>
+                </table>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <label style="font-size:15px">6. Công tác duy tu bảo dưỡng lưới điện</label>
+                </div>
+            </div>
+            <div class="x-content">
+                <table id="tblKTDDuyTuBaoDuong" class="table" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="tblContentKTDDuyTuBaoDuong"></tbody>
+                </table>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <label style="font-size:15px">7. Công tác cải tạo, sửa chữa theo kế hoạch</label>
+                </div>
+            </div>
+            <div class="x-content">
+                <table id="tblKTDCaiTaoSuaChua" class="table" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="tblContentKTDCaiTaoSuaChua"></tbody>
+                </table>
+            </div>
+
         </div>
     </div>
     <script id="table-KTDThayTheVatTu" type="x-tmpl-mustache">
@@ -259,9 +324,59 @@
             <td>{{{TenSoLuongPhatTrienKhachHang}}}</td>
             <td>{{LuyTuyenTenSoLuongPhatTrienKhachHang}}</td>
             <td>{{{LuyTuyenSoLuongPhatTrienKhachHang}}}</td>
-            
+
             <th scope="row">
                     <a class="btn-link btn-addeditKTDPhatTrienKhachHang" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Id">
+                        <i class="fa fa-pencil"></i>
+                    </a>
+                </th>
+            </tr>
+    </script>
+    <script id="table-KTDXuLyKhac" type="x-tmpl-mustache">
+        <tr>
+            <td>{{TenXuLyKhac}}</td>
+            <td>{{NoiDungXuLyKhac}}</td>
+
+            <th scope="row">
+                    <a class="btn-link btn-addeditKTDXuLyKhac" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Id">
+                        <i class="fa fa-pencil"></i>
+                    </a>
+                </th>
+            </tr>
+    </script>
+    <script id="table-KTDDuyTuBaoDuong" type="x-tmpl-mustache">
+        <tr>
+            <td>{{TenDuyTuBaoDuong}}</td>
+            <td>{{{TenSoLuongDuyTuBaoDuong}}}</td>
+            <td>{{TenCuTheGomDTBD}}</td>
+            <td>{{TenLuyTuyenDTBD}}</td>
+            <td>{{{TenSoLuongLuyTuyenDTBD}}}</td>
+
+            <th scope="row">
+                    <a class="btn-link btn-addeditKTDDuyTuBaoDuong" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Id">
+                        <i class="fa fa-pencil"></i>
+                    </a>
+                </th>
+            </tr>
+    </script>
+    <script id="table-KTDCaiTaoSuaChua" type="x-tmpl-mustache">
+        <tr>
+            <td>{{TenCaiTaoSuaChua}}</td>
+            <td>{{{TenSoLuongCaiTaoSuaChua}}}</td>
+            <td>{{TenDai}}</td>
+            <td>{{{TenDaiCaiTaoSuaChua}}}</td>
+            <td>{{TenCuTheGom}}</td>
+            <td>{{TenLuyTuyen}}</td>
+            <td>{{{TenLuyTuyenDaiCaiTaoSuaChua}}}</td>
+            <td>{{{TenSoLuongSoLuongLuyTuyenCaiTaoSuaChua}}}</td>
+
+            <td>{{TenTyLe}}</td>
+            <td>{{{TenTyLeCaiTaoSuaChua}}}</td>
+            <td>{{TenHaoHut}}</td>
+            <td>{{{TenHaoHutCaiTaoSuaChua}}}</td>
+
+            <th scope="row">
+                    <a class="btn-link btn-addeditKTDCaiTaoSuaChua" data-id="{{Id}}" data-toggle="tooltip" data-placement="top" title="Id">
                         <i class="fa fa-pencil"></i>
                     </a>
                 </th>
