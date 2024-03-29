@@ -119,6 +119,20 @@ namespace NiTiErp.Application.Dapper.Implementation.KyThuatDien
             }
         }
 
+        public async Task<KTDCongTacAnToanRequest> KTD_KTDCongTacAnToan_Get_ById(int CongTacAnToanId)
+        {
+            using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            {
+                await sqlConnection.OpenAsync();
+                var dynamicParameters = new DynamicParameters();
+
+                dynamicParameters.Add("@Id", CongTacAnToanId);
+
+                var result = await sqlConnection.QueryAsync<KTDCongTacAnToanRequest>("KTD_KTDCongTacAnToan_Get_ById", dynamicParameters, null, null, System.Data.CommandType.StoredProcedure);
+                return result.Single();
+            }
+        }
+
         public async Task<List<KTDThayTheVatTuRequest>> KTD_KTDThayTheVatTu_Get_ByCorKy(string makhuvuc, int nam, int thang)
         {
             using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
@@ -265,6 +279,50 @@ namespace NiTiErp.Application.Dapper.Implementation.KyThuatDien
                     var query = await sqlConnection.QueryAsync<KTDCaiTaoSuaChuaRequest>(
                         "KTD_KTDCaiTaoSuaChua_Get_ByCorKy", dynamicParameters, commandType: CommandType.StoredProcedure);
                     return query.AsList();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
+        public async Task<List<KTDCongTacAnToanRequest>> KTD_KTDCongTacAnToanTheoTo_Get_ByCorKy(string makhuvuc, int nam, int thang)
+        {
+            using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            {
+                await sqlConnection.OpenAsync();
+                var dynamicParameters = new DynamicParameters();
+                dynamicParameters.Add("@CoporationId", makhuvuc);
+                dynamicParameters.Add("@Nam", nam);
+                dynamicParameters.Add("@Thang", thang);
+                try
+                {
+                    var query = await sqlConnection.QueryAsync<KTDCongTacAnToanRequest>(
+                        "KTD_KTDCongTacAnToan_Get_ByCorKy", dynamicParameters, commandType: CommandType.StoredProcedure);
+                    return query.Where(p => p.MaCongTacAnToan.Equals("ATTODTH")).AsList();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
+        public async Task<List<KTDCongTacAnToanRequest>> KTD_KTDCongTacAnToanTheoHienTruong_Get_ByCorKy(string makhuvuc, int nam, int thang)
+        {
+            using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            {
+                await sqlConnection.OpenAsync();
+                var dynamicParameters = new DynamicParameters();
+                dynamicParameters.Add("@CoporationId", makhuvuc);
+                dynamicParameters.Add("@Nam", nam);
+                dynamicParameters.Add("@Thang", thang);
+                try
+                {
+                    var query = await sqlConnection.QueryAsync<KTDCongTacAnToanRequest>(
+                        "KTD_KTDCongTacAnToan_Get_ByCorKy", dynamicParameters, commandType: CommandType.StoredProcedure);
+                    return query.Where(p => p.MaCongTacAnToan.Equals("ATCBCNDTH")).AsList();
                 }
                 catch (Exception ex)
                 {
@@ -478,6 +536,36 @@ namespace NiTiErp.Application.Dapper.Implementation.KyThuatDien
                 {
                     await sqlConnection.QueryAsync<KTDCaiTaoSuaChuaRequest>(
                         "KTD_KTDCaiTaoSuaChua_Update_ById", dynamicParameters, commandType: CommandType.StoredProcedure);
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+        }
+
+        public async Task<bool> KTD_KTDCongTacAnToan_Update_ById(int CongTacAnToanId, string KiemTraThucHienTo,
+            int SoLuongDaThucHienTheoTo, int LuyTuyenDaThucHienTheoTo, int SoLuongDaThucHienTheoCanBoCongNhan, 
+            int LuyTuyenDaThucHienTheoCanBoCongNhan, string UpdateBy)
+        {
+            using (var sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+            {
+                await sqlConnection.OpenAsync();
+                var dynamicParameters = new DynamicParameters();
+
+                dynamicParameters.Add("@Id", CongTacAnToanId);
+                dynamicParameters.Add("@KiemTraThucHienTo", KiemTraThucHienTo);
+                dynamicParameters.Add("@SoLuongDaThucHienTheoTo", SoLuongDaThucHienTheoTo);
+                dynamicParameters.Add("@LuyTuyenDaThucHienTheoTo", LuyTuyenDaThucHienTheoTo);
+                dynamicParameters.Add("@SoLuongDaThucHienTheoCanBoCongNhan", SoLuongDaThucHienTheoCanBoCongNhan);
+                dynamicParameters.Add("@LuyTuyenDaThucHienTheoCanBoCongNhan", LuyTuyenDaThucHienTheoCanBoCongNhan);
+
+                dynamicParameters.Add("@UpdateBy", UpdateBy);
+                try
+                {
+                    await sqlConnection.QueryAsync<KTDCaiTaoSuaChuaRequest>(
+                        "KTD_KTDCongTacAnToan_Update_ById", dynamicParameters, commandType: CommandType.StoredProcedure);
                     return true;
                 }
                 catch (Exception ex)

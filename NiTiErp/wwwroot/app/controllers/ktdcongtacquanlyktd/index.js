@@ -28,6 +28,7 @@
             loaddatatable.loadTableXuLyKhac();
             loaddatatable.loadTableDuyTuBaoDuong();
             loaddatatable.loadTableCaiTaoSuaChua();
+            loaddatatable.loadTableCongTacAnToan();
         });
 
         $("#btnKhoiTaoDanhMucBaoCao").on('click', function () {
@@ -89,6 +90,26 @@
             loaddatatable.editCaiTaoSuaChua();
             $('#modal-add-edit-EditKTDCaiTaoSuaChua').modal('show');
         });
+        $('body').on('click', '.btn-addeditKTDCongTacAnToanTheoTo', function (e) {
+            e.preventDefault();
+            const congtacantoanid = $(this).data('id');
+            $('#hidCongTacAnToanId').val(congtacantoanid);            
+            loaddatatable.editCongTacAnToan();            
+            
+            $('#modal-add-edit-EditKTDCongTacAnToan').modal('show');
+        });
+        $('body').on('click', '.btn-addeditKTDCongTacAnToanTheoHienTruong', function (e) {
+            e.preventDefault();
+            const congtacantoanid = $(this).data('id');
+            $('#hidCongTacAnToanId').val(congtacantoanid);
+            loaddatatable.editCongTacAnToan();            
+            
+            $('#modal-add-edit-EditKTDCongTacAnToan').modal('show');
+        });
+
+        $('#btnXuatExcel').on('click', function () {
+            xuatExcelTheoMau();
+        }); 
 
         //$('#txtKTDBaoCaoCongTacQuanLyKTDTuNgay, #txtKTDBaoCaoCongTacQuanLyKTDDenNgay ').datepicker({
         //    autoclose: true,
@@ -175,6 +196,39 @@
             }
         });
     }
-    
+
+    function xuatExcelTheoMau() {
+        var tenxinghiep = $('#ddlXiNghiep option:selected').text();
+        var xinghiep = $('#ddlXiNghiep').val();        
+        var nam = $('#txtNam').val();
+        var thang = $('#txtThang').val();
+
+        if (xinghiep == 'PO') {
+            excelByPo(tenxinghiep, xinghiep, nam, thang);
+        }
+        else {
+            excelByPo(tenxinghiep, xinghiep, nam, thang);
+        }
+    }
+
+    function excelByPo(tenxinghiep, xinghiep, nam, thang) {
+        $.ajax({
+            type: "POST",
+            url: "/Admin/ktdcongtacquanlyktd/ExcelByPo",
+            data: {
+                TenXiNghiep: tenxinghiep,
+                XiNghiep: xinghiep,
+                Nam: nam,
+                Thang: thang
+            },
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                window.location.href = response;
+                tedu.stopLoading();
+            }
+        });
+    }
 
 }

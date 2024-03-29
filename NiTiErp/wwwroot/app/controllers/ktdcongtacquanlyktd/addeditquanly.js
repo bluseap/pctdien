@@ -32,6 +32,9 @@
         $('#btnSaveEditCaiTaoSuaChua').on('click', function () {
             saveCaiTaoSuaChua();
         });
+        $('#btnSaveEditCongTacAnToan').on('click', function () {
+            saveCongTacAnToan();
+        });
 
     }
 
@@ -331,6 +334,53 @@
             },
             error: function () {
                 tedu.notify('Có lỗi! Không thể Lưu Công tác cải tại sửa chữa.', 'error');
+                tedu.stopLoading();
+            }
+        });
+    }
+
+    function saveCongTacAnToan() {
+        var congtacantoanid = $('#hidCongTacAnToanId').val();
+
+        var tentoqlkv = $("#txtCongTacAnToanTenToTenQLKV").val();       
+        var soluongto = $("#txtCongTacAnToanTenVatTuTo").val();
+        var luytuyento = $("#txtCongTacAnToanLuyTuyenTo").val();
+        
+        var soluongcanbo = $("#txtCongTacAnToanTenVatTuHienTruong").val();
+        var luytuyencanbo = $("#txtCongTacAnToanLuyTuyenHienTruong").val();   
+
+        $.ajax({
+            type: "POST",
+            url: "/Admin/ktdcongtacquanlyktd/SaveCongTacAnToan",
+            data: {
+                CongTacAnToanId: congtacantoanid,
+
+                KiemTraThucHienTo: tentoqlkv,
+                SoLuongDaThucHienTheoTo: soluongto,
+                LuyTuyenDaThucHienTheoTo: luytuyento,
+
+                SoLuongDaThucHienTheoCanBoCongNhan: soluongcanbo,
+                LuyTuyenDaThucHienTheoCanBoCongNhan: luytuyencanbo
+            },
+            dataType: "json",
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                if (response.Result === false) {
+                    tedu.notify("Lưu công tác an toàn.", "error");
+                }
+                else {
+                    loaddatatable.loadTableCongTacAnToan();
+                    nguyen.appUserLoginLogger(userName, "Công tác an toàn. CongTacAnToanId: " + congtacantoanid);
+                    $('#modal-add-edit-EditKTDCongTacAnToan').modal('hide');
+
+                    tedu.notify('Công tác an toàn.', 'success');
+                    tedu.stopLoading();
+                }
+            },
+            error: function () {
+                tedu.notify('Có lỗi! Không thể Lưu Công tác an toàn.', 'error');
                 tedu.stopLoading();
             }
         });

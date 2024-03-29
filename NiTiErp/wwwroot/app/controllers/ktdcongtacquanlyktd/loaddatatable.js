@@ -1,8 +1,11 @@
 ﻿var loaddatatableController = function () {
 
     var userCorporationId = $("#hidUserCorporationId").val();
-    //var userName = $("#hidUserName").val();  
+    //var userName = $("#hidUserName").val();     
 
+    this.editCongTacAnToan = function () {
+        editCongTacAnToan();
+    }
     this.editCaiTaoSuaChua = function () {
         editCaiTaoSuaChua();
     }
@@ -25,6 +28,9 @@
         editPhatTrienLuoiDien();
     }
 
+    this.loadTableCongTacAnToan = function () {
+        loadTableCongTacAnToan();
+    }
     this.loadTableCaiTaoSuaChua = function () {
         loadTableCaiTaoSuaChua();
     }
@@ -465,6 +471,109 @@
         });
     }
 
+    function loadTableCongTacAnToan() {
+        loadTableCongTacAnToanTheoTo();
+        loadTableCongTacAnToanTheoHienTruong();
+    }
+    function loadTableCongTacAnToanTheoTo() {
+        var template = $('#table-KTDCongTacAnToanTheoTo').html();
+        var render = "";
+
+        var xinghiep = $('#ddlXiNghiep').val();
+        var nam = $('#txtNam').val();
+        var thang = $('#txtThang').val();
+
+        $.ajax({
+            type: 'GET',
+            url: '/admin/ktdcongtacquanlyktd/ListCongTacAnToanTheoTo',
+            data: {
+                makhuvuc: xinghiep,
+                nam: nam,
+                thang: thang
+            },
+            dataType: 'json',
+            success: function (response) {
+                if (response.Result.length === 0) {
+                    render = "<tr><th><a>Không có dữ liệu</a></th><th></th><th></th><th></th><th></th><th></th></tr>";
+                }
+                else {
+                    $.each(response.Result, function (i, item) {
+                        render += Mustache.render(template, {
+                            Id: item.Id,
+                            CorporationId: item.CorporationId,
+                            MaCongTacAnToan: item.MaCongTacAnToan,
+                            NgayBaoCao: item.NgayBaoCao,
+
+                            KiemTraThucHienTo: item.KiemTraThucHienTo,
+
+                            TenCongTacAnToan: item.TenCongTacAnToan,
+                            TenSoLuongDaThucHienTheoTo: '<span class="badge bg-green">' + item.TenSoLuongDaThucHienTheoTo + '</span>',
+                            TenLuyTuyenDaThucHienTheoTo: item.TenLuyTuyenDaThucHienTheoTo,
+                            TenLuyTuyenSoLuongDaThucHienTheoTo: '<span class="badge bg-blue">' + item.TenLuyTuyenSoLuongDaThucHienTheoTo + '</span>'
+                        });
+                    });
+                }
+
+                if (render !== '') {
+                    $('#tblContentKTDCongTacAnToanTheoTo').html(render);
+                }
+
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không thể lấy dữ liệu về.', 'error');
+            }
+        });
+    }
+    function loadTableCongTacAnToanTheoHienTruong() {
+        var template = $('#table-KTDCongTacAnToanTheoHienTruong').html();
+        var render = "";
+
+        var xinghiep = $('#ddlXiNghiep').val();
+        var nam = $('#txtNam').val();
+        var thang = $('#txtThang').val();
+
+        $.ajax({
+            type: 'GET',
+            url: '/admin/ktdcongtacquanlyktd/ListCongTacAnToanTheoHienTruong',
+            data: {
+                makhuvuc: xinghiep,
+                nam: nam,
+                thang: thang
+            },
+            dataType: 'json',
+            success: function (response) {
+                if (response.Result.length === 0) {
+                    render = "<tr><th><a>Không có dữ liệu</a></th><th></th><th></th><th></th><th></th><th></th></tr>";
+                }
+                else {
+                    $.each(response.Result, function (i, item) {
+                        render += Mustache.render(template, {
+                            Id: item.Id,
+                            CorporationId: item.CorporationId,
+                            MaCongTacAnToan: item.MaCongTacAnToan,
+                            NgayBaoCao: item.NgayBaoCao,                            
+
+                            TenCongTacAnToan: item.TenCongTacAnToan,
+                            TenSoLuongDaThucHienTheoCanBoCongNhan: '<span class="badge bg-green">' + item.TenSoLuongDaThucHienTheoCanBoCongNhan + '</span>',
+                            TenLuyTuyenDaThucHienTheoCanBoCongNhan: item.TenLuyTuyenDaThucHienTheoCanBoCongNhan,
+                            TenLuyTuyenSoLuongDaThucHienTheoCanBoCongNhan: '<span class="badge bg-blue">' + item.TenLuyTuyenSoLuongDaThucHienTheoCanBoCongNhan + '</span>'
+                        });
+                    });
+                }
+
+                if (render !== '') {
+                    $('#tblContentKTDCongTacAnToanTheoHienTruong').html(render);
+                }
+
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không thể lấy dữ liệu về.', 'error');
+            }
+        });
+    }
+
     function editThayTheVatTu() {
         var thaythevattuid = $('#hidThayTheVatTuId').val();
         $.ajax({
@@ -755,4 +864,56 @@
         $("#hidCaiTaoSuaChuaSoLuongKH").val(0);
         $("#hidCaiTaoSuaChuaSoLuongThucHien").val(0);
     }
+
+    function editCongTacAnToan() {
+        var congtacantoanid = $('#hidCongTacAnToanId').val();
+        $.ajax({
+            type: 'GET',
+            url: '/admin/ktdcongtacquanlyktd/EditCongTacAnToan',
+            data: {
+                CongTacAnToanId: congtacantoanid
+            },
+            dataType: 'json',
+            success: function (response) {
+                var congtacantoan = response.Result;
+
+                clearDataCongTacAnToan();                
+
+                const maantoan = congtacantoan.MaCongTacAnToan;
+                if (maantoan == 'ATTODTH') {
+                    $("#CongTacAnToanTo").show();                    
+                }
+                else if (maantoan == 'ATCBCNDTH') {
+                    $("#CongTacAnToanHienTruong").show();
+                }
+
+                $("#txtCongTacAnToanTenToTenQLKV").val(congtacantoan.KiemTraThucHienTo);
+                $("#lbCongTacAnToanTenVatTuTo").html(congtacantoan.TenCongTacAnToan);
+                $("#txtCongTacAnToanTenVatTuTo").val(congtacantoan.SoLuongDaThucHienTheoTo);
+                $("#txtCongTacAnToanLuyTuyenTo").val(congtacantoan.LuyTuyenDaThucHienTheoTo);
+
+                $("#lbCongTacAnToanTenVatTuHienTruong").html(congtacantoan.TenCongTacAnToan);
+                $("#txtCongTacAnToanTenVatTuHienTruong").val(congtacantoan.SoLuongDaThucHienTheoCanBoCongNhan);
+                $("#txtCongTacAnToanLuyTuyenHienTruong").val(congtacantoan.LuyTuyenDaThucHienTheoCanBoCongNhan);   
+            },
+            error: function (status) {
+                console.log(status);
+                tedu.notify('Không thể lấy dữ liệu về.', 'error');
+            }
+        });
+    }
+    function clearDataCongTacAnToan() {
+        $("#CongTacAnToanTo").hide();
+        $("#CongTacAnToanHienTruong").hide();
+
+        $("#txtCongTacAnToanTenToTenQLKV").val('');
+        $("#lbCongTacAnToanTenVatTuTo").val('');
+        $("#txtCongTacAnToanTenVatTuTo").val(0);
+        $("#txtCongTacAnToanLuyTuyenTo").val(0);
+
+        $("#lbCongTacAnToanTenVatTuHienTruong").val('');
+        $("#txtCongTacAnToanTenVatTuHienTruong").val(0);
+        $("#txtCongTacAnToanLuyTuyenHienTruong").val(0);
+    }
+
 }

@@ -15,7 +15,7 @@ namespace NiTiErp.Application.Dapper.Interfaces.KyThuatDien
         Task<KTDXuLyKhacRequest> KTD_KTDXuLyKhac_Get_ById(int XuLyKhacId);
         Task<KTDDuyTuBaoDuongRequest> KTD_KTDDuyTuBaoDuong_Get_ById(int DuyTuBaoDuongId);
         Task<KTDCaiTaoSuaChuaRequest> KTD_KTDCaiTaoSuaChua_Get_ById(int CaiTaoSuaChuaId);
-
+        Task<KTDCongTacAnToanRequest> KTD_KTDCongTacAnToan_Get_ById(int CongTacAnToanId);
 
         Task<List<KTDThayTheVatTuRequest>> KTD_KTDThayTheVatTu_Get_ByCorKy(string makhuvuc, int nam, int thang);
         Task<List<KTDPhatTrienLuoiDienRequest>> KTD_KTDPhatTrienLuoiDien_Get_ByCorKy(string makhuvuc, int nam, int thang);
@@ -24,6 +24,8 @@ namespace NiTiErp.Application.Dapper.Interfaces.KyThuatDien
         Task<List<KTDXuLyKhacRequest>> KTD_KTDXuLyKhac_Get_ByCorKy(string makhuvuc, int nam, int thang);
         Task<List<KTDDuyTuBaoDuongRequest>> KTD_KTDDuyTuBaoDuong_Get_ByCorKy(string makhuvuc, int nam, int thang);
         Task<List<KTDCaiTaoSuaChuaRequest>> KTD_KTDCaiTaoSuaChua_Get_ByCorKy(string makhuvuc, int nam, int thang);
+        Task<List<KTDCongTacAnToanRequest>> KTD_KTDCongTacAnToanTheoTo_Get_ByCorKy(string makhuvuc, int nam, int thang);
+        Task<List<KTDCongTacAnToanRequest>> KTD_KTDCongTacAnToanTheoHienTruong_Get_ByCorKy(string makhuvuc, int nam, int thang);
 
         Task<bool> KTD_KTDThayTheVatTu_Create_KhoiTaoBCByDm(string DmKhoiTao, string MaKhuVuc, int Nam, int Thang, string createBy);
 
@@ -39,6 +41,9 @@ namespace NiTiErp.Application.Dapper.Interfaces.KyThuatDien
         Task<bool> KTD_KTDDuyTuBaoDuong_Update_ById(int DuyTuBaoDuongId,
             int SoLuongDuyTuBaoDuong, string CuTheDuyTuBaoDuong, int SoLuongLuyTuyenDuyTuBaoDuong, string UpdateBy);
         Task<bool> KTD_KTDCaiTaoSuaChua_Update_ById(KTDCaiTaoSuaChuaRequest caitaosuachua, string UpdateBy);
+        Task<bool> KTD_KTDCongTacAnToan_Update_ById(int CongTacAnToanId, string KiemTraThucHienTo,
+            int SoLuongDaThucHienTheoTo, int LuyTuyenDaThucHienTheoTo, int SoLuongDaThucHienTheoCanBoCongNhan,
+            int LuyTuyenDaThucHienTheoCanBoCongNhan, string UpdateBy);
 
     }
 }
