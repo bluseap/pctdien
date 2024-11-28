@@ -204,17 +204,35 @@
         var thang = $('#txtThang').val();
 
         if (xinghiep == 'PO') {
-            excelByPo(tenxinghiep, xinghiep, nam, thang);
+            excelByPo(nam, thang);
         }
         else {
-            excelByPo(tenxinghiep, xinghiep, nam, thang);
+            excelByXN(tenxinghiep, xinghiep, nam, thang);
         }
     }
 
-    function excelByPo(tenxinghiep, xinghiep, nam, thang) {
+    function excelByPo(nam, thang) {
         $.ajax({
             type: "POST",
             url: "/Admin/ktdcongtacquanlyktd/ExcelByPo",
+            data: {                
+                Nam: nam,
+                Thang: thang
+            },
+            beforeSend: function () {
+                tedu.startLoading();
+            },
+            success: function (response) {
+                window.location.href = response;
+                tedu.stopLoading();
+            }
+        });
+    }
+
+    function excelByXN(tenxinghiep, xinghiep, nam, thang) {
+        $.ajax({
+            type: "POST",
+            url: "/Admin/ktdcongtacquanlyktd/ExcelByXN",
             data: {
                 TenXiNghiep: tenxinghiep,
                 XiNghiep: xinghiep,

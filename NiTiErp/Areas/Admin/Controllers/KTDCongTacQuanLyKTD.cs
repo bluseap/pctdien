@@ -403,7 +403,7 @@ namespace NiTiErp.Areas.Admin.Controllers
         #endregion
 
         [HttpPost]
-        public IActionResult ExcelByPo(string TenXiNghiep, string XiNghiep, int Nam, int Thang)
+        public IActionResult ExcelByXN(string TenXiNghiep, string XiNghiep, int Nam, int Thang)
         {
             string sWebRootFolder = _hostingEnvironment.WebRootPath;
             string sFileName = $"BCCTQLKHXN.xlsx";
@@ -1013,7 +1013,7 @@ namespace NiTiErp.Areas.Admin.Controllers
                     worksheet.Cells[36, 20].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
 
                     var ctscNCDDTT = caitaosuachua.Result.Where(p => p.MaCaiTaoSuaChua.Equals("CTCTNCTT")).Single();
-                    worksheet.Cells[37, 2].Value = Convert.ToInt32(ctscNCDDHT.SoLuongCaiTaoSuaChua).ToString();
+                    worksheet.Cells[37, 2].Value = Convert.ToInt32(ctscNCDDTT.SoLuongCaiTaoSuaChua).ToString();
                     worksheet.Cells[37, 2].Style.Font.Size = 13;
                     worksheet.Cells[37, 2].Style.Font.Bold = true;
                     worksheet.Cells[37, 2].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // canh giua
@@ -1023,7 +1023,7 @@ namespace NiTiErp.Areas.Admin.Controllers
                     worksheet.Cells[37, 2].Style.Border.Right.Style = ExcelBorderStyle.Thin; // lien nho
                     worksheet.Cells[37, 2].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
                                      
-                    worksheet.Cells[37, 5].Value = Convert.ToInt32(ctscNCDDHT.DaiCaiTaoSuaChua).ToString();
+                    worksheet.Cells[37, 5].Value = Convert.ToInt32(ctscNCDDTT.DaiCaiTaoSuaChua).ToString();
                     worksheet.Cells[37, 5].Style.Font.Size = 13;
                     worksheet.Cells[37, 5].Style.Font.Bold = true;
                     worksheet.Cells[37, 5].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // canh giua
@@ -1033,13 +1033,13 @@ namespace NiTiErp.Areas.Admin.Controllers
                     worksheet.Cells[37, 5].Style.Border.Right.Style = ExcelBorderStyle.Thin; // lien nho
                     worksheet.Cells[37, 5].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
 
-                    worksheet.Cells[37, 9].Value = ctscNCDDHT.CuTheCaiTaoSuaChua != null ? ctscNCDDHT.CuTheCaiTaoSuaChua.ToString() : "";
+                    worksheet.Cells[37, 9].Value = ctscNCDDTT.CuTheCaiTaoSuaChua != null ? ctscNCDDTT.CuTheCaiTaoSuaChua.ToString() : "";
                     worksheet.Cells[37, 9].Style.Font.Size = 13;
                     worksheet.Cells[37, 9].Style.Font.Bold = true;
                     worksheet.Cells[37, 9].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // canh giua
                     worksheet.Cells[37, 9].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
                                      
-                    worksheet.Cells[37, 18].Value = Convert.ToInt32(ctscNCDDHT.SoLuongLuyTuyenCaiTaoSuaChua).ToString();
+                    worksheet.Cells[37, 18].Value = Convert.ToInt32(ctscNCDDTT.SoLuongLuyTuyenCaiTaoSuaChua).ToString();
                     worksheet.Cells[37, 18].Style.Font.Size = 13;
                     worksheet.Cells[37, 18].Style.Font.Bold = true;
                     worksheet.Cells[37, 18].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // canh giua
@@ -1049,7 +1049,7 @@ namespace NiTiErp.Areas.Admin.Controllers
                     worksheet.Cells[37, 18].Style.Border.Right.Style = ExcelBorderStyle.Thin; // lien nho
                     worksheet.Cells[37, 18].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
 
-                    worksheet.Cells[37, 20].Value = Convert.ToInt32(ctscNCDDHT.SoLuongSoLuongLuyTuyenCaiTaoSuaChua).ToString();
+                    worksheet.Cells[37, 20].Value = Convert.ToInt32(ctscNCDDTT.SoLuongSoLuongLuyTuyenCaiTaoSuaChua).ToString();
                     worksheet.Cells[37, 20].Style.Font.Size = 13;
                     worksheet.Cells[37, 20].Style.Font.Bold = true;
                     worksheet.Cells[37, 20].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // canh giua
@@ -1271,6 +1271,757 @@ namespace NiTiErp.Areas.Admin.Controllers
                     worksheet.Cells[45, 7].Style.Border.Left.Style = ExcelBorderStyle.Thin;
                     worksheet.Cells[45, 7].Style.Border.Right.Style = ExcelBorderStyle.Thin; // lien nho
                     worksheet.Cells[45, 7].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+
+                    //var khuvuc = !string.IsNullOrEmpty(corporationId) ? corporationId : "%";
+                    //var phong = !string.IsNullOrEmpty(madphongChamCong) ? madphongChamCong : "%";
+                    //var tukhoa = !string.IsNullOrEmpty(keywordChamCong) ? keywordChamCong : "%";
+
+                    //var vbdDetail = _vanbandensoService.VBDenSoExcel(khuvuc, tungay, dengay, "", "", "",
+                    //   "VBDenSoExcelKhuVuc");
+
+                    //int rowIndex = 13;
+                    //int count = 1;
+
+                    //worksheet.Cells[6, 2].Value = "(Từ ngày " + tungay.ToString("dd/MM/yyyy") + " đến ngày " + dengay.ToString("dd/MM/yyyy") + ")";
+                    //worksheet.Cells[6, 2].Style.Font.Size = 7;
+                    //worksheet.Cells[6, 2].Style.Font.Bold = true;
+                    //worksheet.Cells[6, 2].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // canh giua
+                    //worksheet.Cells[6, 2].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+
+                    //worksheet.InsertRow(13, vbdDetail.Result.Count());
+
+                    //foreach (var hdDetail in vbdDetail.Result)
+                    //{
+                    //    //Color DeepBlueHexCode = ColorTranslator.FromHtml("#254061");
+                    //    // Cell 1, Carton Count
+                    //    //worksheet.Cells[rowIndex, 2].Value = count.ToString();
+                    //    worksheet.Cells[rowIndex, 2].Value = hdDetail.NgayDenCuaVanBan != null ? hdDetail.NgayDenCuaVanBan.Date.ToString("dd/M/yyyy", CultureInfo.InvariantCulture) : "";
+                    //    //worksheet.Cells[rowIndex, 2].Style.Border.Left.Style = ExcelBorderStyle.Thick; // to dam
+                    //    //worksheet.Cells[rowIndex, 2].Style.Border.Top.Color.SetColor(Color.Red);
+                    //    worksheet.Cells[rowIndex, 2].Style.Border.Left.Style = ExcelBorderStyle.Medium; // to dam vua
+                    //    worksheet.Cells[rowIndex, 2].Style.Border.Right.Style = ExcelBorderStyle.Thin; // lien nho
+                    //    worksheet.Cells[rowIndex, 2].Style.Border.Top.Style = ExcelBorderStyle.Dotted; // khoan cach
+                    //    worksheet.Cells[rowIndex, 2].Style.Border.Bottom.Style = ExcelBorderStyle.Dotted;
+                    //    worksheet.Cells[rowIndex, 2].Style.Font.Size = 9;
+                    //    worksheet.Cells[rowIndex, 2].Style.HorizontalAlignment = ExcelHorizontalAlignment.Right;
+                    //    worksheet.Row(rowIndex).Height = 35;                  
+
+                    package.SaveAs(file); //Save the workbook.                    
+                }
+                return new OkObjectResult(url);
+            }
+        }
+
+        [HttpPost]
+        public IActionResult ExcelByPo(int Nam, int Thang)
+        {
+            string sWebRootFolder = _hostingEnvironment.WebRootPath;
+            string sFileName = $"BCCTQLTONGHUYEN.xlsx";
+            // Template File
+            string templateDocument = Path.Combine(sWebRootFolder, "templates", "BCCTQLTONGHUYEN.xlsx");
+
+            string url = $"{Request.Scheme}://{Request.Host}/{"export-files"}/{sFileName}";
+
+            FileInfo file = new FileInfo(Path.Combine(sWebRootFolder, "export-files", sFileName));
+
+            if (file.Exists)
+            {
+                file.Delete();
+                file = new FileInfo(Path.Combine(sWebRootFolder, "export-files", sFileName));
+            }
+
+            var thaythevattu = _ktdthaythevattuService.KTD_KTDThayTheVatTu_Get_ByCorKy("PO", Nam, Thang);
+            var phattrienluoidien = _ktdthaythevattuService.KTD_KTDPhatTrienLuoiDien_Get_ByCorKy("PO", Nam, Thang);
+            var nangcongsuat = _ktdthaythevattuService.KTD_KTDNangCongSuatCayMoi_Get_ByCorKy("PO", Nam, Thang);
+            var phattrienkhachhang = _ktdthaythevattuService.KTD_KTDPhatTrienKhachHang_Get_ByCorKy("PO", Nam, Thang);
+            var xulykhac = _ktdthaythevattuService.KTD_KTDXuLyKhac_Get_ByCorKy("PO", Nam, Thang);
+            var duytubaoduong = _ktdthaythevattuService.KTD_KTDDuyTuBaoDuong_Get_ByCorKy("PO", Nam, Thang);
+            var caitaosuachua = _ktdthaythevattuService.KTD_KTDCaiTaoSuaChua_Get_ByCorKy("PO", Nam, Thang);
+            var congtacantoanto = _ktdthaythevattuService.KTD_KTDCongTacAnToanTheoTo_Get_ByCorKy("PO", Nam, Thang);
+            var congtacantoanhientruong = _ktdthaythevattuService.KTD_KTDCongTacAnToanTheoHienTruong_Get_ByCorKy("PO", Nam, Thang);
+
+            var tieudebaocao = "BÁO CÁO CÔNG TÁC QUẢN LÝ KỸ THUẬT ĐIỆN THÁNG " + Thang.ToString() + " NĂM " + Nam.ToString();
+            
+            using (FileStream templateDocumentStream = System.IO.File.OpenRead(templateDocument))
+            {
+                using (ExcelPackage package = new ExcelPackage(templateDocumentStream))
+                {
+                    // add a new worksheet to the empty workbook
+                    ExcelWorksheet worksheet = package.Workbook.Worksheets["TongHuyen"];
+
+                    worksheet.Cells[4, 1].Value = tieudebaocao;
+                    worksheet.Cells[4, 1].Style.Font.Size = 14;
+                    worksheet.Cells[4, 1].Style.Font.Bold = true;
+                    worksheet.Cells[4, 1].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // canh giua
+                    worksheet.Cells[4, 1].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+
+                    var thayaptomat = thaythevattu.Result.Where(p => p.MaTenThayTheVatTu.Equals("THAYAPMCCB"));
+                    worksheet.Cells[8, 2].Value = Convert.ToInt32(thayaptomat.Sum(p => p.SoLuongThayTheVatTu)).ToString();
+                    worksheet.Cells[8, 2].Style.Font.Size = 13;
+                    worksheet.Cells[8, 2].Style.Font.Bold = true;
+                    worksheet.Cells[8, 2].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // canh giua
+                    worksheet.Cells[8, 2].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                    worksheet.Cells[8, 2].Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[8, 2].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[8, 2].Style.Border.Right.Style = ExcelBorderStyle.Thin; // lien nho
+                    worksheet.Cells[8, 2].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+
+                    worksheet.Cells[8, 6].Value = Convert.ToInt32(thayaptomat.Sum(p => p.SoLuongLuyTuyenThayTheVatTu)).ToString();
+                    worksheet.Cells[8, 6].Style.Font.Size = 13;
+                    worksheet.Cells[8, 6].Style.Font.Bold = true;
+                    worksheet.Cells[8, 6].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // canh giua
+                    worksheet.Cells[8, 6].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                    worksheet.Cells[8, 6].Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[8, 6].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[8, 6].Style.Border.Right.Style = ExcelBorderStyle.Thin; // lien nho
+                    worksheet.Cells[8, 6].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;                    
+
+                    var thayfco = thaythevattu.Result.Where(p => p.MaTenThayTheVatTu.Equals("THAYFCOLBF"));
+                    worksheet.Cells[9, 2].Value = Convert.ToInt32(thayfco.Sum(p => p.SoLuongThayTheVatTu)).ToString();
+                    worksheet.Cells[9, 2].Style.Font.Size = 13;
+                    worksheet.Cells[9, 2].Style.Font.Bold = true;
+                    worksheet.Cells[9, 2].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // canh giua
+                    worksheet.Cells[9, 2].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                    worksheet.Cells[9, 2].Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[9, 2].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[9, 2].Style.Border.Right.Style = ExcelBorderStyle.Thin; // lien nho
+                    worksheet.Cells[9, 2].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+
+                    worksheet.Cells[9, 6].Value = Convert.ToInt32(thayfco.Sum(p => p.SoLuongLuyTuyenThayTheVatTu)).ToString();
+                    worksheet.Cells[9, 6].Style.Font.Size = 13;
+                    worksheet.Cells[9, 6].Style.Font.Bold = true;
+                    worksheet.Cells[9, 6].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // canh giua
+                    worksheet.Cells[9, 6].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                    worksheet.Cells[9, 6].Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[9, 6].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[9, 6].Style.Border.Right.Style = ExcelBorderStyle.Thin; // lien nho
+                    worksheet.Cells[9, 6].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;                    
+
+                    var thaydaysorty = thaythevattu.Result.Where(p => p.MaTenThayTheVatTu.Equals("THDAYSORTY"));
+                    worksheet.Cells[10, 2].Value = Convert.ToInt32(thaydaysorty.Sum(p => p.SoLuongThayTheVatTu)).ToString();
+                    worksheet.Cells[10, 2].Style.Font.Size = 13;
+                    worksheet.Cells[10, 2].Style.Font.Bold = true;
+                    worksheet.Cells[10, 2].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // canh giua
+                    worksheet.Cells[10, 2].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                    worksheet.Cells[10, 2].Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[10, 2].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[10, 2].Style.Border.Right.Style = ExcelBorderStyle.Thin; // lien nho
+                    worksheet.Cells[10, 2].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+
+                    worksheet.Cells[10, 6].Value = Convert.ToInt32(thaydaysorty.Sum(p => p.SoLuongLuyTuyenThayTheVatTu)).ToString();
+                    worksheet.Cells[10, 6].Style.Font.Size = 13;
+                    worksheet.Cells[10, 6].Style.Font.Bold = true;
+                    worksheet.Cells[10, 6].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // canh giua
+                    worksheet.Cells[10, 6].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                    worksheet.Cells[10, 6].Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[10, 6].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[10, 6].Style.Border.Right.Style = ExcelBorderStyle.Thin; // lien nho
+                    worksheet.Cells[10, 6].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;                    
+
+                    var thaymaybienap = thaythevattu.Result.Where(p => p.MaTenThayTheVatTu.Equals("THMAYBA"));
+                    worksheet.Cells[11, 2].Value = Convert.ToInt32(thaymaybienap.Sum(p => p.SoLuongThayTheVatTu)).ToString();
+                    worksheet.Cells[11, 2].Style.Font.Size = 13;
+                    worksheet.Cells[11, 2].Style.Font.Bold = true;
+                    worksheet.Cells[11, 2].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // canh giua
+                    worksheet.Cells[11, 2].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                    worksheet.Cells[11, 2].Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[11, 2].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[11, 2].Style.Border.Right.Style = ExcelBorderStyle.Thin; // lien nho
+                    worksheet.Cells[11, 2].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+
+                    worksheet.Cells[11, 6].Value = Convert.ToInt32(thaymaybienap.Sum(p => p.SoLuongLuyTuyenThayTheVatTu)).ToString();
+                    worksheet.Cells[11, 6].Style.Font.Size = 13;
+                    worksheet.Cells[11, 6].Style.Font.Bold = true;
+                    worksheet.Cells[11, 6].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // canh giua
+                    worksheet.Cells[11, 6].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                    worksheet.Cells[11, 6].Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[11, 6].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[11, 6].Style.Border.Right.Style = ExcelBorderStyle.Thin; // lien nho
+                    worksheet.Cells[11, 6].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;                    
+
+                    var baotrimba = thaythevattu.Result.Where(p => p.MaTenThayTheVatTu.Equals("THBAOTRITB"));
+                    worksheet.Cells[12, 2].Value = Convert.ToInt32(baotrimba.Sum(p => p.SoLuongThayTheVatTu)).ToString();
+                    worksheet.Cells[12, 2].Style.Font.Size = 13;
+                    worksheet.Cells[12, 2].Style.Font.Bold = true;
+                    worksheet.Cells[12, 2].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // canh giua
+                    worksheet.Cells[12, 2].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                    worksheet.Cells[12, 2].Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[12, 2].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[12, 2].Style.Border.Right.Style = ExcelBorderStyle.Thin; // lien nho
+                    worksheet.Cells[12, 2].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+
+                    worksheet.Cells[12, 6].Value = Convert.ToInt32(baotrimba.Sum(p => p.SoLuongLuyTuyenThayTheVatTu)).ToString();
+                    worksheet.Cells[12, 6].Style.Font.Size = 13;
+                    worksheet.Cells[12, 6].Style.Font.Bold = true;
+                    worksheet.Cells[12, 6].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // canh giua
+                    worksheet.Cells[12, 6].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                    worksheet.Cells[12, 6].Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[12, 6].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[12, 6].Style.Border.Right.Style = ExcelBorderStyle.Thin; // lien nho
+                    worksheet.Cells[12, 6].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;                   
+
+                    var luoidienHTHH = phattrienluoidien.Result.Where(p => p.MaPhatTrienLuoiDien.Equals("XDHTHH"));
+                    worksheet.Cells[15, 6].Value = Convert.ToInt32(luoidienHTHH.Sum(p => p.ChieuDaiPhatTrienLuoiDien)).ToString();
+                    worksheet.Cells[15, 6].Style.Font.Size = 13;
+                    worksheet.Cells[15, 6].Style.Font.Bold = true;
+                    worksheet.Cells[15, 6].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // canh giua
+                    worksheet.Cells[15, 6].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                    worksheet.Cells[15, 6].Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[15, 6].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[15, 6].Style.Border.Right.Style = ExcelBorderStyle.Thin; // lien nho
+                    worksheet.Cells[15, 6].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+
+                    worksheet.Cells[15, 13].Value = Convert.ToInt32(luoidienHTHH.Sum(p => p.ChieuDaiLuyTuyenPhatTrienLuoiDien)).ToString();
+                    worksheet.Cells[15, 13].Style.Font.Size = 13;
+                    worksheet.Cells[15, 13].Style.Font.Bold = true;
+                    worksheet.Cells[15, 13].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // canh giua
+                    worksheet.Cells[15, 13].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                    worksheet.Cells[15, 13].Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[15, 13].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[15, 13].Style.Border.Right.Style = ExcelBorderStyle.Thin; // lien nho
+                    worksheet.Cells[15, 13].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+
+                    var luoidienHTDL = phattrienluoidien.Result.Where(p => p.MaPhatTrienLuoiDien.Equals("XDHTDL"));
+                    worksheet.Cells[16, 6].Value = Convert.ToInt32(luoidienHTDL.Sum(p => p.ChieuDaiPhatTrienLuoiDien)).ToString();
+                    worksheet.Cells[16, 6].Style.Font.Size = 13;
+                    worksheet.Cells[16, 6].Style.Font.Bold = true;
+                    worksheet.Cells[16, 6].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // canh giua
+                    worksheet.Cells[16, 6].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                    worksheet.Cells[16, 6].Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[16, 6].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[16, 6].Style.Border.Right.Style = ExcelBorderStyle.Thin; // lien nho
+                    worksheet.Cells[16, 6].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+
+                    worksheet.Cells[16, 13].Value = Convert.ToInt32(luoidienHTDL.Sum(p => p.ChieuDaiLuyTuyenPhatTrienLuoiDien)).ToString();
+                    worksheet.Cells[16, 13].Style.Font.Size = 13;
+                    worksheet.Cells[16, 13].Style.Font.Bold = true;
+                    worksheet.Cells[16, 13].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // canh giua
+                    worksheet.Cells[16, 13].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                    worksheet.Cells[16, 13].Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[16, 13].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[16, 13].Style.Border.Right.Style = ExcelBorderStyle.Thin; // lien nho
+                    worksheet.Cells[16, 13].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+
+                    var luoidienTT1P = phattrienluoidien.Result.Where(p => p.MaPhatTrienLuoiDien.Equals("XDTT1P"));
+                    worksheet.Cells[17, 6].Value = Convert.ToInt32(luoidienTT1P.Sum(p => p.ChieuDaiPhatTrienLuoiDien)).ToString();
+                    worksheet.Cells[17, 6].Style.Font.Size = 13;
+                    worksheet.Cells[17, 6].Style.Font.Bold = true;
+                    worksheet.Cells[17, 6].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // canh giua
+                    worksheet.Cells[17, 6].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                    worksheet.Cells[17, 6].Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[17, 6].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[17, 6].Style.Border.Right.Style = ExcelBorderStyle.Thin; // lien nho
+                    worksheet.Cells[17, 6].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+
+                    worksheet.Cells[17, 13].Value = Convert.ToInt32(luoidienTT1P.Sum(p => p.ChieuDaiLuyTuyenPhatTrienLuoiDien)).ToString();
+                    worksheet.Cells[17, 13].Style.Font.Size = 13;
+                    worksheet.Cells[17, 13].Style.Font.Bold = true;
+                    worksheet.Cells[17, 13].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // canh giua
+                    worksheet.Cells[17, 13].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                    worksheet.Cells[17, 13].Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[17, 13].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[17, 13].Style.Border.Right.Style = ExcelBorderStyle.Thin; // lien nho
+                    worksheet.Cells[17, 13].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+
+                    var luoidienTT3P = phattrienluoidien.Result.Where(p => p.MaPhatTrienLuoiDien.Equals("XDTT3P"));
+                    worksheet.Cells[18, 6].Value = Convert.ToInt32(luoidienTT3P.Sum(p => p.ChieuDaiPhatTrienLuoiDien)).ToString();
+                    worksheet.Cells[18, 6].Style.Font.Size = 13;
+                    worksheet.Cells[18, 6].Style.Font.Bold = true;
+                    worksheet.Cells[18, 6].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // canh giua
+                    worksheet.Cells[18, 6].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                    worksheet.Cells[18, 6].Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[18, 6].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[18, 6].Style.Border.Right.Style = ExcelBorderStyle.Thin; // lien nho
+                    worksheet.Cells[18, 6].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+
+                    worksheet.Cells[18, 13].Value = Convert.ToInt32(luoidienTT3P.Sum(p => p.ChieuDaiLuyTuyenPhatTrienLuoiDien)).ToString();
+                    worksheet.Cells[18, 13].Style.Font.Size = 13;
+                    worksheet.Cells[18, 13].Style.Font.Bold = true;
+                    worksheet.Cells[18, 13].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // canh giua
+                    worksheet.Cells[18, 13].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                    worksheet.Cells[18, 13].Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[18, 13].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[18, 13].Style.Border.Right.Style = ExcelBorderStyle.Thin; // lien nho
+                    worksheet.Cells[18, 13].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+
+                    var nangcongsuatcaymoi = nangcongsuat.Result.Where(p => p.MaNangCongSuat.Equals("CMTBA"));
+                    worksheet.Cells[20, 2].Value = Convert.ToInt32(nangcongsuatcaymoi.Sum(p => p.SoLuongNangCongSuat)).ToString();
+                    worksheet.Cells[20, 2].Style.Font.Size = 13;
+                    worksheet.Cells[20, 2].Style.Font.Bold = true;
+                    worksheet.Cells[20, 2].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // canh giua
+                    worksheet.Cells[20, 2].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                    worksheet.Cells[20, 2].Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[20, 2].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[20, 2].Style.Border.Right.Style = ExcelBorderStyle.Thin; // lien nho
+                    worksheet.Cells[20, 2].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+
+                    worksheet.Cells[20, 5].Value = Convert.ToInt32(nangcongsuatcaymoi.Sum(p => p.SoLuongSoLuongNangCongSuat)).ToString();
+                    worksheet.Cells[20, 5].Style.Font.Size = 13;
+                    worksheet.Cells[20, 5].Style.Font.Bold = true;
+                    worksheet.Cells[20, 5].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // canh giua
+                    worksheet.Cells[20, 5].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                    worksheet.Cells[20, 5].Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[20, 5].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[20, 5].Style.Border.Right.Style = ExcelBorderStyle.Thin; // lien nho
+                    worksheet.Cells[20, 5].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+                   
+                    worksheet.Cells[20, 9].Value = Convert.ToInt32(nangcongsuatcaymoi.Sum(p => p.SoLuongLuyTuyenNangCongSuat)).ToString();
+                    worksheet.Cells[20, 9].Style.Font.Size = 13;
+                    worksheet.Cells[20, 9].Style.Font.Bold = true;
+                    worksheet.Cells[20, 9].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // canh giua
+                    worksheet.Cells[20, 9].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                    worksheet.Cells[20, 9].Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[20, 9].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[20, 9].Style.Border.Right.Style = ExcelBorderStyle.Thin; // lien nho
+                    worksheet.Cells[20, 9].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+
+                    worksheet.Cells[20, 11].Value = Convert.ToInt32(nangcongsuatcaymoi.Sum(p => p.CongSuatSoLuongLuyTuyenNangCongSuat)).ToString();
+                    worksheet.Cells[20, 11].Style.Font.Size = 13;
+                    worksheet.Cells[20, 11].Style.Font.Bold = true;
+                    worksheet.Cells[20, 11].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // canh giua
+                    worksheet.Cells[20, 11].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                    worksheet.Cells[20, 11].Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[20, 11].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[20, 11].Style.Border.Right.Style = ExcelBorderStyle.Thin; // lien nho
+                    worksheet.Cells[20, 11].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+
+                    var nangcongsuatnangcs = nangcongsuat.Result.Where(p => p.MaNangCongSuat.Equals("NCSTBA"));
+                    worksheet.Cells[21, 2].Value = Convert.ToInt32(nangcongsuatnangcs.Sum(p => p.SoLuongNangCongSuat)).ToString();
+                    worksheet.Cells[21, 2].Style.Font.Size = 13;
+                    worksheet.Cells[21, 2].Style.Font.Bold = true;
+                    worksheet.Cells[21, 2].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // canh giua
+                    worksheet.Cells[21, 2].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                    worksheet.Cells[21, 2].Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[21, 2].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[21, 2].Style.Border.Right.Style = ExcelBorderStyle.Thin; // lien nho
+                    worksheet.Cells[21, 2].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+                                     
+                    worksheet.Cells[21, 5].Value = Convert.ToInt32(nangcongsuatnangcs.Sum(p => p.SoLuongSoLuongNangCongSuat)).ToString();
+                    worksheet.Cells[21, 5].Style.Font.Size = 13;
+                    worksheet.Cells[21, 5].Style.Font.Bold = true;
+                    worksheet.Cells[21, 5].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // canh giua
+                    worksheet.Cells[21, 5].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                    worksheet.Cells[21, 5].Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[21, 5].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[21, 5].Style.Border.Right.Style = ExcelBorderStyle.Thin; // lien nho
+                    worksheet.Cells[21, 5].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+
+                    worksheet.Cells[21, 9].Value = Convert.ToInt32(nangcongsuatnangcs.Sum(p => p.SoLuongLuyTuyenNangCongSuat)).ToString();
+                    worksheet.Cells[21, 9].Style.Font.Size = 13;
+                    worksheet.Cells[21, 9].Style.Font.Bold = true;
+                    worksheet.Cells[21, 9].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // canh giua
+                    worksheet.Cells[21, 9].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                    worksheet.Cells[21, 9].Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[21, 9].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[21, 9].Style.Border.Right.Style = ExcelBorderStyle.Thin; // lien nho
+                    worksheet.Cells[21, 9].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+                                     
+                    worksheet.Cells[21, 11].Value = Convert.ToInt32(nangcongsuatnangcs.Sum(p => p.CongSuatSoLuongLuyTuyenNangCongSuat)).ToString();
+                    worksheet.Cells[21, 11].Style.Font.Size = 13;
+                    worksheet.Cells[21, 11].Style.Font.Bold = true;
+                    worksheet.Cells[21, 11].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // canh giua
+                    worksheet.Cells[21, 11].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                    worksheet.Cells[21, 11].Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[21, 11].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[21, 11].Style.Border.Right.Style = ExcelBorderStyle.Thin; // lien nho
+                    worksheet.Cells[21, 11].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+
+                    var ptkhluatdl = phattrienkhachhang.Result.Where(p => p.MaPhatTrienKhachHang.Equals("LMLDL"));
+                    worksheet.Cells[23, 5].Value = Convert.ToInt32(ptkhluatdl.Sum(p => p.SoLuongPhatTrienKhachHang)).ToString();
+                    worksheet.Cells[23, 5].Style.Font.Size = 13;
+                    worksheet.Cells[23, 5].Style.Font.Bold = true;
+                    worksheet.Cells[23, 5].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // canh giua
+                    worksheet.Cells[23, 5].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                    worksheet.Cells[23, 5].Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[23, 5].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[23, 5].Style.Border.Right.Style = ExcelBorderStyle.Thin; // lien nho
+                    worksheet.Cells[23, 5].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+
+                    worksheet.Cells[23, 9].Value = Convert.ToInt32(ptkhluatdl.Sum(p => p.LuyTuyenPhatTrienKhachHang)).ToString();
+                    worksheet.Cells[23, 9].Style.Font.Size = 13;
+                    worksheet.Cells[23, 9].Style.Font.Bold = true;
+                    worksheet.Cells[23, 9].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // canh giua
+                    worksheet.Cells[23, 9].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                    worksheet.Cells[23, 9].Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[23, 9].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[23, 9].Style.Border.Right.Style = ExcelBorderStyle.Thin; // lien nho
+                    worksheet.Cells[23, 9].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+
+                    var ptkhluatmdk = phattrienkhachhang.Result.Where(p => p.MaPhatTrienKhachHang.Equals("LMDK1P"));
+                    worksheet.Cells[24, 5].Value = Convert.ToInt32(ptkhluatmdk.Sum(p => p.SoLuongPhatTrienKhachHang)).ToString();
+                    worksheet.Cells[24, 5].Style.Font.Size = 13;
+                    worksheet.Cells[24, 5].Style.Font.Bold = true;
+                    worksheet.Cells[24, 5].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // canh giua
+                    worksheet.Cells[24, 5].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                    worksheet.Cells[24, 5].Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[24, 5].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[24, 5].Style.Border.Right.Style = ExcelBorderStyle.Thin; // lien nho
+                    worksheet.Cells[24, 5].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+
+                    worksheet.Cells[24, 9].Value = Convert.ToInt32(ptkhluatmdk.Sum(p => p.LuyTuyenPhatTrienKhachHang)).ToString();
+                    worksheet.Cells[24, 9].Style.Font.Size = 13;
+                    worksheet.Cells[24, 9].Style.Font.Bold = true;
+                    worksheet.Cells[24, 9].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // canh giua
+                    worksheet.Cells[24, 9].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                    worksheet.Cells[24, 9].Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[24, 9].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[24, 9].Style.Border.Right.Style = ExcelBorderStyle.Thin; // lien nho
+                    worksheet.Cells[24, 9].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+
+                    var ptkhluatmdk3p = phattrienkhachhang.Result.Where(p => p.MaPhatTrienKhachHang.Equals("LMDK3P"));
+                    worksheet.Cells[25, 5].Value = Convert.ToInt32(ptkhluatmdk3p.Sum(p => p.SoLuongPhatTrienKhachHang)).ToString();
+                    worksheet.Cells[25, 5].Style.Font.Size = 13;
+                    worksheet.Cells[25, 5].Style.Font.Bold = true;
+                    worksheet.Cells[25, 5].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // canh giua
+                    worksheet.Cells[25, 5].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                    worksheet.Cells[25, 5].Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[25, 5].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[25, 5].Style.Border.Right.Style = ExcelBorderStyle.Thin; // lien nho
+                    worksheet.Cells[25, 5].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+
+                    worksheet.Cells[25, 9].Value = Convert.ToInt32(ptkhluatmdk3p.Sum(p => p.LuyTuyenPhatTrienKhachHang)).ToString();
+                    worksheet.Cells[25, 9].Style.Font.Size = 13;
+                    worksheet.Cells[25, 9].Style.Font.Bold = true;
+                    worksheet.Cells[25, 9].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // canh giua
+                    worksheet.Cells[25, 9].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                    worksheet.Cells[25, 9].Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[25, 9].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[25, 9].Style.Border.Right.Style = ExcelBorderStyle.Thin; // lien nho
+                    worksheet.Cells[25, 9].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+
+                    var ptkhluatdkkh = phattrienkhachhang.Result.Where(p => p.MaPhatTrienKhachHang.Equals("LMDKKH"));
+                    worksheet.Cells[26, 5].Value = Convert.ToInt32(ptkhluatdkkh.Sum(p => p.SoLuongPhatTrienKhachHang)).ToString();
+                    worksheet.Cells[26, 5].Style.Font.Size = 13;
+                    worksheet.Cells[26, 5].Style.Font.Bold = true;
+                    worksheet.Cells[26, 5].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // canh giua
+                    worksheet.Cells[26, 5].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                    worksheet.Cells[26, 5].Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[26, 5].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[26, 5].Style.Border.Right.Style = ExcelBorderStyle.Thin; // lien nho
+                    worksheet.Cells[26, 5].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+
+                    worksheet.Cells[26, 9].Value = Convert.ToInt32(ptkhluatdkkh.Sum(p => p.LuyTuyenPhatTrienKhachHang)).ToString();
+                    worksheet.Cells[26, 9].Style.Font.Size = 13;
+                    worksheet.Cells[26, 9].Style.Font.Bold = true;
+                    worksheet.Cells[26, 9].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // canh giua
+                    worksheet.Cells[26, 9].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                    worksheet.Cells[26, 9].Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[26, 9].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[26, 9].Style.Border.Right.Style = ExcelBorderStyle.Thin; // lien nho
+                    worksheet.Cells[26, 9].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+
+                    var ptkhptdkkh = phattrienkhachhang.Result.Where(p => p.MaPhatTrienKhachHang.Equals("LMPTLDKH"));
+                    worksheet.Cells[27, 5].Value = Convert.ToInt32(ptkhptdkkh.Sum(p => p.SoLuongPhatTrienKhachHang)).ToString();
+                    worksheet.Cells[27, 5].Style.Font.Size = 13;
+                    worksheet.Cells[27, 5].Style.Font.Bold = true;
+                    worksheet.Cells[27, 5].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // canh giua
+                    worksheet.Cells[27, 5].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                    worksheet.Cells[27, 5].Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[27, 5].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[27, 5].Style.Border.Right.Style = ExcelBorderStyle.Thin; // lien nho
+                    worksheet.Cells[27, 5].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+
+                    worksheet.Cells[27, 9].Value = Convert.ToInt32(ptkhptdkkh.Sum(p => p.LuyTuyenPhatTrienKhachHang)).ToString();
+                    worksheet.Cells[27, 9].Style.Font.Size = 13;
+                    worksheet.Cells[27, 9].Style.Font.Bold = true;
+                    worksheet.Cells[27, 9].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // canh giua
+                    worksheet.Cells[27, 9].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                    worksheet.Cells[27, 9].Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[27, 9].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[27, 9].Style.Border.Right.Style = ExcelBorderStyle.Thin; // lien nho
+                    worksheet.Cells[27, 9].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;                   
+
+                    var dtbdxltx = duytubaoduong.Result.Where(p => p.MaDuyTuBaoDuong.Equals("DTKTXLTX"));
+                    worksheet.Cells[32, 5].Value = Convert.ToInt32(dtbdxltx.Sum(p => p.SoLuongDuyTuBaoDuong)).ToString();
+                    worksheet.Cells[32, 5].Style.Font.Size = 13;
+                    worksheet.Cells[32, 5].Style.Font.Bold = true;
+                    worksheet.Cells[32, 5].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // canh giua
+                    worksheet.Cells[32, 5].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                    worksheet.Cells[32, 5].Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[32, 5].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[32, 5].Style.Border.Right.Style = ExcelBorderStyle.Thin; // lien nho
+                    worksheet.Cells[32, 5].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;                   
+
+                    worksheet.Cells[32, 9].Value = Convert.ToInt32(dtbdxltx.Sum(p => p.SoLuongLuyTuyenDuyTuBaoDuong)).ToString();
+                    worksheet.Cells[32, 9].Style.Font.Size = 13;
+                    worksheet.Cells[32, 9].Style.Font.Bold = true;
+                    worksheet.Cells[32, 9].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // canh giua
+                    worksheet.Cells[32, 9].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                    worksheet.Cells[32, 9].Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[32, 9].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[32, 9].Style.Border.Right.Style = ExcelBorderStyle.Thin; // lien nho
+                    worksheet.Cells[32, 9].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+
+                    var dtbdstcp = duytubaoduong.Result.Where(p => p.MaDuyTuBaoDuong.Equals("DTSTCP"));
+                    worksheet.Cells[33, 5].Value = Convert.ToInt32(dtbdstcp.Sum(p => p.SoLuongDuyTuBaoDuong)).ToString();
+                    worksheet.Cells[33, 5].Style.Font.Size = 13;
+                    worksheet.Cells[33, 5].Style.Font.Bold = true;
+                    worksheet.Cells[33, 5].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // canh giua
+                    worksheet.Cells[33, 5].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                    worksheet.Cells[33, 5].Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[33, 5].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[33, 5].Style.Border.Right.Style = ExcelBorderStyle.Thin; // lien nho
+                    worksheet.Cells[33, 5].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+                                     
+                    worksheet.Cells[33, 9].Value = Convert.ToInt32(dtbdstcp.Sum(p => p.SoLuongLuyTuyenDuyTuBaoDuong)).ToString();
+                    worksheet.Cells[33, 9].Style.Font.Size = 13;
+                    worksheet.Cells[33, 9].Style.Font.Bold = true;
+                    worksheet.Cells[33, 9].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // canh giua
+                    worksheet.Cells[33, 9].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                    worksheet.Cells[33, 9].Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[33, 9].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[33, 9].Style.Border.Right.Style = ExcelBorderStyle.Thin; // lien nho
+                    worksheet.Cells[33, 9].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+
+                    var dtbdpqddtht = duytubaoduong.Result.Where(p => p.MaDuyTuBaoDuong.Equals("DTPQDDTHT"));
+                    worksheet.Cells[34, 5].Value = Convert.ToInt32(dtbdpqddtht.Sum(p => p.SoLuongDuyTuBaoDuong)).ToString();
+                    worksheet.Cells[34, 5].Style.Font.Size = 13;
+                    worksheet.Cells[34, 5].Style.Font.Bold = true;
+                    worksheet.Cells[34, 5].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // canh giua
+                    worksheet.Cells[34, 5].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                    worksheet.Cells[34, 5].Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[34, 5].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[34, 5].Style.Border.Right.Style = ExcelBorderStyle.Thin; // lien nho
+                    worksheet.Cells[34, 5].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+                                     
+                    worksheet.Cells[34, 9].Value = Convert.ToInt32(dtbdpqddtht.Sum(p => p.SoLuongLuyTuyenDuyTuBaoDuong)).ToString();
+                    worksheet.Cells[34, 9].Style.Font.Size = 13;
+                    worksheet.Cells[34, 9].Style.Font.Bold = true;
+                    worksheet.Cells[34, 9].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // canh giua
+                    worksheet.Cells[34, 9].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                    worksheet.Cells[34, 9].Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[34, 9].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[34, 9].Style.Border.Right.Style = ExcelBorderStyle.Thin; // lien nho
+                    worksheet.Cells[34, 9].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+
+                    var ctscNCDDHT = caitaosuachua.Result.Where(p => p.MaCaiTaoSuaChua.Equals("CTCTNCHT"));
+                    worksheet.Cells[36, 2].Value = Convert.ToInt32(ctscNCDDHT.Sum(p => p.SoLuongCaiTaoSuaChua)).ToString();
+                    worksheet.Cells[36, 2].Style.Font.Size = 13;
+                    worksheet.Cells[36, 2].Style.Font.Bold = true;
+                    worksheet.Cells[36, 2].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // canh giua
+                    worksheet.Cells[36, 2].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                    worksheet.Cells[36, 2].Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[36, 2].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[36, 2].Style.Border.Right.Style = ExcelBorderStyle.Thin; // lien nho
+                    worksheet.Cells[36, 2].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+
+                    worksheet.Cells[36, 5].Value = Convert.ToInt32(ctscNCDDHT.Sum(p => p.DaiCaiTaoSuaChua)).ToString();
+                    worksheet.Cells[36, 5].Style.Font.Size = 13;
+                    worksheet.Cells[36, 5].Style.Font.Bold = true;
+                    worksheet.Cells[36, 5].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // canh giua
+                    worksheet.Cells[36, 5].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                    worksheet.Cells[36, 5].Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[36, 5].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[36, 5].Style.Border.Right.Style = ExcelBorderStyle.Thin; // lien nho
+                    worksheet.Cells[36, 5].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+
+                    worksheet.Cells[36, 9].Value = Convert.ToInt32(ctscNCDDHT.Sum(p => p.SoLuongLuyTuyenCaiTaoSuaChua)).ToString();
+                    worksheet.Cells[36, 9].Style.Font.Size = 13;
+                    worksheet.Cells[36, 9].Style.Font.Bold = true;
+                    worksheet.Cells[36, 9].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // canh giua
+                    worksheet.Cells[36, 9].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                    worksheet.Cells[36, 9].Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[36, 9].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[36, 9].Style.Border.Right.Style = ExcelBorderStyle.Thin; // lien nho
+                    worksheet.Cells[36, 9].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+
+                    worksheet.Cells[36, 11].Value = Convert.ToInt32(ctscNCDDHT.Sum(p => p.SoLuongSoLuongLuyTuyenCaiTaoSuaChua)).ToString();
+                    worksheet.Cells[36, 11].Style.Font.Size = 13;
+                    worksheet.Cells[36, 11].Style.Font.Bold = true;
+                    worksheet.Cells[36, 11].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // canh giua
+                    worksheet.Cells[36, 11].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                    worksheet.Cells[36, 11].Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[36, 11].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[36, 11].Style.Border.Right.Style = ExcelBorderStyle.Thin; // lien nho
+                    worksheet.Cells[36, 11].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+
+                    var ctscNCDDTT = caitaosuachua.Result.Where(p => p.MaCaiTaoSuaChua.Equals("CTCTNCTT"));
+                    worksheet.Cells[37, 2].Value = Convert.ToInt32(ctscNCDDTT.Sum(p => p.SoLuongCaiTaoSuaChua)).ToString();
+                    worksheet.Cells[37, 2].Style.Font.Size = 13;
+                    worksheet.Cells[37, 2].Style.Font.Bold = true;
+                    worksheet.Cells[37, 2].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // canh giua
+                    worksheet.Cells[37, 2].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                    worksheet.Cells[37, 2].Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[37, 2].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[37, 2].Style.Border.Right.Style = ExcelBorderStyle.Thin; // lien nho
+                    worksheet.Cells[37, 2].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+
+                    worksheet.Cells[37, 5].Value = Convert.ToInt32(ctscNCDDTT.Sum(p => p.DaiCaiTaoSuaChua)).ToString();
+                    worksheet.Cells[37, 5].Style.Font.Size = 13;
+                    worksheet.Cells[37, 5].Style.Font.Bold = true;
+                    worksheet.Cells[37, 5].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // canh giua
+                    worksheet.Cells[37, 5].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                    worksheet.Cells[37, 5].Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[37, 5].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[37, 5].Style.Border.Right.Style = ExcelBorderStyle.Thin; // lien nho
+                    worksheet.Cells[37, 5].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+                                     
+                    worksheet.Cells[37, 9].Value = Convert.ToInt32(ctscNCDDTT.Sum(p => p.SoLuongLuyTuyenCaiTaoSuaChua)).ToString();
+                    worksheet.Cells[37, 9].Style.Font.Size = 13;
+                    worksheet.Cells[37, 9].Style.Font.Bold = true;
+                    worksheet.Cells[37, 9].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // canh giua
+                    worksheet.Cells[37, 9].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                    worksheet.Cells[37, 9].Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[37, 9].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[37, 9].Style.Border.Right.Style = ExcelBorderStyle.Thin; // lien nho
+                    worksheet.Cells[37, 9].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+
+                    worksheet.Cells[37, 11].Value = Convert.ToInt32(ctscNCDDTT.Sum(p => p.SoLuongSoLuongLuyTuyenCaiTaoSuaChua)).ToString();
+                    worksheet.Cells[37, 11].Style.Font.Size = 13;
+                    worksheet.Cells[37, 11].Style.Font.Bold = true;
+                    worksheet.Cells[37, 11].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // canh giua
+                    worksheet.Cells[37, 11].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                    worksheet.Cells[37, 11].Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[37, 11].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[37, 11].Style.Border.Right.Style = ExcelBorderStyle.Thin; // lien nho
+                    worksheet.Cells[37, 11].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+
+                    var ctscHOPDOMINO = caitaosuachua.Result.Where(p => p.MaCaiTaoSuaChua.Equals("CTLHDMN"));
+                    worksheet.Cells[38, 2].Value = Convert.ToInt32(ctscHOPDOMINO.Sum(p => p.SoLuongCaiTaoSuaChua)).ToString();
+                    worksheet.Cells[38, 2].Style.Font.Size = 13;
+                    worksheet.Cells[38, 2].Style.Font.Bold = true;
+                    worksheet.Cells[38, 2].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // canh giua
+                    worksheet.Cells[38, 2].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                    worksheet.Cells[38, 2].Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[38, 2].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[38, 2].Style.Border.Right.Style = ExcelBorderStyle.Thin; // lien nho
+                    worksheet.Cells[38, 2].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;                   
+
+                    worksheet.Cells[38, 9].Value = Convert.ToInt32(ctscHOPDOMINO.Sum(p => p.SoLuongLuyTuyenCaiTaoSuaChua)).ToString();
+                    worksheet.Cells[38, 9].Style.Font.Size = 13;
+                    worksheet.Cells[38, 9].Style.Font.Bold = true;
+                    worksheet.Cells[38, 9].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // canh giua
+                    worksheet.Cells[38, 9].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                    worksheet.Cells[38, 9].Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[38, 9].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[38, 9].Style.Border.Right.Style = ExcelBorderStyle.Thin; // lien nho
+                    worksheet.Cells[38, 9].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+
+                    var diengiaomua = caitaosuachua.Result.Where(p => p.MaCaiTaoSuaChua.Equals("CTSLDG"));
+                    worksheet.Cells[39, 3].Value = Convert.ToInt32(diengiaomua.Sum(p => p.SoLuongMuaCaiTaoSuaChua)).ToString();
+                    worksheet.Cells[39, 3].Style.Font.Size = 13;
+                    worksheet.Cells[39, 3].Style.Font.Bold = true;
+                    worksheet.Cells[39, 3].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // canh giua
+                    worksheet.Cells[39, 3].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                    worksheet.Cells[39, 3].Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[39, 3].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[39, 3].Style.Border.Right.Style = ExcelBorderStyle.Thin; // lien nho
+                    worksheet.Cells[39, 3].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+
+                    worksheet.Cells[39, 8].Value = Convert.ToInt32(diengiaomua.Sum(p => p.SoLuongBanCaiTaoSuaChua)).ToString();
+                    worksheet.Cells[39, 8].Style.Font.Size = 13;
+                    worksheet.Cells[39, 8].Style.Font.Bold = true;
+                    worksheet.Cells[39, 8].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // canh giua
+                    worksheet.Cells[39, 8].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                    worksheet.Cells[39, 8].Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[39, 8].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[39, 8].Style.Border.Right.Style = ExcelBorderStyle.Thin; // lien nho
+                    worksheet.Cells[39, 8].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;                   
+
+                    var luytuyengiaomua = caitaosuachua.Result.Where(p => p.MaCaiTaoSuaChua.Equals("CTTTLT"));
+                    worksheet.Cells[40, 3].Value = Convert.ToInt32(diengiaomua.Sum(p => p.SoLuongMuaCaiTaoSuaChua)).ToString();
+                    worksheet.Cells[40, 3].Style.Font.Size = 13;
+                    worksheet.Cells[40, 3].Style.Font.Bold = true;
+                    worksheet.Cells[40, 3].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // canh giua
+                    worksheet.Cells[40, 3].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                    worksheet.Cells[40, 3].Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[40, 3].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[40, 3].Style.Border.Right.Style = ExcelBorderStyle.Thin; // lien nho
+                    worksheet.Cells[40, 3].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+                                    
+                    worksheet.Cells[40, 8].Value = Convert.ToInt32(diengiaomua.Sum(p => p.SoLuongBanCaiTaoSuaChua)).ToString();
+                    worksheet.Cells[40, 8].Style.Font.Size = 13;
+                    worksheet.Cells[40, 8].Style.Font.Bold = true;
+                    worksheet.Cells[40, 8].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // canh giua
+                    worksheet.Cells[40, 8].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                    worksheet.Cells[40, 8].Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[40, 8].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[40, 8].Style.Border.Right.Style = ExcelBorderStyle.Thin; // lien nho
+                    worksheet.Cells[40, 8].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+
+                    var doanhthudiengiaokh = caitaosuachua.Result.Where(p => p.MaCaiTaoSuaChua.Equals("CTDTDG"));
+                    worksheet.Cells[41, 3].Value = Convert.ToInt32(doanhthudiengiaokh.Sum(p => p.SoLuongKHCaiTaoSuaChua)).ToString();
+                    worksheet.Cells[41, 3].Style.Font.Size = 13;
+                    worksheet.Cells[41, 3].Style.Font.Bold = true;
+                    worksheet.Cells[41, 3].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // canh giua
+                    worksheet.Cells[41, 3].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                    worksheet.Cells[41, 3].Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[41, 3].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[41, 3].Style.Border.Right.Style = ExcelBorderStyle.Thin; // lien nho
+                    worksheet.Cells[41, 3].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+
+                    worksheet.Cells[41, 8].Value = Convert.ToInt32(doanhthudiengiaokh.Sum(p => p.SoLuongThucHienCaiTaoSuaChua)).ToString();
+                    worksheet.Cells[41, 8].Style.Font.Size = 13;
+                    worksheet.Cells[41, 8].Style.Font.Bold = true;
+                    worksheet.Cells[41, 8].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // canh giua
+                    worksheet.Cells[41, 8].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                    worksheet.Cells[41, 8].Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[41, 8].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[41, 8].Style.Border.Right.Style = ExcelBorderStyle.Thin; // lien nho
+                    worksheet.Cells[41, 8].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;                    
+
+                    var thuchienluytuyenkh = caitaosuachua.Result.Where(p => p.MaCaiTaoSuaChua.Equals("CTTHLT"));
+                    worksheet.Cells[42, 3].Value = Convert.ToInt32(thuchienluytuyenkh.Sum(p => p.SoLuongKHCaiTaoSuaChua)).ToString();
+                    worksheet.Cells[42, 3].Style.Font.Size = 13;
+                    worksheet.Cells[42, 3].Style.Font.Bold = true;
+                    worksheet.Cells[42, 3].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // canh giua
+                    worksheet.Cells[42, 3].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                    worksheet.Cells[42, 3].Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[42, 3].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[42, 3].Style.Border.Right.Style = ExcelBorderStyle.Thin; // lien nho
+                    worksheet.Cells[42, 3].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+
+                    worksheet.Cells[42, 8].Value = Convert.ToInt32(thuchienluytuyenkh.Sum(p => p.SoLuongThucHienCaiTaoSuaChua)).ToString();
+                    worksheet.Cells[42, 8].Style.Font.Size = 13;
+                    worksheet.Cells[42, 8].Style.Font.Bold = true;
+                    worksheet.Cells[42, 8].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // canh giua
+                    worksheet.Cells[42, 8].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                    worksheet.Cells[42, 8].Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[42, 8].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[42, 8].Style.Border.Right.Style = ExcelBorderStyle.Thin; // lien nho
+                    worksheet.Cells[42, 8].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;                    
+
+                    var ctatrto = congtacantoanto.Result.Where(p => p.MaCongTacAnToan.Equals("ATTODTH"));
+                    worksheet.Cells[45, 3].Value = Convert.ToInt32(ctatrto.Sum(p => p.SoLuongDaThucHienTheoTo)).ToString();
+                    worksheet.Cells[45, 3].Style.Font.Size = 13;
+                    worksheet.Cells[45, 3].Style.Font.Bold = true;
+                    worksheet.Cells[45, 3].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // canh giua
+                    worksheet.Cells[45, 3].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                    worksheet.Cells[45, 3].Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[45, 3].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[45, 3].Style.Border.Right.Style = ExcelBorderStyle.Thin; // lien nho
+                    worksheet.Cells[45, 3].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+
+                    worksheet.Cells[45, 7].Value = Convert.ToInt32(ctatrto.Sum(p => p.LuyTuyenDaThucHienTheoTo)).ToString();
+                    worksheet.Cells[45, 7].Style.Font.Size = 13;
+                    worksheet.Cells[45, 7].Style.Font.Bold = true;
+                    worksheet.Cells[45, 7].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // canh giua
+                    worksheet.Cells[45, 7].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                    worksheet.Cells[45, 7].Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[45, 7].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[45, 7].Style.Border.Right.Style = ExcelBorderStyle.Thin; // lien nho
+                    worksheet.Cells[45, 7].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+
+                    var ctatrhientruong = congtacantoanhientruong.Result.Where(p => p.MaCongTacAnToan.Equals("ATCBCNDTH"));
+                    worksheet.Cells[47, 3].Value = Convert.ToInt32(ctatrhientruong.Sum(p => p.SoLuongDaThucHienTheoCanBoCongNhan)).ToString();
+                    worksheet.Cells[47, 3].Style.Font.Size = 13;
+                    worksheet.Cells[47, 3].Style.Font.Bold = true;
+                    worksheet.Cells[47, 3].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // canh giua
+                    worksheet.Cells[47, 3].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                    worksheet.Cells[47, 3].Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[47, 3].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[47, 3].Style.Border.Right.Style = ExcelBorderStyle.Thin; // lien nho
+                    worksheet.Cells[47, 3].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
+
+                    worksheet.Cells[47, 7].Value = Convert.ToInt32(ctatrhientruong.Sum(p => p.LuyTuyenDaThucHienTheoCanBoCongNhan)).ToString();
+                    worksheet.Cells[47, 7].Style.Font.Size = 13;
+                    worksheet.Cells[47, 7].Style.Font.Bold = true;
+                    worksheet.Cells[47, 7].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center; // canh giua
+                    worksheet.Cells[47, 7].Style.VerticalAlignment = ExcelVerticalAlignment.Center;
+                    worksheet.Cells[47, 7].Style.Border.Top.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[47, 7].Style.Border.Left.Style = ExcelBorderStyle.Thin;
+                    worksheet.Cells[47, 7].Style.Border.Right.Style = ExcelBorderStyle.Thin; // lien nho
+                    worksheet.Cells[47, 7].Style.Border.Bottom.Style = ExcelBorderStyle.Thin;
 
                     //var khuvuc = !string.IsNullOrEmpty(corporationId) ? corporationId : "%";
                     //var phong = !string.IsNullOrEmpty(madphongChamCong) ? madphongChamCong : "%";
